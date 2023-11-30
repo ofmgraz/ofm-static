@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html  class="h-100">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-title" content="Inhaltsverzeichnis">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="images/logo.png">
+      <link rel="None" type="image/ico" href="images/favicons/favicon.ico">
+      <link rel="icon" type="image/png" href="images/favicons/favicon-16x16.png">
+      <link rel="icon" type="image/png" href="images/favicons/favicon-32x32.png">
+      <link rel="icon" type="image/png" href="images/favicons/favicon-64x64.png">
+      <link rel="icon" type="image/png" href="images/favicons/favicon-96x96.png">
+      <link rel="icon" type="image/png" href="images/favicons/favicon-180x180.png">
+      <link rel="apple-touch-icon" type="image/png" href="images/favicons/apple-touch-icon-57x57.png">
+      <link rel="apple-touch-icon" type="image/png" href="images/favicons/apple-touch-icon-60x60.png">
+      <link rel="apple-touch-icon" type="image/png" href="images/favicons/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" type="image/png" href="images/favicons/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" type="image/png" href="images/favicons/apple-touch-icon-114x114.png">
+      <link rel="apple-touch-icon" type="image/png" href="images/favicons/apple-touch-icon-120x120.png">
+      <link rel="apple-touch-icon" type="image/png" href="images/favicons/apple-touch-icon-144x144.png">
+      <link rel="apple-touch-icon" type="image/png" href="images/favicons/apple-touch-icon-152x152.png">
+      <link rel="apple-touch-icon" type="image/png" href="images/favicons/apple-touch-icon-167x167.png">
+      <link rel="apple-touch-icon" type="image/png" href="images/favicons/apple-touch-icon-180x180.png">
+      <link rel="None" type="image/png" href="images/favicons/mstile-70x70.png">
+      <link rel="None" type="image/png" href="images/favicons/mstile-270x270.png">
+      <link rel="None" type="image/png" href="images/favicons/mstile-310x310.png">
+      <link rel="None" type="image/png" href="images/favicons/mstile-310x150.png">
+      <link rel="shortcut icon" type="image/png" href="images/favicons/favicon-196x196.png">
+      <link rel="icon" type="image/svg+xml" href="images/logo.png" sizes="any">
+      <link rel="profile" href="http://gmpg.org/xfn/11">
+      <title>Inhaltsverzeichnis</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="css/style.css" type="text/css">
+      <link rel="stylesheet" href="css/micro-editor.css" type="text/css"><script src="https://cdn.jsdelivr.net/npm/i18next@21.6.10/i18next.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery-i18next@1.2.1/jquery-i18next.min.js"></script><script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.3/i18nextBrowserLanguageDetector.min.js"></script><script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.3.2/i18nextHttpBackend.min.js"></script></head>
+   <body class="d-flex flex-column h-100">
+      <header>
+         <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid"><a class="navbar-brand" href="index.html">OFM</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="navbar__project"></a><ul class="dropdown-menu">
+                           <li><a class="dropdown-item" href="about.html" data-i18n="navbar__about"></a></li>
+                           <li><a class="dropdown-item" href="imprint.html" data-i18n="navbar__imprint"></a></li>
+                        </ul>
+                     </li>
+                     <li class="nav-item"><a class="nav-link" href="toc.html" data-i18n="navbar__nofacs"></a></li>
+                     <li class="nav-item dropdown disabled"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="navbar__register"></a><ul class="dropdown-menu">
+                           <li><a class="dropdown-item" href="listperson.html" data-i18n="navbar__persons"></a></li>
+                           <li><a class="dropdown-item" href="listplace.html" data-i18n="navbar__places"></a></li>
+                           <li><a class="dropdown-item" href="listorg.html" data-i18n="navbar__orgs"></a></li>
+                           <li><a class="dropdown-item" href="listbibl.html" data-i18n="navbar__works"></a></li>
+                        </ul>
+                     </li>
+                     <li class="nav-item"><a title="Suche" class="nav-link" href="search.html" data-i18n="navbar__search"></a></li><select name="language" id="languageSwitcher"></select></ul>
+               </div>
+            </div>
+         </nav>
+      </header>
+      <main>
+         <div class="container">
+            <h1>Inhaltsverzeichnis</h1>
+            <table class="table" id="myTable">
+               <thead>
+                  <tr>
+                     <th scope="col" width="20" tabulator-formatter="html" tabulator-headerSort="false" tabulator-download="false">#</th>
+                     <th scope="col" tabulator-headerFilter="input">Titel</th>
+                     <th scope="col" tabulator-headerFilter="input">Dateinname</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td><a href="1493206.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A64_34_Graduale_14s</td>
+                     <td>1493206.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1493184.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A63_51_Graduale_1517</td>
+                     <td>1493184.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1505956.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A64_43_Ant_Noc</td>
+                     <td>1505956.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526139.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_26_Lamentationen</td>
+                     <td>1526139.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526575.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_40a_Prozessionale</td>
+                     <td>1526575.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1581459.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_44_Antiphonale</td>
+                     <td>1581459.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1500696.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A64_39_Grad_Temp_1492</td>
+                     <td>1500696.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1499293.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_23_Prozessionale</td>
+                     <td>1499293.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1499883.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_17_Ant_Winter</td>
+                     <td>1499883.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1499889.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A64_38_Grad_Kyriale_1492</td>
+                     <td>1499889.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1529921.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_65_Grad_Rom_Druck</td>
+                     <td>1529921.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1505830.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_42_Responsbuch4</td>
+                     <td>1505830.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1528792.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_63_Hymnar_Druck</td>
+                     <td>1528792.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1581621.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_72_Psalterium_Druck</td>
+                     <td>1581621.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1528668.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_70_Hymnar_Druck</td>
+                     <td>1528668.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1529043.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_45_Antiphonar</td>
+                     <td>1529043.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1528807.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_64_PsaltRom</td>
+                     <td>1528807.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526822.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_66_Grad_Rom_Druck</td>
+                     <td>1526822.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526106.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_24_Choralbuch</td>
+                     <td>1526106.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1527208.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_75_Proz2_Druck</td>
+                     <td>1527208.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526556.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_40_Intonationsbuch</td>
+                     <td>1526556.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1523170.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_23_Lamentationes</td>
+                     <td>1523170.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1504145.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A64_41_Ant_Winter_1492</td>
+                     <td>1504145.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1531925.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_68_Grad_Rom_Druck</td>
+                     <td>1531925.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1500720.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_41_Responsbuch4</td>
+                     <td>1500720.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1528772.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_61_Hymnar_Druck</td>
+                     <td>1528772.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1505843.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_44_Prozessionale</td>
+                     <td>1505843.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526237.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_30_Intonationsbuch</td>
+                     <td>1526237.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526547.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_39_Lobgesänge</td>
+                     <td>1526547.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1527160.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_74_Proz1_Druck</td>
+                     <td>1527160.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526195.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_28_Prozessionale</td>
+                     <td>1526195.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1505846.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A70_23_Intonatorium</td>
+                     <td>1505846.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526181.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_27_Manuale</td>
+                     <td>1526181.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526812.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_62_Hymn_Rom_Druck</td>
+                     <td>1526812.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1523134.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_19_Mar_Gesaenge_Mensural</td>
+                     <td>1523134.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1498443.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A64_37_Psalterium</td>
+                     <td>1498443.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526118.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_25_Intonationsbuch</td>
+                     <td>1526118.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1505838.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_43_Responsoriale</td>
+                     <td>1505838.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526809.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_58_Ant_Seraph</td>
+                     <td>1526809.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1529931.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_69_Ant_Rom_Druck</td>
+                     <td>1529931.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1499840.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_21_Grad_Part3</td>
+                     <td>1499840.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1523158.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_22_Chorallehrbuch</td>
+                     <td>1523158.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1504109.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A64_40_Ant_Sommer_1492</td>
+                     <td>1504109.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1522303.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A_70_45_Kurz_Antiphonar_Feste</td>
+                     <td>1522303.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1500709.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_27_Antiphonale</td>
+                     <td>1500709.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1499836.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_22_Grad_Part4</td>
+                     <td>1499836.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1499848.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_20_Grad_Part2</td>
+                     <td>1499848.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526210.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_29_Prozessionale</td>
+                     <td>1526210.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1499857.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_19_Grad_Part1</td>
+                     <td>1499857.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1505858.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A64_42_Ant_Diu</td>
+                     <td>1505858.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1527232.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_73_Proz3_Druck</td>
+                     <td>1527232.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1499874.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A67_18_Ant_Sommer</td>
+                     <td>1499874.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1505848.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_A70_41_Ant</td>
+                     <td>1505848.xml</td>
+                  </tr>
+                  <tr>
+                     <td><a href="1526844.html"><i class="bi bi-link-45deg"></i></a></td>
+                     <td>A-Gf_S1_67_Ant_Rom_Druck</td>
+                     <td>1526844.xml</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h4>Download Table</h4>
+            <div class="button-group"><button type="button" class="btn btn-outline-secondary" id="download-csv" title="Download CSV"><i class="bi bi-filetype-csv"></i><span class="visually-hidden">Download CSV</span></button><button type="button" class="btn btn-outline-secondary" id="download-json" title="Download JSON"><i class="bi bi-filetype-json"></i><span class="visually-hidden">Download JSON</span></button><button type="button" class="btn btn-outline-secondary" id="download-html" title="Download HTML"><i class="bi bi-filetype-html"></i><span class="visually-hidden">Download HTML</span></button></div>
+         </div>
+      </main>
+      <footer class="footer mt-auto py-3 bg-body-tertiary">
+         <div class="float-end me-3"><a href="https://github.com/ofmgraz/ofm-static"><i class="bi bi-github"></i></a></div>
+      </footer><script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script><script>
+            function addDarkmodeWidget() {
+                new Darkmode().showWidget();
+            }
+            window.addEventListener('load', addDarkmodeWidget);
+        </script><script src="js/i18n.js"></script><link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css" rel="stylesheet">
+      <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator_bootstrap5.min.css" rel="stylesheet"><script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script><script src="tabulator-js/config.js"></script><script>
+            var table = new Tabulator("#myTable", config);
+            //trigger download of data.csv file
+            document.getElementById("download-csv").addEventListener("click", function(){
+            table.download("csv", "data.csv");
+            });
+            
+            //trigger download of data.json file
+            document.getElementById("download-json").addEventListener("click", function(){
+            table.download("json", "data.json");
+            });
+            
+            //trigger download of data.html file
+            document.getElementById("download-html").addEventListener("click", function(){
+            table.download("html", "data.html", {style:true});
+            });
+        </script></body>
+</html>

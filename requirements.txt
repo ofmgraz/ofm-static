@@ -1,0 +1,4 @@
+acdh-tei-pyutils
+favicons
+rlPyCairo==0.2.0
+acdh-cfts-pyutils

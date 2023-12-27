@@ -10,7 +10,6 @@
     </xsl:variable>
     <xsl:template name="build_doc_sub_list">
         <xsl:param name="id_name_for_toggle"></xsl:param>
-        <xsl:param name="data_set_id_transkribus"></xsl:param>
         <xsl:param name="heading"></xsl:param>
         <xsl:param name="expanded" as="xs:string" select="'false'"/>
         <li>
@@ -19,7 +18,8 @@
             </button>
             <div class="collapse " id="{$id_name_for_toggle}">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <xsl:for-each select="collection('../../data/editions/')//tei:TEI[.//tei:teiHeader[1]/tei:fileDesc[1]/tei:publicationStmt[1]/tei:idno[@type='transkribus_collection' and ./text()=$data_set_id_transkribus]]" >
+               <!-- <xsl:for-each select="collection('../../data/editions/')//tei:TEI[.//tei:teiHeader[1]/tei:fileDesc[1]/tei:publicationStmt[1]/tei:idno[@type='transkribus_collection' and ./text()=$data_set_id_transkribus]]" > -->
+                    <xsl:for-each select="collection('../../data/editions/')//tei:TEI[.//tei:teiHeader[1]/tei:fileDesc[1]/tei:sourceDesc[1]/tei:msDesc[1]/tei:msContents[1]]">
                         <xsl:variable as="xs:string" name="text_title" select="//tei:fileDesc//tei:titleStmt//tei:title[@type='main']/normalize-space()"/>
                         <xsl:variable as="xs:string" name="page_uri" select="replace(tokenize(document-uri(/), '/')[last()], '.xml', '.html')"/>
                         <li>
@@ -74,17 +74,17 @@
     </xsl:template>
     
    <xsl:template name="edition_side_nav">
-        <xsl:param name="doc_type"/>
+        <xsl:param name="book_type"/>
         <div id="edtion-navBarNavDropdown" class="dropstart navBarNavDropdown">
             <!-- <xsl:variable name="data_set_A_id" as="xs:string" select="ofm"/> -->
-	    <xsl:if test="contains(./@class, 'ofm')">
-		<xsl:variable name="data_set_A_id" as="xs:string" select="ofm"/>
+	    <xsl:if test="contains(./@class, '#ofm')">
+		<xsl:variable name="data_set_A_id" select="'ofm'"/>
 	    </xsl:if>
 	    <xsl:if test="contains(./@class, 'osc')">
-		<xsl:variable name="data_set_B_id" as="xs:string" select="osd"/>
+		<xsl:variable name="data_set_B_id" select="'osd'"/>
 	    </xsl:if>
 	    <xsl:if test="contains(./@class, 'oesa')">
-		<xsl:variable name="data_set_C_id" as="xs:string" select="oesa"/>
+		<xsl:variable name="data_set_C_id" select="'oesa'"/>
 	    </xsl:if>
 
             <ul id="left_edition_content_nav" class="list-unstyled ps-0">
@@ -95,17 +95,17 @@
                     <div class="collapse" id="docs-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <xsl:call-template name="build_doc_sub_list">
-                                <xsl:with-param name="id_name_for_toggle" select="'data_set_A_nav_toggle'"/>
-                                <xsl:with-param name="heading" select="'Verfassungesentwürfe'"/>
+                                <xsl:with-param name="id_name_for_toggle" select="'ofm'"/>
+                                <xsl:with-param name="heading" select="'Ordo Fratrum Minorum'"/>
                                 <xsl:with-param name="expanded" select="'true'"/>
                             </xsl:call-template>
                             <xsl:call-template name="build_doc_sub_list">
-                                <xsl:with-param name="id_name_for_toggle" select="'data_set_B_nav_toggle'"/>
-                                <xsl:with-param name="heading" select="'Protokolle'"/>
+                                <xsl:with-param name="id_name_for_toggle" select="'osd'"/>
+                                <xsl:with-param name="heading" select="'Ordo Sancti Dominci'"/>
                             </xsl:call-template>
                             <xsl:call-template name="build_doc_sub_list">
-                                <xsl:with-param name="id_name_for_toggle" select="'data_set_C_nav_toggle'"/>
-                                <xsl:with-param name="heading" select="'Sonstige'"/>
+                                <xsl:with-param name="id_name_for_toggle" select="'oesa'"/>
+                                <xsl:with-param name="heading" select="'Ordo Eremitarum Sancti Augustini'"/>
                             </xsl:call-template>
                         </ul>
                     </div>
@@ -113,7 +113,7 @@
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#current-doc-collapse" aria-expanded="false">
                         <xsl:value-of
-                            select="$doc_title"
+                            select="$book_type"
                             />
                     </button>                                       
                     <div class="collapse" id="current-doc-collapse">

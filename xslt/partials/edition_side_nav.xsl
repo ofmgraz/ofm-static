@@ -77,9 +77,9 @@
     <xsl:template name="edition_side_nav">
         <xsl:param name="doc_title"/>
         <div id="edtion-navBarNavDropdown" class="dropstart navBarNavDropdown">
-            <xsl:variable name="data_set_A_id" as="xs:string" select="string(195363)"/>
-            <xsl:variable name="data_set_B_id" as="xs:string" select="string(196428)"/>
-            <xsl:variable name="data_set_C_id" as="xs:string" select="string(196429)"/>
+            <xsl:variable name="OFM" as="xs:string" select="string(195363)"/>
+            <xsl:variable name="OSC" as="xs:string" select="string(196428)"/>
+            <xsl:variable name="OESA" as="xs:string" select="string(196429)"/>
             <ul id="left_edition_content_nav" class="list-unstyled ps-0">
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#docs-collapse" aria-expanded="false">

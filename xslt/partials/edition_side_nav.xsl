@@ -76,9 +76,17 @@
    <xsl:template name="edition_side_nav">
         <xsl:param name="doc_type"/>
         <div id="edtion-navBarNavDropdown" class="dropstart navBarNavDropdown">
-            <xsl:variable name="data_set_A_id" as="xs:string" select="OFM"/>
-            <xsl:variable name="data_set_B_id" as="xs:string" select="OSC"/>
-            <xsl:variable name="data_set_C_id" as="xs:string" select="OESA"/>
+            <!-- <xsl:variable name="data_set_A_id" as="xs:string" select="ofm"/> -->
+	    <xsl:if test="contains(./@class, 'ofm')">
+		<xsl:variable name="data_set_A_id" as="xs:string" select="ofm"/>
+	    </xsl:if>
+	    <xsl:if test="contains(./@class, 'osc')">
+		<xsl:variable name="data_set_B_id" as="xs:string" select="osd"/>
+	    </xsl:if>
+	    <xsl:if test="contains(./@class, 'oesa')">
+		<xsl:variable name="data_set_C_id" as="xs:string" select="oesa"/>
+	    </xsl:if>
+
             <ul id="left_edition_content_nav" class="list-unstyled ps-0">
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#docs-collapse" aria-expanded="false">
@@ -88,18 +96,15 @@
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <xsl:call-template name="build_doc_sub_list">
                                 <xsl:with-param name="id_name_for_toggle" select="'data_set_A_nav_toggle'"/>
-                                <xsl:with-param name="data_set_id_transkribus" select="$data_set_A_id"/>
                                 <xsl:with-param name="heading" select="'Verfassungesentwürfe'"/>
                                 <xsl:with-param name="expanded" select="'true'"/>
                             </xsl:call-template>
                             <xsl:call-template name="build_doc_sub_list">
                                 <xsl:with-param name="id_name_for_toggle" select="'data_set_B_nav_toggle'"/>
-                                <xsl:with-param name="data_set_id_transkribus" select="$data_set_B_id"/>
                                 <xsl:with-param name="heading" select="'Protokolle'"/>
                             </xsl:call-template>
                             <xsl:call-template name="build_doc_sub_list">
                                 <xsl:with-param name="id_name_for_toggle" select="'data_set_C_nav_toggle'"/>
-                                <xsl:with-param name="data_set_id_transkribus" select="$data_set_C_id"/>
                                 <xsl:with-param name="heading" select="'Sonstige'"/>
                             </xsl:call-template>
                         </ul>

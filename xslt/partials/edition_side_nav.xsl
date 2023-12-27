@@ -88,20 +88,16 @@
                     <div class="collapse" id="docs-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <xsl:call-template name="build_doc_sub_list">
-                                <xsl:with-param name="id_name_for_toggle" select="'data_set_A_nav_toggle'"/>
-                                <xsl:with-param name="data_set_id_transkribus" select="$data_set_A_id"/>
-                                <xsl:with-param name="heading" select="'Verfassungesentwürfe'"/>
+                                <xsl:with-param name="id" select="'OFM'"/>
                                 <xsl:with-param name="expanded" select="'true'"/>
                             </xsl:call-template>
                             <xsl:call-template name="build_doc_sub_list">
-                                <xsl:with-param name="id_name_for_toggle" select="'data_set_B_nav_toggle'"/>
-                                <xsl:with-param name="data_set_id_transkribus" select="$data_set_B_id"/>
-                                <xsl:with-param name="heading" select="'Protokolle'"/>
+                                <xsl:with-param name="id" select="'OSC'"/>
+                                <xsl:with-param name="id" select="$OSC"/>
                             </xsl:call-template>
                             <xsl:call-template name="build_doc_sub_list">
-                                <xsl:with-param name="id_name_for_toggle" select="'data_set_C_nav_toggle'"/>
-                                <xsl:with-param name="data_set_id_transkribus" select="$data_set_C_id"/>
-                                <xsl:with-param name="heading" select="'Sonstige'"/>
+                                <xsl:with-param name="id_name_for_toggle" select="'OESA'"/>
+                                <xsl:with-param name="data_set_id_transkribus" select="$OESA"/>
                             </xsl:call-template>
                         </ul>
                     </div>

@@ -25,8 +25,8 @@
     <xsl:variable name="doc_title">
         <xsl:value-of select=".//tei:title[@type = 'main'][1]/text()"/>
     </xsl:variable>
-    <xsl:variable name="doc_type">
-	<xsl:value-of select=".//tei:msContents[0]"/> <!-- msContents class="#ofm #responsoriale"> -->
+    <xsl:variable name="book_type">
+	<xsl:value-of select=".//tei:msContents[1]"/> <!-- msContents class="#ofm #responsoriale"> -->
     </xsl:variable>
     
     <xsl:template match="/">
@@ -65,7 +65,7 @@
                             <div class="offcanvas-body">
                                 <div>
                                     <xsl:call-template name="edition_side_nav">
-                                        <xsl:with-param name="doc_type" select="$doc_type"/>
+                                        <xsl:with-param name="book_type" select="$book_type"/>
                                     </xsl:call-template>
                                 </div>
                             </div>

@@ -5,7 +5,7 @@
     <doc xmlns="http://www.oxygenxml.com/ns/doc/xsl">
         <desc>
             <h1>Widget annotation options.</h1>
-            <p>Contact person: daniel.stoxreiter@oeaw.ac.at</p>
+            <p>Contact person: foo.bar@oeaw.ac.at</p>
             <p>Applied with call-templates in html:body.</p>
             <p>Custom template to create interactive options for text annoations.</p>
         </desc>    

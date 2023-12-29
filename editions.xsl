@@ -25,9 +25,6 @@
     <xsl:variable name="doc_title">
         <xsl:value-of select=".//tei:title[@type = 'main'][1]/text()"/>
     </xsl:variable>
-    <xsl:variable name="book_type">
-	<xsl:value-of select=".//tei:msContents/[@class][1]"/> <!-- msContents class="#ofm #responsoriale"> -->
-    </xsl:variable>
     
     <xsl:template match="/">
         <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
@@ -38,14 +35,14 @@
                 </xsl:call-template>
                 <xsl:call-template name="meta-tags">
                     <xsl:with-param name="title" select="$doc_title"></xsl:with-param>
-                    <xsl:with-param name="description" select="'Choralhandschriften der Zentralbibliothek der Wiener Franziskanerprovinz Graz
-'"></xsl:with-param>
+                    <xsl:with-param name="source_authors" select="//tei:msDesc/tei:msContents/tei:msItem/tei:author/text()"></xsl:with-param>
+                    <xsl:with-param name="description" select="'Die Entstehung der Österreichischen Bundes-Verfassung 1920'"></xsl:with-param>
                 </xsl:call-template>
             </head>
             <body class="page">
                 <div id="text_quality_disclaimer" class="offcanvas offcanvas-start show" tabindex="-1" aria-labelledby="tqd_label" data-bs-scroll="false" data-bs-backdrop="false">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavigationLabel">Achtung! <xsl:value-of select="$book_type" /></h5>
+                        <h5 class="offcanvas-title" id="offcanvasNavigationLabel">Achtung!</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
@@ -65,7 +62,7 @@
                             <div class="offcanvas-body">
                                 <div>
                                     <xsl:call-template name="edition_side_nav">
-                                        <xsl:with-param name="book_type" select="$book_type"/>
+                                        <xsl:with-param name="doc_title" select="$doc_title"/>
                                     </xsl:call-template>
                                 </div>
                             </div>
@@ -133,9 +130,9 @@
                                                 <xsl:value-of select="concat($doc_title, ' (', $doc_type, ')')"/> 
                                             </h1>
                                         </div>
-                                        <p class="document_info">Datum: <xsl:value-of select="normalize-space(//tei:sourceDesc/tei:bibl/tei:date[1])"/></p>
+                                        <p class="document_info">Entstehung: <xsl:value-of select="normalize-space(//tei:profileDesc/tei:creation/tei:date[1])"/></p>
                                         <p class="document_info"><xsl:value-of select="//tei:text/@type"/></p>
-                                        <p class="document_info">Provenienz: <xsl:value-of select="normalize-space(//tei:sourceDesc/tei:msDesc/tei:history/tei:provenance/tei:placeName[1])"/></p>
+                                        <p class="document_info">Beteiligte Personen: <xsl:value-of select="string-join((//tei:msDesc/tei:msContents/tei:msItem/tei:author/text()), ' / ')"/></p>
                                         <p class="document_info"><xsl:value-of select="normalize-space(//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc)"/></p>
                                     </div>
                                     <div class="col-md-2 col-lg-2 col-sm-12"

@@ -135,7 +135,7 @@
                                         </div>
                                         <p class="document_info">Entstehung: <xsl:value-of select="normalize-space(//tei:profileDesc/tei:creation/tei:date[1])"/></p>
                                         <p class="document_info"><xsl:value-of select="//tei:text/@type"/></p>
-                                        <p class="document_info">Beteiligte Personen: <xsl:value-of select="string-join((//tei:msDesc/tei:msContents/tei:msItem/tei:author/text()), ' / ')"/></p>
+                                        <p class="document_info">Provenienz: <xsl:value-of select="string-join((//tei:msDesc/tei:history/tei:provenance/tei:placeName/text()), ' / ')"/></p>
                                         <p class="document_info"><xsl:value-of select="normalize-space(//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc)"/></p>
                                     </div>
                                     <div class="col-md-2 col-lg-2 col-sm-12"

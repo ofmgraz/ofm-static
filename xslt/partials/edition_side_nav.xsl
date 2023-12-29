@@ -77,10 +77,10 @@
         <xsl:param name="book_type"/>
         <div id="edtion-navBarNavDropdown" class="dropstart navBarNavDropdown">
             <!-- <xsl:variable name="data_set_A_id" as="xs:string" select="ofm"/> -->
-	    <xsl:if test="contains(./@class, '#ofm')">
+	    <xsl:if test="contains(./@class, 'ofm')">
 		<xsl:variable name="data_set_A_id" select="'ofm'"/>
 	    </xsl:if>
-	    <xsl:if test="contains(./@class, 'osc')">
+	    <xsl:if test="contains(./@class, 'osd')">
 		<xsl:variable name="data_set_B_id" select="'osd'"/>
 	    </xsl:if>
 	    <xsl:if test="contains(./@class, 'oesa')">
@@ -95,16 +95,16 @@
                     <div class="collapse" id="docs-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <xsl:call-template name="build_doc_sub_list">
-                                <xsl:with-param name="id_name_for_toggle" select="'ofm'"/>
+                                <xsl:with-param name="id_name_for_toggle" select="'data_set_A_id'"/>
                                 <xsl:with-param name="heading" select="'Ordo Fratrum Minorum'"/>
                                 <xsl:with-param name="expanded" select="'true'"/>
                             </xsl:call-template>
                             <xsl:call-template name="build_doc_sub_list">
-                                <xsl:with-param name="id_name_for_toggle" select="'osd'"/>
+                                <xsl:with-param name="id_name_for_toggle" select="data_set_B_id"/>
                                 <xsl:with-param name="heading" select="'Ordo Sancti Dominci'"/>
                             </xsl:call-template>
                             <xsl:call-template name="build_doc_sub_list">
-                                <xsl:with-param name="id_name_for_toggle" select="'oesa'"/>
+                                <xsl:with-param name="id_name_for_toggle" select="oesa"/>
                                 <xsl:with-param name="heading" select="'Ordo Eremitarum Sancti Augustini'"/>
                             </xsl:call-template>
                         </ul>

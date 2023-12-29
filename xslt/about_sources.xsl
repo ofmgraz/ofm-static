@@ -23,7 +23,6 @@
                 </xsl:call-template>
                 <xsl:call-template name="meta-tags">
                     <xsl:with-param name="title" select="$doc_title"></xsl:with-param>
-                    <xsl:with-param name="source_authors" select="//tei:msDesc/tei:msContents/tei:msItem/tei:author/text()"></xsl:with-param>
                     <xsl:with-param name="description" select="'Choralhandschriften der Zentralbibliothek der Wiener Franziskanerprovinz Graz'"></xsl:with-param>
                 </xsl:call-template>
             </head>            

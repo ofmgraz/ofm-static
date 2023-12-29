@@ -20,7 +20,7 @@
                 </xsl:call-template>
                 <xsl:call-template name="meta-tags">
                     <xsl:with-param name="title" select="$doc_title"></xsl:with-param>
-                    <xsl:with-param name="description" select="'Choralhandschriften der Zentralbibliothek der Wiener Franziskanerprovinz Graz'"></xsl:with-param>
+                    <xsl:with-param name="description" select="'Die Entstehung der Österreichischen Bundes-Verfassung 1920'"></xsl:with-param>
                 </xsl:call-template>
                 <link rel="stylesheet" type="text/css" href="css/ts_search.css"/>
             </head>
@@ -39,8 +39,8 @@
                                         <h4>Volltextsuche</h4>
                                         <div id="searchbox"></div>
                                         <div id="clear-refinements"></div>
-                                        <h4>Beteiligte Personen</h4>
-                                        <div id="refinement-list-persons"></div>
+                                        <h4>Ort</h4>
+                                        <div id="refinement-list-ort"></div>
                                         <h4>Dokumente</h4>
                                         <div id="refinement-list-doc-title"/>
                                         <h4>Dokumententyp</h4>

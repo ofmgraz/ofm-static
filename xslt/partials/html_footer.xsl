@@ -41,23 +41,23 @@
                             </p>
                         </div>
                     </div>
-                    <!-- <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
+                    <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
                         <div class="row">
                             <div class="textwidget custom-html-widget">
-                                <h6 class="font-weight-bold">FÖRDERINSTITUTION</h6>
-                                <a href="https://www.fwf.ac.at/">
+                                <h6 class="font-weight-bold"><!-- I leave the div to be a place holder --></h6>
+                                <!-- I leave the div to be a place holder <a href="https://www.fwf.ac.at/">
                                     <img class="card-img-right flex-auto d-md-block"
                                         src="https://www.fwf.ac.at/fileadmin/Website/Logos/FWF_Logo_Zusatz_Blau_RGB_DE.svg"
                                         alt="FWF Österreichischer Wissenschaftsfond Logo"
                                         style="max-width: 140px; height: auto; margin-top:1em;"
                                         title="FWF Der Wissenschaftsfond"/>
-                                </a>
+                                </a>-->
                                 <p/>
-                                <p>Gefördert aus Mitteln des<br/> Wissenschaftsfonds FWF,<br/>
-                                    P31277 (2018–2021) und <br/>P34792 (2021–[2024])</p>
+                                <p><br/><br/><!-- I leave the div to be a place holder Gefördert aus Mitteln des<br/> Wissenschaftsfonds FWF,<br/>
+                                    P31277 (2018–2021) und <br/>P34792 (2021–[2024]) --></p>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <!-- .footer-widget -->
                     <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
                         <div class="row">

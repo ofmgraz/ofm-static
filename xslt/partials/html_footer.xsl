@@ -3,9 +3,10 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="#all" version="2.0">
     <xsl:template match="/" name="html_footer">
+        <!-- <div clas="wrapperhide-reading" id="wrapper-footer-full"> -->
         <footer class="footer mt-auto py-3 bg-body-tertiary">
-            <div class="container-fluid" id="footer-full-content" tabindex="-1" align="center">
-                <div class="footer-separator"> KONTAKT </div>
+            <div class="container-fluid" id="footer-full-content" tabindex="-1">
+                <div class="footer-separator justify-content-center"> <h5 class="font-weight-bold">KONTAKT</h5> </div>
                 <div class="row justify-content-center">
                     <div
                         class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6  ml-auto  text-center ">
@@ -13,8 +14,8 @@
                             <a href="https://www.oeaw.ac.at/acdh/">
                                 <img
                                     src="https://fundament.acdh.oeaw.ac.at/common-assets/images/acdh_logo.svg"
-                                    class="image" alt="ACDH Logo" style="max-width: 90%; height: auto;"
-                                    title="ACDH Logo"/>
+                                    class="image" alt="ACDH Logo"
+                                    style="max-width: 90%; height: auto;" title="ACDH Logo"/>
                             </a>
                         </div>
                     </div>
@@ -22,11 +23,13 @@
                     <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
                         <div class="textwidget custom-html-widget">
                             <h6 class="font-weight-bold">ACDH-CH</h6>
-                            <p>Austrian Centre for Digital Humanities <br/> and Cultural
-                                Heritage <br/> Österreichische Akademie der Wissenschaften </p>
+                            <p>Austrian Centre for Digital Humanities <br/> and Cultural Heritage
+                                <br/> Österreichische Akademie der Wissenschaften </p>
                             <p> Bäckerstraße 13 <br/> 1010 Wien </p>
-                            <p> T: +43 1 51581-2200 <br/> E: <a href="mailto:acdh-ch-helpdesk@oeaw.ac.at
-                                ">acdh-ch-helpdesk(at)oeaw.ac.at</a>
+                            <p> T: +43 1 51581-2200 <br/> E: <a
+                                    href="mailto:acdh-ch-helpdesk@oeaw.ac.at
+                                "
+                                    >acdh-ch-helpdesk(at)oeaw.ac.at</a>
                             </p>
                         </div>
                     </div>
@@ -35,22 +38,22 @@
                         <div class="row">
                             <div class="textwidget custom-html-widget">
                                 <h6 class="font-weight-bold">HELPDESK</h6>
-                                <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie sich
-                                    bitte an den ACDH-CH Helpdesk.</p>
+                                <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie
+                                    sich bitte an den ACDH-CH Helpdesk.</p>
                                 <p>
-                                    <a class="helpdesk-button" href="mailto:acdh-ch-helpdesk@oeaw.ac.at"
-                                        >e-Mail</a>
+                                    <a class="helpdesk-button"
+                                        href="mailto:acdh-ch-helpdesk@oeaw.ac.at">e-Mail</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <!-- .footer-widget -->
                 </div>
-            </div>
-            <div class="float-end me-3">
-                <a href="{$github_url}">
-                    <i class="bi bi-github"/>
-                </a>
+                <div class="float-end col-lg-3 col-md-4 col-sm-3 ml-auto">
+                    <a href="{$github_url}">
+                        <i class="bi bi-github"/>
+                    </a>
+                </div>
             </div>
         </footer>
         <!-- #wrapper-footer-full -->

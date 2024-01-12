@@ -49,7 +49,7 @@
                     </div>
                     <!-- .footer-widget -->
                 </div>
-                <div class="float-end col-lg-3 col-md-4 col-sm-3 ml-auto">
+                <div class="float-end ml-auto">
                     <a href="{$github_url}">
                         <i class="bi bi-github"/>
                     </a>

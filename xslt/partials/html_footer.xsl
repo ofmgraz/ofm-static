@@ -4,9 +4,9 @@
     exclude-result-prefixes="#all" version="2.0">
     <xsl:template match="/" name="html_footer">
         <footer class="footer mt-auto py-3 bg-body-tertiary">
-            <div class="container-fluid" id="footer-full-content" tabindex="-1">
+            <div class="container-fluid" id="footer-full-content" tabindex="-1" align="center">
                 <div class="footer-separator"> KONTAKT </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div
                         class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6  ml-auto  text-center ">
                         <div class="textwidget custom-html-widget">

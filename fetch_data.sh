@@ -6,7 +6,8 @@ rm -rf data/indices && mkdir data/indices
 rm -rf data/meta && mkdir data/meta
 curl -LO https://github.com/ofmgraz/transkribus-out/archive/refs/heads/main.zip
 unzip main
-mv ./transkribus-out-main/tei ./data/editions
+mv ./transkribus-out-main/data/editions ./data
+mv ./transkribus-out-main/data/indices ./data
 
 curl -LO https://github.com/ofmgraz/ofm-para-text/archive/refs/heads/main.zip
 unzip main

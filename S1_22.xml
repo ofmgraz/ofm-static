@@ -28,7 +28,7 @@
         <availability>
           <licence>cc0</licence>
         </availability>
-        <date when="2024-01-10">2024</date>
+        <date when="2024-01-10" when-iso="2024-01-15">2024-01-15</date>
       </publicationStmt>
       <sourceDesc>
         <bibl>
@@ -67,7 +67,7 @@
           </physDesc>
           <history>
             <provenance>
-              <placeName ref="#MRL">Maria Lankowitz</placeName>
+              <placeName ref="#MariaLankowitz">Maria Lankowitz</placeName>
             </provenance>
           </history>
         </msDesc>
@@ -123,20 +123,20 @@
           <country>Austria</country>
           <geo>47.070483333333 15.436780555556</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4482538-9</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q64487580</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4482538-9</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q64487580</idno>
       </place>
-      <place/>
-      <place xml:id="MRL">
+      <place xml:id="MariaLankowitz">
         <placeName>Maria Lankowitz</placeName>
         <location>
           <settlement>Maria Lankowitz</settlement>
-          <region>Styria</region>
-          <country>Austria</country>
+          <region>Steiermark</region>
+          <country>Österreich</country>
           <geo>47.063888888889 15.063055555556</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4400654-8</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q699807</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4400654-8</idno>
+        <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2771922</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q699807</idno>
       </place>
     </listPlace>
   </standOff>

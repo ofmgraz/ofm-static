@@ -28,7 +28,7 @@
         <availability>
           <licence>cc0</licence>
         </availability>
-        <date when="2024-01-10">2024</date>
+        <date when="2024-01-10" when-iso="2024-01-15">2024-01-15</date>
       </publicationStmt>
       <sourceDesc>
         <bibl>
@@ -67,7 +67,7 @@
           </physDesc>
           <history>
             <provenance>
-              <placeName ref="#VIE">Wien</placeName>
+              <placeName ref="#Wien">Wien</placeName>
             </provenance>
           </history>
         </msDesc>
@@ -123,20 +123,20 @@
           <country>Austria</country>
           <geo>47.070483333333 15.436780555556</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4482538-9</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q64487580</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4482538-9</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q64487580</idno>
       </place>
-      <place/>
-      <place xml:id="VIE">
+      <place xml:id="Wien">
         <placeName>Wien</placeName>
         <location>
-          <settlement>Vienna</settlement>
-          <region>Vienna</region>
-          <country>Austria</country>
+          <settlement>Wien</settlement>
+          <region>Wien</region>
+          <country>Österreich</country>
           <geo>48.208333333333336 16.3725</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4066009-6</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q1741</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4066009-6</idno>
+        <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2761369</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q1741</idno>
       </place>
     </listPlace>
   </standOff>

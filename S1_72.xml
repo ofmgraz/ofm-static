@@ -28,15 +28,13 @@
         <availability>
           <licence>cc0</licence>
         </availability>
-        <date when="2024-01-10">2024</date>
+        <date when="2024-01-10" when-iso="2024-01-15">2024-01-15</date>
       </publicationStmt>
       <sourceDesc>
         <bibl>
           <date notBefore="1683-01-01" notAfter="1683-12-31">1683</date>
-          <pubPlace>
-            <placeName ref="#SLZ">Salzburg</placeName>
-          </pubPlace>
-          <publisher ref="#mayr">Mayr</publisher>
+          <pubPlace>Salzburg</pubPlace>
+          <publisher ref="#Mayr">Johann Baptist Mayr</publisher>
         </bibl>
         <msDesc>
           <msIdentifier>
@@ -71,7 +69,7 @@
           </physDesc>
           <history>
             <provenance>
-              <placeName ref="#SLZ">Salzburg</placeName>
+              <placeName ref="#Salzburg">Salzburg</placeName>
             </provenance>
           </history>
         </msDesc>
@@ -124,29 +122,40 @@
           <country>Austria</country>
           <geo>47.070483333333 15.436780555556</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4482538-9</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q64487580</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4482538-9</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q64487580</idno>
       </place>
-      <place/>
-      <place xml:id="SLZ">
+      <place xml:id="Salzburg">
         <placeName>Salzburg</placeName>
         <location>
           <settlement>Salzburg</settlement>
-          <region>Salzburg</region>
-          <country>Austria</country>
+          <region>Land Salzburg</region>
+          <country>Österreich</country>
           <geo>47.8 13.045</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4062501-1</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q34713</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4062501-1</idno>
+        <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2766818</idno>
+        <idno type="URL" subtype="Wikidata">http://www.wikidata.org/entity/Q34713</idno>
       </place>
     </listPlace>
     <listPerson>
-      <person sex="M" role="printer" age="adult" xml:id="mayr">
+      <person xml:id="Mayr">
         <persName>
-          <surname>Mayr</surname>
           <forename>Johann Baptist</forename>
+          <surname>Mayr</surname>
         </persName>
-        <idno type="GND">http://d-nb.info/gnd/124751946</idno>
+        <residence>
+          <date notBefore="1634-01-01" notAfter="1708-12-31">1634-1708</date>
+          <settlement key="2">
+            <placeName type="pref">Salzburg</placeName>
+            <location>
+              <geo>47.8 13.045</geo>
+            </location>
+          </settlement>
+        </residence>
+        <sex value="male"/>
+        <occupation key="90">Drucker</occupation>
+        <idno type="URL" subtype="gnd">https://d-nb.info/gnd/124751946</idno>
       </person>
     </listPerson>
   </standOff>

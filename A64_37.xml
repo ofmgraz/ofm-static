@@ -28,7 +28,7 @@
         <availability>
           <licence>cc0</licence>
         </availability>
-        <date when="2024-01-10">2024</date>
+        <date when="2024-01-10" when-iso="2024-01-15">2024-01-15</date>
       </publicationStmt>
       <sourceDesc>
         <bibl>
@@ -67,9 +67,9 @@
           </physDesc>
           <history>
             <provenance>
-              <placeName ref="#GRZ">Graz</placeName>
-              <placeName ref="#LJB">Ljubljana</placeName>
-              <placeName ref="#MRL">Maria Lankowitz</placeName>
+              <placeName ref="#Graz">Graz</placeName>
+              <placeName ref="#Ljubljana">Ljubljana</placeName>
+              <placeName ref="#MariaLankowitz">Maria Lankowitz</placeName>
             </provenance>
           </history>
         </msDesc>
@@ -125,44 +125,44 @@
           <country>Austria</country>
           <geo>47.070483333333 15.436780555556</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4482538-9</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q64487580</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4482538-9</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q64487580</idno>
       </place>
-      <place/>
-      <place xml:id="GRZ">
+      <place xml:id="Graz">
         <placeName>Graz</placeName>
         <location>
           <settlement>Graz</settlement>
-          <region>Styria</region>
-          <country>Austria</country>
+          <region>Steiermark</region>
+          <country>Österreich</country>
           <geo>47.07083333333333 15.438611111111111</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4021912-4</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q13298</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4021912-4</idno>
+        <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2778058</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q13298</idno>
       </place>
-      <place/>
-      <place xml:id="LJB">
+      <place xml:id="Ljubljana">
         <placeName>Ljubljana</placeName>
         <location>
           <settlement>Ljubljana</settlement>
-          <region>Carniola</region>
-          <country>Slovenia</country>
+          <region>Oberkrain</region>
+          <country>Slovenien</country>
           <geo>46.05138888888889 14.50611111111111</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4073953-3</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q437</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4073953-3</idno>
+        <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/3239318</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q437</idno>
       </place>
-      <place/>
-      <place xml:id="MRL">
+      <place xml:id="MariaLankowitz">
         <placeName>Maria Lankowitz</placeName>
         <location>
           <settlement>Maria Lankowitz</settlement>
-          <region>Styria</region>
-          <country>Austria</country>
+          <region>Steiermark</region>
+          <country>Österreich</country>
           <geo>47.063888888889 15.063055555556</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4400654-8</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q699807</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4400654-8</idno>
+        <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2771922</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q699807</idno>
       </place>
     </listPlace>
   </standOff>

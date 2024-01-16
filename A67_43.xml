@@ -28,7 +28,7 @@
         <availability>
           <licence>cc0</licence>
         </availability>
-        <date when="2024-01-10">2024</date>
+        <date when="2024-01-10" when-iso="2024-01-15">2024-01-15</date>
       </publicationStmt>
       <sourceDesc>
         <bibl>
@@ -67,7 +67,7 @@
           </physDesc>
           <history>
             <provenance>
-              <placeName ref="#GRZ">Graz</placeName>
+              <placeName ref="#Graz">Graz</placeName>
             </provenance>
           </history>
         </msDesc>
@@ -123,20 +123,20 @@
           <country>Austria</country>
           <geo>47.070483333333 15.436780555556</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4482538-9</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q64487580</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4482538-9</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q64487580</idno>
       </place>
-      <place/>
-      <place xml:id="GRZ">
+      <place xml:id="Graz">
         <placeName>Graz</placeName>
         <location>
           <settlement>Graz</settlement>
-          <region>Styria</region>
-          <country>Austria</country>
+          <region>Steiermark</region>
+          <country>Österreich</country>
           <geo>47.07083333333333 15.438611111111111</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4021912-4</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q13298</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4021912-4</idno>
+        <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2778058</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q13298</idno>
       </place>
     </listPlace>
   </standOff>

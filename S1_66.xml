@@ -28,15 +28,13 @@
         <availability>
           <licence>cc0</licence>
         </availability>
-        <date when="2024-01-10">2024</date>
+        <date when="2024-01-10" when-iso="2024-01-15">2024-01-15</date>
       </publicationStmt>
       <sourceDesc>
         <bibl>
           <date notBefore="1610-01-01" notAfter="1610-12-31">1610</date>
-          <pubPlace>
-            <placeName ref="#VNZ">Venedig</placeName>
-          </pubPlace>
-          <publisher ref="#ciera">Ciera</publisher>
+          <pubPlace>Venedig</pubPlace>
+          <publisher ref="#Ciera">Pietro Ciera</publisher>
         </bibl>
         <msDesc>
           <msIdentifier>
@@ -71,7 +69,7 @@
           </physDesc>
           <history>
             <provenance>
-              <placeName ref="#VNZ">Venedig</placeName>
+              <placeName ref="#Venedig">Venedig</placeName>
             </provenance>
           </history>
         </msDesc>
@@ -124,29 +122,40 @@
           <country>Austria</country>
           <geo>47.070483333333 15.436780555556</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4482538-9</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q64487580</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4482538-9</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q64487580</idno>
       </place>
-      <place/>
-      <place xml:id="VNZ">
+      <place xml:id="Venedig">
         <placeName>Venedig</placeName>
         <location>
-          <settlement>Venice</settlement>
-          <region>Veneto</region>
-          <country>Italy</country>
+          <settlement>Venedig</settlement>
+          <region>Venetien</region>
+          <country>Italien</country>
           <geo>45.439722222222 12.331944444444</geo>
         </location>
-        <idno type="GND"/>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q641</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4062501-1/4062501-1</idno>
+        <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/3164603</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q641</idno>
       </place>
     </listPlace>
     <listPerson>
-      <person sex="M" role="printer" age="adult" xml:id="ciera">
+      <person xml:id="Ciera">
         <persName>
-          <surname>Ciera</surname>
           <forename>Pietro</forename>
+          <surname>Ciera</surname>
         </persName>
-        <idno type="GND">https://d-nb.info/gnd/1051039606</idno>
+        <residence>
+          <date notBefore="1650-01-01" notAfter="1706-12-31">1650-1706</date>
+          <settlement key="4">
+            <placeName type="pref">Venedig</placeName>
+            <location>
+              <geo>45.439722222222 12.331944444444</geo>
+            </location>
+          </settlement>
+        </residence>
+        <sex value="male"/>
+        <occupation key="90">Drucker</occupation>
+        <idno type="URL" subtype="gnd">https://d-nb.info/gnd/1051039606</idno>
       </person>
     </listPerson>
   </standOff>

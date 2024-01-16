@@ -30,15 +30,13 @@
         <availability>
           <licence>cc0</licence>
         </availability>
-        <date when="2024-01-10">2024</date>
+        <date when="2024-01-10" when-iso="2024-01-15">2024-01-15</date>
       </publicationStmt>
       <sourceDesc>
         <bibl>
           <date notBefore="1702-01-01" notAfter="1702-12-31">1702</date>
-          <pubPlace>
-            <placeName ref="#VIE">Wien</placeName>
-          </pubPlace>
-          <publisher ref="#voigt">Voigt</publisher>
+          <pubPlace>Wien</pubPlace>
+          <publisher ref="#Voigt">Leopold Voigt</publisher>
         </bibl>
         <msDesc>
           <msIdentifier>
@@ -75,7 +73,7 @@
           </physDesc>
           <history>
             <provenance>
-              <placeName ref="#VIE">Wien</placeName>
+              <placeName ref="#Wien">Wien</placeName>
             </provenance>
           </history>
         </msDesc>
@@ -131,30 +129,41 @@
           <country>Austria</country>
           <geo>47.070483333333 15.436780555556</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4482538-9</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q64487580</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4482538-9</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q64487580</idno>
       </place>
-      <place/>
-      <place xml:id="VIE">
+      <place xml:id="Wien">
         <placeName>Wien</placeName>
         <location>
-          <settlement>Vienna</settlement>
-          <region>Vienna</region>
-          <country>Austria</country>
+          <settlement>Wien</settlement>
+          <region>Wien</region>
+          <country>Österreich</country>
           <geo>48.208333333333336 16.3725</geo>
         </location>
-        <idno type="GND">http://d-nb.info/gnd/4066009-6</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q1741</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4066009-6</idno>
+        <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2761369</idno>
+        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q1741</idno>
       </place>
     </listPlace>
     <listPerson>
-      <person sex="M" role="printer" age="adult" xml:id="voigt">
+      <person xml:id="Voigt">
         <persName>
-          <surname>Voigt</surname>
           <forename>Leopold</forename>
+          <surname>Voigt</surname>
         </persName>
-        <idno type="GND">http://d-nb.info/gnd/1037512057</idno>
-        <idno type="Wikidata">https://www.wikidata.org/wiki/Q56118770</idno>
+        <residence>
+          <date notBefore="1650-01-01" notAfter="1706-12-31">1650-1706</date>
+          <settlement key="1">
+            <placeName type="pref">Wien</placeName>
+            <location>
+              <geo>48,2066 16,37341</geo>
+            </location>
+          </settlement>
+        </residence>
+        <sex value="male"/>
+        <occupation key="90">Drucker</occupation>
+        <idno type="URL" subtype="gnd">https://d-nb.info/gnd/1037512057</idno>
+        <idno type="URL" subtype="wikidata">http://www.wikidata.org/entity/Q56118770</idno>
       </person>
     </listPerson>
   </standOff>

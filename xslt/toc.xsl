@@ -43,8 +43,8 @@
                                     <th scope="col" width="150" tabulator-headerFilter="input">Dateiname</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Datum (notBefore)</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Liturgie</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Provenienz</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Drucker</th>
+                                    <th scope="col" width="200" tabulator-headerFilter="input">Provenienz</th>
+                                    <th scope="col" width="300" tabulator-headerFilter="input">Drucker</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Folia</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Höhe (mm)</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Breite (mm)</th>
@@ -96,11 +96,11 @@
                                                     </xsl:when>
                                                 </xsl:choose>   
                                         </td>
-                                        <td>Provenienz</td>
+                                        <td><xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:history/tei:provenance"/></td>
                                         <td>
                                             <xsl:choose>
-                                                <xsl:when test="descendant::tei:sourceDesc/tei:bibl/publisher">
-                                                    <xsl:value-of select="descendant::tei:sourceDesc/tei:bibl/publisher/text()"/>
+                                                <xsl:when test="descendant::tei:sourceDesc/tei:bibl/tei:publisher">
+                                                    <xsl:value-of select="descendant::tei:sourceDesc/tei:bibl/tei:publisher"/>
                                                 </xsl:when>
                                                 <xsl:otherwise>
                                                     <xsl:text>[Handschrift]</xsl:text>

@@ -49,7 +49,7 @@
                                     <th scope="col" width="100" tabulator-headerFilter="input">Höhe (mm)</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Breite (mm)</th>
                                     <th scope="col" width="1000" tabulator-headerFilter="input">Beschreibung</th>
-                                    <th scope="col" width="100" tabulator-headerFilter='sort'>Traskriptionstatus</th>
+                                    <th scope="col" width="150" tabulator-headerFilter='sort'>Traskriptionstatus</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,7 +97,16 @@
                                                 </xsl:choose>   
                                         </td>
                                         <td>Provenienz</td>
-                                        <td>Drucker</td>
+                                        <td>
+                                            <xsl:choose>
+                                                <xsl:when test="descendant::tei:sourceDesc/tei:bibl/publisher">
+                                                    <xsl:value-of select="descendant::tei:sourceDesc/tei:bibl/publisher/text()"/>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <xsl:text>[Handschrift]</xsl:text>
+                                                  </xsl:otherwise>  
+                                            </xsl:choose>
+                                          </td>
                                         <td>
                                             <xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:extent/tei:measure/text()"/>
                                         

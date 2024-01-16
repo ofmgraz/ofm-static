@@ -45,11 +45,11 @@
                                     <th scope="col" width="100" tabulator-headerFilter="input">Liturgie</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Provenienz</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Drucker</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Seiten</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Höhe</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Breite</th>
+                                    <th scope="col" width="100" tabulator-headerFilter="input">Folia</th>
+                                    <th scope="col" width="100" tabulator-headerFilter="input">Höhe (mm)</th>
+                                    <th scope="col" width="100" tabulator-headerFilter="input">Breite (mm)</th>
                                     <th scope="col" width="1000" tabulator-headerFilter="input">Beschreibung</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Traskriptionstatus</th>
+                                    <th scope="col" width="100" tabulator-headerFilter='sort'>Traskriptionstatus</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -98,9 +98,13 @@
                                         </td>
                                         <td>Provenienz</td>
                                         <td>Drucker</td>
-                                        <td>Seiten</td>
-                                        <td>Höhe</td>
-                                        <td>Breite</td>
+                                        <td>
+                                            <xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:extent/tei:measure/text()"/>
+                                        
+                                        </td>
+                                        <td><xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:dimensions/tei:height/text()"/>
+                                        </td>
+                                        <td><xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:dimensions/tei:width/text()"/></td>
                                         <td>
                                            <!-- <xsl:value-of
                                                 select="child::tei:teiHeader[1]/tei:fileDesc[1]/tei:sourceDesc[1]/tei:msDesc[1]/tei:msContents[1]/summary[1]/text()"/> -->

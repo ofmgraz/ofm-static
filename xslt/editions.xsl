@@ -21,14 +21,14 @@
     <xsl:variable name="next">
         <xsl:value-of select="replace(tokenize(data(tei:TEI/@next), '/')[last()], '.xml', '.html')"/>
     </xsl:variable>
-    <xsl:variable name="teiSource">
+    <!-- <xsl:variable name="teiSource">
         <xsl:value-of select="data(tei:TEI/@xml:id)"/>
     </xsl:variable>
     <xsl:variable name="link">
         <xsl:value-of select="replace($teiSource, '.xml', '.html')"/>
-    </xsl:variable>
+    </xsl:variable> -->
     <xsl:variable name="doc_title">
-        <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
+        <xsl:value-of select=".//tei:titleStmt/tei:title[@type = 'main'][1]/text()"/>
     </xsl:variable>
 
 
@@ -66,7 +66,7 @@
                                     </h1>
                                 </xsl:if>
                             </div>
-                            <div class="col-md-8 col-lg-8 col-sm-12">
+                            <!-- <div class="col-md-8 col-lg-8 col-sm-12">
                                 <h1 align="center">
                                     <xsl:value-of select="$doc_title"/>
                                 </h1>
@@ -75,7 +75,7 @@
                                         <i class="bi bi-download" title="TEI/XML"/>
                                     </a>
                                 </h3>
-                            </div>
+                            </div> -->
                             <div class="col-md-2 col-lg-2 col-sm-12" style="text-align:right">
                                 <xsl:if test="ends-with($next, '.html')">
                                     <h1>

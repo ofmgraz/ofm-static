@@ -7,8 +7,7 @@ rm -rf data/meta && mkdir data/meta
 curl -LO https://github.com/ofmgraz/transkribus-out/archive/refs/heads/main.zip
 unzip main
 
-mv ./transkribus-out-main/data/editions ./data
-mv ./transkribus-out-main/data/indices ./data
+mv ./transkribus-out-main/tei ./data/editions
 
 rm main.zip
 rm -rf ./transkribus-out-main

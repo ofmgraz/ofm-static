@@ -28,7 +28,8 @@
                 </xsl:call-template>
             </head>
 
-            <body class="page"> <!-- d-flex flex-column  h-100 -->
+            <body class="page">
+                <!-- d-flex flex-column  h-100 -->
                 <xsl:call-template name="nav_bar"/>
                 <main>
                     <div class="container-fluid">
@@ -39,18 +40,30 @@
                                     <th scope="col" width="20" tabulator-formatter="html"
                                         tabulator-headerSort="false" tabulator-download="false"
                                         >#</th>
-                                    <th scope="col" width="400"  tabulator-headerFilter="input">Titel</th>
-                                    <th scope="col" width="150" tabulator-headerFilter="input">Dateiname</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Datum (notBefore)</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Liturgie</th>
-                                    <th scope="col" width="400" tabulator-headerFilter="input">Book Type</th>
-                                    <th scope="col" width="200" tabulator-headerFilter="input">Provenienz</th>
-                                    <th scope="col" width="300" tabulator-headerFilter="input">Drucker</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Folia</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Höhe (mm)</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Breite (mm)</th>
-                                    <th scope="col" width="1000" tabulator-headerFilter="input">Beschreibung</th>
-                                    <th scope="col" width="150" tabulator-headerFilter='sort'>Traskriptionstatus</th>
+                                    <th scope="col" width="400" tabulator-headerFilter="input"
+                                        >Titel</th>
+                                    <th scope="col" width="150" tabulator-headerFilter="input"
+                                        >Dateiname</th>
+                                    <th scope="col" width="100" tabulator-headerFilter="input">Datum
+                                        (notBefore)</th>
+                                    <th scope="col" width="100" tabulator-headerFilter="input"
+                                        >Liturgie</th>
+                                    <th scope="col" width="400" tabulator-headerFilter="input">Book
+                                        Type</th>
+                                    <th scope="col" width="200" tabulator-headerFilter="input"
+                                        >Provenienz</th>
+                                    <th scope="col" width="300" tabulator-headerFilter="input"
+                                        >Drucker</th>
+                                    <th scope="col" width="100" tabulator-headerFilter="input"
+                                        >Folia</th>
+                                    <th scope="col" width="100" tabulator-headerFilter="input">Höhe
+                                        (mm)</th>
+                                    <th scope="col" width="100" tabulator-headerFilter="input"
+                                        >Breite (mm)</th>
+                                    <th scope="col" width="1000" tabulator-headerFilter="input"
+                                        >Beschreibung</th>
+                                    <th scope="col" width="150" tabulator-headerFilter="sort"
+                                        >Traskriptionstatus</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,7 +72,8 @@
                                     <xsl:variable name="full_path">
                                         <xsl:value-of select="document-uri(/)"/>
                                     </xsl:variable>
-                                    <tr> <td>
+                                    <tr>
+                                        <td>
                                             <a>
                                                 <xsl:attribute name="href">
                                                   <xsl:value-of
@@ -83,36 +97,54 @@
                                             />
                                         </td>
                                         <td>
-						<xsl:value-of select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id='liturgies']/tei:category" />
+                                            <xsl:value-of
+                                                select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id = 'liturgies']/tei:category"
+                                            />
                                         </td>
                                         <td>
-						<xsl:value-of select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id='booktypes']/tei:category" />
-					</td>
+                                            <xsl:value-of
+                                                select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id = 'booktypes']/tei:category"
+                                            />
+                                        </td>
                                         <td>
-                                            <xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:history/tei:provenance"/>
+                                            <xsl:value-of
+                                                select="descendant::tei:sourceDesc/tei:msDesc/tei:history/tei:provenance"
+                                            />
                                         </td>
                                         <td>
                                             <xsl:choose>
-                                                <xsl:when test="descendant::tei:sourceDesc/tei:bibl/tei:publisher">
-                                                    <xsl:value-of select="descendant::tei:sourceDesc/tei:bibl/tei:publisher"/>
+                                                <xsl:when
+                                                  test="descendant::tei:sourceDesc/tei:bibl/tei:publisher">
+                                                  <xsl:value-of
+                                                  select="descendant::tei:sourceDesc/tei:bibl/tei:publisher"
+                                                  />
                                                 </xsl:when>
                                                 <xsl:otherwise>
-                                                    <xsl:text>[Handschrift]</xsl:text>
-                                                  </xsl:otherwise>  
+                                                  <xsl:text>[Handschrift]</xsl:text>
+                                                </xsl:otherwise>
                                             </xsl:choose>
-                                          </td>
-                                        <td>
-                                            <xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:extent/tei:measure/text()"/>
-                                        
                                         </td>
-                                        <td><xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:dimensions/tei:height/text()"/>
-                                        </td>
-                                        <td><xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:dimensions/tei:width/text()"/></td>
                                         <td>
-                                           <!-- <xsl:value-of
+                                            <xsl:value-of
+                                                select="descendant::tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:extent/tei:measure/text()"/>
+
+                                        </td>
+                                        <td>
+                                            <xsl:value-of
+                                                select="descendant::tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:dimensions/tei:height/text()"
+                                            />
+                                        </td>
+                                        <td>
+                                            <xsl:value-of
+                                                select="descendant::tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:dimensions/tei:width/text()"
+                                            />
+                                        </td>
+                                        <td>
+                                            <!-- <xsl:value-of
                                                 select="child::tei:teiHeader[1]/tei:fileDesc[1]/tei:sourceDesc[1]/tei:msDesc[1]/tei:msContents[1]/summary[1]/text()"/> -->
-                                            <xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:msContents/tei:summary"/>
-                                            
+                                            <xsl:value-of
+                                                select="descendant::tei:sourceDesc/tei:msDesc/tei:msContents/tei:summary"/>
+
                                         </td>
                                         <td>In progress</td>
                                     </tr>

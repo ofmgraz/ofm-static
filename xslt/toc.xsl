@@ -43,6 +43,7 @@
                                     <th scope="col" width="150" tabulator-headerFilter="input">Dateiname</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Datum (notBefore)</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Liturgie</th>
+                                    <th scope="col" width="400" tabulator-headerFilter="input">Book Type</th>
                                     <th scope="col" width="200" tabulator-headerFilter="input">Provenienz</th>
                                     <th scope="col" width="300" tabulator-headerFilter="input">Drucker</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">Folia</th>
@@ -82,21 +83,14 @@
                                             />
                                         </td>
                                         <td>
-                                            <xsl:variable name="sortentyp"
-                                                select=".//tei:sourceDesc/tei:msDesc/tei:msContents/@class" />
-                                                <xsl:choose>
-                                                    <xsl:when test="$sortentyp = '#osc'">
-                                                        <xsl:text>OSC</xsl:text>
-                                                    </xsl:when>
-                                                    <xsl:when test="$sortentyp = '#ofm'">
-                                                        <xsl:text>OFM</xsl:text>
-                                                    </xsl:when>
-                                                    <xsl:when test="$sortentyp = '#oesa'">
-                                                        <xsl:text>OESA</xsl:text>
-                                                    </xsl:when>
-                                                </xsl:choose>   
+						<xsl:value-of select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id='liturgies']/tei:category" />
                                         </td>
-                                        <td><xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:history/tei:provenance"/></td>
+                                        <td>
+						<xsl:value-of select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id='booktypes']/tei:category" />
+					</td>
+                                        <td>
+                                            <xsl:value-of select="descendant::tei:sourceDesc/tei:msDesc/tei:history/tei:provenance"/>
+                                        </td>
                                         <td>
                                             <xsl:choose>
                                                 <xsl:when test="descendant::tei:sourceDesc/tei:bibl/tei:publisher">

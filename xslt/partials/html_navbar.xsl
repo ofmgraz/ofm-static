@@ -28,7 +28,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="toc.html" data-i18n="navbar__nofacs"/>
+                                <a class="nav-link" href="toc.html" data-i18n="navbar__works"/>
                             </li>
 
                             <li class="nav-item dropdown disabled">

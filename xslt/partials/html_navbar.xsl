@@ -40,12 +40,12 @@
                                     <li>
                                         <a class="dropdown-item" href="listplace.html" data-i18n="navbar__places"/>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a class="dropdown-item" href="listorg.html" data-i18n="navbar__orgs"/>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="listbibl.html" data-i18n="navbar__works"/>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </li>
 

@@ -29,7 +29,7 @@
         <availability>
           <licence>cc0</licence>
         </availability>
-        <date when="2024-01-10" when-iso="2024-01-15">2024-01-15</date>
+        <date when="2024-01-10" when-iso="2024-01-17">2024-01-17</date>
       </publicationStmt>
       <sourceDesc>
         <bibl>
@@ -45,7 +45,7 @@
             </repository>
             <idno type="shelfmark">S 1/69</idno>
           </msIdentifier>
-          <msContents class="#ofm">
+          <msContents class="#ofm #antiphonale">
             <summary>
               <p>mit Anhang: <title>Antiphonarium de Sanctis Trium Ordinum Sancti Patris Francisci</title></p>
               <p>Antiphonarium Romanum</p>
@@ -83,13 +83,16 @@
                         scripts</ref></addrLine></address>.</p>
       </editorialDecl>
       <classDecl>
-        <taxonomy>
-          <desc>Book types</desc>
-        </taxonomy>
-        <taxonomy>
+        <taxonomy xml:id="liturgies">
           <desc>Liturgies</desc>
           <category xml:id="ofm">
             <catDesc>OFM</catDesc>
+          </category>
+        </taxonomy>
+        <taxonomy xml:id="booktypes">
+          <desc>Book Types</desc>
+          <category xml:id="antiphonale">
+            <catDesc>Antiphonarium</catDesc>
           </category>
         </taxonomy>
       </classDecl>

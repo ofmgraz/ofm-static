@@ -159,9 +159,9 @@
                                         </div> 
                                         <div class="container-fluid">
                                            <!-- <div class="card">
-                                                <div class="card-body-index"> -->
+                                                <div class="card-body-index">  -->
                                                     <xsl:apply-templates select="descendant::tei:body"/>
-                                             <!--  </div>
+                                               <!-- </div>
                                             </div>  -->
                                         </div>
                                         <!-- <p class="document_info">Entstehung: <xsl:value-of

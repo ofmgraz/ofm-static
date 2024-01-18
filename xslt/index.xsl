@@ -28,11 +28,12 @@
                 </xsl:call-template>
             </head>            
             <body class="d-flex flex-column h-100">
+		<!-- Landing page --> 
                 <xsl:call-template name="nav_bar"/>
                 <main class="flex-shrink-0">
                     <div class="container">
-                        <h1><xsl:value-of select="$project_short_title"/></h1>
-                        <h2><xsl:value-of select="$project_title"/></h2>
+                        <h1 style="text-align:center;"><xsl:value-of select="$project_short_title"/></h1>
+                        <h2 style="text-align:center;"><xsl:value-of select="$project_title"/></h2>
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>

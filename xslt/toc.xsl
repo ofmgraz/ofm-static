@@ -28,12 +28,12 @@
                 </xsl:call-template>
             </head>
 
-            <body class="page">
+            <body class="d-flex flex-column h-100">
                 <!-- d-flex flex-column  h-100 -->
                 <xsl:call-template name="nav_bar"/>
                 <main>
                     <div class="container-fluid">
-                        <h1>Inhaltsverzeichnis</h1>
+                        <h1 class="text-center pb-4 pt-3"><xsl:value-of select="$doc_title"/></h1>
                         <table class="table" id="myTable">
                             <thead>
                                 <tr>

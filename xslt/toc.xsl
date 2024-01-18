@@ -44,8 +44,8 @@
                                         >Titel</th>
                                     <th scope="col" width="150" tabulator-headerFilter="input"
                                         >Dateiname</th>
-                                    <th scope="col" width="100" tabulator-headerFilter="input">Datum
-                                        (notBefore)</th>
+                                    <th scope="col" width="100" tabulator-headerFilter="input">notBefore</th>
+					<th scope="col" width="100" tabulator-headerFilter="input">notAfter</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input"
                                         >Liturgie</th>
                                     <th scope="col" width="400" tabulator-headerFilter="input">Book
@@ -93,9 +93,15 @@
                                         </td>
                                         <td>
                                             <xsl:value-of
-                                                select="descendant::tei:sourceDesc/tei:bibl/tei:date/text()"
+                                                select="tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[1]"
                                             />
                                         </td>
+            <td>
+                                            <xsl:value-of
+                                                select="tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[1]"
+                                            />
+                                        </td>
+
                                         <td>
                                             <xsl:value-of
                                                 select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id = 'liturgies']/tei:category"

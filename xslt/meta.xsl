@@ -50,7 +50,7 @@
     
     <xsl:template match="tei:figure">
         <xsl:variable name="imgurl">
-            <xsl:value-of select="./tei:graphic/@url"/>
+            <xsl:value-of select="tokenize(./tei:graphic/@url, ' ')[1]" />
         </xsl:variable>
         <img class="pb-1">
             <xsl:attribute name="src">

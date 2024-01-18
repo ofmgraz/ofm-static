@@ -2,6 +2,7 @@
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="#all" version="2.0">
+   <xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
     <xsl:template match="/" name="html_footer">
         <!-- <div clas="wrapperhide-reading" id="wrapper-footer-full"> -->
         <footer class="footer mt-auto py-3 bg-body-tertiary">
@@ -23,10 +24,10 @@
                     <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
                         <div class="textwidget custom-html-widget">
                             <h6 class="font-weight-bold">ACDH-CH</h6>
-                            <p>Austrian Centre for Digital Humanities <br/> and Cultural Heritage
-                                <br/> Österreichische Akademie der Wissenschaften </p>
-                            <p> Bäckerstraße 13 <br/> 1010 Wien </p>
-                            <p> T: +43 1 51581-2200 <br/> E: <a
+                            <p>Austrian Centre for Digital Humanities <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> and Cultural Heritage
+                                <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> Österreichische Akademie der Wissenschaften </p>
+                            <p> Bäckerstraße 13 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 1010 Wien </p>
+                            <p> T: +43 1 51581-2200 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> E: <a
                                     href="mailto:acdh-ch-helpdesk@oeaw.ac.at
                                 "
                                     >acdh-ch-helpdesk(at)oeaw.ac.at</a>

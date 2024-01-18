@@ -35,16 +35,16 @@
                             <li class="nav-item dropdown disabled">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="navbar__register"/>
                                 <ul class="dropdown-menu">
-                                    <li>
+                                    <!-- <li>
                                         <a class="dropdown-item" href="listperson.html" data-i18n="navbar__drucker"/>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <a class="dropdown-item" href="listplace.html" data-i18n="navbar__places"/>
                                     </li>
-                                    <!-- <li>
-                                        <a class="dropdown-item" href="listorg.html" data-i18n="navbar__orgs"/>
-                                    </li>
                                     <li>
+                                        <a class="dropdown-item" href="listperson.html" data-i18n="navbar__persons"/>
+                                    </li>
+                                    <!-- <li>
                                         <a class="dropdown-item" href="listbibl.html" data-i18n="navbar__works"/>
                                     </li> -->
                                 </ul>

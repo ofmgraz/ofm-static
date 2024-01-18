@@ -36,7 +36,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="navbar__register"/>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="listperson.html" data-i18n="navbar__persons"/>
+                                        <a class="dropdown-item" href="listperson.html" data-i18n="navbar__drucker"/>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="listplace.html" data-i18n="navbar__places"/>

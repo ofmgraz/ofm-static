@@ -11,27 +11,23 @@
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="partials/html_footer.xsl"/>
 
-    <xsl:variable name="prev">
-        <xsl:value-of select="replace(tokenize(data(tei:TEI/@prev), '/')[last()], '.xml', '.html')"
-        />
-    </xsl:variable>
-    <xsl:variable name="next">
-        <xsl:value-of select="replace(tokenize(data(tei:TEI/@next), '/')[last()], '.xml', '.html')"
-        />
-    </xsl:variable>
-    <xsl:variable name="doc_title">
-        <xsl:value-of select=".//tei:title[@type = 'main'][1]/text()"/>
-    </xsl:variable> 
+    
+
 
     <xsl:template match="/">
-        <!-- <xsl:variable name="doc_title">
+        <xsl:variable name="doc_title">
             <xsl:value-of select=".//tei:title[@type = 'main'][1]/text()"/>
+        </xsl:variable>
+
+        <!-- <xsl:variable name="prev">
+            <xsl:value-of select="replace(tokenize(data(tei:TEI/@prev), '/')[last()], '.xml', '.html')"
+            />
+        </xsl:variable>
+        <xsl:variable name="next">
+            <xsl:value-of select="replace(tokenize(data(tei:TEI/@next), '/')[last()], '.xml', '.html')"
+            /> 
         </xsl:variable> -->
-
-
-
         <html class="h-100">
-
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
@@ -39,102 +35,40 @@
             </head>
 
             <body class="d-flex flex-column h-100">
-                <!-- <xsl:call-template name="nav_bar"/> -->
-                <!-- <main>
+                <xsl:call-template name="nav_bar" />
+          <!--          <xsl:with-param name="edition_buttons" as="xs:boolean" select="true()"/>
+                </xsl:call-template> -->
+                <main>
                     <div class="container">
                         <h1>
                             <xsl:value-of select="$doc_title"/>
                         </h1>
                         <xsl:apply-templates select=".//tei:body"/>
                     </div>
-                </main>
+                </main>             
                 <xsl:call-template name="html_footer"/>
+            </body>
+        </html>
+    </xsl:template>
+             
+             <!--
                 <div class="hfeed site" id="page">
-                    <xsl:call-template name="nav_bar"/>
-                    <div class="container-fluid">
-                        <div class="card">
-                            <div class="card-header">
-                                <h2 align="center">
-                                    <xsl:value-of select="$doc_title"/>
-                                </h2>
-                            </div>
-                            <div class="card-body-index">
-                                <xsl:apply-templates select="descendant::tei:body"/>
-                            </div>
-                        </div>
-                    </div>
-                    <xsl:call-template name="html_footer"/>
-                </div> -->
-                <div class="hfeed site" id="page">
-                    <xsl:call-template name="nav_bar">
-                        <xsl:with-param name="edition_buttons" as="xs:boolean" select="true()"/>
-                    </xsl:call-template>
+    
                     <div class="edition_container ">
-                            <div class="offcanvas offcanvas-start" tabindex="-1"
+                        <div class="offcanvas offcanvas-start" tabindex="-1"
                             id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel"
                             data-bs-scroll="true" data-bs-backdrop="false">
-                                <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title" id="offcanvasNavigationLabel"
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasNavigationLabel"
                                     >Navigation</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                     aria-label="Close"/>
-                                </div>
-                                <!-- <div class="offcanvas-body">
-                                    <div>
-                                        <xsl:call-template name="edition_side_nav">
-                                            <xsl:with-param name="doc_title" select="$doc_title"/>
-                                        </xsl:call-template>
-                                    </div>
-                                </div> -->
                             </div>
+                      
+                        </div>
                         <div class="wp-transcript">
                             <div class="card-header">
                                 <div class="row" id="edition_metadata">
-                                   <div class="offcanvas offcanvas-end" tabindex="0"
-                                        id="offcanvasOptions"
-                                        aria-labelledby="offcanvasOptionsLabel"
-                                        data-bs-scroll="true" data-bs-backdrop="false">
-                                        <div class="offcanvas-header">
-                                            <h5 class="offcanvas-title" id="offcanvasOptionsLabel"
-                                                >Einstellungen</h5>
-                                            <button type="button" class="btn-close"
-                                                data-bs-dismiss="offcanvas" aria-label="Close"/>
-                                        </div>
-                                        <div class="offcanvas-body">
-                                            <div>
-                                                <ul id="edition_display_options"
-                                                  class="list-unstyled fw-normal pb-1 small">
-                                                  <!--<li >
-                                                         <full-size opt="fls"></full-size>
-                                                         </li>-->
-                                                  <li>
-                                                  <image-switch opt="es"/>
-                                                  </li>
-                                                  <li>
-                                                  <font-size opt="fs"/>
-                                                  </li>
-                                                  <!--<li >
-                                                         <font-family opt="ff"></font-family>
-                                                         </li>-->
-                                                  <li>
-                                                  <annotation-slider opt="ef"/>
-                                                  </li>
-                                                  <li>
-                                                  <annotation-slider opt="prs"/>
-                                                  </li>
-                                                  <!--<li >
-                                                         <annotation-slider opt="plc"></annotation-slider>
-                                                         </li>-->
-                                                  <li>
-                                                  <annotation-slider opt="wrk"/>
-                                                  </li>
-                                                  <li>
-                                                  <annotation-slider opt="org"/>
-                                                  </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-md-2 col-lg-2 col-sm-12">
                                         <xsl:if test="ends-with($prev, '.html')">
                                             <h1>
@@ -149,36 +83,7 @@
                                             </h1>
                                         </xsl:if>
                                     </div>
-                                    <div id="docinfo" class="col-md-8 col-lg-8 col-sm-12">
-                                        <xsl:variable name="doc_type"
-                                            select="//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/@form[1]"/>
-                                        <div>
-                                            <h1>
-                                                <xsl:value-of select="$doc_title"/>
-                                            </h1>
-                                        </div> 
-                                        <div class="container-fluid">
-                                           <!-- <div class="card">
-                                                <div class="card-body-index">  -->
-                                                    <xsl:apply-templates select="descendant::tei:body"/>
-                                               <!-- </div>
-                                            </div>  -->
-                                        </div>
-                                        <!-- <p class="document_info">Entstehung: <xsl:value-of
-                                                select="normalize-space(//tei:profileDesc/tei:creation/tei:date[1])"
-                                            /></p>
-                                        <p class="document_info">
-                                            <xsl:value-of select="//tei:text/@type"/>
-                                        </p>
-                                        <p class="document_info">Beteiligte Personen: <xsl:value-of
-                                                select="string-join((//tei:msDesc/tei:msContents/tei:msItem/tei:author/text()), ' / ')"
-                                            /></p> -->
-                                        <p class="document_info">
-                                            <xsl:value-of
-                                                select="normalize-space(//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc)"
-                                            />
-                                        </p>
-                                    </div>
+                                    
                                     <div class="col-md-2 col-lg-2 col-sm-12"
                                         style="text-align:right">
                                         <xsl:if test="ends-with($next, '.html')">
@@ -200,7 +105,6 @@
                                 <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
                                     <div id="viewer">
                                         <div id="container_facs_1">
-                                            <!-- container and facs handling in js -->
                                         </div>
                                     </div>
                                 </div>
@@ -235,7 +139,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- create list* elements for entities bs-modal -->
                             <xsl:for-each select="//tei:back">
                                 <div class="tei-back">
                                     <xsl:apply-templates/>
@@ -274,16 +177,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"/>
                     </button>
-                    <div class="collapse navbar-collapse" id="verticalNavbar">
-                        <!-- Wenn es divs mit level gibt, Inhaltsverzeichnis am Anfang der Seite -->
-                        <xsl:element name="ul">
-                            <xsl:attribute name="class">
-                                <xsl:text>navbar-nav</xsl:text>
-                            </xsl:attribute>
-                            <xsl:apply-templates select="child::tei:div[@type = 'level1']"
-                                mode="nav"/>
-                        </xsl:element>
-                    </div>
+                   
                 </div>
             </xsl:element>
         </xsl:if>
@@ -367,7 +261,7 @@
                 <xsl:apply-templates select="tei:location" mode="tabelle"/>
             </td>
         </tr>
-    </xsl:template>
+    </xsl:template> -->
     <!-- LISTPERS -->
     <xsl:template match="tei:listPerson">
         <ul>
@@ -445,19 +339,19 @@
             </td>
         </tr>
     </xsl:template>
-    <!--     <xsl:template match="tei:p">
-<p id="{generate-id()}"><xsl:apply-templates/></p>
-</xsl:template>
-<xsl:template match="tei:div">
-<div id="{generate-id()}"><xsl:apply-templates/></div>
-</xsl:template>
-<xsl:template match="tei:lb">
-<br/>
-</xsl:template>
-<xsl:template match="tei:unclear">
-<abbr title="unclear"><xsl:apply-templates/></abbr>
-</xsl:template>
-<xsl:template match="tei:del">
-<del><xsl:apply-templates/></del>
-</xsl:template>     -->
+      <xsl:template match="tei:p">
+        <p id="{generate-id()}"><xsl:apply-templates/></p>
+    </xsl:template>
+    <xsl:template match="tei:div">
+        <div id="{generate-id()}"><xsl:apply-templates/></div>
+    </xsl:template>
+    <xsl:template match="tei:lb">
+        <br/>
+    </xsl:template>
+    <xsl:template match="tei:unclear">
+        <abbr title="unclear"><xsl:apply-templates/></abbr>
+    </xsl:template>
+    <xsl:template match="tei:del">
+        <del><xsl:apply-templates/></del>
+    </xsl:template>    
 </xsl:stylesheet>

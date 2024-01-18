@@ -28,12 +28,16 @@
                 </xsl:call-template>
             </head>
 
+
             <body class="d-flex flex-column h-100">
+
                 <!-- d-flex flex-column  h-100 -->
                 <xsl:call-template name="nav_bar"/>
                 <main>
                     <div class="container-fluid">
+
                         <h1 class="text-center pb-4 pt-3"><xsl:value-of select="$doc_title"/></h1>
+
                         <table class="table" id="myTable">
                             <thead>
                                 <tr>
@@ -46,6 +50,7 @@
                                         >Dateiname</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">notBefore</th>
 					<th scope="col" width="100" tabulator-headerFilter="input">notAfter</th>
+
                                     <th scope="col" width="100" tabulator-headerFilter="input"
                                         >Liturgie</th>
                                     <th scope="col" width="400" tabulator-headerFilter="input">Book
@@ -93,6 +98,7 @@
                                         </td>
                                         <td>
                                             <xsl:value-of
+
                                                 select="tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[1]"
                                             />
                                         </td>
@@ -101,6 +107,7 @@
                                                 select="tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[1]"
                                             />
                                         </td>
+
 
                                         <td>
                                             <xsl:value-of

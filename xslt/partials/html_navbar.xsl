@@ -4,6 +4,7 @@
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="#all" version="2.0">
     <xsl:template match="/" name="nav_bar">
+        <xsl:param name="edition_buttons" as="xs:boolean"><xsl:value-of select="false()"/></xsl:param> 
         <header>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
@@ -28,24 +29,24 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="toc.html" data-i18n="navbar__nofacs"/>
+                                <a class="nav-link" href="toc.html" data-i18n="navbar__works"/>
                             </li>
 
                             <li class="nav-item dropdown disabled">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="navbar__register"/>
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="listperson.html" data-i18n="navbar__persons"/>
-                                    </li>
+                                    <!-- <li>
+                                        <a class="dropdown-item" href="listperson.html" data-i18n="navbar__drucker"/>
+                                    </li> -->
                                     <li>
                                         <a class="dropdown-item" href="listplace.html" data-i18n="navbar__places"/>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="listorg.html" data-i18n="navbar__orgs"/>
+                                        <a class="dropdown-item" href="listperson.html" data-i18n="navbar__persons"/>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a class="dropdown-item" href="listbibl.html" data-i18n="navbar__works"/>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </li>
 

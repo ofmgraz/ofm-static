@@ -5,11 +5,10 @@
     "navbar__nofacs": "Senza fax",
     "navbar__withfacs": "Con i fax",
     "navbar__register": "Registrati",
-    "navbar__persons": "Persone",
+    "navbar__persons": "Tipografo",
     "navbar__places": "Luoghi",
     "navbar__orgs": "Organizzazioni",
     "navbar__works": "Opere",
     "navbar__search": "Cercare",
-    "navbar__imprint": "Impronta",
-    "navbar__druckers": "Tipografo"
+    "navbar__imprint": "Impronta"
 }

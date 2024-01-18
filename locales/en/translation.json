@@ -5,11 +5,10 @@
     "navbar__nofacs": "Without facsimiles",
     "navbar__withfacs": "With facsimiles",
     "navbar__register": "Register",
-    "navbar__persons": "Person",
+    "navbar__persons": "Printer",
     "navbar__places": "Places",
     "navbar__orgs": "Institutions",
     "navbar__works": "Works",
     "navbar__search": "Search",
-    "navbar__imprint": "Imprint",
-    "navbar__druckers": "Printer"
+    "navbar__imprint": "Imprint"
 }

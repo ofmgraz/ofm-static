@@ -13,7 +13,7 @@
                         Geburtsjahr
                     </th>
                     <td>
-                        <xsl:value-of select="tokenize(./tei:residence/tei:date[@notBefore], '-')[1]"/>
+                        <xsl:value-of select="tokenize(./tei:residence/tei:date/@notBefore, '-')[1]"/>
                     </td>
                 </tr>
                 </xsl:if>
@@ -23,7 +23,7 @@
                         Sterbejahr
                     </th>
                     <td>
-                        <xsl:value-of select="tokenize(./tei:residence/tei:date[@notAfter], '-')[1]"/>
+                        <xsl:value-of select="tokenize(./tei:residence/tei:date/@notAfter, '-')[1]"/>
                     </td>
                 </tr>
                 </xsl:if>

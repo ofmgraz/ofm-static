@@ -12,5 +12,15 @@
     "navbar__works": "Works",
     "navbar__search": "Search",
     "navbar__imprint": "Imprint",
-    "navbar__books": "The choirbook manuscripts and prints"
+    "navbar__books": "The choirbook manuscripts and prints",
+    "table__titel": "Title",
+    "table__file": "File name",
+    "table__liturgy": "Liturgy",
+    "table__booktype": "Book type",
+    "table__provenience": "Provenience",
+    "table__printer": "Printer",
+    "table__folia": "Folia",
+    "table__height": "Height",
+    "table__width": "Width",
+    "table__description": "Description"
 }

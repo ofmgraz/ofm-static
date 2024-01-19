@@ -12,5 +12,15 @@
     "navbar__works": "Werke",
     "navbar__search": "Suche",
     "navbar__imprint": "Impressum",
-    "navbar__books": "Die Choralhandschriften und Drucke"
+    "navbar__books": "Die Choralhandschriften und Drucke",
+    "table__titel": "Titel",
+    "table__file": "Dateiname",
+    "table__liturgy": "Liturgie",
+    "table__booktype": "Buchtyp",
+    "table__provenience": "Provenienz",
+    "table__printer": "Drucker",
+    "table__folia": "Folia",
+    "table__height": "Höhe",
+    "table__width": "Breite",
+    "table__description": "Beschreibung"
 }

@@ -12,5 +12,15 @@
     "navbar__works": "Opere",
     "navbar__search": "Cercare",
     "navbar__imprint": "Note legali",
-    "navbar__books": "I manoscritti e stampe di corali"
+    "navbar__books": "I manoscritti e stampe di corali",
+    "table__titel": "Titulo",
+    "table__file": "Nome del file",
+    "table__liturgy": "Liturgia",
+    "table__booktype": "Tipo di libro",
+    "table__provenience": "Provenienza",
+    "table__printer": "Tipografo",
+    "table__folia": "Foglia",
+    "table__height": "Altezza",
+    "table__width": "Larghezza",
+    "table__description": "Descrizione"
 }

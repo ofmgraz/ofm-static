@@ -1,7 +1,8 @@
 {
     "navbar__project": "Progetto",
+    "navbar__intro": "Introduzion",
     "navbar__about": "Sul progetto",
-    "navbar__toc": "Unità di edizione",
+    "navbar__toc": "Libri",
     "navbar__nofacs": "Senza fax",
     "navbar__withfacs": "Con i fax",
     "navbar__register": "Registrati",
@@ -10,5 +11,6 @@
     "navbar__orgs": "Organizzazioni",
     "navbar__works": "Opere",
     "navbar__search": "Cercare",
-    "navbar__imprint": "Impronta"
+    "navbar__imprint": "Impronta",
+    "navbar__books": "I libri corali"
 }

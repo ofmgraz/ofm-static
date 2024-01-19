@@ -55,9 +55,9 @@
                                         >Liturgie</th>
                                     <th scope="col" width="400" tabulator-headerFilter="input">Book
                                         Type</th>
-                                    <th scope="col" width="200" tabulator-headerFilter="input"
+                                    <th scope="col" width="200" tabulator-formatter="html" tabulator-headerFilter="input"
                                         >Provenienz</th>
-                                    <th scope="col" width="300" tabulator-headerFilter="input"
+                                    <th scope="col" width="300" tabulator-formatter="html" tabulator-headerFilter="input"
                                         >Drucker</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input"
                                         >Folia</th>
@@ -115,9 +115,12 @@
                                             />
                                         </td>
                                         <td>
-                                            <xsl:value-of
-                                                select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id = 'booktypes']/tei:category"
-                                            />
+                                            <xsl:for-each select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id = 'booktypes']/tei:category">
+                                                <xsl:value-of select="." />
+                                                <xsl:if test="position() != last()">
+                                                    <xsl:text>, </xsl:text>
+                                                </xsl:if>           
+                                            </xsl:for-each>
                                         </td>
                                         <td>
 					    <xsl:for-each select=".//tei:sourceDesc/tei:msDesc/tei:history/tei:provenance/tei:placeName">
@@ -127,9 +130,9 @@
                                                    </xsl:attribute>
                                                    <xsl:value-of select="./text()"/>
                                                 </a>
-					  <xsl:if test="position() != last()">
-      <xsl:text>, </xsl:text>
-   </xsl:if>
+					  	<xsl:if test="position() != last()">
+					        	<xsl:text>, </xsl:text>
+					        </xsl:if>
 					   </xsl:for-each>
                                         </td>
                                         <td>

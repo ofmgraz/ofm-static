@@ -22,7 +22,7 @@
                                         <a class="dropdown-item" href="about.html">Über das Projekt</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="books.html">Die Choralhandschriften</a>
+                                        <a class="dropdown-item" href="books.html">Die Choralhandschriften und Drucke</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="imprint.html">Impressum</a>

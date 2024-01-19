@@ -16,7 +16,7 @@
 
 
     <xsl:template match="/">
-        <xsl:variable name="doc_title" select="'Inhaltsverzeichnis'"/>
+        <xsl:variable name="doc_title" select="'Bücher'"/>
 
 
 

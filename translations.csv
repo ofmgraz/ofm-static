@@ -1,6 +1,6 @@
 key,de,en,it,es
 navbar__project,Projekt,Project,Progetto
-navbar__intro,Einführung,Introduction,Introduzion,Introduction
+navbar__intro,Einführung,Introduction,Introduzion,Introducción
 navbar__about,Über das Projekt,About the project,Sul progetto,Sobre el proyecto
 navbar__toc,Bücher,Books,Libri,Libros
 navbar__nofacs,Ohne Faksimiles,Without facsimiles,Senza fax,Sin facsímiles
@@ -12,5 +12,5 @@ navbar__orgs,Organisationen,Institutions,Organizzazioni,Organizaciones
 navbar__works,Werke,Works,Opere,Obras
 navbar__search,Suche,Search,Cercare,Búsqueda
 navbar__imprint,Impressum,Imprint,Impronta,Aviso legal
-navbar__books,Die Choralhandschriften und Drucke,The choir manuscripts and books,I manoscritti e libri corali,Los manuscritos y libros cantorales
+navbar__books,Die Choralhandschriften und Drucke,The choirbook manuscripts and prints,I manoscritti e stampe di corali,Los manuscritos e impresos de cantorales
 

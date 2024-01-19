@@ -23,7 +23,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="#all" versi
 <a class="dropdown-item" href="about.html" data-i18n="navbar__about"/>
 </li>
 <li>
-<a class="dropdown-item" href="books.html" data-i18n="navbar__choirbooks"/>
+<a class="dropdown-item" href="books.html" data-i18n="navbar__books"/>
 </li>
 <li>
 <a class="dropdown-item" href="imprint.html" data-i18n="navbar__imprint"/>
@@ -32,7 +32,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="#all" versi
 </li>
 
 <li class="nav-item">
-<a class="nav-link" href="toc.html" data-i18n="navbar__works"/>
+<a class="nav-link" href="toc.html" data-i18n="navbar__toc"/>
 </li>
 
 <li class="nav-item dropdown disabled">

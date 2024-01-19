@@ -1,6 +1,6 @@
 {
     "navbar__project": null,
-    "navbar__intro": "Introduction",
+    "navbar__intro": "Introducción",
     "navbar__about": "Sobre el proyecto",
     "navbar__toc": "Libros",
     "navbar__nofacs": "Sin facsímiles",
@@ -12,5 +12,5 @@
     "navbar__works": "Obras",
     "navbar__search": "Búsqueda",
     "navbar__imprint": "Aviso legal",
-    "navbar__books": "Los manuscritos y libros cantorales"
+    "navbar__books": "Los manuscritos e impresos de cantorales"
 }

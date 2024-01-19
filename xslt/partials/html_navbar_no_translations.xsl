@@ -22,30 +22,33 @@
                                         <a class="dropdown-item" href="about.html">Über das Projekt</a>
                                     </li>
                                     <li>
+                                        <a class="dropdown-item" href="books.html">Die Choralhandschriften</a>
+                                    </li>
+                                    <li>
                                         <a class="dropdown-item" href="imprint.html">Impressum</a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="toc.html">Editionseinheiten</a>
+                                <a class="nav-link" href="toc.html">Bücher</a>
                             </li>
-
                             <li class="nav-item dropdown disabled">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="listperson.html">Personen</a>
-                                    </li>
-                                    <li>
                                         <a class="dropdown-item" href="listplace.html">Orte</a>
                                     </li>
                                     <li>
+                                        <a class="dropdown-item" href="listperson.html">Personen</a>
+                                    </li>
+                                    <li>
+                                    <!-- <li>
                                         <a class="dropdown-item" href="listorg.html">Organisationen</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="listbibl.html">Werke</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </li>
 

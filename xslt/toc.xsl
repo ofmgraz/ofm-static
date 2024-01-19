@@ -46,7 +46,7 @@
                                         >#</th>
                                     <th scope="col" width="400" tabulator-headerFilter="input"
                                         >Titel</th>
-                                    <th scope="col" width="150" tabulator-headerFilter="input"
+                                    <th scope="col" width="150" tabulator-headerFilter="input"  tabulator-formatter="html" 
                                         >Dateiname</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">notBefore</th>
 					<th scope="col" width="100" tabulator-headerFilter="input">notAfter</th>
@@ -89,12 +89,15 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <xsl:value-of
-                                                select=".//tei:titleStmt/tei:title[1]/text()"/>
+                                            <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/> 
                                         </td>
                                         <td>
-                                            <xsl:value-of select="tokenize($full_path, '/')[last()]"
-                                            />
+                                            <a>
+                                                <xsl:attribute name="href">
+                                                    <xsl:value-of select="tokenize($full_path, '/')[last()]" />
+                                                </xsl:attribute>
+                                                <xsl:value-of select="tokenize($full_path, '/')[last()]" />
+                                           </a>
                                         </td>
                                         <td>
                                             <xsl:value-of

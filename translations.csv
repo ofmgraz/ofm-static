@@ -1,16 +1,26 @@
-key,de,en,it,es
+key,de,en,it
 navbar__project,Projekt,Project,Progetto
-navbar__intro,Einführung,Introduction,Introduzion,Introducción
-navbar__about,Über das Projekt,About the project,Sul progetto,Sobre el proyecto
-navbar__toc,Bücher,Books,Libri,Libros
-navbar__nofacs,Ohne Faksimiles,Without facsimiles,Senza fax,Sin facsímiles
-navbar__withfacs,Mit Faksimiles,With facsimiles,Con i fax,Con facsímiles
-navbar__register,Register,Register,Registrati,Registro
-navbar__persons,Drucker,Printer,Tipografo,Impresor
-navbar__places,Orte,Places,Luoghi,Lugares
-navbar__orgs,Organisationen,Institutions,Organizzazioni,Organizaciones
-navbar__works,Werke,Works,Opere,Obras
-navbar__search,Suche,Search,Cercare,Búsqueda
-navbar__imprint,Impressum,Imprint,Note legali,Aviso legal
-navbar__books,Die Choralhandschriften und Drucke,The choirbook manuscripts and prints,I manoscritti e stampe di corali,Los manuscritos e impresos de cantorales
+navbar__intro,Einführung,Introduction,Introduzion
+navbar__about,Über das Projekt,About the project,Sul progetto
+navbar__toc,Bücher,Books,Libri
+navbar__nofacs,Ohne Faksimiles,Without facsimiles,Senza fax
+navbar__withfacs,Mit Faksimiles,With facsimiles,Con i fax
+navbar__register,Register,Register,Registrati
+navbar__persons,Drucker,Printer,Tipografo
+navbar__places,Orte,Places,Luoghi
+navbar__orgs,Organisationen,Institutions,Organizzazioni
+navbar__works,Werke,Works,Opere
+navbar__search,Suche,Search,Cercare
+navbar__imprint,Impressum,Imprint,Note legali
+navbar__books,Die Choralhandschriften und Drucke,The choirbook manuscripts and prints,I manoscritti e stampe di corali
+table__titel,Titel,Title,Titulo
+table__file,Dateiname,File name,Nome del file
+table__liturgy,Liturgie,Liturgy,Liturgia
+table__booktype,Buchtyp,Book type,Tipo di libro
+table__provenience,Provenienz,Provenience,Provenienza
+table__printer,Drucker,Printer,Tipografo
+table__folia,Folia,Folia,Foglia
+table__height,Höhe,Height,Altezza
+table__width,Breite,Width,Larghezza
+table__description,Beschreibung,Description,Descrizione
 

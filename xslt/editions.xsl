@@ -212,41 +212,37 @@
     </xsl:template>
     
     <xsl:template match="tei:lb">
-        <!-- 
-        <xsl:variable name="idx" select="format-number(number(replace(./@n, 'N', '')), '#')"/> -->
-        <xsl:variable name="idx" select="number(001)" />
+        <xsl:variable name="idx" select="format-number(number(replace(./@n, 'N', '')), '#')"/> 
             <xsl:if test="ancestor::tei:ab">
-                <a>       
+                
+                <a>
+                    
+                    
                     <xsl:variable name="para" as="xs:int">
-                        <xsl:number level="any" from="tei:body" count="tei:p"/>
+                        <xsl:number level="any" from="tei:body" count="tei:ab"/>
                     </xsl:variable>
                     <xsl:variable name="lines" as="xs:int">
                         <xsl:number level="any" from="tei:body"/>
                     </xsl:variable>
                     <xsl:variable name="pID">
-                        <xsl:value-of select="data(substring-after(parent::tei:p/@facs, '#'))"/>
+                        <xsl:value-of select="data(substring-after(parent::tei:ab/@facs, '#'))"/>
                     </xsl:variable>
                     <xsl:variable name="surface"
                         select="//tei:surface/tei:zone[@xml:id = $pID]/parent::tei:surface"/>
                     <xsl:variable name="zones"
                         select="//tei:surface/tei:zone[@xml:id = $pID]/tei:zone[$idx]"/>
-                    <xsl:attribute name="href">
-                        <xsl:value-of select="parent::tei:p/@facs"/>
-                        <xsl:text>__p</xsl:text>
-                        <xsl:value-of select="$para"/>
-                        <xsl:text>__lb</xsl:text>
-                        <xsl:value-of select="$lines"/>
-                    </xsl:attribute>
+                    
+                 
                     <xsl:attribute name="name">
-                        <xsl:value-of select="parent::tei:p/@facs"/>
-                        <xsl:text>__p</xsl:text>
+                        <xsl:value-of select="parent::tei:ab/@facs"/>
+                        <xsl:text>__ab</xsl:text>
                         <xsl:value-of select="$para"/>
                         <xsl:text>__lb</xsl:text>
                         <xsl:value-of select="$lines"/>
-                    </xsl:attribute>
+                    </xsl:attribute>    
                     <xsl:attribute name="id">
-                        <xsl:value-of select="parent::tei:p/@facs"/>
-                        <xsl:text>__p</xsl:text>
+                        <xsl:value-of select="parent::tei:ab/@facs"/>
+                        <xsl:text>__ab</xsl:text>
                         <xsl:value-of select="$para"/>
                         <xsl:text>__lb</xsl:text>
                         <xsl:value-of select="$lines"/>
@@ -274,6 +270,7 @@
                     </xsl:choose>
                     <xsl:value-of select="format-number($lines, '0000')"/>
                 </a>
+                <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
             </xsl:if>
     </xsl:template>
 </xsl:stylesheet>

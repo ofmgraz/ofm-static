@@ -62,6 +62,21 @@
                                 <xsl:apply-templates select=".//tei:abstract[@n = 'regest']"/>
                             </div>
                         </div>
+                        <div class="col-md-8 col-lg-8 col-sm-12">
+                            <h1 align="center">
+                                <xsl:value-of select="$doc_title"/>
+                            </h1>
+                            <h1 class="text-center pb-4 pt-3">
+                                <a href="{$teiSource}">
+                                    <i class="bi bi-download" title="TEI/XML"/>
+                                </a>
+                            </h1>
+                            <h2 style="text-align:center;">
+                                <xsl:value-of
+                                    select="//tei:msIdentifier/tei:repository/tei:placeName[1]"/>
+                            </h2>
+                            
+                        </div>
                         <xsl:for-each select=".//tei:div[@type = 'page']">
                             <xsl:variable name="pbFacs">
                                 <xsl:value-of select="replace(data(./tei:pb/@xml:id), '.jpg', '')"/>
@@ -120,21 +135,7 @@
 
                         </xsl:for-each>
 
-                        <div class="col-md-8 col-lg-8 col-sm-12">
-                            <h1 align="center">
-                                <xsl:value-of select="$doc_title"/>
-                            </h1>
-                            <h1 class="text-center pb-4 pt-3">
-                                <a href="{$teiSource}">
-                                    <i class="bi bi-download" title="TEI/XML"/>
-                                </a>
-                            </h1>
-                            <h2 style="text-align:center;">
-                                <xsl:value-of
-                                    select="//tei:msIdentifier/tei:repository/tei:placeName[1]"/>
-                            </h2>
-
-                        </div>
+                        
 
                         <div class="col-md-2 col-lg-2 col-sm-12" style="text-align:right">
                             <xsl:if test="ends-with($next, '.html')">
@@ -149,11 +150,6 @@
                             </xsl:if>
                         </div>
 
-                        <div id="editor-widget">
-                            <xsl:call-template name="annotation-options"/>
-                        </div>
-
-                        <xsl:apply-templates select=".//tei:body"/>
 
                         <p style="text-align:center;">
                             <xsl:for-each select=".//tei:note[not(./tei:p)]">
@@ -193,8 +189,20 @@
     </xsl:template>
 
     <xsl:template match="tei:p">
-        <p id="{local:makeId(.)}" class="yes-index">
-            <xsl:apply-templates/>
+        <p id="{local:makeId(.)}" data-id="{@facs}">
+            <xsl:for-each-group select="node()[normalize-space(.) or name(.)]"
+                group-starting-with="self::tei:lb">
+                <span class="transcript-line">
+                    <span class="transcript-line-number">
+                        <xsl:apply-templates select="current-group()[self::tei:lb]"/>
+                    </span>
+                    <span class="transcript-line-contents">
+                        <xsl:for-each select="current-group()[not(name() = 'lb')]">
+                            <xsl:apply-templates select="."/>
+                        </xsl:for-each>
+                    </span>
+                </span>
+            </xsl:for-each-group>
         </p>
     </xsl:template>
     <xsl:template match="tei:div">
@@ -202,11 +210,13 @@
             <xsl:apply-templates/>
         </div>
     </xsl:template>
+    
     <xsl:template match="tei:lb">
-        <xsl:variable name="idx" select="format-number(number(replace(@n, 'N', '')), '#')"/>
-        <xsl:if test="not(ancestor::tei:note[@type = 'footnote'])">
-            <xsl:if test="ancestor::tei:p">
-                <a>
+        <!-- 
+        <xsl:variable name="idx" select="format-number(number(replace(./@n, 'N', '')), '#')"/> -->
+        <xsl:variable name="idx" select="number(001)" />
+            <xsl:if test="ancestor::tei:ab">
+                <a>       
                     <xsl:variable name="para" as="xs:int">
                         <xsl:number level="any" from="tei:body" count="tei:p"/>
                     </xsl:variable>
@@ -219,7 +229,7 @@
                     <xsl:variable name="surface"
                         select="//tei:surface/tei:zone[@xml:id = $pID]/parent::tei:surface"/>
                     <xsl:variable name="zones"
-                        select="//tei:surface/tei:zone[@xml:id = $pID]/tei:zone[number($idx)]"/>
+                        select="//tei:surface/tei:zone[@xml:id = $pID]/tei:zone[$idx]"/>
                     <xsl:attribute name="href">
                         <xsl:value-of select="parent::tei:p/@facs"/>
                         <xsl:text>__p</xsl:text>
@@ -265,7 +275,5 @@
                     <xsl:value-of select="format-number($lines, '0000')"/>
                 </a>
             </xsl:if>
-        </xsl:if>
-
     </xsl:template>
 </xsl:stylesheet>

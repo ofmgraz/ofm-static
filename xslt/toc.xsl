@@ -16,7 +16,7 @@
 
 
     <xsl:template match="/">
-        <xsl:variable name="doc_title" select="'Inhaltsverzeichnis'"/>
+        <xsl:variable name="doc_title" select="'Bücher'"/>
 
 
 
@@ -46,7 +46,7 @@
                                         >#</th>
                                     <th scope="col" width="400" tabulator-headerFilter="input"
                                         >Titel</th>
-                                    <th scope="col" width="150" tabulator-headerFilter="input"
+                                    <th scope="col" width="150" tabulator-headerFilter="input"  tabulator-formatter="html" 
                                         >Dateiname</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input">notBefore</th>
 					<th scope="col" width="100" tabulator-headerFilter="input">notAfter</th>
@@ -55,9 +55,9 @@
                                         >Liturgie</th>
                                     <th scope="col" width="400" tabulator-headerFilter="input">Book
                                         Type</th>
-                                    <th scope="col" width="200" tabulator-headerFilter="input"
+                                    <th scope="col" width="200" tabulator-formatter="html" tabulator-headerFilter="input"
                                         >Provenienz</th>
-                                    <th scope="col" width="300" tabulator-headerFilter="input"
+                                    <th scope="col" width="300" tabulator-formatter="html" tabulator-headerFilter="input"
                                         >Drucker</th>
                                     <th scope="col" width="100" tabulator-headerFilter="input"
                                         >Folia</th>
@@ -89,12 +89,15 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <xsl:value-of
-                                                select=".//tei:titleStmt/tei:title[1]/text()"/>
+                                            <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/> 
                                         </td>
                                         <td>
-                                            <xsl:value-of select="tokenize($full_path, '/')[last()]"
-                                            />
+                                            <a>
+                                                <xsl:attribute name="href">
+                                                    <xsl:value-of select="tokenize($full_path, '/')[last()]" />
+                                                </xsl:attribute>
+                                                <xsl:value-of select="tokenize($full_path, '/')[last()]" />
+                                           </a>
                                         </td>
                                         <td>
                                             <xsl:value-of
@@ -115,22 +118,37 @@
                                             />
                                         </td>
                                         <td>
-                                            <xsl:value-of
-                                                select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id = 'booktypes']/tei:category"
-                                            />
+                                            <xsl:for-each select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id = 'booktypes']/tei:category">
+                                                <xsl:value-of select="." />
+                                                <xsl:if test="position() != last()">
+                                                    <xsl:text>, </xsl:text>
+                                                </xsl:if>           
+                                            </xsl:for-each>
                                         </td>
                                         <td>
-                                            <xsl:value-of
-                                                select="descendant::tei:sourceDesc/tei:msDesc/tei:history/tei:provenance"
-                                            />
+					    <xsl:for-each select=".//tei:sourceDesc/tei:msDesc/tei:history/tei:provenance/tei:placeName">
+                                                <a>
+						   <xsl:attribute name="href">
+					               <xsl:value-of select="concat(translate(./@ref, '#', ''), '.html')" />
+                                                   </xsl:attribute>
+                                                   <xsl:value-of select="./text()"/>
+                                                </a>
+					  	<xsl:if test="position() != last()">
+					        	<xsl:text>, </xsl:text>
+					        </xsl:if>
+					   </xsl:for-each>
                                         </td>
                                         <td>
                                             <xsl:choose>
                                                 <xsl:when
                                                   test="descendant::tei:sourceDesc/tei:bibl/tei:publisher">
-                                                  <xsl:value-of
-                                                  select="descendant::tei:sourceDesc/tei:bibl/tei:publisher"
-                                                  />
+                                                     <a>
+                                                        <xsl:attribute name="href">
+                                                           <xsl:value-of select="concat(translate(descendant::tei:sourceDesc/tei:bibl/tei:publisher/@ref, '#', ''), '.html')" />
+                                                           <!-- <a href="descendant::tei:sourceDesc/tei:bibl/tei:publisher">i -->
+                                                        </xsl:attribute>
+                                                        <xsl:value-of select="descendant::tei:sourceDesc/tei:bibl/tei:publisher" />
+                                                    </a>
                                                 </xsl:when>
                                                 <xsl:otherwise>
                                                   <xsl:text>[Handschrift]</xsl:text>

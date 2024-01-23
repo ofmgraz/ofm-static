@@ -6,13 +6,15 @@
     <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
         omit-xml-declaration="yes"/>
 
-
+    <xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
     <xsl:import href="./partials/shared.xsl"/>
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="./partials/html_footer.xsl"/>
     <xsl:import href="./partials/osd-container.xsl"/>
     <xsl:import href="./partials/aot-options.xsl"/>
+
+
 
     <xsl:variable name="prev">
         <xsl:value-of select="replace(tokenize(data(tei:TEI/@prev), '/')[last()], '.xml', '.html')"
@@ -34,17 +36,13 @@
     </xsl:variable>
 
 
+
     <xsl:template match="/">
         <html class="h-100">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
-                <!--<style>
-                    .navBarNavDropdown ul li:nth-child(2) {
-                        display: none !important;
-                    }
-                </style> -->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/>
                 <script src="js/osd_single.js"/>
             </head>
@@ -52,7 +50,6 @@
                 <xsl:call-template name="nav_bar"/>
                 <main class="flex-shrink-0">
                     <div class="container">
-
                         <div class="regest">
                             <h4>
                                 <xsl:for-each select=".//tei:ab[@type = 'abstract-terms']/tei:term">
@@ -64,6 +61,21 @@
                             <div class="regest-text">
                                 <xsl:apply-templates select=".//tei:abstract[@n = 'regest']"/>
                             </div>
+                        </div>
+                        <div class="col-md-8 col-lg-8 col-sm-12">
+                            <h1 align="center">
+                                <xsl:value-of select="$doc_title"/>
+                            </h1>
+                            <h1 class="text-center pb-4 pt-3">
+                                <a href="{$teiSource}">
+                                    <i class="bi bi-download" title="TEI/XML"/>
+                                </a>
+                            </h1>
+                            <h2 style="text-align:center;">
+                                <xsl:value-of
+                                    select="//tei:msIdentifier/tei:repository/tei:placeName[1]"/>
+                            </h2>
+                            
                         </div>
                         <xsl:for-each select=".//tei:div[@type = 'page']">
                             <xsl:variable name="pbFacs">
@@ -90,6 +102,19 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-md-6">
+                                    <div id="{$openSeadragonId}">
+                                        <img id="{$openSeadragonId}-img"
+                                            src="{normalize-space($facs-url)}"
+                                            onload="loadImage('{$openSeadragonId}', '{$rotation}')"/>
+                                        <!-- cosy spot for OSD viewer  -->
+                                    </div>
+                                </div>
+                                <div class="col-md-6 editionstext">
+                                    <xsl:apply-templates/>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
                                 <div class="col-md-2 col-lg-2 col-sm-12">
                                     <xsl:if test="ends-with($prev, '.html')">
                                         <h1>
@@ -101,27 +126,16 @@
                                             </a>
                                         </h1>
                                     </xsl:if>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <hr/>
-                                    </div>
+                                </div> -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <hr/>
                                 </div>
                             </div>
+
                         </xsl:for-each>
 
-                        <div class="col-md-8 col-lg-8 col-sm-12">
-                            <h1 align="center">
-                                <xsl:value-of select="$doc_title"/>
-                            </h1>
-                            <h1 class="text-center pb-4 pt-3">
-                                <a href="{$teiSource}">
-                                    <i class="bi bi-download" title="TEI/XML"/>
-                                </a>
-                            </h1>
-                            <h2 style="text-align:center;"><xsl:value-of select="//tei:msIdentifier/tei:repository/tei:placeName[1]" /></h2>             
-
-                        </div>
+                        
 
                         <div class="col-md-2 col-lg-2 col-sm-12" style="text-align:right">
                             <xsl:if test="ends-with($next, '.html')">
@@ -136,11 +150,6 @@
                             </xsl:if>
                         </div>
 
-                        <div id="editor-widget">
-                            <xsl:call-template name="annotation-options"/>
-                        </div>
-
-                        <xsl:apply-templates select=".//tei:body"/>
 
                         <p style="text-align:center;">
                             <xsl:for-each select=".//tei:note[not(./tei:p)]">
@@ -175,22 +184,95 @@
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>
-                <script src="https://unpkg.com/de-micro-editor@0.2.6/dist/de-editor.min.js"/>
-                <script type="text/javascript" src="js/run.js"/>
-                <script type="text/javascript" src="js/osd_scroll.js"/>
-
             </body>
         </html>
     </xsl:template>
 
     <xsl:template match="tei:p">
-        <p id="{local:makeId(.)}" class="yes-index">
-            <xsl:apply-templates/>
+        <p id="{local:makeId(.)}" data-id="{@facs}">
+            <xsl:for-each-group select="node()[normalize-space(.) or name(.)]"
+                group-starting-with="self::tei:lb">
+                <span class="transcript-line">
+                    <span class="transcript-line-number">
+                        <xsl:apply-templates select="current-group()[self::tei:lb]"/>
+                    </span>
+                    <span class="transcript-line-contents">
+                        <xsl:for-each select="current-group()[not(name() = 'lb')]">
+                            <xsl:apply-templates select="."/>
+                        </xsl:for-each>
+                    </span>
+                </span>
+            </xsl:for-each-group>
         </p>
     </xsl:template>
     <xsl:template match="tei:div">
         <div id="{local:makeId(.)}">
             <xsl:apply-templates/>
         </div>
+    </xsl:template>
+    
+    <xsl:template match="tei:lb">
+        <xsl:variable name="idx" select="format-number(number(replace(./@n, 'N', '')), '#')"/> 
+            <xsl:if test="ancestor::tei:ab">
+             <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
+                <a>
+                    <xsl:variable name="para" as="xs:int">
+                        <xsl:number level="any" from="tei:body" count="tei:ab"/>
+                    </xsl:variable>
+                    <xsl:variable name="lines" as="xs:int">
+                        <xsl:number level="any" from="tei:body"/>
+                    </xsl:variable>
+                    <xsl:variable name="pID">
+                        <xsl:value-of select="data(substring-after(parent::tei:ab/@facs, '#'))"/>
+                    </xsl:variable>
+                    <xsl:variable name="surface"
+                        select="//tei:surface/tei:zone[@xml:id = $pID]/parent::tei:surface"/>
+                    <xsl:variable name="zones"
+                        select="//tei:surface/tei:zone[@xml:id = $pID]/tei:zone[$idx]"/>
+                    <xsl:attribute name="href">
+                        <xsl:value-of select="parent::tei:ab/@facs"/>
+                        <xsl:text>__ab</xsl:text>
+                        <xsl:value-of select="$para"/>
+                        <xsl:text>__lb</xsl:text>
+                        <xsl:value-of select="$lines"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="name">
+                        <xsl:value-of select="parent::tei:ab/@facs"/>
+                        <xsl:text>__ab</xsl:text>
+                        <xsl:value-of select="$para"/>
+                        <xsl:text>__lb</xsl:text>
+                        <xsl:value-of select="$lines"/>
+                    </xsl:attribute>    
+                    <xsl:attribute name="id">
+                        <xsl:value-of select="parent::tei:ab/@facs"/>
+                        <xsl:text>__ab</xsl:text>
+                        <xsl:value-of select="$para"/>
+                        <xsl:text>__lb</xsl:text>
+                        <xsl:value-of select="$lines"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="size">
+                        <xsl:value-of select="concat($surface/@lrx, ',', $surface/@lry)"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="zone">
+                        <xsl:value-of select="$zones/@points"/>
+                    </xsl:attribute>
+                    <xsl:choose>
+                        <xsl:when test="($lines mod 5) = 0">
+                            <xsl:attribute name="class">
+                                <xsl:text>linenumbersVisible linenumbers</xsl:text>
+                            </xsl:attribute>
+                            <xsl:attribute name="data-lbnr">
+                                <xsl:value-of select="$lines"/>
+                            </xsl:attribute>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="class">
+                                <xsl:text>linenumbersTransparent linenumbers</xsl:text>
+                            </xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:value-of select="format-number($lines, '0000')"/>
+                </a>
+            </xsl:if>
     </xsl:template>
 </xsl:stylesheet>

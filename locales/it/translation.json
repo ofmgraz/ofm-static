@@ -1,7 +1,8 @@
 {
     "navbar__project": "Progetto",
+    "navbar__intro": "Introduzion",
     "navbar__about": "Sul progetto",
-    "navbar__toc": "Unità di edizione",
+    "navbar__toc": "Libri",
     "navbar__nofacs": "Senza fax",
     "navbar__withfacs": "Con i fax",
     "navbar__register": "Registrati",
@@ -10,5 +11,16 @@
     "navbar__orgs": "Organizzazioni",
     "navbar__works": "Opere",
     "navbar__search": "Cercare",
-    "navbar__imprint": "Impronta"
+    "navbar__imprint": "Note legali",
+    "navbar__books": "I manoscritti e stampe di corali",
+    "table__title": "Titulo",
+    "table__file": "Nome del file",
+    "table__liturgy": "Liturgia",
+    "table__booktype": "Tipo di libro",
+    "table__provenience": "Provenienza",
+    "table__printer": "Tipografo",
+    "table__folia": "Foglia",
+    "table__height": "Altezza",
+    "table__width": "Larghezza",
+    "table__description": "Descrizione"
 }

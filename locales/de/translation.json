@@ -1,7 +1,8 @@
 {
     "navbar__project": "Projekt",
+    "navbar__intro": "Einführung",
     "navbar__about": "Über das Projekt",
-    "navbar__toc": "Editionseinheiten",
+    "navbar__toc": "Bücher",
     "navbar__nofacs": "Ohne Faksimiles",
     "navbar__withfacs": "Mit Faksimiles",
     "navbar__register": "Register",
@@ -10,5 +11,16 @@
     "navbar__orgs": "Organisationen",
     "navbar__works": "Werke",
     "navbar__search": "Suche",
-    "navbar__imprint": "Impressum"
+    "navbar__imprint": "Impressum",
+    "navbar__books": "Die Choralhandschriften und Drucke",
+    "table__title": "Titel",
+    "table__file": "Dateiname",
+    "table__liturgy": "Liturgie",
+    "table__booktype": "Buchtyp",
+    "table__provenience": "Provenienz",
+    "table__printer": "Drucker",
+    "table__folia": "Folia",
+    "table__height": "Höhe",
+    "table__width": "Breite",
+    "table__description": "Beschreibung"
 }

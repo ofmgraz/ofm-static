@@ -1,8 +1,7 @@
 {
     "navbar__project": "Project",
-    "navbar__intro": "Introduction",
     "navbar__about": "About the project",
-    "navbar__toc": "Books",
+    "navbar__toc": "Edition units",
     "navbar__nofacs": "Without facsimiles",
     "navbar__withfacs": "With facsimiles",
     "navbar__register": "Register",
@@ -11,16 +10,5 @@
     "navbar__orgs": "Institutions",
     "navbar__works": "Works",
     "navbar__search": "Search",
-    "navbar__imprint": "Imprint",
-    "navbar__books": "The choirbook manuscripts and prints",
-    "table__title": "Title",
-    "table__file": "File name",
-    "table__liturgy": "Liturgy",
-    "table__booktype": "Book type",
-    "table__provenience": "Provenience",
-    "table__printer": "Printer",
-    "table__folia": "Folia",
-    "table__height": "Height",
-    "table__width": "Width",
-    "table__description": "Description"
+    "navbar__imprint": "Imprint"
 }

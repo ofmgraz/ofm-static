@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="mobile-web-app-capable" content="yes">
       <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-title" content="Bücher">
+      <meta name="apple-mobile-web-app-title" content="Inhaltsverzeichnis">
       <meta name="msapplication-TileColor" content="#ffffff">
       <meta name="msapplication-TileImage" content="images/logo.png">
       <link rel="None" type="image/ico" href="images/favicons/favicon.ico">
@@ -32,7 +32,7 @@
       <link rel="shortcut icon" type="image/png" href="images/favicons/favicon-196x196.png">
       <link rel="icon" type="image/svg+xml" href="images/logo.png" sizes="any">
       <link rel="profile" href="http://gmpg.org/xfn/11">
-      <title>Bücher</title>
+      <title>Inhaltsverzeichnis</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
       <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -44,11 +44,10 @@
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                      <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="navbar__project"></a><ul class="dropdown-menu">
                            <li><a class="dropdown-item" href="about.html" data-i18n="navbar__about"></a></li>
-                           <li><a class="dropdown-item" href="books.html" data-i18n="navbar__books"></a></li>
                            <li><a class="dropdown-item" href="imprint.html" data-i18n="navbar__imprint"></a></li>
                         </ul>
                      </li>
-                     <li class="nav-item"><a class="nav-link" href="toc.html" data-i18n="navbar__toc"></a></li>
+                     <li class="nav-item"><a class="nav-link" href="toc.html" data-i18n="navbar__works"></a></li>
                      <li class="nav-item dropdown disabled"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="navbar__register"></a><ul class="dropdown-menu">
                            <li><a class="dropdown-item" href="listplace.html" data-i18n="navbar__places"></a></li>
                            <li><a class="dropdown-item" href="listperson.html" data-i18n="navbar__persons"></a></li>
@@ -61,20 +60,20 @@
       </header>
       <main>
          <div class="container-fluid">
-            <h1 class="text-center pb-4 pt-3">Bücher</h1>
+            <h1 class="text-center pb-4 pt-3">Inhaltsverzeichnis</h1>
             <table class="table" id="myTable">
                <thead>
                   <tr>
                      <th scope="col" width="20" tabulator-formatter="html" tabulator-headerSort="false" tabulator-download="false">#</th>
                      <th scope="col" width="400" tabulator-headerFilter="input">Titel</th>
-                     <th scope="col" width="150" tabulator-headerFilter="input" tabulator-formatter="html">Dateiname</th>
+                     <th scope="col" width="150" tabulator-headerFilter="input">Dateiname</th>
                      <th scope="col" width="100" tabulator-headerFilter="input">notBefore</th>
                      <th scope="col" width="100" tabulator-headerFilter="input">notAfter</th>
                      <th scope="col" width="100" tabulator-headerFilter="input">Liturgie</th>
                      <th scope="col" width="400" tabulator-headerFilter="input">Book
                         Type</th>
-                     <th scope="col" width="200" tabulator-formatter="html" tabulator-headerFilter="input">Provenienz</th>
-                     <th scope="col" width="300" tabulator-formatter="html" tabulator-headerFilter="input">Drucker</th>
+                     <th scope="col" width="200" tabulator-headerFilter="input">Provenienz</th>
+                     <th scope="col" width="300" tabulator-headerFilter="input">Drucker</th>
                      <th scope="col" width="100" tabulator-headerFilter="input">Folia</th>
                      <th scope="col" width="100" tabulator-headerFilter="input">Höhe
                         (mm)</th>
@@ -87,7 +86,7 @@
                   <tr>
                      <td><a href="A64_39.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 64/39</td>
-                     <td><a href="A64_39.xml">A64_39.xml</a></td>
+                     <td>A64_39.xml</td>
                      <td>1472</td>
                      <td>1512</td>
                      <td>
@@ -95,10 +94,13 @@
                         </td>
                      <td>
                         Graduale
-                        , 
+                        
                         Temporale
                         </td>
-                     <td><a href="Graz.html">Graz</a>, <a href="Ljubljana.html">Ljubljana</a></td>
+                     <td>
+                        Graz
+                        Ljubljana
+                        </td>
                      <td>[Handschrift]</td>
                      <td>262</td>
                      <td>580</td>
@@ -112,7 +114,7 @@
                   <tr>
                      <td><a href="A67_22.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 67/22</td>
-                     <td><a href="A67_22.xml">A67_22.xml</a></td>
+                     <td>A67_22.xml</td>
                      <td>1450</td>
                      <td>1500</td>
                      <td>
@@ -120,10 +122,13 @@
                         </td>
                      <td>
                         Graduale
-                        , 
+                        
                         Teil
                         </td>
-                     <td><a href="Muenchen.html">München?</a>, <a href="Graz.html">Graz</a></td>
+                     <td>
+                        München?
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>136</td>
                      <td>210</td>
@@ -137,7 +142,7 @@
                   <tr>
                      <td><a href="S1_62.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Hymnarium Sacrum tam Romanum Urbani Papae VIII recognitum</td>
-                     <td><a href="S1_62.xml">S1_62.xml</a></td>
+                     <td>S1_62.xml</td>
                      <td>1685</td>
                      <td>1685</td>
                      <td>
@@ -146,8 +151,10 @@
                      <td>
                         Hymnarium
                         </td>
-                     <td><a href="Salzburg.html">Salzburg</a></td>
-                     <td><a href="Mayr.html">Johann Baptist Mayr</a></td>
+                     <td>
+                        Salzburg
+                        </td>
+                     <td>Johann Baptist Mayr</td>
                      <td>84</td>
                      <td>526</td>
                      <td>355</td>
@@ -163,7 +170,7 @@
                   <tr>
                      <td><a href="A67_43.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 67/43</td>
-                     <td><a href="A67_43.xml">A67_43.xml</a></td>
+                     <td>A67_43.xml</td>
                      <td>1636</td>
                      <td>1636</td>
                      <td>
@@ -172,7 +179,9 @@
                      <td>
                         Responsoriale
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>209</td>
                      <td>210</td>
@@ -186,7 +195,7 @@
                   <tr>
                      <td><a href="A70_41.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 70/41</td>
-                     <td><a href="A70_41.xml">A70_41.xml</a></td>
+                     <td>A70_41.xml</td>
                      <td>2023</td>
                      <td>2023</td>
                      <td>
@@ -209,7 +218,7 @@
                   <tr>
                      <td><a href="S1_26.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/26</td>
-                     <td><a href="S1_26.xml">S1_26.xml</a></td>
+                     <td>S1_26.xml</td>
                      <td>1732</td>
                      <td>1732</td>
                      <td>
@@ -218,7 +227,9 @@
                      <td>
                         Lamentationen
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>18</td>
                      <td>250</td>
@@ -232,7 +243,7 @@
                   <tr>
                      <td><a href="S1_44.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/44</td>
-                     <td><a href="S1_44.xml">S1_44.xml</a></td>
+                     <td>S1_44.xml</td>
                      <td>1700</td>
                      <td>1799</td>
                      <td>
@@ -240,10 +251,12 @@
                         </td>
                      <td>
                         Antiphonale
-                        , 
+                        
                         Teil
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>336</td>
                      <td>553</td>
@@ -258,7 +271,7 @@
                   <tr>
                      <td><a href="A67_23.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 67/23</td>
-                     <td><a href="A67_23.xml">A67_23.xml</a></td>
+                     <td>A67_23.xml</td>
                      <td>1600</td>
                      <td>1699</td>
                      <td>
@@ -267,7 +280,10 @@
                      <td>
                         Prozessionale
                         </td>
-                     <td><a href="Muenchen.html">München?</a>, <a href="Graz.html">Graz?</a></td>
+                     <td>
+                        München?
+                        Graz?
+                        </td>
                      <td>[Handschrift]</td>
                      <td>17</td>
                      <td>220</td>
@@ -281,7 +297,7 @@
                   <tr>
                      <td><a href="S1_45.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/45</td>
-                     <td><a href="S1_45.xml">S1_45.xml</a></td>
+                     <td>S1_45.xml</td>
                      <td>1700</td>
                      <td>1799</td>
                      <td>
@@ -289,10 +305,12 @@
                         </td>
                      <td>
                         Antiphonale
-                        , 
+                        
                         Teil
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>256</td>
                      <td>540</td>
@@ -306,7 +324,7 @@
                   <tr>
                      <td><a href="A67_21.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A-Gf_A67_21_Grad_Part3</td>
-                     <td><a href="A67_21.xml">A67_21.xml</a></td>
+                     <td>A67_21.xml</td>
                      <td></td>
                      <td></td>
                      <td></td>
@@ -322,7 +340,7 @@
                   <tr>
                      <td><a href="A67_19.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 67/19</td>
-                     <td><a href="A67_19.xml">A67_19.xml</a></td>
+                     <td>A67_19.xml</td>
                      <td>1450</td>
                      <td>1500</td>
                      <td>
@@ -330,10 +348,13 @@
                         </td>
                      <td>
                         Graduale
-                        , 
+                        
                         Teil
                         </td>
-                     <td><a href="Muenchen.html">München?</a>, <a href="Graz.html">Graz</a></td>
+                     <td>
+                        München?
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>197</td>
                      <td>210</td>
@@ -347,7 +368,7 @@
                   <tr>
                      <td><a href="S1_40.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/40</td>
-                     <td><a href="S1_40.xml">S1_40.xml</a></td>
+                     <td>S1_40.xml</td>
                      <td>1700</td>
                      <td>1799</td>
                      <td>
@@ -356,7 +377,9 @@
                      <td>
                         Intonationsbuch
                         </td>
-                     <td><a href="MariaLankowitz.html">Maria Lankowitz</a></td>
+                     <td>
+                        Maria Lankowitz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>18</td>
                      <td>175</td>
@@ -370,7 +393,7 @@
                   <tr>
                      <td><a href="S1_39.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/39</td>
-                     <td><a href="S1_39.xml">S1_39.xml</a></td>
+                     <td>S1_39.xml</td>
                      <td>1600</td>
                      <td>1699</td>
                      <td>
@@ -378,10 +401,12 @@
                         </td>
                      <td>
                         Litaneien
-                        , 
+                        
                         Lobgesänge
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>4</td>
                      <td>210</td>
@@ -395,7 +420,7 @@
                   <tr>
                      <td><a href="A67_41.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Das 4. Respons Buch</td>
-                     <td><a href="A67_41.xml">A67_41.xml</a></td>
+                     <td>A67_41.xml</td>
                      <td>1636</td>
                      <td>1636</td>
                      <td>
@@ -404,7 +429,9 @@
                      <td>
                         Responsoriale
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>205</td>
                      <td>210</td>
@@ -420,7 +447,7 @@
                   <tr>
                      <td><a href="A70_23.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Libellus Antiphonarum</td>
-                     <td><a href="A70_23.xml">A70_23.xml</a></td>
+                     <td>A70_23.xml</td>
                      <td>1674</td>
                      <td>1674</td>
                      <td>
@@ -429,7 +456,7 @@
                      <td>
                         Intonationsbüchlein
                         </td>
-                     <td><a href="Wien.html">Wien</a></td>
+                     <td></td>
                      <td>[Handschrift]</td>
                      <td>70</td>
                      <td>160</td>
@@ -445,7 +472,7 @@
                   <tr>
                      <td><a href="S1_73.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td></td>
-                     <td><a href="S1_73.xml">S1_73.xml</a></td>
+                     <td>S1_73.xml</td>
                      <td></td>
                      <td></td>
                      <td></td>
@@ -461,7 +488,7 @@
                   <tr>
                      <td><a href="A67_20.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 67/20</td>
-                     <td><a href="A67_20.xml">A67_20.xml</a></td>
+                     <td>A67_20.xml</td>
                      <td>1450</td>
                      <td>1500</td>
                      <td>
@@ -469,10 +496,13 @@
                         </td>
                      <td>
                         Graduale
-                        , 
+                        
                         Teil
                         </td>
-                     <td><a href="Muenchen.html">München?</a>, <a href="Graz.html">Graz</a></td>
+                     <td>
+                        München?
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>149</td>
                      <td>210</td>
@@ -486,7 +516,7 @@
                   <tr>
                      <td><a href="A64_42.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 64/42</td>
-                     <td><a href="A64_42.xml">A64_42.xml</a></td>
+                     <td>A64_42.xml</td>
                      <td>1492</td>
                      <td>1492</td>
                      <td>
@@ -494,10 +524,13 @@
                         </td>
                      <td>
                         Antiphonale
-                        , 
+                        
                         Diurnale
                         </td>
-                     <td><a href="Graz.html">Graz</a>, <a href="Ljubljana.html">Ljubljana</a></td>
+                     <td>
+                        Graz
+                        Ljubljana
+                        </td>
                      <td>[Handschrift]</td>
                      <td>168</td>
                      <td>540</td>
@@ -511,7 +544,7 @@
                   <tr>
                      <td><a href="S1_25.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Antiphonarium de Tempore et Sanctis Pro Choro Graecensi</td>
-                     <td><a href="S1_25.xml">S1_25.xml</a></td>
+                     <td>S1_25.xml</td>
                      <td>1753</td>
                      <td>1753</td>
                      <td>
@@ -520,7 +553,9 @@
                      <td>
                         Intonationsbuch
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>42</td>
                      <td>245</td>
@@ -536,7 +571,7 @@
                   <tr>
                      <td><a href="A67_42.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Das 4. Respons Buch</td>
-                     <td><a href="A67_42.xml">A67_42.xml</a></td>
+                     <td>A67_42.xml</td>
                      <td>1636</td>
                      <td>1636</td>
                      <td>
@@ -545,7 +580,9 @@
                      <td>
                         Responsoriale
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>182</td>
                      <td>210</td>
@@ -561,7 +598,7 @@
                   <tr>
                      <td><a href="S1_23.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/23</td>
-                     <td><a href="S1_23.xml">S1_23.xml</a></td>
+                     <td>S1_23.xml</td>
                      <td>1700</td>
                      <td>1799</td>
                      <td>
@@ -570,7 +607,9 @@
                      <td>
                         Lamentationes
                         </td>
-                     <td><a href="MauterninSteiermark.html">Mautern</a></td>
+                     <td>
+                        Mautern
+                        </td>
                      <td>[Handschrift]</td>
                      <td>18</td>
                      <td>230</td>
@@ -584,7 +623,7 @@
                   <tr>
                      <td><a href="S1_22.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/22</td>
-                     <td><a href="S1_22.xml">S1_22.xml</a></td>
+                     <td>S1_22.xml</td>
                      <td>1685</td>
                      <td>1685</td>
                      <td>
@@ -593,7 +632,9 @@
                      <td>
                         Chorallehrbuch
                         </td>
-                     <td><a href="MariaLankowitz.html">Maria Lankowitz</a></td>
+                     <td>
+                        Maria Lankowitz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>58</td>
                      <td>300</td>
@@ -608,7 +649,7 @@
                   <tr>
                      <td><a href="A67_44.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 67/44</td>
-                     <td><a href="A67_44.xml">A67_44.xml</a></td>
+                     <td>A67_44.xml</td>
                      <td>1500</td>
                      <td>1599</td>
                      <td>
@@ -617,7 +658,9 @@
                      <td>
                         Prozessionale
                         </td>
-                     <td><a href="StPoelten.html">St. Pölten</a></td>
+                     <td>
+                        St. Pölten
+                        </td>
                      <td>[Handschrift]</td>
                      <td>144</td>
                      <td>140</td>
@@ -631,7 +674,7 @@
                   <tr>
                      <td><a href="A64_37.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 64/37</td>
-                     <td><a href="A64_37.xml">A64_37.xml</a></td>
+                     <td>A64_37.xml</td>
                      <td>1472</td>
                      <td>1512</td>
                      <td>
@@ -639,10 +682,14 @@
                         </td>
                      <td>
                         Psalterium
-                        , 
+                        
                         Hymnar
                         </td>
-                     <td><a href="Graz.html">Graz</a>, <a href="Ljubljana.html">Ljubljana</a>, <a href="MariaLankowitz.html">Maria Lankowitz</a></td>
+                     <td>
+                        Graz
+                        Ljubljana
+                        Maria Lankowitz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>178</td>
                      <td>620</td>
@@ -656,7 +703,7 @@
                   <tr>
                      <td><a href="S1_19.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Tota pulchra</td>
-                     <td><a href="S1_19.xml">S1_19.xml</a></td>
+                     <td>S1_19.xml</td>
                      <td>1710</td>
                      <td>1710</td>
                      <td>
@@ -665,7 +712,9 @@
                      <td>
                         Gesänge
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>114</td>
                      <td>340</td>
@@ -679,7 +728,7 @@
                   <tr>
                      <td><a href="A64_34.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 64/34</td>
-                     <td><a href="A64_34.xml">A64_34.xml</a></td>
+                     <td>A64_34.xml</td>
                      <td>1425</td>
                      <td>1450</td>
                      <td>
@@ -688,7 +737,9 @@
                      <td>
                         Graduale
                         </td>
-                     <td><a href="MariaLankowitz.html">Maria Lankowitz</a></td>
+                     <td>
+                        Maria Lankowitz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>185</td>
                      <td>420</td>
@@ -702,7 +753,7 @@
                   <tr>
                      <td><a href="S1_75.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Ordo agendorum et cantandorum in actibus processionalibus</td>
-                     <td><a href="S1_75.xml">S1_75.xml</a></td>
+                     <td>S1_75.xml</td>
                      <td>1702</td>
                      <td>1702</td>
                      <td>
@@ -711,8 +762,8 @@
                      <td>
                         Prozessionale
                         </td>
-                     <td><a href="Wien.html">Wien</a></td>
-                     <td><a href="Voigt.html">Leopold Voigt</a></td>
+                     <td></td>
+                     <td>Leopold Voigt</td>
                      <td>112</td>
                      <td>534</td>
                      <td>376</td>
@@ -728,15 +779,17 @@
                   <tr>
                      <td><a href="S1_72.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/72</td>
-                     <td><a href="S1_72.xml">S1_72.xml</a></td>
+                     <td>S1_72.xml</td>
                      <td>1683</td>
                      <td>1683</td>
                      <td></td>
                      <td>
                         Psalterium
                         </td>
-                     <td><a href="Salzburg.html">Salzburg</a></td>
-                     <td><a href="Mayr.html">Johann Baptist Mayr</a></td>
+                     <td>
+                        Salzburg
+                        </td>
+                     <td>Johann Baptist Mayr</td>
                      <td>378</td>
                      <td>516</td>
                      <td>375</td>
@@ -749,7 +802,7 @@
                   <tr>
                      <td><a href="S1_58.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/58</td>
-                     <td><a href="S1_58.xml">S1_58.xml</a></td>
+                     <td>S1_58.xml</td>
                      <td>1740</td>
                      <td>1740</td>
                      <td>
@@ -758,7 +811,9 @@
                      <td>
                         Antiphonarium
                         </td>
-                     <td><a href="StPoelten.html">St. Pölten</a></td>
+                     <td>
+                        St. Pölten
+                        </td>
                      <td>[Handschrift]</td>
                      <td>199</td>
                      <td>510</td>
@@ -773,7 +828,7 @@
                   <tr>
                      <td><a href="A67_27.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Pro divino officio in choro</td>
-                     <td><a href="A67_27.xml">A67_27.xml</a></td>
+                     <td>A67_27.xml</td>
                      <td>1625</td>
                      <td>1650</td>
                      <td>
@@ -782,7 +837,10 @@
                      <td>
                         Antiphonale
                         </td>
-                     <td><a href="Muenchen.html">München?</a>, <a href="Graz.html">Graz</a></td>
+                     <td>
+                        München?
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>177</td>
                      <td>230</td>
@@ -798,7 +856,7 @@
                   <tr>
                      <td><a href="A64_40.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 64/40</td>
-                     <td><a href="A64_40.xml">A64_40.xml</a></td>
+                     <td>A64_40.xml</td>
                      <td>1472</td>
                      <td>1512</td>
                      <td>
@@ -806,10 +864,13 @@
                         </td>
                      <td>
                         Antiphonale
-                        , 
+                        
                         Sommerteil
                         </td>
-                     <td><a href="Graz.html">Graz</a>, <a href="Ljubljana.html">Ljubljana</a></td>
+                     <td>
+                        Graz
+                        Ljubljana
+                        </td>
                      <td>[Handschrift]</td>
                      <td>261</td>
                      <td>570</td>
@@ -823,7 +884,7 @@
                   <tr>
                      <td><a href="S1_74.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Ordo agendorum et cantandorum in actibus processionalibus</td>
-                     <td><a href="S1_74.xml">S1_74.xml</a></td>
+                     <td>S1_74.xml</td>
                      <td>1702</td>
                      <td>1702</td>
                      <td>
@@ -832,8 +893,8 @@
                      <td>
                         Prozessionale
                         </td>
-                     <td><a href="Wien.html">Wien</a></td>
-                     <td><a href="Voigt.html">Leopold Voigt</a></td>
+                     <td></td>
+                     <td>Leopold Voigt</td>
                      <td>112</td>
                      <td>534</td>
                      <td>376</td>
@@ -849,7 +910,7 @@
                   <tr>
                      <td><a href="A70_45.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Antiphonas Festorum Principaliorum</td>
-                     <td><a href="A70_45.xml">A70_45.xml</a></td>
+                     <td>A70_45.xml</td>
                      <td>2023</td>
                      <td>2023</td>
                      <td>
@@ -874,7 +935,7 @@
                   <tr>
                      <td><a href="S1_69.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Antiphonarium de Sanctis Trium Ordinum Sancti Patris Francisci</td>
-                     <td><a href="S1_69.xml">S1_69.xml</a></td>
+                     <td>S1_69.xml</td>
                      <td>1737</td>
                      <td>1737</td>
                      <td>
@@ -883,8 +944,10 @@
                      <td>
                         Antiphonarium
                         </td>
-                     <td><a href="Venedig.html">Venedig</a></td>
-                     <td><a href="Pezzana.html">Giovanni Antonio Pezzana</a></td>
+                     <td>
+                        Venedig
+                        </td>
+                     <td>Giovanni Antonio Pezzana</td>
                      <td>322</td>
                      <td>475</td>
                      <td>337</td>
@@ -897,7 +960,7 @@
                   <tr>
                      <td><a href="S1_61.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Hymni Sacri Breviarii Romani Urbani Papae VIII Auctoritate recogniti</td>
-                     <td><a href="S1_61.xml">S1_61.xml</a></td>
+                     <td>S1_61.xml</td>
                      <td>1685</td>
                      <td>1685</td>
                      <td>
@@ -906,8 +969,10 @@
                      <td>
                         Hymnarium
                         </td>
-                     <td><a href="Salzburg.html">Salzburg</a></td>
-                     <td><a href="Mayr.html">Johann Baptist Mayr</a></td>
+                     <td>
+                        Salzburg
+                        </td>
+                     <td>Johann Baptist Mayr</td>
                      <td>309</td>
                      <td>487</td>
                      <td>331</td>
@@ -925,7 +990,7 @@
                   <tr>
                      <td><a href="A64_41.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 64/41</td>
-                     <td><a href="A64_41.xml">A64_41.xml</a></td>
+                     <td>A64_41.xml</td>
                      <td>1472</td>
                      <td>1512</td>
                      <td>
@@ -933,10 +998,13 @@
                         </td>
                      <td>
                         Antiphonale
-                        , 
+                        
                         Winterteil
                         </td>
-                     <td><a href="Graz.html">Graz</a>, <a href="Ljubljana.html">Ljubljana</a></td>
+                     <td>
+                        Graz
+                        Ljubljana
+                        </td>
                      <td>[Handschrift]</td>
                      <td>256</td>
                      <td>550</td>
@@ -950,7 +1018,7 @@
                   <tr>
                      <td><a href="A64_38.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 64/38</td>
-                     <td><a href="A64_38.xml">A64_38.xml</a></td>
+                     <td>A64_38.xml</td>
                      <td>1472</td>
                      <td>1512</td>
                      <td>
@@ -959,7 +1027,10 @@
                      <td>
                         Graduale
                         </td>
-                     <td><a href="Graz.html">Graz</a>, <a href="Ljubljana.html">Ljubljana</a></td>
+                     <td>
+                        Graz
+                        Ljubljana
+                        </td>
                      <td>[Handschrift]</td>
                      <td>185</td>
                      <td>580</td>
@@ -973,7 +1044,7 @@
                   <tr>
                      <td><a href="S1_65.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/65</td>
-                     <td><a href="S1_65.xml">S1_65.xml</a></td>
+                     <td>S1_65.xml</td>
                      <td>1690</td>
                      <td>1690</td>
                      <td>
@@ -982,8 +1053,10 @@
                      <td>
                         Graduale
                         </td>
-                     <td><a href="Venedig.html">Venedig</a></td>
-                     <td><a href="Balleoni.html">Paolo Baglioni</a></td>
+                     <td>
+                        Venedig
+                        </td>
+                     <td>Paolo Baglioni</td>
                      <td>278</td>
                      <td>491</td>
                      <td>331</td>
@@ -996,7 +1069,7 @@
                   <tr>
                      <td><a href="S1_67.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Antiphonarium de Sanctis Ordinis Minorum</td>
-                     <td><a href="S1_67.xml">S1_67.xml</a></td>
+                     <td>S1_67.xml</td>
                      <td>1690</td>
                      <td>1690</td>
                      <td>
@@ -1005,8 +1078,10 @@
                      <td>
                         Antiphonarium
                         </td>
-                     <td><a href="Venedig.html">Venedig</a></td>
-                     <td><a href="Balleoni.html">Paolo Baglioni</a></td>
+                     <td>
+                        Venedig
+                        </td>
+                     <td>Paolo Baglioni</td>
                      <td>290</td>
                      <td>190</td>
                      <td>145</td>
@@ -1019,7 +1094,7 @@
                   <tr>
                      <td><a href="S1_40a.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Cantus Ecclesiasticus</td>
-                     <td><a href="S1_40a.xml">S1_40a.xml</a></td>
+                     <td>S1_40a.xml</td>
                      <td>1765</td>
                      <td>1765</td>
                      <td>
@@ -1046,15 +1121,17 @@
                   <tr>
                      <td><a href="S1_68.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/68</td>
-                     <td><a href="S1_68.xml">S1_68.xml</a></td>
+                     <td>S1_68.xml</td>
                      <td>1729</td>
                      <td>1729</td>
                      <td></td>
                      <td>
                         Graduale
                         </td>
-                     <td><a href="Venedig.html">Venedig</a></td>
-                     <td><a href="Balleoni.html">Paolo Baglioni</a></td>
+                     <td>
+                        Venedig
+                        </td>
+                     <td>Paolo Baglioni</td>
                      <td>247</td>
                      <td>479</td>
                      <td>329</td>
@@ -1067,7 +1144,7 @@
                   <tr>
                      <td><a href="A63_51.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 63/51</td>
-                     <td><a href="A63_51.xml">A63_51.xml</a></td>
+                     <td>A63_51.xml</td>
                      <td>1517</td>
                      <td>1517</td>
                      <td>
@@ -1075,10 +1152,13 @@
                         </td>
                      <td>
                         Graduale
-                        , 
+                        
                         Sequentiar
                         </td>
-                     <td><a href="Graz.html">Graz</a>, <a href="Ljubljana.html">Ljubljana</a></td>
+                     <td>
+                        Graz
+                        Ljubljana
+                        </td>
                      <td>[Handschrift]</td>
                      <td>272</td>
                      <td>535</td>
@@ -1092,7 +1172,7 @@
                   <tr>
                      <td><a href="S1_28.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/28</td>
-                     <td><a href="S1_28.xml">S1_28.xml</a></td>
+                     <td>S1_28.xml</td>
                      <td>1700</td>
                      <td>1799</td>
                      <td>
@@ -1101,7 +1181,9 @@
                      <td>
                         Prozessionale
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>17</td>
                      <td>190</td>
@@ -1115,7 +1197,7 @@
                   <tr>
                      <td><a href="S1_63.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Hymni Sacri Breviarii Romani Urbani Papae VIII Auctoritate recogniti</td>
-                     <td><a href="S1_63.xml">S1_63.xml</a></td>
+                     <td>S1_63.xml</td>
                      <td>1685</td>
                      <td>1685</td>
                      <td>
@@ -1124,8 +1206,10 @@
                      <td>
                         Hymnarium
                         </td>
-                     <td><a href="Salzburg.html">Salzburg</a></td>
-                     <td><a href="Mayr.html">Johann Baptist Mayr</a></td>
+                     <td>
+                        Salzburg
+                        </td>
+                     <td>Johann Baptist Mayr</td>
                      <td>309</td>
                      <td>487</td>
                      <td>331</td>
@@ -1143,7 +1227,7 @@
                   <tr>
                      <td><a href="A67_18.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 67/18</td>
-                     <td><a href="A67_18.xml">A67_18.xml</a></td>
+                     <td>A67_18.xml</td>
                      <td>1450</td>
                      <td>1500</td>
                      <td>
@@ -1151,10 +1235,13 @@
                         </td>
                      <td>
                         Antiphonale
-                        , 
+                        
                         Sommerteil
                         </td>
-                     <td><a href="Muenchen.html">München?</a>, <a href="Graz.html">Graz</a></td>
+                     <td>
+                        München?
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>196</td>
                      <td>205</td>
@@ -1168,7 +1255,7 @@
                   <tr>
                      <td><a href="S1_27.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/27</td>
-                     <td><a href="S1_27.xml">S1_27.xml</a></td>
+                     <td>S1_27.xml</td>
                      <td>1700</td>
                      <td>1799</td>
                      <td>
@@ -1177,7 +1264,9 @@
                      <td>
                         Manuale
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>118</td>
                      <td>205</td>
@@ -1191,15 +1280,17 @@
                   <tr>
                      <td><a href="S1_66.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/66</td>
-                     <td><a href="S1_66.xml">S1_66.xml</a></td>
+                     <td>S1_66.xml</td>
                      <td>1610</td>
                      <td>1610</td>
                      <td></td>
                      <td>
                         Graduale
                         </td>
-                     <td><a href="Venedig.html">Venedig</a></td>
-                     <td><a href="Ciera.html">Pietro Ciera</a></td>
+                     <td>
+                        Venedig
+                        </td>
+                     <td>Pietro Ciera</td>
                      <td>295</td>
                      <td>460</td>
                      <td>310</td>
@@ -1212,7 +1303,7 @@
                   <tr>
                      <td><a href="A67_17.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 67/17</td>
-                     <td><a href="A67_17.xml">A67_17.xml</a></td>
+                     <td>A67_17.xml</td>
                      <td>1450</td>
                      <td>1500</td>
                      <td>
@@ -1220,10 +1311,13 @@
                         </td>
                      <td>
                         Antiphonale
-                        , 
+                        
                         Osterzeit
                         </td>
-                     <td><a href="Muenchen.html">München?</a>, <a href="Graz.html">Graz</a></td>
+                     <td>
+                        München?
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>237</td>
                      <td>200</td>
@@ -1238,7 +1332,7 @@
                   <tr>
                      <td><a href="S1_30.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/30</td>
-                     <td><a href="S1_30.xml">S1_30.xml</a></td>
+                     <td>S1_30.xml</td>
                      <td>1769</td>
                      <td>1769</td>
                      <td>
@@ -1247,7 +1341,9 @@
                      <td>
                         Intonationsbuch
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>89</td>
                      <td>165</td>
@@ -1261,7 +1357,7 @@
                   <tr>
                      <td><a href="S1_70.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Hymni Sacri Breviarii Romani Urbani Papae VIII Auctoritate recogniti</td>
-                     <td><a href="S1_70.xml">S1_70.xml</a></td>
+                     <td>S1_70.xml</td>
                      <td>1685</td>
                      <td>1685</td>
                      <td>
@@ -1270,8 +1366,10 @@
                      <td>
                         Hymnarium
                         </td>
-                     <td><a href="Salzburg.html">Salzburg</a></td>
-                     <td><a href="Mayr.html">Johann Baptist Mayr</a></td>
+                     <td>
+                        Salzburg
+                        </td>
+                     <td>Johann Baptist Mayr</td>
                      <td>309</td>
                      <td>487</td>
                      <td>331</td>
@@ -1289,7 +1387,7 @@
                   <tr>
                      <td><a href="S1_29.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/29</td>
-                     <td><a href="S1_29.xml">S1_29.xml</a></td>
+                     <td>S1_29.xml</td>
                      <td>1762</td>
                      <td>1762</td>
                      <td>
@@ -1298,7 +1396,7 @@
                      <td>
                         Prozessionale
                         </td>
-                     <td><a href="Wien.html">Wien</a></td>
+                     <td></td>
                      <td>[Handschrift]</td>
                      <td>70</td>
                      <td>165</td>
@@ -1315,7 +1413,7 @@
                   <tr>
                      <td><a href="S1_24.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>S 1/24</td>
-                     <td><a href="S1_24.xml">S1_24.xml</a></td>
+                     <td>S1_24.xml</td>
                      <td>1779</td>
                      <td>1779</td>
                      <td>
@@ -1324,7 +1422,9 @@
                      <td>
                         Choralbuch
                         </td>
-                     <td><a href="Graz.html">Graz</a></td>
+                     <td>
+                        Graz
+                        </td>
                      <td>[Handschrift]</td>
                      <td>128</td>
                      <td>235</td>
@@ -1338,7 +1438,7 @@
                   <tr>
                      <td><a href="A64_43.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>A 64/43</td>
-                     <td><a href="A64_43.xml">A64_43.xml</a></td>
+                     <td>A64_43.xml</td>
                      <td>1472</td>
                      <td>1512</td>
                      <td>
@@ -1346,10 +1446,13 @@
                         </td>
                      <td>
                         Antiphonale
-                        , 
+                        
                         Nocturnale
                         </td>
-                     <td><a href="Graz.html">Graz</a>, <a href="Ljubljana.html">Ljubljana</a></td>
+                     <td>
+                        Graz
+                        Ljubljana
+                        </td>
                      <td>[Handschrift]</td>
                      <td>242</td>
                      <td>520</td>
@@ -1363,7 +1466,7 @@
                   <tr>
                      <td><a href="S1_64.html"><i class="bi bi-link-45deg"></i></a></td>
                      <td>Psalterium Romanum dispositum per Hebdomadam</td>
-                     <td><a href="S1_64.xml">S1_64.xml</a></td>
+                     <td>S1_64.xml</td>
                      <td>1739</td>
                      <td>1739</td>
                      <td>
@@ -1372,8 +1475,10 @@
                      <td>
                         Psalterium
                         </td>
-                     <td><a href="Venedig.html">Venedig</a></td>
-                     <td><a href="Pezzana.html">Giovanni Antonio Pezzana</a></td>
+                     <td>
+                        Venedig
+                        </td>
+                     <td>Giovanni Antonio Pezzana</td>
                      <td>246</td>
                      <td>481</td>
                      <td>337</td>

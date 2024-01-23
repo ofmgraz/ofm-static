@@ -24,11 +24,11 @@
             <email>acdh-ch@oeaw.ac.at</email>
           </addrLine>
         </address>
-        <pubPlace>Wien</pubPlace>
+        <pubPlace ref="#Wien" xml:lang="de">Wien</pubPlace>
         <availability>
           <licence>cc0</licence>
         </availability>
-        <date when="2024-01-10" when-iso="2024-01-18">2024-01-18</date>
+        <date when="2024-01-10" when-iso="2024-01-23">2024-01-23</date>
       </publicationStmt>
       <sourceDesc>
         <bibl>
@@ -100,7 +100,7 @@
         <language ident="la">Latin</language>
       </langUsage>
       <textDesc n="choirbook">
-        <channel mode="ws">manuscript</channel>
+        <channel mode="ws" xml:lang="en">manuscript</channel>
         <constitution type="composite"/>
         <derivation/>
         <domain type="religious"/>
@@ -111,7 +111,7 @@
       </textDesc>
       <settingDesc>
         <setting>
-          <name>Styria</name>
+          <name xml:lang="de">Steirmark</name>
           <time/>
         </setting>
       </settingDesc>
@@ -119,40 +119,84 @@
   </teiHeader>
   <standOff>
     <listPlace>
-      <place xml:id="FCG">
-        <placeName>Franciscan Church</placeName>
+      <place xml:id="Wien">
+        <placeName xml:lang="en">Vienna</placeName>
+        <placeName xml:lang="en">Wien</placeName>
+        <placeName xml:lang="it">Wien</placeName>
         <location>
-          <settlement>Graz</settlement>
-          <region>Styria</region>
-          <country>Austria</country>
+          <settlement xml:lang="en">Vienna</settlement>
+          <settlement xml:lang="de">Wien</settlement>
+          <settlement xml:lang="it">Vienna</settlement>
+          <region xml:lang="en">Vienna (federal state)</region>
+          <region xml:lang="de">Wien</region>
+          <region xml:lang="it">Vienna</region>
+          <country xml:lang="en">Austria</country>
+          <country xml:lang="de">Österreich</country>
+          <country xml:lang="it">Austria</country>
+          <geo>48.208333333333336 16.3725</geo>
+        </location>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4066009-6</idno>
+        <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2761369</idno>
+        <idno type="URL" subtype="WIKIDATA">https://www.wikidata.org/entity/Q1741</idno>
+      </place>
+      <place xml:id="FCG">
+        <placeName xml:lang="en">Franciscan Church</placeName>
+        <placeName xml:lang="de">Franziskanerkirche</placeName>
+        <placeName xml:lang="it">Chiesa dei Francescani</placeName>
+        <location>
+          <settlement xml:lang="en">Graz</settlement>
+          <settlement xml:lang="de">Graz</settlement>
+          <settlement xml:lang="it">Graz</settlement>
+          <region xml:lang="en">Styria</region>
+          <region xml:lang="de">Steirmark</region>
+          <region xml:lang="it">Stiria</region>
+          <country xml:lang="en">Austria</country>
+          <country xml:lang="de">Österreich</country>
+          <country xml:lang="it">Austria</country>
           <geo>47.070483333333 15.436780555556</geo>
         </location>
         <idno type="URL" subtype="GND">http://d-nb.info/gnd/4482538-9</idno>
         <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q64487580</idno>
       </place>
       <place xml:id="Muenchen">
-        <placeName>München</placeName>
+        <placeName xml:lang="en">Munich</placeName>
+        <placeName xml:lang="de">München</placeName>
+        <placeName xml:lang="it">Monaco di Baviera</placeName>
         <location>
-          <settlement>München</settlement>
-          <region>Bayern</region>
-          <country>Deutschland</country>
+          <settlement xml:lang="en">Munich</settlement>
+          <settlement xml:lang="de">München</settlement>
+          <settlement xml:lang="it">Monaco di Baviera</settlement>
+          <region xml:lang="en">Bavaria</region>
+          <region xml:lang="de">Bayern</region>
+          <region xml:lang="it">Baviera</region>
+          <country xml:lang="en">Germany</country>
+          <country xml:lang="de">Deutschland</country>
+          <country xml:lang="it">Germania</country>
           <geo>48.1375 11.575</geo>
         </location>
         <idno type="URL" subtype="GND">http://d-nb.info/gnd/4127793-4</idno>
         <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/6559171</idno>
-        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q1726</idno>
+        <idno type="URL" subtype="WIKIDATA">https://www.wikidata.org/entity/Q1726</idno>
       </place>
       <place xml:id="Graz">
-        <placeName>Graz</placeName>
+        <placeName xml:lang="en">Graz</placeName>
+        <placeName xml:lang="de">Graz</placeName>
+        <placeName xml:lang="it">Graz</placeName>
         <location>
-          <settlement>Graz</settlement>
-          <region>Steiermark</region>
-          <country>Österreich</country>
+          <settlement xml:lang="en">Graz</settlement>
+          <settlement xml:lang="de">Graz</settlement>
+          <settlement xml:lang="it">Graz</settlement>
+          <region xml:lang="en">Styria</region>
+          <region xml:lang="de">Steiermark</region>
+          <region xml:lang="it">Stiria</region>
+          <country xml:lang="en">Austria</country>
+          <country xml:lang="de">Österreich</country>
+          <country xml:lang="it">Austria</country>
           <geo>47.07083333333333 15.438611111111111</geo>
         </location>
         <idno type="URL" subtype="GND">http://d-nb.info/gnd/4021912-4</idno>
         <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2778058</idno>
-        <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q13298</idno>
+        <idno type="URL" subtype="WIKIDATA">https://www.wikidata.org/entity/Q13298</idno>
       </place>
     </listPlace>
   </standOff>
@@ -1127,8 +1171,7 @@
   </facsimile>
   <text>
     <body>
-      <div>
-        <pb facs="#facs_1" n="1" xml:id="img_0001"/>
+      <div facs="#facs_1" n="1" xml:id="img_0001" type="page">
         <ab facs="#facs_1_region_1690619964432_375" type="notation">
             </ab>
         <ab facs="#facs_1_region_1690619968161_378" type="notation">
@@ -1159,7 +1202,8 @@
             </ab>
         <ab facs="#facs_1_rfFk2_10" type="text">
             </ab>
-        <pb facs="#facs_2" n="2" xml:id="img_0002"/>
+      </div>
+      <div facs="#facs_2" n="2" xml:id="img_0002" type="page">
         <ab facs="#facs_2_r176r_6" type="notation">
             </ab>
         <ab facs="#facs_2_rgfAO_12" type="text">
@@ -1184,7 +1228,8 @@
             </ab>
         <ab facs="#facs_2_r2tth_7" type="text">
             </ab>
-        <pb facs="#facs_3" n="3" xml:id="img_0003"/>
+      </div>
+      <div facs="#facs_3" n="3" xml:id="img_0003" type="page">
         <ab facs="#facs_3_rhLtF_6" type="notation">
             </ab>
         <ab facs="#facs_3_rGoYN_12" type="text">
@@ -1209,7 +1254,8 @@
             </ab>
         <ab facs="#facs_3_rcqKi_7" type="text">
             </ab>
-        <pb facs="#facs_4" n="4" xml:id="img_0004"/>
+      </div>
+      <div facs="#facs_4" n="4" xml:id="img_0004" type="page">
         <ab facs="#facs_4_r3iMR_6" type="notation">
             </ab>
         <ab facs="#facs_4_reITh_13" type="text">
@@ -1234,7 +1280,8 @@
             </ab>
         <ab facs="#facs_4_rZxte_7" type="text">
             </ab>
-        <pb facs="#facs_5" n="5" xml:id="img_0005"/>
+      </div>
+      <div facs="#facs_5" n="5" xml:id="img_0005" type="page">
         <ab facs="#facs_5_re55m_7" type="notation">
             </ab>
         <ab facs="#facs_5_rvmLI_13" type="text">
@@ -1261,7 +1308,8 @@
             </ab>
         <ab facs="#facs_5_rzbLH_1" type="initiale_historisch">
             </ab>
-        <pb facs="#facs_6" n="6" xml:id="img_0006"/>
+      </div>
+      <div facs="#facs_6" n="6" xml:id="img_0006" type="page">
         <ab facs="#facs_6_rv2DY_8" type="notation">
             </ab>
         <ab facs="#facs_6_r_249" type="text">
@@ -1288,7 +1336,8 @@
             </ab>
         <ab facs="#facs_6_r_262" type="text">
             </ab>
-        <pb facs="#facs_7" n="7" xml:id="img_0007"/>
+      </div>
+      <div facs="#facs_7" n="7" xml:id="img_0007" type="page">
         <ab facs="#facs_7_riXaZ_6" type="notation">
             </ab>
         <ab facs="#facs_7_rbnsw_12" type="text">
@@ -1313,7 +1362,8 @@
             </ab>
         <ab facs="#facs_7_rA8I0_7" type="text">
             </ab>
-        <pb facs="#facs_8" n="8" xml:id="img_0008"/>
+      </div>
+      <div facs="#facs_8" n="8" xml:id="img_0008" type="page">
         <ab facs="#facs_8_r1YYK_6" type="notation">
             </ab>
         <ab facs="#facs_8_rGc0Z_12" type="text">
@@ -1338,7 +1388,8 @@
             </ab>
         <ab facs="#facs_8_rBGdZ_7" type="text">
             </ab>
-        <pb facs="#facs_9" n="9" xml:id="img_0009"/>
+      </div>
+      <div facs="#facs_9" n="9" xml:id="img_0009" type="page">
         <ab facs="#facs_9_rYIyE_6" type="notation">
             </ab>
         <ab facs="#facs_9_rs0qv_13" type="text">
@@ -1363,7 +1414,8 @@
             </ab>
         <ab facs="#facs_9_r6VF5_7" type="text">
             </ab>
-        <pb facs="#facs_10" n="10" xml:id="img_0010"/>
+      </div>
+      <div facs="#facs_10" n="10" xml:id="img_0010" type="page">
         <ab facs="#facs_10_r" type="notation">
             </ab>
         <ab facs="#facs_10_r_247" type="text">
@@ -1394,7 +1446,8 @@
             </ab>
         <ab facs="#facs_10_rqMyZ_11" type="text">
             </ab>
-        <pb facs="#facs_11" n="11" xml:id="img_0011"/>
+      </div>
+      <div facs="#facs_11" n="11" xml:id="img_0011" type="page">
         <ab facs="#facs_11_rHcJT_6" type="notation">
             </ab>
         <ab facs="#facs_11_riAGr_12" type="text">
@@ -1419,7 +1472,8 @@
             </ab>
         <ab facs="#facs_11_rm8O7_7" type="text">
             </ab>
-        <pb facs="#facs_12" n="12" xml:id="img_0012"/>
+      </div>
+      <div facs="#facs_12" n="12" xml:id="img_0012" type="page">
         <ab facs="#facs_12_rR7FA_8" type="notation">
             </ab>
         <ab facs="#facs_12_rav2N_14" type="text">
@@ -1452,7 +1506,8 @@
             </ab>
         <ab facs="#facs_12_rJFyb_9" type="text">
             </ab>
-        <pb facs="#facs_13" n="13" xml:id="img_0013"/>
+      </div>
+      <div facs="#facs_13" n="13" xml:id="img_0013" type="page">
         <ab facs="#facs_13_rjUYV_7" type="notation">
             </ab>
         <ab facs="#facs_13_rU7sj_13" type="text">
@@ -1479,7 +1534,8 @@
             </ab>
         <ab facs="#facs_13_r1HLs_1" type="initiale_historisch">
             </ab>
-        <pb facs="#facs_14" n="14" xml:id="img_0014"/>
+      </div>
+      <div facs="#facs_14" n="14" xml:id="img_0014" type="page">
         <ab facs="#facs_14_r" type="notation">
             </ab>
         <ab facs="#facs_14_r_300" type="text">
@@ -1520,7 +1576,8 @@
             </ab>
         <ab facs="#facs_14_rxg2W_11" type="text">
             </ab>
-        <pb facs="#facs_15" n="15" xml:id="img_0015"/>
+      </div>
+      <div facs="#facs_15" n="15" xml:id="img_0015" type="page">
         <ab facs="#facs_15_rfzdx_8" type="notation">
             </ab>
         <ab facs="#facs_15_rfqvs_16" type="text">
@@ -1551,7 +1608,8 @@
             </ab>
         <ab facs="#facs_15_rhEPv_10" type="text">
             </ab>
-        <pb facs="#facs_16" n="16" xml:id="img_0016"/>
+      </div>
+      <div facs="#facs_16" n="16" xml:id="img_0016" type="page">
         <ab facs="#facs_16_rIhRe_8" type="notation">
             </ab>
         <ab facs="#facs_16_r4PAX_15" type="text">
@@ -1582,7 +1640,8 @@
             </ab>
         <ab facs="#facs_16_rhGrP_9" type="text">
             </ab>
-        <pb facs="#facs_17" n="17" xml:id="img_0017"/>
+      </div>
+      <div facs="#facs_17" n="17" xml:id="img_0017" type="page">
         <ab facs="#facs_17_rUncz_10" type="notation">
             </ab>
         <ab facs="#facs_17_rWVli_19" type="text">
@@ -1619,7 +1678,8 @@
             </ab>
         <ab facs="#facs_17_rAO1X_12" type="text">
             </ab>
-        <pb facs="#facs_18" n="18" xml:id="img_0018"/>
+      </div>
+      <div facs="#facs_18" n="18" xml:id="img_0018" type="page">
         <ab facs="#facs_18_rY5uW_9" type="notation">
             </ab>
         <ab facs="#facs_18_rbX8q_15" type="text">
@@ -1650,7 +1710,8 @@
             </ab>
         <ab facs="#facs_18_rXtPF_10" type="text">
             </ab>
-        <pb facs="#facs_19" n="19" xml:id="img_0019"/>
+      </div>
+      <div facs="#facs_19" n="19" xml:id="img_0019" type="page">
         <ab facs="#facs_19_rqvxh_3" type="initiale_lombarde">
             </ab>
         <ab facs="#facs_19_rRfAN_9" type="notation">
@@ -1679,7 +1740,8 @@
             </ab>
         <ab facs="#facs_19_rd5zD_10" type="text">
             </ab>
-        <pb facs="#facs_20" n="20" xml:id="img_0020"/>
+      </div>
+      <div facs="#facs_20" n="20" xml:id="img_0020" type="page">
         <ab facs="#facs_20_r4BLC_9" type="notation">
             </ab>
         <ab facs="#facs_20_rOyIk_16" type="text">
@@ -1712,26 +1774,26 @@
             </ab>
         <ab facs="#facs_20_rkwnR_10" type="text">
             </ab>
-        <pb facs="#facs_21" n="21" xml:id="img_0021"/>
-        <pb facs="#facs_22" n="22" xml:id="img_0022"/>
-        <pb facs="#facs_23" n="23" xml:id="img_0023"/>
-        <pb facs="#facs_24" n="24" xml:id="img_0024"/>
-        <pb facs="#facs_25" n="25" xml:id="img_0025"/>
-        <pb facs="#facs_26" n="26" xml:id="img_0026"/>
-        <pb facs="#facs_27" n="27" xml:id="img_0027"/>
-        <pb facs="#facs_28" n="28" xml:id="img_0028"/>
-        <pb facs="#facs_29" n="29" xml:id="img_0029"/>
-        <pb facs="#facs_30" n="30" xml:id="img_0030"/>
-        <pb facs="#facs_31" n="31" xml:id="img_0031"/>
-        <pb facs="#facs_32" n="32" xml:id="img_0032"/>
-        <pb facs="#facs_33" n="33" xml:id="img_0033"/>
-        <pb facs="#facs_34" n="34" xml:id="img_0034"/>
-        <pb facs="#facs_35" n="35" xml:id="img_0035"/>
-        <pb facs="#facs_36" n="36" xml:id="img_0036"/>
-        <pb facs="#facs_37" n="37" xml:id="img_0037"/>
-        <pb facs="#facs_38" n="38" xml:id="img_0038"/>
-        <pb facs="#facs_39" n="39" xml:id="img_0039"/>
       </div>
+      <div facs="#facs_21" n="21" xml:id="img_0021" type="page"/>
+      <div facs="#facs_22" n="22" xml:id="img_0022" type="page"/>
+      <div facs="#facs_23" n="23" xml:id="img_0023" type="page"/>
+      <div facs="#facs_24" n="24" xml:id="img_0024" type="page"/>
+      <div facs="#facs_25" n="25" xml:id="img_0025" type="page"/>
+      <div facs="#facs_26" n="26" xml:id="img_0026" type="page"/>
+      <div facs="#facs_27" n="27" xml:id="img_0027" type="page"/>
+      <div facs="#facs_28" n="28" xml:id="img_0028" type="page"/>
+      <div facs="#facs_29" n="29" xml:id="img_0029" type="page"/>
+      <div facs="#facs_30" n="30" xml:id="img_0030" type="page"/>
+      <div facs="#facs_31" n="31" xml:id="img_0031" type="page"/>
+      <div facs="#facs_32" n="32" xml:id="img_0032" type="page"/>
+      <div facs="#facs_33" n="33" xml:id="img_0033" type="page"/>
+      <div facs="#facs_34" n="34" xml:id="img_0034" type="page"/>
+      <div facs="#facs_35" n="35" xml:id="img_0035" type="page"/>
+      <div facs="#facs_36" n="36" xml:id="img_0036" type="page"/>
+      <div facs="#facs_37" n="37" xml:id="img_0037" type="page"/>
+      <div facs="#facs_38" n="38" xml:id="img_0038" type="page"/>
+      <div facs="#facs_39" n="39" xml:id="img_0039" type="page"/>
     </body>
   </text>
 </TEI>

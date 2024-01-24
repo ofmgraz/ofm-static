@@ -13,10 +13,11 @@
     <xsl:import href="partials/tabulator_dl_buttons.xsl"/>
     <xsl:import href="partials/tabulator_js.xsl"/>
     <xsl:import href="partials/place.xsl"/>
+    <xsl:variable name="lang" select="'de'"/>
     
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
+            <xsl:value-of select=".//tei:titleStmt/tei:title[@xml:lang=$lang]/text()"/>
         </xsl:variable>
         <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
         <html  class="h-100">
@@ -58,7 +59,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <xsl:value-of select="./tei:placeName[1]/text()"/>
+                                            <xsl:value-of select="./tei:placeName[@xml:lang=$lang]/text()"/>
                                         </td>
                                         <td>
                                             <xsl:choose>
@@ -75,7 +76,7 @@
                                             </xsl:choose>
                                         </td>
                                         <td>
-                                            <xsl:value-of select="$id"/>
+                                            #<xsl:value-of select="$id"/>
                                         </td>
                                     </tr>
                                 </xsl:for-each>
@@ -90,7 +91,7 @@
         </html>
         <xsl:for-each select=".//tei:place[@xml:id]">
             <xsl:variable name="filename" select="concat(./@xml:id, '.html')"/>
-            <xsl:variable name="name" select="normalize-space(string-join(./tei:placeName[1]//text()))"></xsl:variable>
+            <xsl:variable name="name" select="normalize-space(string-join(./tei:placeName[@xml:lang=$lang]//text()))"></xsl:variable>
             <xsl:result-document href="{$filename}">
                 <html  class="h-100">
                     <head>

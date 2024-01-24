@@ -9,14 +9,15 @@
                 <tr>
                     <th>
                         Ortsname
+			<a data-i18n="place__placename"/>
                     </th>
                     <td>
                         <xsl:choose>
                             <xsl:when test="./tei:settlement/tei:placeName">
-                                <xsl:value-of select="./tei:settlement/tei:placeName"/>
+                                <xsl:value-of select="./tei:settlement/tei:placeName[@xml:lang=$lang]"/>
                             </xsl:when>
                             <xsl:otherwise>
-                                <xsl:value-of select="./tei:placeName"/>
+                                <xsl:value-of select="./tei:placeName[@xml:lang=$lang]"/>
                             </xsl:otherwise>
                         </xsl:choose>
                     </td>
@@ -47,7 +48,7 @@
                         Land
                     </th>
                     <td>
-                        <xsl:value-of select="./tei:country"/>
+                        <xsl:value-of select="./tei:country[@xml:lang=$lang]"/>
                     </td>
                 </tr>
                 </xsl:if>

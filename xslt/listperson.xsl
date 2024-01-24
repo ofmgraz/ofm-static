@@ -13,10 +13,12 @@
     <xsl:import href="partials/tabulator_dl_buttons.xsl"/>
     <xsl:import href="partials/tabulator_js.xsl"/>
     <xsl:import href="./partials/person.xsl"/>
+    <xsl:variable name="lang" select="'de'"/>
+           
 
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
+            <xsl:value-of select=".//tei:titleStmt/tei:title[@xml:lang=$lang]/text()"/>
         </xsl:variable>
         <html  class="h-100">
             

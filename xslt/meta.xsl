@@ -12,7 +12,7 @@
     <xsl:import href="./partials/html_footer.xsl"/>
     <xsl:import href="./partials/shared.xsl"/>
     
-    
+   <xsl:variable name="lang" select="'de'"/> 
     <xsl:template match="/">
         <xsl:variable name="doc_title">
             <xsl:value-of select=".//tei:title[@type='main'][1]/text()"/>

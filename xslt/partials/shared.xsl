@@ -6,6 +6,7 @@
     xmlns:local="http://dse-static.foo.bar"
     exclude-result-prefixes="xs"
     version="2.0">
+    <xsl:variable name="lang" select="'de'"/>
     <xsl:function name="local:makeId" as="xs:string">
         <xsl:param name="currentNode" as="node()"/>
         <xsl:variable name="nodeCurrNr">
@@ -288,7 +289,7 @@
                                                 <xsl:choose>
                                                     <xsl:when test="position() lt $showNumberOfMentions + 1">
                                                         <li>
-                                                            <xsl:value-of select=".//tei:title"/><xsl:text> </xsl:text>
+                                                            <xsl:value-of select=".//tei:title[xml:lang=$lang]"/><xsl:text> </xsl:text>
                                                             <a href="{$linkToDocument}">
                                                                 <i class="fas fa-external-link-alt"></i>
                                                             </a>
@@ -326,11 +327,11 @@
         <xsl:variable name="selfLink">
             <xsl:value-of select="concat(data(@xml:id), '.html')"/>
         </xsl:variable>
-        <div class="modal fade" id="{@xml:id}" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{if(./tei:settlement) then(./tei:settlement/tei:placeName) else (./tei:placeName)}" aria-hidden="true">
+        <div class="modal fade" id="{@xml:id}" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{if(./tei:settlement) then(./tei:settlement/tei:placeName) else (./tei:placeName[xml:lang=$lang])}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><xsl:value-of select="if(./tei:settlement) then(./tei:settlement/tei:placeName) else (./tei:placeName)"/></h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><xsl:value-of select="if(./tei:settlement[xml:lang=$lang]) then(./tei:settlement/tei:placeName) else (./tei:placeName[xml:lang=$lang])"/></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -434,11 +435,11 @@
         <xsl:variable name="selfLink">
             <xsl:value-of select="concat(data(@xml:id), '.html')"/>
         </xsl:variable>
-        <div class="modal fade" id="{@xml:id}" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{if(./tei:settlement) then(./tei:settlement/tei:placeName) else (./tei:placeName)}" aria-hidden="true">
+        <div class="modal fade" id="{@xml:id}" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{if(./tei:settlement[xml:lang=$lang]) then(./tei:settlement/tei:placeName) else (./tei:placeName[xml:lang=$lang])}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><xsl:value-of select="if(./tei:settlement) then(./tei:settlement/tei:placeName) else (./tei:placeName)"/></h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><xsl:value-of select="if(./tei:settlement[xml:lang=$lang]) then(./tei:settlement/tei:placeName[xml:lang=$lang]) else (./tei:placeName[xml:lang=$lang])"/></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

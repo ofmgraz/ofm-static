@@ -22,5 +22,6 @@
     "table__folia": "Foglia",
     "table__height": "Altezza",
     "table__width": "Larghezza",
-    "table__description": "Descrizione"
+    "table__description": "Descrizione",
+    "place_placename": "Nome della località"
 }

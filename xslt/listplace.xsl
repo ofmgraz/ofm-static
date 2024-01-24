@@ -13,6 +13,7 @@
     <xsl:import href="partials/tabulator_dl_buttons.xsl"/>
     <xsl:import href="partials/tabulator_js.xsl"/>
     <xsl:import href="partials/place.xsl"/>
+    <xsl:variable name="lang" select="'de'"/>
     
     <xsl:template match="/">
         <xsl:variable name="doc_title">
@@ -58,7 +59,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <xsl:value-of select="./tei:placeName[1]/text()"/>
+                                            <xsl:value-of select="./tei:placeName[@xml:lang=$lang]/text()"/>
                                         </td>
                                         <td>
                                             <xsl:choose>
@@ -75,7 +76,7 @@
                                             </xsl:choose>
                                         </td>
                                         <td>
-                                            <xsl:value-of select="$id"/>
+                                            #<xsl:value-of select="$id"/>
                                         </td>
                                     </tr>
                                 </xsl:for-each>

@@ -54,7 +54,7 @@
                             <xsl:with-param name="doc_title" select="$doc_title"/>
                         </xsl:call-template>
                         
-                        <!-- <a/> <div class="regest">  
+                        <!-- <a /> <div class="regest">  
                             <h4><xsl:for-each select=".//tei:ab[@type='abstract-terms']/tei:term">
                                 <span class="badge badge-primary p-1 m-1"><xsl:value-of select="./text()"/></span>
                             </xsl:for-each>

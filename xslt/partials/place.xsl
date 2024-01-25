@@ -2,6 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0"
     version="2.0" exclude-result-prefixes="xsl tei xs">
+<xsl:variable name="lang" select="'de'"/> 
 
     <xsl:template match="tei:place" name="place_detail">
         <table class="table entity-table">

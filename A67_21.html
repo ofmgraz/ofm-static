@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html class="h-100">
+<!DOCTYPE html><html class="h-100">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta  http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +37,7 @@
       <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
       <link  rel="stylesheet" href="css/style.css" type="text/css">
       <link  rel="stylesheet" href="css/micro-editor.css" type="text/css"><script  src="https://cdn.jsdelivr.net/npm/i18next@21.6.10/i18next.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/jquery-i18next@1.2.1/jquery-i18next.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.3/i18nextBrowserLanguageDetector.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.3.2/i18nextHttpBackend.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script><script src="js/osd_single.js"></script></head>
-   <body class="d-flex flex-column h-100">
+   <body class="page" lang="de">
       <header >
          <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid"><a class="navbar-brand" href="index.html">OFM</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -59,56 +59,722 @@
             </div>
          </nav>
       </header>
-      <main class="flex-shrink-0">
-         <div class="container">
-            <div  xmlns:local="http://dse-static.foo.bar" xmlns:mam="whatever" class="row">
-               <div class="col-md-2"></div>
-               <div class="col-md-8">
-                  <h1 align="center">A-Gf_A67_21_Grad_Part3</h1>
-                  <h3 align="center"><a href=".xml"><i class="bi bi-download" title="show TEI source"></i></a></h3>
-                  <p class="text-center"><small> ,                         
-                        </small></p>
-               </div>
-               <div class="col-md-2 text-end"></div>
+      <div class="hfeed site" id="page">
+         <div class="edition_container ">
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel" data-bs-scroll="true" data-bs-backdrop="false">
+               <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavigationLabel">Navigation</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div>
             </div>
-         </div>
-      </main>
-      <footer  class="footer mt-auto py-3 bg-body-tertiary">
-         <div class="container-fluid" id="footer-full-content" tabindex="-1">
-            <div class="footer-separator justify-content-center">
-               <h5 class="font-weight-bold">KONTAKT</h5>
-            </div>
-            <div class="row justify-content-center">
-               <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6  ml-auto  text-center ">
-                  <div class="textwidget custom-html-widget"><a href="https://www.oeaw.ac.at/acdh/"><img src="https://fundament.acdh.oeaw.ac.at/common-assets/images/acdh_logo.svg" class="image" alt="ACDH Logo" style="max-width: 90%; height: auto;" title="ACDH Logo"></a></div>
-               </div>
-               <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
-                  <div class="textwidget custom-html-widget">
-                     <h6 class="font-weight-bold">ACDH-CH</h6>
-                     <p>Austrian Centre for Digital Humanities <br/> and Cultural Heritage
-                        <br/> Österreichische Akademie der Wissenschaften </p>
-                     <p> Bäckerstraße 13 <br/> 1010 Wien </p>
-                     <p> T: +43 1 51581-2200 <br/> E: <a href="mailto:acdh-ch-helpdesk@oeaw.ac.at                                 ">acdh-ch-helpdesk(at)oeaw.ac.at</a></p>
+            <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions" aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true" data-bs-backdrop="false">
+               <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasOptionsLabel">Einstellungen</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div>
+               <div class="offcanvas-body">
+                  <div>
+                     <ul id="edition_display_options" class="list-unstyled fw-normal pb-1 small">
+                        <li>
+                           <image-switch opt="es"></image-switch>
+                        </li>
+                        <li>
+                           <font-size opt="fs"></font-size>
+                        </li>
+                        <li>
+                           <annotation-slider opt="ef"></annotation-slider>
+                        </li>
+                        <li>
+                           <annotation-slider opt="prs"></annotation-slider>
+                        </li>
+                        <li>
+                           <annotation-slider opt="wrk"></annotation-slider>
+                        </li>
+                        <li>
+                           <annotation-slider opt="org"></annotation-slider>
+                        </li>
+                     </ul>
                   </div>
                </div>
-               <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
-                  <div class="row">
-                     <div class="textwidget custom-html-widget">
-                        <h6 class="font-weight-bold">HELPDESK</h6>
-                        <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie
-                           sich bitte an den ACDH-CH Helpdesk.</p>
-                        <p><a class="helpdesk-button" href="mailto:acdh-ch-helpdesk@oeaw.ac.at">e-Mail</a></p>
+            </div>
+            <div class="wp-transcript">
+               <div class="row" id="edition_metadata">
+                  <div class="col-md-8 col-lg-8 col-sm-12 docinfo">
+                     <h1>A-Gf_A67_21_Grad_Part3</h1>
+                     <p class="document_info"></p>
+                     <p class="document_info archival_small"></p>
+                     <p class="document_info archival_small"> ( )</p>
+                     <p class="document_info archival_small"></p>
+                     <div class="revision_desc created"> maschinell erfasster Rohtext </div>
+                  </div>
+               </div>
+               <div id="container-resize" class="row transcript active">
+                  <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
+                     <div id="viewer">
+                        <div id="container_facs_1"></div>
+                     </div>
+                  </div>
+                  <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 text yes-index">
+                     <div id="section">
+                        <div class="card-body non_mimetic_lbs">
+                           <span class="anchor-pb"></span><span class="pb" source="57320162_1_A-Gf_A67_21-001r.jpg " n="1" style="--page_before: '0'; --beginning_page: '1';">
+                              <hr n="1"></span>
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           <span class="anchor-pb"></span><span class="pb" source="57320163_2_A-Gf_A67_21-001v.jpg" n="2" style="--page_before: '1'; --beginning_page: '2';">
+                              <hr n="2"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320165_3_A-Gf_A67_21-002r.jpg" n="3" style="--page_before: '2'; --beginning_page: '3';">
+                              <hr n="3"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320167_4_A-Gf_A67_21-002v.jpg" n="4" style="--page_before: '3'; --beginning_page: '4';">
+                              <hr n="4"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320169_5_A-Gf_A67_21-003r.jpg" n="5" style="--page_before: '4'; --beginning_page: '5';">
+                              <hr n="5"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320171_6_A-Gf_A67_21-003v.jpg" n="6" style="--page_before: '5'; --beginning_page: '6';">
+                              <hr n="6"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320173_7_A-Gf_A67_21-004r.jpg" n="7" style="--page_before: '6'; --beginning_page: '7';">
+                              <hr n="7"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320175_8_A-Gf_A67_21-004v.jpg" n="8" style="--page_before: '7'; --beginning_page: '8';">
+                              <hr n="8"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320177_9_A-Gf_A67_21-005r.jpg" n="9" style="--page_before: '8'; --beginning_page: '9';">
+                              <hr n="9"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320179_10_A-Gf_A67_21-005v.jpg" n="10" style="--page_before: '9'; --beginning_page: '10';">
+                              <hr n="10"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320181_11_A-Gf_A67_21-006r.jpg" n="11" style="--page_before: '10'; --beginning_page: '11';">
+                              <hr n="11"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320183_12_A-Gf_A67_21-006ra.jpg" n="12" style="--page_before: '11'; --beginning_page: '12';">
+                              <hr n="12"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320185_13_A-Gf_A67_21-006v.jpg" n="13" style="--page_before: '12'; --beginning_page: '13';">
+                              <hr n="13"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320187_14_A-Gf_A67_21-6va.jpg" n="14" style="--page_before: '13'; --beginning_page: '14';">
+                              <hr n="14"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320189_15_A-Gf_A67_21-007r.jpg" n="15" style="--page_before: '14'; --beginning_page: '15';">
+                              <hr n="15"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320191_16_A-Gf_A67_21-007v.jpg" n="16" style="--page_before: '15'; --beginning_page: '16';">
+                              <hr n="16"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320193_17_A-Gf_A67_21-008r.jpg" n="17" style="--page_before: '16'; --beginning_page: '17';">
+                              <hr n="17"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320195_18_A-Gf_A67_21-008v.jpg" n="18" style="--page_before: '17'; --beginning_page: '18';">
+                              <hr n="18"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320196_19_A-Gf_A67_21-009r.jpg" n="19" style="--page_before: '18'; --beginning_page: '19';">
+                              <hr n="19"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320198_20_A-Gf_A67_21-009v.jpg" n="20" style="--page_before: '19'; --beginning_page: '20';">
+                              <hr n="20"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320200_21_A-Gf_A67_21-010r.jpg" n="21" style="--page_before: '20'; --beginning_page: '21';">
+                              <hr n="21"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320202_22_A-Gf_A67_21-010v.jpg" n="22" style="--page_before: '21'; --beginning_page: '22';">
+                              <hr n="22"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320204_23_A-Gf_A67_21-011r.jpg" n="23" style="--page_before: '22'; --beginning_page: '23';">
+                              <hr n="23"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320206_24_A-Gf_A67_21-011v.jpg" n="24" style="--page_before: '23'; --beginning_page: '24';">
+                              <hr n="24"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320208_25_A-Gf_A67_21-012r.jpg" n="25" style="--page_before: '24'; --beginning_page: '25';">
+                              <hr n="25"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320210_26_A-Gf_A67_21-012v.jpg" n="26" style="--page_before: '25'; --beginning_page: '26';">
+                              <hr n="26"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320213_27_A-Gf_A67_21-013r.jpg" n="27" style="--page_before: '26'; --beginning_page: '27';">
+                              <hr n="27"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320215_28_A-Gf_A67_21-013v.jpg" n="28" style="--page_before: '27'; --beginning_page: '28';">
+                              <hr n="28"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320218_29_A-Gf_A67_21-014r.jpg" n="29" style="--page_before: '28'; --beginning_page: '29';">
+                              <hr n="29"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320220_30_A-Gf_A67_21-014v.jpg" n="30" style="--page_before: '29'; --beginning_page: '30';">
+                              <hr n="30"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320222_31_A-Gf_A67_21-015r.jpg" n="31" style="--page_before: '30'; --beginning_page: '31';">
+                              <hr n="31"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320223_32_A-Gf_A67_21-015v.jpg" n="32" style="--page_before: '31'; --beginning_page: '32';">
+                              <hr n="32"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320226_33_A-Gf_A67_21-016r.jpg" n="33" style="--page_before: '32'; --beginning_page: '33';">
+                              <hr n="33"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320227_34_A-Gf_A67_21-016v.jpg" n="34" style="--page_before: '33'; --beginning_page: '34';">
+                              <hr n="34"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320230_35_A-Gf_A67_21-017r.jpg" n="35" style="--page_before: '34'; --beginning_page: '35';">
+                              <hr n="35"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320232_36_A-Gf_A67_21-017v.jpg" n="36" style="--page_before: '35'; --beginning_page: '36';">
+                              <hr n="36"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320233_37_A-Gf_A67_21-018r.jpg" n="37" style="--page_before: '36'; --beginning_page: '37';">
+                              <hr n="37"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320235_38_A-Gf_A67_21-018v.jpg" n="38" style="--page_before: '37'; --beginning_page: '38';">
+                              <hr n="38"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320237_39_A-Gf_A67_21-019r.jpg" n="39" style="--page_before: '38'; --beginning_page: '39';">
+                              <hr n="39"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320239_40_A-Gf_A67_21-019v.jpg" n="40" style="--page_before: '39'; --beginning_page: '40';">
+                              <hr n="40"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320241_41_A-Gf_A67_21-020r.jpg" n="41" style="--page_before: '40'; --beginning_page: '41';">
+                              <hr n="41"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320243_42_A-Gf_A67_21-020v.jpg" n="42" style="--page_before: '41'; --beginning_page: '42';">
+                              <hr n="42"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320245_43_A-Gf_A67_21-021r.jpg" n="43" style="--page_before: '42'; --beginning_page: '43';">
+                              <hr n="43"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320247_44_A-Gf_A67_21-021v.jpg" n="44" style="--page_before: '43'; --beginning_page: '44';">
+                              <hr n="44"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320249_45_A-Gf_A67_21-022r.jpg" n="45" style="--page_before: '44'; --beginning_page: '45';">
+                              <hr n="45"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320251_46_A-Gf_A67_21-022v.jpg" n="46" style="--page_before: '45'; --beginning_page: '46';">
+                              <hr n="46"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320253_47_A-Gf_A67_21-023r.jpg" n="47" style="--page_before: '46'; --beginning_page: '47';">
+                              <hr n="47"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320255_48_A-Gf_A67_21-023v.jpg" n="48" style="--page_before: '47'; --beginning_page: '48';">
+                              <hr n="48"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320257_49_A-Gf_A67_21-024r.jpg" n="49" style="--page_before: '48'; --beginning_page: '49';">
+                              <hr n="49"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320260_50_A-Gf_A67_21-024v.jpg" n="50" style="--page_before: '49'; --beginning_page: '50';">
+                              <hr n="50"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320262_51_A-Gf_A67_21-025r.jpg" n="51" style="--page_before: '50'; --beginning_page: '51';">
+                              <hr n="51"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320264_52_A-Gf_A67_21-025v.jpg" n="52" style="--page_before: '51'; --beginning_page: '52';">
+                              <hr n="52"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320266_53_A-Gf_A67_21-026r.jpg" n="53" style="--page_before: '52'; --beginning_page: '53';">
+                              <hr n="53"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320268_54_A-Gf_A67_21-026v.jpg" n="54" style="--page_before: '53'; --beginning_page: '54';">
+                              <hr n="54"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320270_55_A-Gf_A67_21-027r.jpg" n="55" style="--page_before: '54'; --beginning_page: '55';">
+                              <hr n="55"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320272_56_A-Gf_A67_21-027v.jpg" n="56" style="--page_before: '55'; --beginning_page: '56';">
+                              <hr n="56"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320274_57_A-Gf_A67_21-028r.jpg" n="57" style="--page_before: '56'; --beginning_page: '57';">
+                              <hr n="57"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320277_58_A-Gf_A67_21-028v.jpg" n="58" style="--page_before: '57'; --beginning_page: '58';">
+                              <hr n="58"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320279_59_A-Gf_A67_21-029r.jpg" n="59" style="--page_before: '58'; --beginning_page: '59';">
+                              <hr n="59"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320280_60_A-Gf_A67_21-029v.jpg" n="60" style="--page_before: '59'; --beginning_page: '60';">
+                              <hr n="60"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320283_61_A-Gf_A67_21-030r.jpg" n="61" style="--page_before: '60'; --beginning_page: '61';">
+                              <hr n="61"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320285_62_A-Gf_A67_21-030v.jpg" n="62" style="--page_before: '61'; --beginning_page: '62';">
+                              <hr n="62"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320286_63_A-Gf_A67_21-031r.jpg" n="63" style="--page_before: '62'; --beginning_page: '63';">
+                              <hr n="63"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320288_64_A-Gf_A67_21-031v.jpg" n="64" style="--page_before: '63'; --beginning_page: '64';">
+                              <hr n="64"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320290_65_A-Gf_A67_21-032r.jpg" n="65" style="--page_before: '64'; --beginning_page: '65';">
+                              <hr n="65"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320292_66_A-Gf_A67_21-032v.jpg" n="66" style="--page_before: '65'; --beginning_page: '66';">
+                              <hr n="66"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320294_67_A-Gf_A67_21-033r.jpg" n="67" style="--page_before: '66'; --beginning_page: '67';">
+                              <hr n="67"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320296_68_A-Gf_A67_21-033v.jpg" n="68" style="--page_before: '67'; --beginning_page: '68';">
+                              <hr n="68"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320298_69_A-Gf_A67_21-034r.jpg" n="69" style="--page_before: '68'; --beginning_page: '69';">
+                              <hr n="69"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320300_70_A-Gf_A67_21-034v.jpg" n="70" style="--page_before: '69'; --beginning_page: '70';">
+                              <hr n="70"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320302_71_A-Gf_A67_21-035r.jpg" n="71" style="--page_before: '70'; --beginning_page: '71';">
+                              <hr n="71"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320305_72_A-Gf_A67_21-035v.jpg" n="72" style="--page_before: '71'; --beginning_page: '72';">
+                              <hr n="72"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320307_73_A-Gf_A67_21-036r.jpg" n="73" style="--page_before: '72'; --beginning_page: '73';">
+                              <hr n="73"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320309_74_A-Gf_A67_21-036v.jpg" n="74" style="--page_before: '73'; --beginning_page: '74';">
+                              <hr n="74"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320311_75_A-Gf_A67_21-037r.jpg" n="75" style="--page_before: '74'; --beginning_page: '75';">
+                              <hr n="75"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320313_76_A-Gf_A67_21-037v.jpg" n="76" style="--page_before: '75'; --beginning_page: '76';">
+                              <hr n="76"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320315_77_A-Gf_A67_21-038r.jpg" n="77" style="--page_before: '76'; --beginning_page: '77';">
+                              <hr n="77"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320317_78_A-Gf_A67_21-038v.jpg" n="78" style="--page_before: '77'; --beginning_page: '78';">
+                              <hr n="78"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320319_79_A-Gf_A67_21-039r.jpg" n="79" style="--page_before: '78'; --beginning_page: '79';">
+                              <hr n="79"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320321_80_A-Gf_A67_21-039v.jpg" n="80" style="--page_before: '79'; --beginning_page: '80';">
+                              <hr n="80"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320323_81_A-Gf_A67_21-040r.jpg" n="81" style="--page_before: '80'; --beginning_page: '81';">
+                              <hr n="81"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320325_82_A-Gf_A67_21-040v.jpg" n="82" style="--page_before: '81'; --beginning_page: '82';">
+                              <hr n="82"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320327_83_A-Gf_A67_21-041r.jpg" n="83" style="--page_before: '82'; --beginning_page: '83';">
+                              <hr n="83"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320328_84_A-Gf_A67_21-041v.jpg" n="84" style="--page_before: '83'; --beginning_page: '84';">
+                              <hr n="84"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320330_85_A-Gf_A67_21-042r.jpg" n="85" style="--page_before: '84'; --beginning_page: '85';">
+                              <hr n="85"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320333_86_A-Gf_A67_21-042v.jpg" n="86" style="--page_before: '85'; --beginning_page: '86';">
+                              <hr n="86"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320335_87_A-Gf_A67_21-043r.jpg" n="87" style="--page_before: '86'; --beginning_page: '87';">
+                              <hr n="87"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320337_88_A-Gf_A67_21-043v.jpg" n="88" style="--page_before: '87'; --beginning_page: '88';">
+                              <hr n="88"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320338_89_A-Gf_A67_21-044r.jpg" n="89" style="--page_before: '88'; --beginning_page: '89';">
+                              <hr n="89"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320341_90_A-Gf_A67_21-044v.jpg" n="90" style="--page_before: '89'; --beginning_page: '90';">
+                              <hr n="90"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320342_91_A-Gf_A67_21-045r.jpg" n="91" style="--page_before: '90'; --beginning_page: '91';">
+                              <hr n="91"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320345_92_A-Gf_A67_21-045v.jpg" n="92" style="--page_before: '91'; --beginning_page: '92';">
+                              <hr n="92"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320347_93_A-Gf_A67_21-046r.jpg" n="93" style="--page_before: '92'; --beginning_page: '93';">
+                              <hr n="93"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320348_94_A-Gf_A67_21-046v.jpg" n="94" style="--page_before: '93'; --beginning_page: '94';">
+                              <hr n="94"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320350_95_A-Gf_A67_21-047r.jpg" n="95" style="--page_before: '94'; --beginning_page: '95';">
+                              <hr n="95"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320352_96_A-Gf_A67_21-047v.jpg" n="96" style="--page_before: '95'; --beginning_page: '96';">
+                              <hr n="96"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320354_97_A-Gf_A67_21-048r.jpg" n="97" style="--page_before: '96'; --beginning_page: '97';">
+                              <hr n="97"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320356_98_A-Gf_A67_21-048v.jpg" n="98" style="--page_before: '97'; --beginning_page: '98';">
+                              <hr n="98"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320358_99_A-Gf_A67_21-049r.jpg" n="99" style="--page_before: '98'; --beginning_page: '99';">
+                              <hr n="99"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320360_100_A-Gf_A67_21-049v.jpg" n="100" style="--page_before: '99'; --beginning_page: '100';">
+                              <hr n="100"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320362_101_A-Gf_A67_21-050r.jpg" n="101" style="--page_before: '100'; --beginning_page: '101';">
+                              <hr n="101"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320364_102_A-Gf_A67_21-050v.jpg" n="102" style="--page_before: '101'; --beginning_page: '102';">
+                              <hr n="102"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320366_103_A-Gf_A67_21-051r.jpg" n="103" style="--page_before: '102'; --beginning_page: '103';">
+                              <hr n="103"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320368_104_A-Gf_A67_21-051v.jpg" n="104" style="--page_before: '103'; --beginning_page: '104';">
+                              <hr n="104"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320370_105_A-Gf_A67_21-052r.jpg" n="105" style="--page_before: '104'; --beginning_page: '105';">
+                              <hr n="105"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320372_106_A-Gf_A67_21-052v.jpg" n="106" style="--page_before: '105'; --beginning_page: '106';">
+                              <hr n="106"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320374_107_A-Gf_A67_21-053r.jpg" n="107" style="--page_before: '106'; --beginning_page: '107';">
+                              <hr n="107"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320376_108_A-Gf_A67_21-053v.jpg" n="108" style="--page_before: '107'; --beginning_page: '108';">
+                              <hr n="108"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320378_109_A-Gf_A67_21-054r.jpg" n="109" style="--page_before: '108'; --beginning_page: '109';">
+                              <hr n="109"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320380_110_A-Gf_A67_21-054v.jpg" n="110" style="--page_before: '109'; --beginning_page: '110';">
+                              <hr n="110"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320381_111_A-Gf_A67_21-055r.jpg" n="111" style="--page_before: '110'; --beginning_page: '111';">
+                              <hr n="111"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320383_112_A-Gf_A67_21-055v.jpg" n="112" style="--page_before: '111'; --beginning_page: '112';">
+                              <hr n="112"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320385_113_A-Gf_A67_21-056r.jpg" n="113" style="--page_before: '112'; --beginning_page: '113';">
+                              <hr n="113"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320387_114_A-Gf_A67_21-056v.jpg" n="114" style="--page_before: '113'; --beginning_page: '114';">
+                              <hr n="114"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320389_115_A-Gf_A67_21-057r.jpg" n="115" style="--page_before: '114'; --beginning_page: '115';">
+                              <hr n="115"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320391_116_A-Gf_A67_21-057v.jpg" n="116" style="--page_before: '115'; --beginning_page: '116';">
+                              <hr n="116"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320393_117_A-Gf_A67_21-058r.jpg" n="117" style="--page_before: '116'; --beginning_page: '117';">
+                              <hr n="117"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320396_118_A-Gf_A67_21-058v.jpg" n="118" style="--page_before: '117'; --beginning_page: '118';">
+                              <hr n="118"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320399_119_A-Gf_A67_21-059r.jpg" n="119" style="--page_before: '118'; --beginning_page: '119';">
+                              <hr n="119"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320401_120_A-Gf_A67_21-059v.jpg" n="120" style="--page_before: '119'; --beginning_page: '120';">
+                              <hr n="120"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320404_121_A-Gf_A67_21-060r.jpg" n="121" style="--page_before: '120'; --beginning_page: '121';">
+                              <hr n="121"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320406_122_A-Gf_A67_21-060v.jpg" n="122" style="--page_before: '121'; --beginning_page: '122';">
+                              <hr n="122"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320409_123_A-Gf_A67_21-061r.jpg" n="123" style="--page_before: '122'; --beginning_page: '123';">
+                              <hr n="123"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320413_124_A-Gf_A67_21-061v.jpg" n="124" style="--page_before: '123'; --beginning_page: '124';">
+                              <hr n="124"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320415_125_A-Gf_A67_21-062r.jpg" n="125" style="--page_before: '124'; --beginning_page: '125';">
+                              <hr n="125"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320417_126_A-Gf_A67_21-062v.jpg" n="126" style="--page_before: '125'; --beginning_page: '126';">
+                              <hr n="126"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320419_127_A-Gf_A67_21-063r.jpg" n="127" style="--page_before: '126'; --beginning_page: '127';">
+                              <hr n="127"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320421_128_A-Gf_A67_21-063v.jpg" n="128" style="--page_before: '127'; --beginning_page: '128';">
+                              <hr n="128"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320424_129_A-Gf_A67_21-064r.jpg" n="129" style="--page_before: '128'; --beginning_page: '129';">
+                              <hr n="129"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320427_130_A-Gf_A67_21-064v.jpg" n="130" style="--page_before: '129'; --beginning_page: '130';">
+                              <hr n="130"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320429_131_A-Gf_A67_21-065r.jpg" n="131" style="--page_before: '130'; --beginning_page: '131';">
+                              <hr n="131"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320432_132_A-Gf_A67_21-065v.jpg" n="132" style="--page_before: '131'; --beginning_page: '132';">
+                              <hr n="132"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320435_133_A-Gf_A67_21-066r.jpg" n="133" style="--page_before: '132'; --beginning_page: '133';">
+                              <hr n="133"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320437_134_A-Gf_A67_21-066v.jpg" n="134" style="--page_before: '133'; --beginning_page: '134';">
+                              <hr n="134"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320440_135_A-Gf_A67_21-067r.jpg" n="135" style="--page_before: '134'; --beginning_page: '135';">
+                              <hr n="135"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320442_136_A-Gf_A67_21-067v.jpg" n="136" style="--page_before: '135'; --beginning_page: '136';">
+                              <hr n="136"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320445_137_A-Gf_A67_21-068r.jpg" n="137" style="--page_before: '136'; --beginning_page: '137';">
+                              <hr n="137"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320448_138_A-Gf_A67_21-068v.jpg" n="138" style="--page_before: '137'; --beginning_page: '138';">
+                              <hr n="138"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320450_139_A-Gf_A67_21-069r.jpg" n="139" style="--page_before: '138'; --beginning_page: '139';">
+                              <hr n="139"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320453_140_A-Gf_A67_21-069v.jpg" n="140" style="--page_before: '139'; --beginning_page: '140';">
+                              <hr n="140"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320455_141_A-Gf_A67_21-070r.jpg" n="141" style="--page_before: '140'; --beginning_page: '141';">
+                              <hr n="141"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320458_142_A-Gf_A67_21-070v.jpg" n="142" style="--page_before: '141'; --beginning_page: '142';">
+                              <hr n="142"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320463_143_A-Gf_A67_21-071r.jpg" n="143" style="--page_before: '142'; --beginning_page: '143';">
+                              <hr n="143"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320465_144_A-Gf_A67_21-071v.jpg" n="144" style="--page_before: '143'; --beginning_page: '144';">
+                              <hr n="144"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320468_145_A-Gf_A67_21-072r.jpg" n="145" style="--page_before: '144'; --beginning_page: '145';">
+                              <hr n="145"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320470_146_A-Gf_A67_21-072v.jpg" n="146" style="--page_before: '145'; --beginning_page: '146';">
+                              <hr n="146"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320473_147_A-Gf_A67_21-073r.jpg" n="147" style="--page_before: '146'; --beginning_page: '147';">
+                              <hr n="147"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320475_148_A-Gf_A67_21-073v.jpg" n="148" style="--page_before: '147'; --beginning_page: '148';">
+                              <hr n="148"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320478_149_A-Gf_A67_21-074r.jpg" n="149" style="--page_before: '148'; --beginning_page: '149';">
+                              <hr n="149"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320480_150_A-Gf_A67_21-074v.jpg" n="150" style="--page_before: '149'; --beginning_page: '150';">
+                              <hr n="150"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320483_151_A-Gf_A67_21-075r.jpg" n="151" style="--page_before: '150'; --beginning_page: '151';">
+                              <hr n="151"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320485_152_A-Gf_A67_21-075v.jpg" n="152" style="--page_before: '151'; --beginning_page: '152';">
+                              <hr n="152"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320488_153_A-Gf_A67_21-076r.jpg" n="153" style="--page_before: '152'; --beginning_page: '153';">
+                              <hr n="153"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320490_154_A-Gf_A67_21-076v.jpg" n="154" style="--page_before: '153'; --beginning_page: '154';">
+                              <hr n="154"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320493_155_A-Gf_A67_21-077r.jpg" n="155" style="--page_before: '154'; --beginning_page: '155';">
+                              <hr n="155"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320495_156_A-Gf_A67_21-077v.jpg" n="156" style="--page_before: '155'; --beginning_page: '156';">
+                              <hr n="156"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320498_157_A-Gf_A67_21-078r.jpg" n="157" style="--page_before: '156'; --beginning_page: '157';">
+                              <hr n="157"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320500_158_A-Gf_A67_21-078v.jpg" n="158" style="--page_before: '157'; --beginning_page: '158';">
+                              <hr n="158"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320503_159_A-Gf_A67_21-079r.jpg" n="159" style="--page_before: '158'; --beginning_page: '159';">
+                              <hr n="159"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320505_160_A-Gf_A67_21-079v.jpg" n="160" style="--page_before: '159'; --beginning_page: '160';">
+                              <hr n="160"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320508_161_A-Gf_A67_21-080r.jpg" n="161" style="--page_before: '160'; --beginning_page: '161';">
+                              <hr n="161"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320510_162_A-Gf_A67_21-080ra.jpg" n="162" style="--page_before: '161'; --beginning_page: '162';">
+                              <hr n="162"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320512_163_A-Gf_A67_21-080v.jpg" n="163" style="--page_before: '162'; --beginning_page: '163';">
+                              <hr n="163"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320513_164_A-Gf_A67_21-80va.jpg" n="164" style="--page_before: '163'; --beginning_page: '164';">
+                              <hr n="164"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320515_165_A-Gf_A67_21-081r.jpg" n="165" style="--page_before: '164'; --beginning_page: '165';">
+                              <hr n="165"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320516_166_A-Gf_A67_21-081v.jpg" n="166" style="--page_before: '165'; --beginning_page: '166';">
+                              <hr n="166"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320518_167_A-Gf_A67_21-082r.jpg" n="167" style="--page_before: '166'; --beginning_page: '167';">
+                              <hr n="167"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320519_168_A-Gf_A67_21-082v.jpg" n="168" style="--page_before: '167'; --beginning_page: '168';">
+                              <hr n="168"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320521_169_A-Gf_A67_21-083r.jpg" n="169" style="--page_before: '168'; --beginning_page: '169';">
+                              <hr n="169"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320522_170_A-Gf_A67_21-083v.jpg" n="170" style="--page_before: '169'; --beginning_page: '170';">
+                              <hr n="170"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320524_171_A-Gf_A67_21-084r.jpg" n="171" style="--page_before: '170'; --beginning_page: '171';">
+                              <hr n="171"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320525_172_A-Gf_A67_21-084v.jpg" n="172" style="--page_before: '171'; --beginning_page: '172';">
+                              <hr n="172"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320527_173_A-Gf_A67_21-085r.jpg" n="173" style="--page_before: '172'; --beginning_page: '173';">
+                              <hr n="173"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320528_174_A-Gf_A67_21-085v.jpg" n="174" style="--page_before: '173'; --beginning_page: '174';">
+                              <hr n="174"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320530_175_A-Gf_A67_21-086r.jpg" n="175" style="--page_before: '174'; --beginning_page: '175';">
+                              <hr n="175"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320531_176_A-Gf_A67_21-086v.jpg" n="176" style="--page_before: '175'; --beginning_page: '176';">
+                              <hr n="176"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320533_177_A-Gf_A67_21-087r.jpg" n="177" style="--page_before: '176'; --beginning_page: '177';">
+                              <hr n="177"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320535_178_A-Gf_A67_21-087v.jpg" n="178" style="--page_before: '177'; --beginning_page: '178';">
+                              <hr n="178"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320536_179_A-Gf_A67_21-088r.jpg" n="179" style="--page_before: '178'; --beginning_page: '179';">
+                              <hr n="179"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320538_180_A-Gf_A67_21-088v.jpg" n="180" style="--page_before: '179'; --beginning_page: '180';">
+                              <hr n="180"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320539_181_A-Gf_A67_21-089r.jpg" n="181" style="--page_before: '180'; --beginning_page: '181';">
+                              <hr n="181"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320541_182_A-Gf_A67_21-089v.jpg" n="182" style="--page_before: '181'; --beginning_page: '182';">
+                              <hr n="182"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320542_183_A-Gf_A67_21-090r.jpg" n="183" style="--page_before: '182'; --beginning_page: '183';">
+                              <hr n="183"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320543_184_A-Gf_A67_21-090v.jpg" n="184" style="--page_before: '183'; --beginning_page: '184';">
+                              <hr n="184"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320546_185_A-Gf_A67_21-091r.jpg" n="185" style="--page_before: '184'; --beginning_page: '185';">
+                              <hr n="185"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320547_186_A-Gf_A67_21-091v.jpg" n="186" style="--page_before: '185'; --beginning_page: '186';">
+                              <hr n="186"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320549_187_A-Gf_A67_21-092r.jpg" n="187" style="--page_before: '186'; --beginning_page: '187';">
+                              <hr n="187"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320550_188_A-Gf_A67_21-092v.jpg" n="188" style="--page_before: '187'; --beginning_page: '188';">
+                              <hr n="188"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320552_189_A-Gf_A67_21-093r.jpg" n="189" style="--page_before: '188'; --beginning_page: '189';">
+                              <hr n="189"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320553_190_A-Gf_A67_21-093v.jpg" n="190" style="--page_before: '189'; --beginning_page: '190';">
+                              <hr n="190"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320555_191_A-Gf_A67_21-094r.jpg" n="191" style="--page_before: '190'; --beginning_page: '191';">
+                              <hr n="191"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320556_192_A-Gf_A67_21-094v.jpg" n="192" style="--page_before: '191'; --beginning_page: '192';">
+                              <hr n="192"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320558_193_A-Gf_A67_21-095r.jpg" n="193" style="--page_before: '192'; --beginning_page: '193';">
+                              <hr n="193"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320559_194_A-Gf_A67_21-095v.jpg" n="194" style="--page_before: '193'; --beginning_page: '194';">
+                              <hr n="194"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320560_195_A-Gf_A67_21-096r.jpg" n="195" style="--page_before: '194'; --beginning_page: '195';">
+                              <hr n="195"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320562_196_A-Gf_A67_21-096v.jpg" n="196" style="--page_before: '195'; --beginning_page: '196';">
+                              <hr n="196"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320564_197_A-Gf_A67_21-097r.jpg" n="197" style="--page_before: '196'; --beginning_page: '197';">
+                              <hr n="197"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320565_198_A-Gf_A67_21-097v.jpg" n="198" style="--page_before: '197'; --beginning_page: '198';">
+                              <hr n="198"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320567_199_A-Gf_A67_21-098r.jpg" n="199" style="--page_before: '198'; --beginning_page: '199';">
+                              <hr n="199"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320569_200_A-Gf_A67_21-098v.jpg" n="200" style="--page_before: '199'; --beginning_page: '200';">
+                              <hr n="200"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320570_201_A-Gf_A67_21-099r.jpg" n="201" style="--page_before: '200'; --beginning_page: '201';">
+                              <hr n="201"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320572_202_A-Gf_A67_21-099v.jpg" n="202" style="--page_before: '201'; --beginning_page: '202';">
+                              <hr n="202"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320573_203_A-Gf_A67_21-100r.jpg" n="203" style="--page_before: '202'; --beginning_page: '203';">
+                              <hr n="203"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320575_204_A-Gf_A67_21-100v.jpg" n="204" style="--page_before: '203'; --beginning_page: '204';">
+                              <hr n="204"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320576_205_A-Gf_A67_21-101r.jpg" n="205" style="--page_before: '204'; --beginning_page: '205';">
+                              <hr n="205"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320578_206_A-Gf_A67_21-101v.jpg" n="206" style="--page_before: '205'; --beginning_page: '206';">
+                              <hr n="206"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320579_207_A-Gf_A67_21-102r.jpg" n="207" style="--page_before: '206'; --beginning_page: '207';">
+                              <hr n="207"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320581_208_A-Gf_A67_21-102v.jpg" n="208" style="--page_before: '207'; --beginning_page: '208';">
+                              <hr n="208"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320582_209_A-Gf_A67_21-103r.jpg" n="209" style="--page_before: '208'; --beginning_page: '209';">
+                              <hr n="209"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320584_210_A-Gf_A67_21-103v.jpg" n="210" style="--page_before: '209'; --beginning_page: '210';">
+                              <hr n="210"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320585_211_A-Gf_A67_21-104r.jpg" n="211" style="--page_before: '210'; --beginning_page: '211';">
+                              <hr n="211"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320587_212_A-Gf_A67_21-104v.jpg" n="212" style="--page_before: '211'; --beginning_page: '212';">
+                              <hr n="212"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320589_213_A-Gf_A67_21-105r.jpg" n="213" style="--page_before: '212'; --beginning_page: '213';">
+                              <hr n="213"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320590_214_A-Gf_A67_21-105v.jpg" n="214" style="--page_before: '213'; --beginning_page: '214';">
+                              <hr n="214"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320591_215_A-Gf_A67_21-106r.jpg" n="215" style="--page_before: '214'; --beginning_page: '215';">
+                              <hr n="215"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320593_216_A-Gf_A67_21-106v.jpg" n="216" style="--page_before: '215'; --beginning_page: '216';">
+                              <hr n="216"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320595_217_A-Gf_A67_21-107r.jpg" n="217" style="--page_before: '216'; --beginning_page: '217';">
+                              <hr n="217"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320596_218_A-Gf_A67_21-107v.jpg" n="218" style="--page_before: '217'; --beginning_page: '218';">
+                              <hr n="218"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320598_219_A-Gf_A67_21-108r.jpg" n="219" style="--page_before: '218'; --beginning_page: '219';">
+                              <hr n="219"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320600_220_A-Gf_A67_21-108v.jpg" n="220" style="--page_before: '219'; --beginning_page: '220';">
+                              <hr n="220"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320601_221_A-Gf_A67_21-109r.jpg" n="221" style="--page_before: '220'; --beginning_page: '221';">
+                              <hr n="221"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320602_222_A-Gf_A67_21-109v.jpg" n="222" style="--page_before: '221'; --beginning_page: '222';">
+                              <hr n="222"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320604_223_A-Gf_A67_21-110r.jpg" n="223" style="--page_before: '222'; --beginning_page: '223';">
+                              <hr n="223"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320606_224_A-Gf_A67_21-110v.jpg" n="224" style="--page_before: '223'; --beginning_page: '224';">
+                              <hr n="224"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320607_225_A-Gf_A67_21-111r.jpg" n="225" style="--page_before: '224'; --beginning_page: '225';">
+                              <hr n="225"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320609_226_A-Gf_A67_21-111v.jpg" n="226" style="--page_before: '225'; --beginning_page: '226';">
+                              <hr n="226"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320610_227_A-Gf_A67_21-112r.jpg" n="227" style="--page_before: '226'; --beginning_page: '227';">
+                              <hr n="227"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320611_228_A-Gf_A67_21-112v.jpg" n="228" style="--page_before: '227'; --beginning_page: '228';">
+                              <hr n="228"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320613_229_A-Gf_A67_21-113r.jpg" n="229" style="--page_before: '228'; --beginning_page: '229';">
+                              <hr n="229"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320614_230_A-Gf_A67_21-113v.jpg" n="230" style="--page_before: '229'; --beginning_page: '230';">
+                              <hr n="230"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320616_231_A-Gf_A67_21-114r.jpg" n="231" style="--page_before: '230'; --beginning_page: '231';">
+                              <hr n="231"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320617_232_A-Gf_A67_21-114ra.jpg" n="232" style="--page_before: '231'; --beginning_page: '232';">
+                              <hr n="232"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320619_233_A-Gf_A67_21-114v.jpg" n="233" style="--page_before: '232'; --beginning_page: '233';">
+                              <hr n="233"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320620_234_A-Gf_A67_21-114va.jpg" n="234" style="--page_before: '233'; --beginning_page: '234';">
+                              <hr n="234"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320622_235_A-Gf_A67_21-115r.jpg" n="235" style="--page_before: '234'; --beginning_page: '235';">
+                              <hr n="235"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320623_236_A-Gf_A67_21-115v.jpg" n="236" style="--page_before: '235'; --beginning_page: '236';">
+                              <hr n="236"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320625_237_A-Gf_A67_21-116r.jpg" n="237" style="--page_before: '236'; --beginning_page: '237';">
+                              <hr n="237"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320627_238_A-Gf_A67_21-116v.jpg" n="238" style="--page_before: '237'; --beginning_page: '238';">
+                              <hr n="238"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320628_239_A-Gf_A67_21-117r.jpg" n="239" style="--page_before: '238'; --beginning_page: '239';">
+                              <hr n="239"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320630_240_A-Gf_A67_21-117v.jpg" n="240" style="--page_before: '239'; --beginning_page: '240';">
+                              <hr n="240"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320631_241_A-Gf_A67_21-118r.jpg" n="241" style="--page_before: '240'; --beginning_page: '241';">
+                              <hr n="241"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320633_242_A-Gf_A67_21-118v.jpg" n="242" style="--page_before: '241'; --beginning_page: '242';">
+                              <hr n="242"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320634_243_A-Gf_A67_21-119r.jpg" n="243" style="--page_before: '242'; --beginning_page: '243';">
+                              <hr n="243"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320636_244_A-Gf_A67_21-119v.jpg" n="244" style="--page_before: '243'; --beginning_page: '244';">
+                              <hr n="244"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320638_245_A-Gf_A67_21-120r.jpg" n="245" style="--page_before: '244'; --beginning_page: '245';">
+                              <hr n="245"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320640_246_A-Gf_A67_21-120v.jpg" n="246" style="--page_before: '245'; --beginning_page: '246';">
+                              <hr n="246"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320641_247_A-Gf_A67_21-121r.jpg" n="247" style="--page_before: '246'; --beginning_page: '247';">
+                              <hr n="247"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320643_248_A-Gf_A67_21-121v.jpg" n="248" style="--page_before: '247'; --beginning_page: '248';">
+                              <hr n="248"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320644_249_A-Gf_A67_21-122r.jpg" n="249" style="--page_before: '248'; --beginning_page: '249';">
+                              <hr n="249"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320646_250_A-Gf_A67_21-122v.jpg" n="250" style="--page_before: '249'; --beginning_page: '250';">
+                              <hr n="250"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320647_251_A-Gf_A67_21-123r.jpg" n="251" style="--page_before: '250'; --beginning_page: '251';">
+                              <hr n="251"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320649_252_A-Gf_A67_21-123v.jpg" n="252" style="--page_before: '251'; --beginning_page: '252';">
+                              <hr n="252"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320650_253_A-Gf_A67_21-124r.jpg" n="253" style="--page_before: '252'; --beginning_page: '253';">
+                              <hr n="253"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320653_254_A-Gf_A67_21-124v.jpg" n="254" style="--page_before: '253'; --beginning_page: '254';">
+                              <hr n="254"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320655_255_A-Gf_A67_21-125r.jpg" n="255" style="--page_before: '254'; --beginning_page: '255';">
+                              <hr n="255"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320659_256_A-Gf_A67_21-125v.jpg" n="256" style="--page_before: '255'; --beginning_page: '256';">
+                              <hr n="256"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320661_257_A-Gf_A67_21-126r.jpg" n="257" style="--page_before: '256'; --beginning_page: '257';">
+                              <hr n="257"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320664_258_A-Gf_A67_21-126v.jpg" n="258" style="--page_before: '257'; --beginning_page: '258';">
+                              <hr n="258"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320667_259_A-Gf_A67_21-127r.jpg" n="259" style="--page_before: '258'; --beginning_page: '259';">
+                              <hr n="259"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320670_260_A-Gf_A67_21-127v.jpg" n="260" style="--page_before: '259'; --beginning_page: '260';">
+                              <hr n="260"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320672_261_A-Gf_A67_21-128r.jpg" n="261" style="--page_before: '260'; --beginning_page: '261';">
+                              <hr n="261"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320676_262_A-Gf_A67_21-128v.jpg" n="262" style="--page_before: '261'; --beginning_page: '262';">
+                              <hr n="262"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320682_263_A-Gf_A67_21-129r.jpg" n="263" style="--page_before: '262'; --beginning_page: '263';">
+                              <hr n="263"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320684_264_A-Gf_A67_21-129v.jpg" n="264" style="--page_before: '263'; --beginning_page: '264';">
+                              <hr n="264"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320689_265_A-Gf_A67_21-130r.jpg" n="265" style="--page_before: '264'; --beginning_page: '265';">
+                              <hr n="265"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320693_266_A-Gf_A67_21-130v.jpg" n="266" style="--page_before: '265'; --beginning_page: '266';">
+                              <hr n="266"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320698_267_A-Gf_A67_21-131r.jpg" n="267" style="--page_before: '266'; --beginning_page: '267';">
+                              <hr n="267"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320702_268_A-Gf_A67_21-131v.jpg" n="268" style="--page_before: '267'; --beginning_page: '268';">
+                              <hr n="268"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320707_269_A-Gf_A67_21-132r.jpg" n="269" style="--page_before: '268'; --beginning_page: '269';">
+                              <hr n="269"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320711_270_A-Gf_A67_21-132v.jpg" n="270" style="--page_before: '269'; --beginning_page: '270';">
+                              <hr n="270"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320715_271_A-Gf_A67_21-133r.jpg" n="271" style="--page_before: '270'; --beginning_page: '271';">
+                              <hr n="271"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320719_272_A-Gf_A67_21-133v.jpg" n="272" style="--page_before: '271'; --beginning_page: '272';">
+                              <hr n="272"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320722_273_A-Gf_A67_21-134r.jpg" n="273" style="--page_before: '272'; --beginning_page: '273';">
+                              <hr n="273"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320725_274_A-Gf_A67_21-134v.jpg" n="274" style="--page_before: '273'; --beginning_page: '274';">
+                              <hr n="274"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320729_275_A-Gf_A67_21-135r.jpg" n="275" style="--page_before: '274'; --beginning_page: '275';">
+                              <hr n="275"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320732_276_A-Gf_A67_21-135v.jpg" n="276" style="--page_before: '275'; --beginning_page: '276';">
+                              <hr n="276"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320736_277_A-Gf_A67_21-136r.jpg" n="277" style="--page_before: '276'; --beginning_page: '277';">
+                              <hr n="277"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320740_278_A-Gf_A67_21-136v.jpg" n="278" style="--page_before: '277'; --beginning_page: '278';">
+                              <hr n="278"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320743_279_A-Gf_A67_21-137r.jpg" n="279" style="--page_before: '278'; --beginning_page: '279';">
+                              <hr n="279"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320748_280_A-Gf_A67_21-137v.jpg" n="280" style="--page_before: '279'; --beginning_page: '280';">
+                              <hr n="280"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320752_281_A-Gf_A67_21-138r.jpg" n="281" style="--page_before: '280'; --beginning_page: '281';">
+                              <hr n="281"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320756_282_A-Gf_A67_21-138v.jpg" n="282" style="--page_before: '281'; --beginning_page: '282';">
+                              <hr n="282"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320759_283_A-Gf_A67_21-139r.jpg" n="283" style="--page_before: '282'; --beginning_page: '283';">
+                              <hr n="283"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320764_284_A-Gf_A67_21-139v.jpg" n="284" style="--page_before: '283'; --beginning_page: '284';">
+                              <hr n="284"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320767_285_A-Gf_A67_21-140r.jpg" n="285" style="--page_before: '284'; --beginning_page: '285';">
+                              <hr n="285"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320772_286_A-Gf_A67_21-140v.jpg" n="286" style="--page_before: '285'; --beginning_page: '286';">
+                              <hr n="286"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320776_287_A-Gf_A67_21-141r.jpg" n="287" style="--page_before: '286'; --beginning_page: '287';">
+                              <hr n="287"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320780_288_A-Gf_A67_21-141v.jpg" n="288" style="--page_before: '287'; --beginning_page: '288';">
+                              <hr n="288"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320782_289_A-Gf_A67_21-142r.jpg" n="289" style="--page_before: '288'; --beginning_page: '289';">
+                              <hr n="289"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320788_290_A-Gf_A67_21-142v.jpg" n="290" style="--page_before: '289'; --beginning_page: '290';">
+                              <hr n="290"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320791_291_A-Gf_A67_21-143r.jpg" n="291" style="--page_before: '290'; --beginning_page: '291';">
+                              <hr n="291"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320795_292_A-Gf_A67_21-143v.jpg" n="292" style="--page_before: '291'; --beginning_page: '292';">
+                              <hr n="292"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320797_293_A-Gf_A67_21-144r.jpg" n="293" style="--page_before: '292'; --beginning_page: '293';">
+                              <hr n="293"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320802_294_A-Gf_A67_21-144v.jpg" n="294" style="--page_before: '293'; --beginning_page: '294';">
+                              <hr n="294"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320805_295_A-Gf_A67_21-145r.jpg" n="295" style="--page_before: '294'; --beginning_page: '295';">
+                              <hr n="295"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320809_296_A-Gf_A67_21-145v.jpg" n="296" style="--page_before: '295'; --beginning_page: '296';">
+                              <hr n="296"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320811_297_A-Gf_A67_21-HD.jpg" n="297" style="--page_before: '296'; --beginning_page: '297';">
+                              <hr n="297"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320816_298_A-Gf_A67_21-HDS.jpg" n="298" style="--page_before: '297'; --beginning_page: '298';">
+                              <hr n="298"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320819_299_A-Gf_A67_21-VD.jpg" n="299" style="--page_before: '298'; --beginning_page: '299';">
+                              <hr n="299"></span>
+                           <span class="anchor-pb"></span><span class="pb" source="57320823_300_A-Gf_A67_21-VDS.jpg" n="300" style="--page_before: '299'; --beginning_page: '300';">
+                              <hr n="300"></span>
+                           </div>
                      </div>
                   </div>
                </div>
             </div>
-            <div class="float-end ml-auto"><a href="https://github.com/ofmgraz/ofm-static"><i class="bi bi-github"></i></a></div>
          </div>
-      </footer>
-      <div  class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary" style="text-align:center; padding:0.4rem 0; font-size: 0.9rem;"> © Copyright OEAW | <a href="imprint.html">Impressum</a></div><script  src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script><script  src="js/listStopProp.js"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script><script >
+         <footer  class="footer mt-auto py-3 bg-body-tertiary">
+            <div class="container-fluid" id="footer-full-content" tabindex="-1">
+               <div class="footer-separator justify-content-center">
+                  <h5 class="font-weight-bold">KONTAKT</h5>
+               </div>
+               <div class="row justify-content-center">
+                  <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6  ml-auto  text-center ">
+                     <div class="textwidget custom-html-widget"><a href="https://www.oeaw.ac.at/acdh/"><img src="https://fundament.acdh.oeaw.ac.at/common-assets/images/acdh_logo.svg" class="image" alt="ACDH Logo" style="max-width: 90%; height: auto;" title="ACDH Logo"></a></div>
+                  </div>
+                  <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
+                     <div class="textwidget custom-html-widget">
+                        <h6 class="font-weight-bold">ACDH-CH</h6>
+                        <p>Austrian Centre for Digital Humanities <br/> and Cultural Heritage
+                           <br/> Österreichische Akademie der Wissenschaften </p>
+                        <p> Bäckerstraße 13 <br/> 1010 Wien </p>
+                        <p> T: +43 1 51581-2200 <br/> E: <a href="mailto:acdh-ch-helpdesk@oeaw.ac.at                                 ">acdh-ch-helpdesk(at)oeaw.ac.at</a></p>
+                     </div>
+                  </div>
+                  <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
+                     <div class="row">
+                        <div class="textwidget custom-html-widget">
+                           <h6 class="font-weight-bold">HELPDESK</h6>
+                           <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie
+                              sich bitte an den ACDH-CH Helpdesk.</p>
+                           <p><a class="helpdesk-button" href="mailto:acdh-ch-helpdesk@oeaw.ac.at">e-Mail</a></p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="float-end ml-auto"><a href="https://github.com/ofmgraz/ofm-static"><i class="bi bi-github"></i></a></div>
+            </div>
+         </footer>
+         <div  class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary" style="text-align:center; padding:0.4rem 0; font-size: 0.9rem;"> © Copyright OEAW | <a href="imprint.html">Impressum</a></div><script  src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script><script  src="js/listStopProp.js"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script><script >
 function addDarkmodeWidget() {
 	new Darkmode().showWidget();
 }
 window.addEventListener('load', addDarkmodeWidget);
-</script><script  src="js/i18n.js"></script></body>
+</script><script  src="js/i18n.js"></script></div><script src="https://unpkg.com/de-micro-editor@0.2.6/dist/de-editor.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script><script type="text/javascript" src="js/osd_scroll.js"></script><script type="text/javascript" src="js/run.js"></script><script type="text/javascript" src="js/offcanvastoggler.js"></script></body>
 </html>

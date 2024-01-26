@@ -14,6 +14,33 @@
         <xsl:value-of select="concat(name($currentNode), '__', $nodeCurrNr)"/>
     </xsl:function>
     
+       <xsl:template match="tei:pb">                                                                                                                                                                                                                              
+        <span class="anchor-pb"></span>
+        <span class="pb" source="{@facs}">
+            <xsl:value-of select="./@n"/>
+        </span>
+    </xsl:template>
+    
+    <xsl:template match="tei:ref">
+        <a class="ref {@type}" href="{@target}">
+            <xsl:apply-templates/>
+        </a>
+    </xsl:template>
+    <xsl:template match="tei:lg">
+        <p>
+            <xsl:apply-templates/>
+        </p>
+    </xsl:template>
+    <xsl:template match="tei:l">
+        <xsl:apply-templates/>
+        <br/>
+    </xsl:template>
+    <xsl:template match="tei:p">
+        <p>
+            <xsl:apply-templates/>
+        </p>
+    </xsl:template>
+    
     <xsl:template match="tei:date">
         <span class="date"><xsl:apply-templates/></span>
         <xsl:choose>

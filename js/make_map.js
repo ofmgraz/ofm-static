@@ -275,5 +275,5 @@ function build_map_and_table(map_cfg, table_cfg, wms_cfg = null) {
 	// var layerControl = L.control.layers(null, overlay_control);
 	// layerControl.addTo(map);
 	
-    //fetch_tabulatordata_and_build_table(map_cfg, map, table_cfg, marker_layer);
+    fetch_tabulatordata_and_build_table(map_cfg, map, table_cfg, marker_layer);
 }

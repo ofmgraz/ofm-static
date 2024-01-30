@@ -1,6 +1,3 @@
-import L from "leaflet";
-import { TabulatorFull as Tabulator } from "tabulator-tables";
-
 function fetch_tabulatordata_and_build_table(map_cfg, map, table_cfg, marker_layer) {
 	console.log("loading table");
 	if (map_cfg.json_url.length !== 0) {
@@ -84,7 +81,7 @@ function make_cell_scrollable(table, cell, cell_html_string_in) {
 	}
 }
 
-export function build_linklist_cell(table, cell) {
+function build_linklist_cell(table, cell) {
 	let values = cell.getValue();
 	let i = 0;
 	let links = [];
@@ -251,7 +248,7 @@ function build_map_table(table_cfg) {
 /////////////////////
 // building the map//
 /////////////////////
-export function build_map_and_table(map_cfg, table_cfg, wms_cfg = null) {
+function build_map_and_table(map_cfg, table_cfg, wms_cfg = null) {
 	console.log("loading map");
 	let map = L.map(map_cfg.div_id).setView(map_cfg.initial_coordinates, map_cfg.initial_zoom);
 	let tile_layer = L.tileLayer(map_cfg.base_map_url, {
@@ -263,10 +260,10 @@ export function build_map_and_table(map_cfg, table_cfg, wms_cfg = null) {
 	// order of adding matters!
 	tile_layer.addTo(map);
 	// this is for the page gui / switch for toggling overlays
-	let overlay_control = {
-		"modern map": tile_layer,
-		"mentioned entities": marker_layer,
-	};
+	// let overlay_control = {
+		// "modern map": tile_layer,
+		// "mentioned entities": marker_layer,
+	// };
 	// if cfg is provided wms map layer gets added
 	if (wms_cfg !== null) {
 		let wms_layer = L.tileLayer.wms(wms_cfg.wms_url, wms_cfg.wmsOptions);
@@ -275,25 +272,8 @@ export function build_map_and_table(map_cfg, table_cfg, wms_cfg = null) {
 	}
 	// this has to happen here, in case historical map gets added
 	marker_layer.addTo(map);
-	var layerControl = L.control.layers(null, overlay_control);
-	layerControl.addTo(map);
-	fetch_tabulatordata_and_build_table(map_cfg, map, table_cfg, marker_layer);
-}
-
-export function build_table(table_cfg, json_url) {
-	console.log("loading table");
-	fetch(json_url)
-		.then(function (response) {
-			// json string
-			return response.json();
-		})
-		.then(function (tabulator_data) {
-			// the table will draw all markers on to the empty map
-			table_cfg.tabulator_cfg.data = tabulator_data;
-			let table = new Tabulator(table_cfg.table_div_html_id, table_cfg.tabulator_cfg);
-			console.log("made table");
-		})
-		.catch(function (err) {
-			console.log(err);
-		});
+	// var layerControl = L.control.layers(null, overlay_control);
+	// layerControl.addTo(map);
+	
+    //fetch_tabulatordata_and_build_table(map_cfg, map, table_cfg, marker_layer);
 }

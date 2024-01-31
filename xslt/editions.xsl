@@ -311,40 +311,40 @@
         <xsl:variable name="idx" select="format-number(number(replace(@n, 'N', '')), '#')"/>
         <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
         <a>
-            <xsl:variable name="para" as="xs:int">
+            <!-- <xsl:variable name="para" as="xs:int">
                 <xsl:number level="any" from="tei:body" count="tei:p"/>
-            </xsl:variable>
+            </xsl:variable> -->
             <xsl:variable name="lines" as="xs:int">
                 <xsl:number level="any" from="tei:body"/>
             </xsl:variable>
-            <xsl:variable name="pID">
+            <!--<xsl:variable name="pID">
                 <xsl:value-of select="data(substring-after(parent::tei:p/@facs, '#'))"/>
-            </xsl:variable>
+            </xsl:variable> -->
             <xsl:variable name="surface"
                 select="//tei:surface/tei:zone[@xml:id = $pID]/parent::tei:surface"/>
             <xsl:variable name="zones"
                 select="//tei:surface/tei:zone[@xml:id = $pID]/tei:zone[number($idx)]"/>
-            <xsl:attribute name="href">
+            <!-- <xsl:attribute name="href">
+                <xsl:value-of select="parent::tei:pb/@facs"/>
+                <xsl:text>__p</xsl:text>
+                <xsl:value-of select="$para"/>
+                <xsl:text>__lb</xsl:text>
+                <xsl:value-of select="$lines"/>
+            </xsl:attribute> -->
+           <!--  <xsl:attribute name="name"> 
                 <xsl:value-of select="parent::tei:p/@facs"/>
                 <xsl:text>__p</xsl:text>
                 <xsl:value-of select="$para"/>
                 <xsl:text>__lb</xsl:text>
                 <xsl:value-of select="$lines"/>
-            </xsl:attribute>
-            <xsl:attribute name="name"> 
-                <xsl:value-of select="parent::tei:p/@facs"/>
-                <xsl:text>__p</xsl:text>
-                <xsl:value-of select="$para"/>
-                <xsl:text>__lb</xsl:text>
-                <xsl:value-of select="$lines"/>
-            </xsl:attribute>
-            <xsl:attribute name="id">
+            </xsl:attribute> -->
+            <!-- <xsl:attribute name="id">
                 <xsl:value-of select="parent::tei:p/@facs"/>
                 <xsl:text>__p</xsl:text>
                 <xsl:value-of select="$para"/>
                 <xsl:text>__lb</xsl:text>
                 <xsl:value-of select="$lines"/> 
-            </xsl:attribute>
+            </xsl:attribute> -->
             <xsl:attribute name="size">
                 <xsl:value-of select="concat($surface/@lrx, ',', $surface/@lry)"/>
             </xsl:attribute>

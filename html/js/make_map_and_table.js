@@ -146,16 +146,16 @@ function build_map_and_table(map_cfg, table_cfg, wms_cfg = null) {
 	// handle the layers
 	// order of adding matters!
 	tile_layer.addTo(map);
-	// this is for the page gui / switch for toggling overlays
-	// let overlay_control = {
-		// "modern map": tile_layer,
-		// "mentioned entities": marker_layer,
-	// };
 	// if cfg is provided wms map layer gets added
 	if (wms_cfg !== null) {
+		// this is for the page gui / switch for toggling overlays
+		let overlay_control = {
+			"modern map": tile_layer,
+			"ntities": marker_layer,
+		};
 		let wms_layer = L.tileLayer.wms(wms_cfg.wms_url, wms_cfg.wmsOptions);
 		wms_layer.addTo(map);
-		overlay_control["Stadtplan 1858 (k.k. Ministerium des Inneren)"] = wms_layer;
+		overlay_control[wms_cfg.label] = wms_layer;
 	}
 	// this has to happen here, in case historical map gets added
 	marker_layer.addTo(map);

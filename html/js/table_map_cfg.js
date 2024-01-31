@@ -107,6 +107,33 @@ const table_cfg = {
   table_div_html_id: "#placesTable",
 };
 
+/*optional you can define some wms config. If provided and passed to 
+build_map_and_table a wms layer is added to your map,
+including a layer controll;
+if you don't need this, ignore it*/
+let wms_cfg = {
+    label: "Stadtplan 1858 (k.k. Ministerium des Inneren)",
+    wms_url: "https://data.wien.gv.at/daten/wms?version=1.1.1",
+    wmsOptions: {
+        service: "WMS",
+        version: "1.1.1",
+        request: "GetMap",
+        contextualWMSLegend: "0",
+        crs: L.CRS.EPSG4326,
+        dpiMode: "7",
+        featureCount: "10",
+        format: "image/png",
+        layers: "HISTWIENPL1858OGD",
+        url: "https://data.wien.gv.at/daten/wms?version%3D1.1.1",
+        opacity: 0.5,
+    },
+};
+
+
+//////////////////////////////////////////////////
+/* some functions to influence the visualization*/
+//////////////////////////////////////////////////
+
 function draw_cirlce_from_rowdata(latLng, row) {
   /*provides a circular icon to be drawn on the map, radius is dermined by the amount
     of child elements in the related_objects column first ul child*/

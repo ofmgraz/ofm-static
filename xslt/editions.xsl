@@ -344,7 +344,8 @@
                 <xsl:value-of select="$para"/>
                 <xsl:text>__lb</xsl:text>
                 <xsl:value-of select="$lines"/> 
-            </xsl:attribute> 
+            </xsl:attribute>
+            
             <xsl:attribute name="size">
                 <xsl:value-of select="concat($surface/@lrx, ',', $surface/@lry)"/>
             </xsl:attribute>

@@ -35,7 +35,7 @@ const columns = [
   },
     /* the following fields are necessary, 
     provide a string val each in your html-table,
-    (langitude and latituded)*/
+    (longitude and latitude)*/
   {
     title: "lat",
     field: "lat",

@@ -12,22 +12,30 @@ const columns = [
     field: "lat",
     formatter: "plaintext",
     resizable: false,
+	   visible: false,
   },
   {
     title: "lng",
     field: "lng",
     formatter: "plaintext",
     resizable: false,
+	  visible: false,
   },
   {
     headerFilter: "input",
-    title: "mentions",
-    field: "mentions",
+    title: "related_objects",
+    field: "related_objects",
     resizable: false,
-    formatter: function (cell) {
-      return build_linklist_cell(this, cell);
-    },
+    formatter: "html",
   },
+	  {
+    //headerFilter: "input",
+    title: "authority",
+    field: "authority",
+    resizable: false,
+    formatter: "html",
+  },
+
 ];
 const map_cfg = {
   div_id: "places_div",

@@ -39,15 +39,12 @@
                         <table class="table" id="placesTable">
                             <thead>
                                 <tr>
-                                    <th scope="col" width="20" tabulator-formatter="html"
-                                        tabulator-headerSort="false" tabulator-download="false"
-                                        tabulator-visible="false">#</th>
                                     <th scope="col">name</th>
-                                    <th scope="col" tabulator-visible="false">lat</th>
-                                    <th scope="col" tabulator-visible="false">lng</th>
+                                    <th scope="col" >lat</th>
+                                    <th scope="col">lng</th>
                                     <th scope="col" tabulator-visible="false">id</th>
-                                    <th scope="col" tabulator-visible="false">geonames</th>
-                                    <th scope="col">mentions</th>
+                                    <th scope="col" >authority</th>
+                                    <th scope="col">related_objects</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,14 +53,7 @@
                                         <xsl:value-of select="data(@xml:id)"/>
                                     </xsl:variable>
                                     <tr>
-                                        <td>
-                                            <a>
-                                                <xsl:attribute name="href">
-                                                  <xsl:value-of select="concat($id, '.html')"/>
-                                                </xsl:attribute>
-                                                <i class="bi bi-link-45deg"/>
-                                            </a>
-                                        </td>
+                                     
                                         <td>
                                             <!--  <a><xsl:attribute name="href"><xsl:value-of select="concat($id, '.html')"/></xsl:attribute> -->
                                             <xsl:value-of
@@ -91,18 +81,30 @@
                                         <td> # <xsl:value-of select="$id"/>
                                         </td>
                                         <td>
-                                            <xsl:value-of
-                                                select="tokenize(./tei:idno[@subtype='GEONAMES']/text(), ' ')[last()]"
-                                            />
-                                            <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2761369</idno>
+                                            <ul>
+                                                <xsl:for-each select="./tei:idno">
+
+                                                  <li><a>
+                                                  <xsl:attribute name="href">
+                                                  <xsl:value-of
+                                                  select="tokenize(./text(), ' ')[last()]"/>
+                                                  </xsl:attribute>
+                                                  <xsl:value-of select="./@subtype"/>
+                                                  </a></li>
+
+                                                </xsl:for-each>
+                                            </ul>
                                         </td>
                                         <td>
+                                        <ul>
                                             <xsl:for-each select="./tei:listEvent/tei:event">
-                                                  <!-- <a
-                                                  href="{replace(./tei:linkGrp/tei:link/@target, '.xml', '.html')}"> -->
-                                                  <xsl:value-of select="./tei:p/tei:title"/>
-                                               <!--   </a> -->
-                                            </xsl:for-each>
+                                                  <li>
+                                                  <a
+                                                  href="{replace(./tei:linkGrp/tei:link/@target, '.xml', '.html')}">
+                                                  <xsl:value-of select="./tei:p/tei:title/text()"/>
+                                                  </a>
+                                                  </li>
+                                            </xsl:for-each></ul>
                                         </td>
                                     </tr>
                                 </xsl:for-each>

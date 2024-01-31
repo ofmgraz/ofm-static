@@ -32,15 +32,18 @@ function get_html_list(array) {
 function get_label_string_html(row, frequency) {
 	let number_of_plays_mentioning = frequency;
 	// could use properties.total_occurences later
-	let label_string = `<b>${row.name}</b><br>(occurring in ${number_of_plays_mentioning} plays)<br>`;
-	let plays_list_start = "<ul>";
-	let plays_list_end = "</ul>";
-	row.mentions.forEach((mention) => {
-		let internal_id = mention[1];
-		let play_title = mention[0];
-		plays_list_start += `<li><a href='${internal_id}'>${play_title}</a></li>`;
-	});
-	return label_string + plays_list_start + plays_list_end;
+	let label_string = `<b>${row.name}</b><br/>`;
+	//let plays_list_start = "<ul>";
+	//let plays_list_end = "</ul>";
+	//var related_objects = $('#related_objects li').map(function(){ return $(this).text(); });
+
+	//row.related_objects.forEach((related_object) => {
+	//	let internal_id = mention[1];
+	//	let play_title = mention[0];
+	//	plays_list_start += `<li><a href='${internal_id}'>${play_title}</a></li>`;
+		//play_list_start += `<li><a href='test'>${related_object}</a></li>`;   
+	//});
+	return label_string ; //+ plays_list_start + plays_list_end;
 }
 
 function draw_cirlce_from_rowdata(latLng, frequency) {
@@ -103,9 +106,10 @@ function init_map_from_rows(rows, marker_layer) {
 	let existing_circles_by_coordinates = {};
 	rows.forEach((row) => {
 		let row_data = row.getData();
+		console.log(row);
 		let coordinate_key = get_coordinate_key_from_row_data(row_data);
 		//let frequency = row_data.mentions.length;
-		let frequency = 5;
+		let frequency = row.getCell("related_objects").getElement().children[0].childElementCount;  // not particularly generic. Change is needed
 		let new_circle = draw_cirlce_from_rowdata(
 			[row_data.lat, row_data.lng],
 			frequency,

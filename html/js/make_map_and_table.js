@@ -21,19 +21,6 @@ function fetch_tabulatordata_and_build_table(map_cfg, map, table_cfg, marker_lay
 	}
 }
 
-function get_html_link(name, url) {
-	return `<a href='${url}'>${name}</a>`;
-}
-
-function get_html_list(array) {
-	return `<ul><li>${array.join("</li><li>")}</li></ul>`;
-}
-
-function get_label_string_html(row) {
-	let label_string = `<b>${row.name}</b><br/>`;
-	return label_string;
-}
-
 
 function zoom_to_point_from_row_data(row_data, map, zoom, existing_markers_by_coordinates) {
 	let coordinate_key = get_coordinate_key_from_row_data(row_data);
@@ -57,7 +44,7 @@ function init_map_from_rows(rows, marker_layer) {
 			row
 		);
 		existing_icons_by_coordinates[coordinate_key] = new_icon;
-		new_icon.bindPopup(get_label_string_html(row_data));
+		new_icon.bindPopup(get_popup_label_string_html(row_data));
 		new_icon.addTo(marker_layer);
 	});
 	return existing_icons_by_coordinates;

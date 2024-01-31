@@ -129,11 +129,21 @@ function draw_cirlce_from_rowdata(latLng, row) {
   return marker;
 }
 
-/*define the way you wish to draw icons on the map; 
+/*define the way you wish to draw icons on the map in the make_map_and_table.js; 
 per default the function takes the coordinates as [lat, lng]
 from row.getData() and the row object as in the above example 
-(draw_cirlce_from_rowdata) */
+(draw_cirlce_from_rowdata)*/
 const draw_icon = draw_cirlce_from_rowdata;
+
+
+/*define the way you want to created an popup lable on the map
+you have full acces to row data via row.getData() and can write html as in example below*/
+function get_bold_name(row) {
+	let label_string = `<b>${row.name}</b><br/>`;
+	return label_string;
+}
+
+const get_popup_label_string_html = get_bold_name
 
 
 /*some helpers*/

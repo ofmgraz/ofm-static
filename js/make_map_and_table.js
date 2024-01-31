@@ -29,41 +29,11 @@ function get_html_list(array) {
 	return `<ul><li>${array.join("</li><li>")}</li></ul>`;
 }
 
-function get_label_string_html(row, frequency) {
-	let number_of_plays_mentioning = frequency;
-	// could use properties.total_occurences later
+function get_label_string_html(row) {
 	let label_string = `<b>${row.name}</b><br/>`;
-	//let plays_list_start = "<ul>";
-	//let plays_list_end = "</ul>";
-	//var related_objects = $('#related_objects li').map(function(){ return $(this).text(); });
-
-	//row.related_objects.forEach((related_object) => {
-	//	let internal_id = mention[1];
-	//	let play_title = mention[0];
-	//	plays_list_start += `<li><a href='${internal_id}'>${play_title}</a></li>`;
-		//play_list_start += `<li><a href='test'>${related_object}</a></li>`;   
-	//});
-	return label_string ; //+ plays_list_start + plays_list_end;
+	return label_string;
 }
 
-function draw_cirlce_from_rowdata(latLng, frequency) {
-	let radius = frequency;
-	let html_dot = "";
-	let border_width = 4;
-	let border_color = "red";
-	let size = radius * 10;
-	let circle_style = `style="width: ${size}px; height: ${size}px; border-radius: 50%; display: table-cell; border: ${border_width}px solid ${border_color};  background: rgba(255, 0, 0, .5); overflow: hidden; position: absolute"`;
-	let iconSize = size;
-	let icon = L.divIcon({
-		html: `<span ${circle_style}>${html_dot}</span>`,
-		className: "",
-		iconSize: [iconSize, iconSize],
-	});
-	let marker = L.marker(latLng, {
-		icon: icon,
-	});
-	return marker;
-}
 
 function zoom_to_point_from_row_data(row_data, map, zoom, existing_markers_by_coordinates) {
 	let coordinate_key = get_coordinate_key_from_row_data(row_data);
@@ -71,6 +41,8 @@ function zoom_to_point_from_row_data(row_data, map, zoom, existing_markers_by_co
 	marker.openPopup();
 	map.setView([row_data.lat, row_data.lng], zoom);
 }
+
+/*helpers for scrollable lists*/
 
 function make_cell_scrollable(table, cell, cell_html_string_in) {
 	var cell_html_element = cell.getElement();
@@ -84,6 +56,7 @@ function make_cell_scrollable(table, cell, cell_html_string_in) {
 	}
 }
 
+/* this is a helper to provide you with a scrollable table cell, containing a list */
 function build_linklist_cell(table, cell) {
 	let values = cell.getValue();
 	let i = 0;
@@ -103,22 +76,19 @@ function get_coordinate_key_from_row_data(row_data) {
 
 function init_map_from_rows(rows, marker_layer) {
 	console.log("populating map with icons");
-	let existing_circles_by_coordinates = {};
+	let existing_icons_by_coordinates = {};
 	rows.forEach((row) => {
 		let row_data = row.getData();
-		console.log(row);
 		let coordinate_key = get_coordinate_key_from_row_data(row_data);
-		//let frequency = row_data.mentions.length;
-		let frequency = row.getCell("related_objects").getElement().children[0].childElementCount;  // not particularly generic. Change is needed
-		let new_circle = draw_cirlce_from_rowdata(
+		let new_icon = draw_icon(
 			[row_data.lat, row_data.lng],
-			frequency,
+			row
 		);
-		existing_circles_by_coordinates[coordinate_key] = new_circle;
-		new_circle.bindPopup(get_label_string_html(row_data, frequency));
-		new_circle.addTo(marker_layer);
+		existing_icons_by_coordinates[coordinate_key] = new_icon;
+		new_icon.bindPopup(get_label_string_html(row_data));
+		new_icon.addTo(marker_layer);
 	});
-	return existing_circles_by_coordinates;
+	return existing_icons_by_coordinates;
 }
 
 function toggle_marker_visibility(marker) {

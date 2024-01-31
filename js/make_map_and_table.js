@@ -42,34 +42,6 @@ function zoom_to_point_from_row_data(row_data, map, zoom, existing_markers_by_co
 	map.setView([row_data.lat, row_data.lng], zoom);
 }
 
-/*helpers for scrollable lists*/
-
-function make_cell_scrollable(table, cell, cell_html_string_in) {
-	var cell_html_element = cell.getElement();
-	cell_html_element.style.whiteSpace = "pre-wrap";
-	cell_html_element.style.overflow = "auto";
-	cell_html_element.style.maxHeight = "100px";
-	if (cell_html_string_in !== undefined) {
-		return table.emptyToSpace(cell_html_string_in);
-	} else {
-		return table.emptyToSpace(cell.getValue());
-	}
-}
-
-/* this is a helper to provide you with a scrollable table cell, containing a list */
-function build_linklist_cell(table, cell) {
-	let values = cell.getValue();
-	let i = 0;
-	let links = [];
-	while (i < values.length) {
-		let pair = values[i];
-		links.push(get_html_link(pair[0], pair[1]));
-		i++;
-	}
-	let basic_html = get_html_list(links);
-	return make_cell_scrollable(table, cell, basic_html);
-}
-
 function get_coordinate_key_from_row_data(row_data) {
 	return row_data.lat + row_data.lng;
 }

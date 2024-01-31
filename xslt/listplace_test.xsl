@@ -131,8 +131,8 @@
                     resizable: false,
                     },
                     {
-                    title: "long",
-                    field: "long",
+                    title: "lng",
+                    field: "lng",
                     formatter: "plaintext",
                     resizable: false,
                     },

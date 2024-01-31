@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
-<!DOCTYPE html><html class="h-100">
+<html class="h-100">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta  http-equiv="X-UA-Compatible" content="IE=edge">
       <meta  name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta  name="mobile-web-app-capable" content="yes">
       <meta  name="apple-mobile-web-app-capable" content="yes">
-      <meta  name="apple-mobile-web-app-title" content="Orte">
+      <meta  name="apple-mobile-web-app-title" content="Paolo Baglioni">
       <meta  name="msapplication-TileColor" content="#ffffff">
       <meta  name="msapplication-TileImage" content="images/logo.png">
       <link  rel="None" type="image/ico" href="images/favicons/favicon.ico">
@@ -32,12 +32,11 @@
       <link  rel="shortcut icon" type="image/png" href="images/favicons/favicon-196x196.png">
       <link  rel="icon" type="image/svg+xml" href="images/logo.png" sizes="any">
       <link  rel="profile" href="http://gmpg.org/xfn/11">
-      <title >Orte</title>
+      <title >Paolo Baglioni</title>
       <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
       <link  rel="stylesheet" href="css/style.css" type="text/css">
-      <link  rel="stylesheet" href="css/micro-editor.css" type="text/css"><script  src="https://cdn.jsdelivr.net/npm/i18next@21.6.10/i18next.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/jquery-i18next@1.2.1/jquery-i18next.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.3/i18nextBrowserLanguageDetector.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.3.2/i18nextHttpBackend.min.js"></script><link  rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""><script  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script><link  href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css" rel="stylesheet">
-   </head>
+      <link  rel="stylesheet" href="css/micro-editor.css" type="text/css"><script  src="https://cdn.jsdelivr.net/npm/i18next@21.6.10/i18next.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/jquery-i18next@1.2.1/jquery-i18next.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.3/i18nextBrowserLanguageDetector.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.3.2/i18nextHttpBackend.min.js"></script></head>
    <body class="d-flex flex-column h-100">
       <header >
          <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -62,93 +61,53 @@
       </header>
       <main>
          <div class="container">
-            <h1 class="text-center pb-4 pt-3">Orte</h1>
-            <div id="places_div"></div>
-            <table class="table" id="placesTable">
-               <thead>
-                  <tr>
-                     <th scope="col" width="20" tabulator-formatter="html" tabulator-headerSort="false" tabulator-download="false">#</th>
-                     <th scope="col" tabulator-headerFilter="input">Ortsname</th>
-                     <th scope="col" tabulator-headerFilter="input">Lat</th>
-                     <th scope="col" tabulator-headerFilter="input">Long</th>
-                     <th scope="col" tabulator-headerFilter="input">ID</th>
-                  </tr>
-               </thead>
+            <h1 class="text-center pb-4 pt-3">Paolo Baglioni</h1>
+            <table class="table entity-table">
                <tbody>
                   <tr>
-                     <td><a href="FCG.html"><i class="bi bi-link-45deg"></i></a></td>
-                     <td>Franziskanerkirche</td>
-                     <td>47.070483333333</td>
-                     <td>15.436780555556</td>
-                     <td> # FCG</td>
+                     <th>
+                        Geburtsjahr
+                        </th>
+                     <td>1632</td>
                   </tr>
                   <tr>
-                     <td><a href="Graz.html"><i class="bi bi-link-45deg"></i></a></td>
-                     <td>Graz</td>
-                     <td>47.07083333333333</td>
-                     <td>15.438611111111111</td>
-                     <td> # Graz</td>
+                     <th>
+                        Sterbejahr
+                        </th>
+                     <td>1721</td>
                   </tr>
                   <tr>
-                     <td><a href="Ljubljana.html"><i class="bi bi-link-45deg"></i></a></td>
-                     <td>Ljubljana</td>
-                     <td>46.05138888888889</td>
-                     <td>14.50611111111111</td>
-                     <td> # Ljubljana</td>
+                     <th>
+                        Aktiv in
+                        </th>
+                     <td><a href="Venedig.html" target="_blank">Venedig</a></td>
                   </tr>
                   <tr>
-                     <td><a href="Wien.html"><i class="bi bi-link-45deg"></i></a></td>
-                     <td>Wien</td>
-                     <td>48.208333333333336</td>
-                     <td>16.3725</td>
-                     <td> # Wien</td>
+                     <th>
+                        GND ID
+                        </th>
+                     <td><a href="http://d-nb.info/gnd/1037524810" target="_blank">1037524810</a></td>
                   </tr>
                   <tr>
-                     <td><a href="Salzburg.html"><i class="bi bi-link-45deg"></i></a></td>
-                     <td>Salzburg</td>
-                     <td>47.8</td>
-                     <td>13.045</td>
-                     <td> # Salzburg</td>
+                     <th>
+                        Wikidata ID
+                        </th>
+                     <td><a href="" target="_blank">Q112399622</a></td>
                   </tr>
                   <tr>
-                     <td><a href="Venedig.html"><i class="bi bi-link-45deg"></i></a></td>
-                     <td>Venedig</td>
-                     <td>45.439722222222</td>
-                     <td>12.331944444444</td>
-                     <td> # Venedig</td>
-                  </tr>
-                  <tr>
-                     <td><a href="MariaLankowitz.html"><i class="bi bi-link-45deg"></i></a></td>
-                     <td>Maria Lankowitz</td>
-                     <td>47.063888888889</td>
-                     <td>15.063055555556</td>
-                     <td> # MariaLankowitz</td>
-                  </tr>
-                  <tr>
-                     <td><a href="Muenchen.html"><i class="bi bi-link-45deg"></i></a></td>
-                     <td>München</td>
-                     <td>48.1375</td>
-                     <td>11.575</td>
-                     <td> # Muenchen</td>
-                  </tr>
-                  <tr>
-                     <td><a href="StPoelten.html"><i class="bi bi-link-45deg"></i></a></td>
-                     <td>St. Pölten</td>
-                     <td>48.2</td>
-                     <td>15.616666666667</td>
-                     <td> # StPoelten</td>
-                  </tr>
-                  <tr>
-                     <td><a href="MauterninSteiermark.html"><i class="bi bi-link-45deg"></i></a></td>
-                     <td>Mautern in Steiermark</td>
-                     <td>47.4</td>
-                     <td>14.833333333333</td>
-                     <td> # MauterninSteiermark</td>
+                     <th>
+                        Erwähnt in
+                        </th>
+                     <td>
+                        <ul>
+                           <li><a href="S1_65.html">S 1/65</a></li>
+                           <li><a href="S1_67.html">Antiphonarium de Sanctis Ordinis Minorum</a></li>
+                           <li><a href="S1_68.html">S 1/68</a></li>
+                        </ul>
+                     </td>
                   </tr>
                </tbody>
             </table>
-            <h4>Download Table</h4>
-            <div class="button-group"><button type="button" class="btn btn-outline-secondary" id="download-csv" title="Download CSV"><i class="bi bi-filetype-csv"></i><span class="visually-hidden">Download CSV</span></button><button type="button" class="btn btn-outline-secondary" id="download-json" title="Download JSON"><i class="bi bi-filetype-json"></i><span class="visually-hidden">Download JSON</span></button><button type="button" class="btn btn-outline-secondary" id="download-html" title="Download HTML"><i class="bi bi-filetype-html"></i><span class="visually-hidden">Download HTML</span></button></div>
          </div>
       </main>
       <footer  class="footer mt-auto py-3 bg-body-tertiary">
@@ -188,77 +147,5 @@ function addDarkmodeWidget() {
 	new Darkmode().showWidget();
 }
 window.addEventListener('load', addDarkmodeWidget);
-</script><script  src="js/i18n.js"></script><script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script><script src="js/make_map.js"></script><script>
-                    /*this cfg describes some of the features of the leaflet map and it't functions*/
-                    let columns = [
-                    {
-                    headerFilter: "input",
-                    title: "Ortsname",
-                    field: "Ortsname",
-                    formatter: "plaintext",
-                    resizable: false,
-                    },
-                    {
-                    title: "Lat",
-                    field: "Lat",
-                    formatter: "plaintext",
-                    resizable: false,
-                    },
-                    {
-                    title: "Long",
-                    field: "Long",
-                    formatter: "plaintext",
-                    resizable: false,
-                    },
-                    ];
-                    let map_cfg = {
-                        div_id: "places_div",
-                        json_url: "",
-                        initial_zoom: "5",
-                        max_zoom: "19",
-                        /* zomm level for a place on the map focused by clicking the corresponding row */
-                        on_row_click_zoom: "11",
-                        initial_coordinates: [48.210033, 16.363449],
-                        base_map_url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-                        /* some map providers need subdomains */
-                        subdomains: "abcd",
-                        attribution:
-                            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy <a href="https://carto.com/attributions">CARTO</a>',
-                    };
-                    /* using localization to change labels 
-                    https://tabulator.info/docs/5.5/modules#module-localize */
-                    let langs = {
-                        default: {
-                            pagination: {
-                                counter: {
-                                    showing: "",
-                                    of: "of",
-                                    rows: "",
-                                },
-                            },
-                        },
-                    };
-        
-                    /* this cfg describes some of the features of
-                    the tabulator table and it't functions */
-                    let tabulator_cfg = {
-                        maxHeight: "45vh",
-                        layout: "fitColumns",
-                        width: "100%",
-                        headerFilterLiveFilterDelay: 600,
-                        responsiveLayout: "collapse",
-                        paginationCounter: "rows",
-                        pagination: "local",
-                        paginationSize: 10,
-                        langs: langs,
-                        columns: columns,
-                    };
-        
-                    let table_cfg = {
-                        tabulator_cfg: tabulator_cfg,
-                        table_div_html_id: "#placesTable",
-                    };
-        
-                    build_map_and_table(map_cfg, table_cfg);
-                </script></body>
+</script><script  src="js/i18n.js"></script></body>
 </html>

@@ -41,11 +41,13 @@
                                 <tr>
                                     <th scope="col" width="20" tabulator-formatter="html"
                                         tabulator-headerSort="false" tabulator-download="false"
-                                        >#</th>
-                                    <th scope="col" tabulator-headerFilter="input">Ortsname</th>
-                                    <th scope="col" tabulator-headerFilter="input">Lat</th>
-                                    <th scope="col" tabulator-headerFilter="input">Long</th>
-                                    <th scope="col" tabulator-headerFilter="input">ID</th>
+                                        tabulator-visible="false">#</th>
+                                    <th scope="col">name</th>
+                                    <th scope="col" tabulator-visible="false">lat</th>
+                                    <th scope="col" tabulator-visible="false">lng</th>
+                                    <th scope="col" tabulator-visible="false">id</th>
+                                    <th scope="col" tabulator-visible="false">geonames</th>
+                                    <th scope="col">mentions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,8 +65,10 @@
                                             </a>
                                         </td>
                                         <td>
+                                            <!--  <a><xsl:attribute name="href"><xsl:value-of select="concat($id, '.html')"/></xsl:attribute> -->
                                             <xsl:value-of
                                                 select="./tei:placeName[@xml:lang = $lang]/text()"/>
+                                            <!-- </a> -->
                                         </td>
                                         <td>
                                             <xsl:choose>
@@ -86,6 +90,20 @@
                                         </td>
                                         <td> # <xsl:value-of select="$id"/>
                                         </td>
+                                        <td>
+                                            <xsl:value-of
+                                                select="tokenize(./tei:idno[@subtype='GEONAMES']/text(), ' ')[last()]"
+                                            />
+                                            <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2761369</idno>
+                                        </td>
+                                        <td>
+                                            <xsl:for-each select="./tei:listEvent/tei:event">
+                                                  <!-- <a
+                                                  href="{replace(./tei:linkGrp/tei:link/@target, '.xml', '.html')}"> -->
+                                                  <xsl:value-of select="./tei:p/tei:title"/>
+                                               <!--   </a> -->
+                                            </xsl:for-each>
+                                        </td>
                                     </tr>
                                 </xsl:for-each>
                             </tbody>
@@ -101,23 +119,32 @@
                     let columns = [
                     {
                     headerFilter: "input",
-                    title: "Ortsname",
-                    field: "Ortsname",
+                    title: "name",
+                    field: "name",
                     formatter: "plaintext",
                     resizable: false,
                     },
                     {
-                    title: "Lat",
-                    field: "Lat",
+                    title: "lat",
+                    field: "lat",
                     formatter: "plaintext",
                     resizable: false,
                     },
                     {
-                    title: "Long",
-                    field: "Long",
+                    title: "long",
+                    field: "long",
                     formatter: "plaintext",
                     resizable: false,
                     },
+                                            {   
+                                headerFilter: "input",
+                                title: "mentions",
+                                field: "mentions",
+                                resizable: false,
+                                formatter: function (cell) {
+                                        return build_linklist_cell(this, cell);
+                                },  
+                        },
                     ];
                     let map_cfg = {
                         div_id: "places_div",

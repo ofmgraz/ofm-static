@@ -66,7 +66,7 @@ function zoom_to_point_from_row_data(row_data, map, zoom, existing_markers_by_co
 	let coordinate_key = get_coordinate_key_from_row_data(row_data);
 	let marker = existing_markers_by_coordinates[coordinate_key];
 	marker.openPopup();
-	map.setView([row_data.coordinates.lat, row_data.coordinates.lng], zoom);
+	map.setView([row_data.lat, row_data.lng], zoom);
 }
 
 function make_cell_scrollable(table, cell, cell_html_string_in) {
@@ -95,7 +95,7 @@ function build_linklist_cell(table, cell) {
 }
 
 function get_coordinate_key_from_row_data(row_data) {
-	return row_data.coordinates.lat + row_data.coordinates.lng;
+	return row_data.lat + row_data.lng;
 }
 
 function init_map_from_rows(rows, marker_layer) {
@@ -104,9 +104,10 @@ function init_map_from_rows(rows, marker_layer) {
 	rows.forEach((row) => {
 		let row_data = row.getData();
 		let coordinate_key = get_coordinate_key_from_row_data(row_data);
-		let frequency = row_data.mentions.length;
+		//let frequency = row_data.mentions.length;
+		let frequency = 5;
 		let new_circle = draw_cirlce_from_rowdata(
-			[row_data.coordinates.lat, row_data.coordinates.lng],
+			[row_data.lat, row_data.lng],
 			frequency,
 		);
 		existing_circles_by_coordinates[coordinate_key] = new_circle;
@@ -193,53 +194,6 @@ function populateMapFromTable(table, map, on_row_click_zoom, marker_layer) {
 }
 
 function build_map_table(table_cfg) {
-	if (!("columns" in table_cfg)) {
-		table_cfg.tabulator_cfg.columns = [
-			{
-				headerFilter: "input",
-				title: "name",
-				field: "name",
-				formatter: "html",
-				resizable: false,
-			},
-			{
-				title: "links",
-				field: "geonames",
-				formatter: "link",
-				resizable: false,
-				formatterParams: {
-					url: function (cell) {
-						return cell.getValue()[1];
-					},
-					label: function (cell) {
-						return cell.getValue()[0];
-					},
-				},
-			},
-			{
-				headerFilter: "input",
-				title: "mentioned in",
-				field: "mentions",
-				resizable: false,
-				formatter: function (cell) {
-					return build_linklist_cell(this, cell);
-				},
-			},
-			{
-				headerFilter: "input",
-				title: "alternative names",
-				field: "alt_names",
-				resizable: false,
-				formatter: "textarea",
-			},
-			{
-				title: "total occurences",
-				field: "total_occurences",
-				resizable: false,
-				headerFilter: "input",
-			},
-		];
-	}
 	let table = new Tabulator(table_cfg.table_div_html_id, table_cfg.tabulator_cfg);
 	console.log("made table");
 	return table;

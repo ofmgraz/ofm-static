@@ -319,12 +319,12 @@
             </xsl:variable>
             <!--<xsl:variable name="pID">
                 <xsl:value-of select="data(substring-after(parent::tei:p/@facs, '#'))"/>
-            </xsl:variable> -->
+            </xsl:variable>
             <xsl:variable name="surface"
                 select="//tei:surface/tei:zone[@xml:id = $pID]/parent::tei:surface"/>
             <xsl:variable name="zones"
                 select="//tei:surface/tei:zone[@xml:id = $pID]/tei:zone[number($idx)]"/>
-            <!-- <xsl:attribute name="href">
+            <xsl:attribute name="href">
                 <xsl:value-of select="parent::tei:pb/@facs"/>
                 <xsl:text>__p</xsl:text>
                 <xsl:value-of select="$para"/>
@@ -344,13 +344,13 @@
                 <xsl:value-of select="$para"/>
                 <xsl:text>__lb</xsl:text>
                 <xsl:value-of select="$lines"/> 
-            </xsl:attribute> -->
+            </xsl:attribute> 
             <xsl:attribute name="size">
                 <xsl:value-of select="concat($surface/@lrx, ',', $surface/@lry)"/>
             </xsl:attribute>
             <xsl:attribute name="zone">
                 <xsl:value-of select="$zones/@points"/>
-            </xsl:attribute>
+            </xsl:attribute>-->
             <xsl:choose>
                 <xsl:when test="($lines mod 5) = 0">
                     <xsl:attribute name="class">

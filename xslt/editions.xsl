@@ -31,6 +31,9 @@
     <xsl:variable name="doc_title">
         <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
     </xsl:variable>
+     <xsl:variable name="link">
+         <xsl:value-of select="replace($teiSource, '.xml', '.html')"/>
+     </xsl:variable>
     <xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
     <xsl:param name="mytab"><![CDATA[&emsp;]]></xsl:param>
 

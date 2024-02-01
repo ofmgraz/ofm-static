@@ -9,7 +9,7 @@ const map_cfg = {
   div_id: "places_div",
   json_url: "",
   initial_zoom: "7",
-  max_zoom: "20",
+  max_zoom: "15",
   min_zoom: "2",
   /* zomm level for a place on the map focused by clicking the corresponding row */
   on_row_click_zoom: "10",

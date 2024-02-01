@@ -115,25 +115,25 @@
                                 <div class="col-md-8 col-lg-8 col-sm-12 docinfo">
                                     <xsl:variable name="doc_type"
                                         select="//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/@form[1]"/>
-                                    <h1>
+                                    <h1 align="center">
                                         <xsl:value-of select="$doc_title"/>
                                     </h1>
-                                    <p class="document_info">
-                                        <xsl:value-of
-                                            select="string-join((//tei:msDesc/tei:msContents/tei:msItem/tei:author/text()), ' / ')"
-                                        />
-                                    </p>
-                                    <p class="document_info archival_small">
+                                    <h3 align="center">
+                                        <a href="{$teiSource}">
+                                            <i class="bi bi-download" title="TEI/XML"/>
+                                        </a>
+                                    </h3>
+                                    <p class="document_info archival_small" align="center">
                                         <xsl:value-of
                                             select="normalize-space(//tei:profileDesc/tei:creation/tei:date[1])"
                                         />
                                     </p>
-                                    <p class="document_info archival_small">
+                                    <p class="document_info archival_small" align="center">
                                         <xsl:value-of select="//tei:text/@type"/>
                                         <xsl:value-of
                                             select="concat(' (', normalize-space($doc_type)), ')'"/>
                                     </p>
-                                    <p class="document_info archival_small">
+                                    <p class="document_info archival_small" align="center">
                                         <xsl:value-of
                                             select='//tei:msDesc/tei:msIdentifier/tei:idno[@type = "archive"]/text()[1]/normalize-space()'
                                         />
@@ -144,19 +144,20 @@
                                         select="//tei:teiHeader/tei:revisionDesc/tei:change"/>
                                     <xsl:choose>
                                         <xsl:when test="$text_status = 'created'">
-                                            <div>
+                                            <div align="center">
                                                 <xsl:attribute name="class">
                                                   <xsl:value-of
                                                   select="concat('revision_desc ', $text_status)"/>
                                                 </xsl:attribute> maschinell erfasster Rohtext </div>
                                         </xsl:when>
                                         <xsl:otherwise>
-                                            <div>
+                                            <div align="center">
                                                 <xsl:attribute name="class">
                                                   <xsl:value-of select="'revision_desc created'"/>
                                                 </xsl:attribute> maschinell erfasster Rohtext </div>
                                         </xsl:otherwise>
                                     </xsl:choose>
+                                    
                                 </div>
 
                             </div>
@@ -294,7 +295,7 @@
     
     
    <xsl:template match="tei:ab">
-       <xsl:apply-templates/>
+      <xsl:apply-templates />
         <!--<p>
             <xsl:apply-templates/>
         </p> -->

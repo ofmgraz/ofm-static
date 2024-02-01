@@ -294,9 +294,10 @@
     
     
    <xsl:template match="tei:ab">
-        <p>
+       <xsl:apply-templates/>
+        <!--<p>
             <xsl:apply-templates/>
-        </p>
+        </p> -->
     </xsl:template>
  
    

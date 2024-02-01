@@ -116,7 +116,7 @@
                 <xsl:call-template name="html_footer"/>
                 <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"/>
                 <script src="js/make_map_and_table.js"/>
-                <script src="js/table_map_cfg.js"/>
+                <script src="js/map_table_cfg.js"/>
                 <script>
                     build_map_and_table(map_cfg, table_cfg);
                 </script>

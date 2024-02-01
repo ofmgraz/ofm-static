@@ -1,3 +1,20 @@
+function resizeIconsOnZoom(map, existing_markers_by_coordinates) {
+  let previousZoom;
+  map.on("zoomstart", function () {
+    previousZoom = map.getZoom();
+  });
+  map.on("zoomend", function () {
+    let zoomRatio = map.getZoom() / previousZoom;
+    Object.entries(existing_markers_by_coordinates).forEach(
+      ([coordinate_key, marker]) => {
+        // Adjust the circle radius based on the zoom ratio
+        let currentSize = marker.getRadius();
+        marker.setRadius(currentSize * zoomRatio);
+      }
+    );
+  });
+}
+
 function fetch_tabulatordata_and_build_table(
   map_cfg,
   map,
@@ -35,7 +52,7 @@ function fetch_tabulatordata_and_build_table(
       map_cfg.on_row_click_zoom,
       marker_layer,
       map_cfg.initial_coordinates,
-      map_cfg.initial_zoom,
+      map_cfg.initial_zoom
     );
   }
 }
@@ -71,14 +88,15 @@ function init_map_from_rows(rows, marker_layer) {
 }
 
 function toggle_marker_visibility(marker) {
-  if (marker._icon.style.display === "table-cell") {
-    marker._icon.style.display = "none";
-  } else if (marker._icon.style.display === "none") {
-    marker._icon.style.display = "table-cell";
+  let element = marker.getElement();
+  if (element.style.display === "inline") {
+    element.style.display = "none";
+  } else if (element.style.display === "none") {
+    element.style.display = "inline";
   } else {
     // after pageload there is no value direct value there
     // its still table-cell cause css
-    marker._icon.style.display = "none";
+    element.style.display = "none";
   }
 }
 
@@ -130,7 +148,6 @@ function populateMapFromTable(
               // marker_layer.addLayer(marker);
               toggle_marker_visibility(marker);
               keys_of_displayed_markers.push(coordinate_key);
-              console.log(marker);
             }
           } else {
             // this marker should be hidden
@@ -138,7 +155,6 @@ function populateMapFromTable(
               // it is not hidden
               // hide it
               // marker_layer.removeLayer(marker);
-              //console.log(marker);
               let index_of_key =
                 keys_of_displayed_markers.indexOf(coordinate_key);
               keys_of_displayed_markers.splice(index_of_key, 1);
@@ -158,6 +174,8 @@ function populateMapFromTable(
         existing_markers_by_coordinates
       );
     });
+    // enable resizing for icons on map
+    resizeIconsOnZoom(map, existing_markers_by_coordinates);
   });
 }
 

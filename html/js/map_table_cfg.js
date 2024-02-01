@@ -11,7 +11,7 @@ const map_cfg = {
   initial_zoom: "7",
   max_zoom: "20",
   /* zomm level for a place on the map focused by clicking the corresponding row */
-  on_row_click_zoom: "5",
+  on_row_click_zoom: "10",
   initial_coordinates: [47.0708,15.4386],
   base_map_url:
     "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
@@ -153,6 +153,26 @@ function draw_cirlce_from_rowdata(latLng, row) {
   let marker = L.marker(latLng, {
     icon: icon,
   });
+  return marker;
+}
+
+
+function draw_cirlce_from_rowdata(latLng, row) {
+  /*provides a circular icon to be drawn on the map, radius is dermined by the amount
+    of child elements in the related_objects column first ul child*/
+  let radius_factor = row.getCell("related_objects").getElement()
+    .children[0].childElementCount;
+  let radius = radius_factor*3;
+  let border_width = 4;
+  options = {
+    radius: radius,
+    weight: border_width,
+    fillOpacity: "0.5",
+    color: "#702963",
+    fillColor: "#702963",
+  }
+  let marker = L.circleMarker(latLng, options);
+  console.log(marker);
   return marker;
 }
 

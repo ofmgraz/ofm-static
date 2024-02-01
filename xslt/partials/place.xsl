@@ -4,7 +4,7 @@
     version="2.0" exclude-result-prefixes="xsl tei xs">
     <xsl:variable name="lang" select="'de'"/>
 
-    <xsl:import href="tabulator_dl_buttons.xsl"/>
+    <!-- <xsl:import href="tabulator_dl_buttons.xsl"/> -->
     <xsl:import href="tabulator_js.xsl"/>
 
     <xsl:template match="tei:place" name="place_detail">
@@ -42,14 +42,13 @@
                         </td>
                     </tr>
                 </xsl:if>
-                <xsl:if test="./tei:country">
                     <tr>
                         <th> Land </th>
                         <td>
-                            <xsl:value-of select='./tei:country[@xml:lang="$lang"]'/>
+                                    <xsl:value-of select='./tei:location/tei:country[@xml:lang=$lang]'/>
+           
                         </td>
                     </tr>
-                </xsl:if>
                 <xsl:if test="./tei:settlement">
                     <tr>
                         <th> Ortstyp </th>

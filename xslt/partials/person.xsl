@@ -41,39 +41,25 @@
                 </tr>
                 </xsl:if>
 
-                <xsl:if test="./tei:idno[@subtype='GND']/text()">
+                <xsl:if test="./tei:idno">
                     <tr>
                         <th>
-                            GND ID
+                            Authority
                         </th>
                         <td>
-                            <a href="{./tei:idno[@subtype='GND']}" target="_blank">
-                                <xsl:value-of select="tokenize(./tei:idno[@subtype='GND'], '/')[last()]"/>
-                            </a>
-                        </td>
-                    </tr>
-                </xsl:if>
-                <xsl:if test="./tei:idno[@subtype='WIKIDATA']/text()">
-                    <tr>
-                        <th>
-                            Wikidata ID
-                        </th>
-                        <td>
-                            <a href="{./tei:idno[@type='WIKIDATA']}" target="_blank">
-                                <xsl:value-of select="tokenize(./tei:idno[@subtype='WIKIDATA'], '/')[last()]"/>
-                            </a>
-                        </td>
-                    </tr>
-                </xsl:if>
-                <xsl:if test="./tei:idno[@subtype='GEONAMES']/text()">
-                    <tr>
-                        <th>
-                            Geonames ID
-                        </th>
-                        <td>
-                            <a href="{./tei:idno[@subtype='GEONAMES']}" target="_blank">
-                                <xsl:value-of select="tokenize(./tei:idno[@subtype='GEONAMES'], '/')[4]"/>
-                            </a>
+                            <ul>
+                                <xsl:for-each select="./tei:idno">
+                                    
+                                    <li><a>
+                                        <xsl:attribute name="href">
+                                            <xsl:value-of
+                                                select="tokenize(./text(), ' ')[last()]"/>
+                                        </xsl:attribute>
+                                        <xsl:value-of select="./@subtype"/>
+                                    </a></li>
+                                    
+                                </xsl:for-each>
+                            </ul>
                         </td>
                     </tr>
                 </xsl:if>

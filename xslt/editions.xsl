@@ -13,6 +13,7 @@
     <xsl:import href="partials/tei-facsimile.xsl"/>
     <xsl:import href="./partials/osd-container.xsl"/>
     <xsl:import href="./partials/entities.xsl"/>
+    <xsl:import href="partials/edition_side_nav.xsl"/>
     <xsl:import href="./partials/html_title_navigation.xsl"/>
 
     <xsl:variable name="prev">
@@ -30,6 +31,9 @@
     <xsl:variable name="doc_title">
         <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
     </xsl:variable>
+     <xsl:variable name="link">
+         <xsl:value-of select="replace($teiSource, '.xml', '.html')"/>
+     </xsl:variable>
     <xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
     <xsl:param name="mytab"><![CDATA[&emsp;]]></xsl:param>
 
@@ -40,8 +44,6 @@
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/>
-                <script src="js/osd_single.js"/>
             </head>
             <body class="page" lang="de">
                 <xsl:call-template name="nav_bar"/>
@@ -56,13 +58,13 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                     aria-label="Close"/>
                             </div>
-                            <!-- <div class="offcanvas-body">
-                                <div>
+                            <div class="offcanvas-body">
+                                <!-- <div>
                                     <xsl:call-template name="edition_side_nav">
                                         <xsl:with-param name="doc_title" select="$doc_title"/>
                                     </xsl:call-template>
-                                </div>
-                            </div> -->
+                                </div> -->
+                            </div>
                         </div>
                         <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions"
                             aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true"
@@ -224,11 +226,6 @@
                             </div>
                             <!-- create list* elements for entities bs-modal -->
 
-                            <xsl:for-each select="//tei:back">
-                                <div class="tei-back">
-                                    <xsl:apply-templates/>
-                                </div>
-                            </xsl:for-each>
                         </div>
                     </div>
 
@@ -242,6 +239,7 @@
             </body>
         </html>
     </xsl:template>
+    
     <xsl:template match="tei:div[parent::tei:div]">
         <!-- this is for sections, subsections and articles-->
         <xsl:variable name="type_attrib" select="@type"/>
@@ -252,6 +250,8 @@
             <xsl:apply-templates/>
         </div>
     </xsl:template>
+    
+    
     <xsl:template match="tei:pb">
         <!-- needed for scrolling / numbering -->
         <span class="anchor-pb"/>
@@ -272,9 +272,9 @@
             style="--page_before: '{($page_number - 1)}'; --beginning_page: '{$page_number}';">
             <hr n="{$page_number}"/>
         </span>
-
+        
     </xsl:template>
-    <xsl:template match="tei:p">
+   <!--  <xsl:template match="tei:p">
         <p id="{local:makeId(.)}" data-id="{@facs}">
             <xsl:for-each-group select="node()[normalize-space(.) or name(.)]"
                 group-starting-with="self::tei:lb">
@@ -290,93 +290,110 @@
                 </span>
             </xsl:for-each-group>
         </p>
-    </xsl:template>
-
-    <!-- <xsl:template match="tei:div">
-        <div id="{local:makeId(.)}">
+    </xsl:template> -->
+    
+    
+   <xsl:template match="tei:ab">
+        <p>
             <xsl:apply-templates/>
-        </div>
-    </xsl:template>   -->
-    <xsl:template match="
-            *[
-            (
-            local-name() = 'p'
-            or local-name() = 'hi'
-            or local-name() = 'div'
-            )
-            and
-            not(@* | * | comment() | processing-instruction())
-            and normalize-space() = '']"/>
+        </p>
+    </xsl:template>
+ 
+   
 
+ <xsl:template match="text()[following-sibling::tei:lb[1][@break = 'no']]">
+        <xsl:value-of select="normalize-space(.)"/>
+        <span class="tei_lb line_breaks_in_word"/>
+    </xsl:template>
+    <xsl:template match="text()[following-sibling::tei:lb[1][@break = 'yes']]">
+        <xsl:value-of select="."/>
+        <span class="tei_lb"/>
+    </xsl:template>
+   
     <xsl:template match="tei:lb">
         <xsl:variable name="idx" select="format-number(number(replace(@n, 'N', '')), '#')"/>
-        <xsl:if test="not(ancestor::tei:note[@type = 'footnote'])">
-            <xsl:if test="ancestor::tei:p">
-                <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
-                <a>
-                    <xsl:variable name="para" as="xs:int">
-                        <xsl:number level="any" from="tei:body" count="tei:p"/>
-                    </xsl:variable>
-                    <xsl:variable name="lines" as="xs:int">
-                        <xsl:number level="any" from="tei:body"/>
-                    </xsl:variable>
-                    <xsl:variable name="pID">
-                        <xsl:value-of select="data(substring-after(parent::tei:p/@facs, '#'))"/>
-                    </xsl:variable>
-                    <xsl:variable name="surface"
-                        select="//tei:surface/tei:zone[@xml:id = $pID]/parent::tei:surface"/>
-                    <xsl:variable name="zones"
-                        select="//tei:surface/tei:zone[@xml:id = $pID]/tei:zone[number($idx)]"/>
-                    <xsl:attribute name="href">
-                        <xsl:value-of select="parent::tei:p/@facs"/>
-                        <xsl:text>__p</xsl:text>
-                        <xsl:value-of select="$para"/>
-                        <xsl:text>__lb</xsl:text>
-                        <xsl:value-of select="$lines"/>
+        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
+        <a>
+            <!-- <xsl:variable name="para" as="xs:int">
+                <xsl:number level="any" from="tei:body" count="tei:p"/>
+            </xsl:variable> -->
+            <xsl:variable name="lines" as="xs:int">
+                <xsl:number level="any" from="tei:body"/>
+            </xsl:variable>
+            <!--<xsl:variable name="pID">
+                <xsl:value-of select="data(substring-after(parent::tei:p/@facs, '#'))"/>
+            </xsl:variable>
+            <xsl:variable name="surface"
+                select="//tei:surface/tei:zone[@xml:id = $pID]/parent::tei:surface"/>
+            <xsl:variable name="zones"
+                select="//tei:surface/tei:zone[@xml:id = $pID]/tei:zone[number($idx)]"/>
+            <xsl:attribute name="href">
+                <xsl:value-of select="parent::tei:pb/@facs"/>
+                <xsl:text>__p</xsl:text>
+                <xsl:value-of select="$para"/>
+                <xsl:text>__lb</xsl:text>
+                <xsl:value-of select="$lines"/>
+            </xsl:attribute> -->
+           <!--  <xsl:attribute name="name"> 
+                <xsl:value-of select="parent::tei:p/@facs"/>
+                <xsl:text>__p</xsl:text>
+                <xsl:value-of select="$para"/>
+                <xsl:text>__lb</xsl:text>
+                <xsl:value-of select="$lines"/>
+            </xsl:attribute> -->
+            <!-- <xsl:attribute name="id">
+                <xsl:value-of select="parent::tei:p/@facs"/>
+                <xsl:text>__p</xsl:text>
+                <xsl:value-of select="$para"/>
+                <xsl:text>__lb</xsl:text>
+                <xsl:value-of select="$lines"/> 
+            </xsl:attribute>
+            
+            <xsl:attribute name="size">
+                <xsl:value-of select="concat($surface/@lrx, ',', $surface/@lry)"/>
+            </xsl:attribute>
+            <xsl:attribute name="zone">
+                <xsl:value-of select="$zones/@points"/>
+            </xsl:attribute>-->
+            <xsl:choose>
+                <xsl:when test="($lines mod 5) = 0">
+                    <xsl:attribute name="class">
+                        <xsl:text>linenumbersVisible linenumbers</xsl:text>
                     </xsl:attribute>
-                    <xsl:attribute name="name">
-                        <xsl:value-of select="parent::tei:p/@facs"/>
-                        <xsl:text>__p</xsl:text>
-                        <xsl:value-of select="$para"/>
-                        <xsl:text>__lb</xsl:text>
-                        <xsl:value-of select="$lines"/>
+                    <xsl:attribute name="data-lbnr">
+                        <xsl:value-of select="$lines"/> 
                     </xsl:attribute>
-                    <xsl:attribute name="id">
-                        <xsl:value-of select="parent::tei:p/@facs"/>
-                        <xsl:text>__p</xsl:text>
-                        <xsl:value-of select="$para"/>
-                        <xsl:text>__lb</xsl:text>
-                        <xsl:value-of select="$lines"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="class">
+                        <xsl:text>linenumbersTransparent linenumbers</xsl:text>
                     </xsl:attribute>
-                    <xsl:attribute name="size">
-                        <xsl:value-of select="concat($surface/@lrx, ',', $surface/@lry)"/>
-                    </xsl:attribute>
-                    <xsl:attribute name="zone">
-                        <xsl:value-of select="$zones/@points"/>
-                    </xsl:attribute>
-                    <xsl:choose>
-                        <xsl:when test="($lines mod 5) = 0">
-                            <xsl:attribute name="class">
-                                <xsl:text>linenumbersVisible linenumbers</xsl:text>
-                            </xsl:attribute>
-                            <xsl:attribute name="data-lbnr">
-                                <xsl:value-of select="$lines"/>
-                            </xsl:attribute>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:attribute name="class">
-                                <xsl:text>linenumbersTransparent linenumbers</xsl:text>
-                            </xsl:attribute>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:value-of select="format-number($lines, '0000')"/>
-                </a>
-                <xsl:value-of select="$mytab" disable-output-escaping="yes"/>
-            </xsl:if>
-        </xsl:if>
-
+                </xsl:otherwise>
+            </xsl:choose>
+            <xsl:value-of select="format-number($lines, '0000')"/>
+        </a>
+        <xsl:value-of select="$mytab" disable-output-escaping="yes"/>
     </xsl:template>
 
+    <!-- simply keep paragraphs -->
+   <!-- <xsl:template match="tei:p | tei:lg">
+        <p>
+            <xsl:apply-templates/>
+        </p>
+    </xsl:template> -->
+    
+    
+  <!--  <xsl:template match="
+        *[
+        (
+        local-name() = 'p'
+        or local-name() = 'hi'
+        or local-name() = 'div'
+        )
+        and
+        not(@* | * | comment() | processing-instruction())
+        and normalize-space() = '']"/> -->
+    
     <xsl:template match="//tei:body//tei:head">
         <!-- find level of head between 1 and 6, the level is not semantical, the hirarchy never interruptet-->
 
@@ -410,6 +427,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">
         <a class="{@class}" id="{@xml:id}">
             <xsl:apply-templates/>

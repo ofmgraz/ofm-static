@@ -33,7 +33,6 @@
 
                 <main>
                     <div class="container">
-
                         <h1 class="text-center pb-4 pt-3">
                             <xsl:value-of select="$doc_title"/>
                         </h1>
@@ -41,10 +40,9 @@
                         <table class="table" id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col" width="20" tabulator-formatter="html" tabulator-headerSort="false" tabulator-download="false">#</th>
-                                    <th scope="col" tabulator-headerFilter="input">Nachname</th>
-                                    <th scope="col" tabulator-headerFilter="input">Vorname</th>
-                                    <th scope="col" tabulator-headerFilter="input">ID</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html" tabulator-download="false">Name</th>
+			            <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html" tabulator-download="false">Aktiv in</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-visible="false">ID</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,18 +52,18 @@
                                     </xsl:variable>
                                     <tr>
                                         <td>
-                                            <a>
-                                              <xsl:attribute name="href">
-                                              <xsl:value-of select="concat($id, '.html')"/>
-                                              </xsl:attribute>
-                                              <i class="bi bi-link-45deg"/>
-                                            </a>
+					    <a>
+                                                <xsl:attribute name="href">
+                                                         <xsl:value-of select="concat($id, '.html')"/>
+                                                </xsl:attribute>
+                                                <xsl:value-of select=".//tei:forename/text()"/><xsl:text> </xsl:text>
+                                            <xsl:value-of select=".//tei:surname/text()"/></a>
                                         </td>
                                         <td>
-                                            <xsl:value-of select=".//tei:surname/text()"/>
-                                        </td>
-                                        <td>
-                                            <xsl:value-of select=".//tei:forename/text()"/>
+					 	<xsl:variable name="a" select="./tei:residence/tei:settlement/tei:placeName/text()"/>
+                        			<a href="{$a}.html" target="_blank">
+                                			<xsl:value-of select="./tei:residence/tei:settlement/tei:placeName"/>
+                        			</a>
                                         </td>
                                         <td>
                                             <xsl:value-of select="$id"/>

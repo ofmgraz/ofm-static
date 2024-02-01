@@ -30,7 +30,7 @@
                 <xsl:if test="./tei:residence/tei:settlement/tei:placeName">
                 <tr>
                     <th>
-                        Aktiv in
+                        Aktiv in:
                     </th>
                     <td>
 			<xsl:variable name="a" select="./tei:residence/tei:settlement/tei:placeName/text()"/>
@@ -66,7 +66,7 @@
                 <xsl:if test="./tei:listEvent">
                 <tr>
                     <th>
-                        Erwähnt in
+                        Verantwortlich für:
                     </th>
                     <td>
                         <ul>

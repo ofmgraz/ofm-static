@@ -41,6 +41,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html" tabulator-download="false">Name</th>
+			            <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html" tabulator-download="false">Residence</th>
                                     <th scope="col" tabulator-headerFilter="input" tabulator-visible="false">ID</th>
                                 </tr>
                             </thead>
@@ -57,6 +58,12 @@
                                                 </xsl:attribute>
                                                 <xsl:value-of select=".//tei:forename/text()"/><xsl:text> </xsl:text>
                                             <xsl:value-of select=".//tei:surname/text()"/></a>
+                                        </td>
+                                        <td>
+					 	<xsl:variable name="a" select="./tei:residence/tei:settlement/tei:placeName/text()"/>
+                        			<a href="{$a}.html" target="_blank">
+                                			<xsl:value-of select="./tei:residence/tei:settlement/tei:placeName"/>
+                        			</a>
                                         </td>
                                         <td>
                                             <xsl:value-of select="$id"/>

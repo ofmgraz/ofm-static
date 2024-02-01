@@ -39,7 +39,7 @@
                         <table class="table" id="placesTable">
                             <thead>
                                 <tr>
-                                    <th scope="col">name</th>
+                                    <th scope="col"  tabulator-formatter="html">name</th>
                                     <th scope="col" >lat</th>
                                     <th scope="col">lng</th>
                                     <th scope="col" tabulator-visible="false">id</th>
@@ -55,10 +55,10 @@
                                     <tr>
                                      
                                         <td>
-                                            <!--  <a><xsl:attribute name="href"><xsl:value-of select="concat($id, '.html')"/></xsl:attribute> -->
+                                            <a><xsl:attribute name="href"><xsl:value-of select="concat($id, '.html')"/></xsl:attribute>
                                             <xsl:value-of
                                                 select="./tei:placeName[@xml:lang = $lang]/text()"/>
-                                            <!-- </a> -->
+                                            </a>
                                         </td>
                                         <td>
                                             <xsl:choose>

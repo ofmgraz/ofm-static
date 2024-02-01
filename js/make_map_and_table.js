@@ -199,6 +199,7 @@ function build_map_and_table(map_cfg, table_cfg, wms_cfg = null) {
   );
   let tile_layer = L.tileLayer(map_cfg.base_map_url, {
     maxZoom: map_cfg.max_zoom,
+	  minZoom: map_cfg.min_zoom,
     attribution: map_cfg.attribution,
   });
   let marker_layer = L.layerGroup();

@@ -66,7 +66,7 @@
                 <xsl:if test="./tei:listEvent">
                 <tr>
                     <th>
-                        Erwähnt in
+                        Verantwortlich für
                     </th>
                     <td>
                         <ul>

@@ -174,7 +174,6 @@ const get_popup_label_string_html = get_bold_name
 /*some helpers*/
 
 /*helper for scrollable cell, use in custom formatter in $columns*/
-
 function make_cell_scrollable(table, cell, cell_html_string_in) {
 	var cell_html_element = cell.getElement();
 	cell_html_element.style.whiteSpace = "pre-wrap";
@@ -187,8 +186,9 @@ function make_cell_scrollable(table, cell, cell_html_string_in) {
 	}
 }
 
-/* this is a helper to provide you with a scrollable table cell, containing a list
-use in custom formatter in $columns */
+/* YOU DONT NEED THIS IF YOUR LIST-DATA STEMS FROM HTM, simply provide a html-list in the cell.
+this is a helper to provide you with a scrollable table cell, containing an html list;
+use in custom formatter in $columns;*/
 function build_linklist_cell(table, cell) {
 	let values = cell.getValue();
 	let i = 0;

@@ -8,17 +8,14 @@ creates an array for osd viewer with static images
 ##################################################################
 */
 const navbar_wrapper = document.getElementById("wrapper-navbar");
-const image_rights = document.getElementsByClassName("image_rights")[0];
 
 
 
 function calculate_facsContainer_height() {
   // calcutlates hight of osd container based on heigt of screen - (height of navbar + img rights&buttons)
-  let image_rights_height = image_rights.getBoundingClientRect().height;
   let new_container_height =
     window.innerHeight -
-    (window.innerHeight / 10 + //this is necessary, cause container has fixed top val of 10%
-    image_rights_height);
+    (window.innerHeight / 10);
   return Math.round(new_container_height);
 };
 
@@ -61,16 +58,17 @@ const viewer = new OpenSeadragon.Viewer({
   tileSources: tileSources
 });
 
-console.log("THE END")
 
 
-
+console.log('BEGIN')
 
 viewer.Viewport.goHome = function () {
   fitVertically_align_left_bottom();
   }
   
+  console.log("THE END");
   
+
   function fitVertically_align_left_bottom(){
     let initial_bounds = viewer.viewport.getBounds();
     let ratio = initial_bounds.width / initial_bounds.height;

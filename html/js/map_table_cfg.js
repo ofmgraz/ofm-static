@@ -138,29 +138,6 @@ let wms_cfg = {
 function draw_cirlce_from_rowdata(latLng, row) {
   /*provides a circular icon to be drawn on the map, radius is dermined by the amount
     of child elements in the related_objects column first ul child*/
-  let radius = row.getCell("related_objects").getElement()
-    .children[0].childElementCount;
-  let html_dot = "";
-  let border_width = 4;
-  let border_color = "red";
-  let size = radius * 10;
-  let icon_style = `style="width: ${size}px; height: ${size}px; border-radius: 50%; display: table-cell; border: ${border_width}px solid ${border_color};  background: rgba(255, 0, 0, .5); overflow: hidden; position: absolute"`;
-  let iconSize = size;
-  let icon = L.divIcon({
-    html: `<span ${icon_style}>${html_dot}</span>`,
-    className: "",
-    iconSize: [iconSize, iconSize],
-  });
-  let marker = L.marker(latLng, {
-    icon: icon,
-  });
-  return marker;
-}
-
-
-function draw_cirlce_from_rowdata(latLng, row) {
-  /*provides a circular icon to be drawn on the map, radius is dermined by the amount
-    of child elements in the related_objects column first ul child*/
   let radius_factor = row.getCell("related_objects").getElement()
     .children[0].childElementCount;
   let radius = radius_factor*3;

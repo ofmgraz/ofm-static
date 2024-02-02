@@ -8,11 +8,11 @@ for more info */
 const map_cfg = {
   div_id: "places_div",
   json_url: "",
-  initial_zoom: "7",
-  max_zoom: "15",
-  min_zoom: "2",
+  initial_zoom: 7,
+  max_zoom: 15,
+  min_zoom: 2,
   /* zomm level for a place on the map focused by clicking the corresponding row */
-  on_row_click_zoom: "10",
+  on_row_click_zoom: 10,
   initial_coordinates: [47.0708,15.4386],
   base_map_url:
     "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",

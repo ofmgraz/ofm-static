@@ -21,5 +21,4 @@ function handle_the_handler(off_canvas_id) {
 
   //function call
   handle_the_handler('offcanvasNavigation');
-  handle_the_handler('text_quality_disclaimer');
   // rather annoying to use it there

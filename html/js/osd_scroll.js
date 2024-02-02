@@ -10,7 +10,7 @@ get container wrapper of osd viewer
 var height = screen.height;
 var container = document.getElementById("container_facs_1");
 var wrapper = document.getElementsByClassName("facsimiles")[0];
-
+ls
 /*
 ##################################################################
 check if osd viewer is visible or not
@@ -38,7 +38,7 @@ if (!wrapper.classList.contains("fade")) {
     var container = document.getElementById("viewer");
     container.style.width = `${String(width / 2)}px`;
 }
-
+|>
 /*
 ##################################################################
 get all image urls stored in span el class tei-xml-images

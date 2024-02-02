@@ -142,7 +142,7 @@ function draw_cirlce_from_rowdata(latLng, row) {
     .children[0].childElementCount;
   let radius = radius_factor*3;
   let border_width = 4;
-  options = {
+  let options = {
     radius: radius,
     weight: border_width,
     fillOpacity: "0.5",
@@ -150,7 +150,6 @@ function draw_cirlce_from_rowdata(latLng, row) {
     fillColor: "#702963",
   }
   let marker = L.circleMarker(latLng, options);
-  console.log(marker);
   return marker;
 }
 

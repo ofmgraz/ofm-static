@@ -1,3 +1,29 @@
+:root {
+    font-family: 'LM Roman', Arial,Helvetica,sans-serif;
+    --bs-border-width: 0px;
+    --ofm: #0b2966;
+    --ofm-bg: #f3e0c2;
+    --ofm-bg-dark: #a39072;
+    /*--ofm-small-highlight:  #9C9C9C; */
+    --ofm-big-highlight: #943F33 ;
+    /*--ofm-darker-lightgray: #D4D4D4; */
+    --ofm-contrast: #675744;
+    --ofm-font-color: #27170a;
+    --ofm-transp-red: #ff914d;
+    --ofm-big-highlight:  #914235;
+}
+
+#viewer {
+    position: sticky;
+    top: 10%;
+    padding: 2em;
+    padding-top: 0rem;:width;
+    padding-bottom: 2em;
+    max-width: 900px;
+    margin-left: auto;
+    max-height: 900px;
+}
+
 div#places_div {
 	height: 50vh;
 }

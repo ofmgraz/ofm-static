@@ -8,11 +8,12 @@ for more info */
 const map_cfg = {
   div_id: "places_div",
   json_url: "",
+
   initial_zoom: "7",
   max_zoom: "15",
   min_zoom: "2",
   /* zomm level for a place on the map focused by clicking the corresponding row */
-  on_row_click_zoom: "10",
+  on_row_click_zoom: 10,
   initial_coordinates: [47.0708,15.4386],
   base_map_url:
     "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
@@ -138,34 +139,11 @@ let wms_cfg = {
 function draw_cirlce_from_rowdata(latLng, row) {
   /*provides a circular icon to be drawn on the map, radius is dermined by the amount
     of child elements in the related_objects column first ul child*/
-  let radius = row.getCell("related_objects").getElement()
-    .children[0].childElementCount;
-  let html_dot = "";
-  let border_width = 4;
-  let border_color = "red";
-  let size = radius * 10;
-  let icon_style = `style="width: ${size}px; height: ${size}px; border-radius: 50%; display: table-cell; border: ${border_width}px solid ${border_color};  background: rgba(255, 0, 0, .5); overflow: hidden; position: absolute"`;
-  let iconSize = size;
-  let icon = L.divIcon({
-    html: `<span ${icon_style}>${html_dot}</span>`,
-    className: "",
-    iconSize: [iconSize, iconSize],
-  });
-  let marker = L.marker(latLng, {
-    icon: icon,
-  });
-  return marker;
-}
-
-
-function draw_cirlce_from_rowdata(latLng, row) {
-  /*provides a circular icon to be drawn on the map, radius is dermined by the amount
-    of child elements in the related_objects column first ul child*/
   let radius_factor = row.getCell("related_objects").getElement()
     .children[0].childElementCount;
   let radius = radius_factor*3;
   let border_width = 4;
-  options = {
+  let options = {
     radius: radius,
     weight: border_width,
     fillOpacity: "0.5",
@@ -173,7 +151,6 @@ function draw_cirlce_from_rowdata(latLng, row) {
     fillColor: "#702963",
   }
   let marker = L.circleMarker(latLng, options);
-  console.log(marker);
   return marker;
 }
 
@@ -197,7 +174,6 @@ const get_popup_label_string_html = get_bold_name
 /*some helpers*/
 
 /*helper for scrollable cell, use in custom formatter in $columns*/
-
 function make_cell_scrollable(table, cell, cell_html_string_in) {
 	var cell_html_element = cell.getElement();
 	cell_html_element.style.whiteSpace = "pre-wrap";
@@ -210,8 +186,9 @@ function make_cell_scrollable(table, cell, cell_html_string_in) {
 	}
 }
 
-/* this is a helper to provide you with a scrollable table cell, containing a list
-use in custom formatter in $columns */
+/* YOU DONT NEED THIS IF YOUR LIST-DATA STEMS FROM HTM, simply provide a html-list in the cell.
+this is a helper to provide you with a scrollable table cell, containing an html list;
+use in custom formatter in $columns;*/
 function build_linklist_cell(table, cell) {
 	let values = cell.getValue();
 	let i = 0;

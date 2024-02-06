@@ -16,7 +16,7 @@
     <xsl:import href="partials/edition_side_nav.xsl"/>
     <xsl:import href="./partials/html_title_navigation.xsl"/>
 
-    <xsl:variable name="prev">
+    <xsl:variable name="prev">ls
         <xsl:value-of select="replace(tokenize(data(tei:TEI/@prev), '/')[last()], '.xml', '.html')"
         />
     </xsl:variable>
@@ -38,25 +38,25 @@
     <xsl:param name="mytab"><![CDATA[&emsp;]]></xsl:param>
 
     <xsl:template match="/">
-        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
         <html class="h-100">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
             </head>
-            <body class="page" lang="de">
-                <xsl:call-template name="nav_bar"/>
+            <body class="d-flex flex-column h-100" lang="de">
+                
                 <div class="hfeed site" id="page">
+                    <xsl:call-template name="nav_bar"/>
                     <div class="edition_container ">
                         <div class="offcanvas offcanvas-start" tabindex="-1"
                             id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel"
                             data-bs-scroll="true" data-bs-backdrop="false">
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasNavigationLabel"
+                            <div class="offcanvas-header" >
+                               <!-- <h5 class="offcanvas-title" id="offcanvasNavigationLabel"
                                     >Navigation</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                    aria-label="Close"/>
+                                    aria-label="Close"/> -->
                             </div>
                             <div class="offcanvas-body">
                                 <!-- <div>
@@ -69,71 +69,38 @@
                         <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions"
                             aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true"
                             data-bs-backdrop="false">
-                            <div class="offcanvas-header">
+                            <!-- <div class="offcanvas-header">
                                 <h5 class="offcanvas-title" id="offcanvasOptionsLabel"
                                     >Einstellungen</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                     aria-label="Close"/>
-                            </div>
-                            <div class="offcanvas-body">
-                                <div>
-                                    <ul id="edition_display_options"
-                                        class="list-unstyled fw-normal pb-1 small">
-                                        <!--<li >
-                                             <full-size opt="fls"></full-size>
-                                             </li>-->
-                                        <li>
-                                            <image-switch opt="es"/>
-                                        </li>
-                                        <li>
-                                            <font-size opt="fs"/>
-                                        </li>
-                                        <!--<li >
-                                             <font-family opt="ff"></font-family>
-                                             </li>-->
-                                        <li>
-                                            <annotation-slider opt="ef"/>
-                                        </li>
-                                        <li>
-                                            <annotation-slider opt="prs"/>
-                                        </li>
-                                        <!--<li >
-                                             <annotation-slider opt="plc"></annotation-slider>
-                                             </li>-->
-                                        <li>
-                                            <annotation-slider opt="wrk"/>
-                                        </li>
-                                        <li>
-                                            <annotation-slider opt="org"/>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            </div> -->
+                            
                         </div>
                         <div class="wp-transcript">
                             <div class="row" id="edition_metadata">
                                 <div class="col-md-8 col-lg-8 col-sm-12 docinfo">
                                     <xsl:variable name="doc_type"
                                         select="//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/@form[1]"/>
-                                    <h1>
+                                    <h1 align="center">
                                         <xsl:value-of select="$doc_title"/>
                                     </h1>
-                                    <p class="document_info">
-                                        <xsl:value-of
-                                            select="string-join((//tei:msDesc/tei:msContents/tei:msItem/tei:author/text()), ' / ')"
-                                        />
-                                    </p>
-                                    <p class="document_info archival_small">
+                                    <h3 align="center">
+                                        <a href="{$teiSource}">
+                                            <i class="bi bi-download" title="TEI/XML"/>
+                                        </a>
+                                    </h3>
+                                    <p class="document_info archival_small" align="center">
                                         <xsl:value-of
                                             select="normalize-space(//tei:profileDesc/tei:creation/tei:date[1])"
                                         />
                                     </p>
-                                    <p class="document_info archival_small">
+                                    <p class="document_info archival_small" align="center">
                                         <xsl:value-of select="//tei:text/@type"/>
                                         <xsl:value-of
                                             select="concat(' (', normalize-space($doc_type)), ')'"/>
                                     </p>
-                                    <p class="document_info archival_small">
+                                    <p class="document_info archival_small" align="center">
                                         <xsl:value-of
                                             select='//tei:msDesc/tei:msIdentifier/tei:idno[@type = "archive"]/text()[1]/normalize-space()'
                                         />
@@ -144,85 +111,39 @@
                                         select="//tei:teiHeader/tei:revisionDesc/tei:change"/>
                                     <xsl:choose>
                                         <xsl:when test="$text_status = 'created'">
-                                            <div>
+                                            <div align="center">
                                                 <xsl:attribute name="class">
                                                   <xsl:value-of
                                                   select="concat('revision_desc ', $text_status)"/>
                                                 </xsl:attribute> maschinell erfasster Rohtext </div>
                                         </xsl:when>
                                         <xsl:otherwise>
-                                            <div>
+                                            <div align="center">
                                                 <xsl:attribute name="class">
                                                   <xsl:value-of select="'revision_desc created'"/>
                                                 </xsl:attribute> maschinell erfasster Rohtext </div>
                                         </xsl:otherwise>
                                     </xsl:choose>
+                                    
                                 </div>
 
                             </div>
                             <div id="container-resize" class="row transcript active">
                                 <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
                                     <div id="viewer">
-                                        <div id="container_facs_1">
-                                            <!-- container and facs handling in js -->
-                                        </div>
-                                        <!--=<div class="image_rights">
-                                            <div class="row">
-                                                <button class="osd_nav_element" id="osd_prev_button">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">             -->
-                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                        <!--    <path fill="#f8f9ec" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z"/>
-                                                    </svg>
-                                                </button>
-                                                <button class="osd_nav_element" id="osd_next_button">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">        -->
-                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                        <!--        <path fill="#f8f9ec" d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/>
-                                                    </svg>
-                                                </button>
-                                                <button class="osd_nav_element" id="osd_zoom_out_button">–</button>
-                                                <button class="osd_nav_element" id="osd_zoom_reset_button">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="2.5rem" width="auto" viewBox="0 0 384 512">          -->
-                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                        <!--    <path fill="#f8f9ec" d="M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm56 256c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120z"/>
-                                                    </svg>
-                                                </button>
-                                                <button class="osd_nav_element" id="osd_zoom_in_button">+</button>
-                                            </div>
-                                        </div> -->
+                                        <div id="container_facs_1" /> <!-- container and facs handling in js -->
                                     </div>
                                 </div>
                                 <div id="text-resize" lang="de"
-                                    class="col-md-6 col-lg-6 col-sm-12 text yes-index">
-                                    <div id="section">
+                                    class="col-md-6 col-lg-6 col-sm-12 text yes-index"> 
+                                    <div id="section"> 
                                         <xsl:for-each select="//tei:body/tei:div">
                                             <div class="card-body non_mimetic_lbs">
                                                 <xsl:apply-templates/>
                                             </div>
-                                            <!-- <xsl:if test="//tei:note[@type = 'footnote']">
-                                                <div class="card-footer">
-                                                    <a class="anchor" id="footnotes"/>
-                                                    <ul class="footnotes">
-                                                        <xsl:for-each select="//tei:note[@place = 'foot']">
-                                                            <li>
-                                                                <a class="anchorFoot" id="{@xml:id}"/>
-                                                                <span class="footnote_link">
-                                                                    <a href="#{@xml:id}_inline" class="nounderline">
-                                                                        <xsl:value-of select="@n"/>
-                                                                    </a>
-                                                                </span>
-                                                                <span class="footnote_text">
-                                                                    <xsl:apply-templates/>
-                                                                </span>
-                                                            </li>
-                                                        </xsl:for-each>
-                                                    </ul>
-                                                </div> 
-                                            </xsl:if> -->
-
                                         </xsl:for-each>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                             <!-- create list* elements for entities bs-modal -->
 
@@ -231,9 +152,9 @@
 
                     <xsl:call-template name="html_footer"/>
                 </div>
-                <script src="https://unpkg.com/de-micro-editor@0.2.6/dist/de-editor.min.js"/>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/>
-                <script type="text/javascript" src="js/osd_scroll.js"/>
+                <script src="https://unpkg.com/de-micro-editor@0.2.84/dist/de-editor.min.js"/>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/> 
+                <script type="text/javascript" src="js/osd_scroll.js"/> 
                 <script type="text/javascript" src="js/run.js"/>
                 <script type="text/javascript" src="js/offcanvastoggler.js"/>
             </body>
@@ -294,9 +215,10 @@
     
     
    <xsl:template match="tei:ab">
-        <p>
+      <xsl:apply-templates />
+        <!--<p>
             <xsl:apply-templates/>
-        </p>
+        </p> -->
     </xsl:template>
  
    

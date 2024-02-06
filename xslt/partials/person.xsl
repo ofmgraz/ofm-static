@@ -67,6 +67,7 @@
                 <tr>
                     <th>
                         Verantwortlich für:
+
                     </th>
                     <td>
                         <ul>

@@ -9,9 +9,9 @@
     <xsl:import href="./partials/shared.xsl"/>
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_head.xsl"/>
-    <xsl:import href="./partials/html_footer.xsl"/>
-    <xsl:import href="partials/tei-facsimile.xsl"/>
+    <xsl:import href="./partials/html_footer.xsl"/>   
     <xsl:import href="./partials/osd-container.xsl"/>
+    <xsl:import href="partials/tei-facsimile.xsl"/>
     <xsl:import href="./partials/entities.xsl"/>
     <xsl:import href="partials/edition_side_nav.xsl"/>
     <xsl:import href="./partials/html_title_navigation.xsl"/>
@@ -34,18 +34,18 @@
      <xsl:variable name="link">
          <xsl:value-of select="replace($teiSource, '.xml', '.html')"/>
      </xsl:variable>
-    <xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
+    <xsl:param name="mybreak"><![CDATA[<br />]]></xsl:param>
     <xsl:param name="mytab"><![CDATA[&emsp;]]></xsl:param>
 
     <xsl:template match="/">
+        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
         <html class="h-100">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
             </head>
-            <body class="d-flex flex-column h-100" lang="de">
-                
+            <body class="d-flex flex-column h-100" lang="de">  
                 <div class="hfeed site" id="page">
                     <xsl:call-template name="nav_bar"/>
                     <div class="edition_container ">
@@ -74,8 +74,7 @@
                                     >Einstellungen</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                     aria-label="Close"/>
-                            </div> -->
-                            
+                            </div> -->     
                         </div>
                         <div class="wp-transcript">
                             <div class="row" id="edition_metadata">
@@ -123,10 +122,8 @@
                                                   <xsl:value-of select="'revision_desc created'"/>
                                                 </xsl:attribute> maschinell erfasster Rohtext </div>
                                         </xsl:otherwise>
-                                    </xsl:choose>
-                                    
+                                    </xsl:choose>                                 
                                 </div>
-
                             </div>
                             <div id="container-resize" class="row transcript active">
                                 <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
@@ -139,19 +136,18 @@
                                     <div id="section"> 
                                         <xsl:for-each select="//tei:body/tei:div">
                                             <div class="card-body non_mimetic_lbs">
-                                                <xsl:apply-templates/>
+                                                <xsl:apply-templates />
                                             </div>
                                         </xsl:for-each>
                                     </div>
                                 </div> 
                             </div>
                             <!-- create list* elements for entities bs-modal -->
-
                         </div>
                     </div>
-
                     <xsl:call-template name="html_footer"/>
                 </div>
+                
                 <script src="https://unpkg.com/de-micro-editor@0.2.84/dist/de-editor.min.js"/>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/> 
                 <script type="text/javascript" src="js/osd_scroll.js"/> 
@@ -172,7 +168,6 @@
         </div>
     </xsl:template>
     
-    
     <xsl:template match="tei:pb">
         <!-- needed for scrolling / numbering -->
         <span class="anchor-pb"/>
@@ -190,12 +185,15 @@
             <xsl:number level="any"/>
         </xsl:variable>
         <span class="pb" source="{$facsUrl}" n="{$page_number}"
-            style="--page_before: '{($page_number - 1)}'; --beginning_page: '{$page_number}';">
-            <hr n="{$page_number}"/>
-        </span>
-        
+            style="--page_before: '{($page_number - 1)}'; --beginning_page: '{$page_number}';"> </span>
+            <span class="pb_marker" n="{$page_number}"/>
     </xsl:template>
-   <!--  <xsl:template match="tei:p">
+    <xsl:template match="tei:ab">
+        <p>
+            <xsl:apply-templates/>
+        </p>
+    </xsl:template>
+    <!--  <xsl:template match="tei:p">
         <p id="{local:makeId(.)}" data-id="{@facs}">
             <xsl:for-each-group select="node()[normalize-space(.) or name(.)]"
                 group-starting-with="self::tei:lb">
@@ -214,25 +212,25 @@
     </xsl:template> -->
     
     
-   <xsl:template match="tei:ab">
+    <!-- <xsl:template match="tei:ab">
+       AAAAAA
       <xsl:apply-templates />
-        <!--<p>
+        <p>
             <xsl:apply-templates/>
-        </p> -->
-    </xsl:template>
+        </p>
+     </xsl:template> -->
  
    
 
- <xsl:template match="text()[following-sibling::tei:lb[1][@break = 'no']]">
-        <xsl:value-of select="normalize-space(.)"/>
-        <span class="tei_lb line_breaks_in_word"/>
-    </xsl:template>
-    <xsl:template match="text()[following-sibling::tei:lb[1][@break = 'yes']]">
+    <xsl:template match="text()[following-sibling::tei:lb[1]]">
         <xsl:value-of select="."/>
-        <span class="tei_lb"/>
+        <span class="tei_lb" /><br/>
+        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
     </xsl:template>
-   
-    <xsl:template match="tei:lb">
+    
+  
+    <xsl:template match="tei:lb" />
+    <xsl:template match="tei:kkkkkkk" >
         <xsl:variable name="idx" select="format-number(number(replace(@n, 'N', '')), '#')"/>
         <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
         <a>
@@ -270,7 +268,6 @@
                 <xsl:text>__lb</xsl:text>
                 <xsl:value-of select="$lines"/> 
             </xsl:attribute>
-            
             <xsl:attribute name="size">
                 <xsl:value-of select="concat($surface/@lrx, ',', $surface/@lry)"/>
             </xsl:attribute>
@@ -294,18 +291,18 @@
             </xsl:choose>
             <xsl:value-of select="format-number($lines, '0000')"/>
         </a>
-        <xsl:value-of select="$mytab" disable-output-escaping="yes"/>
+       <xsl:value-of select="$mytab" disable-output-escaping="yes"/>
     </xsl:template>
-
+    
     <!-- simply keep paragraphs -->
-   <!-- <xsl:template match="tei:p | tei:lg">
+   <xsl:template match="tei:p | tei:lg">
         <p>
             <xsl:apply-templates/>
         </p>
-    </xsl:template> -->
+    </xsl:template>
     
-    
-  <!--  <xsl:template match="
+    <!-- delete empty p/hi/div elements -->
+    <xsl:template match="
         *[
         (
         local-name() = 'p'
@@ -314,11 +311,10 @@
         )
         and
         not(@* | * | comment() | processing-instruction())
-        and normalize-space() = '']"/> -->
+        and normalize-space() = '']"/>
     
     <xsl:template match="//tei:body//tei:head">
         <!-- find level of head between 1 and 6, the level is not semantical, the hirarchy never interruptet-->
-
         <xsl:variable name="head_level_number_raw"
             select="count(ancestor::tei:div[ancestor::tei:body/tei:div])"/>
         <xsl:variable name="head_level_number">
@@ -349,7 +345,6 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">
         <a class="{@class}" id="{@xml:id}">
             <xsl:apply-templates/>

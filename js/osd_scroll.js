@@ -91,7 +91,7 @@ locate index of anchor element
 ##################################################################
 */
 var idx = 0;
-var prev_idx = -1;
+var prev_idx = 0;
 
 /*
 ##################################################################
@@ -115,6 +115,7 @@ window.addEventListener("scroll", function(event) {
         var eiv_idx = Array.from(element).findIndex((el) => el === eiv);
         idx = eiv_idx + 1;
         prev_idx = eiv_idx - 1
+	if (prev_idx < 0) prev_idx = 0;
         // test if element is in viewport position to load correct image
         if (isInViewport(element[eiv_idx])) {
             loadNewImage(element[eiv_idx]);

@@ -15,12 +15,47 @@
     font-family: 'LM Roman', Arial,Helvetica,sans-serif;
 }
 
+
+.py-3 {
+	padding-top: 0rem !important;
+	padding-bottom: 0rem !important;
+    background-color: var(--ofm-bg);
+}
+
+
+
+
 body {
     margin: 0;
 }
 * {margin: 0; padding: 0}
 
-div#places_div {
+
+
+nav.navbar{
+    padding:0px;
+    margin:0px;
+    background-color: var(--ofm-bg-dark);
+}
+
+.mt-auto {
+    background-color: var(--ofm-bg);
+}
+
+
+.bg-body-tertiary{
+    padding:0px;
+    margin:0px;
+    background-color: var(--ofm-bg-dark);
+}
+.container-fluid{
+    padding:5px;
+    margin:0px;
+    background-color: var(--ofm-bg-dark);
+}
+
+
+div#places_div{
 	height: 40vh;
 }
 
@@ -28,25 +63,24 @@ div#places_div {
     height: 20vh;  
 }
 
-header{
+div#navbar-collapse{
     background-color: var(--ofm-bg-dark);
-    padding:10px;
+    padding:40px;
+    margin:40px;
 }
 
-.nav.navbar.expand-lg.bg-body-tertiary{
+div#wrapper-navbar{
     background-color: var(--ofm-bg-dark);
-}
-.navbar-nav, .nav-item, a.nav-link {
-    margin:0;
-    color: var(--ofm-bg);
-    background-color: var(--ofm-bg-dark);
+    padding:0px;
+    margin:0px;
 }
 
-nav.navbar div {
-    margin:0;
+nav div {
     background-color: var(--ofm-bg-dark);
+    margin: 0px;
     
 }
+
 
 
 #navbarSupportedContent a.nav-link {
@@ -79,11 +113,31 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 
+
+
+
+
+.nav.navbar.expand-lg.bg-body-tertiary{
+    background-color: var(--ofm-bg-dark);
+margin:0px;
+}
+
+.navbar-nav, .nav-item, a.nav-link {
+    margin:0;
+    color: var(--ofm-bg);
+    background-color: var(--ofm-bg-dark);
+}
+
+
+
+
+
+
 #viewer {
     position: sticky;
     top: 10%;
     padding: 2em;
-    padding-top: 0rem;:width;
+    padding-top: 0rem;
     padding-bottom: 2em;
     max-width: 900px;
     margin-left: auto;
@@ -91,54 +145,67 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 
-.
 
-footer {
+
+
+div#text-resize div.card-body.mimetic_lbs {                                                                                                                                                                                                               
+	max-width: 100rem;
+}
+div#text-resize div.card-body.non_mimetic_lbs {
+	 max-width: 80rem;
+}   
+
+footer:where#footer {
     font-size: 0.8rem;
-    
-    margin-top: auto;
+    margin: 0px;
     display: flex;
     background-color: var(--ofm-bg-dark);
     color: var(--ofm-bg);
     z-index: 1;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     max-height: 260px;
 }
 
 
+
+
+
+
+
 #wrapper-footer-full {
-    margin-top: auto;
+    margin: 0px;
     display: flex;
     background-color: var(--ofm-bg-dark);
     color: var(--ofm-bg);
     z-index: 1;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
 }
 
-#footer-full-content {
-    border-top: 0rem solid var(--ofm-bg-dark);
-
+div#footer-full-content {
+    margin: 0px;
     display: flex;
     background-color: var(--ofm-bg-dark);
     color: var(--ofm-bg);
     z-index: 1;
-    padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-#wrapper-footer-full div div a img{
+div#wrapper-footer-full div div a img{
     max-width: 200px;
-    height: auto;
-    margin-top:1rem;
+    margin: 0px;
     background-color: var(--ofm-bg-dark);
     color: var(--ofm-contrast);
 }
 
 div#wrapper-footer-secondary {
+    margin: 0px;
     text-align:center;
-    padding:0.4rem 0;
+    font-size: 0.9rem;
+    background-color: var(--ofm-bg-dark);
+    color: var(--ofm-bg);
+}
+
+div#footer-imprint-bar {
+    margin: 0px;
+    text-align:center;
     font-size: 0.9rem;
     background-color: var(--ofm-bg-dark);
     color: var(--ofm-bg);
@@ -155,6 +222,7 @@ main {
 }
 
 tabulator-header {
+    margin: 0px;
     color: var(--ofm-font-color);
     background-color: var(--ofm-bg);
 }

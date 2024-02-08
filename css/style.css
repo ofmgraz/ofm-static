@@ -6,82 +6,52 @@
     /*--ofm-small-highlight:  #9C9C9C; */
     /*--ofm-darker-lightgray: #D4D4D4; */
     --ofm-contrast: #675744;
-    --font-color: #27170a;
+    --ofm-font-color: #27170a;
     --ofm-transp-red: #ff914d;
     --ofm-big-highlight:  #914235;
+    --ofm-table-bg-type: #f3e0c2;
+    --ofm-table-accent-bg: #675744;
+    font-family: 'LM Roman', Arial,Helvetica,sans-serif;
+    background-color: var(--ofm-bg);
 }
 
 :root * {
     font-family: 'LM Roman', Arial,Helvetica,sans-serif;
-}
-
-
-.py-3 {
-	padding-top: 0rem !important;
-	padding-bottom: 0rem !important;
     background-color: var(--ofm-bg);
 }
 
-
-
+.h-100 {
+	height: 100% !important;
+	 background-color: var(--ofm-bg);
+}
 
 body {
     margin: 0;
 }
 * {margin: 0; padding: 0}
 
-
-
-nav.navbar{
-    padding:0px;
-    margin:0px;
-    background-color: var(--ofm-bg-dark);
-}
-
-.mt-auto {
+main {
+    color:var(--ofm-font-color);
     background-color: var(--ofm-bg);
 }
-
 
 .bg-body-tertiary{
     padding:0px;
     margin:0px;
-    background-color: var(--ofm-bg-dark);
-}
-.container-fluid{
-    padding:5px;
-    margin:0px;
-    background-color: var(--ofm-bg-dark);
+    background-color: var(--ofm-bg-dark) !important ;                                                                                                                                                                                                           
 }
 
-
-div#places_div{
-	height: 40vh;
+.navbar{
+	padding:5px;
+	margin:0px;
+	background-color: var(--ofm-bg-dark);
+	color: var(--ofm-bg);
 }
 
-.table {
-    height: 20vh;  
+.navbar * {
+	background-color: var(--ofm-bg-dark);
+	color: var(--ofm-bg);
 }
-
-div#navbar-collapse{
-    background-color: var(--ofm-bg-dark);
-    padding:40px;
-    margin:40px;
-}
-
-div#wrapper-navbar{
-    background-color: var(--ofm-bg-dark);
-    padding:0px;
-    margin:0px;
-}
-
-nav div {
-    background-color: var(--ofm-bg-dark);
-    margin: 0px;
-    
-}
-
-
 
 #navbarSupportedContent a.nav-link {
     font-size: 1.5rem;
@@ -90,8 +60,6 @@ nav div {
 
 
 .navbar-nav ul li a {
-    background-color: var(--ofm-bg-dark);
-    color: var(--ofm-bg);
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -99,12 +67,13 @@ nav div {
 
 .navbar-nav ul li a:hover, 
 .navbar-nav ul li a:active {
+    color: var(--ofm-font-color) ;
     background-color: var(--ofm-bg-dark);
-    color: var(--ofm-font-color);
 }
 
 .nav-link:focus, .nav-link:hover {
-	color: var(--ofm-font-color);
+	color: var(--ofm-font-color)!important;
+
 }
 
 div#navbarSupportedContent div#navbar_right_spacer {
@@ -112,25 +81,25 @@ div#navbarSupportedContent div#navbar_right_spacer {
     max-width: 30rem;
 }
 
-
-
-
-
-
 .nav.navbar.expand-lg.bg-body-tertiary{
     background-color: var(--ofm-bg-dark);
-margin:0px;
+    margin:0px;
 }
 
 .navbar-nav, .nav-item, a.nav-link {
     margin:0;
     color: var(--ofm-bg);
-    background-color: var(--ofm-bg-dark);
 }
 
 
+.dropdown-menu {
+	--bs-dropdown-bg: var(--ofm-bg-dark);
+}
 
 
+div#places_div{
+        height: 40vh;
+}
 
 
 #viewer {
@@ -145,8 +114,32 @@ margin:0px;
 }
 
 
+#tabulator.table:not(.thead-light) .tabulator-header, .tabulator.table:not(.thead-light) .tabulator-header .tabulator-col {
+	border-color: var(--ofm-contrast);
+	background-color: #fff;
+	color: #212529;
+}
 
+.table {
+    height: 20vh;  
+}
 
+.table > :not(caption) > * > * {
+	/* padding: .5rem .5rem; */
+	background-color: var(--ofm-bg);
+	color: var(--bs-table-color-state,var(--ofm-bg-color,var(--ofm-contrast)));
+	background-color: var(--ofm-bg);
+	border-bottom-width: var(--ofm-border-width);
+	box-shadow: inset 0 0 0 9999px var(--bs-table-bg-state,var(--ofm-table-bg-type,var(--ofm-table-accent-bg)));
+}
+
+.table > :not(caption) > * > * {
+	padding: 0rem;
+	background-color: var(--ofm-bg);
+	/* color: var(--bs-table-color-state,var(--ofm-bg-color,var(--ofm-contrast))); */
+	border-bottom-width: var(--ofm-border-width);
+	box-shadow: inset 0 0 0 9999px var(--bs-table-bg-state,var(--ofm-table-bg-type,var(--ofm-table-accent-bg)));
+}
 
 div#text-resize div.card-body.mimetic_lbs {                                                                                                                                                                                                               
 	max-width: 100rem;
@@ -155,6 +148,8 @@ div#text-resize div.card-body.non_mimetic_lbs {
 	 max-width: 80rem;
 }   
 
+
+
 footer:where#footer {
     font-size: 0.8rem;
     margin: 0px;
@@ -162,66 +157,58 @@ footer:where#footer {
     background-color: var(--ofm-bg-dark);
     color: var(--ofm-bg);
     z-index: 1;
+    margin: 0px !important;
     max-height: 260px;
+    padding=bottom:0px;
+}
+
+.py-3 {
+	margin: 0px !important;
+	padding: 0px !important;
 }
 
 
-
-
-
-
-
-#wrapper-footer-full {
-    margin: 0px;
-    display: flex;
-    background-color: var(--ofm-bg-dark);
-    color: var(--ofm-bg);
-    z-index: 1;
+.footer * {
+	background-color: var(--ofm-bg-dark) !important;
+	color: var(--ofm-bg)  !important;
+	margin: 0px;
+	margin-top: 0px;
+	padding: 0px;
+	padding-bottom: 0px;
 }
 
-div#footer-full-content {
-    margin: 0px;
-    display: flex;
-    background-color: var(--ofm-bg-dark);
-    color: var(--ofm-bg);
-    z-index: 1;
-    padding-bottom: 1rem;
+.footer div a img {
+	color: var(--ofm-contrast) !important;
+	margin: 0px;
+	padding: 0px;
 }
 
-div#wrapper-footer-full div div a img{
-    max-width: 200px;
-    margin: 0px;
-    background-color: var(--ofm-bg-dark);
-    color: var(--ofm-contrast);
+
+.footer-separator > * {
+	font-size: 1.25rem;
 }
 
-div#wrapper-footer-secondary {
+.footer-imprint-bar {
     margin: 0px;
     text-align:center;
     font-size: 0.9rem;
+    color: var(--ofm-bg) ;
     background-color: var(--ofm-bg-dark);
-    color: var(--ofm-bg);
+    margin: 0px
 }
 
-div#footer-imprint-bar {
+.footer-imprint-bar * {
     margin: 0px;
-    text-align:center;
-    font-size: 0.9rem;
-    background-color: var(--ofm-bg-dark);
-    color: var(--ofm-bg);
+    color: var(--ofm-bg) !important;
+    background-color: var(--ofm-bg-dark) !important;
 }
 
-div#wrapper-footer-secondary a{
-    color: var(--ofm-contrast);
-    background-color: var(--ofm-bg-dark);
+.footer-imprint-bar  div div a img{
+    color: var(--ofm-contrast) !important;
 }
 
-main {
-    color:var(--ofm-font-color);
-    background-color: var(--ofm-bg);
-}
 
-tabulator-header {
+.tabulator-header {
     margin: 0px;
     color: var(--ofm-font-color);
     background-color: var(--ofm-bg);

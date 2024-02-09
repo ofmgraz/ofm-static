@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<!DOCTYPE html><html class="h-100">
+<!DOCTYPE html><html class="page" lang="de">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta  http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,10 +38,10 @@
       <link  rel="stylesheet" href="css/style.css" type="text/css">
       <link  rel="stylesheet" href="css/micro-editor.css" type="text/css"><script  src="https://cdn.jsdelivr.net/npm/i18next@21.6.10/i18next.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/jquery-i18next@1.2.1/jquery-i18next.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.3/i18nextBrowserLanguageDetector.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.3.2/i18nextHttpBackend.min.js"></script><link  rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""><script  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script><link  href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css" rel="stylesheet">
    </head>
-   <body class="d-flex flex-column h-100" lang="de">
-      <div class="hfeed site" id="page">
-         <header >
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+   <body class="d-flex flex-column">
+      <div class="hfeed site flex-grow-1" id="page">
+         <div  class="wrapper-fluid wrapper-navbar sticky-top hide-reading" id="wrapper-navbar">
+            <nav class="navbar navbar-expand-lg">
                <div class="container-fluid"><a class="navbar-brand" href="index.html">OFM</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="navbar__project"></a><ul class="dropdown-menu">
@@ -60,7 +60,7 @@
                   </div>
                </div>
             </nav>
-         </header>
+         </div>
          <div class="edition_container ">
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel" data-bs-scroll="true" data-bs-backdrop="false">
                <div class="offcanvas-header"></div>
@@ -1345,42 +1345,43 @@
                </div>
             </div>
          </div>
-         <footer  class="footer mt-auto py-3 bg-body-tertiary">
-            <div class="container-fluid" id="footer-full-content" tabindex="-1">
-               <div class="footer-separator justify-content-center">
-                  <h5 class="font-weight-bold">KONTAKT</h5>
-               </div>
-               <div class="row justify-content-center">
-                  <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6  ml-auto  text-center ">
-                     <div class="textwidget custom-html-widget"><a href="https://www.oeaw.ac.at/acdh/"><img src="https://fundament.acdh.oeaw.ac.at/common-assets/images/acdh_logo.svg" class="image" alt="ACDH Logo" style="max-width: 90%; height: auto;" title="ACDH Logo"></a></div>
-                  </div>
-                  <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
-                     <div class="textwidget custom-html-widget">
-                        <h6 class="font-weight-bold">ACDH-CH</h6>
-                        <p>Austrian Centre for Digital Humanities <br /> and Cultural Heritage
-                           <br /> Österreichische Akademie der Wissenschaften </p>
-                        <p> Bäckerstraße 13 <br /> 1010 Wien </p>
-                        <p> T: +43 1 51581-2200 <br /> E: <a href="mailto:acdh-ch-helpdesk@oeaw.ac.at                                 ">acdh-ch-helpdesk(at)oeaw.ac.at</a></p>
-                     </div>
-                  </div>
-                  <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
-                     <div class="row">
-                        <div class="textwidget custom-html-widget">
-                           <h6 class="font-weight-bold">HELPDESK</h6>
-                           <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie
-                              sich bitte an den ACDH-CH Helpdesk.</p>
-                           <p><a class="helpdesk-button" href="mailto:acdh-ch-helpdesk@oeaw.ac.at">e-Mail</a></p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="float-end ml-auto"><a href="https://github.com/ofmgraz/ofm-static"><i class="bi bi-github"></i></a></div>
+      </div>
+      <footer  class="footer">
+         <div class="container-fluid" id="footer-full-content" tabindex="-1">
+            <div class="footer-separator justify-content-center">
+               <h5 class="font-weight-bold">KONTAKT</h5>
             </div>
-         </footer>
-         <div  class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary" style="text-align:center; padding:0.4rem 0; font-size: 0.9rem;"> © Copyright OEAW | <a href="imprint.html">Impressum</a></div><script  src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script><script  src="js/listStopProp.js"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script><script >
+            <div class="row justify-content-center">
+               <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-center ">
+                  <div class="textwidget custom-html-widget"><a href="https://www.oeaw.ac.at/acdh/"><img src="https://fundament.acdh.oeaw.ac.at/common-assets/images/acdh_logo.svg" class="image" alt="ACDH Logo" style="max-width: 90%; height: auto;" title="ACDH Logo"></a></div>
+               </div>
+               <div class="footer-widget col-lg-3 col-md-4 col-sm-3">
+                  <div class="textwidget custom-html-widget">
+                     <h6 class="font-weight-bold">ACDH-CH</h6>
+                     <p>Austrian Centre for Digital Humanities <br /> and Cultural Heritage
+                        <br /> Österreichische Akademie der Wissenschaften </p>
+                     <p> Bäckerstraße 13 <br /> 1010 Wien </p>
+                     <p> T: +43 1 51581-2200 <br /> E: <a href="mailto:acdh-ch-helpdesk@oeaw.ac.at                                 ">acdh-ch-helpdesk(at)oeaw.ac.at</a></p>
+                  </div>
+               </div>
+               <div class="footer-widget col-lg-3 col-md-4 col-sm-3">
+                  <div class="row">
+                     <div class="textwidget custom-html-widget">
+                        <h6 class="font-weight-bold">HELPDESK</h6>
+                        <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie
+                           sich bitte an den ACDH-CH Helpdesk.</p>
+                        <p><a class="helpdesk-button" href="mailto:acdh-ch-helpdesk@oeaw.ac.at">e-Mail</a></p>
+                     </div>
+                  </div>
+               </div>
+               <div class="float-right"><a href="https://github.com/ofmgraz/ofm-static"><i class="bi bi-github"></i></a></div>
+            </div>
+         </div>
+      </footer>
+      <div  class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary" style="text-align:center; padding:0.4rem 0; font-size: 0.9rem;"> © Copyright OEAW | <a href="imprint.html">Impressum</a></div><script  src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script><script  src="js/listStopProp.js"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script><script >
 function addDarkmodeWidget() {
 	new Darkmode().showWidget();
 }
 window.addEventListener('load', addDarkmodeWidget);
-</script><script  src="js/i18n.js"></script></div><script src="https://unpkg.com/de-micro-editor@0.2.84/dist/de-editor.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script><script type="text/javascript" src="js/osd_scroll.js"></script><script type="text/javascript" src="js/run.js"></script><script type="text/javascript" src="js/offcanvastoggler.js"></script></body>
+</script><script  src="js/i18n.js"></script><script src="https://unpkg.com/de-micro-editor@0.2.84/dist/de-editor.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script><script type="text/javascript" src="js/osd_scroll.js"></script><script type="text/javascript" src="js/offcanvastoggler.js"></script></body>
 </html>

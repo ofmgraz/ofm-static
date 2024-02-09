@@ -18,17 +18,17 @@
         </xsl:variable>
 
 
-        <html class="h-100">
+        <html class="page" lang="de">
 
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
             </head>
-            <body class="d-flex flex-column h-100">
+            <body class="d-flex flex-column">
                 <!-- Landing page -->
                 <xsl:call-template name="nav_bar"/>
-                <main class="flex-shrink-0">
+                <main class="flex-grow-1">
                     <div class="container">
                         <h1 style="text-align:center;">
                             <xsl:value-of select="$project_short_title"/>

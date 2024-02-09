@@ -5,12 +5,12 @@
    <xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
     <xsl:template match="/" name="html_footer">
         <!-- <div clas="wrapperhide-reading" id="wrapper-footer-full"> -->
-        <footer class="footer mt-auto py-3 bg-body-tertiary">
+        <footer class="footer">
             <div class="container-fluid" id="footer-full-content" tabindex="-1">
                 <div class="footer-separator justify-content-center"> <h5 class="font-weight-bold">KONTAKT</h5> </div>
                 <div class="row justify-content-center">
                     <div
-                        class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6  ml-auto  text-center ">
+                        class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-center ">
                         <div class="textwidget custom-html-widget">
                             <a href="https://www.oeaw.ac.at/acdh/">
                                 <img
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <!-- .footer-widget -->
-                    <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
+                    <div class="footer-widget col-lg-3 col-md-4 col-sm-3">
                         <div class="textwidget custom-html-widget">
                             <h6 class="font-weight-bold">ACDH-CH</h6>
                             <p>Austrian Centre for Digital Humanities <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> and Cultural Heritage
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <!-- .footer-widget -->
-                    <div class="footer-widget col-lg-3 col-md-4 col-sm-3 ml-auto">
+                    <div class="footer-widget col-lg-3 col-md-4 col-sm-3">
                         <div class="row">
                             <div class="textwidget custom-html-widget">
                                 <h6 class="font-weight-bold">HELPDESK</h6>
@@ -49,12 +49,13 @@
                         </div>
                     </div>
                     <!-- .footer-widget -->
+                    <div class="float-right">
+                        <a href="{$github_url}">
+                            <i class="bi bi-github"/>
+                        </a>
+                    </div>
                 </div>
-                <div class="float-end ml-auto">
-                    <a href="{$github_url}">
-                        <i class="bi bi-github"/>
-                    </a>
-                </div>
+ 
             </div>
         </footer>
         <!-- #wrapper-footer-full -->

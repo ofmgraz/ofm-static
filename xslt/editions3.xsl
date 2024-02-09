@@ -36,7 +36,7 @@
     <xsl:template match="/">
 
     
-        <html class="h-100">
+        <html class="page">
     
             <head>
                 <xsl:call-template name="html_head">
@@ -50,7 +50,7 @@
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/>
                 <script src="js/osd_single.js"></script>
             </head>
-            <body class="d-flex flex-column h-100">
+            <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
                 <main class="flex-shrink-0">
                     <div class="container">

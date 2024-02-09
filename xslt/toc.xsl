@@ -20,7 +20,7 @@
 
 
 
-        <html class="h-100">
+        <html class="page">
 
             <head>
                 <xsl:call-template name="html_head">
@@ -29,11 +29,11 @@
             </head>
 
 
-            <body class="d-flex flex-column h-100">
+            <body class="d-flex flex-column">
 
                 <!-- d-flex flex-column  h-100 -->
                 <xsl:call-template name="nav_bar"/>
-                <main>
+                <main class="flex-grow-1">
                     <div class="container-fluid">
 
                         <h1 class="text-center pb-4 pt-3"><xsl:value-of select="$doc_title"/></h1>

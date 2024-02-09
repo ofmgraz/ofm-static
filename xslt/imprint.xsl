@@ -19,7 +19,7 @@
         <xsl:variable name="doc_title" select="'Impressum'"/>
 
     
-        <html class="h-100">
+        <html class="page">
     
             <head>
                 <xsl:call-template name="html_head">
@@ -27,9 +27,9 @@
                 </xsl:call-template>
             </head>
             
-            <body class="d-flex flex-column h-100">
+            <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
-                <main class="flex-shrink-0">
+                <main class="flex-shrink-0 flex-grow-1">
                     <div class="container">
                         <h1><xsl:value-of select="$doc_title"/></h1>
                         <xsl:for-each select=".//div">

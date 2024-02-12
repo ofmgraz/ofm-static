@@ -20,7 +20,7 @@
             <xsl:value-of select=".//tei:titleStmt/tei:title[@xml:lang = $lang]/text()"/>
         </xsl:variable>
         <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
-        <html class="h-100">
+        <html class="page">
 
             <head>
                 <xsl:call-template name="html_head">
@@ -28,9 +28,9 @@
                 </xsl:call-template>
             </head>
 
-            <body class="d-flex flex-column h-100">
+            <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
-                <main>
+                <main class="flex-grow-1">
                     <div class="container">
                         <h1 class="text-center pb-4 pt-3">
                             <xsl:value-of select="$doc_title"/>

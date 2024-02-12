@@ -20,17 +20,16 @@
             <xsl:value-of select=".//tei:titleStmt/tei:title[@xml:lang = $lang]/text()"/>
         </xsl:variable>
         <!--<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text> -->
-        <html class="h-100">
+        <html class="page" lang="de">
             
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
             </head>
-
-            <body class="d-flex flex-column h-100">
+            <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
-                <main>
+                <main class="flex-grow-1">
                     <div class="container">
                         <h1 class="text-center pb-4 pt-3">
                             <xsl:value-of select="$doc_title"/>
@@ -127,16 +126,16 @@
             <xsl:variable name="filename" select="concat(./@xml:id, '.html')"/>
             <xsl:variable name="name" select="normalize-space(string-join(./tei:placeName[@xml:lang=$lang]//text()))"></xsl:variable>
             <xsl:result-document href="{$filename}">
-                <html  class="h-100">
+                <html  class="page">
                     <head>
                         <xsl:call-template name="html_head">
                             <xsl:with-param name="html_title" select="$name"></xsl:with-param>
                         </xsl:call-template>
                     </head>
                     
-                    <body class="d-flex flex-column h-100">
+                    <body class="d-flex flex-column">
                         <xsl:call-template name="nav_bar"/>
-                        <main>
+                        <main class="flex-grow-1">
                             <div class="container">
                                 <h1 class="text-center pb-4 pt-3">
                                     <xsl:value-of select="$name"/>

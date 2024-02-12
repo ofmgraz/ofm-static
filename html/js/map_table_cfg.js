@@ -147,8 +147,8 @@ function draw_cirlce_from_rowdata(latLng, row) {
     radius: radius,
     weight: border_width,
     fillOpacity: "0.5",
-    color: "#702963",
-    fillColor: "#702963",
+    color: "#943F33",
+    fillColor: "#943F33",
   }
   let marker = L.circleMarker(latLng, options);
   return marker;

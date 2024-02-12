@@ -10,15 +10,14 @@
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="./partials/html_footer.xsl"/>
-    <xsl:import href="partials/tei-facsimile.xsl"/>
     <xsl:import href="./partials/osd-container.xsl"/>
+    <xsl:import href="partials/tei-facsimile.xsl"/>
     <xsl:import href="./partials/entities.xsl"/>
     <xsl:import href="partials/edition_side_nav.xsl"/>
     <xsl:import href="./partials/html_title_navigation.xsl"/>
 
-    <xsl:variable name="prev">ls
-        <xsl:value-of select="replace(tokenize(data(tei:TEI/@prev), '/')[last()], '.xml', '.html')"
-        />
+    <xsl:variable name="prev">ls <xsl:value-of
+            select="replace(tokenize(data(tei:TEI/@prev), '/')[last()], '.xml', '.html')"/>
     </xsl:variable>
     <xsl:variable name="next">
         <xsl:value-of select="replace(tokenize(data(tei:TEI/@next), '/')[last()], '.xml', '.html')"
@@ -31,29 +30,29 @@
     <xsl:variable name="doc_title">
         <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
     </xsl:variable>
-     <xsl:variable name="link">
-         <xsl:value-of select="replace($teiSource, '.xml', '.html')"/>
-     </xsl:variable>
-    <xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
+    <xsl:variable name="link">
+        <xsl:value-of select="replace($teiSource, '.xml', '.html')"/>
+    </xsl:variable>
+    <xsl:param name="mybreak"><![CDATA[<br />]]></xsl:param>
     <xsl:param name="mytab"><![CDATA[&emsp;]]></xsl:param>
 
     <xsl:template match="/">
-        <html class="h-100">
+        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+        <html class="page"  lang="de">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
             </head>
-            <body class="d-flex flex-column h-100" lang="de">
-                
-                <div class="hfeed site" id="page">
+            <body class="d-flex flex-column">
+                <div class="hfeed site flex-grow-1" id="page">
                     <xsl:call-template name="nav_bar"/>
                     <div class="edition_container ">
                         <div class="offcanvas offcanvas-start" tabindex="-1"
                             id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel"
                             data-bs-scroll="true" data-bs-backdrop="false">
-                            <div class="offcanvas-header" >
-                               <!-- <h5 class="offcanvas-title" id="offcanvasNavigationLabel"
+                            <div class="offcanvas-header">
+                                <!-- <h5 class="offcanvas-title" id="offcanvasNavigationLabel"
                                     >Navigation</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                     aria-label="Close"/> -->
@@ -75,7 +74,6 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                     aria-label="Close"/>
                             </div> -->
-                            
                         </div>
                         <div class="wp-transcript">
                             <div class="row" id="edition_metadata">
@@ -124,43 +122,41 @@
                                                 </xsl:attribute> maschinell erfasster Rohtext </div>
                                         </xsl:otherwise>
                                     </xsl:choose>
-                                    
                                 </div>
-
                             </div>
                             <div id="container-resize" class="row transcript active">
                                 <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
                                     <div id="viewer">
-                                        <div id="container_facs_1" /> <!-- container and facs handling in js -->
+                                        <div id="container_facs_1"/>
+                                        <!-- container and facs handling in js -->
                                     </div>
                                 </div>
                                 <div id="text-resize" lang="de"
-                                    class="col-md-6 col-lg-6 col-sm-12 text yes-index"> 
-                                    <div id="section"> 
+                                    class="col-md-6 col-lg-6 col-sm-12 text yes-index">
+                                    <div id="section">
                                         <xsl:for-each select="//tei:body/tei:div">
                                             <div class="card-body non_mimetic_lbs">
                                                 <xsl:apply-templates/>
                                             </div>
                                         </xsl:for-each>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                             <!-- create list* elements for entities bs-modal -->
-
                         </div>
                     </div>
-
-                    <xsl:call-template name="html_footer"/>
+                    
                 </div>
-                <script src="https://unpkg.com/de-micro-editor@0.2.84/dist/de-editor.min.js"/>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/> 
-                <script type="text/javascript" src="js/osd_scroll.js"/> 
-                <script type="text/javascript" src="js/run.js"/>
+                <xsl:call-template name="html_footer"/>
+                <script src="https://unpkg.com/de-micro-editor@0.3.2/dist/de-editor.min.js"/>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/>
+                <script type="text/javascript" src="js/osd_scroll.js"/>
+                <!-- <script type="text/javascript" src="js/run.js"/> -->
                 <script type="text/javascript" src="js/offcanvastoggler.js"/>
             </body>
         </html>
     </xsl:template>
-    
+
     <xsl:template match="tei:div[parent::tei:div]">
         <!-- this is for sections, subsections and articles-->
         <xsl:variable name="type_attrib" select="@type"/>
@@ -171,8 +167,7 @@
             <xsl:apply-templates/>
         </div>
     </xsl:template>
-    
-    
+
     <xsl:template match="tei:pb">
         <!-- needed for scrolling / numbering -->
         <span class="anchor-pb"/>
@@ -190,12 +185,15 @@
             <xsl:number level="any"/>
         </xsl:variable>
         <span class="pb" source="{$facsUrl}" n="{$page_number}"
-            style="--page_before: '{($page_number - 1)}'; --beginning_page: '{$page_number}';">
-            <hr n="{$page_number}"/>
-        </span>
-        
+            style="--page_before: '{($page_number - 1)}'; --beginning_page: '{$page_number}';"> </span>
+        <span class="pb_marker" n="{$page_number}"/>
     </xsl:template>
-   <!--  <xsl:template match="tei:p">
+    <xsl:template match="tei:ab">
+        <p>
+            <xsl:apply-templates/>
+        </p>
+    </xsl:template>
+    <!--  <xsl:template match="tei:p">
         <p id="{local:makeId(.)}" data-id="{@facs}">
             <xsl:for-each-group select="node()[normalize-space(.) or name(.)]"
                 group-starting-with="self::tei:lb">
@@ -212,27 +210,28 @@
             </xsl:for-each-group>
         </p>
     </xsl:template> -->
-    
-    
-   <xsl:template match="tei:ab">
-      <xsl:apply-templates />
-        <!--<p>
-            <xsl:apply-templates/>
-        </p> -->
-    </xsl:template>
- 
-   
 
- <xsl:template match="text()[following-sibling::tei:lb[1][@break = 'no']]">
-        <xsl:value-of select="normalize-space(.)"/>
-        <span class="tei_lb line_breaks_in_word"/>
-    </xsl:template>
-    <xsl:template match="text()[following-sibling::tei:lb[1][@break = 'yes']]">
+
+    <!-- <xsl:template match="tei:ab">
+       AAAAAA
+      <xsl:apply-templates />
+        <p>
+            <xsl:apply-templates/>
+        </p>
+     </xsl:template> -->
+
+
+
+    <xsl:template match="text()[following-sibling::tei:lb[1]]">
         <xsl:value-of select="."/>
         <span class="tei_lb"/>
+        <br/>
+        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
     </xsl:template>
-   
-    <xsl:template match="tei:lb">
+
+
+    <xsl:template match="tei:lb"/>
+    <xsl:template match="tei:kkkkkkk">
         <xsl:variable name="idx" select="format-number(number(replace(@n, 'N', '')), '#')"/>
         <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
         <a>
@@ -256,7 +255,7 @@
                 <xsl:text>__lb</xsl:text>
                 <xsl:value-of select="$lines"/>
             </xsl:attribute> -->
-           <!--  <xsl:attribute name="name"> 
+            <!--  <xsl:attribute name="name"> 
                 <xsl:value-of select="parent::tei:p/@facs"/>
                 <xsl:text>__p</xsl:text>
                 <xsl:value-of select="$para"/>
@@ -270,7 +269,6 @@
                 <xsl:text>__lb</xsl:text>
                 <xsl:value-of select="$lines"/> 
             </xsl:attribute>
-            
             <xsl:attribute name="size">
                 <xsl:value-of select="concat($surface/@lrx, ',', $surface/@lry)"/>
             </xsl:attribute>
@@ -283,7 +281,7 @@
                         <xsl:text>linenumbersVisible linenumbers</xsl:text>
                     </xsl:attribute>
                     <xsl:attribute name="data-lbnr">
-                        <xsl:value-of select="$lines"/> 
+                        <xsl:value-of select="$lines"/>
                     </xsl:attribute>
                 </xsl:when>
                 <xsl:otherwise>
@@ -298,27 +296,26 @@
     </xsl:template>
 
     <!-- simply keep paragraphs -->
-   <!-- <xsl:template match="tei:p | tei:lg">
+    <xsl:template match="tei:p | tei:lg">
         <p>
             <xsl:apply-templates/>
         </p>
-    </xsl:template> -->
-    
-    
-  <!--  <xsl:template match="
-        *[
-        (
-        local-name() = 'p'
-        or local-name() = 'hi'
-        or local-name() = 'div'
-        )
-        and
-        not(@* | * | comment() | processing-instruction())
-        and normalize-space() = '']"/> -->
-    
+    </xsl:template>
+
+    <!-- delete empty p/hi/div elements -->
+    <xsl:template match="
+            *[
+            (
+            local-name() = 'p'
+            or local-name() = 'hi'
+            or local-name() = 'div'
+            )
+            and
+            not(@* | * | comment() | processing-instruction())
+            and normalize-space() = '']"/>
+
     <xsl:template match="//tei:body//tei:head">
         <!-- find level of head between 1 and 6, the level is not semantical, the hirarchy never interruptet-->
-
         <xsl:variable name="head_level_number_raw"
             select="count(ancestor::tei:div[ancestor::tei:body/tei:div])"/>
         <xsl:variable name="head_level_number">
@@ -349,7 +346,6 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">
         <a class="{@class}" id="{@xml:id}">
             <xsl:apply-templates/>

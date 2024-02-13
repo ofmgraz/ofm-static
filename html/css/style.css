@@ -20,19 +20,27 @@
     font-family: 'LM Roman', Arial,Helvetica,sans-serif;
 }
 
+
 body {
     margin: 0;
     display: flex;
-    min-height:100vh!important;
+    min-height:100vh;
+    overflow-x: hidden;
     background-color: var(--ofm-bg);
 
 }
 
 main {
+	flex-grow: 1;
     color:var(--ofm-font-color);
     background-color: var(--ofm-bg);
 }
 
+.carousel {
+}
+
+.carousel * {
+}
 
 
 .wrapper-navbar{
@@ -88,7 +96,8 @@ div#navbarSupportedContent div#navbar_right_spacer {
 
 
 div#places_div{
-        height: 40vh;
+        min-height: 40vh;
+
 }
 
 
@@ -98,7 +107,7 @@ div#places_div{
     padding: 2em;
     padding-top: 0rem;
     padding-bottom: 2em;
-    max-width: 900px;
+    max-width: 60vw;
     margin-left: auto;
     max-height: 900px;
 }
@@ -111,9 +120,10 @@ div#places_div{
 }
 
 .table {
-    min-height: 20vh;
+    min-height: 10vh;
     background-color: var(--ofm-bg);
 }
+
 
 .table * {
 	background-color: var(--ofm-bg);
@@ -121,7 +131,10 @@ div#places_div{
 
 .container {
 	background-color: var(--ofm-bg);
-	width:100vh;
+}
+
+.row {
+	min-width:100vw;
 }
 
 .table > :not(caption) > * > * {
@@ -163,7 +176,6 @@ footer:where#footer {
     color: var(--ofm-bg);
     z-index: 1;
     margin: 0px !important;
-    position: relative;
     align-self: flex-end;
 }
 

@@ -29,21 +29,20 @@
             </head>
             <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
+                <h1 class="text-center pb-4 pt-3"><xsl:value-of select="$doc_title"/></h1>
                 <main class="flex-grow-1">
                     <div class="container">
-                        <h1 class="text-center pb-4 pt-3">
-                            <xsl:value-of select="$doc_title"/>
-                        </h1>
                         <div id="places_div"/>
-                        <table class="table" id="placesTable">
+                        <div class="container-fluid">
+                        <table id="placesTable">
                             <thead>
                                 <tr>
-                                    <th scope="col"  tabulator-formatter="html">name</th>
-                                    <th scope="col" >lat</th>
-                                    <th scope="col">lng</th>
+                                    <th scope="col"  width="33%" tabulator-formatter="html">name</th>
+                                    <th scope="col" width="0%">lat</th>
+                                    <th scope="col" width="0%">lng</th>
                                     <th scope="col" tabulator-visible="false">id</th>
-                                    <th scope="col" >authority</th>
-                                    <th scope="col">related_objects</th>
+                                    <th scope="col" width="33%">authority</th>
+                                    <th scope="col" width="33%">related_objects</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -109,7 +108,7 @@
                                     </tr>
                                 </xsl:for-each>
                             </tbody>
-                        </table>
+                        </table></div>
                         <xsl:call-template name="tabulator_dl_buttons"/>
                     </div>
                 </main>

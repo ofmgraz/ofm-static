@@ -28,17 +28,20 @@
             <body class="d-flex flex-column">
                 <!-- Landing page -->
                 <xsl:call-template name="nav_bar"/>
-                <main class="flex-grow-1">
+
+
+                <main class="flex-grow-1 flex-shrink-1">
+                    <h1 style="text-align:center;">
+                        <xsl:value-of select="$project_short_title"/>
+                    </h1>
                     <div class="container">
-                        <h1 style="text-align:center;">
-                            <xsl:value-of select="$project_short_title"/>
-                        </h1>
-                        
+                        <div class="container-fluid">
                         <div id="carouselExampleControls" class="carousel slide"
                             data-ride="carousel" style="margin:20px">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="img/ofmgraz_01.jpg" alt="First slide" />  
+                                    <img class="d-block w-100" src="img/ofmgraz_01.jpg"
+                                        alt="First slide"/>
                                 </div>
                                 <!-- <div class="carousel-item">
                                     <img class="d-block w-100" src="img/ofmgraz_02.jpg" alt="Second slide" />
@@ -58,7 +61,7 @@
                                     </div>
                                 </div>
                             </div>
-                           <!--  <a class="carousel-control-prev" href="#carouselExampleControls"
+                            <!--  <a class="carousel-control-prev" href="#carouselExampleControls"
                                 role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"/>
                                 <span class="sr-only">Previous</span>
@@ -71,7 +74,7 @@
                         </div>
                         <h2 style="text-align:center;">
                             <xsl:value-of select="$project_title"/>
-                        </h2>
+                        </h2></div>
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>

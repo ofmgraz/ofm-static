@@ -1,95 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     version="2.0" exclude-result-prefixes="xsl tei xs">
-    
-    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes" omit-xml-declaration="yes"/>
-    
-    
+
+    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
+        omit-xml-declaration="yes"/>
+
+
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="./partials/html_footer.xsl"/>
     <xsl:import href="./partials/shared.xsl"/>
-    
-   <xsl:variable name="lang" select="'de'"/> 
+
+    <xsl:variable name="lang" select="'de'"/>
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select=".//tei:title[@type='main'][1]/text()"/>
+            <xsl:value-of select=".//tei:title[@type = 'main'][1]/text()"/>
         </xsl:variable>
-        
-        
-        
+
+
+
         <html class="page">
-            
+
             <head>
                 <xsl:call-template name="html_head">
-                    <xsl:with-param name="html_title" select="$doc_title"></xsl:with-param>
+                    <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
             </head>
-            
+
             <body class="d-flex flex-column">
-	    <!-- About -->
+                <!-- About -->
                 <xsl:call-template name="nav_bar"/>
                 <main class="flex-grow-1">
-                    <div class="container-md">                        
+                    <div class="container-md">
                         <h1 class="text-center pb-4 pt-3">
                             <xsl:value-of select="$doc_title"/>
-                        </h1>    
-                        <xsl:apply-templates select=".//tei:body"></xsl:apply-templates>
+                        </h1>
+                        <div class="container-fluid">
+                            <xsl:apply-templates select=".//tei:body"/>
+                        </div>
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>
             </body>
         </html>
     </xsl:template>
-    
+
     <!--   <xsl:template match="tei:graphic" name="img">
         <img src="{'img/'||tokenize(data(@url), '/')[last()]}" class="pb-1"/>
     </xsl:template>-->
-    
+
     <xsl:template match="tei:figure">
         <xsl:variable name="imgurl">
-            <xsl:value-of select="tokenize(./tei:graphic/@url, ' ')[1]" />
+            <xsl:value-of select="tokenize(./tei:graphic/@url, ' ')[1]"/>
         </xsl:variable>
         <img class="pb-1">
             <xsl:attribute name="src">
-                <xsl:value-of select="'img/'||tokenize(data($imgurl), '/')[last()]"/>
+                <xsl:value-of select="'img/' || tokenize(data($imgurl), '/')[last()]"/>
             </xsl:attribute>
         </img>
         <xsl:if test=".//tei:desc">
-            <figcaption><xsl:apply-templates select=".//tei:desc"/></figcaption>
+            <figcaption>
+                <xsl:apply-templates select=".//tei:desc"/>
+            </figcaption>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template match="tei:hi[@rend]">
         <xsl:choose>
             <xsl:when test="data(@rend) eq 'italic bold'">
-                <em><bold><xsl:apply-templates/></bold></em>
+                <em>
+                    <bold>
+                        <xsl:apply-templates/>
+                    </bold>
+                </em>
             </xsl:when>
             <xsl:when test="data(@rend) eq 'bold'">
-                <strong><xsl:apply-templates></xsl:apply-templates></strong>
+                <strong>
+                    <xsl:apply-templates/>
+                </strong>
             </xsl:when>
             <xsl:when test="data(@rend) eq 'italic'">
-                <em><xsl:apply-templates></xsl:apply-templates></em>
+                <em>
+                    <xsl:apply-templates/>
+                </em>
             </xsl:when>
             <xsl:when test="data(@rend) eq 'underline'">
-                <u><xsl:apply-templates></xsl:apply-templates></u>
+                <u>
+                    <xsl:apply-templates/>
+                </u>
             </xsl:when>
-            <xsl:otherwise><xsl:apply-templates/></xsl:otherwise>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
         </xsl:choose>
-        
-        
+
+
     </xsl:template>
-    
+
     <xsl:template match="tei:list">
-        <ul><xsl:apply-templates/></ul>
+        <ul>
+            <xsl:apply-templates/>
+        </ul>
     </xsl:template>
-    
+
     <xsl:template match="tei:item">
-        <li><xsl:apply-templates/></li>
+        <li>
+            <xsl:apply-templates/>
+        </li>
     </xsl:template>
-    
+
     <xsl:template match="tei:head">
         <xsl:variable name="level">
             <xsl:value-of select="count(ancestor-or-self::tei:div)"/>
@@ -101,8 +121,8 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
-    
+
+
     <xsl:template match="tei:p">
         <p id="{generate-id()}">
             <xsl:if test="@ana">
@@ -114,16 +134,22 @@
         </p>
     </xsl:template>
     <xsl:template match="tei:div">
-        <div id="{generate-id()}"><xsl:apply-templates/></div>
+        <div id="{generate-id()}">
+            <xsl:apply-templates/>
+        </div>
     </xsl:template>
     <xsl:template match="tei:lb">
         <br/>
     </xsl:template>
     <xsl:template match="tei:unclear">
-        <abbr title="unclear"><xsl:apply-templates/></abbr>
+        <abbr title="unclear">
+            <xsl:apply-templates/>
+        </abbr>
     </xsl:template>
     <xsl:template match="tei:del">
-        <del><xsl:apply-templates/></del>
+        <del>
+            <xsl:apply-templates/>
+        </del>
     </xsl:template>
     <xsl:template match="tei:ref">
         <a>
@@ -131,15 +157,13 @@
                 <xsl:attribute name="href">
                     <xsl:value-of select="@target"/>
                 </xsl:attribute>
-                <xsl:attribute name="style">
-                    text-decoration: underline;
-                </xsl:attribute>
+                <xsl:attribute name="style"> text-decoration: underline; </xsl:attribute>
             </xsl:if>
             <xsl:apply-templates/>
         </a>
     </xsl:template>
-    
-    
+
+
     <xsl:template match="tei:table">
         <xsl:element name="table">
             <xsl:attribute name="class">

@@ -21,7 +21,7 @@
         </xsl:variable>
         <!--<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text> -->
         <html class="page" lang="de">
-            
+
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
@@ -29,86 +29,96 @@
             </head>
             <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
-                <h1 class="text-center pb-4 pt-3"><xsl:value-of select="$doc_title"/></h1>
+
                 <main class="flex-grow-1">
+                    <h1 class="text-center pb-4 pt-3">
+                        <xsl:value-of select="$doc_title"/>
+                    </h1>
                     <div class="container">
                         <div id="places_div"/>
                         <div class="container-fluid">
-                        <table id="placesTable">
-                            <thead>
-                                <tr>
-                                    <th scope="col"  width="33%" tabulator-formatter="html">name</th>
-                                    <th scope="col" width="0%">lat</th>
-                                    <th scope="col" width="0%">lng</th>
-                                    <th scope="col" tabulator-visible="false">id</th>
-                                    <th scope="col" width="33%">authority</th>
-                                    <th scope="col" width="33%">related_objects</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <xsl:for-each select=".//tei:place">
-                                    <xsl:variable name="id">
-                                        <xsl:value-of select="data(@xml:id)"/>
-                                    </xsl:variable>
+                            <table id="placesTable">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <a>
-						<xsl:attribute name="href">
-							<xsl:value-of select="concat($id, '.html')"/>
-						</xsl:attribute>
-                                            	<xsl:value-of select="./tei:placeName[@xml:lang = $lang]/text()"/>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <xsl:choose>
-                                                <xsl:when test="./tei:location[1]/tei:geo[1]">
+                                        <th scope="col" width="33%" tabulator-formatter="html"
+                                            >name</th>
+                                        <th scope="col" width="0%">lat</th>
+                                        <th scope="col" width="0%">lng</th>
+                                        <th scope="col" tabulator-visible="false">id</th>
+                                        <th scope="col" width="33%">authority</th>
+                                        <th scope="col" width="33%">related_objects</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <xsl:for-each select=".//tei:place">
+                                        <xsl:variable name="id">
+                                            <xsl:value-of select="data(@xml:id)"/>
+                                        </xsl:variable>
+                                        <tr>
+                                            <td>
+                                                <a>
+                                                  <xsl:attribute name="href">
+                                                  <xsl:value-of select="concat($id, '.html')"/>
+                                                  </xsl:attribute>
+                                                  <xsl:value-of
+                                                  select="./tei:placeName[@xml:lang = $lang]/text()"
+                                                  />
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <xsl:choose>
+                                                  <xsl:when test="./tei:location[1]/tei:geo[1]">
                                                   <xsl:value-of
                                                   select="tokenize(./tei:location[1]/tei:geo[1]/text(), ' ')[1]"
                                                   />
-                                                </xsl:when>
-                                            </xsl:choose>
-                                        </td>
-                                        <td>
-                                            <xsl:choose>
-                                                <xsl:when test="./tei:location[1]/tei:geo[1]">
+                                                  </xsl:when>
+                                                </xsl:choose>
+                                            </td>
+                                            <td>
+                                                <xsl:choose>
+                                                  <xsl:when test="./tei:location[1]/tei:geo[1]">
                                                   <xsl:value-of
                                                   select="tokenize(./tei:location[1]/tei:geo[1]/text(), ' ')[last()]"
                                                   />
-                                                </xsl:when>
-                                            </xsl:choose>
-                                        </td>
-                                        <td> # <xsl:value-of select="$id"/>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                                <xsl:for-each select="./tei:idno">
+                                                  </xsl:when>
+                                                </xsl:choose>
+                                            </td>
+                                            <td> # <xsl:value-of select="$id"/>
+                                            </td>
+                                            <td>
+                                                <ul>
+                                                  <xsl:for-each select="./tei:idno">
 
-                                                  <li><a>
+                                                  <li>
+                                                  <a>
                                                   <xsl:attribute name="href">
                                                   <xsl:value-of
                                                   select="tokenize(./text(), ' ')[last()]"/>
                                                   </xsl:attribute>
                                                   <xsl:value-of select="./@subtype"/>
-                                                  </a></li>
+                                                  </a>
+                                                  </li>
 
-                                                </xsl:for-each>
-                                            </ul>
-                                        </td>
-                                        <td>
-                                        <ul>
-                                            <xsl:for-each select="./tei:listEvent/tei:event">
+                                                  </xsl:for-each>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul>
+                                                  <xsl:for-each select="./tei:listEvent/tei:event">
                                                   <li>
                                                   <a
                                                   href="{replace(./tei:linkGrp/tei:link/@target, '.xml', '.html')}">
                                                   <xsl:value-of select="./tei:p/tei:title/text()"/>
                                                   </a>
                                                   </li>
-                                            </xsl:for-each></ul>
-                                        </td>
-                                    </tr>
-                                </xsl:for-each>
-                            </tbody>
-                        </table></div>
+                                                  </xsl:for-each>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </xsl:for-each>
+                                </tbody>
+                            </table>
+                        </div>
                         <xsl:call-template name="tabulator_dl_buttons"/>
                     </div>
                 </main>
@@ -123,15 +133,16 @@
         </html>
         <xsl:for-each select=".//tei:place[@xml:id]">
             <xsl:variable name="filename" select="concat(./@xml:id, '.html')"/>
-            <xsl:variable name="name" select="normalize-space(string-join(./tei:placeName[@xml:lang=$lang]//text()))"></xsl:variable>
+            <xsl:variable name="name"
+                select="normalize-space(string-join(./tei:placeName[@xml:lang = $lang]//text()))"/>
             <xsl:result-document href="{$filename}">
-                <html  class="page">
+                <html class="page">
                     <head>
                         <xsl:call-template name="html_head">
-                            <xsl:with-param name="html_title" select="$name"></xsl:with-param>
+                            <xsl:with-param name="html_title" select="$name"/>
                         </xsl:call-template>
                     </head>
-                    
+
                     <body class="d-flex flex-column">
                         <xsl:call-template name="nav_bar"/>
                         <main class="flex-grow-1">
@@ -147,12 +158,11 @@
                         </main>
                         <xsl:call-template name="html_footer"/>
                         <xsl:if test="./tei:location/tei:geo">
-                            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+                            <link rel="stylesheet"
+                                href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
                                 integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
                                 crossorigin=""/>
-                            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-                                integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-                                crossorigin=""></script>
+                            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""/>
                             <script>
                                 var lat = <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1]/text(), ' ')[1]"/>;
                                 var long = <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1]/text(), ' ')[last()]"/>;

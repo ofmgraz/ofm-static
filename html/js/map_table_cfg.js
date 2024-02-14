@@ -29,8 +29,8 @@ const columns = [
     provide a string val in your html-table */
   {
     headerFilter: "input",
-    title: "name",
-    field: "name",
+    title: "Name",
+    field: "Name",
     formatter: "plaintext",
     resizable: false,
   },
@@ -56,16 +56,16 @@ const columns = [
   place a ul-item with one li-children for each entity in your html-table*/
   {
     headerFilter: "input",
-    title: "related_objects",
-    field: "related_objects",
+    title: "Objekte",
+    field: "Objekte",
     resizable: false,
     formatter: "html",
   },
   /*the following could contain a ul of links to external authority data*/
   {
     //headerFilter: "input",
-    title: "authority",
-    field: "authority",
+    title: "Normdaten",
+    field: "Normdaten",
     resizable: false,
     formatter: "html",
   },
@@ -73,17 +73,6 @@ const columns = [
 
 /* using localization to change labels of tabulators pagination
     https://tabulator.info/docs/5.5/modules#module-localize */
-const langs = {
-  default: {
-    pagination: {
-      counter: {
-        showing: "",
-        of: "of",
-        rows: "",
-      },
-    },
-  },
-};
 
 /* this cfg describes some of the features of
     the tabulator table and it't functions 
@@ -91,21 +80,22 @@ const langs = {
 const tabulator_cfg = {
   maxHeight: "45vh",
   layout: "fitColumns",
+	/*
   width: "100%",
   headerFilterLiveFilterDelay: 600,
   responsiveLayout: "collapse",
-  paginationCounter: "rows",
+  border: "none", */
+	virtualDomBuffer: 200,
+  /* paginationCounter: "rows",
   pagination: "local",
-  paginationSize: 10,
-  langs: langs,
-  columns: columns,
+  paginationSize: 10, */
 };
 
 /*this is just an extra capsule to pass cfg trough the functions*/
 const table_cfg = {
   tabulator_cfg: tabulator_cfg,
   /* put the id of the div-element you want tabulator to be rendered in */
-  table_div_html_id: "#placesTable",
+  table_div_html_id: "#myTable",
 };
 
 /*optional you can define some wms config. If provided and passed to 
@@ -138,7 +128,7 @@ let wms_cfg = {
 function draw_cirlce_from_rowdata(latLng, row) {
   /*provides a circular icon to be drawn on the map, radius is dermined by the amount
     of child elements in the related_objects column first ul child*/
-  let radius_factor = row.getCell("related_objects").getElement()
+  let radius_factor = row.getCell("objekte").getElement()
     .children[0].childElementCount;
   let radius = radius_factor*3;
   let border_width = 4;

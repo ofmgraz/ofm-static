@@ -20,7 +20,7 @@
 
 
 
-        <html class="page" lang="de">
+        <html class="page">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
@@ -35,31 +35,27 @@
                             <xsl:value-of select="$doc_title"/>
                         </h1>
 
-                        <table id="tocTable">
+                        <table class="table" id="myTable">
                             <thead>
                                 <tr>
                                     <th scope="col" tabulator-formatter="html">Titel</th>
-                                    <th scope="col" tabulator-headerFilter="input"
-                                        tabulator-formatter="html">XML-TEI</th>
-                                    <th scope="col" tabulator-headerFilter="input"
-                                        tabulator-visible="false">TPQ</th>
-                                    <th scope="col" tabulator-headerFilter="input">TAQ</th>
+                                    <th scope="col" tabulator-formatter="html"
+                                        >XML-TEI</th>
+                                    <th scope="col"
+                                       >TPQ</th>
+                                    <th scope="col" tabulator-visible="false">TAQ</th>
 
-                                    <th scope="col" tabulator-headerFilter="input">Liturgie</th>
-                                    <th scope="col" tabulator-headerFilter="input">Book Type</th>
+                                    <th scope="col">Liturgie</th>
+                                    <th scope="col" >Book Type</th>
                                     <th scope="col" tabulator-formatter="html"
-                                        tabulator-headerFilter="input">Provenienz</th>
+                                        tabulator-visible="false">Provenienz</th>
                                     <th scope="col" tabulator-formatter="html"
-                                        tabulator-headerFilter="input">Drucker</th>
-                                    <th scope="col" tabulator-headerFilter="input">Folia</th>
-                                    <th scope="col" tabulator-headerFilter="input"
-                                        tabulator-visible="false">Höhe (mm)</th>
-                                    <th scope="col" tabulator-headerFilter="input"
-                                        tabulator-visible="false">Breite (mm)</th>
-                                    <th scope="col" tabulator-headerFilter="input"
-                                        tabulator-visible="false">Beschreibung</th>
-                                    <th scope="col" tabulator-headerFilter="sort"
-                                        tabulator-visible="false">Traskriptionstatus</th>
+                                        tabulator-visible="false">Drucker</th>
+                                    <th scope="col" tabulator-visible="false">Folia</th>
+                                    <th scope="col" tabulator-visible="false">Höhe (mm)</th>
+                                    <th scope="col" tabulator-visible="false">Breite (mm)</th>
+                                    <th scope="col" tabulator-visible="false">Beschreibung</th>
+                                    <th scope="col" tabulator-visible="false">Traskriptionstatus</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -183,8 +179,8 @@
                         <xsl:call-template name="tabulator_dl_buttons"/>
                     </div>
                 </main>
-                <xsl:call-template name="html_footer"/>
                 <xsl:call-template name="tabulator_js"/>
+                <xsl:call-template name="html_footer"/>
             </body>
         </html>
     </xsl:template>

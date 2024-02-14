@@ -22,7 +22,6 @@
 
 
 body {
-    margin: 0;
     display: flex;
     min-height:100vh;
     overflow-x: hidden;
@@ -176,20 +175,17 @@ footer:where#footer {
     background-color: var(--ofm-bg-dark);
     color: var(--ofm-bg);
     z-index: 1;
-    margin: 0px !important;
     align-self: flex-end;
 }
 
 .footer * {
 	background-color: var(--ofm-bg-dark) !important;
 	color: var(--ofm-bg)  !important;
-	margin: 0px;
 
 }
 
 .footer div a img {
 	color: var(--ofm-contrast) !important;
-	margin: 0px;
 }
 
 
@@ -199,7 +195,6 @@ footer:where#footer {
 }
 
 .footer-imprint-bar {
-    margin: 0px;
     text-align:center;
     font-size: 0.9rem;
     color: var(--ofm-bg) ;
@@ -207,7 +202,6 @@ footer:where#footer {
 }
 
 .footer-imprint-bar * {
-    margin: 0px;
     color: var(--ofm-bg) !important;
     background-color: var(--ofm-bg-dark) !important;
 }

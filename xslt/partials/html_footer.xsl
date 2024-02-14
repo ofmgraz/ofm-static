@@ -8,9 +8,9 @@
         <footer class="footer">
             <div class="container-fluid" id="footer-full-content" tabindex="-1 overflow-hidden">
                 <div class="footer-separator justify-content-center overflow-hidden"> <h5 class="font-weight-bold">KONTAKT</h5> </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center overflow-hidden">
                     <div
-                        class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-center ">
+                        class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-center overflow-hidden">
                         <div class="textwidget custom-html-widget">
                             <a href="https://www.oeaw.ac.at/acdh/">
                                 <img

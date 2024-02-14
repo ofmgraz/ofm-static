@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html  class="page" lang="de">
+<html  class="page">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,22 +63,22 @@
       <main class="flex-grow-1 overflow-hidden">
          <div class="container">
             <h1 class="text-center pb-4 pt-3">Bücher</h1>
-            <table id="tocTable">
+            <table class="table" id="myTable">
                <thead>
                   <tr>
                      <th scope="col" tabulator-formatter="html">Titel</th>
-                     <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html">XML-TEI</th>
-                     <th scope="col" tabulator-headerFilter="input" tabulator-visible="false">TPQ</th>
-                     <th scope="col" tabulator-headerFilter="input">TAQ</th>
-                     <th scope="col" tabulator-headerFilter="input">Liturgie</th>
-                     <th scope="col" tabulator-headerFilter="input">Book Type</th>
-                     <th scope="col" tabulator-formatter="html" tabulator-headerFilter="input">Provenienz</th>
-                     <th scope="col" tabulator-formatter="html" tabulator-headerFilter="input">Drucker</th>
-                     <th scope="col" tabulator-headerFilter="input">Folia</th>
-                     <th scope="col" tabulator-headerFilter="input" tabulator-visible="false">Höhe (mm)</th>
-                     <th scope="col" tabulator-headerFilter="input" tabulator-visible="false">Breite (mm)</th>
-                     <th scope="col" tabulator-headerFilter="input" tabulator-visible="false">Beschreibung</th>
-                     <th scope="col" tabulator-headerFilter="sort" tabulator-visible="false">Traskriptionstatus</th>
+                     <th scope="col" tabulator-formatter="html">XML-TEI</th>
+                     <th scope="col">TPQ</th>
+                     <th scope="col" tabulator-visible="false">TAQ</th>
+                     <th scope="col">Liturgie</th>
+                     <th scope="col">Book Type</th>
+                     <th scope="col" tabulator-formatter="html" tabulator-visible="false">Provenienz</th>
+                     <th scope="col" tabulator-formatter="html" tabulator-visible="false">Drucker</th>
+                     <th scope="col" tabulator-visible="false">Folia</th>
+                     <th scope="col" tabulator-visible="false">Höhe (mm)</th>
+                     <th scope="col" tabulator-visible="false">Breite (mm)</th>
+                     <th scope="col" tabulator-visible="false">Beschreibung</th>
+                     <th scope="col" tabulator-visible="false">Traskriptionstatus</th>
                   </tr>
                </thead>
                <tbody>
@@ -1346,7 +1346,24 @@
             <div class="button-group"><button type="button" class="btn btn-outline-secondary" id="download-csv" title="Download CSV"><i class="bi bi-filetype-csv"></i><span class="visually-hidden">Download CSV</span></button><button type="button" class="btn btn-outline-secondary" id="download-json" title="Download JSON"><i class="bi bi-filetype-json"></i><span class="visually-hidden">Download JSON</span></button><button type="button" class="btn btn-outline-secondary" id="download-html" title="Download HTML"><i class="bi bi-filetype-html"></i><span class="visually-hidden">Download HTML</span></button></div>
          </div>
       </main>
-      <footer class="footer">
+      <link href="https://unpkg.com/tabulator-tables@5.6.0/dist/css/tabulator.min.css" rel="stylesheet">
+      <link href="https://unpkg.com/tabulator-tables@5.6.0/dist/css/tabulator_bootstrap5.min.css" rel="stylesheet"><script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.6.0/dist/js/tabulator.min.js"></script><script src="tabulator-js/config.js"></script><script>
+            var table = new Tabulator("#myTable", config);
+            //trigger download of data.csv file
+            document.getElementById("download-csv").addEventListener("click", function(){
+            table.download("csv", "data.csv");
+            });
+            
+            //trigger download of data.json file
+            document.getElementById("download-json").addEventListener("click", function(){
+            table.download("json", "data.json");
+            });
+            
+            //trigger download of data.html file
+            document.getElementById("download-html").addEventListener("click", function(){
+            table.download("html", "data.html", {style:true});
+            });
+        </script><footer class="footer">
          <div class="container-fluid" id="footer-full-content" tabindex="-1 overflow-hidden">
             <div class="footer-separator justify-content-center overflow-hidden">
                <h5 class="font-weight-bold">KONTAKT</h5>
@@ -1383,22 +1400,5 @@ function addDarkmodeWidget() {
 	new Darkmode().showWidget();
 }
 window.addEventListener('load', addDarkmodeWidget);
-</script><script src="js/i18n.js"></script><link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css" rel="stylesheet">
-      <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator_bootstrap5.min.css" rel="stylesheet"><script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script><script src="tabulator-js/config.js"></script><script>
-            var table = new Tabulator("#myTable", config);
-            //trigger download of data.csv file
-            document.getElementById("download-csv").addEventListener("click", function(){
-            table.download("csv", "data.csv");
-            });
-            
-            //trigger download of data.json file
-            document.getElementById("download-json").addEventListener("click", function(){
-            table.download("json", "data.json");
-            });
-            
-            //trigger download of data.html file
-            document.getElementById("download-html").addEventListener("click", function(){
-            table.download("html", "data.html", {style:true});
-            });
-        </script></body>
+</script><script src="js/i18n.js"></script></body>
 </html>

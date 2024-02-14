@@ -40,9 +40,9 @@
                         <table class="table" id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html" tabulator-download="false">Name</th>
-			            <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html" tabulator-download="false">Aktiv in</th>
-                                    <th scope="col" tabulator-headerFilter="input" tabulator-visible="false">ID</th>
+                                    <th scope="col" tabulator-formatter="html">Name</th>
+			            <th scope="col" tabulator-formatter="html" tabulator-download="false">Aktiv in</th>
+                                    <th scope="col" tabulator-visible="false">ID</th>
                                 </tr>
                             </thead>
                             <tbody>

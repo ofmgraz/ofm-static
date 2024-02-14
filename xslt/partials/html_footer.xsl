@@ -6,8 +6,8 @@
     <xsl:template match="/" name="html_footer">
         <!-- <div clas="wrapperhide-reading" id="wrapper-footer-full"> -->
         <footer class="footer">
-            <div class="container-fluid" id="footer-full-content" tabindex="-1">
-                <div class="footer-separator justify-content-center"> <h5 class="font-weight-bold">KONTAKT</h5> </div>
+            <div class="container-fluid" id="footer-full-content" tabindex="-1 overflow-hidden">
+                <div class="footer-separator justify-content-center overflow-hidden"> <h5 class="font-weight-bold">KONTAKT</h5> </div>
                 <div class="row justify-content-center">
                     <div
                         class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-center ">
@@ -21,8 +21,8 @@
                         </div>
                     </div>
                     <!-- .footer-widget -->
-                    <div class="footer-widget col-lg-3 col-md-4 col-sm-3">
-                        <div class="textwidget custom-html-widget">
+                    <div class="footer-widget col-lg-3 col-md-4 col-sm-3 overflow-hidden">
+                        <div class="textwidget custom-html-widget overflow-hidden">
                             <h6 class="font-weight-bold">ACDH-CH</h6>
                             <p>Austrian Centre for Digital Humanities <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> and Cultural Heritage
                                 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> Österreichische Akademie der Wissenschaften </p>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <!-- .footer-widget -->
-                    <div class="footer-widget col-lg-3 col-md-4 col-sm-3">
+                    <div class="footer-widget col-lg-3 col-md-4 col-sm-3 overflow-hidden">
                         <div class="row">
                             <div class="textwidget custom-html-widget">
                                 <h6 class="font-weight-bold">HELPDESK</h6>

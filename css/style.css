@@ -121,6 +121,7 @@ div#places_div{
 
 .table {
     min-height: 10vh;
+    max-height: 40vh;
     background-color: var(--ofm-bg);
 }
 
@@ -183,6 +184,7 @@ footer:where#footer {
 	background-color: var(--ofm-bg-dark) !important;
 	color: var(--ofm-bg)  !important;
 	margin: 0px;
+
 }
 
 .footer div a img {

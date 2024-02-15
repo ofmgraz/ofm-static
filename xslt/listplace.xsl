@@ -150,10 +150,10 @@
                                 <h1 class="text-center pb-4 pt-3">
                                     <xsl:value-of select="$name"/>
                                 </h1>
-                                <xsl:call-template name="place_detail"/>
                                 <xsl:if test="./tei:location/tei:geo">
                                     <div id="map_detail"/>
                                 </xsl:if>
+                                <xsl:call-template name="place_detail"/>
                             </div>
                         </main>
                         <xsl:call-template name="html_footer"/>

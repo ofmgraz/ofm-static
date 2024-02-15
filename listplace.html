@@ -60,20 +60,20 @@
             </div>
          </nav>
       </div>
-      <main class="flex-grow-1 overflow-hidden">
+      <main class="flex-grow-1">
+         <h1 class="text-center pb-4 pt-3">Orte</h1>
          <div class="container">
-            <h1 class="text-center pb-4 pt-3">Orte</h1>
             <div id="places_div"></div>
             <div class="container-fluid">
-               <table class="table" id="myTable">
+               <table id="placesTable">
                   <thead>
                      <tr>
-                        <th scope="col" tabulator-formatter="html">Name</th>
-                        <th scope="col" tabulator-visible="false">lat</th>
-                        <th scope="col" tabulator-visible="false">lng</th>
+                        <th scope="col" width="33%" tabulator-formatter="html">name</th>
+                        <th scope="col" width="0%">lat</th>
+                        <th scope="col" width="0%">lng</th>
                         <th scope="col" tabulator-visible="false">id</th>
-                        <th scope="col" tabulator-formatter="html">Normdaten</th>
-                        <th scope="col" tabulator-formatter="html">Objekte</th>
+                        <th scope="col" width="33%">authority</th>
+                        <th scope="col" width="33%">related_objects</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -303,6 +303,8 @@
                   </tbody>
                </table>
             </div>
+            <h4>Download Table</h4>
+            <div class="button-group"><button type="button" class="btn btn-outline-secondary" id="download-csv" title="Download CSV"><i class="bi bi-filetype-csv"></i><span class="visually-hidden">Download CSV</span></button><button type="button" class="btn btn-outline-secondary" id="download-json" title="Download JSON"><i class="bi bi-filetype-json"></i><span class="visually-hidden">Download JSON</span></button><button type="button" class="btn btn-outline-secondary" id="download-html" title="Download HTML"><i class="bi bi-filetype-html"></i><span class="visually-hidden">Download HTML</span></button></div>
          </div>
       </main>
       <footer  class="footer">
@@ -342,7 +344,7 @@ function addDarkmodeWidget() {
 	new Darkmode().showWidget();
 }
 window.addEventListener('load', addDarkmodeWidget);
-</script><script  src="js/i18n.js"></script><script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.6.0/dist/js/tabulator.min.js"></script><script src="js/make_map_and_table.js"></script><script src="js/map_table_cfg.js"></script><script>
+</script><script  src="js/i18n.js"></script><script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script><script src="js/make_map_and_table.js"></script><script src="js/map_table_cfg.js"></script><script>
                     build_map_and_table(map_cfg, table_cfg);
                 </script></body>
 </html>

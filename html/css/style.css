@@ -8,6 +8,7 @@
     --ofm-contrast: #675744;
     --ofm-font-color: #27170a;
     --ofm-transp-red: #ff914d;
+    -ofm-small-highlight:  #b16255;
     --ofm-big-highlight:  #914235;
     --ofm-table-bg-type: #f3e0c2;
     --ofm-table-accent-bg: #675744;
@@ -113,46 +114,45 @@ div#places_div{
 
 
 #tabulator.table:not(.thead-light) .tabulator-header, .tabulator.table:not(.thead-light) .tabulator-header .tabulator-col {
-	border-color: var(--ofm-contrast);
+	/*border-color: var(--ofm-contrast);
 	background-color: var(--ofm-bg);
-	color: #212529;
+	color: #212529; */
 	border:0;
 }
 
 .table {
     min-height: 10vh;
-    max-height: 40vh;
+    /*max-height: 40vh; */
     border: 0;
-    background-color: var(--ofm-bg);
 }
 
 
 .table * {
 	background-color: var(--ofm-bg);
 }
-
+/*
 .container {
 	background-color: var(--ofm-bg);
 }
-
+*/
 .row {
 	min-width:100vw;
 }
 
 .table > :not(caption) > * > * {
 	/* padding: .5rem .5rem; */
-	background-color: var(--ofm-bg);
+/*	background-color: var(--ofm-bg);
 	color: var(--bs-table-color-state,var(--ofm-bg-color,var(--ofm-contrast)));
-	background-color: var(--ofm-bg);
-	border-bottom-width: var(--ofm-border-width);
+	background-color: var(--ofm-bg); 
+	border-bottom-width: var(--ofm-border-width); */
 	box-shadow: inset 0 0 0 9999px var(--bs-table-bg-state,var(--ofm-table-bg-type,var(--ofm-table-accent-bg)));
 }
 
 .table > :not(caption) > * > * {
-	padding: 0rem;
+	padding: 0rem; /*
 	background-color: var(--ofm-bg);
-	/* color: var(--bs-table-color-state,var(--ofm-bg-color,var(--ofm-contrast))); */
-	border-bottom-width: var(--ofm-border-width);
+	/* color: var(--bs-table-color-state,var(--ofm-bg-color,var(--ofm-contrast)));
+	border-bottom-width: var(--ofm-border-width); */
 	box-shadow: inset 0 0 0 9999px var(--bs-table-bg-state,var(--ofm-table-bg-type,var(--ofm-table-accent-bg)));
 }
 
@@ -162,11 +162,11 @@ div#places_div{
 }
 .tabulator-header {
     margin: 0px;
-    color: var(--ofm-font-color);
-    background-color: var(--ofm-bg);
+/*    color: var(--ofm-font-color);
+    background-color: var(--ofm-bg); */
 }
 
-div#text-resize div.card-body.mimetic_lbs {                                                                                                                                                                                                               
+div#text-resize div.card-body.mimetic_lbs {
 	max-width: 100rem;
 }
 div#text-resize div.card-body.non_mimetic_lbs {

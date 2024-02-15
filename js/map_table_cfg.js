@@ -78,7 +78,7 @@ const columns = [
     the tabulator table and it't functions 
     consult tabulator docs for more info*/
 const tabulator_cfg = {
-  maxHeight: "45vh",
+  /* maxHeight: "45vh", */
   layout: "fitColumns",
 	/*
   width: "100%",

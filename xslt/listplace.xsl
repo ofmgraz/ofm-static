@@ -36,8 +36,8 @@
                         </h1>
                         
                         <div id="places_div"/>
-                        <div class="container-fluid">
-                            <table id="myTable" class="table">
+                       <div class="container-fluid">
+                        <table class="table" id="myTable" >
                                 <thead>
                                     <tr>
                                         <th scope="col" tabulator-formatter="html"

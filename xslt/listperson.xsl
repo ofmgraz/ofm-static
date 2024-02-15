@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     version="2.0" exclude-result-prefixes="xsl tei xs">
-    
-    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes" omit-xml-declaration="yes"/>
-    
-    
+
+    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
+        omit-xml-declaration="yes"/>
+
+
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="./partials/html_footer.xsl"/>
@@ -14,20 +14,20 @@
     <xsl:import href="partials/tabulator_js.xsl"/>
     <xsl:import href="./partials/person.xsl"/>
     <xsl:variable name="lang" select="'de'"/>
-           
+
 
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select=".//tei:titleStmt/tei:title[@xml:lang=$lang]/text()"/>
+            <xsl:value-of select=".//tei:titleStmt/tei:title[@xml:lang = $lang]/text()"/>
         </xsl:variable>
-        <html  class="page">
-            
+        <html class="page">
+
             <head>
                 <xsl:call-template name="html_head">
-                    <xsl:with-param name="html_title" select="$doc_title"></xsl:with-param>
+                    <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
             </head>
-            
+
             <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
 
@@ -41,7 +41,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col" tabulator-formatter="html">Name</th>
-			            <th scope="col" tabulator-formatter="html" tabulator-download="false">Aktiv in</th>
+                                    <th scope="col" tabulator-formatter="html"
+                                        tabulator-download="false">Aktiv in</th>
                                     <th scope="col" tabulator-visible="false">ID</th>
                                 </tr>
                             </thead>
@@ -52,18 +53,23 @@
                                     </xsl:variable>
                                     <tr>
                                         <td>
-					    <a>
+                                            <a>
                                                 <xsl:attribute name="href">
-                                                         <xsl:value-of select="concat($id, '.html')"/>
+                                                  <xsl:value-of select="concat($id, '.html')"/>
                                                 </xsl:attribute>
-                                                <xsl:value-of select=".//tei:forename/text()"/><xsl:text> </xsl:text>
-                                            <xsl:value-of select=".//tei:surname/text()"/></a>
+                                                <xsl:value-of select=".//tei:forename/text()"/>
+                                                <xsl:text> </xsl:text>
+                                                <xsl:value-of select=".//tei:surname/text()"/>
+                                            </a>
                                         </td>
                                         <td>
-					 	<xsl:variable name="a" select="./tei:residence/tei:settlement/tei:placeName/text()"/>
-                        			<a href="{$a}.html" target="_blank">
-                                			<xsl:value-of select="./tei:residence/tei:settlement/tei:placeName"/>
-                        			</a>
+                                            <xsl:variable name="a"
+                                                select="./tei:residence/tei:settlement/tei:placeName/text()"/>
+                                            <a href="{$a}.html" target="_blank">
+                                                <xsl:value-of
+                                                  select="./tei:residence/tei:settlement/tei:placeName"
+                                                />
+                                            </a>
                                         </td>
                                         <td>
                                             <xsl:value-of select="$id"/>
@@ -83,12 +89,13 @@
 
         <xsl:for-each select=".//tei:person[@xml:id]">
             <xsl:variable name="filename" select="concat(./@xml:id, '.html')"/>
-            <xsl:variable name="name" select="normalize-space(string-join(./tei:persName[1]//text()))"></xsl:variable>
+            <xsl:variable name="name"
+                select="normalize-space(string-join(./tei:persName[1]//text()))"/>
             <xsl:result-document href="{$filename}">
-                <html  class="page">
+                <html class="page">
                     <head>
                         <xsl:call-template name="html_head">
-                            <xsl:with-param name="html_title" select="$name"></xsl:with-param>
+                            <xsl:with-param name="html_title" select="$name"/>
                         </xsl:call-template>
                     </head>
 
@@ -99,7 +106,7 @@
                                 <h1 class="text-center pb-4 pt-3">
                                     <xsl:value-of select="$name"/>
                                 </h1>
-                                <xsl:call-template name="person_detail"/>  
+                                <xsl:call-template name="person_detail"/>
                             </div>
                         </main>
                         <xsl:call-template name="html_footer"/>

@@ -10,8 +10,8 @@
     <xsl:import href="partials/html_navbar.xsl"/>
     <xsl:import href="partials/html_head.xsl"/>
     <xsl:import href="partials/html_footer.xsl"/>
-    <xsl:import href="partials/tabulator_dl_buttons.xsl"/>
-    <!--<xsl:import href="partials/tabulator_js.xsl"/>-->
+    <!-- <xsl:import href="partials/tabulator_dl_buttons.xsl"/>
+    <xsl:import href="partials/tabulator_js.xsl"/> -->
     <xsl:import href="partials/place.xsl"/>
     <xsl:variable name="lang" select="'de'"/>
 
@@ -21,7 +21,6 @@
         </xsl:variable>
         <!--<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text> -->
         <html class="page" lang="de">
-
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
@@ -30,23 +29,24 @@
             <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
 
-                <main class="flex-grow-1">
-                    <h1 class="text-center pb-4 pt-3">
-                        <xsl:value-of select="$doc_title"/>
-                    </h1>
+                <main class="flex-grow-1 overflow-hidden">
                     <div class="container">
+                        <h1 class="text-center pb-4 pt-3">
+                            <xsl:value-of select="$doc_title"/>
+                        </h1>
+                        
                         <div id="places_div"/>
-                        <div class="container-fluid">
-                            <table id="placesTable">
+                       <div class="container-fluid">
+                        <table class="table" id="myTable" >
                                 <thead>
                                     <tr>
-                                        <th scope="col" width="33%" tabulator-formatter="html"
-                                            >name</th>
-                                        <th scope="col" width="0%">lat</th>
-                                        <th scope="col" width="0%">lng</th>
+                                        <th scope="col" tabulator-formatter="html"
+                                           >Name</th>
+                                        <th scope="col" tabulator-visible="false">lat</th>
+                                        <th scope="col" tabulator-visible="false">lng</th>
                                         <th scope="col" tabulator-visible="false">id</th>
-                                        <th scope="col" width="33%">authority</th>
-                                        <th scope="col" width="33%">related_objects</th>
+                                        <th scope="col" tabulator-formatter="html">Normdaten</th>
+                                        <th scope="col" tabulator-formatter="html">Objekte</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -119,16 +119,16 @@
                                 </tbody>
                             </table>
                         </div>
-                        <xsl:call-template name="tabulator_dl_buttons"/>
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>
-                <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"/>
+                <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.6.0/dist/js/tabulator.min.js"/>
                 <script src="js/make_map_and_table.js"/>
                 <script src="js/map_table_cfg.js"/>
                 <script>
                     build_map_and_table(map_cfg, table_cfg);
                 </script>
+               <!--  <xsl:call-template name="tabulator_js"/> -->
             </body>
         </html>
         <xsl:for-each select=".//tei:place[@xml:id]">

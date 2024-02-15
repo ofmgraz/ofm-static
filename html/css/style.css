@@ -116,11 +116,13 @@ div#places_div{
 	border-color: var(--ofm-contrast);
 	background-color: var(--ofm-bg);
 	color: #212529;
+	border:0;
 }
 
 .table {
     min-height: 10vh;
     max-height: 40vh;
+    border: 0;
     background-color: var(--ofm-bg);
 }
 
@@ -155,6 +157,9 @@ div#places_div{
 }
 
 
+.tabulator {
+	border: 0!important;
+}
 .tabulator-header {
     margin: 0px;
     color: var(--ofm-font-color);

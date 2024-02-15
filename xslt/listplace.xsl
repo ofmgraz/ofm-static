@@ -11,7 +11,7 @@
     <xsl:import href="partials/html_head.xsl"/>
     <xsl:import href="partials/html_footer.xsl"/>
     <!-- <xsl:import href="partials/tabulator_dl_buttons.xsl"/>
-    <xsl:import href="partials/tabulator_js.xsl"/> -->
+<xsl:import href="partials/tabulator_js.xsl"/> -->
     <xsl:import href="partials/place.xsl"/>
     <xsl:variable name="lang" select="'de'"/>
 
@@ -34,14 +34,13 @@
                         <h1 class="text-center pb-4 pt-3">
                             <xsl:value-of select="$doc_title"/>
                         </h1>
-                        
+
                         <div id="places_div"/>
-                       <div class="container-fluid">
-                        <table class="table" id="myTable" >
+                        <div class="container-fluid">
+                            <table class="table" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col" tabulator-formatter="html"
-                                           >Name</th>
+                                        <th scope="col" tabulator-formatter="html">Name</th>
                                         <th scope="col" tabulator-visible="false">lat</th>
                                         <th scope="col" tabulator-visible="false">lng</th>
                                         <th scope="col" tabulator-visible="false">id</th>
@@ -126,9 +125,9 @@
                 <script src="js/make_map_and_table.js"/>
                 <script src="js/map_table_cfg.js"/>
                 <script>
-                    build_map_and_table(map_cfg, table_cfg);
-                </script>
-               <!--  <xsl:call-template name="tabulator_js"/> -->
+build_map_and_table(map_cfg, table_cfg);
+</script>
+                <!--  <xsl:call-template name="tabulator_js"/> -->
             </body>
         </html>
         <xsl:for-each select=".//tei:place[@xml:id]">
@@ -150,10 +149,11 @@
                                 <h1 class="text-center pb-4 pt-3">
                                     <xsl:value-of select="$name"/>
                                 </h1>
-                                <xsl:call-template name="place_detail"/>
                                 <xsl:if test="./tei:location/tei:geo">
                                     <div id="map_detail"/>
                                 </xsl:if>
+                                <xsl:call-template name="place_detail"/>
+
                             </div>
                         </main>
                         <xsl:call-template name="html_footer"/>
@@ -164,16 +164,16 @@
                                 crossorigin=""/>
                             <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""/>
                             <script>
-                                var lat = <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1]/text(), ' ')[1]"/>;
-                                var long = <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1]/text(), ' ')[last()]"/>;
-                                $("#map_detail").css("height", "500px");
-                                var map = L.map('map_detail').setView([Number(lat), Number(long)], 13);
-                                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                maxZoom: 19,
-                                attribution: '&amp;copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                                }).addTo(map);
-                                var marker = L.marker([Number(lat), Number(long)]).addTo(map);
-                            </script>
+var lat = <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1]/text(), ' ')[1]"/>;
+var long = <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1]/text(), ' ')[last()]"/>;
+$("#map_detail").css("height", "500px");
+var map = L.map('map_detail').setView([Number(lat), Number(long)], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+maxZoom: 19,
+attribution: '&amp;copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+var marker = L.marker([Number(lat), Number(long)]).addTo(map);
+</script>
                         </xsl:if>
                     </body>
                 </html>

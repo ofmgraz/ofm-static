@@ -12,6 +12,7 @@
     --ofm-big-highlight:  #914235;
     --ofm-table-bg-type: #f3e0c2;
     --ofm-table-accent-bg: #675744;
+    --ofm-link-color: #943F33;
     font-family: 'LM Roman', Arial,Helvetica,sans-serif;
     background-color: var(--ofm-bg);
 
@@ -30,11 +31,19 @@ body {
 
 }
 
+
+
 main {
 	flex-grow: 1;
     color:var(--ofm-font-color);
     background-color: var(--ofm-bg);
 }
+
+main a{
+    color: var(--ofm-link-color);
+}
+
+
 
 /*.carousel {
 }
@@ -130,6 +139,10 @@ div#places_div{
 .table * {
 	background-color: var(--ofm-bg);
 }
+
+.table a {
+    color: var(--ofm-link-color);
+}
 /*
 .container {
 	background-color: var(--ofm-bg);
@@ -183,16 +196,20 @@ footer:where#footer {
     align-self: flex-end;
 }
 
-.footer * {
-	background-color: var(--ofm-bg-dark) !important;
-	color: var(--ofm-bg)  !important;
+footer * {
+	background-color: var(--ofm-bg-dark);
+	color: var(--ofm-bg);
 
 }
 
-.footer div a img {
-	color: var(--ofm-contrast) !important;
+.text-widget a {
+	color: var(--ofm-transp-red)!important;
 }
 
+a {
+	color: var(--ofm-transp-red);
+	text-decoration: underline;
+}
 
 .footer-separator > * {
 	font-size: 1.25rem;
@@ -207,12 +224,10 @@ footer:where#footer {
 }
 
 .footer-imprint-bar * {
-    color: var(--ofm-bg) !important;
-    background-color: var(--ofm-bg-dark) !important;
+    color: var(--ofm-bg);
+    background-color: var(--ofm-bg-dark);
 }
 
-.footer-imprint-bar  div div a img{
-    color: var(--ofm-contrast) !important;
+.footer-imprint-bar  a {
+    color: var(--ofm-transp-red);
 }
-
-

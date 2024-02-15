@@ -63,6 +63,7 @@
       <main class="flex-grow-1">
          <div class="container">
             <h1 class="text-center pb-4 pt-3">Venedig</h1>
+            <div id="map_detail"></div>
             <table class="table entity-table">
                <tbody>
                   <tr>
@@ -106,7 +107,6 @@
                   </tr>
                </tbody>
             </table>
-            <div id="map_detail"></div>
          </div>
       </main>
       <footer  class="footer">
@@ -147,14 +147,14 @@ function addDarkmodeWidget() {
 }
 window.addEventListener('load', addDarkmodeWidget);
 </script><script  src="js/i18n.js"></script><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script><script>
-                                var lat = 45.439722222222;
-                                var long = 12.331944444444;
-                                $("#map_detail").css("height", "500px");
-                                var map = L.map('map_detail').setView([Number(lat), Number(long)], 13);
-                                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                maxZoom: 19,
-                                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                                }).addTo(map);
-                                var marker = L.marker([Number(lat), Number(long)]).addTo(map);
-                            </script></body>
+var lat = 45.439722222222;
+var long = 12.331944444444;
+$("#map_detail").css("height", "500px");
+var map = L.map('map_detail').setView([Number(lat), Number(long)], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+maxZoom: 19,
+attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+var marker = L.marker([Number(lat), Number(long)]).addTo(map);
+</script></body>
 </html>

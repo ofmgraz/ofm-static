@@ -43,7 +43,9 @@ main a{
     color: var(--ofm-link-color);
 }
 
-
+.container-fluid{
+    max-height: 80vh;
+}
 
 /*.carousel {
 }
@@ -108,6 +110,7 @@ div#places_div{
         min-height: 40vh;
 
 }
+
 
 
 #viewer {

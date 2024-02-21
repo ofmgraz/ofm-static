@@ -36,7 +36,7 @@
                         </h1>
 
                         <div id="places_div"/>
-                        <div class="container-fluid">
+                        <div class="container-fluid table overflow-scroll">
                             <table class="table" id="myTable">
                                 <thead>
                                     <tr>

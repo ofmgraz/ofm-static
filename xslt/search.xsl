@@ -21,12 +21,13 @@
 
             <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
+                <main class="flex-grow-1 overflow-hidden">
                 <div class="container flex-1">
                     <h1 class="text-center pb-4 pt-3">
                         <xsl:value-of select="$doc_title"/>
                     </h1>
 
-                </div>
+                </div></main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"/>
                 <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"/>

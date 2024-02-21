@@ -35,6 +35,7 @@
     </xsl:variable>
     <xsl:param name="mybreak"><![CDATA[<br />]]></xsl:param>
     <xsl:param name="mytab"><![CDATA[&emsp;]]></xsl:param>
+    <xsl:param name="myplaceholder"><![CDATA[&zwnj;]]></xsl:param>
 
     <xsl:template match="/">
         <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
@@ -187,6 +188,7 @@
         <span class="pb" source="{$facsUrl}" n="{$page_number}"
             style="--page_before: '{($page_number - 1)}'; --beginning_page: '{$page_number}';"> </span>
         <span class="pb_marker" n="{$page_number}"/>
+	<p><xsl:value-of select="$myplaceholder" disable-output-escaping="yes"/></p><p><xsl:value-of select="$myplaceholder" disable-output-escaping="yes"/></p> 
     </xsl:template>
     <xsl:template match="tei:ab">
         <p>
@@ -230,18 +232,18 @@
     </xsl:template>
 
 
-    <xsl:template match="tei:lb"/>
+    <!-- <xsl:template match="tei:lb"/>
     <xsl:template match="tei:kkkkkkk">
         <xsl:variable name="idx" select="format-number(number(replace(@n, 'N', '')), '#')"/>
         <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
         <a>
-            <!-- <xsl:variable name="para" as="xs:int">
+            <xsl:variable name="para" as="xs:int">
                 <xsl:number level="any" from="tei:body" count="tei:p"/>
-            </xsl:variable> -->
+            </xsl:variable>
             <xsl:variable name="lines" as="xs:int">
                 <xsl:number level="any" from="tei:body"/>
             </xsl:variable>
-            <!--<xsl:variable name="pID">
+            <xsl:variable name="pID">
                 <xsl:value-of select="data(substring-after(parent::tei:p/@facs, '#'))"/>
             </xsl:variable>
             <xsl:variable name="surface"
@@ -274,7 +276,7 @@
             </xsl:attribute>
             <xsl:attribute name="zone">
                 <xsl:value-of select="$zones/@points"/>
-            </xsl:attribute>-->
+            </xsl:attribute>
             <xsl:choose>
                 <xsl:when test="($lines mod 5) = 0">
                     <xsl:attribute name="class">
@@ -293,7 +295,7 @@
             <xsl:value-of select="format-number($lines, '0000')"/>
         </a>
         <xsl:value-of select="$mytab" disable-output-escaping="yes"/>
-    </xsl:template>
+    </xsl:template> -->
 
     <!-- simply keep paragraphs -->
     <xsl:template match="tei:p | tei:lg">

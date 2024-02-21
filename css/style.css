@@ -39,9 +39,15 @@ main {
     background-color: var(--ofm-bg);
 }
 
-main a{
+main ul li a{
     color: var(--ofm-link-color);
 }
+
+main ul li a:hover,
+main ul li a:active {
+    color: var(--ofm-font-color) ;
+}
+
 
 .container-fluid{
     max-height: 80vh;
@@ -85,7 +91,7 @@ main a{
 }
 
 .nav-link:focus, .nav-link:hover {
-	color: var(--ofm-font-color)!important;
+	color: var(--ofm-font-color);
 
 }
 
@@ -130,6 +136,7 @@ div#places_div{
 	background-color: var(--ofm-bg);
 	color: #212529; */
 	border:0;
+	background-color: var(--ofm-bg);
 }
 
 .table {
@@ -137,17 +144,23 @@ div#places_div{
     /*max-height: 40vh; */
     border: 0;
     padding: 0;
+    background-color: var(--ofm-bg)!important;
 }
 
 
-.table * {
-	background-color: var(--ofm-bg);
+.table  *  {
+	background-color: var(--ofm-bg); 
 }
 
 .table a {
-    color: var(--ofm-link-color);
-}·
+    color: var(--ofm-bg-dark)!important;
+}
 
+.table a:hover,
+.table a:active {
+    color: var(--ofm-font-color)!important;
+    background-color: #ced4da;
+}
 
 
 .row {
@@ -156,7 +169,7 @@ div#places_div{
 
 .table > :not(caption) > * > * {
 	padding: 0rem;
-	background-color: var(--ofm-bg)!important;
+	/*background-color: var(--ofm-bg); */
 	color: var(--bs-table-color-state,var(--ofm-bg-color,var(--ofm-contrast)));
 	/* border-bottom-width: var(--ofm-border-width); */
 	/*box-shadow: inset 0 0 0 9999px var(--ofm-bg,var(--ofm-table-bg-type,var(--ofm-table-accent-bg))); */
@@ -165,18 +178,24 @@ div#places_div{
 
 .tabulator {
 	border: 0!important;
+	background-color: var(--ofm-bg);
 
 }
 .tabulator-header {
     margin: 0px;
     border: 0!important;
     color: var(--ofm-bg);
-    background-color: var(--ofm-bg-dark)!important;
+    background-color: var(--ofm-bg-dark);
 }
 
 .tabulator-headers * {
 	color: var(--ofm-bg);
-	background-color: var(--ofm-bg-dark)!important;
+	background-color: var(--ofm-bg-dark);
+}
+
+.tabulator .tabulator-row.tabulator-selectable:hover  * {
+  background-color: #bbb!important;
+  cursor: pointer;
 }
 
 div#text-resize div.card-body.mimetic_lbs {
@@ -206,7 +225,7 @@ footer * {
 	color: var(--ofm-transp-red)!important;
 }
 
-a {
+footer a {
 	color: var(--ofm-transp-red);
 	text-decoration: underline;
 }

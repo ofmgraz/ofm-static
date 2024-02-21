@@ -39,12 +39,12 @@ main {
     background-color: var(--ofm-bg);
 }
 
-main ul li a{
+main a{
     color: var(--ofm-link-color);
 }
 
-main ul li a:hover,
-main ul li a:active {
+main a:hover,
+main a:active {
     color: var(--ofm-font-color) ;
 }
 
@@ -225,9 +225,15 @@ footer * {
 	color: var(--ofm-transp-red)!important;
 }
 
+
 footer a {
 	color: var(--ofm-transp-red);
 	text-decoration: underline;
+}
+
+footer a:hover,
+footer a:active {
+    color: var(--ofm-font-color) ;
 }
 
 .footer-separator > * {
@@ -249,4 +255,18 @@ footer a {
 
 .footer-imprint-bar  a {
     color: var(--ofm-transp-red);
+}
+
+.footer-imprint-bar a:hover,
+.footer-imprint-bar a:active {
+    color: var(--ofm-font-color) ;
+}
+
+.bi {
+    color: var(--ofm-transp-red);
+}
+
+.bi:hover,
+.bi:active {
+    color: var(--ofm-font-color) ;
 }

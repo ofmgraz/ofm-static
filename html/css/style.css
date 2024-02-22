@@ -18,8 +18,10 @@
 
 }
 
+
 :root * {
     font-family: 'LM Roman', Arial,Helvetica,sans-serif;
+    
 }
 
 
@@ -49,9 +51,10 @@ main a:active {
 }
 
 
-.container-fluid{
-    max-height: 80vh;
+.tabulator-table * {
+    background-color: var(--ofm-bg)!important;
 }
+
 
 /*.carousel {
 }
@@ -139,8 +142,18 @@ div#places_div{
 	background-color: var(--ofm-bg);
 }
 
+.tabulator .tabulator-header {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	/* border-bottom: 1px solid #999; */
+	background-color: var(--ofm-bg);
+	color: var(--ofm-font-color);
+	font-weight: 700;
+}
+
 .table {
-    min-height: 10vh;
+    height: 80vh;
     /*max-height: 40vh; */
     border: 0;
     padding: 0;
@@ -151,6 +164,7 @@ div#places_div{
 .table  *  {
 	background-color: var(--ofm-bg); 
 }
+
 
 .table a {
     color: var(--ofm-bg-dark)!important;
@@ -170,33 +184,83 @@ div#places_div{
 .table > :not(caption) > * > * {
 	padding: 0rem;
 	/*background-color: var(--ofm-bg); */
-	color: var(--bs-table-color-state,var(--ofm-bg-color,var(--ofm-contrast)));
+    background-color: var(--ofm-bg);
+	color: var(--ofm-font-color);
 	/* border-bottom-width: var(--ofm-border-width); */
 	/*box-shadow: inset 0 0 0 9999px var(--ofm-bg,var(--ofm-table-bg-type,var(--ofm-table-accent-bg))); */
 }
 
+.tabulator .tabulator-tableholder .tabulator-table {
+	position: relative;
+	display: inline-block;
+	background-color: var(--ofm-bg)!important;
+	white-space: nowrap;
+	overflow: visible;
+	color: var(--ofm-font-color);
+}
 
 .tabulator {
+    background-color: var(--ofm-bg);
 	border: 0!important;
-	background-color: var(--ofm-bg);
+    font-size: 16px!important;
+    font-weight: 700;
+}
+
+.
+
+.tabulator  .tabulator-row .tabulator-cell{
+    background-color: var(--ofm-bg);
 
 }
+
+.tabulator .tabulator-header {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	border-bottom: 0!important;
+	background-color: var(--ofm-bg-dark)!important;
+	color:var(--ofm-bg)!important;
+	font-weight: 700;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.leaflet-container{
+    background: var(--ofm-bg);
+}
+
 .tabulator-header {
     margin: 0px;
     border: 0!important;
+    position:relative;
     color: var(--ofm-bg);
     background-color: var(--ofm-bg-dark);
 }
 
 .tabulator-headers * {
 	color: var(--ofm-bg);
+    position:relative;
 	background-color: var(--ofm-bg-dark);
 }
+
+.tabulator .tabulator-header .tabulator-header-contents {
+	position: relative;
+	overflow: hidden;
+    color: var(--ofm-bg);
+	background-color: var(--ofm-bg-dark);
+}
+
 
 .tabulator .tabulator-row.tabulator-selectable:hover  * {
   background-color: #bbb!important;
   cursor: pointer;
 }
+
+.tabulator.table .tabulator-row {
+	background-color: var(--ofm-bg);
+    color: var(--ofm-font-color);
+}
+
 
 div#text-resize div.card-body.mimetic_lbs {
 	max-width: 100rem;

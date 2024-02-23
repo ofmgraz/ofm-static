@@ -38,17 +38,17 @@
                         <table class="table" id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col" tabulator-formatter="html" responsive:0>Titel</th>
+                                    <th scope="col" tabulator-formatter="html" tabulator-responsive="0" tabulator-headerFilter="input">Titel</th>
                                     <th scope="col" tabulator-formatter="html" tabulator-visible="false"
                                         >XML-TEI</th>
-                                    <th scope="col"
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-responsive="1"
                                        >TPQ</th>
-                                    <th scope="col" tabulator-visible="false" responsive:1>TAQ</th>
+                                    <th scope="col" tabulator-visible="false">TAQ</th>
 
-                                    <th scope="col" responsive:2>Liturgie</th>
-                                    <th scope="col" responsive:3>Book Type</th>
+                                    <th scope="col" tabulator-responsive="2" tabulator-headerFilter="input">Liturgie</th>
+                                    <th scope="col" tabulator-responsive="3" tabulator-headerFilter="input">Book Type</th>
                                     <th scope="col" tabulator-formatter="html"
-                                        tabulator-visible="false" responsive:2>Provenienz</th>
+                                        tabulator-visible="false" >Provenienz</th>
                                     <th scope="col" tabulator-formatter="html"
                                         tabulator-visible="false">Drucker</th>
                                     <th scope="col" tabulator-visible="false">Folia</th>

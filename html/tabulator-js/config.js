@@ -2,8 +2,9 @@
 
 var config = {
     height: 800,
-    layout: "fitColumns",
+    //minWidth: 700,
+    // layout: "fitColumns",
     tooltips: true,
     dataLoader: true,
-    responsiveLayout:"hide",
+    responsiveLayout:"collapse",
 };

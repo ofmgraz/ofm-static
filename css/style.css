@@ -261,6 +261,37 @@ div#places_div{
     color: var(--ofm-font-color);
 }
 
+[type="search"] {
+    background-clip: padding-box;
+	background-color: #fff;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	color: #495057;
+	font-size: 1rem;
+	line-height: 1.5;
+	padding: .375rem .75rem;
+	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter input {
+	background-clip: padding-box;
+	background-color: #fff;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	color: #495057;
+	font-size: 1rem;
+	line-height: 1.5;
+	padding: .375rem .75rem;
+	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#tabulator.table:not(.thead-light) .tabulator-header, .tabulator.table:not(.thead-light) .tabulator-header .tabulator-col {
+	/* border-color: var(--ofm-contrast); */
+	/* background-color: var(--ofm-bg); */
+	/* color: #212529; */
+	border: 0;
+	background-color: var(--ofm-bg-dark);
+}
+
 
 div#text-resize div.card-body.mimetic_lbs {
 	max-width: 100rem;

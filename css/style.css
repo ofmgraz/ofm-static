@@ -365,3 +365,11 @@ footer a:active {
 .bi:active {
     color: var(--ofm-font-color) ;
 }
+
+hr {
+	margin: 1rem 0;
+	color: inherit;
+	border: 1px solid var(--ofm-bg-dark);
+	border-top: var(--bs-border-width) solid;
+	opacity: .25;
+}

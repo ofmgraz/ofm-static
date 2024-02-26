@@ -370,7 +370,7 @@ text_wrapper.appendChild(
 );
 
 // stuff to change / set the whitespace at bottom
-var bottom_whitespace = 0;
+var bottom_whitespace = 20;
 
 function change_bottom_whitespace_of_textWrapper() {
   bottom_whitespace = ((window.innerHeight / 10) *8);

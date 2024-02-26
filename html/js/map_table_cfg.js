@@ -80,13 +80,14 @@ const columns = [
 const tabulator_cfg = {
   /* maxHeight: "45vh", */
   layout: "fitColumns",
+  minWidth: 500,
+  responsiveLayout:"collapse",
+  headerFilterLiveFilterDelay: 600,
+  virtualDomBuffer: 200,
 	/*
   width: "100%",
-  headerFilterLiveFilterDelay: 600,
-  responsiveLayout: "collapse",
-  border: "none", */
-	virtualDomBuffer: 200,
-  /* paginationCounter: "rows",
+  border: "none",
+  paginationCounter: "rows",
   pagination: "local",
   paginationSize: 10, */
 };

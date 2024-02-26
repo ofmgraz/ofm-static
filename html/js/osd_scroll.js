@@ -160,6 +160,8 @@ Go home
 viewer.viewport.goHome = function () {
 	fitVertically_align_left_bottom();
   a_elements[0].scrollIntoView();
+  var next_pb_index = 0;
+  var previous_pb_index = 0;
 }
 
 function fitVertically_align_left_bottom(){
@@ -370,7 +372,7 @@ text_wrapper.appendChild(
 );
 
 // stuff to change / set the whitespace at bottom
-var bottom_whitespace = 20;
+var bottom_whitespace = 0;
 
 function change_bottom_whitespace_of_textWrapper() {
   bottom_whitespace = ((window.innerHeight / 10) *8);

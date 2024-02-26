@@ -6,6 +6,7 @@
     xmlns:local="http://dse-static.foo.bar"
     exclude-result-prefixes="xs"
     version="2.0">
+    <xsl:param name="mybreak"><![CDATA[<br />]]></xsl:param>
     <xsl:function name="local:makeId" as="xs:string">
         <xsl:param name="currentNode" as="node()"/>
         <xsl:variable name="nodeCurrNr">
@@ -13,14 +14,12 @@
         </xsl:variable>
         <xsl:value-of select="concat(name($currentNode), '__', $nodeCurrNr)"/>
     </xsl:function>
-    
-       <xsl:template match="tei:pb">                                                                                                                                                                                                                              
-        <span class="anchor-pb"></span>
+       <xsl:template match="tei:pb">
+        <span class="anchor-pb" />
         <span class="pb" source="{@facs}">
             <xsl:value-of select="./@n"/>
         </span>
     </xsl:template>
-    
     <xsl:template match="tei:ref">
         <a class="ref {@type}" href="{@target}">
             <xsl:apply-templates/>
@@ -40,7 +39,6 @@
             <xsl:apply-templates/>
         </p>
     </xsl:template>
-    
     <xsl:template match="tei:date">
         <span class="date"><xsl:apply-templates/></span>
         <xsl:choose>
@@ -48,9 +46,5 @@
                 <xsl:text> </xsl:text>
             </xsl:when>
         </xsl:choose>
-    </xsl:template>
-    
-    <xsl:template match="tei:lb">
-        <br/>
     </xsl:template>
 </xsl:stylesheet>

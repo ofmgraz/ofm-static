@@ -160,6 +160,8 @@ Go home
 viewer.viewport.goHome = function () {
 	fitVertically_align_left_bottom();
   a_elements[0].scrollIntoView();
+  var next_pb_index = 0;
+  var previous_pb_index = 0;
 }
 
 function fitVertically_align_left_bottom(){

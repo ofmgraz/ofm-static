@@ -50,7 +50,9 @@ main a:active {
     color: var(--ofm-font-color) ;
 }
 
-
+.card-body {
+	padding: 1em;
+}
 .tabulator-table * {
     background-color: var(--ofm-bg)!important;
 }
@@ -64,7 +66,7 @@ main a:active {
 
 
 .wrapper-navbar{
-	padding:5px;
+	padding:1em;
 	margin:0px;
 	background-color: var(--ofm-bg-dark);
 	color: var(--ofm-bg);
@@ -202,7 +204,7 @@ div#places_div{
 .tabulator {
     background-color: var(--ofm-bg);
 	border: 0!important;
-    font-size: 16px!important;
+    font-size: 1em!important;
     font-weight: 700;
 }
 

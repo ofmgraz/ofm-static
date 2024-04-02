@@ -74,13 +74,12 @@ records = []
 cfts_records = []
 persons_idx = TeiReader(xml="./data/indices/listperson.xml")
 for xml_filepath in tqdm(files, total=len(files)):
-    print(xml_filepath)
     doc = TeiReader(xml=xml_filepath)
     facs = doc.any_xpath(".//tei:body/tei:div/tei:pb/@facs")
     pages = 0
     for v in facs:
         p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
-            f".//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
+            ".//tei:body/tei:div/tei:ab"
         body = doc.any_xpath(p_group)
         pages += 1
         cfts_record = {
@@ -121,7 +120,6 @@ for xml_filepath in tqdm(files, total=len(files)):
             else:
                 date_str = na_str = nb_str = "1970-12-31"
         nb_tst = int(datetime.strptime(nb_str, "%Y-%m-%d").timestamp())
-        print(na_str)
         na_tst = int(datetime.strptime(na_str, "%Y-%m-%d").timestamp())
         try:
             record["year"] = cfts_record["year"] = date_str

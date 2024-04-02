@@ -103,9 +103,9 @@ for xml_filepath in tqdm(files, total=len(files)):
 
         cfts_record["title"] = record["title"]
         try:
-            if doc.any_xpath("//tei:creation/tei:date/@notBefore"):
+            if doc.any_xpath("//tei:bibl/tei:date/@notBefore"):
                 nb_str = date_str = doc.any_xpath("//tei:creation/tei:date/@notBefore")[0]
-                na_str = doc.any_xpath("//tei:creation/tei:date/@notAfter")[0]
+                na_str = doc.any_xpath("//tei:bibl/tei:date/@notAfter")[0]
             else:
                 nb_str = na_str = date_str = doc.any_xpath("//tei:creation/tei:date/@when")[0]
         except IndexError:

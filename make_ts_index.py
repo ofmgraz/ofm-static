@@ -25,10 +25,13 @@ current_schema = {
         {"name": "rec_id", "type": "string"},
         {"name": "title", "type": "string"},
         {"name": "anchor_link", "type": "string"},
-        {"name": "full_text", "type": "string"},
+        {"name": "music", "type": "string", "optional": True},
+        {"name": "full_text", "type": "string", "optional": True},
         {"name": "notbefore", "type": "int64", "facet": True, "optional": True},
         {"name": "notafter", "type": "int64", "facet": True, "optional": True},
         {"name": "year", "type": "string", "facet": True, "optional": True},
+        {"name": "form", "type": "string", "facet": True, "optional": True},
+        {"name": "genre", "type": "string[]", "facet": True, "optional": True},
         {"name": "persons", "type": "string[]", "facet": True, "optional": True},
     ],
 }
@@ -68,8 +71,10 @@ def get_entities(ent_type, ent_node, ent_name, index_file, modifier):
     return [ent for ent in sorted(set(entities))]
 
 
+contents = nocontents = []
 # %%
-
+# msContents class="#ofm #graduale #sequentiar"
+# <objectDesc form="codex">
 records = []
 cfts_records = []
 persons_idx = TeiReader(xml="./data/indices/listperson.xml")
@@ -78,8 +83,9 @@ for xml_filepath in tqdm(files, total=len(files)):
     facs = doc.any_xpath(".//tei:body/tei:div/tei:pb/@facs")
     pages = 0
     for v in facs:
-        p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
-            ".//tei:body/tei:div/tei:ab"
+        # p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
+        #    f".//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
+        p_group = ".//tei:body/tei:div/tei:ab"
         body = doc.any_xpath(p_group)
         pages += 1
         cfts_record = {
@@ -119,10 +125,8 @@ for xml_filepath in tqdm(files, total=len(files)):
                 na_str = nb = date_str
             else:
                 date_str = na_str = nb_str = "1970-12-31"
-        print(date_str, nb_str, na_str)
         nb_tst = int(datetime.strptime(nb_str, "%Y-%m-%d").timestamp())
         na_tst = int(datetime.strptime(na_str, "%Y-%m-%d").timestamp())
-        print(nb_tst, na_tst)
         try:
             record["year"] = cfts_record["year"] = date_str
             record["notbefore"] = cfts_record["notbefore"] = nb_tst
@@ -136,32 +140,29 @@ for xml_filepath in tqdm(files, total=len(files)):
                 index_file=persons_idx, modifier='@type="label"'
             )
             cfts_record["persons"] = record["persons"]
+            record["form"] = cfts_record["form"] = doc.any_xpath("//tei:objectDesc/@form")[0]
+
+            record["genre"] = cfts_record["genre"] = [el.strip() for el in
+                                                      doc.any_xpath(".//tei:msContents/@class")[0].split("#")]
             # # print(type(body))
             # record["full_text"] = ' '.join([extract_fulltext(p) for p in doc.any_xpath(".//tei:p")])
-            p_aragraph = doc.any_xpath(f"{p_group}[@type!='notation']")[0]
-            m_aragraph = doc.any_xpath(f"{p_group}[@type='notation']")[0]
-            pid = p_aragraph.xpath("./@facs")[0]
-            mid = m_aragraph.xpath("./@facs")[0]
-            record["full_text"] = extract_fulltext(p_aragraph)
-            if len(record["full_text"]) > 0:
-                record["anchor_link"] = pid
-                cfts_record["anchor_link"] = pid
+            p_aragraph = doc.any_xpath(".//tei:body/tei:div/tei:ab[@type!='notation']")
+            m_aragraph = doc.any_xpath(".//tei:body/tei:div/tei:ab[@type='notation']")
+            for t in p_aragraph:
+                record["full_text"] = cfts_record["full_text"] = extract_fulltext(t)
+                record["anchor_link"] = cfts_record["anchor_link"] = t.xpath("./@facs")[0]
                 records.append(record)
-                cfts_record["full_text"] = record["full_text"]
                 cfts_records.append(cfts_record)
-            record["music"] = extract_fulltext(m_aragraph)
-            if len(record["music"]) > 0:
-                record["anchor_link"] = mid
-                cfts_record["anchor_link"] = mid
-                records.append(record)
-                cfts_record["music"] = record["music"]
+            for t in m_aragraph:
+                cfts_record["music"] = record["music"] = extract_fulltext(t)
+                record["anchor_link"] = cfts_record["anchor_link"] = t.xpath("./@facs")[0]
+                records.append(cfts_record)
                 cfts_records.append(cfts_record)
 # %%
 # print(make_index)
 make_index = client.collections["ofm_graz"].documents.import_(records)
 # print(make_index)
 print("done with indexing ofm_graz")
-
 # %%
 # make_index = CFTS_COLLECTION.documents.import_(cfts_records, {"action": "upsert"})
 
@@ -172,4 +173,5 @@ make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"ac
 errors = [msg for msg in make_index if (msg != '"{\\"success\\":true}"' and msg != '""')]
 [print(err) if errors else print("No errors") for err in errors]
 
+print(contents, "\n=================================================¬n", nocontents)
 # %%

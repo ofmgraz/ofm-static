@@ -105,14 +105,14 @@ for xml_filepath in tqdm(files, total=len(files)):
         cfts_record["title"] = record["title"]
         try:
             if doc.any_xpath("//tei:bibl/tei:date/@notBefore"):
-                nb_str = date_str = doc.any_xpath("//tei:creation/tei:date/@notBefore")[0]
+                nb_str = date_str = doc.any_xpath("//tei:bibl/tei:date/@notBefore")[0]
                 na_str = doc.any_xpath("//tei:bibl/tei:date/@notAfter")[0]
             elif doc.any_xpath("//tei:bibl/tei:date/@when"):
                 nb_str = na_str = date_str = doc.any_xpath("//tei:bibl/tei:date/@when")[0]
             else:
                 nb_str = "1300-01-01"
                 na_str = "1799-12-31"
-                date = "2024-04-02"
+                date_str = "2024-04-02"
         except IndexError:
             date_str = doc.any_xpath("//tei:bibl/tei:date/text()")[0]
             data_str = date_str.split("--")[0]
@@ -121,6 +121,7 @@ for xml_filepath in tqdm(files, total=len(files)):
             else:
                 date_str = na_str = nb_str = "1970-12-31"
         nb_tst = int(datetime.strptime(nb_str, "%Y-%m-%d").timestamp())
+        print(na_str)
         na_tst = int(datetime.strptime(na_str, "%Y-%m-%d").timestamp())
         try:
             record["year"] = cfts_record["year"] = date_str

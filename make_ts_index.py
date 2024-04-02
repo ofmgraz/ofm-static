@@ -28,7 +28,7 @@ current_schema = {
         {"name": "full_text", "type": "string"},
         {"name": "notbefore", "type": "int64", "facet": True, "optional": True},
         {"name": "notafter", "type": "int64", "facet": True, "optional": True},
-        {"name": "year", "type": "int64", "facet": True, "optional": True},
+        {"name": "year", "type": "string", "facet": True, "optional": True},
         {"name": "persons", "type": "string[]", "facet": True, "optional": True},
     ],
 }
@@ -119,8 +119,10 @@ for xml_filepath in tqdm(files, total=len(files)):
                 na_str = nb = date_str
             else:
                 date_str = na_str = nb_str = "1970-12-31"
+        print(date_str, nb_str, na_str)
         nb_tst = int(datetime.strptime(nb_str, "%Y-%m-%d").timestamp())
         na_tst = int(datetime.strptime(na_str, "%Y-%m-%d").timestamp())
+        print(nb_tst, na_tst)
         try:
             record["year"] = cfts_record["year"] = date_str
             record["notbefore"] = cfts_record["notbefore"] = nb_tst

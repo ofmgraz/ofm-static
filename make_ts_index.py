@@ -26,9 +26,9 @@ current_schema = {
         {"name": "title", "type": "string"},
         {"name": "anchor_link", "type": "string"},
         {"name": "full_text", "type": "string"},
-        {"name": "notbefore", "type": "int32", "facet": True, "optional": True},
-        {"name": "notafter", "type": "int32", "facet": True, "optional": True},
-        {"name": "year", "type": "string", "facet": True, "optional": True},
+        {"name": "notbefore", "type": "int64", "facet": True, "optional": True},
+        {"name": "notafter", "type": "int64", "facet": True, "optional": True},
+        {"name": "year", "type": "int64", "facet": True, "optional": True},
         {"name": "persons", "type": "string[]", "facet": True, "optional": True},
     ],
 }

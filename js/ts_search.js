@@ -1,7 +1,7 @@
-var project_collection_name = "bundes_verfassung_oesterreich"
+var project_collection_name = "ofm_graz"
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
-    apiKey: "9KuQLxkcSSBjYobV50wKv6KBJFz9DzjO",
+    apiKey: "ZxR05vexNYJIpy6xEJOFANuEUuWgX4d6",
     nodes: [
       {
         host: "typesense.acdh-dev.oeaw.ac.at",
@@ -15,7 +15,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   //  query_by is required.
   //  filterBy is managed and overridden by InstantSearch.js. To set it, you want to use one of the filter widgets like refinementList or use the `configure` widget.
   additionalSearchParameters: {
-    query_by: "full_text,title",
+    query_by: "full_text",
   },
 });
 
@@ -24,6 +24,23 @@ const search = instantsearch({
   searchClient,
   indexName: project_collection_name,
 });
+
+function isNumeric(value) {
+    return /^-?\d+$/.test(value);
+}
+
+function formatDate(timestamp) {
+	if (isNumeric(timestamp)) {
+	var date = new Date(timestamp * 1000)
+	let year = date.getFullYear()
+	let month  = date.getMonth() + 1
+	let day = date.getDay() + 1
+	date = day + "-" + month + "-" + year ;
+	} else
+	{
+		date = timestamp }
+  return date
+}
 
 search.addWidgets([
   instantsearch.widgets.searchBox({
@@ -42,7 +59,7 @@ search.addWidgets([
     templates: {
       empty: "Keine Resultate für <q>{{ query }}</q>",
       item: `
-              <h5><a href="{{ anchor_link }}">{{#helpers.snippet}}{ "attribute": "title", "highlightedTagName": "mark" }{{/helpers.snippet}}</a></h5>
+              <h5><a href="{{id}}.html#{{anchor_link}}">{{#helpers.snippet}}{ "attribute": "title", "highlightedTagName": "mark" }{{/helpers.snippet}}</a></h5>
               <p style="overflow:hidden;max-height:210px;">{{#helpers.snippet}}{ "attribute": "full_text", "highlightedTagName": "mark" }{{/helpers.snippet}}</p>
               <h5><span class="badge badge-primary">{{ project }}</span></h5>
           `,
@@ -75,7 +92,7 @@ search.addWidgets([
 
   instantsearch.widgets.refinementList({
     container: "#refinement-list-persons",
-    attribute: "Personen",
+    attribute: "persons",
     searchable: true,
     searchablePlaceholder: "Suchen",
     cssClasses: {
@@ -90,52 +107,14 @@ search.addWidgets([
     },
   }),
 
-  instantsearch.widgets.refinementList({
-    container: "#refinement-list-doc-material",
-    attribute: "Materialart",
-    searchable: false,
-    cssClasses: {
-      showMore: "btn btn-secondary btn-sm align-content-center",
-      list: "list-unstyled",
-      count: "badge ml-2 badge-secondary hideme",
-      label: "d-flex align-items-center text-capitalize",
-      checkbox: "mr-2",
-    },
-  }),
-
-  instantsearch.widgets.refinementList({
-    container: "#refinement-list-doc-title",
-    attribute: "Dokumententitel",
-    searchable: true,
-    searchablePlaceholder: "Suchen",
-    cssClasses: {
-      showMore: "btn btn-secondary btn-sm align-content-center",
-      list: "list-unstyled",
-      count: "badge ml-2 badge-secondary hideme",
-      label: "d-flex align-items-center text-capitalize",
-      checkbox: "mr-2",
-    },
-  }),
-
-  instantsearch.widgets.refinementList({
-    container: "#refinement-list-doc-type",
-    attribute: "Dokumententyp",
-    searchable: false,
-    cssClasses: {
-      showMore: "btn btn-secondary btn-sm align-content-center",
-      list: "list-unstyled",
-      count: "badge ml-2 badge-secondary hideme",
-      label: "d-flex align-items-center text-capitalize",
-      checkbox: "mr-2",
-    },
-  }),
-
-  instantsearch.widgets.rangeInput({
+  instantsearch.widgets.rangeSlider({
     container: "#refinement-range-year",
-    attribute: "creation_year",
-    templates: {
-      separatorText: "to",
-      submitText: "Suchen",
+    attribute: "notbefore",
+    pips: false,
+	  min: -21143120720,
+	  max: -5364666322,
+    tooltips: {
+      format: v => formatDate(v),
     },
     cssClasses: {
       form: "form-inline",
@@ -170,6 +149,22 @@ search.addWidgets([
       delete: "btn",
       label: "badge",
     },
+    transformItems(items) {
+      return items.map(
+        item => (
+          {
+            ...item,
+            label: "Datum" ,
+            refinements: item.refinements.map(
+              iitem => (
+                {...iitem,
+                label: formatDate(iitem.value),}
+              ),
+            ),
+          }
+        ),
+      ) ;
+    },
   }),
 
   /*instantsearch.widgets.sortBy({
@@ -188,5 +183,4 @@ search.addWidgets([
   }),
 
 ]);
-
 search.start();

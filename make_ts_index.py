@@ -142,8 +142,8 @@ for xml_filepath in tqdm(files, total=len(files)):
             cfts_record["persons"] = record["persons"]
             record["form"] = cfts_record["form"] = doc.any_xpath("//tei:objectDesc/@form")[0]
 
-            record["genre"] = cfts_record["genre"] = [el.strip() for el in
-                                                      doc.any_xpath(".//tei:msContents/@class")[0].split("#")]
+            record["doc-type"] = cfts_record["doc-type"] = [el.strip() for el in
+                                                            doc.any_xpath(".//tei:msContents/@class")[0].split("#")]
             # # print(type(body))
             # record["full_text"] = ' '.join([extract_fulltext(p) for p in doc.any_xpath(".//tei:p")])
             p_aragraph = doc.any_xpath(".//tei:body/tei:div/tei:ab[@type!='notation']")
@@ -158,6 +158,7 @@ for xml_filepath in tqdm(files, total=len(files)):
                 record["anchor_link"] = cfts_record["anchor_link"] = t.xpath("./@facs")[0]
                 records.append(cfts_record)
                 cfts_records.append(cfts_record)
+
 # %%
 # print(make_index)
 make_index = client.collections["ofm_graz"].documents.import_(records)
@@ -172,6 +173,4 @@ make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"ac
 # print("done with cfts-index STB")
 errors = [msg for msg in make_index if (msg != '"{\\"success\\":true}"' and msg != '""')]
 [print(err) if errors else print("No errors") for err in errors]
-
-print(contents, "\n=================================================¬n", nocontents)
 # %%

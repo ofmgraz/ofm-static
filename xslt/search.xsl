@@ -37,11 +37,13 @@
                                         <h4>Volltextsuche</h4>
                                         <div id="searchbox"></div>
                                         <div id="clear-refinements"></div>
-                                        <h4>Beteiligte Personen</h4>
+					<h4>Gattung</h4>
+					<div id="refinement-list-genre"></div>
+                                        <h4>Drucker</h4>
                                         <div id="refinement-list-persons"></div>
                                         <h4>Dokumente</h4>
                                         <div id="refinement-list-doc-title"/>
-                                        <!-- <h4>Dokumententyp</h4>
+                                        <h4>Dokumententyp</h4>
                                         <div id="refinement-list-doc-type"></div>
                                         <h4>Materialart</h4>
                                         <div id="refinement-list-doc-material"></div> -->
@@ -63,11 +65,10 @@
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.1.0/themes/algolia-min.css" />
                 <link rel="stylesheet" href="css/ts_search.css"/>
                 <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"/>
-                script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.66.0/dist/instantsearch.production.min.js" />
-                <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.66.0/dist/instantsearch.production.min.js" />
                 <script src="js/ts_search.js"></script>
                 <script src="js/ts_update_url.js"></script>
-                <script src="js/ts_index.js"/>
+                <!-- <script src="js/ts_index.js"/> -->
             </body>
         </html>
     </xsl:template>

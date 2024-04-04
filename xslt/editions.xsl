@@ -185,9 +185,9 @@
             and
             not(@* | * | comment() | processing-instruction())
             and normalize-space() = '']"/>-->
-    <xsl:template match="//tei:body//tei:head"> 
+<!--    <xsl:template match="//tei:body//tei:head">  -->
         <!-- find level of head between 1 and 6, the level is not semantical, the hirarchy never interruptet-->
-        <xsl:variable name="head_level_number_raw"
+<!--        <xsl:variable name="head_level_number_raw"
             select="count(ancestor::tei:div[ancestor::tei:body/tei:div])"/>
         <xsl:variable name="head_level_number">
             <xsl:choose>
@@ -196,9 +196,9 @@
                     <xsl:value-of select="$head_level_number_raw"/>
                 </xsl:otherwise>
             </xsl:choose>
-        </xsl:variable>
+        </xsl:variable> -->
         <!-- determine if article or section -->
-        <xsl:variable name="item_class">
+<!--        <xsl:variable name="item_class">
             <xsl:choose>
                 <xsl:when test="ancestor::tei:div[1][@type = 'article']">
                     <xsl:value-of select="'article'"/>
@@ -207,16 +207,16 @@
                     <xsl:value-of select="ancestor::tei:div[1]/@type"/>
                 </xsl:otherwise>
             </xsl:choose>
-        </xsl:variable>
+        </xsl:variable> -->
         <!-- create hn element -->
-        <xsl:variable name="head_name" select="concat('h', $head_level_number)"/>
+<!--        <xsl:variable name="head_name" select="concat('h', $head_level_number)"/>
         <xsl:element name="{$head_name}">
             <xsl:attribute name="class">
                 <xsl:value-of select="$item_class"/>
             </xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
-    </xsl:template>
+    </xsl:template> -->
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">
         <a class="{@class}" id="{@xml:id}">
             <xsl:apply-templates/>

@@ -83,7 +83,8 @@ for xml_filepath in tqdm(files, total=len(files)):
     for v in facs:
         # p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
         #    f".//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
-        p_group = ".//tei:body/tei:div/tei:pb"
+        p_group = f".//tei:body/tei:div/tei:lb[preceding-sibling::tei:ab[1]/@facs='{v}']|"\
+            f".//tei:body/tei:div/tei:lb[preceding-sibling::tei:pb[1]/@facs='{v}']"
         body = doc.any_xpath(p_group)
         pages += 1
         cfts_record = {

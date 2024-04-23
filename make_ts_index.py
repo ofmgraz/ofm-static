@@ -83,8 +83,8 @@ for xml_filepath in tqdm(files, total=len(files)):
     for v in facs:
         # p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
         #    f".//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
-        p_group = f".//tei:body/tei:div/tei:lb[preceding-sibling::tei:ab[1]/@facs='{v}']|"\
-            f".//tei:body/tei:div/tei:lb[preceding-sibling::tei:pb[1]/@facs='{v}']"
+        p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
+            f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
         body = doc.any_xpath(p_group)
         pages += 1
         cfts_record = {
@@ -154,17 +154,18 @@ for xml_filepath in tqdm(files, total=len(files)):
                 cfts_record["anchor_link"] = anchor_link
                 records.append(record)
                 cfts_records.append(cfts_record)
-                print(full_text)
+                if full_text:
+                    print(full_text)
             # # print(type(body))
             # record["full_text"] = ' '.join([extract_fulltext(p) for p in doc.any_xpath(".//tei:p")])
 # print(make_index)
-make_index = client.collections["ofm_graz"].documents.import_(records)
+## make_index = client.collections["ofm_graz"].documents.import_(records)
 # print(make_index)
 print("done with indexing ofm_graz")
 # %%
 # make_index = CFTS_COLLECTION.documents.import_(cfts_records, {"action": "upsert"})
 
-make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"action": "upsert"})
+## make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"action": "upsert"})
 # %%
 #print(make_index)
 # print("done with cfts-index STB")

@@ -146,13 +146,15 @@ for xml_filepath in tqdm(files, total=len(files)):
             cfts_record["doc-type"] = 'Unbekannt'
         if paragraph := doc.any_xpath(".//tei:body/tei:div/tei:pb"):
             for t in paragraph:
-                record["full_text"] = extract_fulltext(t)
-                cfts_record["full_text"] = extract_fulltext(t)
-                record["anchor_link"] = t.xpath("./@facs")[0]
-                cfts_record["anchor_link"] = t.xpath("./@facs")[0]
+                full_text = extract_fulltext(t)
+                record["full_text"] = full_text
+                cfts_record["full_text"] = full_text
+                anchor_link = t.xpath("./@facs")[0]
+                record["anchor_link"] = anchor_link
+                cfts_record["anchor_link"] = anchor_link
                 records.append(record)
                 cfts_records.append(cfts_record)
-                print(record)
+                print(full_text)
             # # print(type(body))
             # record["full_text"] = ' '.join([extract_fulltext(p) for p in doc.any_xpath(".//tei:p")])
 # print(make_index)

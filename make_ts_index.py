@@ -76,7 +76,6 @@ contents = nocontents = []
 # <objectDesc form="codex">
 records = []
 cfts_records = []
-persons_idx = TeiReader(xml="./data/indices/listperson.xml")
 for xml_filepath in tqdm(files, total=len(files)):
     doc = TeiReader(xml=xml_filepath)
     facs = doc.any_xpath(".//tei:body/tei:div/tei:pb/@facs")
@@ -132,25 +131,29 @@ for xml_filepath in tqdm(files, total=len(files)):
             record["notafter"] = cfts_record["notafter"] = na_tst
         except ValueError:
             pass
-        if len(body) > 0:
-            # get unique persons per page
-            record["persons"] = get_entities(
-                ent_type="person", ent_node="person", ent_name="persName",
-                index_file=persons_idx, modifier='@type="label"'
-            )
-            cfts_record["persons"] = record["persons"]
-            record["form"] = cfts_record["form"] = doc.any_xpath("//tei:objectDesc/@form")[0]
-
-            record["doc-type"] = cfts_record["doc-type"] = [el.strip() for el in
-                                                            doc.any_xpath(".//tei:msContents/@class")[0].split("#")]
-            # # print(type(body))
-            # record["full_text"] = ' '.join([extract_fulltext(p) for p in doc.any_xpath(".//tei:p")])
-            paragraph = doc.any_xpath(".//tei:body/tei:div/tei:pb")
+        if form := doc.any_xpath("//tei:objectDesc/@form"):
+            record["form"] = form[0]
+            cfts_record["form"] = form[0]
+        else:
+            record["form"] = 'Unbekannt'
+            cfts_record["form"] = 'Unbekannt'
+        if doc_type := doc.any_xpath(".//tei:msContents/@class"):
+                record["doc-type"] = doc_type[0].split("#")
+                cfts_record["doc-type"] = doc_type[0].split("#")
+        else:
+            record["doc-type"] = 'Unbekannt'
+            cfts_record["doc-type"] = 'Unbekannt'
+        if paragraph := doc.any_xpath(".//tei:body/tei:div/tei:pb"):
             for t in paragraph:
-                record["full_text"] = cfts_record["full_text"] = extract_fulltext(t)
-                record["anchor_link"] = cfts_record["anchor_link"] = t.xpath("./@facs")[0]
+                record["full_text"] = extract_fulltext(t)
+                cfts_record["full_text"] = extract_fulltext(t)
+                record["anchor_link"] = t.xpath("./@facs")[0]
+                cfts_record["anchor_link"] = t.xpath("./@facs")[0]
                 records.append(record)
                 cfts_records.append(cfts_record)
+                print(record)
+            # # print(type(body))
+            # record["full_text"] = ' '.join([extract_fulltext(p) for p in doc.any_xpath(".//tei:p")])
 # print(make_index)
 make_index = client.collections["ofm_graz"].documents.import_(records)
 # print(make_index)

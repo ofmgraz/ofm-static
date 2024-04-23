@@ -25,7 +25,6 @@ current_schema = {
         {"name": "rec_id", "type": "string"},
         {"name": "title", "type": "string"},
         {"name": "anchor_link", "type": "string"},
-        {"name": "music", "type": "string", "optional": True},
         {"name": "full_text", "type": "string", "optional": True},
         {"name": "notbefore", "type": "int64", "facet": True, "optional": True},
         {"name": "notafter", "type": "int64", "facet": True, "optional": True},
@@ -85,7 +84,7 @@ for xml_filepath in tqdm(files, total=len(files)):
     for v in facs:
         # p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
         #    f".//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
-        p_group = ".//tei:body/tei:div/tei:ab"
+        p_group = ".//tei:body/tei:div/tei:pb"
         body = doc.any_xpath(p_group)
         pages += 1
         cfts_record = {
@@ -146,20 +145,12 @@ for xml_filepath in tqdm(files, total=len(files)):
                                                             doc.any_xpath(".//tei:msContents/@class")[0].split("#")]
             # # print(type(body))
             # record["full_text"] = ' '.join([extract_fulltext(p) for p in doc.any_xpath(".//tei:p")])
-            p_aragraph = doc.any_xpath(".//tei:body/tei:div/tei:ab[@type!='notation']")
-            m_aragraph = doc.any_xpath(".//tei:body/tei:div/tei:ab[@type='notation']")
-            for t in p_aragraph:
+            paragraph = doc.any_xpath(".//tei:body/tei:div/tei:pb")
+            for t in paragraph:
                 record["full_text"] = cfts_record["full_text"] = extract_fulltext(t)
                 record["anchor_link"] = cfts_record["anchor_link"] = t.xpath("./@facs")[0]
                 records.append(record)
                 cfts_records.append(cfts_record)
-            for t in m_aragraph:
-                cfts_record["music"] = record["music"] = extract_fulltext(t)
-                record["anchor_link"] = cfts_record["anchor_link"] = t.xpath("./@facs")[0]
-                records.append(cfts_record)
-                cfts_records.append(cfts_record)
-
-# %%
 # print(make_index)
 make_index = client.collections["ofm_graz"].documents.import_(records)
 # print(make_index)
@@ -169,7 +160,7 @@ print("done with indexing ofm_graz")
 
 make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"action": "upsert"})
 # %%
-# print(make_index)
+#print(make_index)
 # print("done with cfts-index STB")
 errors = [msg for msg in make_index if (msg != '"{\\"success\\":true}"' and msg != '""')]
 [print(err) if errors else print("No errors") for err in errors]

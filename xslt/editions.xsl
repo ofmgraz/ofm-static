@@ -196,7 +196,14 @@
         <xsl:if test="following-sibling::text()">
             <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
         </xsl:if>
-        
+    </xsl:template>
+    <xsl:template match="self::text()">
+        <span>
+            <xsl:attribute name="class">
+                <xsl:value-of select="ancestor::tei:ab[1]/@type" />
+            </xsl:attribute>
+            <xsl:value-of select="." />
+        </span>
     </xsl:template>
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">
         <a class="{@class}" id="{@xml:id}">

@@ -109,23 +109,21 @@ for xml_filepath in tqdm(files, total=len(files)):
         record["title"] = f"{r_title}"  # + " Page {str(pages)}"
 
         cfts_record["title"] = record["title"]
-        try:
-            if doc.any_xpath("//tei:bibl/tei:date/@notBefore"):
-                nb_str = date_str = doc.any_xpath("//tei:bibl/tei:date/@notBefore")[0]
-                na_str = doc.any_xpath("//tei:bibl/tei:date/@notAfter")[0]
-            elif doc.any_xpath("//tei:bibl/tei:date/@when"):
-                nb_str = na_str = date_str = doc.any_xpath("//tei:bibl/tei:date/@when")[0]
-            else:
-                nb_str = "1300-01-01"
-                na_str = "1799-12-31"
-                date_str = "2024-04-02"
-        except IndexError:
-            date_str = doc.any_xpath("//tei:bibl/tei:date/text()")[0]
-            data_str = date_str.split("--")[0]
+        if nb_str := doc.any_xpath("//tei:bibl/tei:date/@notBefore"):
+            nb_str = date_str = nb_str[0]
+            na_str = doc.any_xpath("//tei:bibl/tei:date/@notAfter")[0]
+        elif nb_str := doc.any_xpath("//tei:bibl/tei:date/@when"):
+            nb_str = na_str = date_str = nb_str[0]
+        elif date_str := doc.any_xpath("//tei:bibl/tei:date/text()"):
+            date_str = date_str[0].split("--")[0]
             if len(date_str) > 3:
                 na_str = nb = date_str
             else:
                 date_str = na_str = nb_str = "1970-12-31"
+        else:
+            nb_str = "1300-01-01"
+            na_str = "1799-12-31"
+            date_str = "2024-04-02"
         nb_tst = int(datetime.strptime(nb_str, "%Y-%m-%d").timestamp())
         na_tst = int(datetime.strptime(na_str, "%Y-%m-%d").timestamp())
         try:
@@ -146,9 +144,12 @@ for xml_filepath in tqdm(files, total=len(files)):
         else:
             record["doc-type"] = 'Unbekannt'
             cfts_record["doc-type"] = 'Unbekannt'
-        if paragraph := doc.any_xpath(".//tei:body/tei:div/tei:pb"):
+        if paragraph := doc.any_xpath(".//tei:body/tei:div/tei:ab"):
+            paragraph = paragraph[0]
             for t in paragraph:
-                full_text = extract_fulltext(t)
+                pass
+            if True:
+                full_text = extract_fulltext(paragraph)
                 record["full_text"] = full_text
                 cfts_record["full_text"] = full_text
                 anchor_link = t.xpath("./@facs")[0]
@@ -161,16 +162,16 @@ for xml_filepath in tqdm(files, total=len(files)):
             # # print(type(body))
             # record["full_text"] = ' '.join([extract_fulltext(p) for p in doc.any_xpath(".//tei:p")])
 # print(make_index)
-## make_index = client.collections["ofm_graz"].documents.import_(records)
+make_index = client.collections["ofm_graz"].documents.import_(records)
 # print(make_index)
 print("done with indexing ofm_graz")
 # %%
 # make_index = CFTS_COLLECTION.documents.import_(cfts_records, {"action": "upsert"})
 
-## make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"action": "upsert"})
+make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"action": "upsert"})
 # %%
 #print(make_index)
-# print("done with cfts-index STB")
+print("done with cfts-index STB")
 errors = [msg for msg in make_index if (msg != '"{\\"success\\":true}"' and msg != '""')]
 [print(err) if errors else print("No errors") for err in errors]
 # %%

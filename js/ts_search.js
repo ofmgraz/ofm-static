@@ -42,6 +42,17 @@ function formatDate(timestamp) {
   return date
 }
 
+function renameLabel(label) {
+  // Rename MC to Multiple Choice
+  if(label === 'notbefore'){
+          label = 'Datum'
+      }
+  if(label === 'persons'){
+    label = 'Personen'
+  }
+  return label
+}
+
 search.addWidgets([
   instantsearch.widgets.searchBox({
     container: "#searchbox",
@@ -92,7 +103,7 @@ search.addWidgets([
 
    instantsearch.widgets.refinementList({
     container: "#refinement-list-doc-type",
-    attribute: "doc-type",
+    attribute: "doc_type",
     searchable: true,
     searchablePlaceholder: "Suchen",
     cssClasses: {
@@ -109,7 +120,7 @@ search.addWidgets([
 
   instantsearch.widgets.refinementList({
     container: "#refinement-list-persons",
-    attribute: "persons",
+    attribute: "printer",
     searchable: true,
     searchablePlaceholder: "Suchen",
     cssClasses: {

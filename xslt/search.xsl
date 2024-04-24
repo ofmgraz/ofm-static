@@ -37,16 +37,18 @@
                                         <h4>Volltextsuche</h4>
                                         <div id="searchbox"></div>
                                         <div id="clear-refinements"></div>
-					<h4>Gattung</h4>
-					<div id="refinement-list-genre"></div>
+                                        <h4>Liturgie</h4>
+					                    <div id="refinement-list-liturgie"></div>
+					                    <h4>Inhalt</h4>
+					                    <div id="refinement-list-genre"></div>
+                                        <h4>Provenance</h4>
+                                        <div id="refinement-list-place"></div>
+                                        <h4>Dokumententyp</h4>
+                                        <div id="refinement-list-doc-type"></div>
                                         <h4>Drucker</h4>
                                         <div id="refinement-list-persons"></div>
                                         <h4>Dokumente</h4>
                                         <div id="refinement-list-doc-title"/>
-                                        <h4>Dokumententyp</h4>
-                                        <div id="refinement-list-doc-type"></div>
-                                        <h4>Materialart</h4>
-                                        <div id="refinement-list-doc-material"></div> -->
                                         <h4>Datum</h4>
                                         <div id="refinement-range-year"></div>
                                     </div>

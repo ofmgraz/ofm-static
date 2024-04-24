@@ -196,7 +196,6 @@
         </xsl:if>
         
     </xsl:template>
-
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">
         <a class="{@class}" id="{@xml:id}">
             <xsl:apply-templates/>

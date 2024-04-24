@@ -157,7 +157,7 @@ for xml_filepath in tqdm(files, total=len(files)):
         record["provenance"] = provenance
         cfts_record["provenance"] = provenance
         record["doc_type"] = doc_type
-        cfts_record["genre"] = genre
+        cfts_record["doc_type"] = doc_type
         record["liturgy"] = liturgy
         cfts_record["liturgy"] = liturgy
 

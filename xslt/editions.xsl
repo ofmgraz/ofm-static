@@ -159,64 +159,20 @@
         <span class="pb" source="{$facsUrl}" n="{$page_number}"
             style="--page_before: '{($page_number - 1)}'; --beginning_page: '{$page_number}';"> </span>
         <span class="pb_marker" n="{$page_number}"/>
-    </xsl:template>   
-    <xsl:template match="tei:ab">
-        <xsl:value-of select="normalize-space(.)"/>
-        <br />
-        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
     </xsl:template>
-    <xsl:template match="tei:ab/tei:lb">
+    <xsl:template match="tei:ab">
+        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
         <xsl:apply-templates/>
-    </xsl:template>  
-    <!-- simply keep paragraphs -->
-    <!-- <xsl:template match="tei:p | tei:lg">
-        <p>    
-        </p> 
-        <xsl:apply-templates/>
-    </xsl:template> -->
-    <!-- delete empty p/hi/div elements 
-    <xsl:template match="
-            *[
-            (
-            local-name() = 'p'
-            or local-name() = 'hi'
-            or local-name() = 'div'
-            )
-            and
-            not(@* | * | comment() | processing-instruction())
-            and normalize-space() = '']"/>-->
-<!--    <xsl:template match="//tei:body//tei:head">  -->
-        <!-- find level of head between 1 and 6, the level is not semantical, the hirarchy never interruptet-->
-<!--        <xsl:variable name="head_level_number_raw"
-            select="count(ancestor::tei:div[ancestor::tei:body/tei:div])"/>
-        <xsl:variable name="head_level_number">
-            <xsl:choose>
-                <xsl:when test="$head_level_number_raw gt 6">6</xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="$head_level_number_raw"/>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable> -->
-        <!-- determine if article or section -->
-<!--        <xsl:variable name="item_class">
-            <xsl:choose>
-                <xsl:when test="ancestor::tei:div[1][@type = 'article']">
-                    <xsl:value-of select="'article'"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="ancestor::tei:div[1]/@type"/>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable> -->
-        <!-- create hn element -->
-<!--        <xsl:variable name="head_name" select="concat('h', $head_level_number)"/>
-        <xsl:element name="{$head_name}">
-            <xsl:attribute name="class">
-                <xsl:value-of select="$item_class"/>
-            </xsl:attribute>
-            <xsl:apply-templates/>
-        </xsl:element>
-    </xsl:template> -->
+    </xsl:template>
+    <xsl:template match="tei:lb">
+    <!-- Output the content of the 'lb' element followed by a line break -->
+        <!-- Match the next text sibling and output its content -->
+        <xsl:if test="following-sibling::text()">
+            <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
+        </xsl:if>
+        
+    </xsl:template>
+
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">
         <a class="{@class}" id="{@xml:id}">
             <xsl:apply-templates/>

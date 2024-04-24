@@ -122,8 +122,8 @@ main a:active {
 }
 
 .col-md-6.col-lg-6.col-sm-12.text {
-    padding-right: 10% ;
-    max-width: 45% ;
+    padding-right: 50% ;
+    max-width: 50% ;
 }
 
 .col-md-6.col-lg-6.col-sm-12.text * { 

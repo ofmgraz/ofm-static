@@ -104,7 +104,8 @@ def make_type(doc):
     genre = doc.any_xpath("//tei:classDecl/tei:taxonomy[@xml:id='booktypes']/tei:catDesc/text()")
     if form := doc.any_xpath("//tei:objectDesc/@form"):
         form = form[0]
-    else form = ""
+    else:
+        form = ""
     return liturgy, genre, provenance, form
 
 contents = nocontents = []

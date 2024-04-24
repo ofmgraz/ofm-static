@@ -104,8 +104,55 @@ search.addWidgets([
    instantsearch.widgets.refinementList({
     container: "#refinement-list-doc-type",
     attribute: "doc_type",
-    searchable: true,
-    searchablePlaceholder: "Suchen",
+    searchable: false,
+    cssClasses: {
+      searchableInput: "form-control form-control-sm mb-2 border-light-2",
+      searchableSubmit: "d-none",
+      searchableReset: "d-none",
+      showMore: "btn btn-secondary btn-sm align-content-center",
+      list: "list-unstyled",
+      count: "badge ml-2 badge-secondary hideme ",
+      label: "d-flex align-items-center text-capitalize",
+      checkbox: "mr-2",
+    },
+  }),
+
+  instantsearch.widgets.refinementList({
+    container: "#refinement-list-liturgie",
+    attribute: "liturgy",
+    searchable: false,
+    cssClasses: {
+      searchableInput: "form-control form-control-sm mb-2 border-light-2",
+      searchableSubmit: "d-none",
+      searchableReset: "d-none",
+      showMore: "btn btn-secondary btn-sm align-content-center",
+      list: "list-unstyled",
+      count: "badge ml-2 badge-secondary hideme ",
+      label: "d-flex align-items-center text-capitalize",
+      checkbox: "mr-2",
+    },
+  }),
+
+  instantsearch.widgets.refinementList({
+    container: "#refinement-list-genre",
+    attribute: "form",
+    searchable: false,
+    cssClasses: {
+      searchableInput: "form-control form-control-sm mb-2 border-light-2",
+      searchableSubmit: "d-none",
+      searchableReset: "d-none",
+      showMore: "btn btn-secondary btn-sm align-content-center",
+      list: "list-unstyled",
+      count: "badge ml-2 badge-secondary hideme ",
+      label: "d-flex align-items-center text-capitalize",
+      checkbox: "mr-2",
+    },
+  }),
+
+  instantsearch.widgets.refinementList({
+    container: "#refinement-list-place",
+    attribute: "provenance",
+    searchable: false,
     cssClasses: {
       searchableInput: "form-control form-control-sm mb-2 border-light-2",
       searchableSubmit: "d-none",
@@ -121,8 +168,7 @@ search.addWidgets([
   instantsearch.widgets.refinementList({
     container: "#refinement-list-persons",
     attribute: "printer",
-    searchable: true,
-    searchablePlaceholder: "Suchen",
+    searchable: false,
     cssClasses: {
       searchableInput: "form-control form-control-sm mb-2 border-light-2",
       searchableSubmit: "d-none",

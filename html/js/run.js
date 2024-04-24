@@ -27,7 +27,23 @@ var editor = new LoadEditor({
         css_class: "txt-zeichen",
         hide: {
           hidden: false,
-          class: "person .entity",
+          class: "text .entity",
+        },
+        chg_citation: "citation-url",
+        features: {
+          all: false,
+          class: "features-1",
+        },
+      },
+      {
+        opt: "rub",
+        color: "red",
+        title: "Text",
+        html_class: "rub",
+        css_class: "rub-zeichen",
+        hide: {
+          hidden: false,
+          class: "rubrik .entity",
         },
         chg_citation: "citation-url",
         features: {
@@ -58,7 +74,7 @@ var editor = new LoadEditor({
         html_class: "not",
         hide: {
             hidden: true,
-            class: "not"
+            class: "notation .entity"
         },
         css_class: "not-zeichen",
         features: {

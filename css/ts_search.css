@@ -1,0 +1,207 @@
+#hits {
+    padding: 1em 0;
+}
+
+.hideme{
+    display: none;
+}
+
+.ais-Hits-item, 
+.ais-InfiniteHits-item, 
+.ais-InfiniteResults-item, 
+.ais-Results-item {
+    background-color: var(--ofm-bg-dark) ;
+    opacity: 0.95 ;
+    border: 2pt solid var(--ofm-bg-dark) ;
+    box-shadow: 0 2px 5px 0px var(--ofm-bg-dark) ;
+    border-radius: .20rem;
+}
+
+.ais-SearchBox-form {
+    display: flex;
+}
+
+#stats-container, 
+#searchbox, 
+#current-refinements, 
+#clear-refinements, 
+#range-input {
+    padding: 1em 0 .5em 0;
+}
+#refinement-list-persons,
+#refinement-list-doc-title {
+    padding: 1em .5em 2em .5em;
+    -webkit-box-shadow: -14px 21px 24px -28px rgba(156,156,156,1);
+    -moz-box-shadow: -14px 21px 24px -28px rgba(156,156,156,1);
+    box-shadow: -14px 21px 24px -28px rgba(156,156,156,1);
+    background-color: var(--ofm-main-bg-color);
+    border-radius: .10rem;
+
+}
+
+#refinement-list-doc-type,
+#refinement-list-doc-material,
+#refinement-range-year {
+    padding: 1em .5em 1em .5em;
+    background-color: var(--ofm-main-bg-color);
+    border-radius: .10rem;
+}
+
+.col-md-4 h4 {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.ais-Hits-item {
+    background-color: var(--ofm-main-bg-color);
+}
+
+.page-link {
+    color: #000;
+}
+
+/* overwriting default colors */
+li.ais-Pagination-item.page-item > a {
+    background-color: var(--ofm-main-bg-color);
+}
+
+ul .ais-Pagination-item--selected .ais-Pagination-link {
+    background-color: #615a60 !important;
+    border-color: #615a60 !important;
+}
+
+ul .ais-Pagination-item .ais-Pagination-link:hover {
+    background-color: #615a60 !important;
+    border-color: #615a60 !important;
+    color: #fff !important;
+}
+
+.form-control {
+	background-color: var(--ofm-main-bg-color);
+}
+
+.ais-SearchBox-input {
+	background-color: rgba(255, 255, 255)!important;;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: var(--ofm-main-bg-color);
+    border-color: #86b7fe;
+    outline: 0;
+    border: 0.02rem solid var(--ofm-big-highlight);
+}
+
+input.ais-SearchBox-input:focus-visible {
+    outline: 0;
+    border: 0.02rem solid var(--ofm-big-highlight);
+    box-shadow: 0px 0.1rem 0.4rem var(--ofm-big-highlight);
+}
+
+input.ais-SearchBox-input:focus {
+    outline: 0;
+    border: 0px solid var(--ofm-big-highlight);
+    box-shadow: 0px 0.1rem 0.4rem var(--ofm-big-highlight);
+    border: 0.02rem solid var(--ofm-big-highlight);
+}
+
+
+/* fix the checkboxes and the colors */
+
+input[type=checkbox] {
+    display: none;
+  }
+   
+  input[type=checkbox] + label,
+  input[type=checkbox] + span
+  {
+    display:inline-block;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  input[type=checkbox] + label:before,
+  input[type=checkbox] + span:before
+  {
+    content: "";
+    background: lightgray;
+    position: absolute;
+    top: 0.25rem;
+    left: 0;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+  }
+
+  input[type=checkbox]:checked + label:before,
+  input[type=checkbox]:checked + span:before
+  {
+    content: "\f00c";
+    font-family: 'LM Roman', Arial,Helvetica,sans-serif !important;
+    color: var(--ofm-big-highlight);
+    font-size: 0.8rem;
+    line-height: 1rem;
+    display: flex; 
+    justify-content: center;
+  }
+
+/* change color of filters */
+.ais-CurrentRefinements-item {
+	margin-right: .3rem;
+	margin-top: .3rem;
+	padding: .3rem .5rem;
+	display: flex;
+	background-color: var(--ofm-big-highlight);
+	border-radius: 5px;
+}
+
+/* change button collor */
+.ais-RangeInput-submit:hover, .ais-RangeInput-submit:focus {
+	background-color: var(--ofm-small-highlight);
+}
+
+.ais-RangeSlider .rheostat-progress {
+	background-color: var(--ofm-bg-dark) ;
+}
+
+.btn {
+    background-color: var(--ofm-darker-lightgray);
+    border-color: var(--ofm-darker-lightgray);
+    color: #000;
+}
+
+.ais-SearchBox-submit {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.ais-SearchBox-submit:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: var(--ofm-small-highlight);
+}
+
+.search-panel {
+    margin: 2em auto;
+}
+
+/* .ais-RefinementList-label span {
+    margin-left: .5em;
+    text-align: left;
+} */
+
+.badge {
+    max-width: 100%;
+    overflow: hidden;
+color: var(--ofm-font-color) ;
+}
+
+/* .ais-RefinementList-labelText {
+    max-width: 290px;
+    overflow: hidden;
+    text-align: right;
+} */

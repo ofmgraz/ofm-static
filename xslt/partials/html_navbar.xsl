@@ -71,7 +71,7 @@
                                     data-i18n="navbar__search"/>
                             </li>
 
-                            <select name="language" id="languageSwitcher"/>
+                            <!-- <select name="language" id="languageSwitcher"/> -->
                         </ul>
                     </div>
                 </div>

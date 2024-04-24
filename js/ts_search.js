@@ -222,24 +222,24 @@ search.addWidgets([
     cssClasses: {
       delete: "btn",
       label: "badge",
-    },
+    },                                                                                                                                                                                                                                                         
     transformItems(items) {
       return items.map(
         item => (
-          {
+          {   
             ...item,
-            label: "Datum" ,
+            label: renameLabel(item.label),
             refinements: item.refinements.map(
               iitem => (
                 {...iitem,
                 label: formatDate(iitem.value),}
-              ),
-            ),
-          }
-        ),
-      ) ;
-    },
-  }),
+              ),  
+            ),  
+          }   
+        ),  
+      ) ; 
+    },  
+  }), 
 
   /*instantsearch.widgets.sortBy({
     container: "#sort-by",

@@ -30,7 +30,7 @@ current_schema = {
         {"name": "notafter", "type": "int64", "facet": True, "optional": True},
         {"name": "year", "type": "string", "facet": True, "optional": True},
         {"name": "form", "type": "string", "facet": True, "optional": True},
-        {"name": "genre", "type": "string[]", "facet": True, "optional": True},
+        {"name": "doc_type", "type": "string[]", "facet": True, "optional": True},
         {"name": "liturgy", "type": "string", "facet": True, "optional": True},
         {"name": "provenance", "type": "string[]", "facet": True, "optional": True},
         {"name": "persons", "type": "string[]", "facet": True, "optional": True},
@@ -102,7 +102,10 @@ def make_type(doc):
     else:
         liturgy = ""
     genre = doc.any_xpath("//tei:classDecl/tei:taxonomy[@xml:id='booktypes']/tei:catDesc/text()")
-    return liturgy, genre, provenance
+    if form := doc.any_xpath("//tei:objectDesc/@form"):
+        form = form[0]
+    else form = ""
+    return liturgy, genre, provenance, form
 
 contents = nocontents = []
 # %%
@@ -123,7 +126,7 @@ for xml_filepath in tqdm(files, total=len(files)):
             ).split()
         )
     date_str, nb_tst, na_tst = make_date(doc)
-    liturgy, genre, provenance = make_type(doc)
+    liturgy, doc_type, provenance, form = make_type(doc)
     for v in facs:
         # p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
         #    f".//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
@@ -143,7 +146,6 @@ for xml_filepath in tqdm(files, total=len(files)):
         record["rec_id"] = os.path.split(xml_file)[-1]
         cfts_record["rec_id"] = record["rec_id"]
         record["title"] = f"{r_title}"  # + " Page {str(pages)}"
-
         cfts_record["title"] = record["title"]
         try:
             record["year"] = cfts_record["year"] = date_str
@@ -151,18 +153,15 @@ for xml_filepath in tqdm(files, total=len(files)):
             record["notafter"] = cfts_record["notafter"] = na_tst
         except ValueError:
             pass
-        if form := doc.any_xpath("//tei:objectDesc/@form"):
-            record["form"] = form[0]
-            cfts_record["form"] = form[0]
-        else:
-            record["form"] = 'Unbekannt'
-            cfts_record["form"] = 'Unbekannt'
-        if doc_type := doc.any_xpath(".//tei:msContents/@class"):
-                record["doc-type"] = doc_type[0].split("#")
-                cfts_record["doc-type"] = doc_type[0].split("#")
-        else:
-            record["doc-type"] = 'Unbekannt'
-            cfts_record["doc-type"] = 'Unbekannt'
+        record["provenance"] = provenance
+        cfts_record["provenance"] = provenance
+        record["doc_type"] = doc_type
+        cfts_record["genre"] = genre
+        record["liturgy"] = liturgy
+        cfts_record["liturgy"] = liturgy
+
+        record["form"] = form
+        cfts_record["form"] = form
         if paragraph := doc.any_xpath(".//tei:body/tei:div/tei:ab"):
             paragraph = paragraph[0]
             full_text = extract_fulltext(paragraph)

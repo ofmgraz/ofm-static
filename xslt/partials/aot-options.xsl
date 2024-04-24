@@ -36,6 +36,9 @@
                 <li class="dropdown-item">
                     <annotation-slider opt="not"></annotation-slider>
                 </li>
+                    <li class="dropdown-item">
+                    <annotation-slider opt="rub"></annotation-slider>
+                </li>
             </ul>                                                    
         </div>
         

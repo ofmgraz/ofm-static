@@ -47,8 +47,6 @@
                                         <div id="refinement-list-doc-type"></div>
                                         <h4>Drucker</h4>
                                         <div id="refinement-list-persons"></div>
-                                        <h4>Dokumente</h4>
-                                        <div id="refinement-list-doc-title"/>
                                         <h4>Datum</h4>
                                         <div id="refinement-range-year"></div>
                                     </div>

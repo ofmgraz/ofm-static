@@ -148,7 +148,7 @@
         </div>
     </xsl:template>
     <xsl:template match="tei:pb">
-        <xsl:value-of select="$myline" disable-output-escaping="yes"/>
+        <span class="hline"><xsl:value-of select="$mybreak" disable-output-escaping="yes"/></span>
         <!-- needed for scrolling / numbering -->
         <span class="anchor-pb"/>
         <!-- determine img src -->

@@ -50,6 +50,22 @@ main a:active {
     color: var(--ofm-font-color) ;
 }
 
+.col-md-4 {
+    padding: 4rem ;
+    max-width: 30rem;
+}
+
+.col-md-2 {
+    padding: 4rem ;
+    max-width: 25% ;
+}
+
+
+.col-md-8 {                                                                                                                                                                                                                                                    
+    padding: 4rem ;
+    max-width: 50% ;
+}
+
 .card-body {
 	padding: 1em;
 }

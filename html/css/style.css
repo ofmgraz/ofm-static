@@ -57,7 +57,12 @@ main a:active {
     background-color: var(--ofm-bg)!important;
 }
 
-
+.hline:after {                                                                                                                                                                                                                                             
+width:100%;
+content: "";
+display: inline-block ;
+border-bottom: 1px solid #888 ;
+}
 /*.carousel {
 }
 

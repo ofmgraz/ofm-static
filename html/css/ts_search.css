@@ -29,6 +29,10 @@
     padding: 1em 0 .5em 0;
 }
 #refinement-list-persons,
+#refinement-list-liturgie,
+#refinement-list-doc-type,
+#refinement-list-genre,
+#refinement-list-place,
 #refinement-list-doc-title {
     padding: 1em .5em 2em .5em;
     -webkit-box-shadow: -14px 21px 24px -28px rgba(156,156,156,1);
@@ -39,8 +43,6 @@
 
 }
 
-#refinement-list-doc-type,
-#refinement-list-doc-material,
 #refinement-range-year {
     padding: 1em .5em 1em .5em;
     background-color: var(--ofm-main-bg-color);
@@ -107,45 +109,6 @@ input.ais-SearchBox-input:focus {
 
 
 /* fix the checkboxes and the colors */
-
-input[type=checkbox] {
-    display: none;
-  }
-   
-  input[type=checkbox] + label,
-  input[type=checkbox] + span
-  {
-    display:inline-block;
-    padding-left: 20px;
-    position: relative;
-  }
-
-  input[type=checkbox] + label:before,
-  input[type=checkbox] + span:before
-  {
-    content: "";
-    background: lightgray;
-    position: absolute;
-    top: 0.25rem;
-    left: 0;
-    height: 1rem;
-    width: 1rem;
-    border-radius: 50%;
-  }
-
-  input[type=checkbox]:checked + label:before,
-  input[type=checkbox]:checked + span:before
-  {
-    content: "\f00c";
-    font-family: 'LM Roman', Arial,Helvetica,sans-serif !important;
-    color: var(--ofm-big-highlight);
-    font-size: 0.8rem;
-    line-height: 1rem;
-    display: flex; 
-    justify-content: center;
-  }
-
-/* change color of filters */
 .ais-CurrentRefinements-item {
 	margin-right: .3rem;
 	margin-top: .3rem;

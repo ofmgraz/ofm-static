@@ -27,11 +27,50 @@
                         <xsl:value-of select="$doc_title"/>
                     </h1>
 
-                </div></main>
+                </div>
+                <div class="container-fluid">
+                        <div class="search-panel">
+                            <div class="search-panel__results">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div id="stats-container"></div>
+                                        <h4>Volltextsuche</h4>
+                                        <div id="searchbox"></div>
+                                        <div id="clear-refinements"></div>
+                                        <h4>Liturgie</h4>
+					                    <div id="refinement-list-liturgie"></div>
+					                    <h4>Inhalt</h4>
+					                    <div id="refinement-list-genre"></div>
+                                        <h4>Provenance</h4>
+                                        <div id="refinement-list-place"></div>
+                                        <h4>Dokumententyp</h4>
+                                        <div id="refinement-list-doc-type"></div>
+                                        <h4>Drucker</h4>
+                                        <div id="refinement-list-persons"></div>
+                                        <h4>Dokumente</h4>
+                                        <div id="refinement-list-doc-title"/>
+                                        <h4>Datum</h4>
+                                        <div id="refinement-range-year"></div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <!--<div id="sort-by"></div>-->
+                                        <div id="current-refinements"></div>
+                                        <div id="hits"></div>
+                                        <div id="pagination"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
                 <xsl:call-template name="html_footer"/>
-                <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"/>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.1.0/themes/algolia-min.css" />
+                <link rel="stylesheet" href="css/ts_search.css"/>
                 <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"/>
-                <script src="js/ts_index.js"/>
+                <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.66.0/dist/instantsearch.production.min.js" />
+                <script src="js/ts_search.js"></script>
+                <script src="js/ts_update_url.js"></script>
+                <!-- <script src="js/ts_index.js"/> -->
             </body>
         </html>
     </xsl:template>

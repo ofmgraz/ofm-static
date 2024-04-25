@@ -24,7 +24,7 @@ var editor = new LoadEditor({
         color: "blue",
         title: "Text",
         html_class: "text",
-        css_class: "txt-zeichen",
+        css_class: "text",
         hide: {
           hidden: false,
           class: "text .entity",
@@ -39,8 +39,8 @@ var editor = new LoadEditor({
         opt: "rub",
         color: "red",
         title: "Text",
-        html_class: "rub",
-        css_class: "rub-zeichen",
+        html_class: "rubrik",
+        css_class: "rubrik",
         hide: {
           hidden: false,
           class: "rubrik .entity",
@@ -69,14 +69,14 @@ var editor = new LoadEditor({
     }, */ {
         opt: "not",
         opt_slider: "addition-slider",
-        title: "Hinzufügungen",
+        title: "Musik",
         color: "green",
-        html_class: "not",
+        html_class: "notation",
         hide: {
             hidden: true,
             class: "notation .entity"
         },
-        css_class: "not-zeichen",
+        css_class: "notation",
         features: {
             all: false,
             class: "features-1"

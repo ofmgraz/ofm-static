@@ -189,8 +189,15 @@
         <span class="pb_marker" n="{$page_number}"/>
     </xsl:template>
     <xsl:template match="tei:ab">
+        <xsl:variable select="./@class" name="currentclass" />
+        <ab>
+            <xsl:attribute name="class">
+                <xsl:value-of select="$currentclass" />
+                <xsl:text>yes-index</xsl:text>
+            </xsl:attribute>
+             <xsl:apply-templates/>
+        </ab>
         <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
-        <xsl:apply-templates/>
     </xsl:template>
     <xsl:template match="tei:lb">
     <!-- Output the content of the 'lb' element followed by a line break -->
@@ -204,7 +211,6 @@
             <span>
                 <xsl:attribute name="class">
                     <xsl:value-of select="tokenize(ancestor::tei:ab[1]/@type, '_')[1]" />
-                    <xsl:text> yes-index</xsl:text>
                 </xsl:attribute>
                 <xsl:value-of select="." />
             </span>

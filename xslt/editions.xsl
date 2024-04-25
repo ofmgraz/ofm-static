@@ -204,6 +204,7 @@
             <span>
                 <xsl:attribute name="class">
                     <xsl:value-of select="tokenize(ancestor::tei:ab[1]/@type, '_')[1]" />
+                    <xsl:text> yes-index</xsl:text>
                 </xsl:attribute>
                 <xsl:value-of select="." />
             </span>

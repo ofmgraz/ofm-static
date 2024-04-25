@@ -190,14 +190,13 @@
     </xsl:template>
     <xsl:template match="tei:ab">
         <xsl:variable select="./@class" name="currentclass" />
-        <ab>
+        <p>
             <xsl:attribute name="class">
                 <xsl:value-of select="$currentclass" />
                 <xsl:text>yes-index</xsl:text>
             </xsl:attribute>
              <xsl:apply-templates/>
-        </ab>
-        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
+        </p>
     </xsl:template>
     <xsl:template match="tei:lb">
     <!-- Output the content of the 'lb' element followed by a line break -->

@@ -13,8 +13,9 @@
     background-color: var(--ofm-bg-dark) ;
     opacity: 0.95 ;
     border: 2pt solid var(--ofm-bg-dark) ;
-    box-shadow: 0 2px 5px 0px var(--ofm-bg-dark) ;
+    box-shadow: 0 .2rem .5rem 0px var(--ofm-bg-dark) ;
     border-radius: .20rem;
+    min-width: 18rem ;
 }
 
 .ais-SearchBox-form {
@@ -115,7 +116,7 @@ input.ais-SearchBox-input:focus {
 	padding: .3rem .5rem;
 	display: flex;
 	background-color: var(--ofm-big-highlight);
-	border-radius: 5px;
+	border-radius: .5rem;
 }
 
 /* change button collor */

@@ -9,7 +9,6 @@ var editor = new LoadEditor({
         color: "grey",
         html_class: "undefined",
         css_class: "undefined",
-        chg_citation: "citation-url",
         hide: {
           hidden: false,
           class: "undefined",
@@ -24,12 +23,11 @@ var editor = new LoadEditor({
         color: "red",
         title: "Rubrik",
         html_class: "rubrik",
-        css_class: "rubrik",
+        css_class: "rubrik-zeichen",
         hide: {
           hidden: false,
           class: "rubrik .entity",
         },
-        chg_citation: "citation-url",
         features: {
           all: false,
           class: "features-1",
@@ -40,12 +38,11 @@ var editor = new LoadEditor({
         color: "yellow",
         title: "Rubrik 2",
         html_class: "rubrik2",
-        css_class: "rubrik2",
+        css_class: "rubrik2-zeichen",
         hide: {
           hidden: false,
           class: "rubrik2 .entity",
         },
-        chg_citation: "citation-url",
         features: {
           all: false,
           class: "features-1",
@@ -56,43 +53,26 @@ var editor = new LoadEditor({
         color: "green",
         title: "Initiale",
         html_class: "initiale",
-        css_class: "initiale",
+        css_class: "initiale-zeichen",
         hide: {
           hidden: false,
           class: "initiale .entity",
         },
-        chg_citation: "citation-url",
         features: {
           all: false,
           class: "features-1",
         },
       },
-      /*{
-        opt: "del",
-        opt_slider: "deleted-slider",
-        title: "Streichung",
-        color: "black",
-        html_class: "del",
-        hide: {
-            hidden: true,
-            class: "del"
-        },
-        css_class: "strikethrough",
-        features: {
-            all: false,
-            class: "features-2"
-        }
-    }, */ {
+      {
         opt: "not",
-        opt_slider: "addition-slider",
-        title: "Musik",
         color: "blue",
+        title: "Musik",
         html_class: "notation",
+        css_class: "notation-zeichen",
         hide: {
-            hidden: true,
+            hidden: false,
             class: "notation .entity"
         },
-        css_class: "notation",
         features: {
             all: false,
             class: "features-1"

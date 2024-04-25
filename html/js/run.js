@@ -128,7 +128,7 @@ var editor = new LoadEditor({
                 font3: "Arial-serif"
             },
             // default tag-name for text
-            paragraph: "ab",
+            paragraph: "p",
             // default class of paragaph tag
             p_class: "yes-index",
             // not required but can be used to create addition styles
@@ -162,7 +162,7 @@ var editor = new LoadEditor({
                 font_size_26: "26"
             },
             // default tag-name containing text
-            paragraph: "ab",
+            paragraph: "p",
             // default class in combination with paragraph that contains text
             p_class: "yes-index",
             // default addition to css class. Will be combined with font size value

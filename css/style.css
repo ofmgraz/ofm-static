@@ -58,6 +58,24 @@
 }
 
 
+
+.rubrik-zeichen {
+    color: black;
+}
+
+.rubrik2-zeichen {
+    color: black;
+}
+
+.notation-zeichen {
+    color: black;
+}
+
+.initiale-zeichen {
+    color: black;
+}
+
+
 body {
     display: flex;
     min-height:100vh;

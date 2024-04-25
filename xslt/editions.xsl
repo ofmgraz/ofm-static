@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:local="http://dse-static.foo.bar" version="2.0" exclude-result-prefixes="xsl tei xs local">
+    xmlns:local="http://dse-static.foo.bar" exclude-result-prefixes="xsl tei xs local"
+     version="2.0">
     <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
         omit-xml-declaration="yes" />
     <xsl:import href="./partials/shared.xsl"/>
@@ -13,7 +14,7 @@
     <xsl:import href="./partials/entities.xsl"/>
     <xsl:import href="partials/edition_side_nav.xsl"/>
     <xsl:import href="./partials/html_title_navigation.xsl"/>
-    <xsl:import href="./partials/aot-options.xsl"/>  
+    <xsl:import href="./partials/aot-options.xsl"/>
     <xsl:variable name="prev">
         <xsl:value-of
             select="replace(tokenize(data(tei:TEI/@prev), '/')[last()], '.xml', '.html')"/>
@@ -197,18 +198,30 @@
             </xsl:attribute>
              <xsl:apply-templates/>
         </p>
-        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
     </xsl:template>
-   
     <xsl:template match="self::text()">
+        <xsl:variable name="classtype" select="tokenize(ancestor::tei:ab[1]/@type, '_')[1]" />
         <xsl:if test="string-length(normalize-space(self::text())) > 0">
-            <span>
-                <xsl:attribute name="class">
-                    <xsl:value-of select="tokenize(ancestor::tei:ab[1]/@type, '_')[1]" />
-                </xsl:attribute>
-                <xsl:value-of select="." />
-            </span>
-            <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
+            <!-- <xsl:choose>
+                <xsl:when test="$classtype = 'text'">
+                    <xsl:value-of select="." />
+                    <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
+                </xsl:when>
+                <xsl:otherwise> -->
+                    <span>
+                        <xsl:attribute name="class">
+                            <xsl:value-of select="$classtype" />
+                        </xsl:attribute>
+                        <xsl:attribute name="id">
+                            <xsl:value-of select="generate-id()" />
+                        </xsl:attribute>
+                        <xsl:value-of select="normalize-space(.)" />
+                    </span>
+                    <xsl:if test="$classtype != 'initiale'">
+                        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
+                    </xsl:if>
+                <!-- </xsl:otherwise>
+            </xsl:choose> -->
         </xsl:if>
     </xsl:template>
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">

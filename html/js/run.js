@@ -38,12 +38,44 @@ var editor = new LoadEditor({
       {
         opt: "rub",
         color: "red",
-        title: "Text",
+        title: "Rubrik",
         html_class: "rubrik",
         css_class: "rubrik",
         hide: {
           hidden: false,
           class: "rubrik .entity",
+        },
+        chg_citation: "citation-url",
+        features: {
+          all: false,
+          class: "features-1",
+        },
+      },
+      {
+        opt: "rub2",
+        color: "red",
+        title: "Rubrik",
+        html_class: "rubrik2",
+        css_class: "rubrik2",
+        hide: {
+          hidden: false,
+          class: "rubrik2 .entity",
+        },
+        chg_citation: "citation-url",
+        features: {
+          all: false,
+          class: "features-1",
+        },
+      },
+      {
+        opt: "ini",
+        color: "blue",
+        title: "Initiale",
+        html_class: "initiale",
+        css_class: "initiale",
+        hide: {
+          hidden: false,
+          class: "initiale .entity",
         },
         chg_citation: "citation-url",
         features: {

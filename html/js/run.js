@@ -20,22 +20,6 @@ var editor = new LoadEditor({
         },
       },
       {
-        opt: "txt",
-        color: "blue",
-        title: "Text",
-        html_class: "text",
-        css_class: "text",
-        hide: {
-          hidden: false,
-          class: "text .entity",
-        },
-        chg_citation: "citation-url",
-        features: {
-          all: false,
-          class: "features-1",
-        },
-      },
-      {
         opt: "rub",
         color: "red",
         title: "Rubrik",
@@ -53,7 +37,7 @@ var editor = new LoadEditor({
       },
       {
         opt: "rub2",
-        color: "red",
+        color: "yellow",
         title: "Rubrik 2",
         html_class: "rubrik2",
         css_class: "rubrik2",
@@ -69,7 +53,7 @@ var editor = new LoadEditor({
       },
       {
         opt: "ini",
-        color: "blue",
+        color: "green",
         title: "Initiale",
         html_class: "initiale",
         css_class: "initiale",
@@ -102,7 +86,7 @@ var editor = new LoadEditor({
         opt: "not",
         opt_slider: "addition-slider",
         title: "Musik",
-        color: "green",
+        color: "blue",
         html_class: "notation",
         hide: {
             hidden: true,
@@ -144,7 +128,7 @@ var editor = new LoadEditor({
                 font3: "Arial-serif"
             },
             // default tag-name for text
-            paragraph: "p",
+            paragraph: "ab",
             // default class of paragaph tag
             p_class: "yes-index",
             // not required but can be used to create addition styles
@@ -178,7 +162,7 @@ var editor = new LoadEditor({
                 font_size_26: "26"
             },
             // default tag-name containing text
-            paragraph: "p",
+            paragraph: "ab",
             // default class in combination with paragraph that contains text
             p_class: "yes-index",
             // default addition to css class. Will be combined with font size value

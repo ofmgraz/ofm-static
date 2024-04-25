@@ -34,21 +34,6 @@ var editor = new LoadEditor({
         },
       },
       {
-        opt: "rub2",
-        color: "yellow",
-        title: "Rubrik 2",
-        html_class: "rubrik2",
-        css_class: "rubrik2-zeichen",
-        hide: {
-          hidden: false,
-          class: "rubrik2 .entity",
-        },
-        features: {
-          all: false,
-          class: "features-1",
-        },
-      },
-      {
         opt: "ini",
         color: "green",
         title: "Initiale",
@@ -80,7 +65,7 @@ var editor = new LoadEditor({
     },
     {
       opt: "text",
-      color: "orange",
+      color: "yellow",
       title: "Text",
       html_class: "text",
       css_class: "text-zeichen",

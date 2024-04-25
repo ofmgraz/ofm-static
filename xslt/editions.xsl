@@ -13,6 +13,7 @@
     <xsl:import href="./partials/entities.xsl"/>
     <xsl:import href="partials/edition_side_nav.xsl"/>
     <xsl:import href="./partials/html_title_navigation.xsl"/>
+    <xsl:import href="./partials/aot-options.xsl"/>  
     <xsl:variable name="prev">
         <xsl:value-of
             select="replace(tokenize(data(tei:TEI/@prev), '/')[last()], '.xml', '.html')"/>
@@ -56,6 +57,9 @@
                         <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions"
                             aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true"
                             data-bs-backdrop="false">
+                        </div>
+                        <div id="editor-widget">
+                                <xsl:call-template name="annotation-options"></xsl:call-template>
                         </div>
                         <div class="wp-transcript">
                             <div class="row" id="edition_metadata">
@@ -153,10 +157,10 @@
                     </div>
                 </div>
                 <xsl:call-template name="html_footer"/>
-                <script src="https://unpkg.com/de-micro-editor@0.3.2/dist/de-editor.min.js"/>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/>
-                <script type="text/javascript" src="js/osd_scroll.js"/>
-                <!-- <script type="text/javascript" src="js/run.js"/> -->
+                <script type="text/javascript" src="js/osd_scroll.js"></script>
+                <script src="https://unpkg.com/de-micro-editor@0.3.4/dist/de-editor.min.js"></script>
+                <script type="text/javascript" src="js/run.js"></script>
                 <script type="text/javascript" src="js/offcanvastoggler.js"/>
             </body>
         </html>
@@ -185,16 +189,27 @@
         <span class="pb_marker" n="{$page_number}"/>
     </xsl:template>
     <xsl:template match="tei:ab">
+        <xsl:variable select="./@class" name="currentclass" />
+        <p>
+            <xsl:attribute name="class">
+                <xsl:value-of select="$currentclass" />
+                <xsl:text>yes-index</xsl:text>
+            </xsl:attribute>
+             <xsl:apply-templates/>
+        </p>
         <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
-        <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="tei:lb">
-    <!-- Output the content of the 'lb' element followed by a line break -->
-        <!-- Match the next text sibling and output its content -->
-        <xsl:if test="following-sibling::text()">
+   
+    <xsl:template match="self::text()">
+        <xsl:if test="string-length(normalize-space(self::text())) > 0">
+            <span>
+                <xsl:attribute name="class">
+                    <xsl:value-of select="tokenize(ancestor::tei:ab[1]/@type, '_')[1]" />
+                </xsl:attribute>
+                <xsl:value-of select="." />
+            </span>
             <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
         </xsl:if>
-        
     </xsl:template>
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">
         <a class="{@class}" id="{@xml:id}">

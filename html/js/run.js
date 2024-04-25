@@ -54,7 +54,7 @@ var editor = new LoadEditor({
       {
         opt: "rub2",
         color: "red",
-        title: "Rubrik",
+        title: "Rubrik 2",
         html_class: "rubrik2",
         css_class: "rubrik2",
         hide: {

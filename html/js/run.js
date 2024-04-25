@@ -81,7 +81,7 @@ var editor = new LoadEditor({
     {
       opt: "text",
       color: "orange",
-      title: "Musik",
+      title: "Text",
       html_class: "text",
       css_class: "text-zeichen",
       hide: {

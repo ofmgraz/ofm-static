@@ -78,6 +78,21 @@ var editor = new LoadEditor({
             class: "features-1"
         }
     },
+    {
+      opt: "text",
+      color: "orange",
+      title: "Musik",
+      html_class: "text",
+      css_class: "text-zeichen",
+      hide: {
+          hidden: false,
+          class: "text .entity"
+      },
+      features: {
+          all: false,
+          class: "features-1"
+      }
+  },
     ],
     span_element: {
       css_class: "badge-item",

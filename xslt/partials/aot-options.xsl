@@ -36,8 +36,17 @@
                 <li class="dropdown-item">
                     <annotation-slider opt="not"></annotation-slider>
                 </li>
-                    <li class="dropdown-item">
+                <li class="dropdown-item">
                     <annotation-slider opt="rub"></annotation-slider>
+                </li>
+                <li class="dropdown-item">
+                    <annotation-slider opt="rub2"></annotation-slider>
+                </li>
+                <li class="dropdown-item">
+                    <annotation-slider opt="rub"></annotation-slider>
+                </li>
+                <li class="dropdown-item">
+                    <annotation-slider opt="ini"></annotation-slider>
                 </li>
             </ul>                                                    
         </div>

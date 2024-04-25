@@ -30,9 +30,6 @@
                 <li class="dropdown-item">
                     <font-family opt="ff"></font-family>
                 </li>
-                <li class="dropdown-item" style="border-top: 5px dashed lightgrey !important;">
-                    <annotation-slider opt="txt"></annotation-slider>
-                </li>
                 <li class="dropdown-item">
                     <annotation-slider opt="not"></annotation-slider>
                 </li>
@@ -41,9 +38,6 @@
                 </li>
                 <li class="dropdown-item">
                     <annotation-slider opt="rub2"></annotation-slider>
-                </li>
-                <li class="dropdown-item">
-                    <annotation-slider opt="rub"></annotation-slider>
                 </li>
                 <li class="dropdown-item">
                     <annotation-slider opt="ini"></annotation-slider>

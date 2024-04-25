@@ -68,6 +68,41 @@
                <div class="offcanvas-body"></div>
             </div>
             <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions" aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true" data-bs-backdrop="false"></div>
+            <div id="editor-widget">
+               <div  id="aot-navBarNavDropdown" class="navBarNavDropdown dropstart"><a title="Annotationen" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" role="button"><i class="bi bi-gear" title="Menü zur Anpassung der Anzeige"></i></a><ul class="dropdown-menu">
+                     <li class="dropdown-item">
+                        <full-size opt="fls"></full-size>
+                     </li>
+                     <li class="dropdown-item">
+                        <image-switch opt="es"></image-switch>
+                     </li>
+                     <li class="dropdown-item">
+                        <font-size opt="fs"></font-size>
+                     </li>
+                     <li class="dropdown-item">
+                        <font-family opt="ff"></font-family>
+                     </li>
+                     <li class="dropdown-item" style="border-top: 5px dashed lightgrey !important;">
+                        <annotation-slider opt="txt"></annotation-slider>
+                     </li>
+                     <li class="dropdown-item">
+                        <annotation-slider opt="not"></annotation-slider>
+                     </li>
+                     <li class="dropdown-item">
+                        <annotation-slider opt="rub"></annotation-slider>
+                     </li>
+                     <li class="dropdown-item">
+                        <annotation-slider opt="rub2"></annotation-slider>
+                     </li>
+                     <li class="dropdown-item">
+                        <annotation-slider opt="rub"></annotation-slider>
+                     </li>
+                     <li class="dropdown-item">
+                        <annotation-slider opt="ini"></annotation-slider>
+                     </li>
+                  </ul>
+               </div>
+            </div>
             <div class="wp-transcript">
                <div class="row" id="edition_metadata">
                   <div class="col-md-2 col-lg-2 col-sm-12">
@@ -105,8 +140,8 @@
                               </span><br/><span class="rubrik2">deus V. Gloria patri sicut erat etc. et repetitur antiphona Asper 
                               </span><br/><span class="rubrik2">ges me domine etc. et a sacerdote asperguntur fraters: An.
                               </span><span class="">
-                              </span><br/><span class="initiale_fleuro_lombarde">
-                              </span><br/><span class="initiale_fleuro_lombarde">A
+                              </span><br/><span class="initiale">
+                              </span><br/><span class="initiale">A
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><br/><span class="notation">c2 z-1 l1 - l2 z1 l1 - z1 l2 :  z2 : LL l3 z3 l4 - l4 z3 - l3 z2 : l3 - z2 cu_z1
@@ -165,7 +200,7 @@
                               </span><br/><span class="text">Gloria patri
                               </span><span class="">
                               </span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/A63_51/files/images/A-Gf_A63_51-001v/full/full/0/default.jpg" n="4" style="--page_before: '3'; --beginning_page: '4';"></span><span class="pb_marker" n="4"></span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -193,7 +228,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -208,7 +243,7 @@
                               </span><br/><span class="text">
                               </span><span class="">
                               </span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/A63_51/files/images/A-Gf_A63_51-002r/full/full/0/default.jpg" n="5" style="--page_before: '4'; --beginning_page: '5';"></span><span class="pb_marker" n="5"></span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -216,13 +251,13 @@
                               </span><span class="">
                               </span><br/><span class="rubrik2">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="rubrik2">
                               </span><span class="">
                               </span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/A63_51/files/images/A-Gf_A63_51-002v/full/full/0/default.jpg" n="6" style="--page_before: '5'; --beginning_page: '6';"></span><span class="pb_marker" n="6"></span><span class="">
                               </span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/A63_51/files/images/A-Gf_A63_51-003r/full/full/0/default.jpg" n="7" style="--page_before: '6'; --beginning_page: '7';"></span><span class="pb_marker" n="7"></span><span class="">
-                              </span><br/><span class="initiale_fleuro_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -254,7 +289,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -270,7 +305,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -282,7 +317,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik2">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -300,7 +335,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -325,7 +360,7 @@
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
@@ -346,13 +381,13 @@
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
@@ -387,7 +422,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -404,7 +439,7 @@
                               </span><br/><span class="rubrik2">
                               </span><span class="">
                               </span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/A63_51/files/images/A-Gf_A63_51-005r/full/full/0/default.jpg" n="11" style="--page_before: '10'; --beginning_page: '11';"></span><span class="pb_marker" n="11"></span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -428,7 +463,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -444,13 +479,13 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -475,7 +510,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -504,7 +539,7 @@
                               </span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/A63_51/files/images/A-Gf_A63_51-006r/full/full/0/default.jpg" n="13" style="--page_before: '12'; --beginning_page: '13';"></span><span class="pb_marker" n="13"></span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -514,7 +549,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -536,7 +571,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -567,7 +602,7 @@
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -591,7 +626,7 @@
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
@@ -622,7 +657,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -639,7 +674,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -647,7 +682,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -665,7 +700,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -692,7 +727,7 @@
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -704,7 +739,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -728,7 +763,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -753,7 +788,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -771,7 +806,7 @@
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -794,7 +829,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -810,13 +845,13 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -849,7 +884,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -880,7 +915,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik2">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -929,7 +964,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -954,7 +989,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -972,7 +1007,7 @@
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -992,7 +1027,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -1017,7 +1052,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -1043,7 +1078,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -1072,7 +1107,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -1093,7 +1128,7 @@
                               </span><br/><span class="text">
                               </span><span class="">
                               </span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/A63_51/files/images/A-Gf_A63_51-012v/full/full/0/default.jpg" n="26" style="--page_before: '25'; --beginning_page: '26';"></span><span class="pb_marker" n="26"></span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -1111,13 +1146,7 @@
                               </span><span class="">
                               </span><br/><span class="text">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
-                              </span><span class="">
-                              </span><br/><span class="notation">
-                              </span><span class="">
-                              </span><br/><span class="text">
-                              </span><span class="">
-                              </span><br/><span class="rubrik">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -1125,7 +1154,13 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="notation">
+                              </span><span class="">
+                              </span><br/><span class="text">
+                              </span><span class="">
+                              </span><br/><span class="rubrik">
+                              </span><span class="">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -1133,7 +1168,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -1158,7 +1193,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik">
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -1184,7 +1219,7 @@
                               </span><span class="">
                               </span><br/><span class="rubrik2">
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
+                              </span><br/><span class="initiale">
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><span class="">
@@ -1227,8 +1262,8 @@
                               </span><br/><span class="rubrik">
                               </span><br/><span class="rubrik">V.
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
-                              </span><br/><span class="initiale_cadelle">A
+                              </span><br/><span class="initiale">
+                              </span><br/><span class="initiale">A
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><br/><span class="notation">[c3] l2 : l3 - z3 l4 : LL l4 z3 l3 z2 ; l3 cu_l2
@@ -1272,8 +1307,8 @@
                               </span><br/><span class="text">
                               </span><br/><span class="text">mum eius
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
-                              </span><br/><span class="initiale_lombarde">D
+                              </span><br/><span class="initiale">
+                              </span><br/><span class="initiale">D
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><br/><span class="notation">c3 z1 z2 l2 - l2 - l2 : LL l2 - l2 : l2 - l3 l2 l3 l3 ; l2 z1 z2 z1 cu_l2
@@ -1322,8 +1357,8 @@
                               </span><br/><span class="rubrik">
                               </span><br/><span class="rubrik">V.
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
-                              </span><br/><span class="initiale_cadelle">E
+                              </span><br/><span class="initiale">
+                              </span><br/><span class="initiale">E
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><br/><span class="notation">[c3] l2 - l3 cu_z3
@@ -1360,8 +1395,8 @@
                               </span><br/><span class="text">
                               </span><br/><span class="text">uos facias nos
                               </span><span class="">
-                              </span><br/><span class="initiale_lombarde">
-                              </span><br/><span class="initiale_lombarde">E
+                              </span><br/><span class="initiale">
+                              </span><br/><span class="initiale">E
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><br/><span class="notation">c3 z1 z2 l2 - l2 - l2 : LL l3 l2 z2 l3 l2 z1 ; z2 z1 l2 z2 - l2 cu_l2
@@ -1406,8 +1441,8 @@
                               </span><br/><span class="rubrik">
                               </span><br/><span class="rubrik">V.
                               </span><span class="">
-                              </span><br/><span class="initiale_cadelle">
-                              </span><br/><span class="initiale_cadelle">Q
+                              </span><br/><span class="initiale">
+                              </span><br/><span class="initiale">Q
                               </span><span class="">
                               </span><br/><span class="notation">
                               </span><br/><span class="notation">[c3] l2 cu_l3
@@ -2033,5 +2068,5 @@
             </div>
          </div>
       </footer>
-      <div  class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary" style="text-align:center; padding:0.4rem 0; font-size: 0.9rem;"> © Copyright OEAW | <a href="imprint.html">Impressum</a></div><script  src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script><script  src="js/listStopProp.js"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script  src="js/i18n.js"></script><script src="https://unpkg.com/de-micro-editor@0.3.2/dist/de-editor.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script><script type="text/javascript" src="js/osd_scroll.js"></script><script src="https://unpkg.com/de-micro-editor@0.3.4/dist/de-editor.min.js"></script><script type="text/javascript" src="js/run.js"></script><script type="text/javascript" src="js/offcanvastoggler.js"></script></body>
+      <div  class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary" style="text-align:center; padding:0.4rem 0; font-size: 0.9rem;"> © Copyright OEAW | <a href="imprint.html">Impressum</a></div><script  src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script><script  src="js/listStopProp.js"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script  src="js/i18n.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script><script type="text/javascript" src="js/osd_scroll.js"></script><script src="https://unpkg.com/de-micro-editor@0.3.4/dist/de-editor.min.js"></script><script type="text/javascript" src="js/run.js"></script><script type="text/javascript" src="js/offcanvastoggler.js"></script></body>
 </html>

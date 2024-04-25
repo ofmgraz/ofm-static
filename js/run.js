@@ -175,5 +175,4 @@ var editor = new LoadEditor({
     // stylesheet provided by bootstrap
     html_class: "custom-select"
 },
-
 })

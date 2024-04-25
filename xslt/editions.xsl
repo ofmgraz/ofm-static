@@ -197,14 +197,9 @@
             </xsl:attribute>
              <xsl:apply-templates/>
         </p>
+        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
     </xsl:template>
-    <xsl:template match="tei:lb">
-    <!-- Output the content of the 'lb' element followed by a line break -->
-        <!-- Match the next text sibling and output its content -->
-        <xsl:if test="following-sibling::text()">
-            <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
-        </xsl:if>
-    </xsl:template>
+   
     <xsl:template match="self::text()">
         <xsl:if test="string-length(normalize-space(self::text())) > 0">
             <span>
@@ -213,6 +208,7 @@
                 </xsl:attribute>
                 <xsl:value-of select="." />
             </span>
+            <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
         </xsl:if>
     </xsl:template>
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">

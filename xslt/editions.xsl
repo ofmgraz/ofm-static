@@ -200,12 +200,14 @@
         </xsl:if>
     </xsl:template>
     <xsl:template match="self::text()">
-        <span>
-            <xsl:attribute name="class">
-                <xsl:value-of select="tokenize(ancestor::tei:ab[1]/@type, '_')[1]" />
-            </xsl:attribute>
-            <xsl:value-of select="." />
-        </span>
+        <xsl:if test="string-length(normalize-space(self::text())) > 0">
+            <span>
+                <xsl:attribute name="class">
+                    <xsl:value-of select="tokenize(ancestor::tei:ab[1]/@type, '_')[1]" />
+                </xsl:attribute>
+                <xsl:value-of select="." />
+            </span>
+        </xsl:if>
     </xsl:template>
     <xsl:template match="tei:a[contains(@class, 'navigation_')]">
         <a class="{@class}" id="{@xml:id}">

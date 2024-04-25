@@ -210,7 +210,14 @@
                 <xsl:otherwise> -->
                     <span>
                         <xsl:attribute name="class">
-                            <xsl:value-of select="$classtype" />
+                            <xsl:choose>
+                                <xsl:when test="$classtype='rubrik2'">
+                                    <xsl:text>rubrik</xsl:text>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="$classtype" />
+                                </xsl:otherwise>
+                            </xsl:choose>
                         </xsl:attribute>
                         <xsl:attribute name="id">
                             <xsl:value-of select="generate-id()" />

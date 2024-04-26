@@ -314,7 +314,7 @@ div#places_div{
 .flex-grow-1.flex-shrink-1.bg {
     min-height: 5vh;
     width: 100%;
-    background: url('images/cover.jpg') no-repeat;
+    background: url('../images/cover.jpg') no-repeat;
 }
 
 .leaflet-container{

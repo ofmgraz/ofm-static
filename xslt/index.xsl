@@ -28,53 +28,19 @@
             <body class="d-flex flex-column">
                 <!-- Landing page -->
                 <xsl:call-template name="nav_bar"/>
-
-
-                <main class="flex-grow-1 flex-shrink-1">
-                    <h1 style="text-align:center;">
-                        <xsl:value-of select="$project_short_title"/>
-                    </h1>
-                    <div class="container">
-                        <div class="container-fluid">
-                        <div id="carouselExampleControls" class="carousel slide"
-                            data-ride="carousel" style="margin:20px">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="img/ofmgraz_01.jpg"
-                                        alt="First slide"/>
-                                </div>
-                                <!-- <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/ofmgraz_02.jpg" alt="Second slide" />
-                                </div> -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h1 style="text-align:center">
-                                            <a class="btn btn-main btn-outline-primary btn-lg"
-                                                href="about.html" role="button">Über die Edition</a>
-                                        </h1>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h1 style="text-align:center">
-                                            <a class="btn btn-main btn-outline-primary btn-lg"
-                                                href="toc.html" role="button">Alle Dokumente</a>
-                                        </h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  <a class="carousel-control-prev" href="#carouselExampleControls"
-                                role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"/>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls"
-                                role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"/>
-                                <span class="sr-only">Next</span>
-                            </a> -->
+                <main class="flex-grow-1 flex-shrink-1 bg">
+                    <div class="row pad">
+                        <br/>
+                        <br/>
+                    </div>
+                    <div class="row title">
+                        <div class="col-md-2 col-lg-2 col-sm-12 pad"/>
+                        <div class="col-md-8 col-lg-8 col-sm-12">
+                            <h2 style="text-align:center;">
+                                <xsl:value-of select="$project_title"/>
+                            </h2>
                         </div>
-                        <h2 style="text-align:center;">
-                            <xsl:value-of select="$project_title"/>
-                        </h2></div>
+                        <div class="col-md-2 col-lg-2 col-sm-12 pad" />
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>

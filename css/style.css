@@ -102,17 +102,17 @@ main a:active {
 }
 
 .col-md-4 {
-    padding: 2rem ;
+    padding: 1rem ;
     max-width: 30rem;
 }
 
 .col-md-2 {
-    padding: 2rem ;
+    padding: 1rem ;
 }
 
 
 .col-md-8 {                                                                                                                                                                                                                                                    
-    padding: 2rem ;
+    padding: 1rem ;
 }
 
 
@@ -121,8 +121,8 @@ main a:active {
     opacity: 0.95!important ;
     background-color: var(--ofm-bg-text) ;
     font-family: "Courier New" ;
-    padding-left: 2rem!important ; 
-    padding-right: 2rem!important ;
+    padding-left: 1rem!important ; 
+    padding-right: 1rem!important ;
 
 }
 
@@ -332,8 +332,8 @@ div#places_div{
 }
 
 .container {
-    padding-left: 0px ;
-    padding-right: 0px ;
+    padding-left: 1rem ;
+    padding-right: 1rem ;
 }
 
 .tabulator-header {

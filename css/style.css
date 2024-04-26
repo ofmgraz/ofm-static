@@ -108,13 +108,11 @@ main a:active {
 
 .col-md-2 {
     padding: 2rem ;
-    max-width: 25% ;
 }
 
 
 .col-md-8 {                                                                                                                                                                                                                                                    
     padding: 2rem ;
-    max-width: 50% ;
 }
 
 
@@ -314,14 +312,29 @@ div#places_div{
 	white-space: nowrap;
 	overflow: hidden;
 }
+.flex-grow-1.flex-shrink-1.bg {
+    min-height: 5vh;
+    width: 100%;
+    background: url('/images/cover.jpg') no-repeat;
+}
 
 .leaflet-container{
     background: var(--ofm-bg);
 }
 
+.row.pad{
+    min-height: 10%;
+    max-height: 15% ;
+}
+
+.row.title{
+    padding-top: 17rem ;
+}
+
 .container {
     padding-left: 0px ;
-    padding-right: 0px ; 
+    padding-right: 0px ;
+    margin: 0px!important ;
 }
 
 .tabulator-header {

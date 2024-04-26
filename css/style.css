@@ -102,18 +102,18 @@ main a:active {
 }
 
 .col-md-4 {
-    padding: 4rem ;
+    padding: 2rem ;
     max-width: 30rem;
 }
 
 .col-md-2 {
-    padding: 4rem ;
+    padding: 2rem ;
     max-width: 25% ;
 }
 
 
 .col-md-8 {                                                                                                                                                                                                                                                    
-    padding: 4rem ;
+    padding: 2rem ;
     max-width: 50% ;
 }
 
@@ -123,19 +123,9 @@ main a:active {
     opacity: 0.95!important ;
     background-color: var(--ofm-bg-text) ;
     font-family: "Courier New" ;
-    padding-left: 4rem!important ; 
-    padding-right: 4rem!important ;
-    max-width: 40% ;
-}
+    padding-left: 2rem!important ; 
+    padding-right: 2rem!important ;
 
-.col-md-6.col-lg-6.col-sm-12.facsimile {
-    padding-left: 10% ;
-    max-width: 45% ;
-}
-
-.col-md-6.col-lg-6.col-sm-12.text {
-    padding-right: 50% ;
-    max-width: 50% ;
 }
 
 .col-md-6.col-lg-6.col-sm-12.text * { 
@@ -327,6 +317,11 @@ div#places_div{
 
 .leaflet-container{
     background: var(--ofm-bg);
+}
+
+.container {
+    padding-left: 0px ;
+    padding-right: 0px ; 
 }
 
 .tabulator-header {

@@ -33,22 +33,18 @@
   
   .font-size-26 * {
     font-size: 26px !important;
-    --ed-font-size: 26px!important ; 
   }
   
   .font-size-22 * {
     font-size: 22px !important;
-    --ed-font-size: 22px!important ;
   }
   
   .font-size-18 * {
     font-size: 18px !important;
-    --ed-font-size: 18px!important ;
   }
   
   .font-size-14 * {
     font-size: 14px !important;
-    --ed-font-size: 14px!important ;
   }
 
 
@@ -124,14 +120,8 @@ main a:active {
 
 .col-md-6.col-lg-6.col-sm-12 {
     resize: horizontal;
-    font-size: var(--ed-font-size) ;
-    padding-left: calc(6*var(--ed-font-size)) ;
-    padding-top: calc(2*var(--ed-font-size)) ;
-    padding-bottom: calc(35*var(--ed-font-size)) ;
-    padding-right: calc(2*var(--ed-font-size)) ;
     opacity: 0.95!important ;
     background-color: var(--ofm-bg-text) ;
-    width: calc(50 * var(--ed-font-size))  ;
     font-family: "Courier New" ;
     padding-left: 4rem!important ; 
     padding-right: 4rem!important ;
@@ -149,7 +139,6 @@ main a:active {
 }
 
 .col-md-6.col-lg-6.col-sm-12.text * { 
-    font-size: var(--ed-font-size) ;
     font-family: "Courier New" ; 
 }
 

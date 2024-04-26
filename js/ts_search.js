@@ -137,6 +137,7 @@ search.addWidgets([
     container: "#refinement-list-genre",
     attribute: "form",
     searchable: false,
+    operator: "and",
     cssClasses: {
       searchableInput: "form-control form-control-sm mb-2 border-light-2",
       searchableSubmit: "d-none",
@@ -169,6 +170,7 @@ search.addWidgets([
     container: "#refinement-list-persons",
     attribute: "printer",
     searchable: false,
+    operator: "and",
     cssClasses: {
       searchableInput: "form-control form-control-sm mb-2 border-light-2",
       searchableSubmit: "d-none",

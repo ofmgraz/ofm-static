@@ -95,16 +95,12 @@
                 <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
-
-
     </xsl:template>
-
     <xsl:template match="tei:list">
         <ul>
             <xsl:apply-templates/>
         </ul>
     </xsl:template>
-
     <xsl:template match="tei:item">
         <li>
             <xsl:apply-templates/>
@@ -129,6 +125,11 @@
             <xsl:if test="@ana">
                 <xsl:attribute name="class">
                     <xsl:value-of select="@ana" disable-output-escaping="yes"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="@xml:id[contains(.,'address_')]">
+            	<xsl:attribute name="class">
+                    <xsl:text>address</xsl:text>
                 </xsl:attribute>
             </xsl:if>
             <xsl:apply-templates/>

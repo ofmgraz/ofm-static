@@ -47,6 +47,24 @@ function renameLabel(label) {
   if(label === 'notbefore'){
           label = 'Datum'
       }
+  if(label === 'title'){
+	  label = 'Titel'
+  }
+if(label === 'form'){
+	  label = 'Art'
+  }
+	if(label === 'provenance'){
+	  label = 'Herkunft'
+  }
+	if(label === 'liturgy'){
+	  label = 'Liturgie'
+  }
+	if(label === 'printer'){
+	  label = 'Drucker'
+  }
+	if(label === 'doc_type'){
+	  label = 'Dokumententyp'
+  }
   if(label === 'persons'){
     label = 'Personen'
   }

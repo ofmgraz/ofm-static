@@ -190,7 +190,9 @@
         <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
     </xsl:template>
     <xsl:template match="tei:orgName">
-        <xsl:value-of select="." />
+        <b>
+	<xsl:apply-templates />
+        </b>
         <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
     </xsl:template>
     <xsl:template match="tei:placeName">

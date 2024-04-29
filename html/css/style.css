@@ -391,6 +391,12 @@ div#places_div{
 	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.address{
+	text-align: center ;
+}
+.lang.de{
+	padding-bottom: 6rem;
+}
 #tabulator.table:not(.thead-light) .tabulator-header, .tabulator.table:not(.thead-light) .tabulator-header .tabulator-col {
 	/* border-color: var(--ofm-contrast); */
 	/* background-color: var(--ofm-bg); */

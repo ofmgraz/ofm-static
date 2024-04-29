@@ -11,6 +11,7 @@
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="./partials/html_footer.xsl"/>
     <xsl:import href="./partials/shared.xsl"/>
+<xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
 
     <xsl:variable name="lang" select="'de'"/>
     <xsl:template match="/">
@@ -183,5 +184,33 @@
         <xsl:element name="td">
             <xsl:apply-templates/>
         </xsl:element>
+    </xsl:template>
+    <xsl:template match="tei:person">
+        <xsl:value-of select="." />
+        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
+    </xsl:template>
+    <xsl:template match="tei:orgName">
+        <xsl:value-of select="." />
+        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
+    </xsl:template>
+    <xsl:template match="tei:placeName">
+        <xsl:choose>
+	    <xsl:when test="@type='postalcode'">
+                <xsl:value-of select="." />
+                <xsl:text>, </xsl:text>
+            </xsl:when>
+            <xsl:when test="@type='municipality'">
+                <xsl:value-of select="." />
+                <xsl:text>, </xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="." />
+                <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+     <xsl:template match="tei:desc">
+        <xsl:value-of select="." />
+        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
     </xsl:template>
 </xsl:stylesheet>

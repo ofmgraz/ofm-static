@@ -7,7 +7,7 @@
         <fileset dir="${target}" includes="*.html"/>
     </delete>
     <delete dir="${target}/static-search"/>
-    <xslt in="./data/meta/imprint.xml" out="${target}/index.html" style="./xslt/imprint.xsl">
+    <xslt in="./data/meta/about.xml" out="${target}/index.html" style="./xslt/index.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>

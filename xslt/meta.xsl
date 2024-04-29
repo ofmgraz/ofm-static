@@ -136,6 +136,17 @@
     </xsl:template>
     <xsl:template match="tei:div">
         <div id="{generate-id()}">
+	    <xsl:choose>
+                <xsl:when test="(@type='de') or (@type='en')">
+                     <xsl:attribute name="class">
+                         <xsl:text>lang </xsl:text>
+                         <xsl:value-of select="@type" />
+                     </xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="class" select="@type" />
+                </xsl:otherwise>
+            </xsl:choose>
             <xsl:apply-templates/>
         </div>
     </xsl:template>
@@ -185,18 +196,23 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    <xsl:template match="tei:person">
-        <xsl:value-of select="." />
-        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
+    <xsl:template match="tei:listPerson">
+    	<ul class="listPerson">
+		<xsl:for-each select="./tei:person">
+		<li><xsl:value-of select="./tei:persName/text()"/></li>
+		</xsl:for-each>
+    	</ul>
     </xsl:template>
     <xsl:template match="tei:orgName">
-        <b>
-	<xsl:apply-templates />
-        </b>
+        <b><xsl:apply-templates /></b>
         <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
     </xsl:template>
     <xsl:template match="tei:placeName">
         <xsl:choose>
+	    <xsl:when test="@type='institution'">
+                <b><xsl:apply-templates /></b>
+                <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
+	    </xsl:when>
 	    <xsl:when test="@type='postalcode'">
                 <xsl:value-of select="." />
                 <xsl:text>, </xsl:text>

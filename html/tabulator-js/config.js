@@ -1,7 +1,7 @@
 // holds shared config for all tabulator-js tables
 
 var config = {
-    height: 800,
+    //height: 800,
     //minWidth: 700,
     // layout: "fitColumns",
     tooltips: true,

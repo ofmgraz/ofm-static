@@ -391,6 +391,12 @@ div#places_div{
 	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.tabulator-tableholder {
+	border-left: 2pt solid var(--ofm-bg-dark);
+	border-bottom: 2pt solid var(--ofm-bg-dark);
+	border-right: 2pt solid var(--ofm-bg-dark);
+}
+
 .address{
 	text-align: center ;
 }

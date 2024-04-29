@@ -39,9 +39,9 @@
                                         <div id="clear-refinements"></div>
                                         <h4>Liturgie</h4>
 					                    <div id="refinement-list-liturgie"></div>
-					                    <h4>Inhalt</h4>
+					                    <h4>Art</h4>
 					                    <div id="refinement-list-genre"></div>
-                                        <h4>Provenance</h4>
+                                        <h4>Herkunft</h4>
                                         <div id="refinement-list-place"></div>
                                         <h4>Dokumententyp</h4>
                                         <div id="refinement-list-doc-type"></div>

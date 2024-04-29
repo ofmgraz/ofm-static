@@ -205,7 +205,7 @@ div#navbarSupportedContent div#navbar_right_spacer {
 
 div#places_div{
         min-height: 40vh;
-
+	margin: auto;
 }
 
 
@@ -243,7 +243,6 @@ div#places_div{
 .table {
     /* height: 80vh; */
     max-height: 80vh;
-    max-width: 43vw;
     /* border: 0; */
     padding: 0;
     background-color: var(--ofm-bg)!important;

@@ -215,7 +215,7 @@
 	    </xsl:when>
 	    <xsl:when test="@type='postalcode'">
                 <xsl:value-of select="." />
-                <xsl:text>, </xsl:text>
+                <xsl:text> </xsl:text>
             </xsl:when>
             <xsl:when test="@type='municipality'">
                 <xsl:value-of select="." />

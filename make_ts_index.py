@@ -45,6 +45,7 @@ except ObjectNotFound:
 
 client.collections.create(current_schema)
 
+
 def make_date(doc):
     if nb_str := doc.any_xpath("//tei:bibl/tei:date/@notBefore"):
         nb_str = date_str = nb_str[0]
@@ -54,7 +55,7 @@ def make_date(doc):
     elif date_str := doc.any_xpath("//tei:bibl/tei:date/text()"):
         date_str = date_str[0].split("--")[0]
         if len(date_str) > 3:
-            na_str = nb = date_str
+            na_str = nb_str = date_str
         else:
             date_str = na_str = nb_str = "1970-12-31"
     else:
@@ -67,6 +68,7 @@ def make_date(doc):
 
 
 def make_type(doc):
+    formen = {"print": "Druck", "codex": "Handschrift"}
     provenance = doc.any_xpath("//tei:provenance/tei:placeName/text()")
     if liturgy := doc.any_xpath(".//tei:taxonomy[@xml:id='liturgies']/tei:category/tei:catDesc/text()"):
         liturgy = liturgy[0]
@@ -74,7 +76,7 @@ def make_type(doc):
         liturgy = ""
     genre = doc.any_xpath(".//tei:taxonomy[@xml:id='booktypes']/tei:category/tei:catDesc/text()")
     if form := doc.any_xpath(".//tei:objectDesc/@form"):
-        form = form[0]
+        form = formen[form[0]]
     else:
         form = ""
     if printer := doc.any_xpath(".//tei:standOff/tei:listPerson/tei:person/tei:persName/*/text()"):
@@ -82,6 +84,7 @@ def make_type(doc):
     else:
         printer = ""
     return liturgy, genre, provenance, form, printer
+
 
 contents = nocontents = []
 # %%
@@ -97,10 +100,10 @@ for xml_filepath in tqdm(files, total=len(files)):
     html_file = xml_file.replace(".xml", ".html")
     id = os.path.splitext(xml_file)[0]
     r_title = " ".join(
-            " ".join(
-                doc.any_xpath('.//tei:titleStmt/tei:title[@type="main"]/text()')
-            ).split()
-        )
+        " ".join(
+            doc.any_xpath('.//tei:titleStmt/tei:title[@type="main"]/text()')
+        ).split()
+    )
     date_str, nb_tst, na_tst = make_date(doc)
     liturgy, doc_type, provenance, form, printer = make_type(doc)
     for v in facs:
@@ -108,7 +111,7 @@ for xml_filepath in tqdm(files, total=len(files)):
         #    f".//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
         p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
             f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
-        p_group = f".//tei:body/tei:div/tei:ab/tei:lb"
+        p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
         p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']"
         body = doc.any_xpath(p_group)
         pages += 1
@@ -137,7 +140,7 @@ for xml_filepath in tqdm(files, total=len(files)):
             r["printer"] = printer
             r["form"] = form
             if paragraph:
-                r["full_text"] = full_text
+                r["fulltext"] = full_text
         records.append(record)
         cfts_records.append(cfts_record)
 make_index = client.collections["ofm_graz"].documents.import_(records)
@@ -148,7 +151,7 @@ print("done with indexing ofm_graz")
 
 make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"action": "upsert"})
 # %%
-#print(make_index)
+# print(make_index)
 print("done with cfts-index STB")
 errors = [msg for msg in make_index if (msg != '"{\\"success\\":true}"' and msg != '""')]
 [print(err) if errors else print("No errors") for err in errors]

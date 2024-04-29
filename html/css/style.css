@@ -103,6 +103,7 @@ main a:active {
 
 .col-md-4 {
     padding: 1rem ;
+    padding-left: 2rem ;
     max-width: 30rem;
 }
 

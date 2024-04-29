@@ -11,6 +11,7 @@
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="./partials/html_footer.xsl"/>
     <xsl:import href="./partials/shared.xsl"/>
+<xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
 
     <xsl:variable name="lang" select="'de'"/>
     <xsl:template match="/">
@@ -135,6 +136,17 @@
     </xsl:template>
     <xsl:template match="tei:div">
         <div id="{generate-id()}">
+	    <xsl:choose>
+                <xsl:when test="(@type='de') or (@type='en')">
+                     <xsl:attribute name="class">
+                         <xsl:text>lang </xsl:text>
+                         <xsl:value-of select="@type" />
+                     </xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="class" select="@type" />
+                </xsl:otherwise>
+            </xsl:choose>
             <xsl:apply-templates/>
         </div>
     </xsl:template>
@@ -183,5 +195,40 @@
         <xsl:element name="td">
             <xsl:apply-templates/>
         </xsl:element>
+    </xsl:template>
+    <xsl:template match="tei:listPerson">
+    	<ul class="listPerson">
+		<xsl:for-each select="./tei:person">
+		<li><xsl:value-of select="./tei:persName/text()"/></li>
+		</xsl:for-each>
+    	</ul>
+    </xsl:template>
+    <xsl:template match="tei:orgName">
+        <b><xsl:apply-templates /></b>
+        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
+    </xsl:template>
+    <xsl:template match="tei:placeName">
+        <xsl:choose>
+	    <xsl:when test="@type='institution'">
+                <b><xsl:apply-templates /></b>
+                <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
+	    </xsl:when>
+	    <xsl:when test="@type='postalcode'">
+                <xsl:value-of select="." />
+                <xsl:text>, </xsl:text>
+            </xsl:when>
+            <xsl:when test="@type='municipality'">
+                <xsl:value-of select="." />
+                <xsl:text>, </xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="." />
+                <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+     <xsl:template match="tei:desc">
+        <xsl:value-of select="." />
+        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 
     </xsl:template>
 </xsl:stylesheet>

@@ -139,7 +139,7 @@ main a:active {
 }
 
 .hline:after {                                                                                                                                                                                                                                             
-width:100%;
+max-width:100%;
 content: "";
 display: inline-block ;
 border-bottom: 1px solid #888 ;
@@ -245,6 +245,8 @@ div#places_div{
     max-height: 80vh;
     /* border: 0; */
     padding: 0;
+    width: auto!important ;
+    box-sizing: border-box;
     background-color: var(--ofm-bg)!important;
 }
 
@@ -314,7 +316,7 @@ div#places_div{
 }
 .flex-grow-1.flex-shrink-1.bg {
     min-height: 5vh;
-    width: 100%;
+    max-width: 100%;
     background: url('../images/cover.jpg') no-repeat;
 }
 
@@ -334,6 +336,7 @@ div#places_div{
 .container {
     padding-left: 1rem ;
     padding-right: 1rem ;
+    max-width: 90vw ;
 }
 
 .tabulator-header {

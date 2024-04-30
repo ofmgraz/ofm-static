@@ -46,7 +46,7 @@
                                     <th scope="col" tabulator-visible="false">TAQ</th>
 
                                     <th scope="col" tabulator-responsive="2" tabulator-headerFilter="input">Liturgie</th>
-                                    <th scope="col" tabulator-responsive="3" tabulator-headerFilter="input">Book Type</th>
+                                    <th scope="col" tabulator-responsive="3" tabulator-headerFilter="input">Dokumententyp</th>
                                     <th scope="col" tabulator-formatter="html"
                                         tabulator-visible="false" >Provenienz</th>
                                     <th scope="col" tabulator-formatter="html"

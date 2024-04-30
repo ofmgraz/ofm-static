@@ -60,7 +60,7 @@
                 </xsl:if>
                 <xsl:if test="./tei:idno">
                     <tr>
-                        <th> Authority </th>
+                        <th> Normdaten </th>
                         <td>
                             <ul>
                                                 <xsl:for-each select="./tei:idno">
@@ -102,7 +102,7 @@
                 </xsl:if>
                 <xsl:if test=".//tei:location">
                     <tr>
-                        <th> Latitude </th>
+                        <th> Breite </th>
                         <td>
                             <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1], '\s')[1]"/>
                         </td>
@@ -110,7 +110,7 @@
                 </xsl:if>
                 <xsl:if test=".//tei:location">
                     <tr>
-                        <th> Longitude </th>
+                        <th> Länge </th>
                         <td>
                             <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1], '\s')[2]"/>
                         </td>
@@ -118,7 +118,7 @@
                 </xsl:if>
                 <xsl:if test="./tei:listEvent">
                     <tr>
-                        <th> Erwähnt in </th>
+                        <th> Von ihm gedruckt </th>
                         <td>
                             <ul>
                                 <xsl:for-each select="./tei:listEvent/tei:event">

@@ -79,11 +79,11 @@ const columns = [
     consult tabulator docs for more info*/
 const tabulator_cfg = {
   /* maxHeight: "45vh", */
-  layout: "fitColumns",
-  minWidth: 500,
+  /* minWidth: 500, */
   responsiveLayout:"collapse",
   headerFilterLiveFilterDelay: 600,
   virtualDomBuffer: 200,
+  layout: "fitDataTable",
 	/*
   width: "100%",
   border: "none",

@@ -376,6 +376,7 @@ div#places_div{
 
 .container-fluid {
     padding: 2rem;
+    padding-top: 0rem;
 }
 .tabulator-header {
     margin: 0px;

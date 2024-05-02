@@ -4,7 +4,8 @@ var config = {
     //height: 800,
     //minWidth: 700,
     // layout: "fitColumns",
+    layout: "fitDataTable",
     tooltips: true,
     dataLoader: true,
-    responsiveLayout:"collapse",
+    responsiveLayout:"hide",
 };

@@ -38,7 +38,7 @@
                         <table class="table" id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col" tabulator-formatter="html" tabulator-responsive="0" tabulator-headerFilter="input">Titel</th>
+                                    <th scope="col" tabulator-formatter="html" tabulator-responsive="0" tabulator-resizable="true" tabulator-headerFilter="input">Titel</th>
                                     <th scope="col" tabulator-formatter="html" tabulator-visible="false"
                                         >XML-TEI</th>
                                     <th scope="col" tabulator-headerFilter="input" tabulator-responsive="1"

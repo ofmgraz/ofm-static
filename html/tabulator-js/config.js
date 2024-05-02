@@ -7,5 +7,5 @@ var config = {
     layout: "fitDataTable",
     tooltips: true,
     dataLoader: true,
-    responsiveLayout:"collapse",
+    responsiveLayout:"hide",
 };

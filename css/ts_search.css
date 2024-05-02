@@ -14,7 +14,7 @@
     opacity: 0.95 ;
     border: 2pt solid var(--ofm-bg-dark) ;
     box-shadow: 0 .2rem .5rem 0px var(--ofm-bg-dark) ;
-    border-radius: .20rem;
+    border-radius: .50rem;
     min-width: 18rem ;
 }
 
@@ -40,14 +40,14 @@
     -moz-box-shadow: -14px 21px 24px -28px rgba(156,156,156,1);
     box-shadow: -14px 21px 24px -28px rgba(156,156,156,1);
     background-color: var(--ofm-main-bg-color);
-    border-radius: .10rem;
+    border-radius: .50rem;
 
 }
 
 #refinement-range-year {
     padding: 1em .5em 1em .5em;
     background-color: var(--ofm-main-bg-color);
-    border-radius: .10rem;
+    border-radius: .50rem;
 }
 
 .col-md-4 h4 {
@@ -116,7 +116,7 @@ input.ais-SearchBox-input:focus {
 	padding: .3rem .5rem;
 	display: flex;
 	background-color: var(--ofm-big-highlight);
-	border-radius: .5rem;
+	border-radius: .50rem;
 }
 
 /* change button collor */

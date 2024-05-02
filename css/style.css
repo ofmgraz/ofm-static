@@ -2,7 +2,8 @@
     --bs-border-width: 0px;
     --ofm: #0b2966;
     --ofm-bg: #f3e0c2;
-    --ofm-bg-dark: #943F33;
+    --ofm-bg: #ffffff;
+    --ofm-bg-dark:   #943F33;
     /*--ofm-small-highlight:  #9C9C9C; */
     /*--ofm-darker-lightgray: #D4D4D4; */
     --ofm-contrast: #675744;
@@ -104,7 +105,16 @@ main a:active {
 .col-md-4 {
     padding: 1rem ;
     padding-left: 2rem ;
+  
+}
+
+.search-panel__results .col-md-4 {
+    background-color: var(--ofm-table-bg-type) ;
+    box-sizing: border-box;
     max-width: 30rem;
+    border: 2pt solid var(--ofm-bg-dark);
+    border-left: 2pt solid var(--ofm-bg-dark);
+    border-radius: .50rem;
 }
 
 .col-md-2 {
@@ -130,7 +140,9 @@ main a:active {
     font-family: "Courier New" ; 
 }
 
-
+.row.title{
+    padding-top: 17rem ;
+}
 .card-body {
 	padding: 1em;
 }
@@ -152,7 +164,7 @@ border-bottom: 1px solid #888 ;
 
 
 .wrapper-navbar{
-	padding:1em;
+	padding:0;
 	margin:0px;
 	background-color: var(--ofm-bg-dark);
 	color: var(--ofm-bg);
@@ -166,6 +178,7 @@ border-bottom: 1px solid #888 ;
 #navbarSupportedContent a.nav-link {
     font-size: 1.5rem;
     font-weight: 900;
+    color: var(--ofm-table-bg-type);
 }
 
 
@@ -174,11 +187,20 @@ border-bottom: 1px solid #888 ;
     font-weight: bold;
 }
 
+.navbar-brand{
+    color: var(--ofm-table-bg-type) ;
+    font-weight: 999 ;
+    font-size: 1.5rem;
 
+}
 .navbar-nav ul li a:hover, 
 .navbar-nav ul li a:active {
     color: var(--ofm-font-color) ;
     background-color: var(--ofm-bg-dark);
+}
+
+.nav-link {
+	color: var(--ofm-bg);
 }
 
 .nav-link:focus, .nav-link:hover {
@@ -200,6 +222,12 @@ div#navbarSupportedContent div#navbar_right_spacer {
 
 .dropdown-menu {
 	--bs-dropdown-bg: var(--ofm-bg-dark);
+    color: var(--ofm-table-bg-type) ;
+}
+
+.dropdown-menu * {
+	--bs-dropdown-bg: var(--ofm-bg-dark);
+    color: var(--ofm-table-bg-type) ;
 }
 
 
@@ -309,7 +337,6 @@ div#places_div{
 
 .tabulator  .tabulator-row .tabulator-cell{
     background-color: var(--ofm-bg);
-
 }
 
 .tabulator .tabulator-header {
@@ -327,6 +354,7 @@ div#places_div{
     min-height: 5vh;
     max-width: 100%;
     background: url('../images/cover.jpg') no-repeat;
+    z-index: 10!important ;
 }
 
 .leaflet-container{
@@ -338,10 +366,6 @@ div#places_div{
     max-height: 15% ;
 }
 
-.row.title{
-    padding-top: 17rem ;
-}
-
 .container {
     padding-left: 1rem ;
     padding-right: 1rem ;
@@ -349,6 +373,9 @@ div#places_div{
     text-align: center;
 }
 
+.container-fluid {
+    padding: 2rem;
+}
 .tabulator-header {
     margin: 0px;
     border: 0!important;
@@ -385,7 +412,7 @@ div#places_div{
     background-clip: padding-box;
 	background-color: #fff;
 	border: 1px solid #ced4da;
-	border-radius: .25rem;
+	border-radius: .50rem;
 	color: #495057;
 	font-size: 1rem;
 	line-height: 1.5;
@@ -396,7 +423,7 @@ div#places_div{
 	background-clip: padding-box;
 	background-color: #fff;
 	border: 1px solid #ced4da;
-	border-radius: .25rem;
+	border-radius: .50rem;
 	color: #495057;
 	font-size: 1rem;
 	line-height: 1.5;
@@ -408,6 +435,8 @@ div#places_div{
 	border-left: 2pt solid var(--ofm-bg-dark);
 	border-bottom: 2pt solid var(--ofm-bg-dark);
 	border-right: 2pt solid var(--ofm-bg-dark);
+    border-bottom-left-radius: .50rem;
+    border-bottom-right-radius: .50rem;
 }
 
 .address{
@@ -436,15 +465,15 @@ div#text-resize div.card-body.non_mimetic_lbs {
 footer:where#footer {
     font-size: 0.8rem;
     display: flex;
-    background-color: var(--ofm-bg-dark);
-    color: var(--ofm-bg);
+    background-color: var(--ofm-table-bg-type);
+    color: var(--ofm-font-color);
     z-index: 1;
     align-self: flex-end;
 }
 
 footer * {
-	background-color: var(--ofm-bg-dark);
-	color: var(--ofm-bg);
+	background-color: var(--ofm-table-bg-type);
+	color: var(--ofm-font-color);
 
 }
 
@@ -454,7 +483,7 @@ footer * {
 
 
 footer a {
-	color: var(--ofm-transp-red);
+    color: var(--ofm-bg-dark);
 	text-decoration: underline;
 }
 
@@ -471,17 +500,17 @@ footer a:active {
 .footer-imprint-bar {
     text-align:center;
     font-size: 0.9rem;
-    color: var(--ofm-bg) ;
-    background-color: var(--ofm-bg-dark);
+    background-color: var(--ofm-table-bg-type);
+	color: var(--ofm-font-color);
 }
 
 .footer-imprint-bar * {
-    color: var(--ofm-bg);
-    background-color: var(--ofm-bg-dark);
+    background-color: var(--ofm-table-bg-type);
+	color: var(--ofm-font-color);
 }
 
 .footer-imprint-bar  a {
-    color: var(--ofm-transp-red);
+    color: var(--ofm-bg-dark);
 }
 
 .footer-imprint-bar a:hover,
@@ -490,7 +519,7 @@ footer a:active {
 }
 
 .bi {
-    color: var(--ofm-transp-red);
+    color: var(--ofm-bg-dark);
 }
 
 .bi:hover,

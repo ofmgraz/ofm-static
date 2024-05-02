@@ -223,7 +223,6 @@ div#places_div{
 }
 
 #MyTable {
-  width: auto;
   min-width: unset !important;
   }
 
@@ -246,7 +245,6 @@ div#places_div{
 	color: var(--ofm-font-color);
 	font-weight: 700;
 	min-width: unset !important;
-
 }
 
 .table {
@@ -254,7 +252,7 @@ div#places_div{
     max-height: 80vh;
     /* border: 0; */
     padding: 0;
-    min-width: unset !important;
+    min-width: unset !important ;
     width: auto!important ;
     box-sizing: border-box;
     background-color: var(--ofm-bg)!important;
@@ -263,7 +261,7 @@ div#places_div{
 
 .table  *  {
 	min-width: unset !important;
-	background-color: var(--ofm-bg); 
+	background-color: var(--ofm-bg);
 }
 
 
@@ -302,7 +300,7 @@ div#places_div{
 
 .tabulator {
     background-color: var(--ofm-bg);
-	border: 0!important;
+    border: 0!important;
     font-size: 1em!important;
     font-weight: 700;
 }

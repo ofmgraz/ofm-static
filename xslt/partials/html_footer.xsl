@@ -7,8 +7,8 @@
         <!-- <div clas="wrapperhide-reading" id="wrapper-footer-full"> -->
         <footer class="footer">
             <div class="container-fluid" id="footer-full-content" tabindex="-1 overflow-hidden">
-                <div class="footer-separator justify-content-center overflow-hidden"> <h5 class="font-weight-bold">KONTAKT</h5> </div>
                 <div class="row justify-content-center overflow-hidden">
+                    <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-right overflow-hidden"> <h5 class="font-weight-bold">KONTAKT</h5> </div>
                     <div
                         class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-center overflow-hidden">
                         <div class="textwidget custom-html-widget">
@@ -23,11 +23,11 @@
                     <!-- .footer-widget -->
                     <div class="footer-widget col-lg-3 col-md-4 col-sm-3 overflow-hidden">
                         <div class="textwidget custom-html-widget overflow-hidden">
-                            <h6 class="font-weight-bold">ACDH-CH</h6>
-                            <p>Austrian Centre for Digital Humanities <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> and Cultural Heritage
-                                <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> Österreichische Akademie der Wissenschaften </p>
-                            <p> Bäckerstraße 13 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 1010 Wien </p>
-                            <p> T: +43 1 51581-2200 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> E: <a
+                            <b>ACDH-CH</b>
+                            <p><b>Austrian Centre for Digital Humanities and Cultural Heritage</b>
+                                <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> Österreichische Akademie der Wissenschaften
+                            <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>Bäckerstraße 13 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 1010 Wien
+                            <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>T: +43 1 51581-2200 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> E: <a
                                     href="mailto:acdh-ch-helpdesk@oeaw.ac.at
                                 "
                                     >acdh-ch-helpdesk(at)oeaw.ac.at</a>
@@ -38,7 +38,7 @@
                     <div class="footer-widget col-lg-3 col-md-4 col-sm-3 overflow-hidden">
                         <div class="row">
                             <div class="textwidget custom-html-widget overflow-hidden">
-                                <h6 class="font-weight-bold">HELPDESK</h6>
+                                <b>HELPDESK</b>
                                 <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie
                                     sich bitte an den ACDH-CH Helpdesk.</p>
                                 <p>
@@ -46,14 +46,17 @@
                                         href="mailto:acdh-ch-helpdesk@oeaw.ac.at">e-Mail</a>
                                 </p>
                             </div>
+
                         </div>
                     </div>
-                    <!-- .footer-widget -->
+                    <div class="footer-widget col-lg-3 col-md-4 col-sm-3 overflow-hidden">
                     <div class="float-right">
                         <a href="{$github_url}">
                             <i class="bi bi-github"/>
                         </a>
                     </div>
+                    </div>
+                    <!-- .footer-widget -->
                 </div>
  
             </div>

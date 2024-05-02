@@ -206,6 +206,7 @@ div#navbarSupportedContent div#navbar_right_spacer {
 div#places_div{
         min-height: 40vh;
 	margin: auto;
+	max-width: 55rem ;
 }
 
 
@@ -221,11 +222,17 @@ div#places_div{
     max-height: 900px;
 }
 
+#MyTable {
+  width: auto;
+  min-width: unset !important;
+  }
 
 #tabulator.table:not(.thead-light) .tabulator-header, .tabulator.table:not(.thead-light) .tabulator-header .tabulator-col {
 	/*border-color: var(--ofm-contrast);
 	background-color: var(--ofm-bg);
 	color: #212529; */
+	width: auto;
+	min-width: unset !important;
 	border:0;
 	background-color: var(--ofm-bg);
 }
@@ -238,6 +245,8 @@ div#places_div{
 	background-color: var(--ofm-bg);
 	color: var(--ofm-font-color);
 	font-weight: 700;
+	min-width: unset !important;
+
 }
 
 .table {
@@ -245,6 +254,7 @@ div#places_div{
     max-height: 80vh;
     /* border: 0; */
     padding: 0;
+    min-width: unset !important;
     width: auto!important ;
     box-sizing: border-box;
     background-color: var(--ofm-bg)!important;
@@ -252,6 +262,7 @@ div#places_div{
 
 
 .table  *  {
+	min-width: unset !important;
 	background-color: var(--ofm-bg); 
 }
 
@@ -337,6 +348,7 @@ div#places_div{
     padding-left: 1rem ;
     padding-right: 1rem ;
     max-width: 90vw ;
+    text-align: center;
 }
 
 .tabulator-header {

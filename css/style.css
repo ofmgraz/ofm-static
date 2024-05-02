@@ -108,6 +108,7 @@ main a:active {
   
 }
 
+
 .search-panel__results .col-md-4 {
     background-color: var(--ofm-table-bg-type) ;
     box-sizing: border-box;
@@ -461,6 +462,15 @@ div#text-resize div.card-body.non_mimetic_lbs {
 	 max-width: 80rem;
 }   
 
+#footer-full-content {
+    padding: 0;
+    font-size:smaller;
+}
+
+#footer-full-content .col-md-4 {
+    padding-bottom: 0;
+    padding-top: 0;
+}
 
 footer:where#footer {
     font-size: 0.8rem;

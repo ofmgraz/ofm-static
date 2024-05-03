@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="footer-widget col-lg-1 col-md-4 col-sm-3 overflow-hidden">
-                    <div class="float-right">
+                    <div class="float-right github">
                         <a href="{$github_url}">
                             <i class="bi bi-github"/>
                         </a>

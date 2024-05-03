@@ -527,6 +527,7 @@ footer a:active {
 
 .bi {
     color: var(--ofm-bg-dark);
+    font-size: xx-large;
 }
 
 .bi:hover,

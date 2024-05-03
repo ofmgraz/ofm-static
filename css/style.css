@@ -305,10 +305,6 @@ div#places_div{
 }
 
 
-.row {
-	max-width:100vw;
-}
-
 .table > :not(caption) > * > * {
 	padding: 0rem;
 	/*background-color: var(--ofm-bg); */

@@ -545,19 +545,16 @@ h2 {
 }
 
 
+.text.yes-index *{
+        visibility: hidden;
+    }
+
 @media screen and (max-width: 639px) {                                                                                                                                                                                                                         
     .row {
             margin: 0;
     }
     .facsimiles {
             visibility: hidden;
-            padding: 0;
-            max-height: 0;
-    }
-
-    .facsimiles * {
-            visibility: hidden;
-            position: static;
             padding: 0;
             max-height: 0;
     }

@@ -40,12 +40,12 @@
                             <table class="table" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col" tabulator-formatter="html" tabulator-responsive="0" tabulator-headerFilter="input">Name</th>
+                                        <th scope="col" tabulator-formatter="html" tabulator-responsive="0" tabulator-minWidth="300px" lator-headerFilter="input" >Name</th>
                                         <th scope="col" tabulator-visible="false">lat</th>
                                         <th scope="col" tabulator-visible="false">lng</th>
                                         <th scope="col" tabulator-visible="false">id</th>
-                                        <th scope="col" tabulator-formatter="html" tabulator-responsive="1" >Normdaten</th>
-                                        <th scope="col" tabulator-formatter="html" tabulator-responsive="2" tabulator-headerFilter="input">Objekte</th>
+                                        <th scope="col" tabulator-formatter="html" tabulator-responsive="1" tabulator-minWidth="150px">Normdaten</th>
+                                        <th scope="col" tabulator-formatter="html" tabulator-headerFilter="input" tabulator-responsive="2" tabulator-minWidth="150px">Objekte</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -124,6 +124,7 @@
                 <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.6.0/dist/js/tabulator.min.js"/>
                 <script src="js/make_map_and_table.js"/>
                 <script src="js/map_table_cfg.js"/>
+                <script src="tabulator-js/config.js"></script>
                 <script>
 build_map_and_table(map_cfg, table_cfg);
 </script>

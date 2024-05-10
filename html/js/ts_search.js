@@ -42,6 +42,15 @@ function formatDate(timestamp) {
   return date
 }
 
+
+function getYear(timestamp) {
+  if (isNumeric(timestamp)) {
+    const date = new Date(timestamp * 1000)
+    year = date.getFullYear()
+  }
+  return year
+}
+
 function renameLabel(label) {
   // Rename MC to Multiple Choice
   if(label === 'notbefore'){
@@ -208,7 +217,7 @@ search.addWidgets([
 	  min: -21143120720,
 	  max: -5364666322,
     tooltips: {
-      format: v => formatDate(v),
+      format: v => getYear(v),
     },
     cssClasses: {
       form: "form-inline",
@@ -252,7 +261,7 @@ search.addWidgets([
             refinements: item.refinements.map(
               iitem => (
                 {...iitem,
-                label: formatDate(iitem.value),}
+                label: getYear(iitem.value),}
               ),  
             ),  
           }   

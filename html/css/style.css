@@ -547,6 +547,10 @@ hr {
     .row {
             margin: 0;
     }
+    .container-fluid {
+        padding: 0;
+
+    }
     .facsimiles {
             visibility: hidden;
             padding: 0;

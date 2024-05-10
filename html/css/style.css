@@ -152,10 +152,10 @@ main a:active {
 }
 
 .hline:after {                                                                                                                                                                                                                                             
-max-width:100%;
+width:79ch;
 content: "";
 display: inline-block ;
-border-bottom: 1px solid #888 ;
+border-bottom: 0.1px solid #000 ;
 }
 /*.carousel {
 }

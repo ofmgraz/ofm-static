@@ -231,15 +231,6 @@ div#navbarSupportedContent div#navbar_right_spacer {
     color: var(--ofm-table-bg-type) ;
 }
 
-
-div#places_div{
-        min-height: 40vh;
-	margin: auto;
-	max-width: 55rem ;
-}
-
-
-
 #viewer {
     position: sticky;
     top: 10%;
@@ -371,7 +362,6 @@ div#places_div{
 }
 
 .container-fluid {
-    padding: 2rem;
     padding-top: 0rem;
 }
 .tabulator-header {
@@ -404,6 +394,13 @@ div#places_div{
 .tabulator.table .tabulator-row {
 	background-color: var(--ofm-bg);
     color: var(--ofm-font-color);
+}
+
+div#places_div{
+    min-height: 40vh;
+padding-left: 2rem;
+padding-right: 2rem ;
+min-width: unset ;
 }
 
 [type="search"] {
@@ -543,13 +540,14 @@ hr {
 	opacity: .25;
 }
 
+h2 {
+    padding-top: 2em;
+}
+
+
 @media screen and (max-width: 639px) {                                                                                                                                                                                                                         
     .row {
             margin: 0;
-    }
-    .container-fluid {
-        padding: 0;
-
     }
     .facsimiles {
             visibility: hidden;

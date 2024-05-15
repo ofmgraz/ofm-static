@@ -123,6 +123,7 @@
                                 </div>
                             </div>
                             <div id="container-resize" class="row transcript active">
+                                <div id="seadragon-viewer" style="width:800px; height:600px;"></div>
                                 <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
                                     <div id="viewer">
                                         <div id="container_facs_1"/>
@@ -146,7 +147,7 @@
                 </div>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/>
-                <script type="text/javascript" src="js/osd_scroll.js"></script>
+                <script type="text/javascript" src="js/osd_nofrills.js"></script>
             </body>
         </html>
     </xsl:template>

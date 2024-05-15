@@ -359,6 +359,7 @@ div#navbarSupportedContent div#navbar_right_spacer {
     padding-right: 1rem ;
     max-width: 90vw ;
     text-align: center;
+    padding: 1rem;
 }
 
 .container-fluid {
@@ -544,21 +545,34 @@ h2 {
     padding-top: 2em;
 }
 
-
-.text.yes-index *{
-        visibility: hidden;
+    .nothingtoseehere {
+            visibility: hidden!important;
+	    display: none!important;
+            padding: 0!important;
+            max-height: 0;
+	    max-width: 0;
+	    border: 0;
+	    margin: 0;
+	    padding-bottom: 0!important;
     }
+
+    .nothingtoseehere * {
+	    visibility: hidden!important;
+	    display: none!important;
+	    padding: 0!important;
+	    max-height: 0!important;
+	    max-width: 0!important;
+	    border: 0!important;
+	    margin: 0!important;
+	    padding-bottom: 0!important;
+    }
+
+
 
 @media screen and (max-width: 639px) {                                                                                                                                                                                                                         
     .row {
             margin: 0;
     }
-    .facsimiles {
-            visibility: hidden;
-            padding: 0;
-            max-height: 0;
-    }
-
     .col-md-2.col-lg-2.col-sm-12{
             padding: 0;
             max-width: 2em;

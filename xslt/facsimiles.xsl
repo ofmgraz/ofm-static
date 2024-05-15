@@ -74,40 +74,6 @@
                                             <i class="bi bi-download" title="TEI/XML"/>
                                         </a>
                                     </h3>
-                                    <p class="document_info archival_small" align="center">
-                                        <xsl:value-of
-                                            select="normalize-space(//tei:profileDesc/tei:creation/tei:date[1])"
-                                        />
-                                    </p>
-                                    <p class="document_info archival_small" align="center">
-                                        <xsl:value-of select="//tei:text/@type"/>
-                                        <xsl:value-of
-                                            select="concat(' (', normalize-space($doc_type)), ')'"/>
-                                    </p>
-                                    <p class="document_info archival_small" align="center">
-                                        <xsl:value-of
-                                            select='//tei:msDesc/tei:msIdentifier/tei:idno[@type = "archive"]/text()[1]/normalize-space()'
-                                        />
-                                    </p>
-                                    <xsl:variable name="text_status"
-                                        select="//tei:teiHeader/tei:revisionDesc/@status"/>
-                                    <xsl:variable name="changes"
-                                        select="//tei:teiHeader/tei:revisionDesc/tei:change"/>
-                                    <xsl:choose>
-                                        <xsl:when test="$text_status = 'created'">
-                                            <div align="center">
-                                                <xsl:attribute name="class">
-                                                  <xsl:value-of
-                                                  select="concat('revision_desc ', $text_status)"/>
-                                                </xsl:attribute> maschinell erfasster Rohtext </div>
-                                        </xsl:when>
-                                        <xsl:otherwise>
-                                            <div align="center">
-                                                <xsl:attribute name="class">
-                                                  <xsl:value-of select="'revision_desc created'"/>
-                                                </xsl:attribute> maschinell erfasster Rohtext </div>
-                                        </xsl:otherwise>
-                                    </xsl:choose>
                                 </div>
                                 <div class="col-md-2 col-lg-2 col-sm-12" style="text-align:right">
                                     <xsl:if test="ends-with($next, '.html')">

@@ -31,6 +31,7 @@ function isMobile(x) {
     sequenceMode: true,
     showReferenceStrip: true,
     tileSources: tileSources,
-    referenceStripScroll: position
+    referenceStripScroll: position,
+    referenceStripSizeRatio: 0.05
   });
   

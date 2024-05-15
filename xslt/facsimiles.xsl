@@ -123,13 +123,9 @@
                                 </div>
                             </div>
                             <div id="container-resize" class="row transcript active">
-                                <div id="seadragon-viewer" style="width:800px; height:600px;"></div>
-                                <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
-                                    <div id="viewer">
-                                        <div id="container_facs_1"/>
-                                        <!-- container and facs handling in js -->
-                                    </div>
-                                </div>
+                                <div id="text-resize" lang="de"
+                                    class="col-md-6 col-lg-6 col-sm-12 text yes-index nothingtoseehere" />
+                                <div id="seadragon-viewer"></div>
                                 <div id="text-resize" lang="de"
                                     class="col-md-6 col-lg-6 col-sm-12 text yes-index nothingtoseehere">
                                     <div id="section">

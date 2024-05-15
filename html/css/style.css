@@ -237,9 +237,16 @@ div#navbarSupportedContent div#navbar_right_spacer {
     padding: 2em;
     padding-top: 0rem;
     padding-bottom: 2em;
-    max-width: 60vw;
     margin-left: auto;
     max-height: 900px;
+}
+
+.facsimiles {
+	width: 95vw;
+}
+
+#seadragon-viewer{
+    height: 60vh;;
 }
 
 #MyTable {

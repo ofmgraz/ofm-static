@@ -49,19 +49,6 @@
                 <div class="hfeed site flex-grow-1" id="page">
                     <xsl:call-template name="nav_bar"/>
                     <div class="edition_container ">
-                        <div class="offcanvas offcanvas-start" tabindex="-1"
-                            id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel"
-                            data-bs-scroll="true" data-bs-backdrop="false">
-                            <div class="offcanvas-header" />
-                            <div class="offcanvas-body" />
-                        </div>
-                        <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions"
-                            aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true"
-                            data-bs-backdrop="false">
-                        </div>
-                        <div id="editor-widget">
-                                <xsl:call-template name="annotation-options"></xsl:call-template>
-                        </div>
                         <div class="wp-transcript">
                             <div class="row" id="edition_metadata">
                                 <div class="col-md-2 col-lg-2 col-sm-12">
@@ -143,7 +130,7 @@
                                     </div>
                                 </div>
                                 <div id="text-resize" lang="de"
-                                    class="col-md-6 col-lg-6 col-sm-12 text yes-index">
+                                    class="col-md-6 col-lg-6 col-sm-12 text yes-index nothingtoseehere">
                                     <div id="section">
                                         <xsl:for-each select="//tei:body/tei:div" >
                                             <div class="card-body non_mimetic_lbs" >
@@ -160,9 +147,6 @@
                 <xsl:call-template name="html_footer"/>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/>
                 <script type="text/javascript" src="js/osd_scroll.js"></script>
-                <script src="https://unpkg.com/de-micro-editor@0.3.4/dist/de-editor.min.js"></script>
-                <script type="text/javascript" src="js/run.js"></script>
-                <script type="text/javascript" src="js/offcanvastoggler.js"/>
             </body>
         </html>
     </xsl:template>

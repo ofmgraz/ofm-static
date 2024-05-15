@@ -246,7 +246,7 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 #seadragon-viewer{
-    height: 60vh;;
+    height: 67vh;
 }
 
 #MyTable {
@@ -607,5 +607,9 @@ h2 {
     }
     #Hits {
             width: 100%;
+    }
+    #seadragon-viewer{
+        width: 95vh;
+        min-height: 65vh;
     }
 }

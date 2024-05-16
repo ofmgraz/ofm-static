@@ -91,7 +91,10 @@
                             <div id="container-resize" class="row transcript active">
                                 <div id="text-resize" lang="de"
                                     class="col-md-6 col-lg-6 col-sm-12 text yes-index nothingtoseehere" />
-                                <div id="seadragon-viewer"></div>
+                                <div id="text-resize" lang="de"
+                                    class="col-md-6 col-lg-6 col-sm-12 text yes-index">
+                                    <div id="seadragon-viewer" />
+                                </div>
                                 <div id="text-resize" lang="de"
                                     class="col-md-6 col-lg-6 col-sm-12 text yes-index nothingtoseehere">
                                     <div id="section">

@@ -245,15 +245,15 @@ div#navbarSupportedContent div#navbar_right_spacer {
 	height: 67vh;
     padding-left: 0!important ; 
     padding-right: 0!important ;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
-
-
 
 #seadragon-viewer{
     height: 67vh;
     min-width: 50vw;
 }
-
 
 
 #MyTable {

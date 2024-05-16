@@ -32,6 +32,7 @@ function isMobile(x) {
     showReferenceStrip: true,
     tileSources: tileSources,
     referenceStripScroll: position,
-    referenceStripSizeRatio: 0.05
+    referenceStripHeight: "10em",
+    referenceStripSizeRatio: 0.1
   });
   

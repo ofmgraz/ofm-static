@@ -122,7 +122,6 @@ for xml_filepath in tqdm(files, total=len(files)):
         if paragraph := doc.any_xpath(".//tei:body/tei:div/tei:ab"):
             paragraph = paragraph[0]
             full_text = extract_fulltext(paragraph)
-
         for r in [cfts_record, record]:
             r["id"] = id
             r["resolver"] = f"/{html_file}"
@@ -140,7 +139,7 @@ for xml_filepath in tqdm(files, total=len(files)):
             r["printer"] = printer
             r["form"] = form
             if paragraph:
-                r["fulltext"] = full_text
+                r["full_text"] = full_text
         records.append(record)
         cfts_records.append(cfts_record)
 make_index = client.collections["ofm_graz"].documents.import_(records)

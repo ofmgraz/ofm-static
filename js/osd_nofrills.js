@@ -30,9 +30,11 @@ function isMobile(x) {
     panHorizontal: true,
     sequenceMode: true,
     showReferenceStrip: true,
+        autoHideControls:       false,
+        referenceStripScroll:   position,
     tileSources: tileSources,
     referenceStripScroll: position,
-    referenceStripHeight: "10em",
-    referenceStripSizeRatio: 0.1
+    referenceStripSizeRatio: 0.05,
   });
   
+  viewer.setControlsEnabled(true)

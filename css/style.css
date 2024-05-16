@@ -242,12 +242,16 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 .facsimiles {
-	width: 95vw;
+	height: 67vh;
+    padding-left: 0!important ; 
+    padding-right: 0!important ;
 }
 
 #seadragon-viewer{
     height: 67vh;
 }
+
+
 
 #MyTable {
   min-width: unset !important;
@@ -410,6 +414,7 @@ padding-left: 2rem;
 padding-right: 2rem ;
 min-width: unset ;
 }
+
 
 [type="search"] {
     background-clip: padding-box;
@@ -580,6 +585,18 @@ h2 {
     .row {
             margin: 0;
     }
+    .openseadragon-canvas {
+        width: 100vw;
+        padding: 0;
+    }
+
+    .facsimiles {
+        padding: 0;
+        height:auto!important;
+        padding-left: 0!important ; 
+        padding-right: 0!important ;
+    }
+
     .col-md-2.col-lg-2.col-sm-12{
             padding: 0;
             max-width: 2em;
@@ -609,7 +626,7 @@ h2 {
             width: 100%;
     }
     #seadragon-viewer{
-        width: 95vh;
+        width: 95vw;
         min-height: 65vh;
     }
 }

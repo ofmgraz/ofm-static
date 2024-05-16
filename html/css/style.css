@@ -247,8 +247,11 @@ div#navbarSupportedContent div#navbar_right_spacer {
     padding-right: 0!important ;
 }
 
+
+
 #seadragon-viewer{
     height: 67vh;
+    min-width: 50vw;
 }
 
 

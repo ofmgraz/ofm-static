@@ -29,12 +29,12 @@ function isMobile(x) {
     panVertical : false,
     panHorizontal: true,
     sequenceMode: true,
+    showNavigator: false,
     showReferenceStrip: true,
         autoHideControls:       false,
         referenceStripScroll:   position,
     tileSources: tileSources,
     referenceStripScroll: position,
-    referenceStripSizeRatio: 0.05,
+    referenceStripPosition: "left",
+    referenceStripSizeRatio: 0.05
   });
-  
-  viewer.setControlsEnabled(true)

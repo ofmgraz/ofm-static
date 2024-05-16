@@ -92,7 +92,7 @@
                                 <div id="text-resize" lang="de"
                                     class="col-md-6 col-lg-6 col-sm-12 text yes-index nothingtoseehere" />
                                 <div id="text-resize" lang="de"
-                                    class="col-md-6 col-lg-6 col-sm-12 text yes-index">
+                                    class="col-md-6 col-lg-6 col-sm-12 facsimiles yes-index">
                                     <div id="seadragon-viewer" />
                                 </div>
                                 <div id="text-resize" lang="de"

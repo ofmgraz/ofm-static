@@ -242,7 +242,6 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 .facsimiles {
-	height: 67vh;
     padding-left: 0!important ; 
     padding-right: 0!important ;
     max-width: fit-content;
@@ -251,8 +250,8 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 #seadragon-viewer{
-    height: 67vh;
-    min-width: 50vw;
+    min-height: 60vh;
+    min-width: 40vw;
 }
 
 

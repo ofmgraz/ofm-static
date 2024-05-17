@@ -29,5 +29,5 @@ function isMobile(x) {
     tileSources: tileSources,
     referenceStripSizeRatio: 0.1,
     showHomeControl: true,
-    showReferenceStrip: true,
+    showReferenceStrip: true
   });

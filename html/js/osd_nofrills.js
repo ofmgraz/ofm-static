@@ -26,15 +26,8 @@ function isMobile(x) {
   var viewer = OpenSeadragon({
     id: "seadragon-viewer",
     prefixUrl: "//openseadragon.github.io/openseadragon/images/",
-    panVertical : false,
-    panHorizontal: true,
-    sequenceMode: true,
-    showNavigator: false,
-    showReferenceStrip: true,
-        autoHideControls:       false,
-        referenceStripScroll:   position,
     tileSources: tileSources,
-    referenceStripScroll: position,
-    referenceStripPosition: "left",
-    referenceStripSizeRatio: 0.05
+    referenceStripSizeRatio: 0.1,
+    showHomeControl: true,
+    showReferenceStrip: true,
   });

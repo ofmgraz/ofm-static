@@ -5,7 +5,7 @@
         <title type="main">S 1/64 (Psalterium romanum)</title>
         <respStmt>
           <resp>Digitalisierung (Fotografieren) des Archivmaterials</resp>
-          <persName role="acdh:hasDigitisingAgent">
+          <persName role="acdh:hasDigitisingAgent" ref="https://orcid.org/0000-0001-6195-2935">
             <forename>Jakob</forename>
             <surname>Leitner</surname>
           </persName>
@@ -231,7 +231,7 @@
             </linkGrp>
           </event>
         </listEvent>
-        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4076982-3</idno>
+        <idno type="URL" subtype="GND">http://d-nb.info/gnd/4062501-1</idno>
         <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/3164603</idno>
         <idno type="URL" subtype="WIKIDATA">https://www.wikidata.org/entity/Q641</idno>
       </place>

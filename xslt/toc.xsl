@@ -38,24 +38,19 @@
                         <table class="table" id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col" tabulator-formatter="html" tabulator-responsive="0" tabulator-resizable="true" tabulator-headerFilter="input" tabulator-minWidth="300px">Titel</th>
-                                    <th scope="col" tabulator-formatter="html" tabulator-visible="false"
-                                        >XML-TEI</th>
-                                    <th scope="col" tabulator-headerFilter="input" tabulator-responsive="1" tabulator-minWidth="150px"
-                                       >TPQ</th>
-                                    <th scope="col" tabulator-visible="false">TAQ</th>
-
-                                    <th scope="col" tabulator-responsive="2" tabulator-headerFilter="input" tabulator-minWidth="150px">Liturgie</th>
-                                    <th scope="col" tabulator-responsive="3" tabulator-headerFilter="input" tabulator-minWidth="150px">Dokumententyp</th>
-                                    <th scope="col" tabulator-formatter="html"
-                                        tabulator-visible="false" >Provenienz</th>
-                                    <th scope="col" tabulator-formatter="html"
-                                        tabulator-visible="false">Drucker</th>
-                                    <th scope="col" tabulator-visible="false">Folia</th>
-                                    <th scope="col" tabulator-visible="false">Höhe (mm)</th>
-                                    <th scope="col" tabulator-visible="false">Breite (mm)</th>
-                                    <th scope="col" tabulator-visible="false">Beschreibung</th>
-                                    <th scope="col" tabulator-visible="false">Traskriptionstatus</th>
+                                    <th scope="col">Titel</th>
+                                    <th scope="col">XML-TEI</th>
+                                    <th scope="col">TPQ</th>
+                                    <th scope="col">TAQ</th>
+                                    <th scope="col">Liturgie</th>
+                                    <th scope="col">Dokumententyp</th>
+                                    <th scope="col">Provenienz</th>
+                                    <th scope="col">Drucker</th>
+                                    <th scope="col">Folia</th>
+                                    <th scope="col">Höhe (mm)</th>
+                                    <th scope="col">Breite (mm)</th>
+                                    <th scope="col">Beschreibung</th>
+                                    <th scope="col">Transkriptionsstatus</th>
                                 </tr>
                             </thead>
                             <tbody>

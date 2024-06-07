@@ -37,48 +37,33 @@
                             <xsl:value-of select="$doc_title"/>
                         </h1>
 
-                        <table class="table" id="myTable">
-                            <thead>
-                                <tr>
-                                    <th scope="col" tabulator-formatter="html">Name</th>
-                                    <th scope="col" tabulator-formatter="html"
-                                        tabulator-download="false">Aktiv in</th>
-                                    <th scope="col" tabulator-visible="false">ID</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <div class="card-body drucker">
+                            <ul>
                                 <xsl:for-each select=".//tei:person[@xml:id]">
                                     <xsl:variable name="id">
                                         <xsl:value-of select="data(@xml:id)"/>
                                     </xsl:variable>
-                                    <tr>
-                                        <td>
-                                            <a>
-                                                <xsl:attribute name="href">
+                                    <li>
+                                        <a>
+                                            <xsl:attribute name="href">
                                                   <xsl:value-of select="concat($id, '.html')"/>
-                                                </xsl:attribute>
-                                                <xsl:value-of select=".//tei:forename/text()"/>
-                                                <xsl:text> </xsl:text>
-                                                <xsl:value-of select=".//tei:surname/text()"/>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <xsl:variable name="a"
-                                                select="./tei:residence/tei:settlement/tei:placeName/text()"/>
-                                            <a href="{$a}.html" target="_blank">
-                                                <xsl:value-of
-                                                  select="./tei:residence/tei:settlement/tei:placeName"
-                                                />
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <xsl:value-of select="$id"/>
-                                        </td>
-                                    </tr>
+                                            </xsl:attribute>
+                                            <xsl:value-of select=".//tei:forename/text()"/>
+                                            <xsl:text> </xsl:text>
+                                            <xsl:value-of select=".//tei:surname/text()"/>
+                                        </a>
+                                        <xsl:text>, aktiv in </xsl:text>
+                                        <xsl:variable name="a"
+                                            select="./tei:residence/tei:settlement/tei:placeName/text()"/>
+                                        <a href="{$a}.html" target="_blank">
+                                            <xsl:value-of
+                                                select="./tei:residence/tei:settlement/tei:placeName"
+                                            />
+                                        </a>
+                                    </li>
                                 </xsl:for-each>
-                            </tbody>
-                        </table>
-                        <xsl:call-template name="tabulator_dl_buttons"/>
+                            </ul>
+                        </div>
                     </div>
                 </main>
                 <xsl:call-template name="tabulator_js"/>

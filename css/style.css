@@ -20,6 +20,9 @@
 }
 
 
+.drucker * {
+    list-style-type: none;
+}
 .times-new-roman * {
     font-family: "Times New Roman", serif !important;
   }
@@ -259,6 +262,10 @@ div#navbarSupportedContent div#navbar_right_spacer {
   min-width: unset !important;
   }
 
+#persTable {
+    min-width: unset !important;
+}
+
 #tabulator.table:not(.thead-light) .tabulator-header, .tabulator.table:not(.thead-light) .tabulator-header .tabulator-col {
 	/*border-color: var(--ofm-contrast);
 	background-color: var(--ofm-bg);
@@ -472,7 +479,10 @@ div#text-resize div.card-body.non_mimetic_lbs {
 }   
 
 #footer-full-content {
-    padding: 0;
+    padding-top: 2em;
+    padding-left: 0;
+    padding-bottom: 0;
+    padding-right: 0;
     font-size:smaller;
 }
 

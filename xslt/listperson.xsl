@@ -10,8 +10,6 @@
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="./partials/html_footer.xsl"/>
-    <xsl:import href="partials/tabulator_dl_buttons.xsl"/>
-    <xsl:import href="partials/tabulator_js.xsl"/>
     <xsl:import href="./partials/person.xsl"/>
     <xsl:variable name="lang" select="'de'"/>
 
@@ -66,7 +64,6 @@
                         </div>
                     </div>
                 </main>
-                <xsl:call-template name="tabulator_js"/>
                 <xsl:call-template name="html_footer"/>
             </body>
         </html>

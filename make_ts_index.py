@@ -112,7 +112,7 @@ for xml_filepath in tqdm(files, total=len(files)):
         p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
             f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
         p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
-        p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']"
+        #p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']"
         body = doc.any_xpath(p_group)
         pages += 1
         cfts_record = {
@@ -138,7 +138,7 @@ for xml_filepath in tqdm(files, total=len(files)):
             r["liturgy"] = liturgy
             r["printer"] = printer
             r["form"] = form
-            if paragraph:
+            if len(paragraph) > 0:
                 r["full_text"] = full_text
         records.append(record)
         cfts_records.append(cfts_record)

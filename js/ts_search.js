@@ -44,7 +44,6 @@ function formatDate(timestamp) {
 
 
 function getYear(timestamp) {
-  year = timestamp
   if (isNumeric(timestamp)) {
     const date = new Date(timestamp * 1000)
     year = date.getFullYear()

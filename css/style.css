@@ -20,9 +20,6 @@
 }
 
 
-.drucker * {
-    list-style-type: none;
-}
 .times-new-roman * {
     font-family: "Times New Roman", serif !important;
   }
@@ -245,6 +242,7 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 .facsimiles {
+	height: 67vh;
     padding-left: 0!important ; 
     padding-right: 0!important ;
     max-width: fit-content;
@@ -253,18 +251,14 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 #seadragon-viewer{
-    min-height: 60vh;
-    min-width: 40vw;
+    height: 67vh;
+    min-width: 50vw;
 }
 
 
 #MyTable {
   min-width: unset !important;
   }
-
-#persTable {
-    min-width: unset !important;
-}
 
 #tabulator.table:not(.thead-light) .tabulator-header, .tabulator.table:not(.thead-light) .tabulator-header .tabulator-col {
 	/*border-color: var(--ofm-contrast);
@@ -479,10 +473,7 @@ div#text-resize div.card-body.non_mimetic_lbs {
 }   
 
 #footer-full-content {
-    padding-top: 2em;
-    padding-left: 0;
-    padding-bottom: 0;
-    padding-right: 0;
+    padding: 0;
     font-size:smaller;
 }
 

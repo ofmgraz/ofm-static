@@ -109,19 +109,28 @@ for xml_filepath in tqdm(files, total=len(files)):
     for v in facs:
         # p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
         #    f".//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
-        p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
-            f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
-        p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
+        #p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
+        #    f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
+        #p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
         #p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']"
-        body = doc.any_xpath(p_group)
+        p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}*']|"\
+            f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
+        #p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
+        #p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']"
+        #body = doc.any_xpath(p_group)
         pages += 1
         cfts_record = {
             "project": "ofm_graz",
         }
         record = {}
-        if paragraph := doc.any_xpath(".//tei:body/tei:div/tei:ab"):
-            paragraph = paragraph[0]
-            full_text = extract_fulltext(paragraph)
+        full_text = ""
+        if paragraph := doc.any_xpath(p_group):
+            print(paragraph)
+            for p in paragraph:
+                if next := extract_fulltext(p).strip():
+                    full_text += ' ' + next.strip()
+            #paragraph = paragraph[0]
+            print(full_text)
         for r in [cfts_record, record]:
             r["id"] = id
             r["resolver"] = f"/{html_file}"

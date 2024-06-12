@@ -64,64 +64,18 @@
       <main class="flex-grow-1">
          <div class="container">
             <h1 class="text-center pb-4 pt-3">Drucker</h1>
-            <table class="table" id="myTable">
-               <thead>
-                  <tr>
-                     <th scope="col" tabulator-formatter="html">Name</th>
-                     <th scope="col" tabulator-formatter="html" tabulator-download="false">Aktiv in</th>
-                     <th scope="col" tabulator-visible="false">ID</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr>
-                     <td><a href="Voigt.html">Leopold Voigt</a></td>
-                     <td><a href="Wien.html" target="_blank">Wien</a></td>
-                     <td>Voigt</td>
-                  </tr>
-                  <tr>
-                     <td><a href="Mayr.html">Johann Baptist Mayr</a></td>
-                     <td><a href="Salzburg.html" target="_blank">Salzburg</a></td>
-                     <td>Mayr</td>
-                  </tr>
-                  <tr>
-                     <td><a href="Pezzana.html">Giovanni Antonio Pezzana</a></td>
-                     <td><a href="Venedig.html" target="_blank">Venedig</a></td>
-                     <td>Pezzana</td>
-                  </tr>
-                  <tr>
-                     <td><a href="Balleoni.html">Paolo Baglioni</a></td>
-                     <td><a href="Venedig.html" target="_blank">Venedig</a></td>
-                     <td>Balleoni</td>
-                  </tr>
-                  <tr>
-                     <td><a href="Ciera.html">Pietro Ciera</a></td>
-                     <td><a href="Venedig.html" target="_blank">Venedig</a></td>
-                     <td>Ciera</td>
-                  </tr>
-               </tbody>
-            </table>
-            <h4>Tabelle herunterladen</h4>
-            <div class="button-group"><button type="button" class="btn btn-outline-secondary" id="download-csv" title="Als CSV exportieren"><i class="bi bi-filetype-csv"></i><span class="visually-hidden">Als CSV exportieren</span></button><button type="button" class="btn btn-outline-secondary" id="download-json" title="Als JSON exportieren"><i class="bi bi-filetype-json"></i><span class="visually-hidden">Als JSON exportieren</span></button><button type="button" class="btn btn-outline-secondary" id="download-html" title="Als HTML exportieren"><i class="bi bi-filetype-html"></i><span class="visually-hidden">Als HTML exportieren</span></button></div>
+            <div class="card-body drucker">
+               <ul>
+                  <li><a href="Voigt.html">Leopold Voigt</a>, aktiv in <a href="Wien.html" target="_blank">Wien</a></li>
+                  <li><a href="Mayr.html">Johann Baptist Mayr</a>, aktiv in <a href="Salzburg.html" target="_blank">Salzburg</a></li>
+                  <li><a href="Pezzana.html">Giovanni Antonio Pezzana</a>, aktiv in <a href="Venedig.html" target="_blank">Venedig</a></li>
+                  <li><a href="Balleoni.html">Paolo Baglioni</a>, aktiv in <a href="Venedig.html" target="_blank">Venedig</a></li>
+                  <li><a href="Ciera.html">Pietro Ciera</a>, aktiv in <a href="Venedig.html" target="_blank">Venedig</a></li>
+               </ul>
+            </div>
          </div>
       </main>
-      <link href="https://unpkg.com/tabulator-tables@5.6.0/dist/css/tabulator.min.css" rel="stylesheet">
-      <link href="https://unpkg.com/tabulator-tables@5.6.0/dist/css/tabulator_bootstrap5.min.css" rel="stylesheet"><script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.6.0/dist/js/tabulator.min.js"></script><script src="tabulator-js/config.js"></script><script>
-            var table = new Tabulator("#myTable", config);
-            //trigger download of data.csv file
-            document.getElementById("download-csv").addEventListener("click", function(){
-            table.download("csv", "data.csv");
-            });
-            
-            //trigger download of data.json file
-            document.getElementById("download-json").addEventListener("click", function(){
-            table.download("json", "data.json");
-            });
-            
-            //trigger download of data.html file
-            document.getElementById("download-html").addEventListener("click", function(){
-            table.download("html", "data.html", {style:true});
-            });
-        </script><footer  class="footer">
+      <footer  class="footer">
          <div class="container-fluid" id="footer-full-content" tabindex="-1 overflow-hidden">
             <div class="row justify-content-center overflow-hidden">
                <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-right overflow-hidden">

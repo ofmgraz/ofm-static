@@ -3,7 +3,7 @@
 import glob
 import os
 from datetime import datetime
-from acdh_tei_pyutils.tei import TeiReader
+from acdh_tei_pyutils.tei import TeiReader, ET
 from acdh_tei_pyutils.utils import extract_fulltext
 from tqdm import tqdm
 from typesense.api_call import ObjectNotFound
@@ -107,21 +107,32 @@ for xml_filepath in tqdm(files, total=len(files)):
     date_str, nb_tst, na_tst = make_date(doc)
     liturgy, doc_type, provenance, form, printer = make_type(doc)
     for v in facs:
-        # p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
+        #p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
         #    f".//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
-        p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
-            f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
-        p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
-        p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']"
-        body = doc.any_xpath(p_group)
+        #p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
+        #    f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
+        #p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
+        p_group = f".//tei:body/tei:div/tei:ab[@facs='{v}_']"
+        #p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}*']|"\
+        #    f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
+        #p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
+        #p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']"
+        #body = doc.any_xpath(p_group)
         pages += 1
         cfts_record = {
             "project": "ofm_graz",
         }
         record = {}
-        if paragraph := doc.any_xpath(".//tei:body/tei:div/tei:ab"):
-            paragraph = paragraph[0]
-            full_text = extract_fulltext(paragraph)
+        full_text = ""
+        p_group = f".//tei:body/tei:div/tei:ab"
+        page = doc.any_xpath(p_group)
+        page = [paragraph for paragraph in page if paragraph.xpath("./@facs")[0].startswith(f"{v}_") and len(ET.tostring(paragraph).strip()) > 0 ]
+        if paragraph := doc.any_xpath(p_group):
+            for p in paragraph:
+                next = extract_fulltext(p).strip()
+                if next:
+                    full_text = '\n'.join([full_text.lstrip(), next.strip()])
+            #paragraph = paragraph[0] 
         for r in [cfts_record, record]:
             r["id"] = id
             r["resolver"] = f"/{html_file}"
@@ -138,7 +149,7 @@ for xml_filepath in tqdm(files, total=len(files)):
             r["liturgy"] = liturgy
             r["printer"] = printer
             r["form"] = form
-            if paragraph:
+            if len(full_text) > 0:
                 r["full_text"] = full_text
         records.append(record)
         cfts_records.append(cfts_record)

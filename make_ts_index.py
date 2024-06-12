@@ -150,7 +150,6 @@ for xml_filepath in tqdm(files, total=len(files)):
             r["printer"] = printer
             r["form"] = form
             if len(full_text) > 0:
-                print(f"«{full_text}»")
                 r["full_text"] = full_text
         records.append(record)
         cfts_records.append(cfts_record)

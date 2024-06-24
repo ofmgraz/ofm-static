@@ -129,7 +129,14 @@ search.addWidgets([
     },
   }),
 
-   instantsearch.widgets.refinementList({
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },  
+    templates: {
+      header: 'Art',
+    },  
+  })(instantsearch.widgets.refinementList)({
     container: "#refinement-list-doc-type",
     attribute: "doc_type",
     searchable: false,
@@ -145,7 +152,14 @@ search.addWidgets([
     },
   }),
 
-  instantsearch.widgets.refinementList({
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },  
+    templates: {
+      header: 'Liturgie',
+    },  
+  })(instantsearch.widgets.refinementList)({
     container: "#refinement-list-liturgie",
     attribute: "liturgy",
     searchable: false,
@@ -161,7 +175,14 @@ search.addWidgets([
     },
   }),
 
-  instantsearch.widgets.refinementList({
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },  
+    templates: {
+      header: 'Dokumententyp',
+    },  
+  })(instantsearch.widgets.refinementList)({
     container: "#refinement-list-genre",
     attribute: "form",
     searchable: false,
@@ -178,7 +199,14 @@ search.addWidgets([
     },
   }),
 
-  instantsearch.widgets.refinementList({
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },  
+    templates: {
+      header: 'Herkunft',
+    },  
+  })(instantsearch.widgets.refinementList)({
     container: "#refinement-list-place",
     attribute: "provenance",
     searchable: false,
@@ -194,7 +222,14 @@ search.addWidgets([
     },
   }),
 
-  instantsearch.widgets.refinementList({
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },  
+    templates: {
+      header: 'Drucker',
+    },  
+  })(instantsearch.widgets.refinementList)({
     container: "#refinement-list-persons",
     attribute: "printer",
     searchable: false,

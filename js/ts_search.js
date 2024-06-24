@@ -314,7 +314,7 @@ search.addWidgets([
   }),*/
 
   instantsearch.widgets.configure({
-    hitsPerPage: 8,
+    hitsPerPage: 12,
     attributesToSnippet: ["full_text"],
     //filters: function() { return document.getElementsByTagName("input").value },
   }),

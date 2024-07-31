@@ -1,4 +1,4 @@
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_19" xml:base="https://ofmgraz.github.io/ofm-static/" prev="S1_29.xml" next="Antiphonar-Winterteil für den Gebrauch der Augustinerchorherren von Klosterneuburg - A-KN 65_duplicated.xml">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_19" xml:base="https://ofmgraz.github.io/ofm-static/" prev="S1_64.xml" next="Antiphonar-Winterteil für den Gebrauch der Augustinerchorherren von Klosterneuburg - A-KN 65_duplicated.xml">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -1533,7 +1533,7 @@
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2831" xml:id="facs_50">
          <graphic url="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_19/files/images/A-Gf_S1_19-057/full/full/0/default.jpg" width="2000px" height="2831px"/>
-      </surface>
+         </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2935" xml:id="facs_51">
          <graphic url="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_19/files/images/A-Gf_S1_19-058/full/full/0/default.jpg" width="2000px" height="2935px"/>
       </surface>

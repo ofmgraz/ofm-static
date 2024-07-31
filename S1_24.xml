@@ -1,4 +1,4 @@
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_24" xml:base="https://ofmgraz.github.io/ofm-static/" prev="A67_20.xml" next="A67_22.xml">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_24" xml:base="https://ofmgraz.github.io/ofm-static/" prev="TRAINING_VALIDATION_SET_Chorbuch-6.xml" next="Gradual-Termporale aus Kreuzlingen (OSA) - A-BRlm P34_duplicated.xml">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -1390,7 +1390,7 @@
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2615" xml:id="facs_100">
          <graphic url="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_24/files/images/A-Gf_S1_24-108/full/full/0/default.jpg" width="2000px" height="2615px"/>
-      </surface>
+         </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2597" xml:id="facs_101">
          <graphic url="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_24/files/images/A-Gf_S1_24-109/full/full/0/default.jpg" width="2000px" height="2597px"/>
       </surface>

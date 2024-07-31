@@ -16,7 +16,7 @@
     <xsl:variable name="lang" select="'de'"/>
 
     <xsl:template match="/">
-        <xsl:variable name="doc_title" select="'Bücher'"/>
+        <xsl:variable name="doc_title" select="'Quellen'"/>
 
 
 

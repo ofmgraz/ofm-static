@@ -145,9 +145,6 @@ a:active {
     font-family: "Courier New" ; 
 }
 
-.row.title{
-    padding-top: 17rem ;
-}
 .card-body {
 	padding: 1em;
 }
@@ -343,8 +340,14 @@ div#navbarSupportedContent div#navbar_right_spacer {
 .flex-grow-1.flex-shrink-1.bg {
     min-height: 5vh;
     max-width: 100%;
-    background: url('../images/cover.jpg') no-repeat;
     z-index: 10!important ;
+}
+
+.row.banner {
+	background: url('../images/cover.jpg') no-repeat;
+	min-height: 17vh;
+	max-width: 100%;
+	margin: 0;
 }
 
 .leaflet-container{
@@ -552,10 +555,25 @@ h2 {
     }
 
 
+@media screen and (max-width: 1015px) {
+	.flex-grow-1.flex-shrink-1.bg {
+    		min-height: 5vh;
+	}
 
-@media screen and (max-width: 639px) {                                                                                                                                                                                                                         
+	.row.banner {
+		min-height: 8vh;
+	}
+	}
+
+
+@media screen and (max-width: 639px) {
+
     .row {
             margin: 0;
+    }
+
+    .row.banner {
+	    min-height: 4vh;
     }
     .openseadragon-canvas {
         width: 100vw;

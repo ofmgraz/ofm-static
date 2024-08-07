@@ -530,6 +530,8 @@ hr {
 
 h2 {
     padding-top: 2em;
+    font-size: 4rem ;
+    font-weight: bold ;
 }
 
     .nothingtoseehere {
@@ -563,11 +565,17 @@ h2 {
 	.row.banner {
 		min-height: 8vh;
 	}
+	h2 {
+    font-size: 3rem ;
+	}
+
 	}
 
 
 @media screen and (max-width: 639px) {
-
+     h2 {
+	     font-size: 2rem ;
+     }
     .row {
             margin: 0;
     }

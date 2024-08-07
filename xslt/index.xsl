@@ -33,6 +33,7 @@
                         <br/>
                         <br/>
                     </div>
+		    <div class="row banner"/>
                     <div class="row title">
                         <div class="col-md-2 col-lg-2 col-sm-12 pad"/>
                         <div class="col-md-8 col-lg-8 col-sm-12">

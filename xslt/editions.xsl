@@ -87,7 +87,7 @@
                                             <i class="bi bi-download" title="TEI/XML"/>
                                         </a>
                                     </h3>
-                                    <p class="document_info archival_small" align="center">
+                                    <!-- <p class="document_info archival_small" align="center">
                                         <xsl:value-of
                                             select="normalize-space(//tei:profileDesc/tei:creation/tei:date[1])"
                                         />
@@ -120,7 +120,7 @@
                                                   <xsl:value-of select="'revision_desc created'"/>
                                                 </xsl:attribute> maschinell erfasster Rohtext </div>
                                         </xsl:otherwise>
-                                    </xsl:choose>
+                                    </xsl:choose> -->
                                 </div>
                                 <div class="col-md-2 col-lg-2 col-sm-12" style="text-align:right">
                                     <xsl:if test="ends-with($next, '.html')">
@@ -177,9 +177,9 @@
         </div>
     </xsl:template>
     <xsl:template match="tei:pb">
-        <span class="hline"><xsl:value-of select="$mybreak" disable-output-escaping="yes"/></span>
+        <!-- <span class="hline"><xsl:value-of select="$mybreak" disable-output-escaping="yes"/></span> -->
         <!-- needed for scrolling / numbering -->
-        <span class="anchor-pb"/>
+        <!----> <span class="anchor-pb"/> ->
         <!-- determine img src -->
         <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
         <xsl:variable name="surfaceNode" as="node()"><xsl:value-of select="//tei:graphic[@xml:id = $pbId]"/></xsl:variable>
@@ -187,7 +187,7 @@
         <xsl:variable name="page_number"><xsl:number level="any"/></xsl:variable>
         <span class="pb" source="{$facsUrl}" n="{$page_number}"
             style="--page_before: '{($page_number - 1)}'; --beginning_page: '{$page_number}';"> </span>
-        <span class="pb_marker" n="{$page_number}"/>
+        <span class="pb_marker" n="{$page_number}" id="{$pbId}" />
     </xsl:template>
     <xsl:template match="tei:ab">
         <xsl:variable select="./@class" name="currentclass" />

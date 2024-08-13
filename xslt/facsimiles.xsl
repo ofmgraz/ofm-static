@@ -112,7 +112,7 @@
                 </div>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/>
-                <script type="text/javascript" src="js/osd_nofrills.js"></script>
+                <script type="text/javascript" src="js/osd_scroll.js"></script>
             </body>
         </html>
     </xsl:template>

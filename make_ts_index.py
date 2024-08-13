@@ -24,7 +24,7 @@ current_schema = {
         {"name": "id", "type": "string"},
         {"name": "rec_id", "type": "string"},
         {"name": "title", "type": "string"},
-        # {"name": "anchor_link", "type": "string"},
+        {"name": "anchor_link", "type": "string"},
         {"name": "full_text", "type": "string", "optional": True},
         {"name": "notbefore", "type": "int64", "facet": True, "optional": True},
         {"name": "notafter", "type": "int64", "facet": True, "optional": True},
@@ -107,32 +107,33 @@ for xml_filepath in tqdm(files, total=len(files)):
     date_str, nb_tst, na_tst = make_date(doc)
     liturgy, doc_type, provenance, form, printer = make_type(doc)
     for v in facs:
-        #p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|"\
-        #    f".//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
-        #p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
+        p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|.//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
+        # p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
         #    f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
-        #p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
-        p_group = f".//tei:body/tei:div/tei:ab[@facs='{v}_']"
-        #p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}*']|"\
+        # p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
+        ## p_group = f".//tei:body/tei:div/tei:ab[@facs='{v}_']"
+        # p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}*']|"\
         #    f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
-        #p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
-        #p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']"
-        #body = doc.any_xpath(p_group)
+        # p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
+        # p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']"
+        body = doc.any_xpath(p_group)
         pages += 1
         cfts_record = {
             "project": "ofm_graz",
         }
         record = {}
         full_text = ""
-        p_group = f".//tei:body/tei:div/tei:ab"
+        p_group = ".//tei:body/tei:div/tei:ab"
         page = doc.any_xpath(p_group)
-        page = [paragraph for paragraph in page if paragraph.xpath("./@facs")[0].startswith(f"{v}_") and len(ET.tostring(paragraph).strip()) > 0 ]
+        page = [paragraph for paragraph in page if paragraph.xpath("./@facs")[0].startswith(f"{v}_")
+                and len(ET.tostring(paragraph).strip()) > 0]
         if paragraph := doc.any_xpath(p_group):
             for p in paragraph:
                 next = extract_fulltext(p).strip()
                 if next:
                     full_text = '\n'.join([full_text.lstrip(), next.strip()])
-            #paragraph = paragraph[0] 
+
+            # paragraph = paragraph[0]
         for r in [cfts_record, record]:
             r["id"] = id
             r["resolver"] = f"/{html_file}"
@@ -149,8 +150,11 @@ for xml_filepath in tqdm(files, total=len(files)):
             r["liturgy"] = liturgy
             r["printer"] = printer
             r["form"] = form
+            if p_aragraph := doc.any_xpath(p_group):
+                pid = p_aragraph[0].xpath(".//@facs")[0]
             if len(full_text) > 0:
                 r["full_text"] = full_text
+                r["anchor_link"] = pid
         records.append(record)
         cfts_records.append(cfts_record)
 make_index = client.collections["ofm_graz"].documents.import_(records)

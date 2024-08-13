@@ -515,6 +515,13 @@ h2 {
     font-weight: bold ;
 }
 
+.fa_links {
+width: 100% ;
+}
+
+.col-xs-4{
+    width: 33.33% ;
+}
 #container-resize,
 #text-resize {
     position: sticky;
@@ -524,6 +531,12 @@ h2 {
 	margin: 0;
 }
 
+.right {
+    text-align: left ;
+}
+.left{
+    text-align: right ;
+}
 
 #text-resize {
     max-height: 100vh ;

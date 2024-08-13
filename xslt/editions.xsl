@@ -14,7 +14,7 @@
     <xsl:import href="./partials/entities.xsl"/>
     <xsl:import href="partials/edition_side_nav.xsl"/>
     <xsl:import href="./partials/html_title_navigation.xsl"/>
-    <xsl:import href="./partials/aot-options.xsl"/>
+
     <xsl:variable name="prev">
         <xsl:value-of
             select="replace(tokenize(data(tei:TEI/@prev), '/')[last()], '.xml', '.html')"/>
@@ -59,32 +59,30 @@
                             aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true"
                             data-bs-backdrop="false">
                         </div>
-                        <div id="editor-widget">
-                                <xsl:call-template name="annotation-options"></xsl:call-template>
-                        </div>
                         <div class="wp-transcript">
                             <div class="row" id="edition_metadata">
-                                <div class="col-md-2 col-lg-2 col-sm-12">
+                              <xsl:variable name="doc_type"
+                                        select="//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/@form[1]"/>
+                                    <h1 align="center">
+                                        <xsl:value-of select="$doc_title"/>
+                                    </h1>
+                                <div class="row" id="fa_links">
+                                <div class="col-xs-4 col-lg-4 col-sm-4 col-md-4"  style="text-align:right">
                                     <xsl:if test="ends-with($prev,'.html')">
                                         <h1>
                                             <a>
                                                 <xsl:attribute name="href">
                                                     <xsl:value-of select="$prev"/>
                                                 </xsl:attribute>
-                                                <i class="bi bi-chevron-left" title="zurück"/>
+                                                <i class="fa-solid fa-caret-left left" title="zurück"/>
                                             </a>
                                         </h1>
                                     </xsl:if>
                                 </div>
-                                <div class="col-md-8 col-lg-8 col-sm-12 docinfo">
-                                    <xsl:variable name="doc_type"
-                                        select="//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/@form[1]"/>
-                                    <h1 align="center">
-                                        <xsl:value-of select="$doc_title"/>
-                                    </h1>
+                                <div class="col-xs-4 col-lg-4 col-sm-4 col-md-4 docinfo"  style="text-align:center">
                                     <h3 align="center">
-                                        <a href="{$teiSource}">
-                                            <i class="bi bi-download" title="TEI/XML"/>
+                                     <a href="{$teiSource}">
+                                            <i class="fa-solid fa-file-code center" title="TEI/XML"/>
                                         </a>
                                     </h3>
                                     <!-- <p class="document_info archival_small" align="center">
@@ -122,17 +120,18 @@
                                         </xsl:otherwise>
                                     </xsl:choose> -->
                                 </div>
-                                <div class="col-md-2 col-lg-2 col-sm-12" style="text-align:right">
+                                <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4" style="text-align:left">
                                     <xsl:if test="ends-with($next, '.html')">
                                         <h1>
                                             <a>
                                                 <xsl:attribute name="href">
                                                     <xsl:value-of select="$next"/>
                                                 </xsl:attribute>
-                                                <i class="bi bi-chevron-right" title="weiter"/>
+                                                <i class="fa-solid fa-caret-right right" title="weiter"/>
                                             </a>
                                         </h1>
                                     </xsl:if>
+                                </div>
                                 </div>
                             </div>
                             <div id="container-resize" class="row transcript active">

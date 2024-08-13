@@ -63,10 +63,47 @@
             </nav>
          </div>
          <div class="edition_container ">
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel" data-bs-scroll="true" data-bs-backdrop="false">
+               <div class="offcanvas-header"></div>
+               <div class="offcanvas-body"></div>
+            </div>
+            <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions" aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true" data-bs-backdrop="false"></div>
+            <div id="editor-widget">
+               <div  id="aot-navBarNavDropdown" class="navBarNavDropdown dropstart"><a title="Annotationen" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" role="button"><i class="bi bi-gear" title="Menü zur Anpassung der Anzeige"></i></a><ul class="dropdown-menu">
+                     <li class="dropdown-item">
+                        <full-size opt="fls"></full-size>
+                     </li>
+                     <li class="dropdown-item">
+                        <image-switch opt="es"></image-switch>
+                     </li>
+                     <li class="dropdown-item">
+                        <font-size opt="fs"></font-size>
+                     </li>
+                     <li class="dropdown-item">
+                        <font-family opt="ff"></font-family>
+                     </li>
+                     <li class="dropdown-item" style="border-top: 2px dashed lightgrey !important;">
+                        <annotation-slider opt="entities-features"></annotation-slider>
+                     </li>
+                     <li class="dropdown-item">
+                        <annotation-slider opt="not"></annotation-slider>
+                     </li>
+                     <li class="dropdown-item">
+                        <annotation-slider opt="text"></annotation-slider>
+                     </li>
+                     <li class="dropdown-item">
+                        <annotation-slider opt="rub"></annotation-slider>
+                     </li>
+                     <li class="dropdown-item">
+                        <annotation-slider opt="ini"></annotation-slider>
+                     </li>
+                  </ul>
+               </div>
+            </div>
             <div class="wp-transcript">
                <div class="row" id="edition_metadata">
                   <div class="col-md-2 col-lg-2 col-sm-12">
-                     <h1><a href="A67_22.html"><i class="bi bi-chevron-left" title="zurück"></i></a></h1>
+                     <h1><a href="S1_72.html"><i class="bi bi-chevron-left" title="zurück"></i></a></h1>
                   </div>
                   <div class="col-md-8 col-lg-8 col-sm-12 docinfo">
                      <h1 align="center"></h1>
@@ -77,14 +114,23 @@
                   </div>
                </div>
                <div id="container-resize" class="row transcript active">
-                  <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 text yes-index nothingtoseehere"></div>
-                  <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 d-flex justify-content-center facsimiles yes-index">
-                     <div id="seadragon-viewer"></div>
+                  <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
+                     <div id="viewer">
+                        <div id="container_facs_1"></div>
+                     </div>
                   </div>
-                  <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 text yes-index nothingtoseehere">
+                  <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 text yes-index">
                      <div id="section">
-                        <div class="card-body non_mimetic_lbs"><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-001r/full/full/0/default.jpg" n="1" style="--page_before: '0'; --beginning_page: '1';"></span><span class="pb_marker" n="1"></span><p class="yes-index"></p>
-                           <p  xmlns:local="http://dse-static.foo.bar"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-001v/full/full/0/default.jpg" n="2" style="--page_before: '1'; --beginning_page: '2';"></span><span class="pb_marker" n="2"></span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-002r/full/full/0/default.jpg" n="3" style="--page_before: '2'; --beginning_page: '3';"></span><span class="pb_marker" n="3"></span><p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-002v/full/full/0/default.jpg" n="4" style="--page_before: '3'; --beginning_page: '4';"></span><span class="pb_marker" n="4"></span><p class="yes-index"></p>
+                        <div class="card-body non_mimetic_lbs"><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-001r/full/full/0/default.jpg" n="1" style="--page_before: '0'; --beginning_page: '1';"></span><span class="pb_marker" n="1" id="facs_1"></span><p class="yes-index"><span class="" id="d79t5549">ORDO</span><span class="" id="d79t5551">AGENDORUM</span><span class="" id="d79t5553">ET CANTANDORUM</span><span class="" id="d79t5555">SIONALIBUS.</span><span class="" id="d79t5557">Pro F.F. Franciscanis strictioris.</span><span class="" id="d79t5560">Observantiae in alma Provincia Austriae DEO</span><span class="" id="d79t5562">famulantibus ac commodatus.</span></p>
+                           <p  xmlns:local="http://dse-static.foo.bar"><span class="" id="d79t5567">VIENNAE AUSTRIAE, Typis MATTHAEI RICTII.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-001v/full/full/0/default.jpg" n="2" style="--page_before: '1'; --beginning_page: '2';"></span><span class="pb_marker" n="2" id="facs_2"></span><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-002r/full/full/0/default.jpg" n="3" style="--page_before: '2'; --beginning_page: '3';"></span><span class="pb_marker" n="3" id="facs_3"></span><p class="yes-index"><span class="" id="d79t5577">Modus Sepeliendi Fratres.</span><span class="" id="d79t5579">IN primis dato signo Campana Re fectorij omnes Pa-</span><span class="" id="d79t5581">tres e Fratres compolant ad Sacristiam, ubi ordinatis Offi-</span><span class="" id="d79t5583">catore, Ministris, Ceroferarijs, Cruciferario, e Acolytho</span><span class="" id="d79t5585">processional ter transitur ad locum de functi dicendo Ps. Miserere, quoe-</span><span class="" id="d79t5588">finito incipit Officiator sine Cantu.</span><span class="" id="d79t5590">Kyrie eleison.</span><span class="" id="d79t5592">R. Christe eleison. Kyrie eleison.</span><span class="" id="d79t5594">V. Pater noster.</span><span class="" id="d79t5596">Et ne nos inducas in tentationem.</span><span class="" id="d79t5598">R. Sed libera nos a malo.</span><span class="" id="d79t5601">V. A porta inferi.</span><span class="" id="d79t5603">R. Erue Domine animam ejus.</span><span class="" id="d79t5605">V. Requiescat in pace.</span><span class="" id="d79t5607">R. Amen.</span><span class="" id="d79t5609">V. Domine exaudi orationem meam,</span><span class="" id="d79t5611">R. Et clamor meus ad te venia.</span><span class="" id="d79t5614">V. Dominus vobiscum.</span><span class="" id="d79t5616">R. Et cum Spiritu tuo.</span><span class="" id="d79t5618">Oremus.</span><span class="" id="d79t5620">Suscipe Domine animam famuli tui N. confratris nostri, quam</span><span class="" id="d79t5622">de ergastulo huius Saeculi vocare dignatus es, et libera eam de</span><span class="" id="d79t5624">locis poenarum, ut quietis ac lucis aeternae beatitudine per frua-</span><span class="" id="d79t5627">ur, et inter sanctos et electos tuos in resurrectionis gloria resu-</span><span class="" id="d79t5629">scitari mereatur, per Christum Dominum nostrunt. R. Amen.</span><span class="" id="d79t5631">V. Requiem aeternam dona ei Domine</span><span class="" id="d79t5633">R. Et lux perpetua luceat ei.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-002v/full/full/0/default.jpg" n="4" style="--page_before: '3'; --beginning_page: '4';"></span><span class="pb_marker" n="4" id="facs_4"></span><p class="yes-index"><span class="" id="d79t5640">V. Requiescat in pace.</span><span class="" id="d79t5642">R. Amen.</span><span class="" id="d79t5644">Post hec aspergit defunctum aquta benedicta es incensat,</span><span class="" id="d79t5646">atim incivit Chorimagister vel Senior Respons: Sub venite.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -101,24 +147,32 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-003r/full/full/0/default.jpg" n="5" style="--page_before: '4'; --beginning_page: '5';"></span><span class="pb_marker" n="5"></span><p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-003r/full/full/0/default.jpg" n="5" style="--page_before: '4'; --beginning_page: '5';"></span><span class="pb_marker" n="5" id="facs_5"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t5729">Interim eant ando proressiomaditer de funtctus de fertur ad Eclesium,</span><span class="" id="d79t5731">abidem in medio persus summum altare locandus, fratres pero non</span><span class="" id="d79t5733">statim ingrediuntur Chorum sed ascendent es gradus atrij ante sum-</span><span class="" id="d79t5735">mum altare dipidunt se ad utramque partem altaris ubi subsistentes es</span><span class="" id="d79t5737">cantum prosequent es expectant funus, eruciferario cum duobus cerofe-</span><span class="" id="d79t5740">varis se vertente persus populum supra gradus more solito, ipse autem</span><span class="" id="d79t5742">Officiator cum suis ad ingressum Ecclesiae subsistit parum ad partem e</span><span class="" id="d79t5744">vermittit funus pertr ansire ut post depositionem funeris retro funus</span><span class="" id="d79t5746">ut. Finito deniae Respons: Subvenite Officiator retre-</span><span class="" id="d79t5748">de functum stans repetit Kyrie eleison cant ando-</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t5766">on asperxit vec itensat de functum sed finito Pater no-</span><span class="" id="d79t5768">ster prosequitur.</span><span class="" id="d79t5770">Et ne nos inducas in tentationem.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-003v/full/full/0/default.jpg" n="6" style="--page_before: '5'; --beginning_page: '6';"></span><span class="pb_marker" n="6" id="facs_6"></span><p class="yes-index"><span class="" id="d79t5777">R. Sed libera nos a malo.</span><span class="" id="d79t5779">V. A porta inferi.</span><span class="" id="d79t5781">V. Requiescat in pace.</span><span class="" id="d79t5783">V. Domine exaudi.</span><span class="" id="d79t5785">V. Dominus vobiscum.</span><span class="" id="d79t5788">R. Amen</span><span class="" id="d79t5790">R. Et clamor, etc.</span><span class="" id="d79t5792">R. Et cum spiritu tuo.</span></p>
+                           <p class="yes-index"><span class="" id="d79t5798">R. Amen.</span><span class="" id="d79t5800">Oremus.</span><span class="" id="d79t5802">DEus cui omnia vivunt et cui non pereunt moriendo corpora</span><span class="" id="d79t5804">nostra, sed mutantur in melius, te supplices deprecamur, ut</span><span class="" id="d79t5806">suscipi jub eas animam famuli tui N. confratris nostri, per manus</span><span class="" id="d79t5809">sanctorum Angelorum deducendam in sinu amici tui Abrahae</span><span class="" id="d79t5811">Patriarchae, resuscitandamque in novissimo Judicij magni die, et</span><span class="" id="d79t5813">quidquid suadente diabolo vitiorum contraxit, Tu pius et mi-</span><span class="" id="d79t5815">sericors Deus abluas indulgendo. Per Christum Dominum.</span><span class="" id="d79t5817">nostrum.</span><span class="" id="d79t5819">V. Requiem aeternam dona ei Domine</span><span class="" id="d79t5822">R. Et lux perpetua luceat ei.</span><span class="" id="d79t5824">Cantores. Requiescat in pace.</span><span class="" id="d79t5826">R. Amen.</span><span class="" id="d79t5828">His finitisitur ad chorum relinquemdo funus inm medio Eccu-</span><span class="" id="d79t5830">e functus aante meridiem sepeli endus sit, cantetur, Missa Requiem</span><span class="" id="d79t5832">sipero post meridiem tunc recitetur Officium defunctorum officia-</span><span class="" id="d79t5835">tore cum suis etiam ehorum intrantibus e sic post Sacrum pel Offi-</span><span class="" id="d79t5837">cium defunctorum immediate incipitur es cantatur Ribera offi-</span><span class="" id="d79t5839">re cum sus interium descendente vretro de functum,</span></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-003v/full/full/0/default.jpg" n="6" style="--page_before: '5'; --beginning_page: '6';"></span><span class="pb_marker" n="6"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-004r/full/full/0/default.jpg" n="7" style="--page_before: '6'; --beginning_page: '7';"></span><span class="pb_marker" n="7" id="facs_7"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-004r/full/full/0/default.jpg" n="7" style="--page_before: '6'; --beginning_page: '7';"></span><span class="pb_marker" n="7"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -132,54 +186,81 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-004v/full/full/0/default.jpg" n="8" style="--page_before: '7'; --beginning_page: '8';"></span><span class="pb_marker" n="8" id="facs_8"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-004v/full/full/0/default.jpg" n="8" style="--page_before: '7'; --beginning_page: '8';"></span><span class="pb_marker" n="8"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t5937">Quo finito tantat Officiator Kyrie eleison.</span><span class="" id="d79t5939">R. Christe eleison. Kyrie eleison.</span><span class="" id="d79t5941">V. Pater noster.</span><span class="" id="d79t5943">V. Pater noster. Sub quo facit ceremonias solitas aspergendo es</span><span class="" id="d79t5945">nc ansando de functum.</span><span class="" id="d79t5948">V. Et ne nos inducas in tentationem.</span><span class="" id="d79t5950">V. Et ne nos inducas in tentationem. R. Sed libera nos, etc.</span><span class="" id="d79t5952">V. A porta inferi. R. Erue Domine.</span><span class="" id="d79t5954">V. Requiescat in pace. R. Amen.</span><span class="" id="d79t5956">V. Domine exaudi orationem meam.</span><span class="" id="d79t5958">V. Dominus vobiscum.</span><span class="" id="d79t5961">R. Et clamor, etc.</span><span class="" id="d79t5963">R. Et cum spiritu tuo.</span></p>
+                           <p class="yes-index"><span class="" id="d79t5968">FAc quaesumus Domine, hanc cum servo tuo confratre</span><span class="" id="d79t5970">nostro defuncto misericordiam tuam, ut factorum suorum</span><span class="" id="d79t5972">n poenis non recipiat vicem, qui tuam in votis tenuit volun-</span><span class="" id="d79t5974">tatem, ut sicut hic eum vera fides junxit fidelium turmis, ita</span><span class="" id="d79t5976">illic tua miseratio jungat eum Angelicis Choris.</span><span class="" id="d79t5979">stum Dominum nostrum. R. Amen.</span><span class="" id="d79t5981">Post. hec incipit Officiator.</span><span class="" id="d79t5983">Or.</span></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-005r/full/full/0/default.jpg" n="9" style="--page_before: '8'; --beginning_page: '9';"></span><span class="pb_marker" n="9" id="facs_9"></span><p class="yes-index"><span class="" id="d79t5997">Qud incepta Cantores sipe Ministri subium gunt et incipaumt Can-</span><span class="" id="d79t5999">ticum Benedictus.</span></p>
+                           <p class="yes-index"><span class="" id="d79t6004">quia visitavit et fecit Redemptionem plebis suae.</span><span class="" id="d79t6006">Et erexit cornu salutis nobis: in domo David pueri sui.</span><span class="" id="d79t6008">Sicut locutus est per os Sanctorum: qui a saeculo sunt Pro-</span><span class="" id="d79t6010">phetarum ejus.</span><span class="" id="d79t6012">Salutem ex inimicis nostris: et de manu omnium qui oderunt</span><span class="" id="d79t6015">nos.</span><span class="" id="d79t6017">Ad faciendam misericordiam cum patribus nostris: et memo-</span><span class="" id="d79t6019">rari testamenti sui sancti.</span><span class="" id="d79t6021">Jus jurandum quod juravit ad Abraham Patrem nostrum: da-</span><span class="" id="d79t6023">turum se nobis.</span><span class="" id="d79t6025">ut sine timore de manu inimicorum nostrorum liberati: ser-</span><span class="" id="d79t6028">viamus illi.</span><span class="" id="d79t6030">sanctitate et justitia coram ipso: omnibus diebus nostris.</span><span class="" id="d79t6032">tu puer Propheta Altissimi vocaberis: praeibis enim ante fa-</span><span class="" id="d79t6034">ciem Domini parare vias ejus.</span><span class="" id="d79t6036">Addandam scientiam saluti plebi ejus: in remissionem pec-</span><span class="" id="d79t6038">catorum eorum.</span><span class="" id="d79t6041">er viscera misericordiae Deis nostri: in quibus visitavit nos</span><span class="" id="d79t6043">Oriens ex alto.</span><span class="" id="d79t6045">minare his qui in tenebris et in umbra mortis sedent: ad</span><span class="" id="d79t6047">dirigendos pedes nostros in viam pacis.</span><span class="" id="d79t6049">Requiem aeternam dona eis Domine: et lux perpetua luceat eis.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-005v/full/full/0/default.jpg" n="10" style="--page_before: '9'; --beginning_page: '10';"></span><span class="pb_marker" n="10" id="facs_10"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-005r/full/full/0/default.jpg" n="9" style="--page_before: '8'; --beginning_page: '9';"></span><span class="pb_marker" n="9"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6081">Interim ut primum intonatio Benedictus facta. est, eleg atur fugas</span><span class="" id="d79t6083">aecedente Officiatore cum suis deportatur ad cryptam sepultur e</span><span class="" id="d79t6085">aibi antequam demittatur in cryptam vel sepulebrum, Officiator asper-</span><span class="" id="d79t6087">git illud aqua benedicta e incensat, sicut etiam ipsam cryptam sige</span><span class="" id="d79t6089">se pulebrum dicendo.</span><span class="" id="d79t6092">Sanctificetur istud sepulchrum, in nomine Patris et Filij.</span><span class="" id="d79t6094">et Spiritus sancti, Amen.</span><span class="" id="d79t6096">Postea, demititur in sepilchrium, te Officiator V commode feri-</span><span class="" id="d79t6098">ssit, ter terram super illud proiiciendo dicit:</span><span class="" id="d79t6100">Sume terra quod tuum est, sumat Deus quod suum est,</span><span class="" id="d79t6102">corpus de terra formatum est, spiritus de sursum inspiratus</span><span class="" id="d79t6105">memento homo quia cinis es et in cinerem reverteris.</span><span class="" id="d79t6107">Post haec tumulatur e conditur terra, finito Benedictus ac an-</span><span class="" id="d79t6109">tiphona. Ego sum, cantat Officiator.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-005v/full/full/0/default.jpg" n="10" style="--page_before: '9'; --beginning_page: '10';"></span><span class="pb_marker" n="10"></span><p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6121">V. Et ne nos inducas in tentationem</span><span class="" id="d79t6123">R. Sed libera nos a malo.</span><span class="" id="d79t6125">V. A porta inferi. R. Erue Domine animam ejus.</span><span class="" id="d79t6127">V. Requiescat in pace. R. Amen.</span><span class="" id="d79t6129">V. Domine exaudi, etc.</span><span class="" id="d79t6132">V. Dominus vobiscum,</span><span class="" id="d79t6134">R. Amen.</span><span class="" id="d79t6136">R. Et clamor meus.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-006r/full/full/0/default.jpg" n="11" style="--page_before: '10'; --beginning_page: '11';"></span><span class="pb_marker" n="11" id="facs_11"></span><p class="yes-index"><span class="" id="d79t6143">Oremus.</span><span class="" id="d79t6145">DEus cui proprium est misereri semper et parcere te supplices</span><span class="" id="d79t6147">exoramus pro anima famuli tui N. confratris nostri, quam</span><span class="" id="d79t6149">hodie de hoc saeculo migrare jussisti, ut non trades eam in ma-</span><span class="" id="d79t6151">ius inimici neque obliviscaris in finem, sed jubeas eam a san-</span><span class="" id="d79t6154">Angelis suscipi et ad patriam paradisi perduci, ut quia in te</span><span class="" id="d79t6156">ravit et credidit, non paenas inferni sustineat, sed gaudia ae-</span><span class="" id="d79t6158">terna possideat. Per Christum Dominum nostrum. R. Amen.</span><span class="" id="d79t6160">Orems.</span><span class="" id="d79t6162">SAtis faciat tibi quaesumus Domine Deus noster, pro anima fa-</span><span class="" id="d79t6164">muli tui N. Confratris nostri, Sanctae Genitricis tuae semperqu</span><span class="" id="d79t6167">Virginis Mariae et Sanctorum Petri et Pauli Apostolorum, Sancti</span><span class="" id="d79t6169">Francisci, omniumque Sanctorum tuorum Oratio, et nostra</span><span class="" id="d79t6171">Devota supplicatio, ut peccatorum omnium veniam obtineat,</span><span class="" id="d79t6173">nec eum patiaris cruciari gehennalibus flammis, quem Filij tui</span><span class="" id="d79t6175">Domini nostri Jesu Christi pretioso sanguine redemisti. Qui vi-</span><span class="" id="d79t6177">vis et regnas cum Deo Patre in unitate, etc. R. Amen.</span><span class="" id="d79t6180">V. Anima ejus et omnium fidelium defunctorum, per mi-</span><span class="" id="d79t6182">ericordiam Dei Cantor es immediat e sub iungunt) Requiescant in</span><span class="" id="d79t6184">ace. R. Amen.</span></p>
+                           <p class="yes-index"><span class="" id="d79t6189">Modus Sepeliendi Saeculares in</span><span class="" id="d79t6191">Onera secularium a nostris excipiuntur ad ianuam Ecclesiae ubi abse-</span><span class="" id="d79t6193">et roducitur e int exmisso Sub venite absolute incipitur Libera</span><span class="" id="d79t6195">ut supra. Sed in Ecclesijs ubi Cantor es saeculares cantum</span><span class="" id="d79t6197">suum usa, in Ecclesiam nostram prosequuntur (scut Vienne, ibi pos-</span><span class="" id="d79t6200">ab solutum cantum Secularium Cantorum cantatur a nostrius Libera.</span><span class="" id="d79t6202">que mutati mutandis.</span><span class="" id="d79t6204">Ecclesis nostris.</span><span class="" id="d79t6206">folum, intermi sso Benedictus, e termino Confratre nostro reliaue-</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-006v/full/full/0/default.jpg" n="12" style="--page_before: '11'; --beginning_page: '12';"></span><span class="pb_marker" n="12" id="facs_12"></span><p  xmlns:local="http://dse-static.foo.bar"><span class="" id="d79t6214">Forma Processionis.</span><span class="" id="d79t6216">In Die Commemorationis omnium Fide-</span><span class="" id="d79t6218">lium Defunctorum.</span><span class="" id="d79t6220">Eractis e cantatis Vesperis De functorum in Vigilia escan-</span><span class="" id="d79t6222">tato Requiem in die Commemor ationis omnium fidelium de-</span><span class="" id="d79t6225">functorum, dato etiam signo campanmula Refector ij combeni-</span><span class="" id="d79t6227">unt omnes in Sacristia, inde processionalit ercant ando Re-</span><span class="" id="d79t6229">sorium Libera tr anseunt per medium Ecclesiae ad theatrum fune-</span><span class="" id="d79t6231">Requiem cantabunt ipsi ministri Officitatoris, absoluto Libera Offi-</span><span class="" id="d79t6233">ator in ordinario feriali cantu dicit</span><span class="" id="d79t6235">Kyrie eleison.</span><span class="" id="d79t6238">V. Christe eleison.</span><span class="" id="d79t6240">V. Pater noster.</span><span class="" id="d79t6242">Kyrie eleison.</span><span class="" id="d79t6244">V. Pater noster. Sub quo ponit incensum in thuribulum asper-</span><span class="" id="d79t6246">es incensat, quibus peractus prosequitur</span><span class="" id="d79t6248">Et ne nos inducas in tentationem.</span><span class="" id="d79t6251">R. Sed libera nos a malo.</span><span class="" id="d79t6253">V. A porta inferi.</span><span class="" id="d79t6255">R. Erue Domine animas eorum,</span><span class="" id="d79t6257">V. Requiescant in pace.</span><span class="" id="d79t6259">R. Amen.</span><span class="" id="d79t6261">V. Domine exaudi orationem meam.</span><span class="" id="d79t6264">R. Et clamor meus ad te veniat.</span><span class="" id="d79t6266">V. Dominus Vobiscum. R. Et cum spiritu tuo.</span><span class="" id="d79t6268">Orems.</span><span class="" id="d79t6270">selium Deus omnium Conditor et Redemptor, animabus</span><span class="" id="d79t6272">Famulorum Famularumque tuarum remissionem cuncto-</span><span class="" id="d79t6274">rum tribue peccatorum, ut indulgentiam quam semper opta-</span><span class="" id="d79t6277">verunt piis supplicationibus consequantur.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-007r/full/full/0/default.jpg" n="13" style="--page_before: '12'; --beginning_page: '13';"></span><span class="pb_marker" n="13" id="facs_13"></span><p class="yes-index"><span class="" id="d79t6284">gnas cum Deo Patre in unitate Spiritus Sancti Deus, per-</span><span class="" id="d79t6286">saecula saeculorum.</span><span class="" id="d79t6288">R. Amen.</span><span class="" id="d79t6290">V. Requiem aeternam dona eis Domine,</span><span class="" id="d79t6292">R. Et lux perpetua luceat eis.</span><span class="" id="d79t6295">Cantores, Requiescant in pace.</span><span class="" id="d79t6297">His finitis transitur ad secundam stationem quae Viennae est ad A</span><span class="" id="d79t6299">tare B. V. priilegiatum, * Greci in caemiteriolo Amabitus, cantande</span><span class="" id="d79t6301">R.</span><span class="" id="d79t6303">R. Amen.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-006r/full/full/0/default.jpg" n="11" style="--page_before: '10'; --beginning_page: '11';"></span><span class="pb_marker" n="11"></span><p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-006v/full/full/0/default.jpg" n="12" style="--page_before: '11'; --beginning_page: '12';"></span><span class="pb_marker" n="12"></span><p  xmlns:local="http://dse-static.foo.bar"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-007r/full/full/0/default.jpg" n="13" style="--page_before: '12'; --beginning_page: '13';"></span><span class="pb_marker" n="13"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6334">Kyrie eleison. Et reliqua ut supra.</span><span class="" id="d79t6336">Orems.</span><span class="" id="d79t6338">DEus veniae largitor et humanae Salutis amator, quaesumus</span><span class="" id="d79t6340">clementiam tuam, ut nostrae Congregationis Fratres, Sorores,</span><span class="" id="d79t6342">propinquos et Benefactores qui ex hoc saeculo transierunt, Bea-</span><span class="" id="d79t6345">ta Maria semper Virginae intercedente cum omnibus Sanctis tuis.</span><span class="" id="d79t6347">ad perpetuae beatitudinis consortium pervenire conceda-</span><span class="" id="d79t6349">Dominum nostrum Jesum Christum, etc.</span><span class="" id="d79t6351">V. Requiem aeternam, etc.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-007v/full/full/0/default.jpg" n="14" style="--page_before: '13'; --beginning_page: '14';"></span><span class="pb_marker" n="14" id="facs_14"></span><p class="yes-index"><span class="" id="d79t6358">Ad Stationem Tertiam.</span><span class="" id="d79t6360">Quae Viemae est ad Altare S. Mariae Magidalene,</span><span class="" id="d79t6362">ecij in Sacelto S. Jacobi.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-007v/full/full/0/default.jpg" n="14" style="--page_before: '13'; --beginning_page: '14';"></span><span class="pb_marker" n="14"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6389">Ores.</span><span class="" id="d79t6391">DEus cujus miseratione animae fidelium requiescunt, famulis</span><span class="" id="d79t6393">et famulabus tuis omnibus, hic et ubique in Christo quie-</span><span class="" id="d79t6395">scentibus, da propitius veniam peccatorum: ut a cunctis rea-</span><span class="" id="d79t6397">tibus ab soluti, tecum sine fine laetentur, per eundem Domi-</span><span class="" id="d79t6400">num nostrum Jesum Christum, etc. R. Amen.</span><span class="" id="d79t6402">V. Requiem aeternam, etc.</span></p>
+                           <p class="yes-index"><span class="" id="d79t6407">Ad Stationem. Quartam.</span><span class="" id="d79t6409">Quae Vienne est in medio Ecclesiae super ostium mae-</span><span class="" id="d79t6411">vne crypte. Grecii in Sacello S. Antonij Paduani.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-008r/full/full/0/default.jpg" n="15" style="--page_before: '14'; --beginning_page: '15';"></span><span class="pb_marker" n="15" id="facs_15"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6441">stum, etc. R. Amen.</span><span class="" id="d79t6443">V. Requiem aeternam.</span><span class="" id="d79t6445">Orems.</span><span class="" id="d79t6447">DEus cui proprium est misereri semper et parcere propitiare</span><span class="" id="d79t6449">animabus famulorum famularumque tuarum, et omnia</span><span class="" id="d79t6452">eorum peccata dimitte: ut mortalitatis vinculis absoluti tran-</span><span class="" id="d79t6454">ire mereantur ad vitam. Per Dominum nostrum Jesum Chri-</span></p>
+                           <p class="yes-index"><span class="" id="d79t6459">Ad Stationem Quintam.</span><span class="" id="d79t6461">Que Vienne est ad Atare S. Hieronym Capelae</span><span class="" id="d79t6463">Bonac imne, Grecij in Capelta S. Anne.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-008r/full/full/0/default.jpg" n="15" style="--page_before: '14'; --beginning_page: '15';"></span><span class="pb_marker" n="15"></span><p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6487">Oremus.</span><span class="" id="d79t6489">DEus qui nos patrem et matrem honorare praecepisti: mise-</span><span class="" id="d79t6491">rere clementer animabus Parentum nostrorum eorumque pec-</span><span class="" id="d79t6493">cata dimitte, nosque eos in aeternae claritatis gaudio fac videre.</span><span class="" id="d79t6495">Per Dominum nostrum, etc. R. Ame</span><span class="" id="d79t6498">V. Requiem aeternam, etc.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-008v/full/full/0/default.jpg" n="16" style="--page_before: '15'; --beginning_page: '16';"></span><span class="pb_marker" n="16" id="facs_16"></span><p class="yes-index"><span class="" id="d79t6506">Ad Stationem Sextam.</span><span class="" id="d79t6508">Quae Vienme est ad Altare S. Antonij Padua. Grec-</span><span class="" id="d79t6510">in caemit eriolo extra Ecclesiam,</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -187,12 +268,18 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6537">Dominum, etc.</span><span class="" id="d79t6539">Or.</span><span class="" id="d79t6541">Nimabus quaesumus Domine, famulorum famularumque</span><span class="" id="d79t6543">tuarum misericordiam concede perpetuam: ut eis profi-</span><span class="" id="d79t6545">ciat in aeternum, quod in te speraverunt et crediderunt. Per-</span><span class="" id="d79t6548">R. Amen.</span><span class="" id="d79t6550">V. Requiem aeternam, etc.</span></p>
+                           <p class="yes-index"><span class="" id="d79t6555">Ad Stationem Septimam.</span><span class="" id="d79t6557">Quae Vtennae eSt ad Altare S. Sebastiani, Greci-</span><span class="" id="d79t6559">in medio Ecclesie ante gradus.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-008v/full/full/0/default.jpg" n="16" style="--page_before: '15'; --beginning_page: '16';"></span><span class="pb_marker" n="16"></span><p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-009r/full/full/0/default.jpg" n="17" style="--page_before: '16'; --beginning_page: '17';"></span><span class="pb_marker" n="17" id="facs_17"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6589">Bsolve quae sumus Domine, animas famulorum famularum-</span><span class="" id="d79t6591">que tuarum, et omnium fidelium defunctorum, ab omni</span><span class="" id="d79t6593">vinculo delictorum: ut in resurrectionis gloria inter sanctos et</span><span class="" id="d79t6595">electos tuos resuscitati respirent. Per Dominum, etc. R. Amen.</span><span class="" id="d79t6597">V. Requiem aeternam, etc.</span></p>
+                           <p class="yes-index"><span class="" id="d79t6602">Ad Stationem Octavam.</span><span class="" id="d79t6604">Quae Viennae est ad Altare S. Toan: Bapt. Greci.</span><span class="" id="d79t6606">eterum ad Tumulum siuue Theatrum funebre.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -200,28 +287,40 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6633">Or.</span><span class="" id="d79t6635">DEus qui inter Apostolicos Sacerdotes, famulos tuos Pontifi-</span><span class="" id="d79t6637">cali seu Sacerdotali fecisti dignitate vigere: praesta quae su-</span><span class="" id="d79t6639">mus: ut eorum quoque perpetuo aggregentur consortio.</span><span class="" id="d79t6641">Dominum nostrum, etc. R. Amen.</span><span class="" id="d79t6644">V. Requiem aeternam, etc.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-009v/full/full/0/default.jpg" n="18" style="--page_before: '17'; --beginning_page: '18';"></span><span class="pb_marker" n="18" id="facs_18"></span><p class="yes-index"><span class="" id="d79t6651">Ad Stationem Nonam.</span><span class="" id="d79t6653">Que Viennae est in domo Capit ulari: Grecij retro Al-</span><span class="" id="d79t6655">tare in medio Chori ubi plurima Fratrum ossa sepulta jacent,</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-009r/full/full/0/default.jpg" n="17" style="--page_before: '16'; --beginning_page: '17';"></span><span class="pb_marker" n="17"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6683">DEus fidelium lumen animarum, adesto supplicationibus no-</span><span class="" id="d79t6685">stris: et da famulis et famulabus tuis, quorum Corpora hic</span><span class="" id="d79t6687">et ubique requie scunt refrigerij sedem, quietis beatitudinem,</span><span class="" id="d79t6689">V. Requiem aeternam, etc.</span></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6697">Ad Stationem Decimam.</span><span class="" id="d79t6699">Que Viennae e St ad Atare Sancti Michaelis Gre-</span><span class="" id="d79t6701">ci finis.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-010r/full/full/0/default.jpg" n="19" style="--page_before: '18'; --beginning_page: '19';"></span><span class="pb_marker" n="19" id="facs_19"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6727">Oremus.</span><span class="" id="d79t6729">DEus cui soli competit medicinam praestare post mortem,</span><span class="" id="d79t6731">raesta quaesumus, ut animae famulornm famularumque</span><span class="" id="d79t6733">merentur. Qui vivis et regnas cum Deo Patre, etc. R. Amen.</span><span class="" id="d79t6735">V. Requiem aeterna, etc.</span></p>
+                           <p class="yes-index"><span class="" id="d79t6741">Ad Stationem Undecimam.</span><span class="" id="d79t6743">Quae Vienne est ad Altare Congreg ationis</span><span class="" id="d79t6745">Immaculat et Conceptionis.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-009v/full/full/0/default.jpg" n="18" style="--page_before: '17'; --beginning_page: '18';"></span><span class="pb_marker" n="18"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6775">Kyrie eleison, ut supra.</span><span class="" id="d79t6777">Oremus.</span><span class="" id="d79t6779">Mnipotens sempiterne Deus, cui nunquam sine spe miseri-</span><span class="" id="d79t6781">cordiae supplicatur, propitiare animabus famulorum fa-</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-010v/full/full/0/default.jpg" n="20" style="--page_before: '19'; --beginning_page: '20';"></span><span class="pb_marker" n="20" id="facs_20"></span><p class="yes-index"><span class="" id="d79t6788">mularumque tuarum, ut qui de hac vita in tui nominis Confes-</span><span class="" id="d79t6790">sione decesserunt, eos Sanctorum tuorum numero fa-</span><span class="" id="d79t6792">gregari. Per Dominum nostrum. R. Amen.</span><span class="" id="d79t6794">V. Requiem aeternam, etc.</span></p>
+                           <p class="yes-index"><span class="" id="d79t6800">Ad Stationem Duodecimam sive-</span><span class="" id="d79t6802">ultimam.</span><span class="" id="d79t6804">Que Vtenne est in Choro ubi uno tractu omnes Cryptae</span><span class="" id="d79t6806">circa Chorum es Altare majus asperguntur es incensuntur.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -229,9 +328,12 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-010r/full/full/0/default.jpg" n="19" style="--page_before: '18'; --beginning_page: '19';"></span><span class="pb_marker" n="19"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t6839">DEus qui inter Apostolicos Sacerdotes, famulos tuos Pontifi-</span><span class="" id="d79t6841">cali seu Sacerdotali fecisti dignitate vigere, praesta quaesu-</span><span class="" id="d79t6843">nus, ut eorum quoque perpetuo aggregentur consortio.</span><span class="" id="d79t6845">Deus veniae largitor et humanae salutis amator, quaesumus</span><span class="" id="d79t6847">clementiam tuam, ut nostrae Congregationis Fratres, Sorores,</span><span class="" id="d79t6850">Parentes, propinquos et Benefactores qui ex hoc saeculo transi-</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-011r/full/full/0/default.jpg" n="21" style="--page_before: '20'; --beginning_page: '21';"></span><span class="pb_marker" n="21" id="facs_21"></span><p class="yes-index"><span class="" id="d79t6858">runt Beata Maria semper Virgine intercedente, cum omnibus san-</span><span class="" id="d79t6860">ctis tuis ad perpetue Beatitudinis consortium perveuire concedas.</span><span class="" id="d79t6862">Idelium Deus omnium conditor et Redemptor animabus</span><span class="" id="d79t6864">famulorum famularumque tuarum remissionem cunctorum</span><span class="" id="d79t6866">ribue peccatorum ut indulgentiam quam semper optaverunt</span><span class="" id="d79t6869">culorum. R. Amen.</span><span class="" id="d79t6871">R. Amen.</span><span class="" id="d79t6873">Qui vivis et regnas cum</span><span class="" id="d79t6875">piis supplicationibus consequantur.</span><span class="" id="d79t6877">o Patre in unitate Spiritus Sancti Deus per omnia saecula sae-</span><span class="" id="d79t6879">culorum.</span><span class="" id="d79t6882">Dei. Subiungunt Cantores.</span></p>
+                           <p class="yes-index"><span class="" id="d79t6887">Forma Processionis.</span><span class="" id="d79t6889">In die Purificationis Beatae Virginis.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -241,10 +343,12 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-010v/full/full/0/default.jpg" n="20" style="--page_before: '19'; --beginning_page: '20';"></span><span class="pb_marker" n="20"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-011v/full/full/0/default.jpg" n="22" style="--page_before: '21'; --beginning_page: '22';"></span><span class="pb_marker" n="22" id="facs_22"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -252,7 +356,6 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-011r/full/full/0/default.jpg" n="21" style="--page_before: '20'; --beginning_page: '21';"></span><span class="pb_marker" n="21"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -262,11 +365,13 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-012r/full/full/0/default.jpg" n="23" style="--page_before: '22'; --beginning_page: '23';"></span><span class="pb_marker" n="23" id="facs_23"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-011v/full/full/0/default.jpg" n="22" style="--page_before: '21'; --beginning_page: '22';"></span><span class="pb_marker" n="22"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -280,10 +385,12 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-012v/full/full/0/default.jpg" n="24" style="--page_before: '23'; --beginning_page: '24';"></span><span class="pb_marker" n="24" id="facs_24"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-012r/full/full/0/default.jpg" n="23" style="--page_before: '22'; --beginning_page: '23';"></span><span class="pb_marker" n="23"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -291,7 +398,9 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7094">Forma Processionis.</span></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7102">In die Palmarum.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -300,8 +409,10 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-013r/full/full/0/default.jpg" n="25" style="--page_before: '24'; --beginning_page: '25';"></span><span class="pb_marker" n="25" id="facs_25"></span><p class="yes-index"><span class="" id="d79t7138">cmtatur, et sopus eet repetitur u g, dum in vegressu prot essio perveneri-</span><span class="" id="d79t7140">danuaum Ecclesiae,</span></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-012v/full/full/0/default.jpg" n="24" style="--page_before: '23'; --beginning_page: '24';"></span><span class="pb_marker" n="24"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -318,12 +429,14 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-013v/full/full/0/default.jpg" n="26" style="--page_before: '25'; --beginning_page: '26';"></span><span class="pb_marker" n="26" id="facs_26"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-013r/full/full/0/default.jpg" n="25" style="--page_before: '24'; --beginning_page: '25';"></span><span class="pb_marker" n="25"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -336,14 +449,17 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-014r/full/full/0/default.jpg" n="27" style="--page_before: '26'; --beginning_page: '27';"></span><span class="pb_marker" n="27" id="facs_27"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-013v/full/full/0/default.jpg" n="26" style="--page_before: '25'; --beginning_page: '26';"></span><span class="pb_marker" n="26"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7292">bit primum adt Ecclesiae portam Precessio perbenerit cessant omnes.</span><span class="" id="d79t7294">cantue tunc intrant duo Cantor es inecclesiam tclaudent es januam can-</span><span class="" id="d79t7296">tant Gloria laus, quod postea repetunt in qui foras manserunt, tot tes quo-</span><span class="" id="d79t7298">ties infra notatur,</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -351,15 +467,19 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-014v/full/full/0/default.jpg" n="28" style="--page_before: '27'; --beginning_page: '28';"></span><span class="pb_marker" n="28" id="facs_28"></span><p class="yes-index"><span class="" id="d79t7330">Cantor es</span><span class="" id="d79t7332">intus.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7357">Chorus extra Ecclesuam</span><span class="" id="d79t7359">repetit.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-014r/full/full/0/default.jpg" n="27" style="--page_before: '26'; --beginning_page: '27';"></span><span class="pb_marker" n="27"></span><p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7370">Captor es</span><span class="" id="d79t7372">antus.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -368,14 +488,19 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7403">Chorus extra Ecclesiam</span><span class="" id="d79t7405">repetit.</span></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-015r/full/full/0/default.jpg" n="29" style="--page_before: '28'; --beginning_page: '29';"></span><span class="pb_marker" n="29" id="facs_29"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7431">Chorus extra Ecclesiam</span><span class="" id="d79t7433">repetit.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7444">His finitis post quam Subdincomus cium brachio erucis percusse,</span><span class="" id="d79t7446">sione incipiunt seq ant.</span></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-014v/full/full/0/default.jpg" n="28" style="--page_before: '27'; --beginning_page: '28';"></span><span class="pb_marker" n="28"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -384,6 +509,9 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-015v/full/full/0/default.jpg" n="30" style="--page_before: '29'; --beginning_page: '30';"></span><span class="pb_marker" n="30" id="facs_30"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -394,9 +522,12 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7520">vntur Chorum et finato boc incipatur Introit us ad sacerum,</span></p>
+                           <p class="yes-index"><span class="" id="d79t7525">Forma Processionis</span><span class="" id="d79t7527">Archi Confraternitatis Cordigerorum.</span><span class="" id="d79t7529">S. Francisci.</span><span class="" id="d79t7531">IAE Pressio in quibu sduam Compentibus celebratur ante meridiem,</span><span class="" id="d79t7533">est ut Concio supe exhortatio fat ante Processionem, ad excitandam</span><span class="" id="d79t7536">deot ionem erga S. Franci scum es banc Confraternitatem, hinc et iam</span><span class="" id="d79t7538">xempis buius confraternitatis, post ea fiat Processio, aes trandem, vila-</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-016r/full/full/0/default.jpg" n="31" style="--page_before: '30'; --beginning_page: '31';"></span><span class="pb_marker" n="31" id="facs_31"></span><p class="yes-index"><span class="" id="d79t7546">quia finit a sacerdos benedicit chordas, quiaes eum librio secum ad altare de-</span><span class="" id="d79t7548">Francisco, post ea Processio ac tandem Lunt et B. V. sub quibus fit-</span><span class="" id="d79t7550">enedictio chor darium e inscriptio ut supra.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-015r/full/full/0/default.jpg" n="29" style="--page_before: '28'; --beginning_page: '29';"></span><span class="pb_marker" n="29"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -411,9 +542,11 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-016v/full/full/0/default.jpg" n="32" style="--page_before: '31'; --beginning_page: '32';"></span><span class="pb_marker" n="32" id="facs_32"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-015v/full/full/0/default.jpg" n="30" style="--page_before: '29'; --beginning_page: '30';"></span><span class="pb_marker" n="30"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -423,30 +556,49 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7649">Transit dives sed pauperis,</span><span class="" id="d79t7651">Nec rem nec nomen perdidit</span><span class="" id="d79t7653">Factus, felix pro miseris.</span><span class="" id="d79t7655">ssumptus cum Apostolis.</span><span class="" id="d79t7657">In montem novi luminis</span><span class="" id="d79t7660">In paupertatis praedijs.</span><span class="" id="d79t7662">Christo Franciscus intuit.</span><span class="" id="d79t7664">Fac tria tabernacula</span><span class="" id="d79t7666">QVotum secutus Sonis</span><span class="" id="d79t7668">Quem hujus on deseruit</span><span class="" id="d79t7670">Numen vet omen nominis.</span><span class="" id="d79t7673">Legi Prophetae gratiae</span><span class="" id="d79t7675">Gratum gerens obsequium</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-017r/full/full/0/default.jpg" n="33" style="--page_before: '32'; --beginning_page: '33';"></span><span class="pb_marker" n="33" id="facs_33"></span><p class="yes-index"><span class="" id="d79t7682">Trinitatis officium.</span><span class="" id="d79t7684">Festo Solemni celebrat.</span><span class="" id="d79t7686">Dum reperat virtutibus</span><span class="" id="d79t7688">Hospes triplex hospitium:</span><span class="" id="d79t7690">Et beatarum mentium</span><span class="" id="d79t7693">Dum templum Christo consecrat.</span><span class="" id="d79t7695">Domum portam et tumulum</span><span class="" id="d79t7697">Pater Francisce visita</span><span class="" id="d79t7699">Et Evae prolem miseram</span><span class="" id="d79t7701">A somno mortis excita.</span><span class="" id="d79t7703">In caelesti collegio</span><span class="" id="d79t7706">Novus collega tollitur</span><span class="" id="d79t7708">In Sanctorum Rosario</span><span class="" id="d79t7710">Novellus flos producitur</span><span class="" id="d79t7712">Franciscus florens gratia,</span><span class="" id="d79t7714">Forma factus humilium.</span><span class="" id="d79t7716">Laetus potitur gloria.</span><span class="" id="d79t7719">Sortis consors sublimium.</span><span class="" id="d79t7721">Metit de sparso semine</span><span class="" id="d79t7723">Psenae messis manipulum</span><span class="" id="d79t7725">Fallens sub terrae tegmine,</span><span class="" id="d79t7727">Nostrae salutis aemulum,</span><span class="" id="d79t7729">dic carnis supercilium,</span><span class="" id="d79t7732">Legi subi ecit Spiritus:</span><span class="" id="d79t7734">Mundum vicit et vitium.</span><span class="" id="d79t7736">Se victo victor inclytus.</span><span class="" id="d79t7738">Linguae manus praeambula,</span><span class="" id="d79t7740">Verbo paravit semitam,</span><span class="" id="d79t7742">Et amplectuntur saecula</span><span class="" id="d79t7745">Doctrinam facto proditam</span><span class="" id="d79t7747">In paupertatis praedio-</span><span class="" id="d79t7749">Minorum plantans vineam,</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-017v/full/full/0/default.jpg" n="34" style="--page_before: '33'; --beginning_page: '34';"></span><span class="pb_marker" n="34" id="facs_34"></span><p class="yes-index"><span class="" id="d79t7757">Ostendit Magisterio</span><span class="" id="d79t7759">Vitae vivendi lineam,</span><span class="" id="d79t7761">Ad aeternas divitias</span><span class="" id="d79t7763">Turbam allexit pauperum:</span><span class="" id="d79t7765">Quos ad caeli delicias</span><span class="" id="d79t7768">Lingua vocavit, operum</span><span class="" id="d79t7770">Vita Doctrina splenduit,</span><span class="" id="d79t7772">Resplendet et miraculis:</span><span class="" id="d79t7774">Sic praefuit quod profuit.</span><span class="" id="d79t7776">viva lucerna populis.</span><span class="" id="d79t7778">Summi Regis palatio-</span><span class="" id="d79t7781">Doctor loca discipulos</span><span class="" id="d79t7783">Salutis privilegio</span><span class="" id="d79t7785">Christi praemuni famulos.</span><span class="" id="d79t7787">De tenebris miseriae</span><span class="" id="d79t7789">Sequaces stellae praeviae:</span><span class="" id="d79t7791">Quaeramus patrem gratiae</span><span class="" id="d79t7794">Consortes tandem gloriae.</span></p>
+                           <p class="yes-index"><span class="" id="d79t7799">Precedens hymnus cantatur tam diuus e dum peruenerit</span><span class="" id="d79t7801">ad St ationem Altaris S. Francisci, vel Confraternitatis.</span><span class="" id="d79t7803">cantatur antiphona sequens,</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-016r/full/full/0/default.jpg" n="31" style="--page_before: '30'; --beginning_page: '31';"></span><span class="pb_marker" n="31"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-018r/full/full/0/default.jpg" n="35" style="--page_before: '34'; --beginning_page: '35';"></span><span class="pb_marker" n="35" id="facs_35"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7845">V. Ora pro nobis B. P. Francisce.</span><span class="" id="d79t7847">R. Ut digni efficiamur promissionibus Christi.</span><span class="" id="d79t7849">Orems.</span><span class="" id="d79t7851">Eus qui Ecclesiam tuam Bt. Francisci meritis faetu novae pro-</span><span class="" id="d79t7853">lis amplificas, tribue nobis: ex ejus imitatione terrena de-</span><span class="" id="d79t7856">ere, et caelestium donorum semper participatione gaudere.</span><span class="" id="d79t7858">Pet Christum Dominum nostrum. R. Ame-</span></p>
+                           <p class="yes-index"><span class="" id="d79t7863">Post ea proceditur ad Altare majus cant ando hymnum,</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t7887">Hic simplex rectus humilis</span><span class="" id="d79t7889">Pacis cultor amabilis</span><span class="" id="d79t7891">Lumen in vase fictili-</span><span class="" id="d79t7893">Ardens lucens in fragili.</span><span class="" id="d79t7895">Visi contectus tegmine</span><span class="" id="d79t7898">Sancto calefcens flamine.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-018v/full/full/0/default.jpg" n="36" style="--page_before: '35'; --beginning_page: '36';"></span><span class="pb_marker" n="36" id="facs_36"></span><p class="yes-index"><span class="" id="d79t7906">vicit algorem caumata</span><span class="" id="d79t7908">Christi dum gestat stigmata.</span><span class="" id="d79t7910">arnem mundumque conterens,</span><span class="" id="d79t7912">Hostes malignos proterens:</span><span class="" id="d79t7914">Auream victor meruit.</span><span class="" id="d79t7917">dum docuit.</span><span class="" id="d79t7919">Aureolam dum docuit.</span><span class="" id="d79t7921">Pauper nudus egreditur</span><span class="" id="d79t7923">Caelum dives ingreditur?</span><span class="" id="d79t7925">Spargit virtutum munera</span><span class="" id="d79t7927">AEgris profligat vulnera.</span><span class="" id="d79t7930">Prorum Pater pauperum.</span><span class="" id="d79t7932">Nos pauperes fac spiritu</span><span class="" id="d79t7934">Consortes redde superum</span><span class="" id="d79t7936">Ereptos ab interitu,</span><span class="" id="d79t7938">Patrinato paraclito,</span><span class="" id="d79t7940">Decus honor et gloria</span><span class="" id="d79t7943">Sancti sint hujus merito.</span><span class="" id="d79t7945">Nobis aeterna gaudia, Amen.</span></p>
+                           <p class="yes-index"><span class="" id="d79t7950">Ad Atare maus ubi non cantantur Litanie Bet. MaV tunc sal-</span><span class="" id="d79t7952">em cantetur pro conclusione sequens Antiphonae</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-016v/full/full/0/default.jpg" n="32" style="--page_before: '31'; --beginning_page: '32';"></span><span class="pb_marker" n="32"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-019r/full/full/0/default.jpg" n="37" style="--page_before: '36'; --beginning_page: '37';"></span><span class="pb_marker" n="37" id="facs_37"></span><p class="yes-index"><span class="" id="d79t7984">V. Orate pro nobis Sancti omnes de ordine Minorum.</span><span class="" id="d79t7986">R. ut perfruamur gaudis aeternis in aula polorum.</span><span class="" id="d79t7988">DEus qui sacram Religionem Seraphici Francisci decorare di-</span><span class="" id="d79t7990">gnatus es, triumpho multorum martyrum pro Christo occi-</span><span class="" id="d79t7992">raesentia vitare pericula, et ad gaudia pervenire sempiterna.</span><span class="" id="d79t7995">et mortuorum, omniumque misereris, quos tuos fide et o-</span><span class="" id="d79t7997">bus effundere preces decrevimus, quosque vel praesens saeculum</span><span class="" id="d79t7999">adhuc in carne retinet, vel futurum jam exutos corpore susce-</span><span class="" id="d79t8001">minum nostrum Jesum Christum filium tuum, qui tecum vivit</span><span class="" id="d79t8003">culorum, Amen.</span><span class="" id="d79t8005">Orems.</span><span class="" id="d79t8008">Mnipotens sempiterne Deus, qui vivorum Dominaris simul</span><span class="" id="d79t8010">pit intercedentibus omnibus sanctis tuis, pietatis tuae clement</span><span class="" id="d79t8012">omnium delictorum suorum veniam consequantur.</span><span class="" id="d79t8014">et regnat in unitate spiritus sancti Deus, per omnia saecula sae-</span><span class="" id="d79t8016">Benedictio Cordarum.</span><span class="" id="d79t8018">V. Adjutorium nostrum in nomine Domini.</span><span class="" id="d79t8021">V. Sit nomen Domini benedictum. R. Ex</span><span class="" id="d79t8023">V. Domine exaudi orationem meam. R. Et clamo</span><span class="" id="d79t8025">biscum. R. Et cum spiritu tuo</span><span class="" id="d79t8027">Oremus.</span><span class="" id="d79t8029">rum funibus ligari voluisti, Benedic ae quaesumus funes et</span><span class="" id="d79t8031">hordas istas, et praestaut qui eis velut ligamine poenitential</span><span class="" id="d79t8034">gentur, vinculorum ejusdem Domini nostri Jesu Christi per-</span><span class="" id="d79t8036">petuo memores existant, et in Confraternitate in quam assu-</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-019v/full/full/0/default.jpg" n="38" style="--page_before: '37'; --beginning_page: '38';"></span><span class="pb_marker" n="38" id="facs_38"></span><p class="yes-index"><span class="" id="d79t8044">Te alligatos esse eognoscant. Per Dominum nostrum Jesum, etc.</span><span class="" id="d79t8046">R. Amen.</span><span class="" id="d79t8048">Mnipotens sempiterne Deus, qui peccatoribus veniam et</span><span class="" id="d79t8050">misericordiam quaerentibus tuae propitiationis indulgenti-</span><span class="" id="d79t8052">das benee dicere et sanctificare digneris, ut qui eis pro pec-</span><span class="" id="d79t8055">Dominum nostrum.</span><span class="" id="d79t8057">Or emus.</span><span class="" id="d79t8059">am tribuis, oramus immensam lementiam tuam, ut has chor-</span><span class="" id="d79t8061">eatis suis cincti fuerint, veniam et misericordiam ac tuae prote-</span><span class="" id="d79t8063">ionis perpetuam assistentiam promereantur, Per Christum</span><span class="" id="d79t8065">R. Amen.</span><span class="" id="d79t8068">Post hec espergantur aqua benedict a es cingendo dicat Sacerdos,</span><span class="" id="d79t8070">Praecingat te Dominus cingulo puritatis et confraternitatis</span><span class="" id="d79t8072">strae, et extinguat in lumbis tuis humorem libidinis ut manea</span><span class="" id="d79t8074">in te virtus continentiae et castitatis, et a Deo semper prote</span><span class="" id="d79t8076">in nomine Patris, et Filij, et Spiritus sancti, Amen.</span></p>
+                           <p class="yes-index"><span class="" id="d79t8081">Forma Processionis.</span><span class="" id="d79t8083">Archiconfraternitatis Immac: Concept Beatae Vris Mariae-</span><span class="" id="d79t8085">Post Veperas fit exhortatio, post exhortationem cantantur Lita.</span><span class="" id="d79t8087">riae e Tota pulchra.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -454,15 +606,16 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-017r/full/full/0/default.jpg" n="33" style="--page_before: '32'; --beginning_page: '33';"></span><span class="pb_marker" n="33"></span><p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-017v/full/full/0/default.jpg" n="34" style="--page_before: '33'; --beginning_page: '34';"></span><span class="pb_marker" n="34"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-020r/full/full/0/default.jpg" n="39" style="--page_before: '38'; --beginning_page: '39';"></span><span class="pb_marker" n="39" id="facs_39"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-018r/full/full/0/default.jpg" n="35" style="--page_before: '34'; --beginning_page: '35';"></span><span class="pb_marker" n="35"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -474,28 +627,35 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-018v/full/full/0/default.jpg" n="36" style="--page_before: '35'; --beginning_page: '36';"></span><span class="pb_marker" n="36"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8196">Fiunitis orationibus consuetis fit Processio cum Vener abiui Sacra-</span><span class="" id="d79t8198">mento bymnum incipiente ipso Officiatore.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-020v/full/full/0/default.jpg" n="40" style="--page_before: '39'; --beginning_page: '40';"></span><span class="pb_marker" n="40" id="facs_40"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-019r/full/full/0/default.jpg" n="37" style="--page_before: '36'; --beginning_page: '37';"></span><span class="pb_marker" n="37"></span><p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-019v/full/full/0/default.jpg" n="38" style="--page_before: '37'; --beginning_page: '38';"></span><span class="pb_marker" n="38"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8230">Nobis datus nobis natus</span><span class="" id="d79t8232">Ex intacta Virgine</span><span class="" id="d79t8234">Et in mundo conversatus</span><span class="" id="d79t8236">Sparso verbi semine</span><span class="" id="d79t8238">Sui moras incolatus</span><span class="" id="d79t8241">Miro clausit ordine.</span><span class="" id="d79t8243">In supremae nocte caenae</span><span class="" id="d79t8245">Recumbens cum fratribus</span><span class="" id="d79t8247">Observata lege plene-</span><span class="" id="d79t8249">Cibis in legalibus</span><span class="" id="d79t8251">Cibum turbae duodenae</span><span class="" id="d79t8254">Sdat suis manibus.</span><span class="" id="d79t8256">Verbum caro panem verum:</span><span class="" id="d79t8258">Verbo carnem efficit.</span><span class="" id="d79t8260">Fitque sanguis Christi merum</span><span class="" id="d79t8262">Et si sensus deficit.</span><span class="" id="d79t8264">Ad firmandum cor sincerum</span><span class="" id="d79t8267">Sola fides sufficit.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-021r/full/full/0/default.jpg" n="41" style="--page_before: '40'; --beginning_page: '41';"></span><span class="pb_marker" n="41" id="facs_41"></span><p class="yes-index"><span class="" id="d79t8275">Tantum ergo Sacramentum</span><span class="" id="d79t8277">Veneremur cernui</span><span class="" id="d79t8279">Et antiquum documentum</span><span class="" id="d79t8281">Novocedat ritui</span><span class="" id="d79t8283">Praestet fides supplementum</span><span class="" id="d79t8286">Sensuum defectui.</span><span class="" id="d79t8288">Genitori Genitoque,</span><span class="" id="d79t8290">Laus et jubilatio.</span><span class="" id="d79t8292">Salus honor virtus quoque</span><span class="" id="d79t8294">Sit et Benedictio</span><span class="" id="d79t8296">Procedenti ab utroque</span><span class="" id="d79t8299">Compar sit laudatio, Amen.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-020r/full/full/0/default.jpg" n="39" style="--page_before: '38'; --beginning_page: '39';"></span><span class="pb_marker" n="39"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8326">Summens illud ave,</span><span class="" id="d79t8328">Gabrielis ore</span><span class="" id="d79t8330">Funda nos in pace</span><span class="" id="d79t8332">Mutans Hevae nomen.</span><span class="" id="d79t8334">Solve vinclareis</span><span class="" id="d79t8337">Profer lumen caecis</span><span class="" id="d79t8339">Mala nostra pelle-</span><span class="" id="d79t8341">Bona cuncta posce-</span><span class="" id="d79t8343">Monstrate esse matrem</span><span class="" id="d79t8345">Monstrate esse matrem</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-021v/full/full/0/default.jpg" n="42" style="--page_before: '41'; --beginning_page: '42';"></span><span class="pb_marker" n="42" id="facs_42"></span><p class="yes-index"><span class="" id="d79t8352">Sumat per te preces.</span><span class="" id="d79t8354">Qui pro nobis natus</span><span class="" id="d79t8356">Tulit esse tuus.</span><span class="" id="d79t8358">Virgo singularis</span><span class="" id="d79t8360">Inter omnes mitis</span><span class="" id="d79t8363">Nos culpis salutos</span><span class="" id="d79t8365">Mites fac et castos</span><span class="" id="d79t8367">itam praesta puram.</span><span class="" id="d79t8369">Iter paratutum</span><span class="" id="d79t8371">Ut videntes Jesum</span><span class="" id="d79t8373">Semper collaetemur.</span><span class="" id="d79t8376">Sit laus Deo Patri.</span><span class="" id="d79t8378">Summo Christo decus</span><span class="" id="d79t8380">Spiritui sancto</span><span class="" id="d79t8382">Tribus honor unus, Amen.</span></p>
+                           <p class="yes-index"><span class="" id="d79t8387">Ante benedictionem cantatiur ter Ave Maria, quod idem vepe-</span><span class="" id="d79t8389">ur e choro, tertia aut em pice prosequitur totum,</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -504,7 +664,11 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-022r/full/full/0/default.jpg" n="43" style="--page_before: '42'; --beginning_page: '43';"></span><span class="pb_marker" n="43" id="facs_43"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8432">Forma Processionis</span><span class="" id="d79t8434">Confraternitatis S. Antonij de Padua.</span><span class="" id="d79t8436">Exitur d Sacristia vel Chors sicut Processione S. Fran-</span><span class="" id="d79t8438">ante sumem em Altere pro inituo cant atur sed auti-</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -516,33 +680,38 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-020v/full/full/0/default.jpg" n="40" style="--page_before: '39'; --beginning_page: '40';"></span><span class="pb_marker" n="40"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-022v/full/full/0/default.jpg" n="44" style="--page_before: '43'; --beginning_page: '44';"></span><span class="pb_marker" n="44" id="facs_44"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-021r/full/full/0/default.jpg" n="41" style="--page_before: '40'; --beginning_page: '41';"></span><span class="pb_marker" n="41"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8511">His finitis sit Procesi-</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-021v/full/full/0/default.jpg" n="42" style="--page_before: '41'; --beginning_page: '42';"></span><span class="pb_marker" n="42"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8545">Francisci Patris aemulus</span><span class="" id="d79t8547">Sic illi se contemperat.</span><span class="" id="d79t8549">ut fonte manans rivulus.</span><span class="" id="d79t8551">Aquas vitae circumferat.</span><span class="" id="d79t8553">Longe lateque diffluit.</span><span class="" id="d79t8556">Sitique mortis aridos</span><span class="" id="d79t8558">Verbo salutis imbuit</span><span class="" id="d79t8560">ans rore sacro vividos</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-023r/full/full/0/default.jpg" n="45" style="--page_before: '44'; --beginning_page: '45';"></span><span class="pb_marker" n="45" id="facs_45"></span><p class="yes-index"><span class="" id="d79t8567">Hic stigmatum qui bajuso</span><span class="" id="d79t8569">Patri natus innititur</span><span class="" id="d79t8571">Dum praedicat de titulo</span><span class="" id="d79t8573">Confixus illecernitur</span><span class="" id="d79t8575">ub tanto duce militans</span><span class="" id="d79t8578">Vincendo se non vincitur</span><span class="" id="d79t8580">Ducimiles cohabitans.</span><span class="" id="d79t8582">Jam bello non concutitur.</span><span class="" id="d79t8584">los in campo certaminis.</span><span class="" id="d79t8586">Patrum Zelantes gloriam</span><span class="" id="d79t8588">Hic subre nostri nominis</span><span class="" id="d79t8591">Vincamus ignominiam.</span><span class="" id="d79t8593">Laus Regi plena gaudio.</span><span class="" id="d79t8595">Qui merces militantium,</span><span class="" id="d79t8597">Se ipsum dat Antonio</span><span class="" id="d79t8599">Militiae stipendium.</span><span class="" id="d79t8601">Antoni vir egregie,</span><span class="" id="d79t8604">Qui tuae quam praenoveras</span><span class="" id="d79t8606">Hic vivens arrhas gloriae</span><span class="" id="d79t8608">Christum videns acceperas.</span><span class="" id="d79t8610">Prote digna dum moreris,</span><span class="" id="d79t8612">Natorum fit commotio.</span><span class="" id="d79t8614">Margaritae non funeris</span><span class="" id="d79t8617">Cujus fias possessio.</span><span class="" id="d79t8619">lujus honorem gloriae</span><span class="" id="d79t8621">Praedixeras in Padua,</span><span class="" id="d79t8623">Quae tantis in te gratiae,</span><span class="" id="d79t8625">Manet donis irrigua.</span><span class="" id="d79t8627">Per te Pater cum Filio</span><span class="" id="d79t8630">Consolatorque Spiritus</span><span class="" id="d79t8632">A criminis contagio</span><span class="" id="d79t8634">Nos hie emundet funditus, Amen.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-023v/full/full/0/default.jpg" n="46" style="--page_before: '45'; --beginning_page: '46';"></span><span class="pb_marker" n="46" id="facs_46"></span><p class="yes-index"><span class="" id="d79t8642">ubi pervenerit Processio ad Capelam S. Antom tune ibi</span><span class="" id="d79t8644">ft statio et flexis genibus cantatur.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-022r/full/full/0/default.jpg" n="43" style="--page_before: '42'; --beginning_page: '43';"></span><span class="pb_marker" n="43"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -555,27 +724,38 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-024r/full/full/0/default.jpg" n="47" style="--page_before: '46'; --beginning_page: '47';"></span><span class="pb_marker" n="47" id="facs_47"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8718">V. Ora pro nobis beate Antoni.</span><span class="" id="d79t8720">R. Ut digni efficiamur promissionibus Christi.</span><span class="" id="d79t8722">Oremus.</span><span class="" id="d79t8724">MItissime et clementissime Jesu, qui beatum Antonium Con-</span><span class="" id="d79t8726">fessorem tuum perpetuis illustras miraculorum splendori-</span><span class="" id="d79t8729">bus, concede propitius, ut quae per ejus merita fideliter peti-</span></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-022v/full/full/0/default.jpg" n="44" style="--page_before: '43'; --beginning_page: '44';"></span><span class="pb_marker" n="44"></span><p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8737">His finitis revertitur ad Altare majus cantando hymnum.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8761">Hic nautis in naufragio,</span><span class="" id="d79t8763">Signo salutis affuit:</span><span class="" id="d79t8765">Quibus sub lucis radio</span><span class="" id="d79t8767">Vitae ducatum praebuit.</span><span class="" id="d79t8769">Haereticum lux fidei,</span><span class="" id="d79t8772">Signo purgat dum jacitur</span><span class="" id="d79t8774">Ab alto vasis vitrei</span><span class="" id="d79t8776">Fragilitas non frangitur.</span><span class="" id="d79t8778">Irrisor lucis gratiae,</span><span class="" id="d79t8780">Signorum languet clericus:</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-024v/full/full/0/default.jpg" n="48" style="--page_before: '47'; --beginning_page: '48';"></span><span class="pb_marker" n="48" id="facs_48"></span><p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8791">Vel cantantur Lituntae B. V.</span></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t8799">Forma Lotionis pedum in Feria</span><span class="" id="d79t8801">Quinta Coenae Domini.</span><span class="" id="d79t8803">Ostrefectionem dato signo omnes comueniunt in Sacristia Mini-</span><span class="" id="d79t8805">Istri induuntur Parumentis albt coloris, Officiatur uero uiolacet to-</span><span class="" id="d79t8807">rius. Inde processuonaliter exitur ad Ecclesium vecitando Psamum</span><span class="" id="d79t8810">Miserere sine Gloria Patri. Luuci es Cleriti ac Patres Juniores it</span><span class="" id="d79t8812">se distribuunt circa Alture vt Seniores Sacerdotes un medio vuersus A</span><span class="" id="d79t8814">tare sedere possint, duo uutem qui pic es Cantorum agent inter hos con-</span><span class="" id="d79t8816">unctum sedeunt, et finito Epangelio statim sedent es rncipunt.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-025r/full/full/0/default.jpg" n="49" style="--page_before: '48'; --beginning_page: '49';"></span><span class="pb_marker" n="49" id="facs_49"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-023r/full/full/0/default.jpg" n="45" style="--page_before: '44'; --beginning_page: '45';"></span><span class="pb_marker" n="45"></span><p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-023v/full/full/0/default.jpg" n="46" style="--page_before: '45'; --beginning_page: '46';"></span><span class="pb_marker" n="46"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -591,10 +771,12 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-025v/full/full/0/default.jpg" n="50" style="--page_before: '49'; --beginning_page: '50';"></span><span class="pb_marker" n="50" id="facs_50"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-024r/full/full/0/default.jpg" n="47" style="--page_before: '46'; --beginning_page: '47';"></span><span class="pb_marker" n="47"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -605,7 +787,6 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-024v/full/full/0/default.jpg" n="48" style="--page_before: '47'; --beginning_page: '48';"></span><span class="pb_marker" n="48"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -613,7 +794,9 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-025r/full/full/0/default.jpg" n="49" style="--page_before: '48'; --beginning_page: '49';"></span><span class="pb_marker" n="49"></span><p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-026r/full/full/0/default.jpg" n="51" style="--page_before: '50'; --beginning_page: '51';"></span><span class="pb_marker" n="51" id="facs_51"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -634,8 +817,10 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-026v/full/full/0/default.jpg" n="52" style="--page_before: '51'; --beginning_page: '52';"></span><span class="pb_marker" n="52" id="facs_52"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-025v/full/full/0/default.jpg" n="50" style="--page_before: '49'; --beginning_page: '50';"></span><span class="pb_marker" n="50"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
@@ -654,72 +839,47 @@
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-027r/full/full/0/default.jpg" n="53" style="--page_before: '52'; --beginning_page: '53';"></span><span class="pb_marker" n="53" id="facs_53"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-026r/full/full/0/default.jpg" n="51" style="--page_before: '50'; --beginning_page: '51';"></span><span class="pb_marker" n="51"></span><p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t9145">His finatis surgunt omnes e manent stantes, e finita Oratione Offi-</span><span class="" id="d79t9147">ciator is redeunt ad Sacristiam et erum recitando Psalmum Miserere sune</span><span class="" id="d79t9149">Gloria Patri-</span></p>
+                           <p class="yes-index"><span class="rubrik" id="d79t9155">In deportando et reportando Venerabile.</span><br/><span class="rubrik" id="d79t9157">Sacramentum cantatur hymnus.</span><br/></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
+                           <p class="yes-index"><span class="" id="d79t9174">Quae vulnerata lanceae,</span><span class="" id="d79t9176">Mucrone diro criminum:</span><span class="" id="d79t9178">Vt nos lavaret sordibus</span><span class="" id="d79t9180">Manavit unda et sanguin</span><span class="" id="d79t9182">Impleta sunt qui concinit</span><span class="" id="d79t9185">David fideli carmine:</span><span class="" id="d79t9187">Dicendo nationibus</span><span class="" id="d79t9189">Regnavit a ligno Deus.</span><span class="" id="d79t9191">Arbor decora et fulgida</span><span class="" id="d79t9193">Ornata regis purpura:</span></p>
+                           <p class="yes-index"><span class="" id="d79t9199">Electa dignostipite</span><span class="" id="d79t9201">Tam sacra membra tangere</span><span class="" id="d79t9203">Beata cujus brachiis</span><span class="" id="d79t9205">Precium pependit saeculi</span><span class="" id="d79t9207">Statera facta corporis,</span><span class="" id="d79t9210">Praedamque tulit tartari.</span><span class="" id="d79t9212">crux avespes unica</span><span class="" id="d79t9214">Hoc passionis tempore.</span><span class="" id="d79t9216">Piis adauge gratiam</span><span class="" id="d79t9218">Reisque delecrimina.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-027v/full/full/0/default.jpg" n="54" style="--page_before: '53'; --beginning_page: '54';"></span><span class="pb_marker" n="54" id="facs_54"></span><p class="yes-index"><span class="" id="d79t9225">Te fons salutis Trinitas.</span><span class="" id="d79t9227">Collaudet omnis Spiritus.</span><span class="" id="d79t9229">Quibus erucis victoriam</span><span class="" id="d79t9231">Largioris adde praemium Ame.</span></p>
+                           <p class="yes-index"><span class="" id="d79t9236">Forma Processionis in Re-</span><span class="" id="d79t9238">surrectione Domini.</span><span class="" id="d79t9240">Ora Nona Noctus doto prius priamo es secundo signo omnes confluunt</span><span class="" id="d79t9242">Lad Sacristiam, inde cum omnia bene ordinata fuerint, accensis cum</span><span class="" id="d79t9244">candelus procession aliter pergunt ad S. Sepulebrum, nihil clare recitando,</span><span class="" id="d79t9247">abi flectentes aliquant ulum adorant Christum, post ea surgit Officiator po-</span><span class="" id="d79t9249">nit incensum es t erum flectit ac incensat Venerabile, deinde accipit Ve-</span><span class="" id="d79t9251">rabile e sepulebro sibi datum eo persus populum incipit Cantum germant-</span><span class="" id="d79t9253">eum Cbrist ist erstanben dando Benedictionem, quem prosequitur Chorus</span><span class="" id="d79t9255">usqu ad finem, at tamen sune organo ne confusuones fiuant. Ad Altare</span><span class="" id="d79t9257">Officiator iterum facit crucem e dat Benedictionem cum Vener abili, po-</span><span class="" id="d79t9260">stea locat ilud ante tabernaculum e incensat iallud ac Altare, interim fi-</span><span class="" id="d79t9262">nito Cantus pulsatur organum usa, dum tempus fuerit incipuendi matuti-</span><span class="" id="d79t9264">num eum Domine labia mea aperies. Et sub processione pulsantur om-</span><span class="" id="d79t9266">ginem resurgentus Christi.</span></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
                            <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-026v/full/full/0/default.jpg" n="52" style="--page_before: '51'; --beginning_page: '52';"></span><span class="pb_marker" n="52"></span><p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-027r/full/full/0/default.jpg" n="53" style="--page_before: '52'; --beginning_page: '53';"></span><span class="pb_marker" n="53"></span><p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-027v/full/full/0/default.jpg" n="54" style="--page_before: '53'; --beginning_page: '54';"></span><span class="pb_marker" n="54"></span><p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-028r/full/full/0/default.jpg" n="55" style="--page_before: '54'; --beginning_page: '55';"></span><span class="pb_marker" n="55"></span><p class="yes-index"></p>
-                           <p  xmlns:local="http://dse-static.foo.bar"></p>
-                           <p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-028v/full/full/0/default.jpg" n="56" style="--page_before: '55'; --beginning_page: '56';"></span><span class="pb_marker" n="56"></span><p class="yes-index"></p><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-BR/full/full/0/default.jpg" n="57" style="--page_before: '56'; --beginning_page: '57';"></span><span class="pb_marker" n="57"></span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-HD/full/full/0/default.jpg" n="58" style="--page_before: '57'; --beginning_page: '58';"></span><span class="pb_marker" n="58"></span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-HDS/full/full/0/default.jpg" n="59" style="--page_before: '58'; --beginning_page: '59';"></span><span class="pb_marker" n="59"></span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-VD/full/full/0/default.jpg" n="60" style="--page_before: '59'; --beginning_page: '60';"></span><span class="pb_marker" n="60"></span><span class="hline"><br/></span><span class="anchor-pb"></span><span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-VDS/full/full/0/default.jpg" n="61" style="--page_before: '60'; --beginning_page: '61';"></span><span class="pb_marker" n="61"></span></div>
+                           <p class="yes-index"><span class="" id="d79t9284">2. et ernicit erftanten so per bie</span><span class="" id="d79t9286">est pergangen nuo seit paber erstan-</span><span class="" id="d79t9288">Sem ist se seben pmit en e rians S Sesum</span><span class="" id="d79t9290">ebrit .</span><span class="" id="d79t9292">3. Ees gengen brep beiliae Srdeie fi-</span><span class="" id="d79t9295">polsten os Orab be sca pen sie sucrtem ser ist auelu</span></p>
+                           <p class="yes-index"><span class="" id="d79t9300">pen eren, esum Christ et uie</span><span class="" id="d79t9302">ett erstanben ist Aue uj.</span><span class="" id="d79t9304">4. Suaria bie bit reine bietbet gct.</span><span class="" id="d79t9306">bersici penen onib useri Ceren</span><span class="" id="d79t9308">Sesum Cbristi et auet aest eis et ro-</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-028r/full/full/0/default.jpg" n="55" style="--page_before: '54'; --beginning_page: '55';"></span><span class="pb_marker" n="55" id="facs_55"></span><p class="yes-index"><span class="" id="d79t9315">sengarten pen Get selber gegieret bat</span><span class="" id="d79t9317">pei sergm ibr sebabren parot aes.</span><span class="" id="d79t9319">6. SSiut beisige ge reuemun bifo.</span><span class="" id="d79t9321">ristensent e bamit bie ngtaubi-</span></p>
+                           <p  xmlns:local="http://dse-static.foo.bar"><span class="" id="d79t9327">get tpetben betert so pitr ete rist-</span><span class="" id="d79t9329">siche Glaubgemert uesuio.</span><span class="" id="d79t9331">7. Vuui aueluia</span><span class="" id="d79t9333">saltet tpit aue frob semn et bristi o</span><span class="" id="d79t9335">set et rost semn atuesu.</span></p>
+                           <p class="yes-index"><span class="" id="d79t9340">Forma Lotionis pedum in ad-</span><span class="" id="d79t9342">ventu Fratrum hospitum.</span><span class="" id="d79t9344">N aduentu Generalis Ministri et Province i alius hujus Prouine iet ac Com-</span><span class="" id="d79t9346">missari Visit atorus generalus pulsantur tria signu, et cantatur antiphonae</span><span class="" id="d79t9348">Salve sancte Pater cum un Ver siculo es una Oratione de S. Franci scout</span><span class="" id="d79t9351">supra in Processione Cordigerorum.</span><span class="" id="d79t9353">In adentu Ministri Provinci alis alt erius Propinciae, Patrum Ordi-</span><span class="" id="d79t9355">nis pel Provinc ie, ac Guardianorum alt erius Provinc iae pulsantur duo signa</span><span class="" id="d79t9357">lunga cocantatur Psms. Ecce quam bonum et quam jucundum,</span><span class="" id="d79t9359">nebdomadali, el (si absit) a Patre Juniore.</span><span class="" id="d79t9361">V. Tu lavasti pedes, discipulorum tuorum Domine,</span><span class="" id="d79t9364">R. Opera manuum tuarum, ne despicias.</span><span class="" id="d79t9366">Desto quaesumus Domine officio servitutis nostrae, et quia</span><span class="" id="d79t9368">tu discipulis tuis pedes lavare dignatus es, ne despicias ope-</span><span class="" id="d79t9370">ra manuum tuarum, quae nobis retinenda mandasti, ut sicut hic</span><span class="" id="d79t9372">nobis, et a nobis exteriora abluuntur inquinamenta. sic a te</span><span class="" id="d79t9374">omnium nostrum interiora laventur peccata, Quod ipse prae-</span><span class="" id="d79t9377">stare digneris, qui vivis et regnas Deus, per omnia saecula sae-</span><span class="" id="d79t9379">culorum.</span><span class="" id="d79t9381">R. Amen.</span><span class="" id="d79t9383">In Ad pentu Patrum Provunciae, Custodis es Diffinitorum actualium</span><span class="" id="d79t9385">gnificat in sexto tonotam diu usq, dum lotio fuerit peracta, qua finit a</span><span class="" id="d79t9387">statim cantatur Gloria Patri.</span><span class="" id="d79t9390">Oremus.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-028v/full/full/0/default.jpg" n="56" style="--page_before: '55'; --beginning_page: '56';"></span><span class="pb_marker" n="56" id="facs_56"></span><p class="yes-index"><span class="" id="d79t9397">In adpentu Guardiamorum, Lectorum, Concionatorum act: e</span><span class="" id="d79t9399">diffirnitorum nostre Proinei e pa satur bus communiter e cauntatur in sex-</span><span class="" id="d79t9401">to Tons,</span><span class="" id="d79t9403">Emento Domine David: et omnis mansuetudinis ejus.</span><span class="" id="d79t9405">Sicut juravit Domino: Votum vovit Deo Jacob.</span><span class="" id="d79t9408">Si introiero in tabernaculum domus meae: si ascendero in le-</span><span class="" id="d79t9410">ctum strati mei.</span><span class="" id="d79t9412">Si dedero somnum oculis meis: et palpebris meis dormita</span><span class="" id="d79t9414">tionem.</span><span class="" id="d79t9416">Et requiem temporibus meis, donec inveniam locum Domino</span><span class="" id="d79t9418">tabernaculum Deo Jacob.</span><span class="" id="d79t9421">Ecce audivimus eam in Ephrata: invenimus eam in campis silvae</span><span class="" id="d79t9423">Introibius in Tabernaculum ejus: adorabimus in loco ubi ste-</span><span class="" id="d79t9425">terunt pedes ejus.</span><span class="" id="d79t9427">Gloria Patri et Filio: et Spiritui Sancto.</span><span class="" id="d79t9429">Sicut erat in principio et nunc et semper: et in saecula saeculo,</span><span class="" id="d79t9431">rum. R. Amen.</span><span class="" id="d79t9434">rum.</span><span class="" id="d79t9436">In adpentu quorumcunaum, aliorum Sacerdotum nostre Prooinciae pul-</span><span class="" id="d79t9438">satur bus communiter e cantatur hymnus, O gloriosa Virginum,</span><span class="" id="d79t9440">quando pero fuerint Patres alterius Provinciae, hymnus Avemaris</span><span class="" id="d79t9442">stella.</span><span class="" id="d79t9444">In aduentu Fratrum Clericorum pulsatur bis bregiter es cantatur</span><span class="" id="d79t9447">Pss, Landate pueri Dominum, in sexto tons.</span><span class="" id="d79t9449">In aduentu Fratrum Lacorum pulsatur bis brevassiume ecant</span><span class="" id="d79t9451">tur in seaeto Tono Psalms, Laudate Dominum omnes Gentes.</span><span class="" id="d79t9453">Laus DEO.</span></p><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-BR/full/full/0/default.jpg" n="57" style="--page_before: '56'; --beginning_page: '57';"></span><span class="pb_marker" n="57" id="facs_57"></span><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-HD/full/full/0/default.jpg" n="58" style="--page_before: '57'; --beginning_page: '58';"></span><span class="pb_marker" n="58" id="facs_58"></span><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-HDS/full/full/0/default.jpg" n="59" style="--page_before: '58'; --beginning_page: '59';"></span><span class="pb_marker" n="59" id="facs_59"></span><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-VD/full/full/0/default.jpg" n="60" style="--page_before: '59'; --beginning_page: '60';"></span><span class="pb_marker" n="60" id="facs_60"></span><span class="anchor-pb"></span> -&gt;
+                           
+                           <span class="pb" source="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/S1_76/files/images/A-Gf_S1_76-VDS/full/full/0/default.jpg" n="61" style="--page_before: '60'; --beginning_page: '61';"></span><span class="pb_marker" n="61" id="facs_61"></span></div>
                      </div>
                   </div>
                </div>
@@ -755,5 +915,5 @@
             </div>
          </div>
       </footer>
-      <div  class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary" style="text-align:center; padding:0.4rem 0; font-size: 0.9rem;"> © Copyright OEAW | <a href="imprint.html">Impressum</a></div><script  src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script><script  src="js/listStopProp.js"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script  src="js/i18n.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script><script type="text/javascript" src="js/osd_nofrills.js"></script></body>
+      <div  class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary" style="text-align:center; padding:0.4rem 0; font-size: 0.9rem;"> © Copyright OEAW | <a href="imprint.html">Impressum</a></div><script  src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script><script  src="js/listStopProp.js"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script  src="js/i18n.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script><script type="text/javascript" src="js/osd_scroll.js"></script><script src="https://unpkg.com/de-micro-editor@0.3.4/dist/de-editor.min.js"></script><script type="text/javascript" src="js/run.js"></script><script type="text/javascript" src="js/offcanvastoggler.js"></script></body>
 </html>

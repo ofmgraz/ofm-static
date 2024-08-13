@@ -1,14 +1,15 @@
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="A67_42" xml:base="https://ofmgraz.github.io/ofm-static/" prev="A67_41.xml" next="A70_45.xml">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="A67_42" xml:base="https://ofmgraz.github.io/ofm-static/" prev="A64_40.xml" next="S1_25.xml">
   <teiHeader>
     <fileDesc>
       <titleStmt>
         <title type="main">A 67/42 (Das 4. Respons Buch)</title>
         <title type="sub">A 67/42 ( Ostern bis 1. August)</title>
         <respStmt>
-          <resp>Digitalisierung (Fotografieren) des Archivmaterials</resp>
-          <persName role="DigitisingAgent" ref="https://orcid.org/0000-0001-6195-2935">
-            <forename>Jakob</forename>
-            <surname>Leitner</surname>
+          <resp>XML Datenmodellierung</resp>
+          <persName role="MetadataCreator" ref="https://orcid.org/0000-0002-8815-6741">
+            <forename>Fernando</forename>
+            <surname>Sanz-Lázaro</surname>
+            <idno type="URL" subtype="GND">http://d-nb.info/gnd/1297553608</idno>
           </persName>
         </respStmt>
         <respStmt>
@@ -16,13 +17,7 @@
           <persName role="Contributor" ref="https://orcid.org/0000-0002-9575-9372">
             <forename>Peter</forename>
             <surname>Andorfer</surname>
-          </persName>
-        </respStmt>
-        <respStmt>
-          <resp>Datengenerierung</resp>
-          <persName role="DigitisingAgent Contributor" ref="https://orcid.org/0000-0002-0484-832X">
-            <forename>Robert</forename>
-            <surname>Klugseder</surname>
+            <idno type="URL" subtype="GND">http://d-nb.info/gnd/1043833846</idno>
           </persName>
         </respStmt>
         <respStmt>
@@ -30,17 +25,27 @@
           <persName role="Contributor" ref="https://orcid.org/0000-0003-2436-0361">
             <forename>Daniel</forename>
             <surname>Schopper</surname>
+            <idno type="URL" subtype="ORCID">https://orcid.org/0000-0003-2436-0361</idno>
           </persName>
         </respStmt>
         <respStmt>
-          <resp>XML Datenmodellierung</resp>
-          <persName role="Contributor MetadataCreator" ref="https://orcid.org/0000-0002-8815-6741">
-            <forename>Fernando</forename>
-            <surname>Sanz-Lázaro</surname>
+          <resp>Datengenerierung</resp>
+          <persName ref="https://orcid.org/0000-0002-0484-832X" role="Contributor">
+            <forename>Robert</forename>
+            <surname>Klugseder</surname>
+            <idno type="URL" subtype="GND">http://d-nb.info/gnd/134072170</idno>
           </persName>
         </respStmt>
         <respStmt>
-          <resp>Transkribus Mitarbeit</resp>
+          <resp>Digitalisierung (Fotografieren) des Archivmaterials</resp>
+          <persName ref="https://orcid.org/0000-0001-6195-2935" role="DigitisingAgent">
+            <forename>Jakob</forename>
+            <surname>Leitner</surname>
+            <idno type="URL" subtype="ORCID">https://orcid.org/0000-0001-6195-2935</idno>
+          </persName>
+        </respStmt>
+        <respStmt>
+          <resp>Transkribus Bearbeitung</resp>
           <persName role="Transcriptor">
             <forename>Anna-Lena</forename>
             <surname>Huber</surname>
@@ -58,7 +63,7 @@
         </publisher>
         <authority>
           <orgName>Österreichische Akademie der Wissenschaften</orgName>
-          <idno type="URL" subtype="GND&gt;">http://d-nb.info/gnd/1001454-8</idno>
+          <idno type="URL" subtype="GND">http://d-nb.info/gnd/1001454-8</idno>
         </authority>
         <address>
           <addrLine>Österreichische Akademie der Wissenschaften</addrLine>
@@ -384,7 +389,6 @@
       </place>
     </listPlace>
   </standOff>
-  <!-- Template does not validates due to this being empty-->
 <facsimile>
       <surface ulx="0" uly="0" lrx="2836" lry="4279" xml:id="facs_1">
          <graphic url="https://viewer.acdh.oeaw.ac.at/viewer/api/v1/records/A67_42/files/images/A-Gf_A67_42-001r/full/full/0/default.jpg" width="2836px" height="4279px"/>
@@ -847,14 +851,8 @@
          <zone points="51,1524 73,1750 114,1779 1535,1774 1524,1606 1498,1524 1453,1499 435,1495" rendition="TextRegion" xml:id="facs_9_rO2EN_6" subtype="notation">
             <zone points="51,1524 73,1750 114,1779 1535,1774 1524,1606 1498,1524 1453,1499 435,1495" rendition="Line" xml:id="facs_9_rO2EN_6_line_004"/>
          </zone>
-         <zone points="285,1945 185,1945 185,1821 285,1821" rendition="TextRegion" xml:id="facs_9_r" subtype="text">
-            <zone points="285,1945 185,1945 185,1821 285,1821" rendition="Line" xml:id="facs_9_r_line_005"/>
-         </zone>
-         <zone points="578,1960 454,1960 454,1802 578,1802" rendition="TextRegion" xml:id="facs_9_r_170" subtype="rubrik">
-            <zone points="578,1960 454,1960 454,1802 578,1802" rendition="Line" xml:id="facs_9_r_170_line_006"/>
-         </zone>
-         <zone points="1421,1959 739,1959 739,1830 1421,1830" rendition="TextRegion" xml:id="facs_9_r_160" subtype="text">
-            <zone points="1421,1959 739,1959 739,1830 1421,1830" rendition="Line" xml:id="facs_9_r_160_line_007"/>
+         <zone points="185,1821 285,1821 1421,1830 1421,1959 739,1959 185,1945" rendition="TextRegion" xml:id="facs_9_TextRegion_1723297007332_234" subtype="text">
+            <zone points="185,1821 285,1821 1421,1830 1421,1959 739,1959 185,1945" rendition="Line" xml:id="facs_9_line_1723297010417_240"/>
          </zone>
          <zone points="1603,1879 1603,1976 1440,1976 1440,1805 1538,1805 1575,1839" rendition="TextRegion" xml:id="facs_9_r_165" subtype="rubrik">
             <zone points="1603,1879 1603,1976 1440,1976 1440,1805 1538,1805 1575,1839" rendition="Line" xml:id="facs_9_r_165_line_008"/>
@@ -14207,11 +14205,7 @@
             </ab>
             <ab facs="#facs_9_rO2EN_6" type="notation">
             </ab>
-            <ab facs="#facs_9_r" type="text">
-            </ab>
-            <ab facs="#facs_9_r_170" type="rubrik">
-            </ab>
-            <ab facs="#facs_9_r_160" type="text">
+            <ab facs="#facs_9_TextRegion_1723297007332_234" type="text">
             </ab>
             <ab facs="#facs_9_r_165" type="rubrik">
             </ab>

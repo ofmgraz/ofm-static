@@ -201,6 +201,7 @@
     </xsl:template>
     <xsl:template match="self::text()">
         <xsl:variable name="classtype" select="tokenize(ancestor::tei:ab[1]/@type, '_')[1]" />
+        <xsl:variable name="pbId" select="replace(ancestor::tei:ab[1]/@facs, '#', '')" />
         <xsl:if test="string-length(normalize-space(self::text())) > 0">
             <!-- <xsl:choose>
                 <xsl:when test="$classtype = 'text'">
@@ -220,7 +221,7 @@
                             </xsl:choose>
                         </xsl:attribute>
                         <xsl:attribute name="id">
-                            <xsl:value-of select="generate-id()" />
+                            <xsl:value-of select="$pbId" />
                         </xsl:attribute>
                         <xsl:value-of select="normalize-space(.)" />
                     </span>

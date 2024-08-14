@@ -208,6 +208,7 @@ div#navbarSupportedContent div#navbar_right_spacer {
     padding-top: 0rem;
     padding-bottom: 2em;
     margin-left: auto;
+    width: auto ;
     max-height: 100%;
 }
 
@@ -520,7 +521,7 @@ width: 100% ;
 }
 
 .col-xs-4{
-    width: 33.33% ;
+    width: 33.33% ;cd 
 }
 #container-resize,
 #text-resize {

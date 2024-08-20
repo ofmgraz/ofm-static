@@ -8,12 +8,8 @@
                     Franziskanerprovinz Graz</title>
                 <author>
                     <persName>
-                        <forename>Max</forename>
-                        <surname>Mustermann</surname>
-                    </persName>
-                    <persName>
-                        <forename>Erika</forename>
-                        <surname>Musterfrau</surname>
+                        <forename>Robert</forename>
+                        <surname>Klugseder</surname>
                     </persName>
                 </author>
             </titleStmt>
@@ -36,10 +32,89 @@
         </fileDesc>
     </teiHeader>
     <text>
-        <body>
+        <body xml:lang="de">
             <div>
                 <head>Die Bücher</head>
-                <p xml:lang="lat">Fabula generale nomen est : eius duae primae partes sunt, tragoedia et comoedia. Si Latina argumentatio sit, praetextata dicitur. Comoedia autem multas species habet. Aut enim palliata est aut togata aut tabernaria aut Atellana aut mimus aut Rhinthonica aut planipedia. Planipedia autem dicta ob humilitatem argumenti eius ac vilitatem actorum , qui non cothurno aut socco utuntur in scaena aut pulpito , sed plano pede : vel ideo quod non ea negotia continet, quae personarum in turribus aut in coenaculis habitantium sunt, sed in plano et humili loco.</p>
+                <p>Die Grazer Zentralbibliothek verwahrt zahlreiche Choralquellen vom Beginn des 14. Jahrhun-
+derts weg bis zum 19. Jahrhundert. In der Forschung wurden diese Handschriften und Drucke
+bislang wenig beachtet, bekannter sind die Quellen zur barocken franziskanischen Figuralmu-
+sik durch die Forschungen von Ladislav Kacice. Knapp ein Drittel der Quellen stammt aus dem
+14., 15. und 16. Jahrhundert, zwei Drittel sind aus dem 17. und 18. Jahrhundert und bilden
+somit einen starken, repräsentativen Bestand zur Beschäftigung mit dem heute wenig beach-
+teten Barockchoral.</p>
+
+<p>Ein Blick in die Antiphonarien der Grazer Klarissen und Franziskaner des 15. Jahrhunderts zeigt
+ein gewohntes Bild. Neben dem gängigen Standardrepertoire an Antiphonen und Responso-
+rien finden wir im Orden gängige Versoffizien wie Dreifaltigkeit, Antonius, Clara, Stigmata
+Sancti Francisci, Franciscus und Ludovicus Rex. Das älteste Graduale aus Maria Lankowitz (vor
+1332) ist in einer etwas ungenau wirkenden Quadratnotation geschrieben. Interessant sind
+die Spuren einer lebendigen, sich ständig erneuernden Liturgie anhand der späteren Zusätze.
+Das Alleluia des Franziskusfestes (04.10.) O patriarcha pauperum wird für zwei weitere Gele-
+genheiten, adaptiert: Unter dem Haupttext des Alleluiaverses stehen zwei weitere von zwei
+verschiedenen Händen geschriebene Verse: O consolatrix Maria und Uix piorum hominum und
+dokumentieren die weit verbreitete Praxis der mehr oder weniger geglückten Paraphrasie-
+rung diverser liturgischer Texte.</p>
+
+<p>Von besonderem liturgischen Interesse sind die Choralhandschriften des 18. Jahrhunderts. Im
+Unterschied zu den Drucken sind sie meist ein treues Spiegelbild der tatsächlichen liturgischen
+Praxis und erlauben in einer Gesamtschau eine getreue Rekonstruktion der mit Gesang gefei-
+erten Gottesdienste. Dies betrifft den Umfang des in den einzelnen Horen wirklich Gesunge-
+nen, dies erlaubt einen Einblick in jene Hausbräuche, nach denen in der Abstufung des Ge-
+sangs der Rang eines Festes sichtbar wird.</p>
+
+<p>Auch das Verhältnis zwischen Choral und Figuralmusik bildet sich in diesen Büchern ab. In Graz
+selbst kann man all dies und noch mehr im perfekten Übereinstimmen diverser Bücher wie
+den Orgelbüchern S 1/18 und S 120 (beide 18. Jahrhundert), dem Intonationsbuch des Zele-
+branten für die feierliche Vesper (S 1/25, 1753) und das Antiphonale (S 1/44 und S 1/45, 18.
+Jahrhundert) sehen. Die beiden Orgelbücher sind Kompendien des zu Begleitenden für ein
+gesamtes liturgisches Jahr, vor allem für Tagzeitenliturgie, Litanei und Volksandachten. Sie
+enthalten im Generalbassstil ausharmonisierte gregorianische Gesänge wie (Marianische) An-
+tiphonen, Hymnen, Responsorien usw. Ein Orgelbuch enthält auch die wenigen gängigen und
+selten überlieferten deutschen Kirchenlieder, welche die Gemeinde im Laufe eines Jahres ge-
+sungen hat.</p>
+
+<p>Das zweibändige und handgeschriebene Antiphonale des 18. Jahrhunderts (S 1/44 und S 1/45)
+ist eigentlich ein Auszug aus einem vollen Antiphonar mit nur jenen Gesängen, die gemäß den
+Usancen der Provinz tatsächlich beim Stundengebet gesungen worden sind. Sonstige handge-
+schriebene Choralbücher sind typische Gebrauchshandschriften für Kleriker. Ein Chorallehr-
+buch (S 1/22) enthält vor allem die Gesänge des Zelebranten. Bedeutsam sind auch noch die
+Prozessionalien mit den Gesängen für diverse Prozessionen, die auch konkret auf die örtlichen
+Gegebenheiten bestimmter Klöster abgestimmt sind.</p>
+
+<p>Neben den Choralhandschriften gibt es auch nicht wenige Choraldrucke – Gradualien und An-
+tiphonarien – die Einblicke in die Choralproduktion geben. Die allgemein meist nur in wenigen
+Exemplaren überlieferten Bücher stammen aus venezianischen Druckereien wie Cieras, Balle-
+oni, Pezzana, aus der Druckerei Mayr aus Salzburg oder von Leopold Voigt in Wien. Gemäß
+den nachtridentinischen liturgischen Büchern sind die Folianten meist zweiteilig, dem allge-
+meinen Graduale der römischen Liturgie z. B. ist ein franziskanischer Anhang beigebunden, oft
+auch aus anderen Druckjahren. Diese Gradualien und Antiphonalien enthalten dann im An-
+hang neben dem franziskanischen Kalender auch alle Eigengesänge, darunter sind die zahlrei-
+chen neukomponierten Offizien für jene Ordensheilige, die seit dem Ausgang des Mittelalters
+kanonisiert worden sind. Große Pläne mit der Herausgabe eigener liturgischer Bücher hatte
+der Salzburger Erzbischof Maximilian Gandolf. 1683 erschien in der Salzburger Druckerei Mayr
+das Psalterium mit den Ferialantiphonen und den Hymnen, 1685 wurden bei Mayr gleich zwei
+Hymnare aufgelegt: Das Hymnar mit den unter Papst Urban VIII. erneuerten Texten für den
+römischen Ritus samt einem gedruckten Anhang für die drei Zweige der franziskanischen
+Gemeinschaft, und zusätzlich noch ein eigenes Hymnar für die franziskanischen Ordens-
+zweige, in dem die Hymnen des römischen Breviers und der franziskanischen Eigenfeste inei-
+nander verwoben waren.</p>
+
+<p>Zu beachten ist auch das Verhältnis zwischen der italienischen (Druck-) Überlieferung und der
+österreichischen handschriftlichen Tradition bei den musikalischen Fassungen von Antipho-
+nen und anderen Gesängen für die franziskanischen Eigenfeste vom Ausgang des Mittelalters
+weg bis ins 18. Jahrhundert. Während z. B. bei den klassischen Versoffizien des Ordens für
+Franziskus oder Antonius eine stabile internationale Überlieferung zu beobachten ist, finden
+wir bei neueren Festen für ein und dieselben Texte unterschiedliche Melodien.
+Die vorhandene lokale Choralüberlieferung des Franziskanerordens stellt trotz einer guten
+Quellenlage noch weitgehend eine terra incognita dar. Während die österreichische Musikge-
+schichte in den imperialen und in den klösterlichen Zentren der monastischen Ordensgemein-
+schaften vor allem in Hinblick auf die Figuralmusik des 18. Jahrhunderts relativ gut bekannt
+ist, liegt in Bezug auf die liturgisch-musikalische Praxis der weit verbreiteten Mendikanten und
+ihrer Klientel vieles im Dunkeln. Durch die Erschließung und online-Publikation dieses Quel-
+lenkorpus kann dieses Desiderat zumindest teilweise geschlossen werden und weitergehende
+Forschungen ermöglichen.</p>
+
+	<p style="unterschrift">Univ.-Doz. Dr. Robert Klugseder</p>
             </div>
         </body>
     </text>

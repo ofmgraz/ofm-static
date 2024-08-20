@@ -149,7 +149,22 @@
     <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
     <xsl:variable name="facsUrl"><xsl:value-of select="data(//tei:surface[@xml:id = $pbId]/tei:graphic/@url)"/></xsl:variable>
     <xsl:variable name="page_number"><xsl:number level="any"/></xsl:variable>
-    <span class="pb" source="{$facsUrl}" n="{$page_number}" id="{$pbId}" />
+    <p class="pb" source="{$facsUrl}" n="{$page_number}" id="{$pbId}" />
+</xsl:template>
+
+<xsl:template match="tei:ab">
+        <xsl:variable select="./@class" name="currentclass" />
+        <p>
+            <xsl:attribute name="class">
+                <xsl:value-of select="$currentclass" />
+                <xsl:text>yes-index</xsl:text>
+            </xsl:attribute>
+             <xsl:apply-templates/>
+        </p>
+</xsl:template>
+
+<xsl:template match="tei:lb">
+    <br/>
 </xsl:template>
 
 <xsl:template match="tei:div">

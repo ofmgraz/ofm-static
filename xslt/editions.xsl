@@ -33,10 +33,6 @@
     <xsl:variable name="link">
         <xsl:value-of select="replace($teiSource, '.xml', '.html')"/>
     </xsl:variable>
-    <xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
-    <xsl:param name="mytab"><![CDATA[&emsp;]]></xsl:param>
-    <xsl:param name="myplaceholder"><![CDATA[&zwnj;]]></xsl:param>
-    <xsl:param name="myline"><![CDATA[<hr />]]></xsl:param>
     <xsl:template match="/">
         <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
         <html class="page"  lang="de">
@@ -144,42 +140,39 @@
     </xsl:template>
     <xsl:template match="tei:teiHeader" />
     <xsl:template match="tei:facsimile" />
-
 <xsl:template match="tei:pb">
     <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
     <xsl:variable name="facsUrl"><xsl:value-of select="data(//tei:surface[@xml:id = $pbId]/tei:graphic/@url)"/></xsl:variable>
     <xsl:variable name="page_number"><xsl:number level="any"/></xsl:variable>
     <p class="pb" source="{$facsUrl}" n="{$page_number}" id="{$pbId}" />
 </xsl:template>
-
 <xsl:template match="tei:ab">
         <xsl:variable select="./@class" name="currentclass" />
+        <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
         <p>
             <xsl:attribute name="class">
                 <xsl:value-of select="$currentclass" />
                 <xsl:text>yes-index</xsl:text>
             </xsl:attribute>
+            <xsl:attribute name="id">
+                <xsl:value-of select="$pbId" />
+            </xsl:attribute>
              <xsl:apply-templates/>
         </p>
 </xsl:template>
-
 <xsl:template match="tei:lb">
-    <br/>
+        <xsl:variable select="./@class" name="currentclass" />
+        <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
+        <br>
+            <xsl:attribute name="class">
+                <xsl:value-of select="$currentclass" />
+            </xsl:attribute>
+            <xsl:attribute name="id">
+                <xsl:value-of select="$pbId" />
+            </xsl:attribute>
+             <xsl:apply-templates/>
+        </br>
 </xsl:template>
-
-<xsl:template match="tei:div">
-        <div id="{local:makeId(.)}">
-            <xsl:if test="./@xml:id">
-                <a>
-                    <xsl:attribute name="name">
-                        <xsl:value-of select="lower-case(./@xml:id)"/>
-                    </xsl:attribute>
-                </a>
-            </xsl:if>
-            <xsl:apply-templates/>
-        </div>
-    </xsl:template>
-
    <!-- <xsl:template match="tei:rs">
         <xsl:variable name="ppid">
             <xsl:value-of select="./@ref"/>

@@ -94,7 +94,7 @@ records = []
 cfts_records = []
 for xml_filepath in tqdm(files, total=len(files)):
     doc = TeiReader(xml=xml_filepath)
-    facs = doc.any_xpath(".//tei:body/tei:div/tei:pb/@facs")
+    facs = doc.any_xpath(".//tei:body/tei:div/tei:ab/tei:lb/@facs")
     pages = 0
     xml_file = os.path.basename(xml_filepath)
     html_file = xml_file.replace(".xml", ".html")
@@ -107,7 +107,8 @@ for xml_filepath in tqdm(files, total=len(files)):
     date_str, nb_tst, na_tst = make_date(doc)
     liturgy, doc_type, provenance, form, printer = make_type(doc)
     for v in facs:
-        p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|.//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
+        #p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']|.//tei:body/tei:div/tei:tei:ab[@facs='{v}']|.//tei:body/tei:div/tei:ab[preceding-sibling::tei:lb[1][@facs='{v}']"
+        p_group = f".//tei:body/tei:div/tei:ab/tei:lb[@facs='{v}']"
         # p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
         #    f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
         # p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
@@ -123,7 +124,7 @@ for xml_filepath in tqdm(files, total=len(files)):
         }
         record = {}
         full_text = ""
-        p_group = ".//tei:body/tei:div/tei:ab"
+        p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
         page = doc.any_xpath(p_group)
         page = [paragraph for paragraph in page if paragraph.xpath("./@facs")[0].startswith(f"{v}_")
                 and len(ET.tostring(paragraph).strip()) > 0]

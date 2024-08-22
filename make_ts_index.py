@@ -7,6 +7,7 @@ from acdh_tei_pyutils.tei import TeiReader, ET
 from acdh_tei_pyutils.utils import extract_fulltext
 from tqdm import tqdm
 from typesense.api_call import ObjectNotFound
+import re
 # It needs the OS variable TYPESENSE_API_KEY to be set
 # Additional vars: TYPESENSE_HOST, TYPESENSE_PORT, TYPESENSE_PROTOCOL.
 # Default: http://typesense.acdh-dev.oeaw.ac.at/, "https", "443"
@@ -85,6 +86,9 @@ def make_type(doc):
         printer = ""
     return liturgy, genre, provenance, form, printer
 
+def prepare_text(text):
+    text = re.sub('\-\s*\n\s*', '', extract_fulltext(text))
+    return ' '.join(text.split())
 
 contents = nocontents = []
 # %%
@@ -115,11 +119,11 @@ for xml_filepath in tqdm(files, total=len(files)):
         record = {}
         if len(body) > 0:
             p_aragraph = doc.any_xpath(p_group)[0]
-            ft =  ' '.join(extract_fulltext(p_aragraph).split())
+            ft =  prepare_text(p_aragraph)
             if len(ft) > 0:
                 pid = p_aragraph.xpath("./@facs")[0]
-                r = {"id": pid.strip('#'),
-                     "resolver": f"/{html_file}",
+                r = {"id": f"{id}_{pid.strip('#')}",
+                     "resolver": f"{html_file}",
                      "rec_id": os.path.split(xml_file)[-1],
                      "title":  f"{r_title}",  # + " Page {str(pages)}"
                      "anchor_link": pid,

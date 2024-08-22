@@ -64,8 +64,14 @@ var viewer = new OpenSeadragon.Viewer({
     tileSources: tileSources
 });
 
-
- // ==================
+/*
+##################################################################
+index and previous index for click navigation in osd viewer
+locate index of anchor element
+##################################################################
+*/
+var idx = 0;
+var prev_idx = -1;
 
 /* change size of facs container */
 function resize_facsContainer() {
@@ -315,7 +321,7 @@ prev.addEventListener("click", () => {
 
 
 next.addEventListener("click", () => {
-    if (idx < element_a.length) {
+    if (prev_idx < element_a.length) {
         element_a[idx].scrollIntoView();
     } else {
         element_a[idx-1].scrollIntoView();

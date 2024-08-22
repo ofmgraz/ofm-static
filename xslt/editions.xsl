@@ -111,17 +111,17 @@
                             <!-- <div id="editor-widget">
                                 <xsl:call-template name="annotation-options"></xsl:call-template>
                             </div> -->
+                            <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 text yes-index">
+                                    <div id="transcript">
+                                        <xsl:apply-templates/>
+                                    </div>
+                                </div> 
                             <div id="container-resize" class="row transcript active">
                                 <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
                                     <div id="viewer">
                                         <div id="container_facs_1" class="osd-container"/>
                                     </div>
                                 </div>
-                                <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 text yes-index">
-                                    <div id="transcript">
-                                        <xsl:apply-templates/>
-                                    </div>
-                                </div> 
                             </div>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ from acdh_tei_pyutils.tei import TeiReader, ET
 from acdh_tei_pyutils.utils import extract_fulltext
 from tqdm import tqdm
 from typesense.api_call import ObjectNotFound
+import re
 # It needs the OS variable TYPESENSE_API_KEY to be set
 # Additional vars: TYPESENSE_HOST, TYPESENSE_PORT, TYPESENSE_PROTOCOL.
 # Default: http://typesense.acdh-dev.oeaw.ac.at/, "https", "443"
@@ -85,6 +86,9 @@ def make_type(doc):
         printer = ""
     return liturgy, genre, provenance, form, printer
 
+def prepare_text(text):
+    text = re.sub('\-\s*\n\s*', '', extract_fulltext(text))
+    return ' '.join(text.split())
 
 contents = nocontents = []
 # %%
@@ -94,7 +98,6 @@ records = []
 cfts_records = []
 for xml_filepath in tqdm(files, total=len(files)):
     doc = TeiReader(xml=xml_filepath)
-    facs = doc.any_xpath(".//tei:body/tei:div/tei:pb/@facs")
     pages = 0
     xml_file = os.path.basename(xml_filepath)
     html_file = xml_file.replace(".xml", ".html")
@@ -106,64 +109,48 @@ for xml_filepath in tqdm(files, total=len(files)):
     )
     date_str, nb_tst, na_tst = make_date(doc)
     liturgy, doc_type, provenance, form, printer = make_type(doc)
-    for v in facs:
-        p_group = f".//tei:body/tei:div/tei:p[preceding-sibling::tei:pb[1]/@facs='{v}']|.//tei:body/tei:div/tei:lg[preceding-sibling::tei:pb[1]/@facs='{v}']"
-        # p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}']|"\
-        #    f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
-        # p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
-        ## p_group = f".//tei:body/tei:div/tei:ab[@facs='{v}_']"
-        # p_group = f".//tei:body/tei:div/tei:lb[following-sibling::tei:ab[1]/@facs='{v}*']|"\
-        #    f".//tei:body/tei:div/tei:lb[following-sibling::tei:pb[1]/@facs='{v}']"
-        # p_group = ".//tei:body/tei:div/tei:ab/tei:lb"
-        # p_group = f".//tei:body/tei:div/tei:pb[@facs='{v}']"
-        body = doc.any_xpath(p_group)
-        pages += 1
-        cfts_record = {
-            "project": "ofm_graz",
-        }
-        record = {}
-        full_text = ""
-        p_group = ".//tei:body/tei:div/tei:ab"
-        page = doc.any_xpath(p_group)
-        page = [paragraph for paragraph in page if paragraph.xpath("./@facs")[0].startswith(f"{v}_")
-                and len(ET.tostring(paragraph).strip()) > 0]
-        if paragraph := doc.any_xpath(p_group):
-            for p in paragraph:
-                next = extract_fulltext(p).strip()
-                if next:
-                    full_text = '\n'.join([full_text.lstrip(), next.strip()])
 
-            # paragraph = paragraph[0]
-        for r in [cfts_record, record]:
-            r["id"] = id
-            r["resolver"] = f"/{html_file}"
-            r["rec_id"] = os.path.split(xml_file)[-1]
-            r["title"] = f"{r_title}"  # + " Page {str(pages)}"
-            try:
-                r["year"] = date_str
-                r["notbefore"] = nb_tst
-                r["notafter"] = na_tst
-            except ValueError:
-                pass
-            r["provenance"] = provenance
-            r["doc_type"] = doc_type
-            r["liturgy"] = liturgy
-            r["printer"] = printer
-            r["form"] = form
-            if p_aragraph := doc.any_xpath(p_group):
-                pid = p_aragraph[0].xpath(".//@facs")[0]
-            if len(full_text) > 0:
-                r["full_text"] = full_text
-                r["anchor_link"] = pid
-        records.append(record)
-        cfts_records.append(cfts_record)
+
+    facs = doc.any_xpath(".//tei:body/tei:div/tei:pb/@facs")
+    for v in facs:
+        p_group = f".//tei:body/tei:div/tei:ab[preceding-sibling::tei:pb[1]/@facs='{v}']"
+        body = doc.any_xpath(p_group)
+        cfts_record = {"project": "ofm_graz"}
+        record = {}
+        if len(body) > 0:
+            p_aragraph = doc.any_xpath(p_group)[0]
+            ft =  prepare_text(p_aragraph)
+            if len(ft) > 0:
+                pid = p_aragraph.xpath("./@facs")[0]
+                r = {"id": f"{id}_{pid.strip('#')}",
+                     "resolver": f"{html_file}",
+                     "rec_id": os.path.split(xml_file)[-1],
+                     "title":  f"{r_title}",  # + " Page {str(pages)}"
+                     "anchor_link": pid,
+                     "full_text": ft,
+                     "provenance": provenance,
+                     "doc_type": doc_type,
+                     "liturgy": liturgy,
+                     "printer": printer,
+                     "form": form,
+                     "anchor_link": pid
+                     }    
+                try:
+                    r["year"] = date_str
+                    r["notbefore"] = nb_tst
+                    r["notafter"] = na_tst
+                except ValueError:
+                    pass
+                records.append(r)
+                r["project"]: "ofm_graz"
+                cfts_records.append(r)
 make_index = client.collections["ofm_graz"].documents.import_(records)
 # print(make_index)
 print("done with indexing ofm_graz")
 # %%
 # make_index = CFTS_COLLECTION.documents.import_(cfts_records, {"action": "upsert"})
 
-make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"action": "upsert"})
+#make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"action": "upsert"})
 # %%
 # print(make_index)
 print("done with cfts-index STB")

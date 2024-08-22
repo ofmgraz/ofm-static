@@ -33,10 +33,6 @@
     <xsl:variable name="link">
         <xsl:value-of select="replace($teiSource, '.xml', '.html')"/>
     </xsl:variable>
-    <xsl:param name="mybreak"><![CDATA[<br/>]]></xsl:param>
-    <xsl:param name="mytab"><![CDATA[&emsp;]]></xsl:param>
-    <xsl:param name="myplaceholder"><![CDATA[&zwnj;]]></xsl:param>
-    <xsl:param name="myline"><![CDATA[<hr />]]></xsl:param>
     <xsl:template match="/">
         <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
         <html class="page"  lang="de">
@@ -85,40 +81,6 @@
                                             <i class="fa-solid fa-file-code center" title="TEI/XML"/>
                                         </a>
                                     </h3>
-                                    <!-- <p class="document_info archival_small" align="center">
-                                        <xsl:value-of
-                                            select="normalize-space(//tei:profileDesc/tei:creation/tei:date[1])"
-                                        />
-                                    </p>
-                                    <p class="document_info archival_small" align="center">
-                                        <xsl:value-of select="//tei:text/@type"/>
-                                        <xsl:value-of
-                                            select="concat(' (', normalize-space($doc_type)), ')'"/>
-                                    </p>
-                                    <p class="document_info archival_small" align="center">
-                                        <xsl:value-of
-                                            select='//tei:msDesc/tei:msIdentifier/tei:idno[@type = "archive"]/text()[1]/normalize-space()'
-                                        />
-                                    </p>
-                                    <xsl:variable name="text_status"
-                                        select="//tei:teiHeader/tei:revisionDesc/@status"/>
-                                    <xsl:variable name="changes"
-                                        select="//tei:teiHeader/tei:revisionDesc/tei:change"/>
-                                    <xsl:choose>
-                                        <xsl:when test="$text_status = 'created'">
-                                            <div align="center">
-                                                <xsl:attribute name="class">
-                                                  <xsl:value-of
-                                                  select="concat('revision_desc ', $text_status)"/>
-                                                </xsl:attribute> maschinell erfasster Rohtext </div>
-                                        </xsl:when>
-                                        <xsl:otherwise>
-                                            <div align="center">
-                                                <xsl:attribute name="class">
-                                                  <xsl:value-of select="'revision_desc created'"/>
-                                                </xsl:attribute> maschinell erfasster Rohtext </div>
-                                        </xsl:otherwise>
-                                    </xsl:choose> -->
                                 </div>
                                 <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4" style="text-align:left">
                                     <xsl:if test="ends-with($next, '.html')">
@@ -133,25 +95,36 @@
                                     </xsl:if>
                                 </div>
                                 </div>
-                            </div>
+                            </div>                               
+                    <div class="edition_container ">                                                                                                                                                                                                           
+                        <div class="offcanvas offcanvas-start" tabindex="-1"
+                            id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel"
+                            data-bs-scroll="true" data-bs-backdrop="false">
+                            <div class="offcanvas-header" />
+                            <div class="offcanvas-body" />
+                        </div>
+                        <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions"
+                            aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true"
+                            data-bs-backdrop="false">
+                        </div>
+                        <div class="wp-transcript">
+                            <!-- <div id="editor-widget">
+                                <xsl:call-template name="annotation-options"></xsl:call-template>
+                            </div> -->
                             <div id="container-resize" class="row transcript active">
                                 <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
                                     <div id="viewer">
-                                        <div id="container_facs_1"/>
-                                        <!-- container and facs handling in js -->
+                                        <div id="container_facs_1" class="osd-container"/>
                                     </div>
                                 </div>
-                                <div id="text-resize" lang="de"
-                                    class="col-md-6 col-lg-6 col-sm-12 text yes-index">
-                                    <div id="section">
-                                        <xsl:for-each select="//tei:body/tei:div" >
-                                            <div class="card-body non_mimetic_lbs" >
-                                                <xsl:apply-templates/>
-                                            </div>
-                                        </xsl:for-each>
+                                <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 text yes-index">
+                                    <div id="transcript">
+                                        <xsl:apply-templates/>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
+                        </div>
+                    </div>
                             <!-- create list* elements for entities bs-modal -->
                         </div>
                     </div>
@@ -165,75 +138,46 @@
             </body>
         </html>
     </xsl:template>
-    <xsl:template match="tei:div[parent::tei:div]">
-        <!-- this is for sections, subsections and articles-->
-        <xsl:variable name="type_attrib" select="@type"/>
-        <div>
-            <xsl:attribute name="class">
-                <xsl:value-of select="$type_attrib"/>
-            </xsl:attribute>
-            <xsl:apply-templates/>
-        </div>
-    </xsl:template>
-    <xsl:template match="tei:pb">
-        <!-- <span class="hline"><xsl:value-of select="$mybreak" disable-output-escaping="yes"/></span> -->
-        <!-- needed for scrolling / numbering -->
-        <!----> <span class="anchor-pb"/> ->
-        <!-- determine img src -->
-        <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
-        <xsl:variable name="surfaceNode" as="node()"><xsl:value-of select="//tei:graphic[@xml:id = $pbId]"/></xsl:variable>
-        <xsl:variable name="facsUrl"><xsl:value-of select="data(//tei:surface[@xml:id = $pbId]/tei:graphic/@url)"/></xsl:variable>
-        <xsl:variable name="page_number"><xsl:number level="any"/></xsl:variable>
-        <span class="pb" source="{$facsUrl}" n="{$page_number}"
-            style="--page_before: '{($page_number - 1)}'; --beginning_page: '{$page_number}';"> </span>
-        <span class="pb_marker" n="{$page_number}" id="{$pbId}" />
-    </xsl:template>
-    <xsl:template match="tei:ab">
+    <xsl:template match="tei:teiHeader" />
+    <xsl:template match="tei:facsimile" />
+<xsl:template match="tei:pb">
+    <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
+    <xsl:variable name="facsUrl"><xsl:value-of select="data(//tei:surface[@xml:id = $pbId]/tei:graphic/@url)"/></xsl:variable>
+    <xsl:variable name="page_number"><xsl:number level="any"/></xsl:variable>
+    <p class="pb" source="{$facsUrl}" n="{$page_number}" id="{$pbId}" />
+</xsl:template>
+<xsl:template match="tei:ab">
         <xsl:variable select="./@class" name="currentclass" />
+        <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
         <p>
             <xsl:attribute name="class">
                 <xsl:value-of select="$currentclass" />
                 <xsl:text>yes-index</xsl:text>
             </xsl:attribute>
+            <xsl:attribute name="id">
+                <xsl:value-of select="$pbId" />
+            </xsl:attribute>
              <xsl:apply-templates/>
         </p>
-    </xsl:template>
-    <xsl:template match="self::text()">
-        <xsl:variable name="classtype" select="tokenize(ancestor::tei:ab[1]/@type, '_')[1]" />
-        <xsl:variable name="pbId" select="replace(ancestor::tei:ab[1]/@facs, '#', '')" />
-        <xsl:if test="string-length(normalize-space(self::text())) > 0">
-            <!-- <xsl:choose>
-                <xsl:when test="$classtype = 'text'">
-                    <xsl:value-of select="." />
-                    <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
-                </xsl:when>
-                <xsl:otherwise> -->
-                    <span>
-                        <xsl:attribute name="class">
-                            <xsl:choose>
-                                <xsl:when test="$classtype='rubrik2'">
-                                    <xsl:text>rubrik</xsl:text>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:value-of select="$classtype" />
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:attribute>
-                        <xsl:attribute name="id">
-                            <xsl:value-of select="$pbId" />
-                        </xsl:attribute>
-                        <xsl:value-of select="normalize-space(.)" />
-                    </span>
-                    <xsl:if test="$classtype != 'initiale'">
-                        <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
-                    </xsl:if>
-                <!-- </xsl:otherwise>
-            </xsl:choose> -->
-        </xsl:if>
-    </xsl:template>
-    <xsl:template match="tei:a[contains(@class, 'navigation_')]">
-        <a class="{@class}" id="{@xml:id}">
-            <xsl:apply-templates/>
-        </a>
-    </xsl:template>
+</xsl:template>
+<xsl:template match="tei:lb">
+        <xsl:variable select="./@class" name="currentclass" />
+        <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
+        <br>
+            <xsl:attribute name="class">
+                <xsl:value-of select="$currentclass" />
+            </xsl:attribute>
+            <xsl:attribute name="id">
+                <xsl:value-of select="$pbId" />
+            </xsl:attribute>
+             <xsl:apply-templates/>
+        </br>
+</xsl:template>
+   <!-- <xsl:template match="tei:rs">
+        <xsl:variable name="ppid">
+            <xsl:value-of select="./@ref"/>
+        </xsl:variable>
+        <span id="{$ppid}" class="person">
+		<xsl:apply-templates/></span>
+    </xsl:template>  -->
 </xsl:stylesheet>

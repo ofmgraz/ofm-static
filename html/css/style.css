@@ -97,6 +97,7 @@ main {
 }
 
 
+
 a{
     color: var(--ofm-link-color);
     text-decoration: none!important ;
@@ -105,6 +106,11 @@ a{
 a:hover,
 a:active {
     color: var(--ofm-font-color) ;
+}
+
+ul {
+	list-style: none;
+	text-align: left;
 }
 
 .col-md-4 {
@@ -272,6 +278,10 @@ div#navbarSupportedContent div#navbar_right_spacer {
 	background-color: var(--ofm-bg);
 }
 
+
+.table.entity-table {
+text-align: left ;
+}
 
 .table a {
     color: var(--ofm-bg-dark)!important;
@@ -530,7 +540,7 @@ width: 100% ;
     max-height: auto ;
     padding: 0;
 	margin: 0;
-    padding-bottom: 1vw!important;
+    padding-bottom: 50vw!important;
 }
 
 .right {
@@ -540,21 +550,21 @@ width: 100% ;
     text-align: right ;
 }
 
-#text-resize {
-    max-height: 100vh ;
-    overflow-y: scroll ;
-}
+
 
 #text-resize, #text-resize * {
     padding-left: 0 ;
     padding-right: 0 ;
-	max-width: 1vw ;
-    color: #fff;
+	max-width: 30vw ;
+    color: #000;
     overflow-x: clip ;
 }
 
 
-
+.pb {
+    display: inline-block;
+    height: 50vh ;
+}
 
 
 
@@ -605,7 +615,9 @@ width: 100% ;
             padding: 0.5em;
             max-width: 80vh;
     }
-
+    .osd-container {                                                                                                                                                                                                                                           
+        height: 80vh!important;
+        }   
     .col-md-4 {
             padding-left: 1em;
             padding-right: 1em ;

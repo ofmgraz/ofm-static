@@ -1,5 +1,5 @@
 const container_facs_1 = document.getElementById("container_facs_1");
-const text_wrapper = document.getElementById("text-resize");
+const text_wrapper = document.getElementsByClassName("facsimiles")[0];
 container_facs_1.style.height = `${String(screen.height / 2)}px`;
 /*
 ##################################################################
@@ -46,7 +46,7 @@ tileSources.push(imageURL);
 initialize osd
 ##################################################################
 */
-const viewer = new OpenSeadragon.Viewer({
+var viewer = new OpenSeadragon.Viewer({
 	id: 'container_facs_1',
 	prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/',
 	visibilityRatio: 1,
@@ -188,7 +188,7 @@ locate index of anchor element
 */
 var next_pb_index = 0;
 var previous_pb_index = 0;
-const a_elements = document.getElementsByClassName("anchor-pb");
+const a_elements = document.getElementsByClassName("pb");
 const max_index = (a_elements.length - 1);
 prev = document.querySelector("div[title='Previous page']");
 next = document.querySelector("div[title='Next page']");
@@ -204,126 +204,125 @@ pb = pagebreaks
 ##################################################################
 */
 
-function load_top_viewport_image(check=false) {
+
+
+window.addEventListener("scroll", function(event) {
   // elements in view
-  let first_pb_element_in_viewport = undefined;
-  for (let pb_element of pb_elements) {
-    if (isInViewport(pb_element)) {
-      first_pb_element_in_viewport = pb_element;
-      break;
-    }
+  var esiv = [];
+  for (let el of pb_elements) {
+      if (isInViewportAll(el)) {
+          esiv.push(el);
+          console.log(el)
+      }
   }
-  if (first_pb_element_in_viewport != undefined) {
-    // get next_pb_index of element
-    let current_pb_index = pb_elements_array.findIndex((el) => el === first_pb_element_in_viewport);
-    next_pb_index = current_pb_index + 1;
-    previous_pb_index = current_pb_index - 1;
-    // test if element is in viewport position to load correct image
-    let current_pb_element = pb_elements[current_pb_index];
-    if (check) {
-      if (isInTopViewport(current_pb_element)) {
-        loadNewImage(current_pb_element);
-      };
-    } else {
-      loadNewImage(current_pb_element, true);
-    }
+  if (esiv.length != 0) {
+      // first element in view
+      var eiv = esiv[0];
+      // get idx of element
+      var eiv_idx = Array.from(pb_elements).findIndex((el) => el === eiv);
+      idx = eiv_idx + 1;
+      prev_idx = eiv_idx - 1
+      // test if element is in viewport position to load correct image
+      if (isInViewport(pb_elements[eiv_idx])) {
+          loadNewImage(pb_elements[eiv_idx]);
+      }
+  }
+});
+
+
+/*
+##################################################################
+function to check if element is anywhere in window viewport
+##################################################################
+*/
+function isInViewportAll(element) {
+  // Get the bounding client rectangle position in the viewport
+  var bounding = element.getBoundingClientRect();
+  // Checking part. Here the code checks if el is close to top of viewport.
+  // console.log("Top");
+  // console.log(bounding.top);
+  // console.log("Bottom");
+  // console.log(bounding.bottom);
+  if (
+      bounding.top >= 0 &&
+      bounding.left >= 0 &&
+      bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+  ) {
+      return true;
+  } else {
+      return false;
   }
 }
 
-document.addEventListener(
-  "scroll",
-  load_top_viewport_image,
-  {passive: true}
-);
+
+
 
 /*
 ##################################################################
 function to trigger image load and remove events
 ##################################################################
 */
-
-    function add_image_to_viewer(new_image) {
-      viewer.addSimpleImage(
-        {
-          url: new_image,
-          success: function (event) {
-            function ready() {
-              //setTimeout(() => {
-              //  viewer.world.removeItem(viewer.world.getItemAt(0));
-              //}, 200);
-              viewer.world.removeItem(viewer.world.getItemAt(0));
-            }
-            // test if item was loaded and trigger function to remove previous item
-            if (event.item) {
-              ready();
-            } else {
-              event.item.addOnceHandler("fully-loaded-change", ready());
-            }
-          },
-        }
-      );
-    }
-    
-    
-    function loadNewImage(new_item, dont_check=false) {
-      if (new_item) {
-        var new_image = new_item.getAttribute("source");
-        var old_image = viewer.world.getItemAt(0);
-        if (dont_check){
-          add_image_to_viewer(new_image);
-        } else if (old_image) {
-          add_image_to_viewer(new_image);
-        }
+function loadNewImage(new_item) {
+  if (new_item) {
+      // source attribute hold image item id without url
+      var new_image = new_item.getAttribute("source");
+      var old_image = viewer.world.getItemAt(0);
+      if (old_image) {
+          // get url from current/old image and replace the image id with
+          // new id of image to be loaded
+          // access osd viewer and add simple image and remove current image
+          viewer.addSimpleImage({
+              url: new_image,
+              success: function(event) {
+                  function ready() {
+                      setTimeout(() => {
+                          viewer.world.removeItem(viewer.world.getItemAt(0));
+                      }, 200)
+                  }
+                  // test if item was loaded and trigger function to remove previous item
+                  if (event.item) {
+                      // .getFullyLoaded()
+                      ready();
+                  } else {
+                      event.item.addOnceHandler('fully-loaded-change', ready());
+                  }
+              }
+          });
       }
-    }  
-
-
-
-prev.style.opacity = 1;
-next.style.opacity = 1;
-
-function scroll_prev() {
-  if (previous_pb_index <= 0) {
-    a_elements[0].scrollIntoView();
-  } else {
-    a_elements[previous_pb_index].scrollIntoView();
-  };
-};
-
-function scroll_next() {
-  if (next_pb_index > max_index) {
-    a_elements[max_index].scrollIntoView();
-  } else {
-    a_elements[next_pb_index].scrollIntoView();
-  };
-};
-
-prev.addEventListener("click", () => {
-  scroll_prev();
-});
-next.addEventListener("click", () => {
-  scroll_next()
-});
-
-
-/*##################################################################
-function to check if element is close to top of window viewport
-##################################################################
-*/
-function isInTopViewport(element) {
-  // Get the bounding client rectangle position in the viewport
-  var bounding = element.getBoundingClientRect();
-  if (
-    bounding.top <= 180 &&
-    bounding.bottom <= 210 &&
-    bounding.top >= 0 &&
-    bounding.bottom >= 0
-  ) {
-    return true;
-  } else {
-    return false;
   }
 }
+
+
+/*
+##################################################################
+accesses osd viewer prev and next button to switch image and
+scrolls to next or prev span element with class pb (pagebreak)
+##################################################################
+*/
+var element_a = document.getElementsByClassName('pb');
+var prev = document.querySelector("div[title='Previous page']");
+var next = document.querySelector("div[title='Next page']");
+prev.style.opacity = 1;
+next.style.opacity = 1;
+prev.addEventListener("click", () => {
+    if (prev_idx >= 0) {
+        element_a[prev_idx].scrollIntoView();
+    } else {
+        element_a[0].scrollIntoView();
+    }
+});
+
+
+next.addEventListener("click", () => {
+    if (idx < element_a.length) {
+        element_a[idx].scrollIntoView();
+    } else {
+        element_a[idx-1].scrollIntoView();
+    }
+    
+});
+
 
 /*
 ##################################################################
@@ -331,99 +330,21 @@ function to check if element is close to top of window viewport
 ##################################################################
 */
 function isInViewport(element) {
-    // Get the bounding client rectangle position in the viewport
-    var bounding = element.getBoundingClientRect();
-    // Checking part. Here the code checks if el is close to top of viewport.
-    // console.log("Top");
-    // console.log(bounding.top);
-    // console.log("Bottom");
-    // console.log(bounding.bottom);
-    if (
-        bounding.top <= 180 &&
-        bounding.bottom <= 210 &&
-        bounding.top >= 0 &&
-        bounding.bottom >= 0
-    ) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
-
-/*
-##################################################################
-test to add whitespace at end of the page to make 
-the scrolling mechanism work.
-##################################################################
-*/
-
-
-/* since not all pages in the original document contain a lot of text,
-it could happen that the image on the last page doesnt get loaded, cause 
-its impossible to scroll far enough to trigger the load image stuff   */
-// setting up eventlistener and Intersectionobserver
-
-// create anchor as a point of reference for the end of the textblock
-bell_anchor = document.createElement("a");
-text_wrapper.appendChild(
-  bell_anchor
-);
-
-// stuff to change / set the whitespace at bottom
-var bottom_whitespace = 0;
-
-function change_bottom_whitespace_of_textWrapper() {
-  bottom_whitespace = ((window.innerHeight / 10) *8);
-  text_wrapper.style.paddingBottom = `${bottom_whitespace}px`
-};
-
-function check_bottom_whitespace_of_textWrapper(check_bottom_whitespace) {
-  if (check_bottom_whitespace === undefined) {
-    check_bottom_whitespace = false;
-  }
-  if (check_bottom_whitespace === true){
-    if (bottom_whitespace == 0) {
-      change_bottom_whitespace_of_textWrapper();
-    }
+  // Get the bounding client rectangle position in the viewport
+  var bounding = element.getBoundingClientRect();
+  // Checking part. Here the code checks if el is close to top of viewport.
+  // console.log("Top");
+  // console.log(bounding.top);
+  // console.log("Bottom");
+  // console.log(bounding.bottom);
+  if (
+      bounding.top <= 1200 &&
+      bounding.bottom <= 600 &&
+      bounding.top >= 0 &&
+      bounding.bottom >= 0
+  ) {
+      return true;
   } else {
-      change_bottom_whitespace_of_textWrapper();
+      return false;
   }
 }
-
-// setting up eventlistener and Intersectionobserver
-let io_options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 1.0,
-};
-
-let observer = new IntersectionObserver(
-  function () {check_bottom_whitespace_of_textWrapper(check_bottom_whitespace=true)},
-  io_options
-);
-
-observer.observe(bell_anchor);
-
-
-/* change size of facs container */
-function resize_facsContainer() {
-  let new_container_height = calculate_facsContainer_height();
-  if (new_container_height != container_facs_1.clientHeight) {
-    container_facs_1.style.height = `${String(new_container_height)}px`;
-    return true;
-  };
-  return false;
-};
-
-
-addEventListener("resize", function (event) {
-    let resized = resize_facsContainer();
-    if (resized) {
-        viewer.forceResize();
-        fitVertically_align_left_bottom(viewer);
-    };
-    check_bottom_whitespace_of_textWrapper();
-  }
-);

@@ -1,6 +1,7 @@
 const container_facs_1 = document.getElementById("container_facs_1");
 const text_wrapper = document.getElementsByClassName("facsimiles")[0];
 container_facs_1.style.height = `${String(screen.height / 2)}px`;
+const transcript =  document.getElementById("text-resize");
 /*
 ##################################################################
 get all image urls stored in span el class tei-xml-images
@@ -9,7 +10,6 @@ creates an array for osd viewer with static images
 */
 const navbar_wrapper = document.getElementById("wrapper-navbar");
 const image_rights = document.getElementsByClassName("image_rights")[0];
-
 
 function calculate_facsContainer_height() {
   // calcutlates hight of osd container based on heigt of screen - (height of navbar + img rights&buttons)
@@ -56,6 +56,7 @@ var viewer = new OpenSeadragon.Viewer({
 	showSequenceControl: true,
 	showZoomControl: true,
 	constrainDuringPan: true,
+  visibilityRatio: 1,
 	/* zoomInButton: "osd_zoom_in_button",
 	zoomOutButton: "osd_zoom_out_button",
 	homeButton : "osd_zoom_reset_button", */
@@ -98,6 +99,44 @@ function change_bottom_whitespace_of_textWrapper() {
   text_wrapper.style.paddingBottom = `${bottom_whitespace}px`
 };
 
+
+/*
+##################################################################
+triggers on scroll and switches osd viewer image base on 
+viewport position of next and previous element with class pb
+pb = pagebreaks
+##################################################################
+*/
+
+transcript.addEventListener("scroll", function(event) {
+  // elements in view
+  var esiv = [];
+  console.log('a') ;
+  for (let el of pb_elements) {
+    console.log(el) ;
+      if (isInViewportAll(el)) {
+          esiv.push(el);
+          console.log(el)
+      }
+  }
+  if (esiv.length != 0) {
+      // first element in view
+      var eiv = esiv[0];
+      // get idx of element
+      var eiv_idx = Array.from(pb_elements).findIndex((el) => el === eiv);
+      idx = eiv_idx + 1;
+      prev_idx = eiv_idx - 1
+      // test if element is in viewport position to load correct image
+      if (isInViewport(pb_elements[eiv_idx])) {
+          loadNewImage(pb_elements[eiv_idx]);
+      }
+  }
+});
+
+
+
+
+
 addEventListener("resize", function (event) {
     let resized = resize_facsContainer();
     if (resized) {
@@ -131,23 +170,17 @@ if false get with from sibling container divided by half
 height is always the screen height minus some offset
 ##################################################################
 */
+
+container.style.height = `${String(height / 2)}px`;
+// set osd wrapper container width
+var container = document.getElementById("section");
+if (container !== null) {
+  var width = container.clientWidth;
+}
+var container = document.getElementById("viewer");
 if (!wrapper.classList.contains("fade")) {
-    container.style.height = `${String(height / 2)}px`;
-    // set osd wrapper container width
-    var container = document.getElementById("section");
-    if (container !== null) {
-        var width = container.clientWidth;
-    }
-    var container = document.getElementById("viewer");
     container.style.width = `${String(width - 25)}px`;
 } else {
-    container.style.height = `${String(height / 2)}px`;
-    // set osd wrapper container width
-    var container = document.getElementById("section");
-    if (container !== null) {
-        var width = container.clientWidth;
-    }
-    var container = document.getElementById("viewer");
     container.style.width = `${String(width / 2)}px`;
 }
 
@@ -196,39 +229,6 @@ next = document.querySelector("div[title='Next page']");
 // var prev = document.getElementById("osd_prev_button");
 // var next = document.getElementById("osd_next_button");
 
-/*
-##################################################################
-triggers on scroll and switches osd viewer image base on 
-viewport position of next and previous element with class pb
-pb = pagebreaks
-##################################################################
-*/
-
-
-
-window.addEventListener("scroll", function(event) {
-  // elements in view
-  var esiv = [];
-  for (let el of pb_elements) {
-      if (isInViewportAll(el)) {
-          esiv.push(el);
-          console.log(el)
-      }
-  }
-  if (esiv.length != 0) {
-      // first element in view
-      var eiv = esiv[0];
-      // get idx of element
-      var eiv_idx = Array.from(pb_elements).findIndex((el) => el === eiv);
-      idx = eiv_idx + 1;
-      prev_idx = eiv_idx - 1
-      // test if element is in viewport position to load correct image
-      if (isInViewport(pb_elements[eiv_idx])) {
-          loadNewImage(pb_elements[eiv_idx]);
-      }
-  }
-});
-
 
 /*
 ##################################################################
@@ -237,19 +237,18 @@ function to check if element is anywhere in window viewport
 */
 function isInViewportAll(element) {
   // Get the bounding client rectangle position in the viewport
-  var bounding = element.getBoundingClientRect();
+  var bounding = element.getBoundingClientRect()  ;
+
+
   // Checking part. Here the code checks if el is close to top of viewport.
-  // console.log("Top");
-  // console.log(bounding.top);
-  // console.log("Bottom");
-  // console.log(bounding.bottom);
   if (
       bounding.top >= 0 &&
       bounding.left >= 0 &&
-      bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+      bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight  ) &&
+      bounding.right <= (window.innerWidth || document.documentElement.clientWidth )
   ) {
       return true;
+      
   } else {
       return false;
   }
@@ -305,6 +304,7 @@ var prev = document.querySelector("div[title='Previous page']");
 var next = document.querySelector("div[title='Next page']");
 prev.style.opacity = 1;
 next.style.opacity = 1;
+
 prev.addEventListener("click", () => {
     if (prev_idx >= 0) {
         element_a[prev_idx].scrollIntoView();
@@ -340,8 +340,8 @@ function isInViewport(element) {
   if (
       bounding.top <= 1200 &&
       bounding.bottom <= 600 &&
-      bounding.top >= 0 &&
-      bounding.bottom >= 0
+      bounding.top >= 20 &&
+      bounding.bottom >= 20
   ) {
       return true;
   } else {

@@ -202,13 +202,12 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 #viewer {
-    position: sticky;
     top: 10%;
     padding: 2em;
     padding-top: 0rem;
     padding-bottom: 2em;
     margin-left: auto;
-    max-height: 100%;
+    max-height: 100%
 }
 
 .facsimiles {
@@ -515,6 +514,9 @@ h2 {
     font-weight: bold ;
 }
 
+.wp-transcript {
+    height: 60vh ;
+}
 
 #container-resize,
 #text-resize {
@@ -522,9 +524,7 @@ h2 {
 	margin: 0;
 }
 
-#transcript{
 
-}
 #text-resize {
     max-height: 1em;
     max-width: 3em ;
@@ -561,6 +561,15 @@ h2 {
      }
     .row {
             margin: 0;
+    }
+
+    #viewer{
+        max-height: 100vh ;
+    }
+
+
+    #container_facs_1{
+        max-height: 60vh ;
     }
 
     .row.banner {

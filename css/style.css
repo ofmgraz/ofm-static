@@ -207,7 +207,6 @@ div#navbarSupportedContent div#navbar_right_spacer {
     padding-top: 0rem;
     padding-bottom: 2em;
     margin-left: auto;
-    max-height: 100%
 }
 
 .facsimiles {
@@ -218,11 +217,23 @@ div#navbarSupportedContent div#navbar_right_spacer {
     margin-right: auto;
 }
 
+#container_facs_1{
+    height: 60vh!important ;
+}
 #seadragon-viewer{
     min-height: 60vh;
     min-width: 40vw;
 }
 
+.openseadragon-canvas {
+    height: 100%!important ;
+    width: 100%!important ;
+}
+
+.openseadragon-container {
+    height: 100%!important ;
+    width: 100%!important ;
+}
 
 #MyTable {
   min-width: unset !important;
@@ -514,9 +525,7 @@ h2 {
     font-weight: bold ;
 }
 
-.wp-transcript {
-    height: 60vh ;
-}
+
 
 #container-resize,
 #text-resize {
@@ -526,9 +535,7 @@ h2 {
 
 
 #text-resize {
-    max-height: 1em;
-    max-width: 3em ;
-    overflow-y: hidden ; 
+    display:none ;
 }
 
 
@@ -565,11 +572,6 @@ h2 {
 
     #viewer{
         max-height: 100vh ;
-    }
-
-
-    #container_facs_1{
-        max-height: 60vh ;
     }
 
     .row.banner {

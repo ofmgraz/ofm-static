@@ -1,350 +1,136 @@
-const container_facs_1 = document.getElementById("container_facs_1");
-const text_wrapper = document.getElementsByClassName("facsimiles")[0];
-container_facs_1.style.height = `${String(screen.height / 2)}px`;
-const transcript =  document.getElementById("text-resize");
-/*
-##################################################################
-get all image urls stored in span el class tei-xml-images
-creates an array for osd viewer with static images
-##################################################################
-*/
-const navbar_wrapper = document.getElementById("wrapper-navbar");
-const image_rights = document.getElementsByClassName("image_rights")[0];
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to get image URLs from elements with class 'pb'
+  function getImageURLs() {
+    const pbElements = document.getElementsByClassName("pb");
+    const pbElementsArray = Array.from(pbElements);
+    const imageURLs = [];
 
-function calculate_facsContainer_height() {
-  // calcutlates hight of osd container based on heigt of screen - (height of navbar + img rights&buttons)
- 
-  let new_container_height =
-    window.innerHeight -
-    (window.innerHeight / 10);
-  return Math.round(new_container_height);
-};
+    pbElementsArray.forEach(function (el) {
+      const img = el.getAttribute("source");
+      const id = el.getAttribute("id");
 
-// initially resizing the facs container to max
-// needs to be done before calling the viewer construtor, 
-// since it doesnt update size
-resize_facsContainer();
-
-/*
-##################################################################
-get all image urls stored in span el class tei-xml-images
-creates an array for osd viewer with static images
-##################################################################
-*/
-var pb_elements = document.getElementsByClassName("pb");
-var pb_elements_array = Array.from(pb_elements);
-var tileSources = [];
-var img = pb_elements[0].getAttribute("source");
-var imageURL = {
-  type: "image",
-  url: img,
-};
-tileSources.push(imageURL);
-
-/*
-##################################################################
-initialize osd
-##################################################################
-*/
-var viewer = new OpenSeadragon.Viewer({
-	id: 'container_facs_1',
-	prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/',
-	visibilityRatio: 1,
-	sequenceMode: true,
-	showNavigator: false,
-	showNavigationControl: true,
-	showSequenceControl: true,
-	showZoomControl: true,
-	constrainDuringPan: true,
-  visibilityRatio: 1,
-	/* zoomInButton: "osd_zoom_in_button",
-	zoomOutButton: "osd_zoom_out_button",
-	homeButton : "osd_zoom_reset_button", */
-	constrainDuringPan: true,
-    tileSources: tileSources
-});
-
-
- // ==================
-
-/* change size of facs container */
-function resize_facsContainer() {
-  let new_container_height = calculate_facsContainer_height();
-  if (new_container_height != container_facs_1.clientHeight) {
-    container_facs_1.style.height = `${String(new_container_height)}px`;
-    return true;
-  };
-  return false;
-};
-
-function check_bottom_whitespace_of_textWrapper(check_bottom_whitespace) {
-  if (check_bottom_whitespace === undefined) {
-    check_bottom_whitespace = false;
-  }
-  if (check_bottom_whitespace === true){
-    if (bottom_whitespace == 0) {
-      change_bottom_whitespace_of_textWrapper();
-    }
-  } else {
-      change_bottom_whitespace_of_textWrapper();
-  }
-}
-
-/*.edition_container div {
-	background-color: inherit;
-} */
-
-function change_bottom_whitespace_of_textWrapper() {
-  bottom_whitespace = ((window.innerHeight / 10) *8);
-  text_wrapper.style.paddingBottom = `${bottom_whitespace}px`
-};
-
-
-/*
-##################################################################
-triggers on scroll and switches osd viewer image base on 
-viewport position of next and previous element with class pb
-pb = pagebreaks
-##################################################################
-*/
-
-transcript.addEventListener("scroll", function(event) {
-  // elements in view
-  var esiv = [];
-  console.log('a') ;
-  for (let el of pb_elements) {
-    console.log(el) ;
-      if (isInViewportAll(el)) {
-          esiv.push(el);
-          console.log(el)
+      if (typeof img === 'string' && img.trim() !== '' && typeof id === 'string' && id.trim() !== '') {
+        const imageURL = {
+          type: "image",
+          url: img,
+          id: id // Add the id to the imageURL object
+        };
+        imageURLs.push(imageURL);
+      } else {
+        console.warn("Element does not have a valid 'source' attribute or 'id' attribute is missing or not a string:", el);
       }
+    });
+
+    return imageURLs;
   }
-  if (esiv.length != 0) {
-      // first element in view
-      var eiv = esiv[0];
-      // get idx of element
-      var eiv_idx = Array.from(pb_elements).findIndex((el) => el === eiv);
-      idx = eiv_idx + 1;
-      prev_idx = eiv_idx - 1
-      // test if element is in viewport position to load correct image
-      if (isInViewport(pb_elements[eiv_idx])) {
-          loadNewImage(pb_elements[eiv_idx]);
-      }
+
+  // Extract the base ID from the URL fragment
+  function getBaseIdFromFragment() {
+    const fragment = window.location.hash.substring(1);
+    const baseIdMatch = fragment.match(/^facs_\d+/);
+    return baseIdMatch ? baseIdMatch[0] : null;
   }
-});
 
+  // Initialize the OpenSeadragon viewer
+  function initializeViewer(imageURLs) {
+    const baseId = getBaseIdFromFragment();
+    console.log("Base ID from fragment:", baseId);
 
+    const initialIndex = imageURLs.findIndex((imageURL) => {
+      // Use baseId to determine the initial image index
+      return baseId === imageURL.id;
+    });
 
-
-
-addEventListener("resize", function (event) {
-    let resized = resize_facsContainer();
-    if (resized) {
-        viewer.forceResize();
-        fitVertically_align_left_bottom(viewer);
-    };
-    check_bottom_whitespace_of_textWrapper();
-  }
-);
-
-/*
-##################################################################
-get container holding images urls as child elements
-get container for osd viewer
-get container wrapper of osd viewer
-##################################################################
-*/
-// var container = document.getElementById("container_facs_2");
-// container.style.display = "none";
-var height = screen.height;
-var container = document.getElementById("container_facs_1");
-var wrapper = document.getElementsByClassName("facsimiles")[0];
-var pb_elements = document.getElementsByClassName("pb");      
-var pb_elements_array = Array.from(pb_elements);
-
-/*
-##################################################################
-check if osd viewer is visible or not
-if true get width from sibling container
-if false get with from sibling container divided by half
-height is always the screen height minus some offset
-##################################################################
-*/
-
-container.style.height = `${String(height / 2)}px`;
-// set osd wrapper container width
-var container = document.getElementById("section");
-if (container !== null) {
-  var width = container.clientWidth;
-}
-var container = document.getElementById("viewer");
-if (!wrapper.classList.contains("fade")) {
-    container.style.width = `${String(width - 25)}px`;
-} else {
-    container.style.width = `${String(width / 2)}px`;
-}
-
-/*
-##################################################################
-Go home
-##################################################################
-*/
-
-viewer.viewport.goHome = function () {
-	fitVertically_align_left_bottom();
-  a_elements[0].scrollIntoView();
-  var next_pb_index = 0;
-  var previous_pb_index = 0;
-}
-
-function fitVertically_align_left_bottom(){
-  let initial_bounds = viewer.viewport.getBounds();
-  let ratio = initial_bounds.width / initial_bounds.height;
-  let tiledImage = viewer.world.getItemAt(viewer.world.getItemCount()-1);
-  if (ratio > tiledImage.contentAspectX) {
-    var new_width = tiledImage.normHeight * ratio;
-    var new_bounds = new OpenSeadragon.Rect(0, 0 , new_width, tiledImage.normHeight)
-   
-  } else {
-    var new_height = 1 / ratio;
-    let bounds_y = -(new_height - tiledImage.normHeight);
-    var new_bounds = new OpenSeadragon.Rect(0, bounds_y, 1, new_height);
-  }
-  viewer.viewport.fitBounds(new_bounds, true);
-}
-
-/*
-##################################################################
-index and previous index for click navigation in osd viewer
-locate index of anchor element
-##################################################################
-*/
-var next_pb_index = 0;
-var previous_pb_index = 0;
-const a_elements = document.getElementsByClassName("pb");
-const max_index = (a_elements.length - 1);
-prev = document.querySelector("div[title='Previous page']");
-next = document.querySelector("div[title='Next page']");
-
-// var prev = document.getElementById("osd_prev_button");
-// var next = document.getElementById("osd_next_button");
-
-
-/*
-##################################################################
-function to check if element is anywhere in window viewport
-##################################################################
-*/
-function isInViewportAll(element) {
-  // Get the bounding client rectangle position in the viewport
-  var bounding = element.getBoundingClientRect()  ;
-
-
-  // Checking part. Here the code checks if el is close to top of viewport.
-  if (
-      bounding.top >= 0 &&
-      bounding.left >= 0 &&
-      bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight  ) &&
-      bounding.right <= (window.innerWidth || document.documentElement.clientWidth )
-  ) {
-      return true;
-      
-  } else {
-      return false;
-  }
-}
-
-
-
-
-/*
-##################################################################
-function to trigger image load and remove events
-##################################################################
-*/
-function loadNewImage(new_item) {
-  if (new_item) {
-      // source attribute hold image item id without url
-      var new_image = new_item.getAttribute("source");
-      var old_image = viewer.world.getItemAt(0);
-      if (old_image) {
-          // get url from current/old image and replace the image id with
-          // new id of image to be loaded
-          // access osd viewer and add simple image and remove current image
-          viewer.addSimpleImage({
-              url: new_image,
-              success: function(event) {
-                  function ready() {
-                      setTimeout(() => {
-                          viewer.world.removeItem(viewer.world.getItemAt(0));
-                      }, 200)
-                  }
-                  // test if item was loaded and trigger function to remove previous item
-                  if (event.item) {
-                      // .getFullyLoaded()
-                      ready();
-                  } else {
-                      event.item.addOnceHandler('fully-loaded-change', ready());
-                  }
-              }
-          });
-      }
-  }
-}
-
-
-/*
-##################################################################
-accesses osd viewer prev and next button to switch image and
-scrolls to next or prev span element with class pb (pagebreak)
-##################################################################
-*/
-var element_a = document.getElementsByClassName('pb');
-var prev = document.querySelector("div[title='Previous page']");
-var next = document.querySelector("div[title='Next page']");
-prev.style.opacity = 1;
-next.style.opacity = 1;
-
-prev.addEventListener("click", () => {
-    if (prev_idx >= 0) {
-        element_a[prev_idx].scrollIntoView();
+    if (initialIndex !== -1) {
+      currentIndex = initialIndex;
     } else {
-        element_a[0].scrollIntoView();
+      currentIndex = 0; // Default to the first image if baseId not found
     }
-});
 
-
-next.addEventListener("click", () => {
-    if (idx < element_a.length) {
-        element_a[idx].scrollIntoView();
-    } else {
-        element_a[idx-1].scrollIntoView();
-    }
-    
-});
-
-
-/*
-##################################################################
-function to check if element is close to top of window viewport
-##################################################################
-*/
-function isInViewport(element) {
-  // Get the bounding client rectangle position in the viewport
-  var bounding = element.getBoundingClientRect();
-  // Checking part. Here the code checks if el is close to top of viewport.
-  // console.log("Top");
-  // console.log(bounding.top);
-  // console.log("Bottom");
-  // console.log(bounding.bottom);
-  if (
-      bounding.top <= 1200 &&
-      bounding.bottom <= 600 &&
-      bounding.top >= 20 &&
-      bounding.bottom >= 20
-  ) {
-      return true;
-  } else {
-      return false;
+    loadImageByIndex(currentIndex);
   }
-}
+
+ // Load an image by index and fit it to the viewport
+  function loadImageByIndex(index) {
+    if (index >= 0 && index < imageURLs.length) {
+      console.log("Loading image at index:", index, "URL:", imageURLs[index].url);
+
+      if (viewer.world.getItemCount() > 0) {
+        console.log("Removing old image from viewer.");
+        viewer.world.removeItem(viewer.world.getItemAt(0));
+      }
+
+      viewer.addTiledImage({
+        tileSource: { type: 'image', url: imageURLs[index].url },
+        success: function (event) {
+          console.log("Image loaded successfully:", event.item);
+          fitToViewport(event.item); // Fit the image to the viewport
+        },
+        error: function (event) {
+          console.error("Failed to load image:", event);
+        }
+      });
+
+      viewer.forceResize();
+    } else {
+      console.error("Index out of bounds:", index);
+    }
+  }
+
+  // Fit the loaded image to the viewport
+  function fitToViewport(item) {
+    // Get the image bounds
+    const bounds = item.getBounds();
+    // Fit the bounds to the viewport
+    viewer.viewport.fitBounds(bounds, true); // true for animate
+  }
+
+
+  // Handle button clicks to navigate through images
+  function setupNavigationButtons() {
+    const prev = document.querySelector("div[title='Previous page']");
+    const next = document.querySelector("div[title='Next page']");
+
+    if (prev && next) {
+      prev.addEventListener("click", () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          loadImageByIndex(currentIndex);
+        } else {
+          console.log("No previous image available.");
+        }
+      });
+
+      next.addEventListener("click", () => {
+        if (currentIndex < imageURLs.length - 1) {
+          currentIndex++;
+          loadImageByIndex(currentIndex);
+        } else {
+          console.log("No next image available.");
+        }
+      });
+    } else {
+      console.error("Navigation buttons not found.");
+    }
+  }
+
+  // Initialize viewer and get image URLs
+  const imageURLs = getImageURLs();
+  let currentIndex = 0; // Default to the first image
+  const viewer = new OpenSeadragon.Viewer({
+    id: 'container_facs_1',
+    prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/',
+    visibilityRatio: 1,
+    sequenceMode: true,
+    showNavigator: false,
+    showNavigationControl: true,
+    showSequenceControl: true,
+    showZoomControl: true,
+    constrainDuringPan: true,
+    tileSources: imageURLs // Remove this line if you load images by index
+  });
+
+  // Initialize viewer based on URL fragment
+  initializeViewer(imageURLs);
+  setupNavigationButtons();
+});

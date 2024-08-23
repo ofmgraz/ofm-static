@@ -202,13 +202,11 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 #viewer {
-    position: sticky;
     top: 10%;
     padding: 2em;
     padding-top: 0rem;
     padding-bottom: 2em;
     margin-left: auto;
-    max-height: 100%;
 }
 
 .facsimiles {
@@ -219,11 +217,23 @@ div#navbarSupportedContent div#navbar_right_spacer {
     margin-right: auto;
 }
 
+#container_facs_1{
+    height: 60vh!important ;
+}
 #seadragon-viewer{
     min-height: 60vh;
     min-width: 40vw;
 }
 
+.openseadragon-canvas {
+    height: 100%!important ;
+    width: 100%!important ;
+}
+
+.openseadragon-container {
+    height: 100%!important ;
+    width: 100%!important ;
+}
 
 #MyTable {
   min-width: unset !important;
@@ -516,19 +526,16 @@ h2 {
 }
 
 
+
 #container-resize,
 #text-resize {
     padding: 1;
 	margin: 0;
 }
 
-#transcript{
 
-}
 #text-resize {
-    max-height: 1em;
-    max-width: 3em ;
-    overflow-y: hidden ; 
+    display:none ;
 }
 
 
@@ -561,6 +568,10 @@ h2 {
      }
     .row {
             margin: 0;
+    }
+
+    #viewer{
+        max-height: 100vh ;
     }
 
     .row.banner {

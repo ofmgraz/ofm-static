@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  let currentIndex = 0;
+
   // Function to get image URLs from elements with class 'pb'
   function getImageURLs() {
     const pbElements = document.getElementsByClassName("pb");
@@ -36,21 +38,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const baseId = getBaseIdFromFragment();
     console.log("Base ID from fragment:", baseId);
 
-    const initialIndex = imageURLs.findIndex((imageURL) => {
+    currentIndex = imageURLs.findIndex((imageURL) => {
       // Use baseId to determine the initial image index
       return baseId === imageURL.id;
     });
 
-    if (initialIndex !== -1) {
-      currentIndex = initialIndex;
-    } else {
+    if (currentIndex === -1) {
       currentIndex = 0; // Default to the first image if baseId not found
     }
 
     loadImageByIndex(currentIndex);
   }
 
- // Load an image by index and fit it to the viewport
+  // Load an image by index and fit it to the viewport
   function loadImageByIndex(index) {
     if (index >= 0 && index < imageURLs.length) {
       console.log("Loading image at index:", index, "URL:", imageURLs[index].url);
@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
     viewer.viewport.fitBounds(bounds, true); // true for animate
   }
 
-
   // Handle button clicks to navigate through images
   function setupNavigationButtons() {
     const prev = document.querySelector("div[title='Previous page']");
@@ -116,7 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize viewer and get image URLs
   const imageURLs = getImageURLs();
-  let currentIndex = 0; // Default to the first image
   const viewer = new OpenSeadragon.Viewer({
     id: 'container_facs_1',
     prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/',

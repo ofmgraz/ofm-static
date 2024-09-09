@@ -25,7 +25,7 @@
     </xsl:variable>
     <xsl:variable name="teiSource">
         <xsl:value-of select="data(tei:TEI/@xml:id)"/>
-        <xsl:text>.xml</xsl:text>
+        <!-- <xsl:text>.xml</xsl:text> -->
     </xsl:variable>
     <xsl:variable name="doc_title">
         <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>

@@ -12,11 +12,13 @@ jobs:
     steps:
     - name: Perform Checkout
       uses: actions/checkout@v4
-    - name: Install Saxon, Ant and Python
+    - name: Install Java and Ant
       run: |
         apt-get update && apt-get install openjdk-11-jre-headless ant -y --no-install-recommend
-        ./shellscripts/script.sh
-        pip install -r requirements.txt
+    - name: Install Saxon
+        run: ./shellscripts/script.sh
+    - name: Install Python dependencies
+        run: pip install -r requirements.txt
     - name: Fetch data
       run: ./shellscripts/fetch_data.sh
     - name: Build

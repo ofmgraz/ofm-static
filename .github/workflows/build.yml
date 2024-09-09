@@ -16,9 +16,9 @@ jobs:
       run: |
         apt-get update && apt-get install openjdk-11-jre-headless ant -y --no-install-recommend
     - name: Install Saxon
-        run: ./shellscripts/script.sh
+      run: shellscripts/script.sh
     - name: Install Python dependencies
-        run: pip install -r requirements.txt
+      run: pip install -r requirements.txt
     - name: Fetch data
       run: ./shellscripts/fetch_data.sh
     - name: Build

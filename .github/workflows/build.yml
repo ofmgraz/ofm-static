@@ -18,14 +18,14 @@ jobs:
         ./shellscripts/script.sh
         pip install -r requirements.txt
     - name: Fetch data
-      run: ./fetch_data.sh
+      run: ./shellscripts/fetch_data.sh
     - name: Build
       run: |
         ant
     - name: Update Favicons
-      run: python update_favicons.py
+      run: pyscripts/update_favicons.py
     - name: Update Translations
-      run: python make_translations.py
+      run: pyscripts/make_translations.py
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:

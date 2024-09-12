@@ -407,6 +407,14 @@ padding-right: 2rem ;
 min-width: unset ;
 }
 
+.to_center {
+    text-align: center ;
+}
+
+.float-right {
+    float: right;
+    text-align: center ;
+}
 
 [type="search"] {
     background-clip: padding-box;
@@ -501,10 +509,7 @@ footer * {
     background-color: var(--ofm-table-bg-type);
 }
 
-.bi {
-    color: var(--ofm-bg-dark);
-    font-size: xx-large;
-}
+
 
 .bi:hover,
 .bi:active {
@@ -601,7 +606,7 @@ h2 {
     .col-md-4 {
             padding-left: 1em;
             padding-right: 1em ;
-            max-width: 33%;
+            max-width: 50%;
     }
 
     .col-md-8 {

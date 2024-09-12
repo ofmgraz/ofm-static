@@ -8,7 +8,8 @@
         <footer class="footer">
             <div class="container-fluid" id="footer-full-content" tabindex="-1 overflow-hidden">
                 <div class="row justify-content-center overflow-hidden">
-                    <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-right overflow-hidden"> <h5 class="font-weight-bold">KONTAKT</h5> </div>
+                    <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-right overflow-hidden"> <h5 class="font-weight-bold">KONTAKT</h5>
+                    </div>
                     <div
                         class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-center overflow-hidden">
                         <div class="textwidget custom-html-widget">
@@ -27,7 +28,7 @@
                             <p><b>Austrian Centre for Digital Humanities and Cultural Heritage</b>
                                 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> Österreichische Akademie der Wissenschaften
                             <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>Bäckerstraße 13 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> 1010 Wien
-                            <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>T: +43 1 51581-2200 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/> E: <a
+                            <xsl:value-of select="$mybreak" disable-output-escaping="yes"/><i class="bi bi-telephone" />&#160;<a href="tel:+431515812200">+43 1 51581-2200</a><xsl:value-of select="$mybreak" disable-output-escaping="yes"/><i class="bi bi-envelope-at" />&#160;<a
                                     href="mailto:acdh-ch-helpdesk@oeaw.ac.at
                                 "
                                     >acdh-ch-helpdesk(at)oeaw.ac.at</a>
@@ -41,24 +42,20 @@
                                 <b>HELPDESK</b>
                                 <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie
                                     sich bitte an den ACDH-CH Helpdesk.</p>
-                                <p>
-                                    <a class="helpdesk-button"
-                                        href="mailto:acdh-ch-helpdesk@oeaw.ac.at">e-Mail</a>
-                                </p>
+                                <!-- <p>
+                                    <i class="bi bi-envelope-at" />&#160;<a class="helpdesk-button"
+                                        href="mailto:acdh-ch-helpdesk@oeaw.ac.at">acdh-ch-helpdesk@oeaw.ac.at</a>
+                                </p> -->
                             </div>
-
                         </div>
                     </div>
-                    <div class="footer-widget col-lg-1 col-md-4 col-sm-3 overflow-hidden">
-                    <div class="float-right github">
-                        <a href="{$github_url}">
+                    <!-- .footer-widget -->
+                    <div class="footer-widget footer-widget col-lg-3 col-md-4 col-sm-3 overflow-hidden float-right">
+                        <a href="{$github_url}" class="to_center">
                             <i class="bi bi-github"/>
                         </a>
                     </div>
-                    </div>
-                    <!-- .footer-widget -->
                 </div>
- 
             </div>
         </footer>
         <!-- #wrapper-footer-full -->

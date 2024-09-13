@@ -57,14 +57,11 @@
                         <hr class="hr-custom"/>
                         <div class="subcontents align-center">
                             <img class="img-fluid" src="images/image02.png" alt="Fragment des Titelblatts eines Choraldruckes" />
-                            <div class="row main-content">
-                                <div class="button column-left overflow-hidden">
+                                <div class="button overflow-hidden">
                                     <a href="listplace.html"><button class="btn btn-round">Orte</button></a>
-                                </div>
-                                <div class="button column-right overflow-hidden">
+                                    &#160;
                                     <a href="listperson.html"><button class="btn btn-round">Drucker</button></a>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </main>

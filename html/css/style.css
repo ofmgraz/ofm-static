@@ -501,10 +501,7 @@ footer * {
     background-color: var(--ofm-table-bg-type);
 }
 
-.bi {
-    color: var(--ofm-bg-dark);
-    font-size: xx-large;
-}
+
 
 .bi:hover,
 .bi:active {
@@ -601,7 +598,7 @@ h2 {
     .col-md-4 {
             padding-left: 1em;
             padding-right: 1em ;
-            max-width: 33%;
+            max-width: 50%;
     }
 
     .col-md-8 {
@@ -621,5 +618,8 @@ h2 {
     #seadragon-viewer{
         width: 95vw;
         min-height: 65vh;
+    }
+    .no-padding{
+        padding: 0;
     }
 }

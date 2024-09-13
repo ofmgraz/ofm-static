@@ -407,14 +407,6 @@ padding-right: 2rem ;
 min-width: unset ;
 }
 
-.to_center {
-    text-align: center ;
-}
-
-.float-right {
-    float: right;
-    text-align: center ;
-}
 
 [type="search"] {
     background-clip: padding-box;
@@ -626,5 +618,8 @@ h2 {
     #seadragon-viewer{
         width: 95vw;
         min-height: 65vh;
+    }
+    .no-padding{
+        padding: 0;
     }
 }

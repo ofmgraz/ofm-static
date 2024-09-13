@@ -152,7 +152,15 @@ border-bottom: 0.1px solid #000 ;
 .carousel * {
 } */
 
-
+.subcontents{padding: 2rem;
+text-align: center;}
+.hr-custom{
+    border: none;
+  background-color: currentColor;
+  height: 5px;
+  color: var(--ofm-bg-dark);
+  opacity: 1;
+}
 .wrapper-navbar{
 	padding:0;
 	margin:0px;

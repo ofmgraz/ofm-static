@@ -134,6 +134,9 @@ a:active {
   
 }
 
+.unterschrift{
+    padding:2em;
+}
 
 .search-panel__results .col-md-4 {
     background-color: var(--ofm-table-bg-type) ;

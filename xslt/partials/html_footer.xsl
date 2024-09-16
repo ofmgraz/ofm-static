@@ -49,13 +49,6 @@
 
                         </div>
                     </div>
-                    <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 text-center overflow-hidden no-padding">
-                    <div class="float-right github">
-                        <a href="{$github_url}">
-                            <i class="bi bi-github"/>
-                        </a>
-                    </div>
-                    </div>
                     <!-- .footer-widget -->
                 </div>
  
@@ -64,7 +57,7 @@
         <!-- #wrapper-footer-full -->
         <div class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary"
             style="text-align:center; padding:0.4rem 0; font-size: 0.9rem;"> © Copyright OEAW | <a
-                href="imprint.html">Impressum</a></div>
+                href="imprint.html">Impressum</a> | <a href="{$github_url}"><i class="bi bi-github"/></a></div>
         <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"/>
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"/>
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"/>

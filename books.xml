@@ -3,8 +3,8 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title level="s">Die Bücher</title>
-                <title level="a">Choralhandschriften der Zentralbibliothek der Wiener
+                <title type="main">Die Bücher</title>
+                <title type="sub">Choralhandschriften der Zentralbibliothek der Wiener
                     Franziskanerprovinz Graz</title>
                 <author>
                     <persName>

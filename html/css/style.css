@@ -613,11 +613,13 @@ h2 {
 }
 
 .spacing{
-    margin-top: 1rem ;}
-    .logo{
+    margin-top: 1rem ;
+}
+.logo{
         padding-left: 0;
         padding-right: 0;
         padding-bottom: 0;
+}
 
 @media screen and (max-width: 1015px) {
 	.flex-grow-1.flex-shrink-1.bg {

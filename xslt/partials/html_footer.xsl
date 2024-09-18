@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <!-- FUNDING -->
-                <div class="footer-widget col col-lg-3 col-md-2 col-sm-2 overflow-hidden">
+                <div class="footer-widget col col-lg-2 col-md-2 col-sm-2 overflow-hidden">
                     <!-- <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 justify-content overflow-hidden"> -->
                     <h5 class="font-weight-bold hide-mobile align-left">FÖRDERUNG:</h5>
                     <div class="textwidget custom-html-widget">

@@ -512,9 +512,14 @@ min-width: unset ;
 }
 
 
+
 .row.footer{
     padding-left: 5vw;
     padding-right: 5vw;
+}
+
+.footer-widget {
+    font-size: 11px;
 }
 
 #footer-full-content {
@@ -608,7 +613,7 @@ h2 {
 }
 
 .spacing{
-    margin-top: 2rem ;}
+    margin-top: 1rem ;}
 
 @media screen and (max-width: 1015px) {
 	.flex-grow-1.flex-shrink-1.bg {
@@ -634,12 +639,14 @@ h2 {
         display: none ;
      }
      .logo{
-        padding-top: 0;
-        padding-bottom: 0;
+        padding: 0;
         max-width: 80%;
      }
      
-     .spacing {margin-top: 1rem ;}
+    .footer-widget.row.col.col-lg-5{
+        max-width: 40% ; 
+    }
+     .spacing {margin-top: .5rem ;}
     .row {
             margin: 0;
     }

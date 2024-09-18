@@ -25,6 +25,19 @@ const search = instantsearch({
   indexName: project_collection_name,
 });
 
+
+// This article:
+// https://stackoverflow.com/questions/21246818/how-to-get-the-base-url-in-javascript
+
+var base_url = window.location.origin;
+// "http://stackoverflow.com"
+
+var host = window.location.host;
+// stackoverflow.com
+
+var pathArray = window.location.pathname.split( '/' );
+var base_url = pathArray[1]
+
 function isNumeric(value) {
     return /^-?\d+$/.test(value);
 }
@@ -98,7 +111,7 @@ search.addWidgets([
     templates: {
       empty: "Keine Resultate für <q>{{ query }}</q>",
       item: `
-              <h5><a href="/ofm-static/{{resolver}}{{anchor_link}}">{{#helpers.snippet}}{ "attribute": "title", "highlightedTagName": "mark" }{{/helpers.snippet}}</a></h5>
+              <h5><a href="{{base_url}}{{resolver}}{{anchor_link}}">{{#helpers.snippet}}{ "attribute": "title", "highlightedTagName": "mark" }{{/helpers.snippet}}</a></h5>
               <p style="overflow:hidden;max-height:210px;">{{#helpers.snippet}}{ "attribute": "full_text", "highlightedTagName": "mark" }{{/helpers.snippet}}</p>
               <!-- <h5><span class="badge badge-primary">{{ project }}</span></h5> -->
           `,

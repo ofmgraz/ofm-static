@@ -15,7 +15,7 @@
                             <img
                                 src="https://fundament.acdh.oeaw.ac.at/common-assets/images/acdh_logo.svg"
                                 class="image" alt="ACDH Logo"
-                                style="max-width: 90%; height: auto;" title="ACDH Logo"/>
+                                style="max-width: 100%; height: auto;" title="ACDH Logo"/>
                         </a>
                     </div>
                     <div class="footer-widget col-lg-7 col-md-4 col-sm-3 overflow-hidden logo-text hide-mobile align-left">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <!-- FUNDING -->
-                <div class="footer-widget col col-lg-2 col-md-2 col-sm-2 overflow-hidden">
+                <div class="footer-widget col col-lg- col-md-2 col-sm-2 overflow-hidden">
                     <!-- <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 justify-content overflow-hidden"> -->
                     <h5 class="font-weight-bold hide-mobile align-left">FÖRDERUNG:</h5>
                     <div class="textwidget custom-html-widget">
@@ -43,7 +43,7 @@
                             <img
                                 src="images/BMKOES_Logo_srgb.svg"
                                 class="image" alt="Finanziert vom Bundeministeirum für Kunst, Kultur, öffentlichen Dienst und Sport"
-                                style="max-width: 90%; height: auto;" title="Finanziert vom Bundeministeirum für Kunst, Kultur, öffentlichen Dienst und Sport"/>
+                                style="max-width: 100%; height: auto;" title="Finanziert vom Bundeministeirum für Kunst, Kultur, öffentlichen Dienst und Sport"/>
                         </a>
                     </div>
                     <div class="spacing"/>

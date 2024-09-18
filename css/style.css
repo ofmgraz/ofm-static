@@ -130,7 +130,7 @@ a:active {
 
 .col-md-4 {
     padding: 1rem ;
-    padding-left: 2rem ;
+    padding-left: 1rem ;
   
 }
 
@@ -511,6 +511,11 @@ min-width: unset ;
 }
 
 
+.row.footer{
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
 #footer-full-content {
     padding-top: 2em;
     padding-left: 0;
@@ -601,6 +606,9 @@ h2 {
     color: #fff;
 }
 
+.spacing{
+    margin-top: 2rem ;}
+
 @media screen and (max-width: 1015px) {
 	.flex-grow-1.flex-shrink-1.bg {
     		min-height: 5vh;
@@ -620,6 +628,15 @@ h2 {
      h2 {
 	     font-size: 2rem ;
      }
+
+     .hide-mobile{
+        display: none ;
+     }
+     .logo{
+        padding-top: 0;
+        padding-bottom: 0;
+     }
+     
     .row {
             margin: 0;
     }

@@ -43,7 +43,7 @@
                             <img
                                 src="images/BMKOES_Logo_srgb.svg"
                                 class="image" alt="Finanziert vom Bundeministeirum für Kunst, Kultur, öffentlichen Dienst und Sport"
-                                style="max-width: 100%; height: auto;" title="Finanziert vom Bundeministeirum für Kunst, Kultur, öffentlichen Dienst und Sport"/>
+                                style="max-width: 90%; height: auto;" title="Finanziert vom Bundeministeirum für Kunst, Kultur, öffentlichen Dienst und Sport"/>
                         </a>
                     </div>
                     <div class="spacing"/>
@@ -52,7 +52,7 @@
                             <img
                                 src="images/DE_Finanziert_von_der_Europäischen_Union_RG_POS.png"
                                 class="image" alt="Finanziert von der Europäischen Union – NextGenerationEU"
-                                style="max-width: 100%; height: auto;" title="Finanziert von der Europäischen Union – NextGenerationEU"/>
+                                style="max-width: 90%; height: auto;" title="Finanziert von der Europäischen Union – NextGenerationEU"/>
                         </a>
                     </div>
                 </div>

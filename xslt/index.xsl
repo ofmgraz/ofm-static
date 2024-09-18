@@ -50,7 +50,7 @@
                                 <p class="p-cover">Die Grazer Zentralbibliothek verwahrt zahlreiche Choralquellen vom Beginn des 14. Jahrhunderts weg bis zum 19. Jahrhundert. Knapp ein Drittel der Quellen stammt aus dem 14., 15. und 16. Jahrhundert, zwei Drittel sind aus dem 17. und 18. Jahrhundert und bilden somit einen starken, repräsentativen Bestand zur Beschäftigung mit dem heute wenig beachteten Barockchoral.</p>
                                 <div class="button">
                                     <a href="books.html"><button class="btn btn-round btn-index">Weiter lesen</button></a>&#160;
-                                    <a href="toc.html"><button class="btn btn-round btn-index">Die Bücher</button></a>
+                                    <a href="toc.html"><button class="btn btn-round btn-index">Die Quellen</button></a>
                                 </div>
                             </div>
                         </div>

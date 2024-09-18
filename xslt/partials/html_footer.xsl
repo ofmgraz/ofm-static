@@ -58,10 +58,12 @@
                 </div>
                 <!-- HD -->
                 <div class="footer-widget col col-lg-3 col-md-2 col-sm-2 overflow-hidden hide-mobile">
+                    <h5 class="font-weight-bold hide-mobile align-left">&#8203;</h5>
+                    <div class="textwidget custom-html-widget">
+                        <!-- .footer-widget -->
+                        <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie sich bitte an den <a href="mailto:acdh-ch-helpdesk@oeaw.ac.at">ACDH-CH Helpdesk</a>.</p>
+                    </div>
                     <!-- .footer-widget -->
-                    <b>HELPDESK</b>
-                    <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie sich bitte an den ACDH-CH Helpdesk.</p>
-                <!-- .footer-widget -->
                 </div>
             </div>
         </footer>

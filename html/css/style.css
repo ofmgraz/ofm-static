@@ -624,6 +624,11 @@ h2 {
             margin: 0;
     }
 
+    .body-contents{
+        padding-left: .3em;
+        padding-right: .3em;
+    }
+
     #viewer{
         max-height: 100vh ;
     }

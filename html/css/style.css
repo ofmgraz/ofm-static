@@ -12,6 +12,7 @@
     -ofm-small-highlight:  #b16255;
     --ofm-big-highlight:  #914235;
     --ofm-table-bg-type: #f3e0c2;
+    --ofm-table-bg-type-dark: #c3b092;
     --ofm-table-accent-bg: #675744;
     --ofm-link-color: #943F33;
     font-family: 'LM Roman', Arial,Helvetica,sans-serif;
@@ -159,7 +160,7 @@ a:active {
 .button{padding: 1rem;}
 .btn {
     background-color: var(--ofm-bg-dark) ;
-    color: var(--ofm-table-bg-type);
+    color: var(--ofm-table-bg-type-dark);
 }
 
 .p-cover{
@@ -170,7 +171,7 @@ a:active {
 
 .btn:hover,
 .btn:active {
-        color: var(--ofm-font-color) ;
+        color: var(--ofm-table-bg-type) ;
         background-color: var(--ofm-bg-dark) ;
 }
 
@@ -224,22 +225,39 @@ margin-right: auto ;}
 }
 
 
+.nav, .nav *{
+    background-color: var(--ofm-bg-dark) ;
+    color: var(--ofm-table-bg-type-dark) ;
+}
+
+
+.nav:hover, .nav:hover * , .nav *:focus{
+    color: var(--ofm-table-bg-type) ;
+    background-color: var(--ofm-bg-dark) ;
+}
+
+
+.navbar-brand:focus, .navbar-brand:hover {
+    color: var(--ofm-table-bg-type) ;
+}
+
 
 #navbarSupportedContent a.nav-link,
 .nav-link,
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: 900;
-    color: var(--ofm-table-bg-type);
+    color: var(--ofm-table-bg-type-dark);
 }
 
 #navbarSupportedContent a.nav-link:hover {
-    color: var(--ofm-font-color) ;
+    color: var(--ofm-table-bg-type) ;
 }
 
 
 .dropdown-item:hover {
-    background-color: var(--ofm-table-bg-type) ;
+    color: var(--ofm-table-bg-type-dark) ;
+    background-color: var(--ofm-bg-dark) ;
 }
 
 
@@ -250,17 +268,17 @@ div#navbarSupportedContent div#navbar_right_spacer {
 
 
 .navbar-toggler:focus {
-	box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width) var(--ofm-table-bg-type) ;
+	box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width) var(--ofm-table-bg-type-dark) ;
 }
 
 .dropdown-menu {
 	--bs-dropdown-bg: var(--ofm-bg-dark);
-    color: var(--ofm-table-bg-type) ;
+    color: var(--ofm-table-bg-type-dark) ;
 }
 
 .dropdown-menu * {
 	--bs-dropdown-bg: var(--ofm-bg-dark);
-    color: var(--ofm-table-bg-type) ;
+    color: var(--ofm-table-bg-type-dark) ;
 }
 
 #viewer {

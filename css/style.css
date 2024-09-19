@@ -249,6 +249,10 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 
+.navbar-toggler:focus {
+	box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width) var(--ofm-table-bg-type) ;
+}
+
 .dropdown-menu {
 	--bs-dropdown-bg: var(--ofm-bg-dark);
     color: var(--ofm-table-bg-type) ;

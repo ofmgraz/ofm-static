@@ -36,7 +36,7 @@
                         </h1>
 
                         <div class="card-body drucker">
-                            <ul>
+                            <ul class="list">
                                 <xsl:for-each select=".//tei:person[@xml:id]">
                                     <xsl:variable name="id">
                                         <xsl:value-of select="data(@xml:id)"/>

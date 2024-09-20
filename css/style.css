@@ -536,7 +536,7 @@ min-width: unset ;
 	background-color: var(--ofm-bg-dark);
 }
 
-
+.list{padding: 0 ;}
 
 .row.footer{
     padding-left: 5vw;

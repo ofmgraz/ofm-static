@@ -616,7 +616,10 @@ h2 {
     font-weight: bold ;
 }
 
-
+.button-group .btn {
+    margin-left: .5em;
+    margin-right: .5em;
+}
 
 #container-resize,
 #text-resize {

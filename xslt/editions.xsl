@@ -63,7 +63,7 @@
                                         <xsl:value-of select="$doc_title"/>
                                     </h1>
                                 <div class="row" id="fa_links">
-                                <div class="col-xs-4 col-lg-4 col-sm-4 col-md-4"  style="text-align:right">
+                                <div class="col-xs-4 col-lg-4 col-sm-4 col-md-3"  style="text-align:right">
                                     <xsl:if test="ends-with($prev,'.html')">
                                         <h1>
                                             <a>
@@ -75,14 +75,14 @@
                                         </h1>
                                     </xsl:if>
                                 </div>
-                                <div class="col-xs-4 col-lg-4 col-sm-4 col-md-4 docinfo"  style="text-align:center">
+                                <div class="col-xs-4 col-lg-4 col-sm-4 col-md-3 docinfo"  style="text-align:center">
                                     <h3 align="center">
                                      <a href="{$teiSource}">
                                             <i class="fa-solid fa-file-code center" title="TEI/XML"/>
                                         </a>
                                     </h3>
                                 </div>
-                                <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4" style="text-align:left">
+                                <div class="col-xs-4 col-lg-4 col-sm-4 col-md-3" style="text-align:left">
                                     <xsl:if test="ends-with($next, '.html')">
                                         <h1>
                                             <a>

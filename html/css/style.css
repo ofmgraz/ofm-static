@@ -437,6 +437,9 @@ div#navbarSupportedContent div#navbar_right_spacer {
     max-height: 15% ;
 }
 
+.edition_metadata,  .edition_metadata .fa_links {
+    text-align: center ;
+}
 .container {
     padding-left: 1rem ;
     padding-right: 1rem ;
@@ -556,6 +559,7 @@ min-width: unset ;
     padding-bottom: 0;
     padding-top: 0;
 }
+
 
 footer:where#footer {
     font-size: 0.8rem;
@@ -752,4 +756,9 @@ h2 {
         width: 50% ;
         max-width: 50% ;
     }
+    .col-md-3 {
+        max-width: 33%;
+    }
+
+ 
 }

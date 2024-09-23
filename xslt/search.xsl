@@ -32,7 +32,7 @@
                         <div class="search-panel">
                             <div class="search-panel__results">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 facettes">
                                         <div id="stats-container"/>
                                         <div id="searchbox"/>
                                         <div id="clear-refinements"/>

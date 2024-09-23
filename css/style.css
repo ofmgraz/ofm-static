@@ -612,9 +612,12 @@ hr {
 
 h2 {
     padding-top: 2em;
+    padding-bottom: 2em ;
     font-size: 4rem ;
     font-weight: bold ;
 }
+
+
 
 .button-group .btn {
     margin-left: .5em;

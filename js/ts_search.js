@@ -259,19 +259,24 @@ search.addWidgets([
     },
   }),
 
-  instantsearch.widgets.rangeSlider({
-    container: "#refinement-range-year",
-    attribute: "notbefore",
-    pips: false,
-    tooltips: {
-      format: v => getYear(v),
+
+  instantsearch.widgets.panel({
+    templates: {
+      header: 'Jahr',
     },
-    cssClasses: {
-      form: "form-inline",
-      input: "form-control",
-      submit: "btn",
-    },
-  }),
+  })(instantsearch.widgets.rangeSlider)({
+      container: "#refinement-range-year",
+      attribute: "notbefore",
+      pips: false,
+      tooltips: {
+        format: v => getYear(v),
+      }, 
+      cssClasses: {
+        form: "form-inline",
+        input: "form-control",
+        submit: "btn",
+      },
+    }),
 
   instantsearch.widgets.pagination({
     container: "#pagination",

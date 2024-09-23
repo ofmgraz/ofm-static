@@ -549,6 +549,7 @@ min-width: unset ;
 
 .footer-widget {
     font-size: 12px;
+    padding-bottom: 0 ;
 }
 
 #footer-full-content {

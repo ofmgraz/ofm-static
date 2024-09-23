@@ -225,4 +225,7 @@ color: var(--ofm-font-color) ;
     .ais-Panel-body {
         display: contents!important ;
     }
+    .ais-Panel-header .ais-Panel-collapseButton{
+        display: none ;
+    }
 }

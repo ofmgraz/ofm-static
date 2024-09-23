@@ -13,6 +13,11 @@
  min-width: 34ex ;
 }
 
+
+.search-panel__results .col-md-8 { 
+    width: 70% ;
+   }
+
 .search-panel__results .col-md-4 * { 
     font-size: 12px ;
 }

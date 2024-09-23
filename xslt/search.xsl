@@ -34,20 +34,13 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div id="stats-container"></div>
-                                        <h4>Volltextsuche</h4>
                                         <div id="searchbox"></div>
                                         <div id="clear-refinements"></div>
-                                        <h4>Liturgie</h4>
 					                    <div id="refinement-list-liturgie"></div>
-					                    <h4>Art</h4>
 					                    <div id="refinement-list-genre"></div>
-                                        <h4>Herkunft</h4>
                                         <div id="refinement-list-place"></div>
-                                        <h4>Dokumententyp</h4>
                                         <div id="refinement-list-doc-type"></div>
-                                        <h4>Drucker</h4>
                                         <div id="refinement-list-persons"></div>
-                                        <h4>Datum</h4>
                                         <div id="refinement-range-year"></div>
                                     </div>
                                     <div class="col-md-8">

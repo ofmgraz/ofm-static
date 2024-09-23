@@ -33,21 +33,21 @@
                             <div class="search-panel__results">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div id="stats-container"></div>
-                                        <div id="searchbox"></div>
-                                        <div id="clear-refinements"></div>
-					                    <div id="refinement-list-liturgie"></div>
-					                    <div id="refinement-list-genre"></div>
-                                        <div id="refinement-list-place"></div>
-                                        <div id="refinement-list-doc-type"></div>
-                                        <div id="refinement-list-persons"></div>
-                                        <div id="refinement-range-year"></div>
+                                        <div id="stats-container"/>
+                                        <div id="searchbox"/>
+                                        <div id="clear-refinements"/>
+					                    <div id="refinement-list-liturgie"/>
+					                    <div id="refinement-list-genre"/>
+                                        <div id="refinement-list-place"/>
+                                        <div id="refinement-list-doc-type"/>
+                                        <div id="refinement-list-persons"/>
+                                        <div id="refinement-range-year"/>
                                     </div>
                                     <div class="col-md-8">
                                         <!--<div id="sort-by"></div>-->
-                                        <div id="current-refinements"></div>
-                                        <div id="hits"></div>
-                                        <div id="pagination"></div>
+                                        <div id="current-refinements"/>
+                                        <div id="hits" />
+                                        <div id="pagination" />
                                     </div>
                                 </div>
                             </div>

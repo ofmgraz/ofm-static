@@ -254,9 +254,12 @@ margin-right: auto ;}
     color: var(--ofm-table-bg-type) ;
 }
 
+.dropdown-item{
+    font-size: 1.3rem ;
+}
 
-.dropdown-item:hover {
-    color: var(--ofm-table-bg-type-dark) ;
+.dropdown-item:hover, .dropdown-item:focus {
+    color: var(--ofm-table-bg-type) ;
     background-color: var(--ofm-bg-dark) ;
 }
 
@@ -274,6 +277,7 @@ div#navbarSupportedContent div#navbar_right_spacer {
 .dropdown-menu {
 	--bs-dropdown-bg: var(--ofm-bg-dark);
     color: var(--ofm-table-bg-type-dark) ;
+    border: 1px solid var(--ofm-table-bg-type-dark) ;
 }
 
 .dropdown-menu * {
@@ -545,6 +549,7 @@ min-width: unset ;
 
 .footer-widget {
     font-size: 12px;
+    padding-bottom: 0 ;
 }
 
 #footer-full-content {

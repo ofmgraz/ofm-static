@@ -48,8 +48,9 @@
                             <div class="column-right overflow-hidden">
                                 <h3>Die Quellen</h3>
                                 <p class="p-cover">Die Grazer Zentralbibliothek verwahrt zahlreiche Choralquellen vom Beginn des 14. Jahrhunderts weg bis zum 19. Jahrhundert. Knapp ein Drittel der Quellen stammt aus dem 14., 15. und 16. Jahrhundert, zwei Drittel sind aus dem 17. und 18. Jahrhundert und bilden somit einen starken, repräsentativen Bestand zur Beschäftigung mit dem heute wenig beachteten Barockchoral.</p>
-                                <div class="button">
-                                    <a href="books.html"><button class="btn btn-round btn-index">Weiter lesen</button></a>&#160;
+                                <div class="button overflow-hidden">
+                                    <a href="books.html"><button class="btn btn-round btn-index">Weiter lesen</button></a>
+                                    &#160;
                                     <a href="toc.html"><button class="btn btn-round btn-index">Die Quellen</button></a>
                                 </div>
                             </div>
@@ -57,11 +58,11 @@
                         <hr class="hr-custom"/>
                         <div class="subcontents align-center">
                             <img class="img-fluid" src="images/image02.png" alt="Fragment des Titelblatts eines Choraldruckes" />
-                                <div class="button overflow-hidden">
-                                    <a href="listplace.html"><button class="btn btn-round btn-index">Orte</button></a>
-                                    &#160;
-                                    <a href="listperson.html"><button class="btn btn-round btn-index">Drucker</button></a>
-                                </div>
+                            <div class="button overflow-hidden">
+                                <a href="listplace.html"><button class="btn btn-round btn-index">Orte</button></a>
+                                &#160;
+                                <a href="listperson.html"><button class="btn btn-round btn-index">Drucker</button></a>
+                            </div>
                         </div>
                     </div>
                 </main>

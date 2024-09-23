@@ -55,10 +55,8 @@
 #refinement-list-place,
 #refinement-list-doc-title {
     padding: 1em .5em 2em .5em;
-    -webkit-box-shadow: -14px 21px 24px -28px rgba(156,156,156,1);
-    -moz-box-shadow: -14px 21px 24px -28px rgba(156,156,156,1);
-    box-shadow: -14px 21px 24px -28px rgba(156,156,156,1);
     background-color: var(--ofm-main-bg-color);
+    color: var(--ofm-font-color) ;
     border-radius: .50rem;
 
 }
@@ -101,6 +99,22 @@ ul .ais-Pagination-item .ais-Pagination-link:hover {
 .form-control {
 	background-color: var(--ofm-main-bg-color);
 }
+
+.ais-Panel-header{
+    border-bottom: 0;
+    color: var(--ofm-font-color) ;
+}
+
+.ais-Panel-collapseIcon{
+    color: var(--ofm-link-color);
+    text-decoration: none!important ;
+}
+
+.ais-Panel-collapseIcon:hover,
+.ais-Panel-collapseIcon:active {
+    color: var(--ofm-font-color) ;
+}
+
 
 .ais-SearchBox-input {
 	background-color: rgba(255, 255, 255)!important;;
@@ -201,5 +215,14 @@ color: var(--ofm-font-color) ;
     .search-panel__results .col-md-4 * { 
         font-size: unset ;
     }
+}
 
+.facettes {
+    height: fit-content !important ;
+}
+
+@media screen and (min-width: 640px) {
+    .ais-Panel-body {
+        display: contents!important ;
+    }
 }

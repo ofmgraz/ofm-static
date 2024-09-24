@@ -704,7 +704,9 @@ h2 {
 	     font-size: 2rem ;
      }
 
-   
+     .logo{
+        width: 180px;
+    }
      
     .spacing {margin-top: .5rem ;}
     .row {

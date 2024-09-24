@@ -540,7 +540,6 @@ min-width: unset ;
     font-size: 12px;
     padding-bottom: 0 ;
     padding-top: 0 ;
-    overflow: hidden ;
 }
 
 
@@ -707,11 +706,13 @@ h2 {
 
    
      
-     .spacing {margin-top: .5rem ;}
+    .spacing {margin-top: .5rem ;}
     .row {
             margin: 0;
     }
-
+    .footer .row{
+        padding: .5em .5em  0 .5em;
+    }
     .body-contents{
         padding-left: .3em;
         padding-right: .3em;

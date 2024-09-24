@@ -144,13 +144,6 @@ a:active {
     border-radius: .50rem;
 }
 
-.col-md-2 {
-    padding: 1rem ;
-}
-
-.col-md-8 {                                                                                                                                                                                                                                                    
-    padding: 1rem ;
-}
 
 .button{padding: 1rem;}
 .btn {
@@ -575,12 +568,23 @@ footer:where#footer {
 
 
 .footer .row{
-    padding-top: 1em ;
+    padding: 1em 1em  0 1em;
 }
+
+.footer .row *{
+    padding : 0 ;
+}
+
 
 footer * {
 	background-color: var(--ofm-table-bg-type);
 
+}
+
+.footer-imprint-bar {
+    text-align:center ;
+    padding:0 0.4rem 0 0;
+    font-size: 0.8rem;
 }
 
 .text-widget a {
@@ -659,12 +663,16 @@ h2 {
         padding-left: 0;
         padding-right: 0;
         padding-bottom: 0;
-        width: 250px;
+        width: 200px;
 }
 
 .logo.acdh {
     width: auto ;
-    max-width: 100px;
+    max-width: 100% ;
+}
+
+.pad {
+    padding-right: 1em !important ;
 }
 
 @media screen and (max-width: 1015px) {

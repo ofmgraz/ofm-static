@@ -581,12 +581,6 @@ footer * {
 
 }
 
-.footer-imprint-bar {
-    text-align:center ;
-    padding:0 0.4rem 0 0;
-    font-size: 0.8rem;
-}
-
 .text-widget a {
 	color: var(--ofm-transp-red)!important;
 }
@@ -598,7 +592,8 @@ footer * {
 
 .footer-imprint-bar {
     text-align:center;
-    font-size: 0.9rem;
+    padding:0 0.4rem 0 0;
+    font-size: 0.8rem;
     background-color: var(--ofm-table-bg-type);
 	color: var(--ofm-font-color);
 }

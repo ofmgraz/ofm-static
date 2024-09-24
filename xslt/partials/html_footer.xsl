@@ -8,10 +8,10 @@
         <footer class="footer">
             <div class="row justify-content-center">
                 <!-- KONTAKT -->
-                <div class="col-lg-5 col-md-6 col-sm-5 col-xs-2 text-center">
+                <div class="col-4 col-md-5 text-center">
                     <h5 class="font-weight-bold hide-mobile align-left">KONTAKT:</h5>
                     <div class="row">
-                        <div class="footer-widget col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <div class="footer-widget col-12 col-md-3 pad">
                             <a href="https://www.oeaw.ac.at/acdh/">
                                 <img
                                     src="https://fundament.acdh.oeaw.ac.at/common-assets/images/acdh_logo.svg"
@@ -19,9 +19,9 @@
                                     title="ACDH Logo"/>
                             </a>
                         </div>
-                        <div class="footer-widget col-lg-7 col-md-7 col-sm-6  hide-mobile align-left">
-                            <b>ACDH-CH</b>
-                            <p>
+                        <div class="footer-widget col-1 col-md-7 align-left">
+                            <b class="hide-mobile">ACDH-CH</b>&#160;&#160;&#160;
+                            <p class="hide-mobile">
                                 <b>Austrian Centre for Digital Humanities and Cultural Heritage</b>
                                 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
                                 Österreichische Akademie der Wissenschaften
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <!-- FUNDING -->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                <div class="col-6 col-md-4">
                     <!-- <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 justify-content overflow-hidden"> -->
                     <h5 class="font-weight-bold hide-mobile align-left">FÖRDERUNG:</h5>
                     <div class="row">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <!-- HD -->
-                <div class="col-lg-2 col-md-2 col-sm-2  hide-midi">
+                <div class="col-2 hide-midi">
                     <h5 class="font-weight-bold hide-mobile align-left">&#8203;</h5>
                     <div class="footer-widget">
                         <!-- .footer-widget -->
@@ -72,8 +72,7 @@
             </div>
         </footer>
         <!-- #wrapper-footer-full -->
-        <div class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary"
-            style="text-align:center; padding:0.4rem 0; font-size: 0.9rem;"> © Copyright OEAW | <a
+        <div class="footer-imprint-bar hide-reading" id="wrapper-footer-secondary">© Copyright OEAW | <a
                 href="imprint.html">Impressum</a> | <a href="{$github_url}"><i class="bi bi-github"/></a></div>
         <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"/>
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"/>

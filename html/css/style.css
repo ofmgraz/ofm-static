@@ -540,6 +540,7 @@ min-width: unset ;
     font-size: 12px;
     padding-bottom: 0 ;
     padding-top: 0 ;
+    overflow: hidden ;
 }
 
 

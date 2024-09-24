@@ -125,15 +125,10 @@ a{
     text-decoration: none!important ;
 }
 
+
 a:hover,
 a:active {
     color: var(--ofm-font-color) ;
-}
-
-.col-md-4 {
-    padding: 1rem ;
-    padding-left: 1rem ;
-  
 }
 
 .unterschrift{
@@ -545,12 +540,15 @@ min-width: unset ;
 .row.footer{
     padding-left: 5vw;
     padding-right: 5vw;
+    padding-top: 1rem ; 
 }
 
 .footer-widget {
     font-size: 12px;
     padding-bottom: 0 ;
+    padding-top: 0 ;
 }
+
 
 #footer-full-content {
     padding-top: 2em;
@@ -573,6 +571,11 @@ footer:where#footer {
     color: var(--ofm-font-color);
     z-index: 1;
     align-self: flex-end;
+}
+
+
+.footer .row{
+    padding-top: 1em ;
 }
 
 footer * {
@@ -656,6 +659,12 @@ h2 {
         padding-left: 0;
         padding-right: 0;
         padding-bottom: 0;
+        width: 250px;
+}
+
+.logo.acdh {
+    width: auto ;
+    max-width: 100px;
 }
 
 @media screen and (max-width: 1015px) {
@@ -670,25 +679,25 @@ h2 {
     font-size: 3rem ;
 	}
 
-	}
+    .hide-midi{
+        display: none ;
+     }
 
+   }
+
+@media screen and (max-width: 767px) {
+    .hide-mobile {
+        display: none ;
+    }
+}
 
 @media screen and (max-width: 639px) {
      h2 {
 	     font-size: 2rem ;
      }
 
-     .hide-mobile{
-        display: none ;
-     }
-     .logo{
-        padding: 0;
-        max-width: 80%;
-     }
+   
      
-    .footer-widget.row.col.col-lg-5{
-        max-width: 40% ; 
-    }
      .spacing {margin-top: .5rem ;}
     .row {
             margin: 0;
@@ -727,18 +736,10 @@ h2 {
             max-width: 80vh;
     }
 
-    .col-md-4 {
-            padding-left: 1em;
-            padding-right: 1em ;
-            max-width: 50%;
-    }
-
     .col-md-8 {
-            padding-top: 0;
             padding-bottom: 0;
             padding-left: 0;
             padding-right: 0 ;
-            max-width: 100% ;
     }
     .col-md-8.col-lg-8.col-sm-12{
             max-width: 78%;
@@ -767,9 +768,5 @@ h2 {
         width: 50% ;
         max-width: 50% ;
     }
-    .col-md-3 {
-        max-width: 33%;
-    }
-
  
 }

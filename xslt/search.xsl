@@ -28,7 +28,7 @@
                     </h2>
 
                 </div>
-                <div class="container-fluid">
+                <div class="container-md">
                         <div class="search-panel">
                             <div class="search-panel__results">
                                 <div class="row">

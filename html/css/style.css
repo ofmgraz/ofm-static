@@ -27,6 +27,18 @@ h1 {
     font-weight: bold ;
 
 }
+
+#myTable {
+    display: none  ;
+    }
+
+.tabulator {
+    display: block!important ;
+    min-width: unset !important;
+    background-color: unset !important;
+    text-align: center !important; 
+}
+
 .drucker * {
     list-style-type: none;
 }
@@ -59,6 +71,8 @@ h1 {
   }
 
 
+
+  
 :root * {
     font-family: 'LM Roman', Arial,Helvetica,sans-serif;
     
@@ -137,6 +151,12 @@ a:active {
     color: var(--ofm-font-color) ;
 }
 
+
+ul {
+    list-style-type: none ;
+  }
+
+  
 .unterschrift{
     padding:2em;
 }
@@ -313,9 +333,8 @@ div#navbarSupportedContent div#navbar_right_spacer {
     width: 100%!important ;
 }
 
-#MyTable {
-  min-width: unset !important;
-  }
+
+
 
 #persTable {
     min-width: unset !important;
@@ -341,18 +360,6 @@ div#navbarSupportedContent div#navbar_right_spacer {
 	font-weight: 700;
 	min-width: unset !important;
 }
-
-.table {
-    /* height: 80vh; */
-    max-height: 80vh;
-    /* border: 0; */
-    padding: 0;
-    min-width: unset !important ;
-    width: auto!important ;
-    box-sizing: border-box;
-    background-color: var(--ofm-bg)!important;
-}
-
 
 .table  *  {
 	min-width: unset !important;
@@ -396,7 +403,10 @@ div#navbarSupportedContent div#navbar_right_spacer {
     font-weight: 700;
 }
 
-.
+.tabulator-col-title {
+    text-align: center;
+  }
+  
 
 .tabulator  .tabulator-row .tabulator-cell{
     background-color: var(--ofm-bg);
@@ -447,7 +457,12 @@ div#navbarSupportedContent div#navbar_right_spacer {
 }
 
 .container-fluid {
-    padding-top: 0rem;
+    padding: 0rem;
+}
+
+.navbar-brand {
+    padding-left: 2vw ;
+    padding-right: 2vw ;
 }
 .tabulator-header {
     margin: 0px;

@@ -43,7 +43,7 @@
                                         <div id="refinement-list-persons"/>
                                         <div id="refinement-range-year"/>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-9 col-sd-8">
                                         <!--<div id="sort-by"></div>-->
                                         <div id="current-refinements"/>
                                         <div id="hits" />

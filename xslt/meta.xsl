@@ -113,7 +113,7 @@
         </xsl:variable>
         <xsl:element name="{concat('h', $level + 1)}">
             <xsl:attribute name="class">
-                <xsl:value-of select="concat('text-center display-', $level + 4)"/>
+                <xsl:value-of select="'text-center'" />
             </xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>

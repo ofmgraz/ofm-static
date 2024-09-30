@@ -21,6 +21,12 @@
 }
 
 
+h1 {
+    padding-top:4em !important; 
+    padding-bottom: 2em !important;
+    font-weight: bold ;
+
+}
 .drucker * {
     list-style-type: none;
 }
@@ -619,9 +625,8 @@ hr {
 
 h2 {
     padding-top: 2em;
-    padding-bottom: 2em ;
-    font-size: 4rem ;
-    font-weight: bold ;
+    padding-bottom: 1em ;
+    font-size: 2rem ;
 }
 
 

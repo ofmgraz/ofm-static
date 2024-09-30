@@ -162,7 +162,6 @@ ul {
 }
 
 .search-panel__results .col-md-4 {
-    background-color: var(--ofm-table-bg-type) ;
     box-sizing: border-box;
     max-width: 30rem;
     border: 2pt solid var(--ofm-bg-dark);

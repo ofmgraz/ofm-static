@@ -30,9 +30,9 @@
                 <xsl:call-template name="nav_bar"/>
                     <main>
                         <div class="container">                        
-                            <h1>
+                            <h2>
                                 <xsl:value-of select="$doc_title"/>
-                            </h1>
+                            </h2>
                             
                             <table class="table" id="myTable">
                                 <thead>
@@ -87,9 +87,9 @@
                         <xsl:call-template name="nav_bar"/>
                         <main>
                             <div class="container">
-                                <h1>
+                                <h2>
                                     <xsl:value-of select="$name"/>
-                                </h1>
+                                </h2>
                                 <xsl:call-template name="org_detail"/>  
                             </div>
                         </main>

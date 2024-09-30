@@ -31,9 +31,9 @@
 
                 <main class="flex-grow-1 overflow-hidden">
                     <div class="container">
-                        <h1 class="text-center pb-4 pt-3">
+                        <h2 class="text-center">
                             <xsl:value-of select="$doc_title"/>
-                        </h1>
+                        </h2>
 
                         <table class="table" id="myTable">
                             <thead>

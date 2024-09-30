@@ -31,9 +31,9 @@
 
                 <main class="flex-grow-1 overflow-hidden">
                     <div class="container">
-                        <h1 class="text-center pb-4 pt-3">
+                        <h2 class="text-center">
                             <xsl:value-of select="$doc_title"/>
-                        </h1>
+                        </h2>
 
                         <div id="places_div"/>
                         <div class="container-fluid table overflow-scroll">
@@ -147,9 +147,9 @@ build_map_and_table(map_cfg, table_cfg);
                         <xsl:call-template name="nav_bar"/>
                         <main class="flex-grow-1">
                             <div class="container">
-                                <h1 class="text-center pb-4 pt-3">
+                                <h2 class="text-center">
                                     <xsl:value-of select="$name"/>
-                                </h1>
+                                </h2>
                                 <xsl:if test="./tei:location/tei:geo">
                                     <div id="map_detail"/>
                                 </xsl:if>

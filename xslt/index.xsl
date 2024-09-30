@@ -36,7 +36,7 @@
 		            <div class="row banner"/>
                     <div class="body-contents">
                         <div class="row title align-center">
-                            <h2><xsl:value-of select="$project_title"/></h2>
+                            <h1><xsl:value-of select="$project_title"/></h1>
                             <h3>Die Zentralbibliothek des Franziskanerklosters Graz verwahrt zahlreiche Choralquellen vom Beginn des 14. Jahrhunderts weg bis zum 19. Jahrhundert. In der Forschung wurden diese Handschriften und Drucke bislang wenig beachtet. Knapp ein Drittel der 56 Quellen stammt aus dem 14., 15. und 16. Jahrhundert, zwei Drittel sind aus dem 17. und 18. Jahrhundert und bilden somit einen starken, repräsentativen Bestand zur Beschäftigung mit dem heute wenig beachteten Barockchoral.</h3>
                              <div class="button"><a href="about.html"><button class="btn btn-round">Über das Projekt</button></a></div>
                         </div>
@@ -46,7 +46,7 @@
                                 <img class="img-fluid" src="images/image01.png" alt="Illumination einer Choralhandschrift" />
                             </div>
                             <div class="column-right overflow-hidden">
-                                <h3>Die Quellen</h3>
+                                <h2>Die Quellen</h2>
                                 <p class="p-cover">Die Grazer Zentralbibliothek verwahrt zahlreiche Choralquellen vom Beginn des 14. Jahrhunderts weg bis zum 19. Jahrhundert. Knapp ein Drittel der Quellen stammt aus dem 14., 15. und 16. Jahrhundert, zwei Drittel sind aus dem 17. und 18. Jahrhundert und bilden somit einen starken, repräsentativen Bestand zur Beschäftigung mit dem heute wenig beachteten Barockchoral.</p>
                                 <div class="button overflow-hidden">
                                     <a href="books.html"><button class="btn btn-round btn-index">Weiter lesen</button></a>
@@ -71,9 +71,9 @@
         </html>
     </xsl:template>
     <xsl:template match="tei:div//tei:head">
-        <h2 id="{generate-id()}">
+        <h1 id="{generate-id()}">
             <xsl:apply-templates/>
-        </h2>
+        </h1>
     </xsl:template>
 
     <xsl:template match="tei:p">

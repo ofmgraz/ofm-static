@@ -59,20 +59,20 @@
                             <div class="row" id="edition_metadata">
                               <xsl:variable name="doc_type"
                                         select="//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/@form[1]"/>
-                                    <h1 align="center">
+                                    <h2 align="center">
                                         <xsl:value-of select="$doc_title"/>
-                                    </h1>
+                                    </h2>
                                 <div class="row" id="fa_links">
                                 <div class="col-4"  style="text-align:right">
                                     <xsl:if test="ends-with($prev,'.html')">
-                                        <h1>
+                                        <h2>
                                             <a>
                                                 <xsl:attribute name="href">
                                                     <xsl:value-of select="$prev"/>
                                                 </xsl:attribute>
                                                 <i class="fa-solid fa-caret-left left" title="zurück"/>
                                             </a>
-                                        </h1>
+                                        </h2>
                                     </xsl:if>
                                 </div>
                                 <div class="col-4 docinfo"  style="text-align:center">
@@ -84,14 +84,14 @@
                                 </div>
                                 <div class="col-4" style="text-align:left">
                                     <xsl:if test="ends-with($next, '.html')">
-                                        <h1>
+                                        <h2>
                                             <a>
                                                 <xsl:attribute name="href">
                                                     <xsl:value-of select="$next"/>
                                                 </xsl:attribute>
                                                 <i class="fa-solid fa-caret-right right" title="weiter"/>
                                             </a>
-                                        </h1>
+                                        </h2>
                                     </xsl:if>
                                 </div>
                                 </div>

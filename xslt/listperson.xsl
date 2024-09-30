@@ -31,9 +31,9 @@
 
                 <main class="flex-grow-1">
                     <div class="container">
-                        <h1 class="text-center pb-4 pt-3">
+                        <h2 class="text-center">
                             <xsl:value-of select="$doc_title"/>
-                        </h1>
+                        </h2>
 
                         <div class="card-body drucker">
                             <ul class="list">
@@ -85,9 +85,9 @@
                         <xsl:call-template name="nav_bar"/>
                         <main class="flex-grow-1">
                             <div class="container">
-                                <h1 class="text-center pb-4 pt-3">
+                                <h2 class="text-center">
                                     <xsl:value-of select="$name"/>
-                                </h1>
+                                </h2>
                                 <xsl:call-template name="person_detail"/>
                             </div>
                         </main>

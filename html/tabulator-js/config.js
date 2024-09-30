@@ -14,7 +14,7 @@ var config = {
     dataLoader: true,
     responsiveLayout: true,
     columns :[
-        {field: "titel", title: "Titel", formatter: "html", responsive: "0", resizable: "true", minWidth: "360", headerFilter: "input"},
+        {field: "titel", title: "Titel", formatter: "html", responsive: "0", resizable: "true", minWidth: "340", headerFilter: "input"},
 	{field: "xml-tei", title: "XML-TEI", responsive: "10", formatter: "html", visible: false},
 	{field: "tpq", title: "TPQ", responsive: "1", resizable: "true", headerFilter: "input", minWidth: "100px", maxWidth: "100px"},
 	{field: "taq", title: "TAQ", resizable: "true", headerFilter: "input", visible: false},

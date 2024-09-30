@@ -30,12 +30,12 @@
                 <xsl:call-template name="nav_bar"/>
 
                 <main class="flex-grow-1">
-                    <div class="container">
+                    <div class="container text-align-center">
                         <h2 class="text-center">
                             <xsl:value-of select="$doc_title"/>
                         </h2>
 
-                        <div class="card-body drucker">
+                        <div class="col-6 drucker center">
                             <ul class="list">
                                 <xsl:for-each select=".//tei:person[@xml:id]">
                                     <xsl:variable name="id">

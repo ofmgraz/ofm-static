@@ -161,9 +161,17 @@ ul {
     padding:2em;
 }
 
+.col-6.drucker {
+    box-sizing: border-box;
+    border: 2pt solid var(--ofm-bg-dark);
+    border-left: 2pt solid var(--ofm-bg-dark);
+    border-radius: .50rem;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
 .search-panel__results .col-md-4 {
     box-sizing: border-box;
-    max-width: 30rem;
     border: 2pt solid var(--ofm-bg-dark);
     border-left: 2pt solid var(--ofm-bg-dark);
     border-radius: .50rem;

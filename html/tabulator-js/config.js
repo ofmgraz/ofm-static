@@ -12,14 +12,13 @@ var config = {
     layout: "fitColumns",
     tooltips: true,
     dataLoader: true,
-
     responsiveLayout: true,
     columns :[
-        {field: "titel", title: "Titel", formatter: "html", responsive: "0", resizable: "true", headerFilter: "input", minWidth: "300px"},
+        {field: "titel", title: "Titel", formatter: "html", responsive: "0", resizable: "true", minWidth: "380", headerFilter: "input"},
 	{field: "xml-tei", title: "XML-TEI", responsive: "10", formatter: "html", visible: false},
-	{field: "tpq", title: "TPQ", responsive: "1", resizable: "true", headerFilter: "input", minWidth: "150px"},
+	{field: "tpq", title: "TPQ", responsive: "1", resizable: "true", headerFilter: "input", minWidth: "100px", maxWidth: "100px"},
 	{field: "taq", title: "TAQ", resizable: "true", headerFilter: "input", visible: false},
-	{field: "liturgie", title: "Liturgie", responsive: "2", resizable: "true", headerFilter: "list", minWidth: "150px", headerFilterParams:
+	{field: "liturgie", title: "Liturgie", responsive: "2", resizable: "true", headerFilter: "list", minWidth: "150px", maxWidth: "150px", headerFilterParams:
 		{ valuesLookup: true, clearable: true },
 	},
 	{field: "dokumententyp", title: "Dokumententyp", responsive: "3", resizable: "true", headerFilter: "list", minWidth: "200px", headerFilterParams:

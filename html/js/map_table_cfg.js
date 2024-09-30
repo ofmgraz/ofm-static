@@ -33,6 +33,7 @@ const columns = [
     field: "Name",
     formatter: "plaintext",
     resizable: false,
+    minWidth: 100 ,
   },
   /* the following fields are necessary, 
     provide a string val each in your html-table,
@@ -82,7 +83,7 @@ const tabulator_cfg = {
   /* minWidth: 500, */
   headerFilterLiveFilterDelay: 600,
   virtualDomBuffer: 200,
-  layout: "fitColumns",
+  layout: "fitDataTable",
     tooltips: true,
     dataLoader: true,
     responsiveLayout: true

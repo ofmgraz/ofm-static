@@ -30,7 +30,7 @@
                 <xsl:call-template name="nav_bar"/>
 
                 <main class="flex-grow-1 overflow-hidden">
-                    <div class="container">
+                    <div class="container-md">
                         <h2 class="text-center">
                             <xsl:value-of select="$doc_title"/>
                         </h2>
@@ -121,7 +121,7 @@
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>
-                <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.6.0/dist/js/tabulator.min.js"/>
+                <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"/>
                 <script src="js/make_map_and_table.js"/>
                 <script src="js/map_table_cfg.js"/>
                 <script src="tabulator-js/config.js"></script>

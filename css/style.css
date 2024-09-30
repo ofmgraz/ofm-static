@@ -161,7 +161,7 @@ ul {
     padding:2em;
 }
 
-.col-6.drucker {
+.col-md-6.col-10.drucker {
     box-sizing: border-box;
     border: 2pt solid var(--ofm-bg-dark);
     border-left: 2pt solid var(--ofm-bg-dark);

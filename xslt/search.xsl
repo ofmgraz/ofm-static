@@ -32,7 +32,7 @@
                         <div class="search-panel">
                             <div class="search-panel__results">
                                 <div class="row">
-                                    <div class="col-md-4 facettes">
+                                    <div class="col-lg-3 col-md-4 col-12 facettes">
                                         <div id="stats-container"/>
                                         <div id="searchbox"/>
                                         <div id="clear-refinements"/>
@@ -43,7 +43,7 @@
                                         <div id="refinement-list-persons"/>
                                         <div id="refinement-range-year"/>
                                     </div>
-                                    <div class="col-md-9 col-sd-8">
+                                    <div class="col-lg-9 col-md-8 col-12">
                                         <!--<div id="sort-by"></div>-->
                                         <div id="current-refinements"/>
                                         <div id="hits" />

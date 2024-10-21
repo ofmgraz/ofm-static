@@ -253,6 +253,7 @@ margin-right: auto ;}
 	background-color: var(--ofm-bg-dark);
 	color: var(--ofm-bg);
     width: 100vw ;
+    max-width: 100% ;
 }
 
 .wrapper-navbar * {

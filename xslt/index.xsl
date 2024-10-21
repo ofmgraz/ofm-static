@@ -29,10 +29,6 @@
                 <!-- Landing page -->
                 <xsl:call-template name="nav_bar"/>
                 <main class="flex-grow-1 flex-shrink-1 bg">
-                    <div class="row pad">
-                        <br/>
-                        <br/>
-                    </div>
 		            <div class="row banner"/>
                     <div class="body-contents">
                         <div class="row title align-center">

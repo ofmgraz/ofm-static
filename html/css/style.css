@@ -238,6 +238,7 @@ margin-right: auto ;}
 	margin:0px;
 	background-color: var(--ofm-bg-dark);
 	color: var(--ofm-bg);
+    width: 100% ;
 }
 
 .wrapper-navbar * {

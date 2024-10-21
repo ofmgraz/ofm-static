@@ -35,7 +35,7 @@
                             <xsl:value-of select="$doc_title"/>
                         </h2>
 
-                        <div class="col-md-6 col-10 drucker center">
+                        <div class="col-md-12 col-12 drucker center">
                             <ul class="list">
                                 <xsl:for-each select=".//tei:person[@xml:id]">
                                     <xsl:variable name="id">

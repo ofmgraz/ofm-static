@@ -16,6 +16,7 @@
         <meta name="apple-mobile-web-app-title" content="{$html_title}" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="{$project_logo}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<!-- favicon -->
 	<link rel="None" type="image/ico" href="images/favicons/favicon.ico" />
 	<link rel="icon" type="image/png" href="images/favicons/favicon-16x16.png" />

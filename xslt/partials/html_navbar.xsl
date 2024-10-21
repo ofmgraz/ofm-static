@@ -6,7 +6,7 @@
         <xsl:param name="edition_buttons" as="xs:boolean">
             <xsl:value-of select="false()"/>
         </xsl:param>
-        <div class="wrapper-fluid wrapper-navbar sticky-top hide-reading" id="wrapper-navbar">
+        <div class="wrapper-navbar sticky-top hide-reading" id="wrapper-navbar">
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="index.html">

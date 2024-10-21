@@ -29,7 +29,7 @@
             
             <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
-                <main class="flex-shrink-0 flex-grow-1">
+                <main class="flex-grow">
                     <div class="container">
                         <h2><xsl:value-of select="$doc_title"/></h2>
                         <xsl:for-each select=".//div">

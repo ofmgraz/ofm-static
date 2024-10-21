@@ -4,7 +4,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:local="http://dse-static.foo.bar"
     version="2.0" exclude-result-prefixes="xsl tei xs local">
 
-    <xsl:output encoding="UTF-8" media-type="text/html" method="html"  indent="yes"
+    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
         omit-xml-declaration="yes"/>
 
 
@@ -28,7 +28,7 @@
             <body class="flex-column">
                 <!-- Landing page -->
                 <xsl:call-template name="nav_bar"/>
-                <main class="flex-grow-1 flex-shrink-1 bg">
+                <main class="flex-grow bg">
 		            <div class="row banner"/>
                     <div class="body-contents">
                         <div class="row title align-center">

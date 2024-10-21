@@ -32,7 +32,7 @@
             <body class="d-flex flex-column">
                 <!-- About -->
                 <xsl:call-template name="nav_bar"/>
-                <main class="flex-grow-1">
+                <main class="flex-grow">
                     <div class="container-md">
                         <h2 class="text-center">
                             <xsl:value-of select="$doc_title"/>

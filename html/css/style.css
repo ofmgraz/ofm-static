@@ -579,7 +579,7 @@ min-width: unset ;
     padding-top: 0 ;
 }
 
-
+.footer {width: 100% ;}
 #footer-full-content {
     padding-top: 2em;
     padding-left: 0;

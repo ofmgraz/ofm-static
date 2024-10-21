@@ -19,9 +19,7 @@
     background-color: var(--ofm-bg);
 
 }
-* {
-    outline: 1px solid #f00 !important;
-  }
+
 
 
 h1 {
@@ -447,11 +445,14 @@ div#navbarSupportedContent div#navbar_right_spacer {
 	white-space: nowrap;
 	overflow: hidden;
 }
+
+
 .flex-grow-1.flex-shrink-1.bg {
     min-height: 5vh;
     width: 100vw ;
     max-width: 100%;
     z-index: 10!important ;
+    height: 100% ;
 }
 
 .row.banner {

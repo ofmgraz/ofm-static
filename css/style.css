@@ -802,5 +802,9 @@ h2 {
         width: 50% ;
         max-width: 50% ;
     }
+    .dropdown-item{
+        color: var(--ofm-table-bg-type) ;
+        background-color: var(--ofm-bg-dark) ;
+    }
  
 }

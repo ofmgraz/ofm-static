@@ -128,6 +128,7 @@ main {
     color:var(--ofm-font-color);
     background-color: var(--ofm-bg);
     padding-bottom: 2rem ;
+    height: 100% ;
 }
 
 .body-contents{
@@ -163,7 +164,7 @@ ul {
     padding:2em;
 }
 
-.col-md-6.col-10.drucker {
+.col-md-12.col-12.drucker {
     box-sizing: border-box;
     border: 2pt solid var(--ofm-bg-dark);
     border-left: 2pt solid var(--ofm-bg-dark);

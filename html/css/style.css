@@ -254,7 +254,6 @@ margin-right: auto ;}
 	background-color: var(--ofm-bg-dark);
 	color: var(--ofm-bg);
     width: 100vw ;
-    max-width: 100% ;
 }
 
 .wrapper-navbar * {
@@ -653,7 +652,6 @@ footer * {
     background-color: var(--ofm-table-bg-type);
 	color: var(--ofm-font-color);
     width: 100vw ;
-    max-width: 100% ;
 }
 
 .footer-imprint-bar * {

@@ -458,7 +458,7 @@ div#navbarSupportedContent div#navbar_right_spacer {
 .container {
     padding-left: 1rem ;
     padding-right: 1rem ;
-    max-width: 90vw ;
+    max-width: 90vw!important ;
     text-align: center;
     padding: 1rem;
 }

@@ -573,6 +573,9 @@ min-width: unset ;
     padding-top: 1rem ; 
 }
 
+.img-fluid {
+    max-width: 100% ;
+}
 .footer-widget {
     font-size: 12px;
     padding-bottom: 0 ;

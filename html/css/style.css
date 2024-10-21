@@ -19,6 +19,9 @@
     background-color: var(--ofm-bg);
 
 }
+* {
+    outline: 1px solid #f00 !important;
+  }
 
 
 h1 {
@@ -118,7 +121,7 @@ body {
     width: 100vw;
     overflow-x: hidden;
     background-color: var(--ofm-bg);
-
+    margin: 0 ;
 }
 
 
@@ -133,7 +136,7 @@ main {
 .body-contents{
     padding-left: 10vw ;
     padding-right: 10vw ;
-    max-width: 
+    max-width: 100% ;
 }
 
 .row.title{
@@ -240,6 +243,9 @@ margin-right: auto ;}
   opacity: 1;
   margin-top: 4rem;
   margin-bottom: 4rem; 
+  max-width: 60% ;
+  margin-left: auto ;
+  margin-right: auto ;
 }
 .wrapper-navbar{
 	padding:0;

@@ -258,6 +258,7 @@ margin-right: auto ;}
 .wrapper-navbar * {
 	background-color: var(--ofm-bg-dark);
 	color: var(--ofm-bg);
+    overflow-x: hidden ;
 }
 
 

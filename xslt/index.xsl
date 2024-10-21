@@ -25,7 +25,7 @@
                     <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
             </head>
-            <body class="d-flex flex-column">
+            <body class="flex-column">
                 <!-- Landing page -->
                 <xsl:call-template name="nav_bar"/>
                 <main class="flex-grow-1 flex-shrink-1 bg">

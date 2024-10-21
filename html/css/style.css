@@ -19,9 +19,7 @@
     background-color: var(--ofm-bg);
 
 }
-* {
-    outline: 1px solid #f00 !important;
-  }
+
 
 
 h1 {

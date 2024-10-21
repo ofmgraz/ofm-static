@@ -184,6 +184,13 @@ ul {
     color: var(--ofm-table-bg-type-dark);
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Adjust alignment as necessary */
+}
+
+
 .p-cover{
     margin: 0;
     padding-top: 1em ;
@@ -625,6 +632,7 @@ footer * {
     font-size: 0.8rem;
     background-color: var(--ofm-table-bg-type);
 	color: var(--ofm-font-color);
+    width: 100% ;
 }
 
 .footer-imprint-bar * {

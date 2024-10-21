@@ -700,6 +700,7 @@ h2 {
 @media screen and (max-width: 1015px) {
 	.flex-grow-1.flex-shrink-1.bg {
     		min-height: 5vh;
+            max-width: 100%;
 	}
 
 	.row.banner {

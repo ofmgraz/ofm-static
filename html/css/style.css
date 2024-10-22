@@ -594,6 +594,7 @@ min-width: unset ;
 .img-fluid {
     max-width: 100% ;
 }
+
 .footer-widget {
     font-size: 12px;
     padding-bottom: 0 ;
@@ -756,6 +757,13 @@ h2 {
     .container {
         width: 100% ;
     }
+
+    .subcontents .img-fluid {
+        width: 100% ;
+        max-width: 80% !important ;
+        text-align: center ;
+        justify-content: center;
+    }
 }
 
 @media screen and (max-width: 639px) {
@@ -832,10 +840,13 @@ h2 {
         max-width: unset ;
     }
     .column-left {
+        max-width: 80% ;
         width: 100% ;
         text-align: center ;
         justify-content: center;
     }
+
+    
 
     .button.column-right, .button.column-left{
         width: 50vw ;

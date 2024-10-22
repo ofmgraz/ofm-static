@@ -15,7 +15,7 @@
     --ofm-table-bg-type-dark: #c3b092;
     --ofm-table-accent-bg: #675744;
     --ofm-link-color: #943F33;
-    font-family: 'LM Roman', Arial,Helvetica,sans-serif;
+    font-family:  "Lucida Console", "Courier New", monospace;
     background-color: var(--ofm-bg);
 
 }
@@ -75,7 +75,7 @@ h1 {
 
   
 :root * {
-    font-family: 'LM Roman', Arial,Helvetica,sans-serif;
+    font-family: "Noto Sans Display", "Noto Sans", "Helvetica", "Tahoma", "Verdana", "sans-serif", "Arial" ;
     
 }
 

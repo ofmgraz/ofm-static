@@ -81,14 +81,17 @@ h1 {
 
 .align-center{
     text-align: center ;
+    justify-content: center ;
 }
 
 .align-right{
     text-align: right ;
+    justify-content: right ;
 }
 
 .align-left{
     text-align: left ;
+    justify-content: left ;
 }
 
 
@@ -118,23 +121,27 @@ body {
     background-color: var(--ofm-bg);
     margin: 0 ;
     display: flex;
+    flex-flow: column;
     flex-direction: column;
+    height: 100vw ;
+    overflow-x: scroll ;
 }
 
 
 main {
-	flex-grow: 1;
+	flex: 1;
     color:var(--ofm-font-color);
     background-color: var(--ofm-bg);
     padding-bottom: 2rem ;
-    height: 100% ;
     width: 100% ;
+    position: relative ;
 }
 
 .body-contents{
     padding-left: 10vw ;
     padding-right: 10vw ;
     width: fit-content ;
+   
 }
 
 .row.title{
@@ -827,6 +834,8 @@ h2 {
     }
     .column-left {
         width: 100% ;
+        text-align: center ;
+        justify-content: center;
     }
 
     .button.column-right, .button.column-left{

@@ -31,7 +31,7 @@
 
                 <main class="flex-grow-1">
                     <div class="container-md">
-                        <h2 class="text-center">
+                        <h2 class="align-center">
                             <xsl:value-of select="$doc_title"/>
                         </h2>
 

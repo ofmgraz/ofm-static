@@ -23,7 +23,7 @@
                 <xsl:call-template name="nav_bar"/>
                 <main class="flex-grow">
                 <div class="container flex-1">
-                    <h2 class="text-center">
+                    <h2 class="align-center">
                         <xsl:value-of select="$doc_title"/>
                     </h2>
 

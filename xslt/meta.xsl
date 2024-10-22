@@ -34,7 +34,7 @@
                 <xsl:call-template name="nav_bar"/>
                 <main class="flex-grow">
                     <div class="container-md">
-                        <h2 class="text-center">
+                        <h2 class="align-center">
                             <xsl:value-of select="$doc_title"/>
                         </h2>
                         <div class="container-fluid">
@@ -113,7 +113,7 @@
         </xsl:variable>
         <xsl:element name="{concat('h', $level + 1)}">
             <xsl:attribute name="class">
-                <xsl:value-of select="'text-center'" />
+                <xsl:value-of select="'align-center'" />
             </xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>

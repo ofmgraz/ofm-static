@@ -61,7 +61,7 @@
                         <i class="bi bi-download" title="show TEI source"/>
                     </a>
                 </h3>
-                <p class="text-center">
+                <p class="align-center">
                     <small><xsl:value-of select="//tei:msDesc/tei:msIdentifier/tei:repository" /><xsl:text> </xsl:text>
                         <xsl:value-of select="//tei:msDesc/tei:msIdentifier/tei:settlement" />,                         
                         <xsl:value-of select="//tei:msDesc/tei:msIdentifier/tei:idno" />

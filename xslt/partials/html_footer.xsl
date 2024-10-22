@@ -8,7 +8,7 @@
         <footer class="footer">
             <div class="row justify-content-center">
                 <!-- KONTAKT -->
-                <div class="col-4 col-md-5 text-center">
+                <div class="col-4 col-md-5 align-center">
                     <h5 class="font-weight-bold hide-mobile align-left">KONTAKT:</h5>
                     <div class="row">
                         <div class="footer-widget col-12 col-md-3 pad">
@@ -41,7 +41,7 @@
                     <!-- <div class="footer-widget col-lg-1 col-md-2 col-sm-2 col-xs-6 justify-content overflow-hidden"> -->
                     <h5 class="font-weight-bold hide-mobile align-left">FÖRDERUNG:</h5>
                     <div class="row">
-                        <div class="footer-widget col-lg-8 text-center">
+                        <div class="footer-widget col-lg-8 align-center">
                             <a href="https://www.bmkoes.gv.at/">
                                 <img
                                     src="images/BMKOES_Logo_srgb.svg"
@@ -50,7 +50,7 @@
                             </a>
                         </div>
                         <div class="spacing"/>
-                        <div class="footer-widget col-lg-8 text-center">
+                        <div class="footer-widget col-lg-8 align-center">
                             <a href="https://next-generation-eu.europa.eu/index_de">
                                 <img
                                     src="images/DE_Finanziert_von_der_Europäischen_Union_RG_POS.png"

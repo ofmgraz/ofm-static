@@ -235,6 +235,10 @@ border-bottom: 0.1px solid #000 ;
 }
 
 
+.column-right .p-cover{
+    height: 60% ;
+}
+
 .column-right h2 {
     padding-top: 0;
 }
@@ -877,6 +881,7 @@ h2 {
     .column-right {
         max-width: unset ;
     }
+
     .column-left {
         max-width: 80% ;
         width: 100% ;

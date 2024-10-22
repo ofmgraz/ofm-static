@@ -117,13 +117,12 @@ h1 {
 
 
 body {
-    max-height:100vh;
     background-color: var(--ofm-bg);
     margin: 0 ;
     display: flex;
     flex-flow: column;
     flex-direction: column;
-    height: 100vw ;
+    height: 100vh ;
     overflow-x: scroll ;
 }
 

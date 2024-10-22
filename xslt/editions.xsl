@@ -42,8 +42,9 @@
                 </xsl:call-template>
             </head>
             <body class="d-flex flex-column">
-                <div class="hfeed site flex-grow-1" id="page">
-                    <xsl:call-template name="nav_bar"/>
+             <xsl:call-template name="nav_bar"/>
+                <main class="hfeed site flex-grow" id="page">
+                   
                     <div class="edition_container ">
                         <div class="offcanvas offcanvas-start" tabindex="-1"
                             id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel"
@@ -65,14 +66,14 @@
                                 <div class="row" id="fa_links">
                                 <div class="col-4"  style="text-align:right">
                                     <xsl:if test="ends-with($prev,'.html')">
-                                        <h2>
+                                        <h3>
                                             <a>
                                                 <xsl:attribute name="href">
                                                     <xsl:value-of select="$prev"/>
                                                 </xsl:attribute>
                                                 <i class="fa-solid fa-caret-left left" title="zurück"/>
                                             </a>
-                                        </h2>
+                                        </h3>
                                     </xsl:if>
                                 </div>
                                 <div class="col-4 docinfo"  style="text-align:center">
@@ -84,14 +85,14 @@
                                 </div>
                                 <div class="col-4" style="text-align:left">
                                     <xsl:if test="ends-with($next, '.html')">
-                                        <h2>
+                                        <h3>
                                             <a>
                                                 <xsl:attribute name="href">
                                                     <xsl:value-of select="$next"/>
                                                 </xsl:attribute>
                                                 <i class="fa-solid fa-caret-right right" title="weiter"/>
                                             </a>
-                                        </h2>
+                                        </h3>
                                     </xsl:if>
                                 </div>
                                 </div>
@@ -128,7 +129,7 @@
                             <!-- create list* elements for entities bs-modal -->
                         </div>
                     </div>
-                </div>
+                </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"/>
                 <script type="text/javascript" src="js/osd_scroll.js"></script>

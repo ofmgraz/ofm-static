@@ -234,6 +234,17 @@ border-bottom: 0.1px solid #000 ;
     max-width: 50%
 }
 
+
+.column-right h2 {
+    padding-top: 0;
+}
+
+.row.subcontents {
+    max-width: 60% ;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
 .body-subcontents{padding: 2rem;
 text-align: center;
 margin-left: auto;
@@ -740,13 +751,26 @@ h2 {
 		min-height: 8vh;
         max-width: 100% ;
 	}
-	h2 {
-    font-size: 3rem ;
-	}
+
+	.column-right h2 {
+        padding-top: 1rem;
+        font-size: 2rem ;
+        }
 
     .hide-midi{
         display: none ;
      }
+
+     .row.subcontents {
+        max-width: 100% ;
+        margin-left: 0 ;
+        margin-right: 0 ;
+    }
+
+    h1 {
+        padding-top: 2rem!important;
+        padding-bottom: 1rem!important;
+    }
 
    }
 
@@ -772,7 +796,6 @@ h2 {
 
     .hr-custom{
       margin-top: 2rem;
-      margin-bottom: 2rem;
     }
 
     h2 {

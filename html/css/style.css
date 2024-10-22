@@ -293,7 +293,7 @@ margin-right: auto ;}
 }
 
 
-.navbar-brand:focus, .navbar-brand:hover {
+.navbar-brand:focus, .navbar-brand:hover, .nav-link:focus, .nav-link:hover  {
     color: var(--ofm-table-bg-type) ;
 }
 
@@ -306,9 +306,12 @@ margin-right: auto ;}
     color: var(--ofm-table-bg-type-dark);
 }
 
-#navbarSupportedContent a.nav-link:hover {
+
+
+#navbarSupportedContent a.nav-link:hover,  #navbarSupportedContent a.nav-link:focus{
     color: var(--ofm-table-bg-type) ;
 }
+
 
 .dropdown-item{
     font-size: 1.3rem ;
@@ -895,9 +898,7 @@ h2 {
         width: 50vw ;
         max-width: 50% ;
     }
-    .dropdown-item{
-        color: var(--ofm-table-bg-type) ;
-        background-color: var(--ofm-bg-dark) ;
-    }
+
+  
  
 }

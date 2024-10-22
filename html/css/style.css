@@ -769,6 +769,16 @@ h2 {
         padding-left: 0.8rem;
         padding-right: 0.8rem ;
     }
+
+    .hr-custom{
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+        padding-top: 1em;
+        padding-bottom: 0 ;
+    }
 }
 
 @media screen and (max-width: 639px) {

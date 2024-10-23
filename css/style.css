@@ -499,7 +499,7 @@ div#navbarSupportedContent div#navbar_right_spacer {
 .container {
     padding-left: 1rem ;
     padding-right: 1rem ;
-    max-width: 90vw!important ;
+    max-width: 1320px!important;
     text-align: center;
     padding: 1rem;
 }
@@ -754,6 +754,9 @@ h2 {
             width: 100% ;
 	}
 
+    .container {
+        max-width: 90vw!important ;
+    }
 	.row.banner {
 		min-height: 8vh;
         max-width: 100% ;

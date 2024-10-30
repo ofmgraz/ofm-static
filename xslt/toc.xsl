@@ -68,7 +68,7 @@
                                                   />
                                                 </xsl:attribute>
                                                 <xsl:value-of
-                                                  select=".//tei:titleStmt/tei:title[1]/text()"/>
+                                                  select="concat(.//tei:titleStmt/tei:title[1]/text(), ' (', .//tei:titleStmt/tei:title[2]/text(), ')')"/>
                                             </a>
                                         </td>
                                         <td>

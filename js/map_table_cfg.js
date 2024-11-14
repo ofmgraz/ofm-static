@@ -34,6 +34,8 @@ const columns = [
     formatter: "plaintext",
     resizable: false,
     minWidth: 100 ,
+    hozAlign: "left",
+    headerHozAlign:"center",
   },
   /* the following fields are necessary, 
     provide a string val each in your html-table,
@@ -61,6 +63,8 @@ const columns = [
     field: "Objekte",
     resizable: false,
     formatter: "html",
+    hozAlign: "left",
+    headerHozAlign:"center",
   },
   /*the following could contain a ul of links to external authority data*/
   {

@@ -14,17 +14,17 @@ var config = {
     dataLoader: true,
     responsiveLayout: true,
     columns :[
-        {field: "titel", title: "Titel", formatter: "html", responsive: "0", resizable: "true", minWidth: "250px", headerFilter: "input"},
+        {field: "titel", title: "Titel", formatter: "html", responsive: "0", resizable: "true", minWidth: "250px", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},
 	{field: "xml-tei", title: "XML-TEI", responsive: "10", formatter: "html", visible: false},
 	{field: "tpq", title: "TPQ", responsive: "1", resizable: "true", headerFilter: "input", minWidth: "100px", maxWidth: "100px"},
 	{field: "taq", title: "TAQ", resizable: "true", headerFilter: "input", visible: false},
 	{field: "liturgie", title: "Liturgie", responsive: "2", resizable: "true", headerFilter: "list", minWidth: "150px", maxWidth: "150px", headerFilterParams:
 		{ valuesLookup: true, clearable: true },
 	},
-	{field: "dokumententyp", title: "Dokumententyp", responsive: "3", resizable: "true", headerFilter: "list", minWidth: "200px", headerFilterParams:
+	{field: "dokumententyp", title: "Dokumententyp", responsive: "3", resizable: "true", headerFilter: "list", minWidth: "200px", , hozAlign: "left", headerHozAlign:"center", headerFilterParams:
 		{ valuesLookup: true, clearable: true },
 	},
-	{field: "provenienz", title: "Provenienz", formatter: "html", responsive: "11", headerFilter: "input"},
+	{field: "provenienz", title: "Provenienz", formatter: "html", responsive: "11", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},
 	{field: "drucker", title: "Drucker", responsive: "12", formatter: "html", resizable: "true", headerFilter: "list", visible: false},
 	{field: "folia", title: "Folia", responsive: "13", resizable: "true", headerFilter: "input", visible: false},
 	{field: "höhe_(mm)", title: "Höhe (mm)", responsive: "14", resizable: "true", headerFilter: "input", visible: false},

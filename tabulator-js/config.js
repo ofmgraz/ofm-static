@@ -21,7 +21,7 @@ var config = {
 	{field: "liturgie", title: "Liturgie", responsive: "2", resizable: "true", headerFilter: "list", minWidth: "150px", maxWidth: "150px", headerFilterParams:
 		{ valuesLookup: true, clearable: true },
 	},
-	{field: "dokumententyp", title: "Dokumententyp", responsive: "3", resizable: "true", headerFilter: "list", minWidth: "200px", , hozAlign: "left", headerHozAlign:"center", headerFilterParams:
+	{field: "dokumententyp", title: "Dokumententyp", responsive: "3", resizable: "true", headerFilter: "list", minWidth: "200px", hozAlign: "left", headerHozAlign:"center", headerFilterParams:
 		{ valuesLookup: true, clearable: true },
 	},
 	{field: "provenienz", title: "Provenienz", formatter: "html", responsive: "11", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},

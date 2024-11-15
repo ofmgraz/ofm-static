@@ -1,20 +1,19 @@
 :root {
     --bs-border-width: 0px;
     --ofm: #0b2966;
-    --ofm-bg: #f3e0c2;
     --ofm-bg: #ffffff;
-    --ofm-bg-dark:   #943F33;
+    --ofm-bg-dark:   #3f3f3f;
     /*--ofm-small-highlight:  #9C9C9C; */
     /*--ofm-darker-lightgray: #D4D4D4; */
     --ofm-contrast: #675744;
-    --ofm-font-color: #27170a;
+    --ofm-font-color: #000000;
     --ofm-transp-red: #ff914d;
     -ofm-small-highlight:  #b16255;
-    --ofm-big-highlight:  #914235;
-    --ofm-table-bg-type: #f3e0c2;
-    --ofm-table-bg-type-dark: #c3b092;
+    --ofm-big-highlight:  #404040;
+    --ofm-table-bg-type: #e0e0e0;
+    --ofm-table-bg-type-dark: #d0d0d0;
     --ofm-table-accent-bg: #675744;
-    --ofm-link-color: #943F33;
+    --ofm-link-color: #808080;
     font-family:  "Lucida Console", "Courier New", monospace;
     background-color: var(--ofm-bg);
 

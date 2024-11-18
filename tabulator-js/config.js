@@ -21,16 +21,13 @@ var config = {
 		{field: "liturgie", title: "Liturgie", responsive: "2", resizable: "true", headerFilter: "list", minWidth: "150px", maxWidth: "150px", headerFilterParams:
 		{ valuesLookup: true, clearable: true },
 		},
-		{field: "dokumententyp", title: "Dokumententyp", responsive: "3", resizable: "true", headerFilter: "list", minWidth: "200px", hozAlign: "left", headerHozAlign:"center", headerFilterParams:
-		{ valuesLookup: true, clearable: true },
-		},
 		{field: "provenienz", title: "Provenienz", formatter: "html", responsive: "11", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},
 		{field: "drucker", title: "Drucker", responsive: "12", formatter: "html", resizable: "true", headerFilter: "list", visible: false},
 		{field: "folia", title: "Folia", responsive: "13", resizable: "true", headerFilter: "input", visible: false},
 		{field: "höhe_(mm)", title: "Höhe (mm)", responsive: "14", resizable: "true", headerFilter: "input", visible: false},
 		{field: "breite_(mm)", title: "Breite (mm)", responsive: "15", resizable: "true", headerFilter: "input", visible: false},
-		{field: "description", title: "Beschreibung", responsive: "16", resizable: "true", headerFilter: "input", visible: false},
-		{field: "transkriptionsstatus", title: "Transkriptionsstatus", responsive: "17", resizable: "true", headerFilter: "list", visible: false, headerFilterParams:
+		{field: "description", title: "Beschreibung", responsive: "16", resizable: "true", headerFilter: "input", visible: true},
+		{field: "transkriptionsstatus", title: "Transkriptionsstatus", responsive: "17", resizable: "true", headerFilter: "list", minWidth: "250px", visible: false, headerFilterParams:
 			{ valuesLookup: true, clearable: true },
 		},//set the initial value of the header filter to "red"
     ],

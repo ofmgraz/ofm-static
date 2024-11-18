@@ -16,7 +16,7 @@
 
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select=".//tei:titleStmt/tei:title[@xml:lang = $lang]/text()"/>
+            <xsl:value-of select=".//tei:titleStmt/tei:title[@leve = 'a']/text()"/>
         </xsl:variable>
         <html class="page">
 

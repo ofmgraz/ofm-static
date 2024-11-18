@@ -22,43 +22,52 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false"
-                                    data-i18n="navbar__project"/>
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <xsl:text>Projekt</xsl:text>
+                                </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="about.html"
-                                            data-i18n="navbar__about"/>
+                                        <a class="dropdown-item" href="about.html">
+                                            <xsl:text>Über das Projekt</xsl:text>
+                                        </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="books.html"
-                                            data-i18n="navbar__books"/>
+                                        <a class="dropdown-item" href="books.html">
+                                             <xsl:text>Über die Quellen</xsl:text>
+                                        </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="imprint.html"
-                                            data-i18n="navbar__imprint"/>
+                                        <a class="dropdown-item" href="imprint.html">
+                                              <xsl:text>Impressum</xsl:text>
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="toc.html" data-i18n="navbar__toc"/>
+                                <a class="nav-link" href="toc.html">
+                                    <xsl:text>Quellen</xsl:text>
+                                </a>
                             </li>
 
                             <li class="nav-item dropdown disabled">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false"
-                                    data-i18n="navbar__register"/>
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <xsl:text>Register</xsl:text>
+                                </a>
                                 <ul class="dropdown-menu">
                                     <!-- <li>
 <a class="dropdown-item" href="listperson.html" data-i18n="navbar__drucker"/>
 </li> -->
                                     <li>
-                                        <a class="dropdown-item" href="listplace.html"
-                                            data-i18n="navbar__places"/>
+                                        <a class="dropdown-item" href="listplace.html">
+                                         <xsl:text>Orte</xsl:text>
+                                        </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="listperson.html"
-                                            data-i18n="navbar__persons"/>
+                                        <a class="dropdown-item" href="listperson.html">
+                                            <xsl:text>Drucker</xsl:text>
+                                        </a>
                                     </li>
                                     <!-- <li>
 <a class="dropdown-item" href="listbibl.html" data-i18n="navbar__works"/>
@@ -67,8 +76,9 @@
                             </li>
 
                             <li class="nav-item">
-                                <a title="Suche" class="nav-link" href="search.html"
-                                    data-i18n="navbar__search"/>
+                                <a title="Suche" class="nav-link" href="search.html">
+                                 <xsl:text>Suche</xsl:text>
+                                </a>
                             </li>
 
                             <!-- <select name="language" id="languageSwitcher"/> -->

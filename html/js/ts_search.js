@@ -150,7 +150,7 @@ search.addWidgets([
     },
   }),
 
-  instantsearch.widgets.panel({
+ /*  instantsearch.widgets.panel({
     collapsed: ({ state }) => {
       return state.query.length === 0;
     },  
@@ -171,7 +171,7 @@ search.addWidgets([
       label: "d-flex align-items-center text-capitalize",
       checkbox: "mr-2",
     },
-  }),
+  }), */
 
   instantsearch.widgets.panel({
     collapsed: ({ state }) => {

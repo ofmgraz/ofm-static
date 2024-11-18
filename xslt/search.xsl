@@ -40,7 +40,7 @@
 					                    <div id="refinement-list-liturgie"/>
 					                    <div id="refinement-list-genre"/>
                                         <div id="refinement-list-place"/>
-                                        <div id="refinement-list-doc-type"/>
+                                        <!-- <div id="refinement-list-doc-type"/> -->
                                         <div id="refinement-list-persons"/>
                                         <div id="refinement-range-year"/>
                                     </div>

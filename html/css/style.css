@@ -1,24 +1,25 @@
 :root {
     --bs-border-width: 0px;
     --ofm: #0b2966;
+    --ofm-bg: #f3e0c2;
     --ofm-bg: #ffffff;
-    --ofm-bg-dark:   #3f3f3f;
+    --ofm-bg-dark:   #943F33;
     /*--ofm-small-highlight:  #9C9C9C; */
     /*--ofm-darker-lightgray: #D4D4D4; */
     --ofm-contrast: #675744;
-    --ofm-font-color: #000000;
+    --ofm-font-color: #27170a;
     --ofm-transp-red: #ff914d;
     -ofm-small-highlight:  #b16255;
-    --ofm-big-highlight:  #404040;
-    --ofm-table-bg-type: #e0e0e0;
-    --ofm-table-bg-type-dark: #d0d0d0;
+    --ofm-big-highlight:  #914235;
+    --ofm-table-bg-type: #f3e0c2;
+    --ofm-table-bg-type-dark: #c3b092;
     --ofm-table-accent-bg: #675744;
-    --ofm-link-color: #808080;
+    --ofm-link-color: #943F33;
+    --ofm-bg-footer: #d0d0d0;
     font-family:  "Lucida Console", "Courier New", monospace;
     background-color: var(--ofm-bg);
 
 }
-
 
 
 h1 {
@@ -636,7 +637,7 @@ min-width: unset ;
 footer:where#footer {
     font-size: 0.8rem;
     display: flex;
-    background-color: var(--ofm-table-bg-type);
+    background-color: var(--ofm-bg-footer);
     color: var(--ofm-font-color);
     z-index: 1;
     align-self: flex-end;
@@ -654,7 +655,7 @@ footer:where#footer {
 
 
 footer * {
-	background-color: var(--ofm-table-bg-type);
+	background-color: var(--ofm-bg-footer);
 
 }
 
@@ -671,13 +672,13 @@ footer * {
     text-align:center;
     padding:0 0 0 0;
     font-size: 0.8rem;
-    background-color: var(--ofm-table-bg-type);
+    background-color: var(--ofm-bg-footer);
 	color: var(--ofm-font-color);
     width: 100% ;
 }
 
 .footer-imprint-bar * {
-    background-color: var(--ofm-table-bg-type);
+    background-color: var(--ofm-bg-footer);
 }
 
 

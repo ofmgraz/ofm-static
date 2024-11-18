@@ -39,9 +39,9 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Titel</th>
+                                    <th scope="col">Signatur</th>
                                     <th scope="col">XML-TEI</th>
-                                    <th scope="col">TPQ</th>
-                                    <th scope="col">TAQ</th>
+                                    <th scope="col">Datum</th>
                                     <th scope="col">Liturgie</th>
                                     <th scope="col">Dokumententyp</th>
                                     <th scope="col">Provenienz</th>
@@ -56,7 +56,15 @@
                             <tbody>
                                 <xsl:for-each
                                     select="collection('../data/editions?select=*.xml')//tei:TEI">
-                                    <xsl:variable name="full_path">
+                                     <xsl:sort select="concat(
+            floor((number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[1]) + 
+                   number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[1])) div 2), '-',
+            format-number(floor((number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[2]) + 
+                                 number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[2])) div 2), '00'), '-',
+            format-number(floor((number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[3]) + 
+                                 number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[3])) div 2), '00')
+        )" order="ascending" data-type="text"/>
+        <xsl:variable name="full_path">
                                         <xsl:value-of select="document-uri(/)"/>
                                     </xsl:variable>
                                     <tr>
@@ -68,7 +76,18 @@
                                                   />
                                                 </xsl:attribute>
                                                 <xsl:value-of
-                                                  select="concat(.//tei:titleStmt/tei:title[1]/text(), ' (', .//tei:titleStmt/tei:title[2]/text(), ')')"/>
+                                                  select=".//tei:titleStmt/tei:title[1]/text()"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a>
+                                                <xsl:attribute name="href">
+                                                  <xsl:value-of
+                                                  select="replace(tokenize($full_path, '/')[last()], '.xml', '.html')"
+                                                  />
+                                                </xsl:attribute>
+                                                <xsl:value-of
+                                                  select=".//tei:titleStmt/tei:title[2]/text()"/>
                                             </a>
                                         </td>
                                         <td>
@@ -82,14 +101,24 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <xsl:value-of
-                                                select="tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[1]"
-                                            />
-                                        </td>
-                                        <td>
-                                            <xsl:value-of
-                                                select="tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[1]"
-                                            />
+                                            <xsl:variable name="notBeforeYear" select="number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[1])" />
+                                            <xsl:variable name="notBeforeMonth" select="number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[2])" />
+                                            <xsl:variable name="notBeforeDay" select="number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[3])" />
+    
+                                            <!-- Parse components of notAfter -->
+                                            <xsl:variable name="notAfterYear" select="number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[1])" />
+                                            <xsl:variable name="notAfterMonth" select="number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[2])" />
+                                            <xsl:variable name="notAfterDay" select="number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[3])" />
+    
+                                            <!-- Calculate mean year, month, and day -->
+                                            <xsl:variable name="meanYear" select="floor(($notBeforeYear + $notAfterYear) div 2)" />
+                                            <xsl:variable name="meanMonth" select="floor(($notBeforeMonth + $notAfterMonth) div 2)" />
+                                            <xsl:variable name="meanDay" select="floor(($notBeforeDay + $notAfterDay) div 2)" />
+                                            <!-- Output the mean date -->
+                                            <xsl:attribute name="tabulator-data-sort">
+                                                <xsl:value-of select="concat($meanYear, '-', format-number($meanMonth, '00'), '-', format-number($meanDay, '00'))" />
+                                            </xsl:attribute>
+                                            <xsl:value-of select=".//tei:sourceDesc/tei:bibl/tei:date/text()"/>
                                         </td>
 
 

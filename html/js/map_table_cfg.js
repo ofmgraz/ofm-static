@@ -87,7 +87,7 @@ const tabulator_cfg = {
   /* minWidth: 500, */
   headerFilterLiveFilterDelay: 600,
   virtualDomBuffer: 200,
-  layout: "fitDataTable",
+  layout: "fitColumns",
     tooltips: true,
     dataLoader: true,
     responsiveLayout: true

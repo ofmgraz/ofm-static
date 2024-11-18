@@ -37,7 +37,7 @@ h1 {
     display: block!important ;
     min-width: unset !important;
     background-color: unset !important;
-    text-align: center !important; 
+    text-align: center; 
 }
 
 .drucker * {
@@ -185,7 +185,9 @@ ul {
     border-radius: .50rem;
 }
 
-
+.facettes {
+    height: 100% ;
+}
 .button{padding: 1rem;}
 .btn {
     background-color: var(--ofm-bg-dark) ;
@@ -406,6 +408,9 @@ div#navbarSupportedContent div#navbar_right_spacer {
 	min-width: unset !important;
 }
 
+.table {
+    text-align: left ;
+} 
 .table  *  {
 	min-width: unset !important;
 	background-color: var(--ofm-bg);
@@ -469,7 +474,9 @@ div#navbarSupportedContent div#navbar_right_spacer {
 	overflow: hidden;
 }
 
-
+.tabulator .tabulator-header .tabulator-col{
+    background-color: var(--ofm-bg-dark)!important;
+}
 .flex-grow-1.flex-shrink-1.bg {
     min-height: 5vh;
     width: 100% ;

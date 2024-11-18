@@ -23,12 +23,12 @@ const searchClient = typesenseInstantsearchAdapter.searchClient;
 const search = instantsearch({
   indexName: project_collection_name,
   searchClient: typesenseInstantsearchAdapter.searchClient,
-  searchFunction(helper) {
+  //searchFunction(helper) {
     // Only trigger the search if the query has 1 or more characters
-    if (helper.state.query.length > 0) {
-      helper.search();
-    }
-  }
+    //if (helper.state.query.length > 0) {
+    //  helper.search();
+    //}
+  //}
 });
 
 
@@ -102,8 +102,8 @@ if(label === 'form'){
 
 search.addWidgets([
   instantsearch.widgets.searchBox({
-    placeholder: 'Textsuche',
-    query: 'Textsuche' ,
+    placeholder: 'Tippen Sie den zu suchenden Text hier ein',
+    //query: 'Textsuche' ,
     container: "#searchbox",
     autofocus: true,
     cssClasses: {

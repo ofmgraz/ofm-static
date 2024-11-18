@@ -14,14 +14,14 @@ var config = {
     dataLoader: true,
     responsiveLayout: true,
     columns :[
-        {field: "titel", title: "Titel", formatter: "html", responsive: "0", resizable: "true", minWidth: "250px", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},
-		{field: "signatur", title: "Signatur", formatter: "html", responsive: "0", resizable: "true", minWidth: "100px", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},
+        {field: "titel", title: "Titel", formatter: "html", responsive: "0", resizable: "true", minWidth: "300px", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},
+		{field: "signatur", title: "Signatur", formatter: "html", responsive: "0", resizable: "true", minWidth: "80px", maxWidth: "120px", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},
 		{field: "xml-tei", title: "XML-TEI", responsive: "10", formatter: "html", visible: false},
-		{field: "datum", title: "Datum", resizable: "true", headerFilter: "input", visible: true},
-		{field: "liturgie", title: "Liturgie", responsive: "2", resizable: "true", headerFilter: "list", minWidth: "150px", maxWidth: "150px", headerFilterParams:
+		{field: "datum", title: "Datum", resizable: "true", headerFilter: "input", visible: true, minWidth: "50px", maxWidth: "110px"},
+		{field: "liturgie", title: "Liturgie", responsive: "2", resizable: "true", headerFilter: "list", minWidth: "100px", maxWidth: "110px", headerFilterParams:
 		{ valuesLookup: true, clearable: true },
 		},
-		{field: "provenienz", title: "Provenienz", formatter: "html", responsive: "11", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},
+		{field: "provenienz", title: "Provenienz", formatter: "html", responsive: "11", headerFilter: "input", minWidth: "150px", maxWidth: "280px", hozAlign: "left", headerHozAlign:"center"},
 		{field: "drucker", title: "Drucker", responsive: "12", formatter: "html", resizable: "true", headerFilter: "list", visible: false},
 		{field: "folia", title: "Folia", responsive: "13", resizable: "true", headerFilter: "input", visible: false},
 		{field: "höhe_(mm)", title: "Höhe (mm)", responsive: "14", resizable: "true", headerFilter: "input", visible: false},

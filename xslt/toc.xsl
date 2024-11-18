@@ -43,7 +43,6 @@
                                     <th scope="col">XML-TEI</th>
                                     <th scope="col">Datum</th>
                                     <th scope="col">Liturgie</th>
-                                    <th scope="col">Dokumententyp</th>
                                     <th scope="col">Provenienz</th>
                                     <th scope="col">Drucker</th>
                                     <th scope="col">Folia</th>
@@ -126,15 +125,6 @@
                                             <xsl:value-of
                                                 select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id = 'liturgies']/tei:category"
                                             />
-                                        </td>
-                                        <td>
-                                            <xsl:for-each
-                                                select=".//tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id = 'booktypes']/tei:category">
-                                                <xsl:value-of select="."/>
-                                                <xsl:if test="position() != last()">
-                                                  <xsl:text>, </xsl:text>
-                                                </xsl:if>
-                                            </xsl:for-each>
                                         </td>
                                         <td>
                                             <xsl:for-each

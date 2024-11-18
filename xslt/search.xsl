@@ -36,6 +36,7 @@
                                         <div id="stats-container"/>
                                         <div id="searchbox"/>
                                         <div id="clear-refinements"/>
+                                        <div><xsl:text>Verwenden Sie die Facetten unten, um die Ergebnisse zu verfeinern.</xsl:text></div>
 					                    <div id="refinement-list-liturgie"/>
 					                    <div id="refinement-list-genre"/>
                                         <div id="refinement-list-place"/>

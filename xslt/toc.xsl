@@ -178,6 +178,11 @@
                                             />
                                         </td>
                                         <td>
+                                        <xsl:attribute name="class">
+                                                  <xsl:value-of
+                                                  select="'normal-text'"
+                                                  />
+                                                </xsl:attribute>
                                             <!-- <xsl:value-of
                                                 select="child::tei:teiHeader[1]/tei:fileDesc[1]/tei:sourceDesc[1]/tei:msDesc[1]/tei:msContents[1]/summary[1]/text()"/> -->
                                             <xsl:value-of

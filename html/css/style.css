@@ -32,6 +32,10 @@ h1 {
 #myTable {
     display: none  ;
     }
+    
+.normal-text{
+    font-weight: normal ;
+}
 
 .tabulator {
     display: block!important ;
@@ -404,7 +408,6 @@ div#navbarSupportedContent div#navbar_right_spacer {
 	/* border-bottom: 1px solid #999; */
 	background-color: var(--ofm-bg);
 	color: var(--ofm-font-color);
-	font-weight: 700;
 	min-width: unset !important;
 }
 
@@ -450,7 +453,7 @@ div#navbarSupportedContent div#navbar_right_spacer {
     background-color: var(--ofm-bg);
     border: 0!important;
     font-size: 1em!important;
-    font-weight: 700;
+
 }
 
 .tabulator-col-title {

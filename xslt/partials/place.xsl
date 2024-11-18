@@ -11,7 +11,7 @@
         <table class="table entity-table">
             <tbody>
                 <tr>
-                    <th> Ortsname <a data-i18n="place__placename"/></th>
+                    <th>Ortsname</th>
                     <td>
                         <xsl:choose>
                             <xsl:when test="./tei:settlement/tei:placeName">

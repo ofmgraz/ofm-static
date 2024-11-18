@@ -25,7 +25,7 @@
 
             </xsl:if>
             <xsl:if test="./tei:residence/tei:settlement/tei:placeName">
-                <small>Aktiv in: </small><xsl:variable name="a" select="./tei:residence/tei:settlement/tei:placeName/text()"/>
+                <small>Wirkungsort: </small><xsl:variable name="a" select="./tei:residence/tei:settlement/tei:placeName/text()"/>
 			<a href="{$a}.html" target="_blank">
 				<xsl:value-of select="./tei:residence/tei:settlement/tei:placeName"/>
 			</a><xsl:value-of select="$mybreak" disable-output-escaping="yes"/>

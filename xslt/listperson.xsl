@@ -50,7 +50,7 @@
                                             <xsl:text> </xsl:text>
                                             <xsl:value-of select=".//tei:surname/text()"/>
                                         </a>
-                                        <xsl:text>, wirkte in </xsl:text>
+                                        <xsl:text>, Wirkungsort: </xsl:text>
                                         <xsl:variable name="a"
                                             select="./tei:residence/tei:settlement/tei:placeName/text()"/>
                                         <a href="{$a}.html" target="_blank">

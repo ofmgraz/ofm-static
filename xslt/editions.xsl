@@ -28,7 +28,7 @@
         <!-- <xsl:text>.xml</xsl:text> -->
     </xsl:variable>
     <xsl:variable name="doc_title">
-        <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
+        <xsl:value-of select="concat(.//tei:titleStmt/tei:title[@xml:lang='de']/text(), ' (', .//tei:titleStmt/tei:title[@type='desc']/text(), ')')"/>
     </xsl:variable>
     <xsl:variable name="link">
         <xsl:value-of select="replace($teiSource, '.xml', '.html')"/>

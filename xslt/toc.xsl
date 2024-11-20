@@ -75,7 +75,7 @@
                                                   />
                                                 </xsl:attribute>
                                                 <xsl:value-of
-                                                  select=".//tei:titleStmt/tei:title[1]/text()"/>
+                                                  select=".//tei:titleStmt/tei:title[@xml:lang='de']/text()"/>
                                             </a>
                                         </td>
                                         <td>

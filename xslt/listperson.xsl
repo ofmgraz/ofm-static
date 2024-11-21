@@ -71,6 +71,8 @@
 
         <xsl:for-each select=".//tei:person[@xml:id]">
             <xsl:variable name="filename" select="concat(./@xml:id, '.html')"/>
+            <xsl:variable name="id" select="./@xml:id" />
+            <xsl:variable name="book" select="//tei:relation[@active=concat('#', data(@xml:id))]" />
             <xsl:variable name="name"
                 select="normalize-space(string-join(./tei:persName[1]//text()))"/>
             <xsl:result-document href="{$filename}">

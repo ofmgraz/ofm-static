@@ -8,7 +8,9 @@
   
 
    <xsl:template match="tei:person" name="person_detail">
+       
         <xsl:param name="showNumberOfMentions" as="xs:integer" select="50000" />
+        <xsl:variable name="id" select="./@xml:id" />
         <xsl:variable name="selfLink">
             <xsl:value-of select="concat(data(@xml:id), '.html')"/>
         </xsl:variable>
@@ -45,12 +47,16 @@
             <div id="mentions" align="left">
                 <legend>Verantwortlich für:</legend>
                 <ul>
-                    <xsl:for-each select="./tei:listEvent/tei:event">
-                                <li>
-                                    <a href="{replace(./tei:linkGrp/tei:link/@target, '.xml', '.html')}">
-                                        <xsl:value-of select="./tei:p/tei:title"/>
-                                    </a>
-                                </li>
+                    <xsl:for-each select="//tei:relation[@active=concat('#', $id)]">
+                        <xsl:variable name="newtext" select="replace(data(@passive), 'A', 'A ')"/>
+                        <xsl:variable name="newtext" select="replace($newtext, 'S', 'S ')"/>
+                        <xsl:variable name="newtext" select="translate($newtext, '_', '/')"/>
+                        <xsl:variable name="newtext" select="replace($newtext, '.xml','')" />
+                        <li>
+                            <a href="{./@passive}">
+                                <xsl:value-of select="concat('A-Gf ', $newtext)"/>
+                            </a>
+                        </li>
                     </xsl:for-each>
                 </ul>
                 <xsl:if test="count(.//tei:noteGrp/tei:note) gt $showNumberOfMentions + 1">

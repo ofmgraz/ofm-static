@@ -82,35 +82,37 @@
                                                   </xsl:when>
                                                 </xsl:choose>
                                             </td>
-                                            <td> # <xsl:value-of select="$id"/>
+                                            <td><xsl:value-of select="concat('#', $id)"/>
                                             </td>
                                             <td>
                                                 <ul>
-                                                  <xsl:for-each select="./tei:idno">
-
-                                                  <li>
-                                                  <a>
-                                                  <xsl:attribute name="href">
-                                                  <xsl:value-of
-                                                  select="tokenize(./text(), ' ')[last()]"/>
-                                                  </xsl:attribute>
-                                                  <xsl:value-of select="./@subtype"/>
-                                                  </a>
-                                                  </li>
-
-                                                  </xsl:for-each>
+                                                    <xsl:for-each select="./tei:idno">
+                                                       <li>
+                                                            <a>
+                                                                <xsl:attribute name="href">
+                                                                    <xsl:value-of
+                                                                    select="tokenize(./text(), ' ')[last()]"/>
+                                                                </xsl:attribute>
+                                                                <xsl:value-of select="./@subtype"/>
+                                                            </a>
+                                                        </li>
+                                                    </xsl:for-each>
                                                 </ul>
                                             </td>
                                             <td>
                                                 <ul>
-                                                  <xsl:for-each select="./tei:listEvent/tei:event">
-                                                  <li>
-                                                  <a
-                                                  href="{replace(./tei:linkGrp/tei:link/@target, '.xml', '.html')}">
-                                                  <xsl:value-of select="./tei:p/tei:title/text()"/>
-                                                  </a>
-                                                  </li>
-                                                  </xsl:for-each>
+                                                    <xsl:for-each select="//tei:relation[@active=concat('#', $id)]">
+                                                        <xsl:variable name="newtext" select="replace(data(@passive), 'A', 'A ')"/>
+                                                        <xsl:variable name="newtext" select="replace($newtext, 'S', 'S ')"/>
+                                                        <xsl:variable name="newtext" select="translate($newtext, '_', '/')"/>
+                                                        <xsl:variable name="newtext" select="replace($newtext, '.xml','')" />
+                                                        <li>
+                                                            <a
+                                                            href="{./@passive}">
+                                                                <xsl:value-of select="concat('A-Gf ', $newtext)"/>
+                                                            </a>
+                                                        </li>
+                                                    </xsl:for-each>
                                                 </ul>
                                             </td>
                                         </tr>

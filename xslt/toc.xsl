@@ -86,7 +86,7 @@
                                                   />
                                                 </xsl:attribute>
                                                 <xsl:value-of
-                                                  select=".//tei:titleStmt/tei:title[2]/text()"/>
+                                                  select=".//tei:titleStmt/tei:title[@type='desc']/text()"/>
                                             </a>
                                         </td>
                                         <td>

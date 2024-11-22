@@ -17,7 +17,7 @@ var config = {
         {field: "titel", title: "Titel", formatter: "html", responsive: "0", resizable: "true", minWidth: "300px", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},
 		{field: "signatur", title: "Signatur", formatter: "html", responsive: "0", resizable: "true", minWidth: "80px", maxWidth: "120px", headerFilter: "input", hozAlign: "left", headerHozAlign:"center"},
 		{field: "xml-tei", title: "XML-TEI", responsive: "10", formatter: "html", visible: false},
-		{field: "datum", title: "Datum", resizable: "true", headerFilter: "input", visible: true, minWidth: "50px", maxWidth: "110px"},
+		{field: "datum", title: "Zeit", resizable: "true", headerFilter: "input", visible: true, minWidth: "50px", maxWidth: "110px"},
 		{field: "liturgie", title: "Liturgie", responsive: "2", resizable: "true", headerFilter: "list", minWidth: "100px", maxWidth: "110px", headerFilterParams:
 		{ valuesLookup: true, clearable: true },
 		},

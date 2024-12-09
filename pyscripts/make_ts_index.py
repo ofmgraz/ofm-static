@@ -3,7 +3,7 @@
 import glob
 import os
 from datetime import datetime
-from acdh_tei_pyutils.tei import TeiReader, ET
+from acdh_tei_pyutils.tei import TeiReader
 from acdh_tei_pyutils.utils import extract_fulltext
 from tqdm import tqdm
 from typesense.api_call import ObjectNotFound
@@ -86,14 +86,13 @@ def make_type(doc):
         printer = ""
     return liturgy, genre, provenance, form, printer
 
+
 def prepare_text(text):
     text = re.sub('\-\s*\n\s*', '', extract_fulltext(text))
     return ' '.join(text.split())
 
+
 contents = nocontents = []
-# %%
-# msContents class="#ofm #graduale #sequentiar"
-# <objectDesc form="codex">
 records = []
 cfts_records = []
 for xml_filepath in tqdm(files, total=len(files)):
@@ -110,7 +109,6 @@ for xml_filepath in tqdm(files, total=len(files)):
     date_str, nb_tst, na_tst = make_date(doc)
     liturgy, doc_type, provenance, form, printer = make_type(doc)
 
-
     facs = doc.any_xpath(".//tei:body/tei:div/tei:pb/@facs")
     for v in facs:
         p_group = f".//tei:body/tei:div/tei:ab[preceding-sibling::tei:pb[1]/@facs='{v}']"
@@ -119,7 +117,7 @@ for xml_filepath in tqdm(files, total=len(files)):
         record = {}
         if len(body) > 0:
             p_aragraph = doc.any_xpath(p_group)[0]
-            ft =  prepare_text(p_aragraph)
+            ft = prepare_text(p_aragraph)
             if len(ft) > 0:
                 pid = p_aragraph.xpath("./@facs")[0]
                 r = {"id": f"{id}_{pid.strip('#')}",
@@ -134,7 +132,7 @@ for xml_filepath in tqdm(files, total=len(files)):
                      "printer": printer,
                      "form": form,
                      "anchor_link": pid
-                     }    
+                     }
                 try:
                     r["year"] = date_str
                     r["notbefore"] = nb_tst
@@ -142,18 +140,9 @@ for xml_filepath in tqdm(files, total=len(files)):
                 except ValueError:
                     pass
                 records.append(r)
-                r["project"]: "ofm_graz"
+                r["project"] = "ofm_graz"
                 cfts_records.append(r)
 make_index = client.collections["ofm_graz"].documents.import_(records)
-# print(make_index)
 print("done with indexing ofm_graz")
-# %%
-# make_index = CFTS_COLLECTION.documents.import_(cfts_records, {"action": "upsert"})
-
-#make_index = client.collections["ofm_graz"].documents.import_(cfts_records, {"action": "upsert"})
-# %%
-# print(make_index)
-print("done with cfts-index STB")
 errors = [msg for msg in make_index if (msg != '"{\\"success\\":true}"' and msg != '""')]
 [print(err) if errors else print("No errors") for err in errors]
-# %%

@@ -72,16 +72,6 @@ function refreshNavigationControls() {
       });
   }
 
-  // Refresh navigation button states
-  function refreshNavigationControls() {
-    if (viewer.previousButton) {
-      viewer.previousButton.setDisabled(currentIndex === 0); // Disable 'Previous' if on the first image
-    }
-    if (viewer.nextButton) {
-      viewer.nextButton.setDisabled(currentIndex === viewer.tileSources.length - 1); // Disable 'Next' if on the last image
-    }
-  }
-
   // Handle navigation buttons
   function setupNavigationButtons(manifests) {
     const prev = document.querySelector("div[title='Previous page']");

@@ -3,3 +3,4 @@ favicons
 rlPyCairo
 acdh-cfts-pyutils
 meson
+cairo

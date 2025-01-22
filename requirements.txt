@@ -3,3 +3,6 @@ favicons
 rlPyCairo==0.2.0
 acdh-cfts-pyutils
 meson
+libcairo2-dev
+pkg-config
+python3-dev

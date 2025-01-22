@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Install Java and Ant
       run: |
-        sudo apt-get update && sudo apt-get install openjdk-11-jre-headless ant -y
+        sudo apt-get update && sudo apt-get install openjdk-11-jre-headless ant libcairo2-dev -y
     - name: Install Saxon
       run: shellscripts/script.sh
     - name: Install Python dependencies

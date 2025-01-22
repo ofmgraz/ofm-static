@@ -356,10 +356,11 @@ div#navbarSupportedContent div#navbar_right_spacer {
     padding-top: 0rem;
     padding-bottom: 2em;
     margin-left: auto;
+    width: 100% ;
 }
 
 .facsimiles {
-    width: 100% ;
+    /* width: 100% ; */
     padding-left: 0!important ; 
     padding-right: 0!important ;
     margin-left: auto;
@@ -597,6 +598,12 @@ min-width: unset ;
     border-bottom-right-radius: .50rem;
 }
 
+.wp-transcript {
+    display: flex; /* Use flexbox for side-by-side layout */
+        max-height: 80vh; /* Prevent it from exceeding the container height */
+
+  }
+  
 .address{
 	text-align: center ;
 }
@@ -721,13 +728,47 @@ h2 {
 
 #container-resize,
 #text-resize {
-    padding: 1;
+    padding: 0;
 	margin: 0;
 }
 
+#container-resize {
+    width: 100% ;
+}
 
 #text-resize {
-    display:none ;
+   
+    max-height: 80% ;
+}
+.pb {
+    display: block;
+    height: 1px; /* Ensure they have some height */
+    background: transparent; /* Ensure they are not hidden */
+    padding-top: 1000px ;
+  }
+
+#transcript{
+    width: 200px ;
+    max-height: 100% ;
+    overflow-y: auto ; 
+    color: #000 ;
+}
+
+#transcript * {
+    color: #000!important ;
+}
+
+#img-resize{
+    max-height: 80vw; 
+}
+.logo{
+    width: 200px;
+    max-height: 200px;
+}
+
+.logo.acdh {
+    width: auto ;
+    max-width: 100% ;
 }
 
 
@@ -738,6 +779,8 @@ h2 {
     overflow-x: hidden ;
     color: #fff;
 }
+
+
 
 .spacing{
     margin-top: 1rem ;

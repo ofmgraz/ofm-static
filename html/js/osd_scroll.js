@@ -2,20 +2,33 @@ document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   let currentIndex = 0;
+  let isManualNavigation = false;
 
   const viewer = OpenSeadragon({
     id: 'container_facs_1',
     prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/',
     visibilityRatio: 1,
-    sequenceMode: true, // Enable sequence navigation
+    sequenceMode: true,
     showNavigator: false,
-    showSequenceControl: true, // Ensure sequence controls are shown
+    showSequenceControl: true,
     showNavigationControl: true,
     constrainDuringPan: true,
-    tileSources: [], // Initial tileSources can be empty; will be dynamically loaded
+    tileSources: [],
   });
 
-  // Function to get IIIF manifests from elements with class 'pb'
+  function refreshNavigationControls() {
+    const prev = document.querySelector("div[title='Previous page']");
+    const next = document.querySelector("div[title='Next page']");
+    
+    if (prev && next) {
+      prev.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+      prev.style.opacity = currentIndex === 0 ? '0.5' : '1';
+      
+      next.style.pointerEvents = currentIndex === viewer.tileSources.length - 1 ? 'none' : 'auto';
+      next.style.opacity = currentIndex === viewer.tileSources.length - 1 ? '0.5' : '1';
+    }
+  }
+
   function getIIIFManifests() {
     const pbElements = document.getElementsByClassName("pb");
     const manifests = [];
@@ -33,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return manifests;
   }
 
-  // Load an image using its IIIF manifest
   function loadImageFromManifest(manifestUrl) {
     fetch(manifestUrl)
       .then(response => response.json())
@@ -41,16 +53,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const images = data.images || [];
         if (images.length > 0) {
           const optimizedImages = images.map(image => {
-            // Modify each image's tileSource URL to request smaller images
             if (typeof image === 'string') {
               return image.replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, '/full/!600,600/0/default.$1');
             }
             return image;
           });
 
-          viewer.tileSources = optimizedImages; // Update viewer's tileSources
-          viewer.open(optimizedImages[currentIndex]); // Open the current image
-          refreshNavigationControls(); // Refresh navigation controls
+          viewer.tileSources = optimizedImages;
+          viewer.open(optimizedImages[currentIndex]);
+          refreshNavigationControls();
         } else {
           console.error("No valid tile sources found in manifest.");
         }
@@ -60,17 +71,38 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Refresh navigation button states
-  function refreshNavigationControls() {
-    if (viewer.previousButton) {
-      viewer.previousButton.setDisabled(currentIndex === 0); // Disable 'Previous' if on the first image
-    }
-    if (viewer.nextButton) {
-      viewer.nextButton.setDisabled(currentIndex === viewer.tileSources.length - 1); // Disable 'Next' if on the last image
-    }
+  function setupScrollNavigation() {
+    const pbElements = document.getElementsByClassName("pb");
+    const scrollContainer = document.querySelector('#transcript');
+    
+    scrollContainer.addEventListener("scroll", function() {
+      if (isManualNavigation) return;
+
+      let mostVisibleIndex = currentIndex;
+      let maxVisibility = 0;
+
+      Array.from(pbElements).forEach((element, index) => {
+        const rect = element.getBoundingClientRect();
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const visibility = Math.min(rect.bottom, containerRect.bottom) - Math.max(rect.top, containerRect.top);
+
+        console.log(`Element ${index} visibility: ${visibility}`); // Log visibility
+
+        if (visibility > maxVisibility) {
+          maxVisibility = visibility;
+          mostVisibleIndex = index;
+        }
+      });
+
+      if (mostVisibleIndex !== currentIndex) {
+        console.log(`Changing page from ${currentIndex} to ${mostVisibleIndex}`); // Log page change
+        currentIndex = mostVisibleIndex;
+        loadImageFromManifest(iiifManifests[currentIndex]);
+        refreshNavigationControls();
+      }
+    });
   }
 
-  // Handle navigation buttons
   function setupNavigationButtons(manifests) {
     const prev = document.querySelector("div[title='Previous page']");
     const next = document.querySelector("div[title='Next page']");
@@ -98,11 +130,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Initialize viewer and load manifests
+  function initializeFromHash() {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      const targetElement = document.getElementById(hash);
+      if (targetElement) {
+        targetElement.scrollIntoView(); // Scroll the target element into view
+        const pbElements = document.getElementsByClassName("pb");
+        Array.from(pbElements).forEach((element, index) => {
+          if (element.id === hash) {
+            currentIndex = index - 1; // Set to the previous pb element
+            if (currentIndex < 0) currentIndex = 0; // Ensure index is not negative
+            console.log(`Initialized currentIndex to ${currentIndex} based on hash ${hash}`); // Log initialization
+          }
+        });
+      }
+    }
+  }
+
   const iiifManifests = getIIIFManifests();
   if (iiifManifests.length > 0) {
-    loadImageFromManifest(iiifManifests[currentIndex]); // Load the first manifest
-    setupNavigationButtons(iiifManifests); // Set up navigation buttons
+    initializeFromHash(); // Initialize currentIndex from URL hash
+    loadImageFromManifest(iiifManifests[currentIndex]);
+    setupNavigationButtons(iiifManifests);
+    setupScrollNavigation();
+    document.querySelector('#transcript').dispatchEvent(new Event('scroll')); // Trigger scroll event manually
   } else {
     console.error("No IIIF manifests found.");
   }

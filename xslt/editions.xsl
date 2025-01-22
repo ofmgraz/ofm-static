@@ -44,7 +44,6 @@
             <body class="d-flex flex-column">
              <xsl:call-template name="nav_bar"/>
                 <main class="hfeed site flex-grow" id="page">
-                   
                     <div class="edition_container ">
                         <div class="offcanvas offcanvas-start" tabindex="-1"
                             id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel"
@@ -56,14 +55,14 @@
                             aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true"
                             data-bs-backdrop="false">
                         </div>
-                        <div class="wp-transcript">
-                            <div class="row" id="edition_metadata">
-                              <xsl:variable name="doc_type"
-                                        select="//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/@form[1]"/>
-                                    <h2 align="center">
-                                        <xsl:value-of select="$doc_title"/>
-                                    </h2>
-                                <div class="row" id="fa_links">
+                        
+                        <div class="row" id="edition_metadata">
+                            <xsl:variable name="doc_type"
+                                select="//tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/@form[1]"/>
+                            <h2 align="center">
+                                <xsl:value-of select="$doc_title"/>
+                            </h2>
+                            <div class="row" id="fa_links">
                                 <div class="col-4"  style="text-align:right">
                                     <xsl:if test="ends-with($prev,'.html')">
                                         <h3>
@@ -76,9 +75,9 @@
                                         </h3>
                                     </xsl:if>
                                 </div>
-                                <div class="col-4 docinfo"  style="text-align:center">
+                                <div class="col-4 docinfo" style="text-align:center">
                                     <h3 align="center">
-                                     <a href="{$teiSource}">
+                                        <a href="{$teiSource}">
                                             <i class="fa-solid fa-file-code center" title="TEI/XML"/>
                                         </a>
                                     </h3>
@@ -95,37 +94,23 @@
                                         </h3>
                                     </xsl:if>
                                 </div>
-                                </div>
-                            </div>                               
-                    <div class="edition_container ">                                                                                                                                                                                                           
-                        <div class="offcanvas offcanvas-start" tabindex="-1"
-                            id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel"
-                            data-bs-scroll="true" data-bs-backdrop="false">
-                            <div class="offcanvas-header" />
-                            <div class="offcanvas-body" />
-                        </div>
-                        <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions"
-                            aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true"
-                            data-bs-backdrop="false">
-                        </div>
+                            </div> 
+                        </div>                        
                         <div class="wp-transcript">
-                            <!-- <div id="editor-widget">
-                                <xsl:call-template name="annotation-options"></xsl:call-template>
-                            </div> -->
-                            <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 text yes-index">
-                                    <div id="transcript">
-                                        <xsl:apply-templates/>
-                                    </div>
-                                </div> 
                             <div id="container-resize" class="row transcript active">
-                                <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
+                                <div id="text-resize" class="col-md-4 col-lg-4 col-sm-1 text" >
+                                </div>
+                                <div id="img-resize" class="col-md-4 col-lg-4 col-sm-12 facsimiles" >
                                     <div id="viewer">
                                         <div id="container_facs_1" class="osd-container"/>
                                     </div>
                                 </div>
+                                <div id="text-resize" lang="de" class="col-md-4 col-lg-4 col-sm-11 text yes-index">
+                                    <div id="transcript">
+                                        <xsl:apply-templates/>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
                             <!-- create list* elements for entities bs-modal -->
                         </div>
                     </div>

@@ -14,6 +14,18 @@ document.addEventListener("DOMContentLoaded", function () {
     constrainDuringPan: true,
     tileSources: [], // Initial tileSources can be empty; will be dynamically loaded
   });
+function refreshNavigationControls() {
+    const prev = document.querySelector("div[title='Previous page']");
+    const next = document.querySelector("div[title='Next page']");
+
+    if (prev && next) {
+      prev.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+      prev.style.opacity = currentIndex === 0 ? '0.5' : '1';
+
+      next.style.pointerEvents = currentIndex === viewer.tileSources.length - 1 ? 'none' : 'auto';
+      next.style.opacity = currentIndex === viewer.tileSources.length - 1 ? '0.5' : '1';
+    }
+  }
 
   // Function to get IIIF manifests from elements with class 'pb'
   function getIIIFManifests() {

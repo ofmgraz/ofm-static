@@ -70,115 +70,107 @@
                <div class="offcanvas-body"></div>
             </div>
             <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions" aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true" data-bs-backdrop="false"></div>
-            <div class="wp-transcript">
-               <div class="row" id="edition_metadata">
-                  <h2 align="center">Orgelbuch (A-Gf S 1/18)</h2>
-                  <div class="row" id="fa_links">
-                     <div class="col-4" style="text-align:right">
-                        <h3><a href="S1_26.html"><i class="fa-solid fa-caret-left left" title="zurück"></i></a></h3>
-                     </div>
-                     <div class="col-4 docinfo" style="text-align:center">
-                        <h3 align="center"><a href="S1_18.xml"><i class="fa-solid fa-file-code center" title="TEI/XML"></i></a></h3>
-                     </div>
-                     <div class="col-4" style="text-align:left">
-                        <h3><a href="S1_20.html"><i class="fa-solid fa-caret-right right" title="weiter"></i></a></h3>
-                     </div>
+            <div class="row" id="edition_metadata">
+               <h2 align="center">Orgelbuch (A-Gf S 1/18)</h2>
+               <div class="row" id="fa_links">
+                  <div class="col-4" style="text-align:right">
+                     <h3><a href="S1_26.html"><i class="fa-solid fa-caret-left left" title="zurück"></i></a></h3>
+                  </div>
+                  <div class="col-4 docinfo" style="text-align:center">
+                     <h3 align="center"><a href="S1_18.xml"><i class="fa-solid fa-file-code center" title="TEI/XML"></i></a></h3>
+                  </div>
+                  <div class="col-4" style="text-align:left">
+                     <h3><a href="S1_20.html"><i class="fa-solid fa-caret-right right" title="weiter"></i></a></h3>
                   </div>
                </div>
-               <div class="edition_container ">
-                  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavigation" aria-labelledby="offcanvasNavigationLabel" data-bs-scroll="true" data-bs-backdrop="false">
-                     <div class="offcanvas-header"></div>
-                     <div class="offcanvas-body"></div>
+            </div>
+            <div class="wp-transcript">
+               <div id="container-resize" class="row transcript active">
+                  <div id="text-resize" class="col-md-4 col-lg-4 col-sm-1 text"></div>
+                  <div id="img-resize" class="col-md-4 col-lg-4 col-sm-12 facsimiles">
+                     <div id="viewer">
+                        <div id="container_facs_1" class="osd-container"></div>
+                     </div>
                   </div>
-                  <div class="offcanvas offcanvas-end" tabindex="0" id="offcanvasOptions" aria-labelledby="offcanvasOptionsLabel" data-bs-scroll="true" data-bs-backdrop="false"></div>
-                  <div class="wp-transcript">
-                     <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 text yes-index">
-                        <div id="transcript">
-                           
-                           
-                           
-                           
-                           <div class="modal fade" id="Graz" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Graz" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-centered">
-                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Graz</h1><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                                    <div class="modal-body">
-                                       <table class="table entity-table">
-                                          <tbody>
-                                             <tr>
-                                                <th>Ortsname</th>
-                                                <td>Graz</td>
-                                             </tr>
-                                             <tr>
-                                                <th> Land </th>
-                                                <td>Österreich</td>
-                                             </tr>
-                                             <tr>
-                                                <th> Normdaten </th>
-                                                <td>
-                                                   <ul>
-                                                      <li><a href="https://d-nb.info/gnd/4021912-4">GND</a></li>
-                                                      <li><a href="https://sws.geonames.org/2778058">GEONAMES</a></li>
-                                                      <li><a href="https://www.wikidata.org/entity/Q13298">WIKIDATA</a></li>
-                                                   </ul>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <th> Breite </th>
-                                                <td>47.07083333333333</td>
-                                             </tr>
-                                             <tr>
-                                                <th> Länge </th>
-                                                <td>15.438611111111111</td>
-                                             </tr>
-                                          </tbody>
-                                       </table>
-                                       <hr><a href="Graz.html"><i class="bi bi-link-45deg"></i></a></div>
-                                    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
-                                 </div>
+                  <div id="text-resize" lang="de" class="col-md-4 col-lg-4 col-sm-11 text yes-index">
+                     <div id="transcript">
+                        
+                        
+                        
+                        
+                        <div class="modal fade" id="Graz" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Graz" aria-hidden="true">
+                           <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Graz</h1><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                                 <div class="modal-body">
+                                    <table class="table entity-table">
+                                       <tbody>
+                                          <tr>
+                                             <th>Ortsname</th>
+                                             <td>Graz</td>
+                                          </tr>
+                                          <tr>
+                                             <th> Land </th>
+                                             <td>Österreich</td>
+                                          </tr>
+                                          <tr>
+                                             <th> Normdaten </th>
+                                             <td>
+                                                <ul>
+                                                   <li><a href="https://d-nb.info/gnd/4021912-4">GND</a></li>
+                                                   <li><a href="https://sws.geonames.org/2778058">GEONAMES</a></li>
+                                                   <li><a href="https://www.wikidata.org/entity/Q13298">WIKIDATA</a></li>
+                                                </ul>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <th> Breite </th>
+                                             <td>47.07083333333333</td>
+                                          </tr>
+                                          <tr>
+                                             <th> Länge </th>
+                                             <td>15.438611111111111</td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <hr><a href="Graz.html"><i class="bi bi-link-45deg"></i></a></div>
+                                 <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
                               </div>
                            </div>
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           
-                           </div>
-                     </div>
-                     <div id="container-resize" class="row transcript active">
-                        <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles">
-                           <div id="viewer">
-                              <div id="container_facs_1" class="osd-container"></div>
-                           </div>
                         </div>
-                     </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        </div>
                   </div>
                </div>
             </div>

@@ -23,12 +23,12 @@ const searchClient = typesenseInstantsearchAdapter.searchClient;
 const search = instantsearch({
   indexName: project_collection_name,
   searchClient: typesenseInstantsearchAdapter.searchClient,
-  //searchFunction(helper) {
+  searchFunction(helper) {
     // Only trigger the search if the query has 1 or more characters
-    //if (helper.state.query.length > 0) {
-    //  helper.search();
-    //}
-  //}
+    if (helper.state.query.length > 0) {
+      helper.search();
+    }
+  }
 });
 
 
@@ -102,8 +102,8 @@ if(label === 'form'){
 
 search.addWidgets([
   instantsearch.widgets.searchBox({
-    placeholder: 'Tippen Sie den zu suchenden Text hier ein',
-    //query: 'Textsuche' ,
+    placeholder: 'Textsuche',
+    query: 'Textsuche' ,
     container: "#searchbox",
     autofocus: true,
     cssClasses: {
@@ -149,29 +149,6 @@ search.addWidgets([
           `,
     },
   }),
-
- /*  instantsearch.widgets.panel({
-    collapsed: ({ state }) => {
-      return state.query.length === 0;
-    },  
-    templates: {
-      header: 'Art',
-    },  
-  })(instantsearch.widgets.refinementList)({
-    container: "#refinement-list-doc-type",
-    attribute: "doc_type",
-    searchable: false,
-    cssClasses: {
-      searchableInput: "form-control form-control-sm mb-2 border-light-2",
-      searchableSubmit: "d-none",
-      searchableReset: "d-none",
-      showMore: "btn btn-secondary btn-sm align-content-center",
-      list: "list-unstyled",
-      count: "badge ml-2 badge-secondary hideme ",
-      label: "d-flex align-items-center text-capitalize",
-      checkbox: "mr-2",
-    },
-  }), */
 
   instantsearch.widgets.panel({
     collapsed: ({ state }) => {

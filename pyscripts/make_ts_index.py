@@ -35,7 +35,7 @@ current_schema = {
         {"name": "liturgy", "type": "string", "facet": True, "optional": True},
         {"name": "provenance", "type": "string[]", "facet": True, "optional": True},
         {"name": "printer", "type": "string", "facet": True, "optional": True},
-
+        {"name": "bildid", "type": "string", "facet": False, "optiona": False },
     ],
 }
 
@@ -91,58 +91,67 @@ def prepare_text(text):
     text = re.sub('\-\s*\n\s*', '', extract_fulltext(text))
     return ' '.join(text.split())
 
-
+duplicates = {}
 contents = nocontents = []
 records = []
 cfts_records = []
 for xml_filepath in tqdm(files, total=len(files)):
+    print(xml_filepath)
     doc = TeiReader(xml=xml_filepath)
     pages = 0
     xml_file = os.path.basename(xml_filepath)
     html_file = xml_file.replace(".xml", ".html")
     id = os.path.splitext(xml_file)[0]
-    r_title = " ".join(
-        " ".join(
-            doc.any_xpath('.//tei:titleStmt/tei:title[@type="main"]/text()')
-        ).split()
-    )
+    r_title = " ".join(doc.any_xpath('.//tei:titleStmt/tei:title[@type="desc"]/text()'))
     date_str, nb_tst, na_tst = make_date(doc)
     liturgy, doc_type, provenance, form, printer = make_type(doc)
 
     facs = doc.any_xpath(".//tei:body/tei:div/tei:pb/@facs")
     for v in facs:
-        p_group = f".//tei:body/tei:div/tei:ab[preceding-sibling::tei:pb[1]/@facs='{v}']"
+        pids = []
+        duplicates[xml_filepath] = []
+        print(v)
+        p_group = f".//tei:body/tei:div/tei:ab[starts-with(@facs, '{v}')]"
         body = doc.any_xpath(p_group)
         cfts_record = {"project": "ofm_graz"}
         record = {}
         if len(body) > 0:
-            p_aragraph = doc.any_xpath(p_group)[0]
-            ft = prepare_text(p_aragraph)
-            if len(ft) > 0:
-                pid = p_aragraph.xpath("./@facs")[0]
-                r = {"id": f"{id}_{pid.strip('#')}",
-                     "resolver": f"{html_file}",
-                     "rec_id": os.path.split(xml_file)[-1],
-                     "title":  f"{r_title}",  # + " Page {str(pages)}"
-                     "anchor_link": pid,
-                     "full_text": ft,
-                     "provenance": provenance,
-                     "doc_type": doc_type,
-                     "liturgy": liturgy,
-                     "printer": printer,
-                     "form": form,
-                     "anchor_link": pid
-                     }
-                try:
-                    r["year"] = date_str
-                    r["notbefore"] = nb_tst
-                    r["notafter"] = na_tst
-                except ValueError:
-                    pass
-                records.append(r)
-                r["project"] = "ofm_graz"
-                cfts_records.append(r)
+            p_aragraphs = doc.any_xpath(p_group)
+            for p_aragraph in p_aragraphs:
+                ft = prepare_text(p_aragraph)
+                if len(ft) > 0:
+                    pid = p_aragraph.xpath("./@facs")[0]
+                    if pid in pids:
+                        duplicates[xml_filepath].append(pid)
+                    else:
+                        pids.append(pid)
+                    print(pid)
+                    r = {"id": f"{id}_{pid.strip('#')}",
+                         "resolver": f"{html_file}",
+                         "rec_id": os.path.split(xml_file)[-1],
+                         "title":  f"{r_title}",  # + " Page {str(pages)}"
+                         "anchor_link": pid,
+                         "full_text": ft,
+                         "provenance": provenance,
+                         "doc_type": doc_type,
+                         "liturgy": liturgy,
+                         "printer": printer,
+                         "form": form,
+                         "bildid": v ,
+                         }
+                    try:
+                        r["year"] = date_str
+                        r["notbefore"] = nb_tst
+                        r["notafter"] = na_tst
+                    except ValueError:
+                        pass
+                    records.append(r)
+                    r["project"] = "ofm_graz"
+                    cfts_records.append(r)
 make_index = client.collections["ofm_graz"].documents.import_(records)
 print("done with indexing ofm_graz")
 errors = [msg for msg in make_index if (msg != '"{\\"success\\":true}"' and msg != '""')]
 [print(err) if errors else print("No errors") for err in errors]
+
+for i in duplicates:
+    print(f"{i}: {duplicates[i]}")

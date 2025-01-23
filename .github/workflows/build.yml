@@ -12,12 +12,12 @@ jobs:
     steps:
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.11' 
+        python-version: '3.10' 
     - name: Perform Checkout
       uses: actions/checkout@v4
     - name: Install Java and Ant
       run: |
-        sudo apt-get update && sudo apt-get install openjdk-11-jre-headless ant -y
+        sudo apt-get update && sudo apt-get install openjdk-11-jre-headless ant libcairo2-dev -y
     - name: Install Saxon
       run: shellscripts/script.sh
     - name: Install Python dependencies

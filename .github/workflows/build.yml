@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ANT_OPTS: -Xmx5g
+      TYPESENSE_API_KEY: ${{secrets.TYPESENSE_API_KEY}}
     steps:
     - uses: actions/setup-python@v5
       with:
@@ -27,6 +28,8 @@ jobs:
     - name: Build
       run: |
         ant
+    - name: Make TS index
+      run: pyscripts/make_ts_index.py
     - name: Update Favicons
       run: pyscripts/update_favicons.py
     - name: Update Translations

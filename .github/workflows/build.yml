@@ -28,6 +28,9 @@ jobs:
     - name: Build
       run: |
         ant
+    - name: Repair broken xml:ids
+      run: |
+        shellscripts/mendxml.sh
     - name: Make TS index
       run: pyscripts/make_ts_index.py
     - name: Update Favicons

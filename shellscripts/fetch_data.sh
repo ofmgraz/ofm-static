@@ -15,3 +15,5 @@ mv ./ofm-para-text-main/data/meta ./data/
 
 rm main.zip
 rm -rf ./transkribus-out-main ./ofm-para-text-main
+
+rm -f data/editions/{D,G}*

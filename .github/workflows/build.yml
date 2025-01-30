@@ -24,9 +24,9 @@ jobs:
     - name: Install Python dependencies
       run: pip install -r requirements.txt
     - name: Fetch data
-      run: ./shellscripts/fetch_data.sh
+      run: shellscripts/fetch_data.sh
     - name: Repair broken xml:ids
-      shellscripts/mendxml.sh
+      run: shellscripts/mendxml.sh
     - name: Build
       run: |
         ant

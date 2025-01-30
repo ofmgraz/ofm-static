@@ -1055,7 +1055,7 @@
          <graphic url="58373908.jpg" width="2000px" height="2516px"/>
          <graphic url="https://files.transkribus.eu/Get?id=GHPSXEFXHMVWXJVNOCEDVKPS&amp;fileType=view" width="2000px" height="2516px"/>
          <zone points="488,73 1472,73 1472,200 488,200" rendition="TextRegion" xml:id="facs_27_region_1737484579702_728" subtype="rubrik">
-            <zone points="488,73 1472,73 1472,200 488,200" rendition="Line" xml:id="facs_27_tl_"/>
+            <zone points="488,73 1472,73 1472,200 488,200" rendition="Line" xml:id="facs_27_tl_1737484579702_728"/>
          </zone>
          <zone points="76,175 78,316 101,332 157,340 1862,348 1938,345 1945,329 1945,194 1934,178 1915,168 1843,167 1734,176 638,176 388,156 120,150 85,155" rendition="TextRegion" xml:id="facs_27_tr_1737484280" subtype="0.85">
             <zone points="76,175 78,316 101,332 157,340 1862,348 1938,345 1945,329 1945,194 1934,178 1915,168 1843,167 1734,176 638,176 388,156 120,150 85,155" rendition="Line" xml:id="facs_27_tl_1737484390"/>

@@ -1168,7 +1168,7 @@
             <zone points="1875,2406 1869,2397 1731,2395 1383,2402 1023,2417 675,2417 448,2424 428,2431 424,2438 425,2555 448,2558 1133,2556 1389,2550 1823,2529 1859,2524 1874,2513" rendition="Line" xml:id="facs_24_tl_1737482831"/>
          </zone>
          <zone points="429,2562 1406,2562 1406,2654 429,2654" rendition="TextRegion" xml:id="facs_24_region_1737482970737_227" subtype="text">
-            <zone points="429,2562 1406,2562 1406,2654 429,2654" rendition="Line" xml:id="facs_24_tl_"/>
+            <zone points="429,2562 1406,2562 1406,2654 429,2654" rendition="Line" xml:id="facs_24_tl_1737482970737_227"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2950" xml:id="facs_25">
@@ -1453,7 +1453,7 @@
             <zone points="452,836 1624,835 1610,982 452,982 446,850" rendition="Line" xml:id="facs_34_line_1737483492454_586"/>
          </zone>
          <zone points="790,1028 1385,1028 1385,1182 790,1182" rendition="TextRegion" xml:id="facs_34_region_1737483468703_567" subtype="text">
-            <zone points="790,1028 1385,1028 1385,1182 790,1182" rendition="Line" xml:id="facs_34_tl_"/>
+            <zone points="790,1028 1385,1028 1385,1182 790,1182" rendition="Line" xml:id="facs_34_tl_1737483468703_567"/>
          </zone>
          <zone points="457,1211 1907,1211 1907,1420 457,1420" rendition="TextRegion" xml:id="facs_34_tr_1737482729" subtype="0.98">
             <zone points="457,1211 1907,1211 1907,1420 457,1420" rendition="Line" xml:id="facs_34_tl_1737482816"/>
@@ -1477,7 +1477,7 @@
             <zone points="465,243 1906,243 1906,477 465,477" rendition="Line" xml:id="facs_38_tl_1737482817"/>
          </zone>
          <zone points="502,477 1359,477 1359,629 502,629" rendition="TextRegion" xml:id="facs_38_region_1737483525866_615" subtype="text">
-            <zone points="502,477 1359,477 1359,629 502,629" rendition="Line" xml:id="facs_38_tl_"/>
+            <zone points="502,477 1359,477 1359,629 502,629" rendition="Line" xml:id="facs_38_tl_1737483525866_615"/>
          </zone>
          <zone points="464,728 1911,728 1911,950 464,950" rendition="TextRegion" xml:id="facs_38_tr_1737482727" subtype="0.97">
             <zone points="464,728 1911,728 1911,950 464,950" rendition="Line" xml:id="facs_38_tl_1737482815"/>

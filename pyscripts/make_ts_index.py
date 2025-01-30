@@ -106,26 +106,25 @@ for xml_filepath in tqdm(files, total=len(files)):
     date_str, nb_tst, na_tst = make_date(doc)
     liturgy, doc_type, provenance, form, printer = make_type(doc)
 
-    facs = doc.any_xpath(".//tei:body/tei:div/tei:pb/@facs")
+    facs = doc.any_xpath(".//tei:body/tei:div/tei:ab[@type='rubrik2' or @type='text' or  @type='rubrik']/@facs")
     for v in facs:
         pids = []
         duplicates[xml_filepath] = []
-        print(v)
-        p_group = f".//tei:body/tei:div/tei:ab[starts-with(@facs, '{v}')]"
+        p_group = f".//tei:lb[starts-with(@facs, '{v}')]"
         body = doc.any_xpath(p_group)
         cfts_record = {"project": "ofm_graz"}
         record = {}
         if len(body) > 0:
-            p_aragraphs = doc.any_xpath(p_group)
-            for p_aragraph in p_aragraphs:
-                ft = prepare_text(p_aragraph)
+            for p_aragraph in body:
+                #ft = prepare_text(p_aragraph)
+                ft = p_aragraph.tail.strip()
                 if len(ft) > 0:
+                    print(ft)
                     pid = p_aragraph.xpath("./@facs")[0]
                     if pid in pids:
                         duplicates[xml_filepath].append(pid)
                     else:
                         pids.append(pid)
-                    print(pid)
                     r = {"id": f"{id}_{pid.strip('#')}",
                          "resolver": f"{html_file}",
                          "rec_id": os.path.split(xml_file)[-1],

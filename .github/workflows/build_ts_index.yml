@@ -1,0 +1,27 @@
+name: Build TS Index
+
+on: 
+  [workflow_dispatch]
+
+jobs:
+  build_pages:
+    name: Rebuild TS index
+    runs-on: ubuntu-latest
+    env:
+      ANT_OPTS: -Xmx5g
+      TYPESENSE_API_KEY: ${{secrets.TYPESENSE_API_KEY}}
+    steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10' 
+    - name: Perform Checkout
+      uses: actions/checkout@v4
+    - name: Install Python dependencies
+      run: pip install -r requirements.txt
+    - name: Fetch data
+      run: ./shellscripts/fetch_data.sh
+    - name: Repair broken xml:ids
+      run: |
+        shellscripts/mendxml.sh
+    - name: Make TS index
+      run: pyscripts/make_ts_index.py

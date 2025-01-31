@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentIndex = 0;
   let isManualNavigation = false;
   let overlayShown = false;
+  let currentImageBounds = null;
 
   const viewer = OpenSeadragon({
     id: 'container_facs_1',
@@ -47,6 +48,22 @@ document.addEventListener("DOMContentLoaded", function () {
     return manifests;
   }
 
+  function addSurfaceOverlay() {
+    const overlay = document.createElement('div');
+    overlay.style.border = '2px solid blue';
+    overlay.style.position = 'absolute';
+    overlay.style.pointerEvents = 'none';
+    
+    const currentImage = viewer.world.getItemAt(0);
+    if (currentImage) {
+      currentImageBounds = currentImage.getBounds();
+      viewer.addOverlay({
+        element: overlay,
+        location: currentImageBounds
+      });
+    }
+  }
+
   function loadImageFromManifest(manifestUrl) {
     fetch(manifestUrl)
       .then(response => response.json())
@@ -61,16 +78,21 @@ document.addEventListener("DOMContentLoaded", function () {
           });
   
           viewer.tileSources = optimizedImages;
+          
+          // Clear overlays before opening new image
           viewer.clearOverlays();
+          
           viewer.open(optimizedImages[currentIndex]);
           
-          // Add handler for when image loads - only show overlay if not shown before
+          // Add handler for when image loads
           viewer.addHandler('open', function() {
+            // Add the surface overlay
+            addSurfaceOverlay();
+            
             const hash = window.location.hash.substring(1);
-            if (hash && !overlayShown) {
+            if (hash) {
               const xmlPath = window.location.pathname.replace('.html', '.xml');
               loadAndParseXML(xmlPath);
-              overlayShown = true;
             }
           });
           
@@ -158,42 +180,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function highlightArea(elementId) {
-    const element = document.getElementById(elementId);
-    if (element) {
-      const rect = element.getBoundingClientRect();
-      const containerRect = document.querySelector('#transcript').getBoundingClientRect();
-      const x = rect.left - containerRect.left;
-      const y = rect.top - containerRect.top;
-      const width = rect.width;
-      const height = rect.height;
-
-      const overlay = document.createElement('div');
-      overlay.style.position = 'absolute';
-      overlay.style.border = '2px solid red';
-      overlay.style.left = `${x}px`;
-      overlay.style.top = `${y}px`;
-      overlay.style.width = `${width}px`;
-      overlay.style.height = `${height}px`;
-
-      viewer.addOverlay({
-        element: overlay,
-        location: viewer.viewport.imageToViewportRectangle(x, y, width, height)
-      });
-    }
-  }
-
   function parseZonesFromXML(xmlString) {
     const parser = new DOMParser();
-    // Parse with namespace awareness
     const xmlDoc = parser.parseFromString(xmlString, "text/xml");
-    
+
     const hash = window.location.hash.substring(1);
     if (!hash) {
-      console.log("No hash found in URL");
-      return [];
+        console.log("No hash found in URL");
+        return [];
     }
-  
+
     console.log(`Looking for zone with id ${hash}`);
 
     // Extract the base ID (e.g., facs_152)
@@ -206,78 +202,99 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Find the surface with matching xml:id
     for (let surface of surfaces) {
-      if (surface.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id") === baseId) {
-        targetSurface = surface;
-        break;
-      }
+        if (surface.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id") === baseId) {
+            targetSurface = surface;
+            break;
+        }
     }
 
     if (!targetSurface) {
-      console.log(`No surface found with id ${baseId}`);
-      return [];
+        console.log(`No surface found with id ${baseId}`);
+        return [];
     }
 
-    // Find all zone elements within the surface
+    // Find the specific zone within the surface
     const zones = targetSurface.getElementsByTagNameNS("*", "zone");
     let targetZone = null;
 
-    // Find the zone with matching xml:id
     for (let zone of zones) {
-      if (zone.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id") === hash) {
-        targetZone = zone;
-        break;
-      }
+        if (zone.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id") === hash) {
+            targetZone = zone;
+            break;
+        }
     }
 
     if (!targetZone) {
-      console.log(`No zone found with id ${hash}`);
-      const availableZones = Array.from(zones).map(z => 
-        z.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id")
-      );
-      console.log("Available zones:", availableZones);
-      return [];
+        // Try finding zone referenced by lb element
+        const lbElement = xmlDoc.querySelector(`lb[facs='#${hash}']`);
+        if (lbElement) {
+            const referencedZoneId = lbElement.getAttribute('facs').substring(1);
+            for (let zone of zones) {
+                if (zone.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id") === referencedZoneId) {
+                    targetZone = zone;
+                    break;
+                }
+            }
+        }
     }
-  
-    // Get points from the zone
+
+    if (!targetZone) {
+        console.log(`No zone found with id ${hash}`);
+        const availableZones = Array.from(zones).map(z => 
+            z.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id")
+        );
+        console.log("Available zones:", availableZones);
+        return [];
+    }
+
+    // Get points from the target zone
     const points = targetZone.getAttribute("points").split(" ").map(point => {
-      const [x, y] = point.split(",");
-      return { x: parseInt(x, 10), y: parseInt(y, 10) };
+        const [x, y] = point.split(",");
+        return { x: parseInt(x, 10), y: parseInt(y, 10) };
     });
-  
+
     console.log("Parsed points:", points);
     return [{ id: hash, points }];
 }
+
+
+function addZoneOverlays(zoneData) {
+  console.log('add overlays:', zoneData);
+  if (!zoneData.length) return;
   
-  function addZoneOverlays(zoneData) {
-    if (!zoneData.length) return;
-    
-    viewer.clearOverlays();
-    
-    const zone = zoneData[0];
+  viewer.clearOverlays();
+  addSurfaceOverlay(); // Re-add surface overlay first
+  
+  zoneData.forEach(zone => {
     const points = zone.points;
     console.log("Adding overlay for points:", points);
     
-    // Calculate bounding box
-    const minX = Math.min(...points.map(p => p.x));
-    const minY = Math.min(...points.map(p => p.y));
-    const maxX = Math.max(...points.map(p => p.x));
-    const maxY = Math.max(...points.map(p => p.y));
-    const width = maxX - minX;
-    const height = maxY - minY;
-  
-    const overlay = document.createElement('div');
-    overlay.style.border = '2px solid rgba(255,0,0,0.5)';
-    overlay.style.background = 'none';
-    overlay.style.pointerEvents = 'none';
+    // Scale coordinates to viewport space
+    const scaledCoords = {
+      minX: Math.min(...points.map(p => p.x)) / 2000,
+      minY: Math.min(...points.map(p => p.y)) / 2000,
+      maxX: Math.max(...points.map(p => p.x)) / 2000,
+      maxY: Math.max(...points.map(p => p.y)) / 2000
+    };
     
-    // Add overlay using viewport coordinates
+    const width = scaledCoords.maxX - scaledCoords.minX;
+    const height = scaledCoords.maxY - scaledCoords.minY;
+
+    // Create and add overlay
+    const overlay = document.createElement('div');
+    overlay.style.border = '2px solid rgba(0,255,0,0.5)';
+    overlay.style.background = 'rgba(0,255,0,0.2)';
+    overlay.style.pointerEvents = 'none';
+    overlay.style.position = 'absolute';
+    
     viewer.addOverlay({
       element: overlay,
-      location: viewer.viewport.imageToViewportRectangle(minX, minY, width, height)
+      location: new OpenSeadragon.Rect(scaledCoords.minX, scaledCoords.minY, width, height)
     });
-  }
+  });
+}
 
-  function loadAndParseXML(xmlFilePath) {
+function loadAndParseXML(xmlFilePath) {
     fetch(xmlFilePath)
       .then(response => response.text())
       .then(xmlString => {
@@ -288,22 +305,14 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(err => {
         console.error("Error loading XML file:", err);
       });
-  }
+}
 
-  const iiifManifests = getIIIFManifests();
-  if (iiifManifests.length > 0) {
+const iiifManifests = getIIIFManifests();
+if (iiifManifests.length > 0) {
     initializeFromHash(); // Initialize currentIndex from URL hash
     loadImageFromManifest(iiifManifests[currentIndex]);
     setupNavigationButtons(iiifManifests);
     setupScrollNavigation();
     document.querySelector('#transcript').dispatchEvent(new Event('scroll')); // Trigger scroll event manually
-
-    // Highlight the area based on the hash
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-      highlightArea(hash);
-    }
-  } else {
-    console.error("No IIIF manifests found.");
-  }
+}
 });

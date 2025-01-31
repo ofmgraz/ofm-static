@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let isManualNavigation = false;
   let overlayShown = false;
   let currentImageBounds = null;
+  let currentImageDimensions = null;
 
   const viewer = OpenSeadragon({
     id: 'container_facs_1',
@@ -61,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
         element: overlay,
         location: currentImageBounds
       });
+      console.log('currenImageBounds:', currentImageBounds) ;
     }
   }
 
@@ -70,6 +72,15 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(data => {
         const images = data.images || [];
         if (images.length > 0) {
+          // Get image dimensions from manifest
+          const image = images[0];
+          if (typeof image === 'object' && image.height && image.width) {
+            currentImageDimensions = {
+              width: image.width,
+              height: image.height
+            };
+            console.log('Image dimensions:', currentImageDimensions);
+          }
           const optimizedImages = images.map(image => {
             if (typeof image === 'string') {
               return image.replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, '/full/!600,600/0/default.$1');
@@ -257,30 +268,51 @@ document.addEventListener("DOMContentLoaded", function () {
     return [{ id: hash, points }];
 }
 
+function getIIIFImageDimensions(manifestUrl) {
+  return fetch(manifestUrl)
+    .then(response => response.json())
+    .then(data => {
+      const image = data.images[0];
+      return {
+        width: image.width || 2000,
+        height: image.height || 2000
+      };
+    })
+    .catch(() => ({ width: 2000, height: 2000 })); // fallback dimensions
+}
 
 function addZoneOverlays(zoneData) {
-  console.log('add overlays:', zoneData);
   if (!zoneData.length) return;
   
   viewer.clearOverlays();
-  addSurfaceOverlay(); // Re-add surface overlay first
+  addSurfaceOverlay();
   
   zoneData.forEach(zone => {
     const points = zone.points;
-    console.log("Adding overlay for points:", points);
+    console.log("Original points:", points);
     
-    // Scale coordinates to viewport space
+    // Base scaling that works for standard cases
     const scaledCoords = {
       minX: Math.min(...points.map(p => p.x)) / 2000,
       minY: Math.min(...points.map(p => p.y)) / 2000,
       maxX: Math.max(...points.map(p => p.x)) / 2000,
       maxY: Math.max(...points.map(p => p.y)) / 2000
     };
+
+    // Only apply special scaling for coordinates > 2500
+    const maxX = Math.max(...points.map(p => p.x));
+    if (maxX > 2500) {
+      scaledCoords.minX *= 0.6;
+      scaledCoords.maxX *= 0.6;
+      scaledCoords.minY *= 0.59;
+      scaledCoords.maxY *= 0.59;
+    }
+    
+    console.log("Test scaled coords:", scaledCoords);
     
     const width = scaledCoords.maxX - scaledCoords.minX;
     const height = scaledCoords.maxY - scaledCoords.minY;
 
-    // Create and add overlay
     const overlay = document.createElement('div');
     overlay.style.border = '2px solid rgba(0,255,0,0.5)';
     overlay.style.background = 'rgba(0,255,0,0.2)';

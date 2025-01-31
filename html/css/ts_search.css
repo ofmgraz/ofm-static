@@ -184,7 +184,9 @@ input.ais-SearchBox-input:focus {
     margin-left: .5em;
     text-align: left;
 } */
-
+.ais-RefinementList-labelText {
+padding-left: 1em ;
+}
 .badge {
     max-width: 100%;
     overflow: hidden;

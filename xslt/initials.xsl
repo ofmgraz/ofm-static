@@ -11,26 +11,56 @@
     <xsl:import href="./partials/osd-container.xsl"/>
     <xsl:import href="partials/tei-facsimile.xsl"/>
 
+    <!-- Simple parameter definition -->
+    <xsl:param name="shelfmark" select="'DefaultValue'" />
+
+
+    <!-- Modify doc_title variable -->
     <xsl:variable name="doc_title">
-        <xsl:value-of select="concat(.//tei:titleStmt/tei:title[@xml:lang='de']/text(), ' (', .//tei:titleStmt/tei:title[@type='desc']/text(), ')')"/>
+        <xsl:choose>
+            <xsl:when test="string-length($shelfmark) > 0">
+                <xsl:value-of select="$shelfmark"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:text>Initialen</xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:variable>
+
     <xsl:template match="/">
         <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
-        <html class="page"  lang="de">
+        <html class="page" lang="de">
             <head>
-                <xsl:call-template name="html_head">
-                    <xsl:with-param name="html_title" select="$doc_title"/>
-                </xsl:call-template>
-                <script>
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const xmlFile = urlParams.get('shelfmark') || '';
-                    window.currentXmlFile = xmlFile;
+                <title><xsl:value-of select="$shelfmark"/></title>
+                <script type="text/javascript">
+                    <![CDATA[
+                    function getUrlParameter(name) {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        return urlParams.get(name) || document.title;
+                    }
+
+                    document.addEventListener("DOMContentLoaded", function () {
+                        var newTitle = getUrlParameter("shelfmark");
+                        document.title = newTitle;
+                        window.currentXmlFile = newTitle;
+                    });
+                    ]]>
                 </script>
+                <xsl:call-template name="html_head">
+                    <xsl:with-param name="html_title" select="$shelfmark"/>
+                </xsl:call-template>
+                 
             </head>
             <body class="d-flex flex-column">
                 <xsl:call-template name="nav_bar"/>
                 <main class="hfeed site flex-grow" id="page">
                     <div class="edition_container ">
+                        <div class="row" id="edition_metadata">
+
+                            <h2 align="center">
+                                <xsl:text>Initialen</xsl:text>
+                            </h2>
+                        </div>             
                         <div class="wp-transcript">
                             <div id="container-resize" class="row transcript active">
                                 <div id="text-resize" class="col-md-4 col-lg-4 col-sm-1 text" />

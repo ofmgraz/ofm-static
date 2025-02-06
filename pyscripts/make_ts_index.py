@@ -27,6 +27,7 @@ current_schema = {
         {"name": "title", "type": "string"},
         {"name": "anchor_link", "type": "string"},
         {"name": "full_text", "type": "string", "optional": True},
+        {"name": "context", "type": "string", "optional": True},
         {"name": "notbefore", "type": "int64", "facet": True, "optional": True},
         {"name": "notafter", "type": "int64", "facet": True, "optional": True},
         {"name": "year", "type": "string", "facet": True, "optional": True},
@@ -115,6 +116,14 @@ for xml_filepath in tqdm(files, total=len(files)):
         cfts_record = {"project": "ofm_graz"}
         record = {}
         if len(body) > 0:
+            # Get context from the ab element
+            context_xpath = f".//tei:ab[not(@type='notation') and @facs='{v}']"
+            context_elem = doc.any_xpath(context_xpath)[0]
+            context = ' '.join((context_elem.text or '').split())
+            for child in context_elem:
+                if child.tail:
+                    context += ' ' + ' '.join(child.tail.split())
+            
             for p_aragraph in body:
                 #ft = prepare_text(p_aragraph)
                 ft = p_aragraph.tail.strip()
@@ -137,6 +146,7 @@ for xml_filepath in tqdm(files, total=len(files)):
                          "printer": printer,
                          "form": form,
                          "bildid": v ,
+                         "context": context,
                          }
                     try:
                         r["year"] = date_str

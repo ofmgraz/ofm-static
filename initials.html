@@ -2,11 +2,24 @@
 <!DOCTYPE html><html class="page" lang="de">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta  http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>DefaultValue</title><script type="text/javascript">
+                    
+                    function getUrlParameter(name) {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        return urlParams.get(name) || document.title;
+                    }
+
+                    document.addEventListener("DOMContentLoaded", function () {
+                        var newTitle = getUrlParameter("shelfmark");
+                        document.title = newTitle;
+                        window.currentXmlFile = newTitle;
+                    });
+                    
+                </script><meta  http-equiv="X-UA-Compatible" content="IE=edge">
       <meta  name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta  name="mobile-web-app-capable" content="yes">
       <meta  name="apple-mobile-web-app-capable" content="yes">
-      <meta  name="apple-mobile-web-app-title" content=" ()">
+      <meta  name="apple-mobile-web-app-title" content="DefaultValue">
       <meta  name="msapplication-TileColor" content="#ffffff">
       <meta  name="msapplication-TileImage" content="images/logo.png">
       <meta  name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,16 +46,13 @@
       <link  rel="shortcut icon" type="image/png" href="images/favicons/favicon-196x196.png">
       <link  rel="icon" type="image/svg+xml" href="images/logo.png" sizes="any">
       <link  rel="profile" href="http://gmpg.org/xfn/11">
-      <title > ()</title>
+      <title >DefaultValue</title>
       <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
       <link  rel="stylesheet" href="css/style.css" type="text/css">
       <link  rel="stylesheet" href="css/micro-editor.css" type="text/css"><script  src="https://cdn.jsdelivr.net/npm/jquery-i18next@1.2.1/jquery-i18next.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.3/i18nextBrowserLanguageDetector.min.js"></script><script  src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.3.2/i18nextHttpBackend.min.js"></script><link  rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""><script  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script><link  href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css" rel="stylesheet">
-      <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"><script>
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const xmlFile = urlParams.get('shelfmark') || '';
-                    window.currentXmlFile = xmlFile;
-                </script></head>
+      <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+   </head>
    <body class="d-flex flex-column">
       <div  class="wrapper-navbar sticky-top hide-reading" id="wrapper-navbar">
          <nav class="navbar navbar-expand-lg">
@@ -68,6 +78,9 @@
       </div>
       <main class="hfeed site flex-grow" id="page">
          <div class="edition_container ">
+            <div class="row" id="edition_metadata">
+               <h2 align="center">Initialen</h2>
+            </div>
             <div class="wp-transcript">
                <div id="container-resize" class="row transcript active">
                   <div id="text-resize" class="col-md-4 col-lg-4 col-sm-1 text"></div></div>

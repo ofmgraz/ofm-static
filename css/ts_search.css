@@ -50,7 +50,8 @@
 #refinement-list-doc-type,
 #refinement-list-genre,
 #refinement-list-place,
-#refinement-list-doc-title {
+#refinement-list-doc-title,
+#fuzzy-toggle  {
     padding: 1em .5em 2em .5em;
     background-color: var(--ofm-main-bg-color);
     color: var(--ofm-font-color) ;
@@ -184,7 +185,13 @@ input.ais-SearchBox-input:focus {
     margin-left: .5em;
     text-align: left;
 } */
-.ais-RefinementList-labelText {
+
+.form-check {
+    padding-left: 0em ;
+
+}
+.ais-RefinementList-labelText,
+.form-check-label  {
 padding-left: 1em ;
 }
 .badge {

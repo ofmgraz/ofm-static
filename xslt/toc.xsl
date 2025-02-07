@@ -49,7 +49,7 @@
                                     <th scope="col">Höhe (mm)</th>
                                     <th scope="col">Breite (mm)</th>
                                     <th scope="col">Beschreibung</th>
-                                    <th scope="col">Transkriptionsstatus</th>
+                                    <th scope="col">Besondere Initialen</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -189,7 +189,17 @@
                                                 select="descendant::tei:sourceDesc/tei:msDesc/tei:msContents/tei:summary"
                                             />
                                         </td>
-                                        <td>In progress</td>
+                                        <td>
+                                              <a>
+                                                <xsl:attribute name="href">
+                                                  <xsl:value-of
+                                                  select="replace(tokenize($full_path, '/')[last()], '.xml', '.html')"
+                                                  />
+                                                </xsl:attribute>
+                                                <xsl:attribute name="class">checkmark</xsl:attribute>
+                                                <xsl:text>✓</xsl:text>
+                                            </a>   
+                                        </td>
                                     </tr>
                                 </xsl:for-each>
                             </tbody>

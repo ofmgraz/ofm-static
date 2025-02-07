@@ -17,9 +17,6 @@
 
     <xsl:template match="/">
         <xsl:variable name="doc_title" select="'Quellen'"/>
-
-
-
         <html class="page">
             <head>
                 <xsl:call-template name="html_head">
@@ -34,7 +31,6 @@
                         <h2 class="align-center">
                             <xsl:value-of select="$doc_title"/>
                         </h2>
-
                         <table class="table" id="myTable">
                             <thead>
                                 <tr>
@@ -63,9 +59,8 @@
             format-number(floor((number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[3]) + 
                                  number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[3])) div 2), '00')
         )" order="ascending" data-type="text"/>
-        <xsl:variable name="full_path">
-                                        <xsl:value-of select="document-uri(/)"/>
-                                    </xsl:variable>
+        <xsl:variable name="full_path" select="document-uri(/)"/>
+        <xsl:variable name="basename" select="replace(tokenize($full_path, '/')[last()], '.xml', '')" /> 
                                     <tr>
                                         <td>
                                             <a>
@@ -190,10 +185,11 @@
                                             />
                                         </td>
                                         <td>
-                                              <a>
+                                        <!-- ADD CONDITION HERE -->
+                                            <a>
                                                 <xsl:attribute name="href">
                                                   <xsl:value-of
-                                                  select="replace(tokenize($full_path, '/')[last()], '.xml', '.html')"
+                                                  select="concat('initials.html?shelfmark=',$basename)"
                                                   />
                                                 </xsl:attribute>
                                                 <xsl:attribute name="class">checkmark</xsl:attribute>

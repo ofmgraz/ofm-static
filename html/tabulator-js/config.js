@@ -27,7 +27,7 @@ var config = {
 		{field: "höhe_(mm)", title: "Höhe (mm)", responsive: "14", resizable: "true", headerFilter: "input", visible: false},
 		{field: "breite_(mm)", title: "Breite (mm)", responsive: "15", resizable: "true", headerFilter: "input", visible: false},
 		{field: "description", title: "Beschreibung", responsive: "16", resizable: "true", headerFilter: "input", visible: true},
-		{field: "transkriptionsstatus", title: "Transkriptionsstatus", responsive: "17", resizable: "true", headerFilter: "list", minWidth: "250px", visible: false, headerFilterParams:
+		{field: "initialen", formatter: "html", title: "Besondere Initialen", responsive: "4", resizable: "true", headerFilter: "list", hozAlign: "center", minWidth: "80px",  maxWidth: "120px", visible: true, headerFilterParams:
 			{ valuesLookup: true, clearable: true },
 		},//set the initial value of the header filter to "red"
     ],

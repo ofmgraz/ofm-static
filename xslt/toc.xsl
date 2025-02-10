@@ -185,16 +185,21 @@
                                             />
                                         </td>
                                         <td>
-                                        <!-- ADD CONDITION HERE -->
-                                            <a>
-                                                <xsl:attribute name="href">
-                                                  <xsl:value-of
-                                                  select="concat('initials.html?shelfmark=',$basename)"
-                                                  />
-                                                </xsl:attribute>
-                                                <xsl:attribute name="class">checkmark</xsl:attribute>
-                                                <xsl:text>✓</xsl:text>
-                                            </a>   
+                                            <xsl:variable name="manuscripts" select="document('../html/js/initials.xml')//manuscript/@id"/>
+                                            <xsl:choose>
+                                                <xsl:when test="$manuscripts = $basename">
+                                                    <a>
+                                                        <xsl:attribute name="href">
+                                                            <xsl:value-of select="concat('initials.html?shelfmark=', $basename)"/>
+                                                        </xsl:attribute>
+                                                        <xsl:attribute name="class">checkmark</xsl:attribute>
+                                                        <xsl:text>✓</xsl:text>
+                                                    </a>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <!-- Empty cell if not in initials.xml -->
+                                                </xsl:otherwise>
+                                            </xsl:choose>
                                         </td>
                                     </tr>
                                 </xsl:for-each>

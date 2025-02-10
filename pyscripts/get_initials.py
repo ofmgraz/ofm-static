@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 import glob
 from collections import defaultdict
-from acdh_tei_pyutils.tei import TeiReader
+from lxml import etree
+from acdh_tei_pyutils.tei import TeiReader, ET
 import json
 import os
+from xml.dom import minidom
 
 # Remove this line as we'll only create entries when needed:
 # results = defaultdict(list)
 
 # Replace with:
 results = {}
-
+xml_root = ET.Element("initials")
 # Define the target values
 target_values = {"initiale_fleuro_lombarde", "initiale_historich"}
 
@@ -66,13 +68,29 @@ for file_path in glob.glob('data/editions/*.xml'):
     if file_name in results and results[file_name]:
         results[file_name].sort(key=lambda url: doc.any_xpath(f'//tei:graphic[@url="{url}"]/ancestor::tei:surface/@xml:id')[0])
 
-# Print only non-empty results
+
+
 for file_name, urls in results.items():
+    manuscript = ET.SubElement(xml_root, "manuscript")
+    manuscript.set("id", file_name)
+    counter = 0
     if urls:  # Only print if there are URLs
-        print(f"{file_name}: {urls}")
+        for url in urls:
+            page = ET.SubElement(manuscript, "page")
+            page.set("id", f"{file_name}_{counter:03d}")
+            page.text = url
+            counter += 1
 
 # Save results to JSON file
 output_file = "html/js/initials.json"  # Fixed path
 with open(output_file, 'w', encoding='utf-8') as f:
     json.dump(results, f, ensure_ascii=False, indent=2)
 print(f"Results saved to {output_file}")
+
+
+# Write XML
+xml_path = 'html/js/initials.xml'
+xml_str = minidom.parseString(ET.tostring(xml_root)).toprettyxml(indent="    ")
+with open(xml_path, 'w') as f:
+    f.write(xml_str)
+print(f"Wrote XML to {xml_path}")

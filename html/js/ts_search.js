@@ -100,7 +100,41 @@ if(label === 'form'){
   return label
 }
 
+// Add this before search.addWidgets([...])
+const searchState = {
+  fuzzySearch: false
+};
+
 search.addWidgets([
+  // Add this as first widget
+  {
+    init(options) {
+      const container = document.querySelector("#fuzzy-toggle");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.id = "fuzzy-search";
+      checkbox.className = "mr-2";
+      checkbox.checked = searchState.fuzzySearch;
+      
+      const label = document.createElement("label");
+      label.htmlFor = "fuzzy-search";
+      label.textContent = "Unscharfe Suche";
+      label.className = "form-check-label";
+      
+      const wrapper = document.createElement("div");
+      wrapper.className = "form-check mb-3";
+      wrapper.appendChild(checkbox);
+      wrapper.appendChild(label);
+      
+      container.appendChild(wrapper);
+
+      checkbox.addEventListener("change", (e) => {
+        searchState.fuzzySearch = e.target.checked;
+        options.refresh();
+      });
+    }
+  },
+
   instantsearch.widgets.searchBox({
     placeholder: 'Textsuche',
     query: 'Textsuche' ,
@@ -120,7 +154,7 @@ search.addWidgets([
       empty: "Keine Resultate für <q>{{ query }}</q>",
       item: `
               <h5><a href="{{base_url}}{{resolver}}{{anchor_link}}" target="_blank">{{#helpers.snippet}}{ "attribute": "title", "highlightedTagName": "mark" }{{/helpers.snippet}}</a></h5>
-              <p style="overflow:hidden;max-height:210px;">{{#helpers.snippet}}{ "attribute": "full_text", "highlightedTagName": "mark" }{{/helpers.snippet}}</p>
+              <p style="overflow:hidden;max-height:210px;">{{#helpers.snippet}}{ "attribute": "context", "highlightedTagName": "mark" }{{/helpers.snippet}}</p>
               <!-- <h5><span class="badge badge-primary">{{ project }}</span></h5> -->
           `,
     },
@@ -318,8 +352,8 @@ search.addWidgets([
 
   instantsearch.widgets.configure({
     hitsPerPage: 12,
-    attributesToSnippet: ["full_text"],
-    //filters: function() { return document.getElementsByTagName("input").value },
+    attributesToSnippet: ["context"],
+    typoTolerance: () => searchState.fuzzySearch ? 'true' : 'false'
   }),
 
 ]);

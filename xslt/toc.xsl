@@ -17,9 +17,6 @@
 
     <xsl:template match="/">
         <xsl:variable name="doc_title" select="'Quellen'"/>
-
-
-
         <html class="page">
             <head>
                 <xsl:call-template name="html_head">
@@ -34,7 +31,6 @@
                         <h2 class="align-center">
                             <xsl:value-of select="$doc_title"/>
                         </h2>
-
                         <table class="table" id="myTable">
                             <thead>
                                 <tr>
@@ -49,7 +45,7 @@
                                     <th scope="col">Höhe (mm)</th>
                                     <th scope="col">Breite (mm)</th>
                                     <th scope="col">Beschreibung</th>
-                                    <th scope="col">Transkriptionsstatus</th>
+                                    <th scope="col">Besondere Initialen</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,9 +59,8 @@
             format-number(floor((number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notBefore, '-')[3]) + 
                                  number(tokenize(descendant::tei:sourceDesc/tei:bibl/tei:date/@notAfter, '-')[3])) div 2), '00')
         )" order="ascending" data-type="text"/>
-        <xsl:variable name="full_path">
-                                        <xsl:value-of select="document-uri(/)"/>
-                                    </xsl:variable>
+        <xsl:variable name="full_path" select="document-uri(/)"/>
+        <xsl:variable name="basename" select="replace(tokenize($full_path, '/')[last()], '.xml', '')" /> 
                                     <tr>
                                         <td>
                                             <a>
@@ -189,7 +184,23 @@
                                                 select="descendant::tei:sourceDesc/tei:msDesc/tei:msContents/tei:summary"
                                             />
                                         </td>
-                                        <td>In progress</td>
+                                        <td>
+                                            <xsl:variable name="manuscripts" select="document('../html/js/initials.xml')//manuscript/@id"/>
+                                            <xsl:choose>
+                                                <xsl:when test="$manuscripts = $basename">
+                                                    <a>
+                                                        <xsl:attribute name="href">
+                                                            <xsl:value-of select="concat('initials.html?shelfmark=', $basename)"/>
+                                                        </xsl:attribute>
+                                                        <xsl:attribute name="class">checkmark</xsl:attribute>
+                                                        <xsl:text>✓</xsl:text>
+                                                    </a>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <!-- Empty cell if not in initials.xml -->
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                        </td>
                                     </tr>
                                 </xsl:for-each>
                             </tbody>

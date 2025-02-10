@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return manifests;
   }
 
-  function addSurfaceOverlay() {
+/*  function addSurfaceOverlay() {
     const overlay = document.createElement('div');
     overlay.style.border = '2px solid blue';
     overlay.style.position = 'absolute';
@@ -64,8 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       console.log('currenImageBounds:', currentImageBounds) ;
     }
-  }
-
+  } */
+ 
   function loadImageFromManifest(manifestUrl) {
     fetch(manifestUrl)
       .then(response => response.json())
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Add handler for when image loads
           viewer.addHandler('open', function() {
             // Add the surface overlay
-            addSurfaceOverlay();
+            // addSurfaceOverlay();
             
             const hash = window.location.hash.substring(1);
             if (hash) {
@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function parseZonesFromXML(xmlString) {
+ /* function parseZonesFromXML(xmlString) {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xmlString, "text/xml");
 
@@ -280,8 +280,8 @@ function getIIIFImageDimensions(manifestUrl) {
     })
     .catch(() => ({ width: 2000, height: 2000 })); // fallback dimensions
 }
-
-function addZoneOverlays(zoneData) {
+*/
+/* function addZoneOverlays(zoneData) {
   if (!zoneData.length) return;
   
   viewer.clearOverlays();
@@ -324,15 +324,15 @@ function addZoneOverlays(zoneData) {
       location: new OpenSeadragon.Rect(scaledCoords.minX, scaledCoords.minY, width, height)
     });
   });
-}
+} */
 
 function loadAndParseXML(xmlFilePath) {
     fetch(xmlFilePath)
       .then(response => response.text())
       .then(xmlString => {
         console.log("XML loaded successfully"); // Log XML load success
-        const zoneData = parseZonesFromXML(xmlString);
-        addZoneOverlays(zoneData);
+        //const zoneData = parseZonesFromXML(xmlString);
+        //addZoneOverlays(zoneData);
       })
       .catch(err => {
         console.error("Error loading XML file:", err);

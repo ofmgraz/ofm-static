@@ -28,7 +28,7 @@ jobs:
     - name: Repair broken xml:ids
       run: shellscripts/mendxml.sh
     - name: Generate initals indices
-      run: pyscript/get_initials.py
+      run: pyscripts/get_initials.py
     - name: Build
       run: |
         ant

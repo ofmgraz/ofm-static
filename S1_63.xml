@@ -1,4 +1,4 @@
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_63.xml" xml:base="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs" prev="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/A64_37.xml" next="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/A64_38.xml">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_63.xml" xml:base="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs" prev="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/A64_39.xml" next="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/A67_22.xml">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -11250,39 +11250,21 @@
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2903" xml:id="facs_215">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EA7-E" width="2000px" height="2903px"/>
-         <zone points="1671,79 1757,79 1757,141 1671,141" rendition="TextRegion" xml:id="facs_215_tr_1">
-            <zone points="1671,86 1701,84 1731,86 1757,86 1757,136 1731,136 1701,134 1671,136" rendition="Line" xml:id="facs_215_tr_1_tl_1"/>
-         </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="3039" xml:id="facs_216">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EA8-D" width="2000px" height="3039px"/>
-         <zone points="321,95 399,95 399,161 321,161" rendition="TextRegion" xml:id="facs_216_tr_1">
-            <zone points="321,106 339,102 369,100 399,100 399,150 369,150 339,152 321,156" rendition="Line" xml:id="facs_216_tr_1_tl_1"/>
-         </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2872" xml:id="facs_217">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EA9-C" width="2000px" height="2872px"/>
-         <zone points="1636,92 1712,92 1712,156 1636,156" rendition="TextRegion" xml:id="facs_217_tr_1">
-            <zone points="1636,97 1666,101 1696,101 1712,99 1712,149 1696,151 1666,151 1636,147" rendition="Line" xml:id="facs_217_tr_1_tl_1"/>
-         </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="3055" xml:id="facs_218">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EAA-B" width="2000px" height="3055px"/>
-         <zone points="119,117 193,117 193,191 119,191" rendition="TextRegion" xml:id="facs_218_tr_1">
-            <zone points="119,136 133,134 163,130 193,122 193,172 163,180 133,184 119,186" rendition="Line" xml:id="facs_218_tr_1_tl_1"/>
-         </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2898" xml:id="facs_219">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EAB-A" width="2000px" height="2898px"/>
-         <zone points="1696,86 1782,86 1782,148 1696,148" rendition="TextRegion" xml:id="facs_219_tr_1">
-            <zone points="1696,91 1726,93 1756,91 1782,93 1782,143 1756,141 1726,143 1696,141" rendition="Line" xml:id="facs_219_tr_1_tl_1"/>
-         </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="3059" xml:id="facs_220">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EAC-9" width="2000px" height="3059px"/>
-         <zone points="201,119 283,119 283,185 201,185" rendition="TextRegion" xml:id="facs_220_tr_1">
-            <zone points="201,130 223,128 253,124 283,124 283,174 253,174 223,178 201,180" rendition="Line" xml:id="facs_220_tr_1_tl_1"/>
-         </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="3099" xml:id="facs_221">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EAD-8" width="2000px" height="3099px"/>
@@ -11320,9 +11302,6 @@
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2899" xml:id="facs_224">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EB0-3" width="2000px" height="2899px"/>
-         <zone points="919,2825 973,2825 973,2885 919,2885" rendition="TextRegion" xml:id="facs_224_tr_1">
-            <zone points="919,2830 949,2830 973,2830 973,2880 949,2880 919,2880" rendition="Line" xml:id="facs_224_tr_1_tl_1"/>
-         </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2858" xml:id="facs_225">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EB1-2" width="2000px" height="2858px"/>
@@ -11431,9 +11410,6 @@
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2747" xml:id="facs_228">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EB5-E" width="2000px" height="2747px"/>
-         <zone points="1921,2433 1975,2433 1975,2497 1921,2497" rendition="TextRegion" xml:id="facs_228_tr_1">
-            <zone points="1921,2440 1945,2442 1975,2438 1975,2488 1945,2492 1921,2490" rendition="Line" xml:id="facs_228_tr_1_tl_1"/>
-         </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2801" xml:id="facs_229">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9EB4-F" width="2000px" height="2801px"/>
@@ -19532,29 +19508,11 @@
             <ab facs="#facs_214_region_1722072109986_77" type="rubrik">
             </ab>
             <pb facs="#facs_215" n="215" xml:id="img_0215"/>
-            <ab facs="#facs_215_tr_1">
-               <lb facs="#facs_215_tr_1_tl_1" n="N001"/>
-            </ab>
             <pb facs="#facs_216" n="216" xml:id="img_0216"/>
-            <ab facs="#facs_216_tr_1">
-               <lb facs="#facs_216_tr_1_tl_1" n="N001"/>
-            </ab>
             <pb facs="#facs_217" n="217" xml:id="img_0217"/>
-            <ab facs="#facs_217_tr_1">
-               <lb facs="#facs_217_tr_1_tl_1" n="N001"/>
-            </ab>
             <pb facs="#facs_218" n="218" xml:id="img_0218"/>
-            <ab facs="#facs_218_tr_1">
-               <lb facs="#facs_218_tr_1_tl_1" n="N001"/>
-            </ab>
             <pb facs="#facs_219" n="219" xml:id="img_0219"/>
-            <ab facs="#facs_219_tr_1">
-               <lb facs="#facs_219_tr_1_tl_1" n="N001"/>
-            </ab>
             <pb facs="#facs_220" n="220" xml:id="img_0220"/>
-            <ab facs="#facs_220_tr_1">
-               <lb facs="#facs_220_tr_1_tl_1" n="N001"/>
-            </ab>
             <pb facs="#facs_221" n="221" xml:id="img_0221"/>
             <pb facs="#facs_222" n="222" xml:id="img_0222"/>
             <pb facs="#facs_223" n="223" xml:id="img_0223"/>
@@ -19582,9 +19540,6 @@
                <lb facs="#facs_223_tl_1722073158" n="N001"/>M.DC.LXXXV
             </ab>
             <pb facs="#facs_224" n="224" xml:id="img_0224"/>
-            <ab facs="#facs_224_tr_1">
-               <lb facs="#facs_224_tr_1_tl_1" n="N001"/>
-            </ab>
             <pb facs="#facs_225" n="225" xml:id="img_0225"/>
             <p facs="#facs_225_region_1722072614888_436">
                <lb facs="#facs_225_tl_1722073071" n="N001"/>Lectori Ecclesiastico.
@@ -19684,9 +19639,6 @@
             </ab>
             <pb facs="#facs_227" n="227" xml:id="img_0227"/>
             <pb facs="#facs_228" n="228" xml:id="img_0228"/>
-            <ab facs="#facs_228_tr_1">
-               <lb facs="#facs_228_tr_1_tl_1" n="N001"/>
-            </ab>
             <pb facs="#facs_229" n="229" xml:id="img_0229"/>
             <pb facs="#facs_230" n="230" xml:id="img_0230"/>
             <pb facs="#facs_231" n="231" xml:id="img_0231"/>

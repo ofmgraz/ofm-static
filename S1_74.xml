@@ -1,4 +1,4 @@
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_74.xml" xml:base="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs" prev="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/S1_61.xml" next="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/S1_66.xml">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_74.xml" xml:base="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs" prev="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/S1_29.xml" next="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/S1_19.xml">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -3744,9 +3744,6 @@
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2828" xml:id="facs_77">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-AD4C-5" width="2000px" height="2828px"/>
-         <zone points="1682,88 1746,88 1746,152 1682,152" rendition="TextRegion" xml:id="facs_77_tr_1">
-            <zone points="1682,96 1686,97 1716,93 1746,93 1746,143 1716,143 1686,147 1682,146" rendition="Line" xml:id="facs_77_tr_1_tl_1"/>
-         </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2745" xml:id="facs_78">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-AD4D-4" width="2000px" height="2745px"/>
@@ -3791,9 +3788,6 @@
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2713" xml:id="facs_87">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-AD55-A" width="2000px" height="2713px"/>
-         <zone points="660,1976 708,1976 708,2042 660,2042" rendition="TextRegion" xml:id="facs_87_tr_1">
-            <zone points="660,1987 678,1985 708,1981 708,2031 678,2035 660,2037" rendition="Line" xml:id="facs_87_tr_1_tl_1"/>
-         </zone>
       </surface>
    </facsimile>
    <text>
@@ -6396,9 +6390,6 @@
                <lb facs="#facs_76_tl_1722090959" n="N010"/>FINIS
             </ab>
             <pb facs="#facs_77" n="77" xml:id="img_0077"/>
-            <ab facs="#facs_77_tr_1">
-               <lb facs="#facs_77_tr_1_tl_1" n="N001"/>
-            </ab>
             <pb facs="#facs_78" n="78" xml:id="img_0078"/>
             <pb facs="#facs_79" n="79" xml:id="img_0079"/>
             <pb facs="#facs_80" n="80" xml:id="img_0080"/>
@@ -6421,9 +6412,6 @@
             <pb facs="#facs_85" n="85" xml:id="img_0085"/>
             <pb facs="#facs_86" n="86" xml:id="img_0086"/>
             <pb facs="#facs_87" n="87" xml:id="img_0087"/>
-            <ab facs="#facs_87_tr_1">
-               <lb facs="#facs_87_tr_1_tl_1" n="N001"/>
-            </ab>
          </div>
       </body>
    </text>

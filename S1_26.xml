@@ -1,17 +1,201 @@
-<?xml version="1.0" encoding="UTF-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0">
-   <teiHeader>
-      <fileDesc>
-         <titleStmt><title type="main">A-Gf_S1_26_Lamentationen</title></titleStmt>
-         <seriesStmt><title>OFM_Graz_Choralhandschriften</title></seriesStmt>
-         <sourceDesc>
-            <bibl><title type="main">A-Gf_S1_26_Lamentationen</title><idno type="Transkribus">1526139</idno><idno type="external">NA</idno></bibl>
-         </sourceDesc>
-      </fileDesc>
-   </teiHeader>
-   <facsimile>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_26.xml" xml:base="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs" prev="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/S1_70.xml" next="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/A67_42.xml">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title type="main" xml:lang="de">Lamentationen</title>
+        <title type="main" xml:lang="en">Lamentations</title>
+        <title type="desc">A-Gf S 1/26</title>
+      <respStmt><resp xml:lang="de">XML Datenmodellierung</resp><resp xml:lang="en">XML modelling</resp><persName role="MetadataCreator" ref="https://orcid.org/0000-0002-8815-6741">
+            <forename>Fernando</forename>
+            <surname>Sanz-Lázaro</surname>
+            <idno type="URL" subtype="GND">http://d-nb.info/gnd/1297553608</idno>
+          </persName>
+        </respStmt><respStmt><resp xml:lang="de">Datengenerierung</resp><resp xml:lang="en">Data generation</resp><persName role="Contributor" ref="https://orcid.org/0000-0002-9575-9372">
+            <forename>Peter</forename>
+            <surname>Andorfer</surname>
+            <idno type="URL" subtype="GND">http://d-nb.info/gnd/1043833846</idno>
+          </persName>
+        </respStmt><respStmt><resp xml:lang="de">Datengenerierung</resp><resp xml:lang="en">Data Generation</resp><persName role="Contributor" ref="https://orcid.org/0000-0003-2436-0361">
+            <forename>Daniel</forename>
+            <surname>Schopper</surname>
+            <idno type="URL" subtype="ORCID">https://orcid.org/0000-0003-2436-0361</idno>
+          </persName> 
+        </respStmt><respStmt><resp xml:lang="de">Datengenerierung</resp><resp xml:lang="en">Data generation</resp><persName ref="https://orcid.org/0000-0002-0484-832X" role="Contributor">
+            <forename>Robert</forename>
+            <surname>Klugseder</surname>
+            <idno type="URL" subtype="GND">http://d-nb.info/gnd/134072170</idno>
+          </persName>
+        </respStmt><respStmt><resp xml:lang="de">Digitalisierung (Fotografieren) des Archivmaterials</resp><resp xml:lang="en">Digitisation (photography) of the archival materials</resp><persName ref="https://orcid.org/0000-0001-6195-2935" role="DigitisingAgent">
+            <forename>Jakob</forename>
+            <surname>Leitner</surname>
+            <idno type="URL" subtype="ORCID">https://orcid.org/0000-0001-6195-2935</idno>
+          </persName>
+        </respStmt></titleStmt>
+      <editionStmt>
+        <edition>
+          <objectType xml:lang="de">Electronische Edition</objectType>
+          <objectType xml:lang="en">Electronic edition</objectType>
+        </edition>
+        <funder>
+          <orgName xml:lang="de">Bundesministerium für Kunst, Kultur, Öffentlicher Dienst und Sport</orgName>
+          <orgName xml:lang="en">Austrian Ministery for Art, Culture, Public Service, and Sport</orgName>
+          <idno type="URL" subtype="GND">http://d-nb.info/gnd/1216831270</idno>
+        </funder>
+        <funder>
+          <orgName xml:lang="de">Europäische Union</orgName>
+          <orgName xml:lang="en">European Union</orgName>
+          <idno type="URL" subtype="GND">https://d-nb.info/gnd/5098525-5</idno>
+        </funder>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>
+          <orgName>Austrian Centre for Digital Humanities and Cultural Heritage</orgName>
+          <idno type="URL" subtype="GND">http://d-nb.info/gnd/1226158307</idno>
+        </publisher>
+        <authority>
+          <orgName xml:lang="de">Österreichische Akademie der Wissenschaften</orgName>
+          <orgName xml:lang="en">Austrian Academy of Sciences</orgName>
+          <idno type="URL" subtype="GND">http://d-nb.info/gnd/1001454-8</idno>
+        </authority>
+        <address>
+          <addrLine xml:lang="de">Österreichische Akademie der Wissenschaften</addrLine>
+          <addrLine xml:lang="en">Austrian Academy of Sciences</addrLine>
+          <addrLine>Austrian Centre for Digital Humanities and Cultural Heritage</addrLine>
+          <addrLine>Bäckerstraße 13</addrLine>
+          <addrLine>1100 Vienna</addrLine>
+          <addrLine xml:lang="en">Austria</addrLine>
+          <addrLine xml:lang="de">Österreich</addrLine>
+          <addrLine>
+            <ref target="https://www.oeaw.ac.at/acdh/acdh-ch-home">https://www.oeaw.ac.at/acdh/acdh-ch-home</ref>
+          </addrLine>
+          <addrLine>
+            <email>acdh-ch@oeaw.ac.at</email>
+          </addrLine>
+        </address>
+        <pubPlace>
+          <placeName xml:lang="de">Wien</placeName>
+          <placeName xml:lang="en">Vienna</placeName>
+          <idno type="URL" subtype="GND">http://d-nb.info/gnd/4066009-6</idno>
+          <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q1741</idno>
+        </pubPlace>
+        <availability>
+          <licence target="https://creativecommons.org/licenses/by-sa/4.0/deed">CC-BY-SA</licence>
+        </availability>
+        <date when="2024-08-19">2024</date>
+      </publicationStmt>
+      <notesStmt>
+        <note xml:lang="de">Originale mit einem Traveller-Gerät digitalisiert</note>
+        <note xml:lang="en">Originals digitised with a Traveller device</note>
+      </notesStmt>
+      <sourceDesc>
+        <bibl>
+          <date notBefore="1732-01-01" notAfter="1732-12-31">1732</date>
+        </bibl>
+        <msDesc>
+          <msIdentifier>
+            <institution>
+              <orgName xml:lang="de">Franziskanerkloster Graz</orgName>
+              <orgName xml:lang="en">Franziscan Monastery Graz</orgName>
+              <idno type="URL" subtype="GND">https://d-nb.info/gnd/16174362-6</idno>
+            </institution>
+            <repository>
+              <orgName xml:lang="de">Zentralbibliothek der Wiener Franziskanerprovinz Graz</orgName>
+              <orgName xml:lang="en">Central Library of the Viennese Franciscan Province Graz</orgName>
+              <idno type="URL" subtype="GND">https://d-nb.info/gnd/16174362-6</idno>
+              <idno type="URL" subtype="Wikidata">https://www.wikidata.org/entity/Q64487580</idno>
+            </repository>
+            <idno type="shelfmark">A-Gf S 1/26</idno>
+          </msIdentifier>
+          <msContents class="#ofm #Lamentationen">
+            <summary><p>Mit einzelnen Antiphonen der Trauermetten.</p><p>Lamentationen.</p></summary>
+          </msContents>
+          <physDesc>
+            <objectDesc form="codex">
+              <supportDesc>
+                <support>
+                  <dimensions unit="mm"> <height>250</height><width>190</width></dimensions>
+                </support>
+                <extent>
+                  <measure unit="leaf" quantity="18">18</measure>
+                </extent>
+              </supportDesc>
+            </objectDesc>
+            <musicNotation>Placeholder<binaryObject/>
+            </musicNotation>
+          </physDesc>
+          <history>
+            <provenance><placeName ref="#Graz">Graz</placeName></provenance>
+          </history>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <editorialDecl>
+        <p xml:lang="de">Maschinell erfasster Rohtext</p>
+        <p xml:lang="en">Machine-collected raw text</p>
+      </editorialDecl>
+      <appInfo>
+        <application ident="transkribus" version="1.26.0">
+          <label>Transkribus</label>
+          <desc xml:lang="de">Sammlung 216937</desc>
+          <desc xml:lang="en">collection 216937</desc>
+        </application>
+        <application ident="custom" version="0.0">
+          <label>custom scripts</label>
+        </application>
+      </appInfo>
+    <classDecl><taxonomy xml:id="liturgies"><desc>Liturgies</desc><category xml:id="ofm"><catDesc>OFM</catDesc></category></taxonomy><taxonomy xml:id="booktypes"><desc>Book Types</desc></taxonomy></classDecl></encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="la" xml:lang="de">Latein</language>
+        <language ident="la" xml:lang="en">Latin</language>
+      </langUsage>
+      <textDesc n="choirbook">
+        <channel mode="ws">
+          <objectType xml:lang="de">Handschrift</objectType>
+          <objectType xml:lang="en">manuscript</objectType>
+        </channel>
+        <constitution type="composite"/>
+        <derivation/>
+        <domain type="religious"/>
+        <factuality type="inapplicable"/>
+        <interaction/>
+        <preparedness/>
+        <purpose/>
+      </textDesc>
+      <settingDesc>
+        <setting>
+          <name xml:lang="de">Steiermark</name>
+          <name xml:lang="en">Styria</name>
+          <time/>
+        </setting>
+      </settingDesc>
+    </profileDesc>
+  </teiHeader>
+  <standOff>
+    <listPlace><place xml:id="Graz">
+                    <placeName xml:lang="en">Graz</placeName>
+                    <placeName xml:lang="de">Graz</placeName>
+                    <placeName xml:lang="it">Graz</placeName>
+                    <location>
+                        <settlement xml:lang="en">Graz</settlement>
+                        <settlement xml:lang="de">Graz</settlement>
+                        <settlement xml:lang="it">Graz</settlement>
+                        <region xml:lang="en">Styria</region>
+                        <region xml:lang="de">Steiermark</region>
+                        <region xml:lang="it">Stiria</region>
+                        <country xml:lang="en">Austria</country>
+                        <country xml:lang="de">Österreich</country>
+                        <country xml:lang="it">Austria</country>
+                        <geo>47.07083333333333 15.438611111111111</geo>
+                    </location>
+                    <idno type="URL" subtype="GND">https://d-nb.info/gnd/4021912-4</idno>
+                    <idno type="URL" subtype="GEONAMES">https://sws.geonames.org/2778058</idno>
+                    <idno type="URL" subtype="WIKIDATA">https://www.wikidata.org/entity/Q13298</idno>
+                </place></listPlace></standOff>
+<facsimile>
       <surface ulx="0" uly="0" lrx="2000" lry="2653" xml:id="facs_1">
-         <graphic url="58435079.jpg" width="2000px" height="2653px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=JECMMPBCMODTJVWKABDOCZBR&amp;fileType=view" width="2000px" height="2653px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91AC-6" width="2000px" height="2653px"/>
          <zone points="166,134 1787,134 1787,616 166,616" rendition="TextRegion" xml:id="facs_1_tr_1737550889" subtype="0.81">
             <zone points="256,182 1710,182 1710,345 256,345" rendition="Line" xml:id="facs_1_line_1737551820003_2266"/>
             <zone points="610,305 1270,305 1270,461 610,461" rendition="Line" xml:id="facs_1_line_1737551821555_2269"/>
@@ -70,8 +254,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2646" xml:id="facs_2">
-         <graphic url="58435080.jpg" width="2000px" height="2646px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=SNPICHKQSZMSJZTGYXFZDQID&amp;fileType=view" width="2000px" height="2646px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91AD-5" width="2000px" height="2646px"/>
          <zone points="192,274 1891,274 1891,462 192,462" rendition="TextRegion" xml:id="facs_2_tr_1737550874" subtype="0.96">
             <zone points="192,274 1891,274 1891,462 192,462" rendition="Line" xml:id="facs_2_tl_1737550874"/>
          </zone>
@@ -119,8 +302,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2655" xml:id="facs_3">
-         <graphic url="58435081.jpg" width="2000px" height="2655px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=REUOXWWZTJSVSODHIWOITTAN&amp;fileType=view" width="2000px" height="2655px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91AE-4" width="2000px" height="2655px"/>
          <zone points="116,256 1842,256 1842,441 116,441" rendition="TextRegion" xml:id="facs_3_tr_1737550866" subtype="0.97">
             <zone points="116,256 1842,256 1842,441 116,441" rendition="Line" xml:id="facs_3_tl_1737550866"/>
          </zone>
@@ -171,8 +353,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2646" xml:id="facs_4">
-         <graphic url="58435082.jpg" width="2000px" height="2646px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=YDNPXDZZZFBVGCEVBFCXPLXD&amp;fileType=view" width="2000px" height="2646px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91AF-3" width="2000px" height="2646px"/>
          <zone points="189,227 1868,227 1868,426 189,426" rendition="TextRegion" xml:id="facs_4_tr_1737550883" subtype="0.9">
             <zone points="189,227 1868,227 1868,426 189,426" rendition="Line" xml:id="facs_4_tl_1737550883"/>
          </zone>
@@ -220,8 +401,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2655" xml:id="facs_5">
-         <graphic url="58435083.jpg" width="2000px" height="2655px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=ECEBWFWGBIEAULCLMMVYMRWJ&amp;fileType=view" width="2000px" height="2655px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91B0-0" width="2000px" height="2655px"/>
          <zone points="90,235 1814,235 1814,437 90,437" rendition="TextRegion" xml:id="facs_5_tr_1737550881" subtype="0.97">
             <zone points="90,235 1814,235 1814,437 90,437" rendition="Line" xml:id="facs_5_tl_1737550881"/>
          </zone>
@@ -269,8 +449,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2653" xml:id="facs_6">
-         <graphic url="58435084.jpg" width="2000px" height="2653px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=AHETHERCZZOPNRFFWEBDAZAX&amp;fileType=view" width="2000px" height="2653px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91B1-F" width="2000px" height="2653px"/>
          <zone points="227,214 1908,214 1908,432 227,432" rendition="TextRegion" xml:id="facs_6_tr_1737550880" subtype="0.9">
             <zone points="227,214 1908,214 1908,432 227,432" rendition="Line" xml:id="facs_6_tl_1737550880"/>
          </zone>
@@ -318,8 +497,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2657" xml:id="facs_7">
-         <graphic url="58435085.jpg" width="2000px" height="2657px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=ZUAZOEIBXKRBDTHVALZJOQDO&amp;fileType=view" width="2000px" height="2657px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91B2-E" width="2000px" height="2657px"/>
          <zone points="83,191 1799,191 1799,389 83,389" rendition="TextRegion" xml:id="facs_7_tr_1737550873" subtype="0.95">
             <zone points="83,191 1799,191 1799,389 83,389" rendition="Line" xml:id="facs_7_tl_1737550873"/>
          </zone>
@@ -373,8 +551,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2656" xml:id="facs_8">
-         <graphic url="58435086.jpg" width="2000px" height="2656px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=ADVGKNEUUAHHVXLVGHDVFQFN&amp;fileType=view" width="2000px" height="2656px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91B3-D" width="2000px" height="2656px"/>
          <zone points="246,205 1891,205 1891,407 246,407" rendition="TextRegion" xml:id="facs_8_tr_1737550875" subtype="0.93">
             <zone points="246,205 1891,205 1891,407 246,407" rendition="Line" xml:id="facs_8_tl_1737550875"/>
          </zone>
@@ -422,8 +599,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2660" xml:id="facs_9">
-         <graphic url="58435088.jpg" width="2000px" height="2660px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=PUKBXFVCBZPPBPVYJCXMYKSU&amp;fileType=view" width="2000px" height="2660px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91B4-C" width="2000px" height="2660px"/>
          <zone points="114,216 1848,216 1848,419 114,419" rendition="TextRegion" xml:id="facs_9_tr_1737550880" subtype="0.96">
             <zone points="114,216 1848,216 1848,419 114,419" rendition="Line" xml:id="facs_9_tl_1737550880"/>
          </zone>
@@ -474,8 +650,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2661" xml:id="facs_10">
-         <graphic url="58435090.jpg" width="2000px" height="2661px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=ZSRTYDCGCFEWBWFFVVCMEEPR&amp;fileType=view" width="2000px" height="2661px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-010.tif" width="2000px" height="2661px"/>
          <zone points="180,235 1731,235 1731,418 180,418" rendition="TextRegion" xml:id="facs_10_tr_1737550879" subtype="0.96">
             <zone points="180,235 1731,235 1731,418 180,418" rendition="Line" xml:id="facs_10_tl_1737550879"/>
          </zone>
@@ -526,8 +701,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2660" xml:id="facs_11">
-         <graphic url="58435091.jpg" width="2000px" height="2660px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=TIBEGQHLPUFOLMEMUEKFMMKG&amp;fileType=view" width="2000px" height="2660px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-011.tif" width="2000px" height="2660px"/>
          <zone points="107,198 1836,198 1836,415 107,415" rendition="TextRegion" xml:id="facs_11_tr_1737550878" subtype="0.96">
             <zone points="107,198 1836,198 1836,415 107,415" rendition="Line" xml:id="facs_11_tl_1737550878"/>
          </zone>
@@ -575,8 +749,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2656" xml:id="facs_12">
-         <graphic url="58435093.jpg" width="2000px" height="2656px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=OIEWUVQMBFJGRVUTFGGBYHRK&amp;fileType=view" width="2000px" height="2656px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-012.tif" width="2000px" height="2656px"/>
          <zone points="203,239 1891,239 1891,429 203,429" rendition="TextRegion" xml:id="facs_12_tr_1737550867" subtype="0.94">
             <zone points="203,239 1891,239 1891,429 203,429" rendition="Line" xml:id="facs_12_tl_1737550867"/>
          </zone>
@@ -626,8 +799,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2657" xml:id="facs_13">
-         <graphic url="58435094.jpg" width="2000px" height="2657px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=MUOXTQBNPVQFMUVMXTVCAVJV&amp;fileType=view" width="2000px" height="2657px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-013.tif" width="2000px" height="2657px"/>
          <zone points="101,201 1796,201 1796,387 101,387" rendition="TextRegion" xml:id="facs_13_tr_1737550864" subtype="0.97">
             <zone points="101,201 1796,201 1796,387 101,387" rendition="Line" xml:id="facs_13_tl_1737550864"/>
          </zone>
@@ -684,8 +856,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2665" xml:id="facs_14">
-         <graphic url="58435095.jpg" width="2000px" height="2665px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=FXQVTTJZDZCKIQNROPKIGDEX&amp;fileType=view" width="2000px" height="2665px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-014.tif" width="2000px" height="2665px"/>
          <zone points="189,201 1892,201 1892,412 189,412" rendition="TextRegion" xml:id="facs_14_tr_1737550875" subtype="0.95">
             <zone points="189,201 1892,201 1892,412 189,412" rendition="Line" xml:id="facs_14_tl_1737550875"/>
          </zone>
@@ -720,8 +891,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2659" xml:id="facs_15">
-         <graphic url="58435096.jpg" width="2000px" height="2659px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=ONAQKAOVEKVLSSGGAKQNWLWZ&amp;fileType=view" width="2000px" height="2659px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-015.tif" width="2000px" height="2659px"/>
          <zone points="100,245 1823,245 1823,444 100,444" rendition="TextRegion" xml:id="facs_15_tr_1737550872" subtype="0.94">
             <zone points="100,245 1823,245 1823,444 100,444" rendition="Line" xml:id="facs_15_tl_1737550872"/>
          </zone>
@@ -772,8 +942,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2615" xml:id="facs_16">
-         <graphic url="58435097.jpg" width="2000px" height="2615px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=MSCOFUIYNVRASDMBCDSHCMWN&amp;fileType=view" width="2000px" height="2615px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-016.tif" width="2000px" height="2615px"/>
          <zone points="184,248 1872,248 1872,440 184,440" rendition="TextRegion" xml:id="facs_16_tr_1737550862" subtype="0.97">
             <zone points="184,248 1872,248 1872,440 184,440" rendition="Line" xml:id="facs_16_tl_1737550862"/>
          </zone>
@@ -827,8 +996,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2657" xml:id="facs_17">
-         <graphic url="58435098.jpg" width="2000px" height="2657px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=QEDFJWMHNZDJPEEFZBTYLALC&amp;fileType=view" width="2000px" height="2657px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-017.tif" width="2000px" height="2657px"/>
          <zone points="114,260 1840,260 1840,446 114,446" rendition="TextRegion" xml:id="facs_17_tr_1737550878" subtype="0.97">
             <zone points="114,260 1840,260 1840,446 114,446" rendition="Line" xml:id="facs_17_tl_1737550878"/>
          </zone>
@@ -879,8 +1047,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2612" xml:id="facs_18">
-         <graphic url="58435099.jpg" width="2000px" height="2612px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=BEFVTFQADLLMLBYKVGYQCLPJ&amp;fileType=view" width="2000px" height="2612px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-018.tif" width="2000px" height="2612px"/>
          <zone points="191,256 191,422 197,438 218,449 1798,458 1849,455 1856,444 1856,297 1847,280 1828,272 1555,272 1200,259 930,265 280,241 198,244" rendition="TextRegion" xml:id="facs_18_tr_1737550865" subtype="0.97">
             <zone points="191,256 191,422 197,438 218,449 1798,458 1849,455 1856,444 1856,297 1847,280 1828,272 1555,272 1200,259 930,265 280,241 198,244" rendition="Line" xml:id="facs_18_tl_1737550865"/>
          </zone>
@@ -928,8 +1095,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2656" xml:id="facs_19">
-         <graphic url="58435101.jpg" width="2000px" height="2656px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=OGEUIMEFYKPVWQUPRMNDISXF&amp;fileType=view" width="2000px" height="2656px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-019.tif" width="2000px" height="2656px"/>
          <zone points="109,266 1791,266 1791,462 109,462" rendition="TextRegion" xml:id="facs_19_tr_1737550876" subtype="0.98">
             <zone points="109,266 1791,266 1791,462 109,462" rendition="Line" xml:id="facs_19_tl_1737550876"/>
          </zone>
@@ -980,8 +1146,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2619" xml:id="facs_20">
-         <graphic url="58435102.jpg" width="2000px" height="2619px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=IRLPIAHOLGJKOALOGIIFBRWU&amp;fileType=view" width="2000px" height="2619px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-020.tif" width="2000px" height="2619px"/>
          <zone points="210,260 1848,260 1848,472 210,472" rendition="TextRegion" xml:id="facs_20_tr_1737550866" subtype="0.95">
             <zone points="210,260 1848,260 1848,472 210,472" rendition="Line" xml:id="facs_20_tl_1737550866"/>
          </zone>
@@ -1029,8 +1194,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2655" xml:id="facs_21">
-         <graphic url="58435103.jpg" width="2000px" height="2655px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=OIHGXSLNMGRFAZVTRLNFQONK&amp;fileType=view" width="2000px" height="2655px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-021.tif" width="2000px" height="2655px"/>
          <zone points="105,243 1808,243 1808,447 105,447" rendition="TextRegion" xml:id="facs_21_tr_1737550865" subtype="0.97">
             <zone points="105,243 1808,243 1808,447 105,447" rendition="Line" xml:id="facs_21_tl_1737550865"/>
          </zone>
@@ -1084,8 +1248,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2610" xml:id="facs_22">
-         <graphic url="58435104.jpg" width="2000px" height="2610px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=UWUAHONFSLIFQZGYGWBFAWQP&amp;fileType=view" width="2000px" height="2610px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-022.tif" width="2000px" height="2610px"/>
          <zone points="209,261 209,431 216,441 233,447 882,461 1277,479 1830,481 1849,478 1851,314 1842,288 1823,275 1707,280 1405,279 1180,267 225,250 215,252" rendition="TextRegion" xml:id="facs_22_tr_1737550861" subtype="0.91">
             <zone points="209,261 209,431 216,441 233,447 882,461 1277,479 1830,481 1849,478 1851,314 1842,288 1823,275 1707,280 1405,279 1180,267 225,250 215,252" rendition="Line" xml:id="facs_22_tl_1737550861"/>
          </zone>
@@ -1142,8 +1305,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2658" xml:id="facs_23">
-         <graphic url="58435105.jpg" width="2000px" height="2658px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=AJBUZKNZYDSQENKLGCJSOLZH&amp;fileType=view" width="2000px" height="2658px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-023.tif" width="2000px" height="2658px"/>
          <zone points="50,209 1816,209 1816,431 50,431" rendition="TextRegion" xml:id="facs_23_tr_1737550864" subtype="0.91">
             <zone points="50,209 1816,209 1816,431 50,431" rendition="Line" xml:id="facs_23_tl_1737550864"/>
          </zone>
@@ -1209,8 +1371,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2645" xml:id="facs_24">
-         <graphic url="58435107.jpg" width="2000px" height="2645px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=SJKATEUMLOUTUYMCHROQKPIM&amp;fileType=view" width="2000px" height="2645px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-024.tif" width="2000px" height="2645px"/>
          <zone points="296,225 1946,225 1946,413 296,413" rendition="TextRegion" xml:id="facs_24_tr_1737550882" subtype="0.9">
             <zone points="296,225 1946,225 1946,413 296,413" rendition="Line" xml:id="facs_24_tl_1737550882"/>
          </zone>
@@ -1262,8 +1423,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2669" xml:id="facs_25">
-         <graphic url="58435108.jpg" width="2000px" height="2669px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=HWDSLMFXFVRLZHUXJILRROAD&amp;fileType=view" width="2000px" height="2669px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-025.tif" width="2000px" height="2669px"/>
          <zone points="57,219 1817,219 1817,407 57,407" rendition="TextRegion" xml:id="facs_25_tr_1737550885" subtype="0.96">
             <zone points="57,219 1817,219 1817,407 57,407" rendition="Line" xml:id="facs_25_tl_1737550885"/>
          </zone>
@@ -1310,8 +1470,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2633" xml:id="facs_26">
-         <graphic url="58435109.jpg" width="2000px" height="2633px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=PQOILBZZPONJUSROBNACIRWG&amp;fileType=view" width="2000px" height="2633px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-026.tif" width="2000px" height="2633px"/>
          <zone points="234,204 1906,204 1906,391 234,391" rendition="TextRegion" xml:id="facs_26_tr_1737550885" subtype="0.91">
             <zone points="234,204 1906,204 1906,391 234,391" rendition="Line" xml:id="facs_26_tl_1737550885"/>
          </zone>
@@ -1377,8 +1536,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2665" xml:id="facs_27">
-         <graphic url="58435110.jpg" width="2000px" height="2665px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=SNGTQRVBAGECMUOPTPVSRMCL&amp;fileType=view" width="2000px" height="2665px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-027.tif" width="2000px" height="2665px"/>
          <zone points="38,189 1782,189 1782,390 38,390" rendition="TextRegion" xml:id="facs_27_tr_1737550855" subtype="0.97">
             <zone points="38,189 1782,189 1782,390 38,390" rendition="Line" xml:id="facs_27_tl_1737550855"/>
          </zone>
@@ -1435,8 +1593,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2669" xml:id="facs_28">
-         <graphic url="58435112.jpg" width="2000px" height="2669px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=MVNLDLZKFBCOUMEUWOJQRXMJ&amp;fileType=view" width="2000px" height="2669px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-028.tif" width="2000px" height="2669px"/>
          <zone points="224,191 1767,191 1767,376 224,376" rendition="TextRegion" xml:id="facs_28_tr_1737550873" subtype="0.93">
             <zone points="224,191 1767,191 1767,376 224,376" rendition="Line" xml:id="facs_28_tl_1737550873"/>
          </zone>
@@ -1490,8 +1647,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2666" xml:id="facs_29">
-         <graphic url="58435113.jpg" width="2000px" height="2666px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=PJGGJQJFPBDGJPMRYITJUACZ&amp;fileType=view" width="2000px" height="2666px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-029.tif" width="2000px" height="2666px"/>
          <zone points="24,182 1805,182 1805,384 24,384" rendition="TextRegion" xml:id="facs_29_tr_1737550878" subtype="0.95">
             <zone points="24,182 1805,182 1805,384 24,384" rendition="Line" xml:id="facs_29_tl_1737550878"/>
          </zone>
@@ -1539,8 +1695,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2683" xml:id="facs_30">
-         <graphic url="58435114.jpg" width="2000px" height="2683px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=RNSZXSYTOAVGCBYJFMPWULFL&amp;fileType=view" width="2000px" height="2683px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-030.tif" width="2000px" height="2683px"/>
          <zone points="196,217 1922,217 1922,410 196,410" rendition="TextRegion" xml:id="facs_30_tr_1737550878" subtype="0.96">
             <zone points="196,217 1922,217 1922,410 196,410" rendition="Line" xml:id="facs_30_tl_1737550878"/>
          </zone>
@@ -1597,8 +1752,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2665" xml:id="facs_31">
-         <graphic url="58435115.jpg" width="2000px" height="2665px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=OGPQUCZMPVXNHASIKIKAKZII&amp;fileType=view" width="2000px" height="2665px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-031.tif" width="2000px" height="2665px"/>
          <zone points="51,217 1814,217 1814,420 51,420" rendition="TextRegion" xml:id="facs_31_tr_1737550882" subtype="0.95">
             <zone points="51,217 1814,217 1814,420 51,420" rendition="Line" xml:id="facs_31_tl_1737550882"/>
          </zone>
@@ -1647,8 +1801,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2690" xml:id="facs_32">
-         <graphic url="58435116.jpg" width="2000px" height="2690px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=XKIEHFBCYSNRURWFCWURCOPA&amp;fileType=view" width="2000px" height="2690px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-032.tif" width="2000px" height="2690px"/>
          <zone points="214,235 1938,235 1938,426 214,426" rendition="TextRegion" xml:id="facs_32_tr_1737550877" subtype="0.92">
             <zone points="214,235 1938,235 1938,426 214,426" rendition="Line" xml:id="facs_32_tl_1737550877"/>
          </zone>
@@ -1693,8 +1846,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2665" xml:id="facs_33">
-         <graphic url="58435117.jpg" width="2000px" height="2665px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=CYKVYTMIUIDJYDLBLBWLUIZT&amp;fileType=view" width="2000px" height="2665px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-033.tif" width="2000px" height="2665px"/>
          <zone points="78,193 1819,193 1819,407 78,407" rendition="TextRegion" xml:id="facs_33_tr_1737550864" subtype="0.94">
             <zone points="78,193 1819,193 1819,407 78,407" rendition="Line" xml:id="facs_33_tl_1737550864"/>
          </zone>
@@ -1739,8 +1891,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2676" xml:id="facs_34">
-         <graphic url="58435118.jpg" width="2000px" height="2676px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=YTECOLFXIKRQXWSGKMXOSXLG&amp;fileType=view" width="2000px" height="2676px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-034.tif" width="2000px" height="2676px"/>
          <zone points="206,219 1911,219 1911,408 206,408" rendition="TextRegion" xml:id="facs_34_tr_1737550867" subtype="0.96">
             <zone points="206,219 1911,219 1911,408 206,408" rendition="Line" xml:id="facs_34_tl_1737550867"/>
          </zone>
@@ -1785,8 +1936,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2666" xml:id="facs_35">
-         <graphic url="58435119.jpg" width="2000px" height="2666px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=RVXPGXRKEDQWNCQUPXRWIKAE&amp;fileType=view" width="2000px" height="2666px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-035.tif" width="2000px" height="2666px"/>
          <zone points="65,199 1804,199 1804,400 65,400" rendition="TextRegion" xml:id="facs_35_tr_1737550874" subtype="0.97">
             <zone points="65,199 1804,199 1804,400 65,400" rendition="Line" xml:id="facs_35_tl_1737550874"/>
          </zone>
@@ -1842,8 +1992,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2693" xml:id="facs_36">
-         <graphic url="58435121.jpg" width="2000px" height="2693px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=SWCRJNQCZVWHNKMSICJLBDTB&amp;fileType=view" width="2000px" height="2693px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-036.tif" width="2000px" height="2693px"/>
          <zone points="213,212 1924,212 1924,403 213,403" rendition="TextRegion" xml:id="facs_36_tr_1737550880" subtype="0.96">
             <zone points="213,212 1924,212 1924,403 213,403" rendition="Line" xml:id="facs_36_tl_1737550880"/>
          </zone>
@@ -1866,12 +2015,10 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2665" xml:id="facs_37">
-         <graphic url="58435122.jpg" width="2000px" height="2665px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=KYDVYEIXKCQRIBACWBXQEUDT&amp;fileType=view" width="2000px" height="2665px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-037.tif" width="2000px" height="2665px"/>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2687" xml:id="facs_38">
-         <graphic url="58435123.jpg" width="2000px" height="2687px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=PNIKBFPCMKYQCOCECXLQLYTO&amp;fileType=view" width="2000px" height="2687px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-038.tif" width="2000px" height="2687px"/>
          <zone points="1483,3 1483,155 1531,155 1531,3" rendition="TextRegion" xml:id="facs_38_tr_1">
             <zone points="1483,153 1531,155 1531,5 1483,3" rendition="Line" xml:id="facs_38_tr_1_tl_1"/>
          </zone>
@@ -1886,8 +2033,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2683" xml:id="facs_39">
-         <graphic url="58435124.jpg" width="2000px" height="2683px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=NCIUKUMQXAXVRENFDKBPBBAB&amp;fileType=view" width="2000px" height="2683px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-039.tif" width="2000px" height="2683px"/>
          <zone points="93,7 93,163 393,163 393,7" rendition="TextRegion" xml:id="facs_39_tr_1">
             <zone points="93,163 118,161 143,159 168,159 193,160 218,161 243,161 268,159 293,159 318,157 343,157 368,159 393,159 393,9 368,9 343,7 318,7 293,9 268,9 243,11 218,11 193,10 168,9 143,9 118,11 93,13" rendition="Line" xml:id="facs_39_tr_1_tl_1"/>
          </zone>
@@ -1899,8 +2045,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2672" xml:id="facs_40">
-         <graphic url="58435125.jpg" width="2000px" height="2672px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=RRNSBUQTNYIVKTIZYXNOJWWL&amp;fileType=view" width="2000px" height="2672px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-040.tif" width="2000px" height="2672px"/>
          <zone points="216,8 216,160 266,160 266,8" rendition="TextRegion" xml:id="facs_40_tr_1">
             <zone points="216,160 241,158 266,158 266,8 241,8 216,10" rendition="Line" xml:id="facs_40_tr_1_tl_1"/>
          </zone>
@@ -1909,8 +2054,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2669" xml:id="facs_41">
-         <graphic url="58435126.jpg" width="2000px" height="2669px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=MZYRRKUCMFDJGOHIQSWCSYLT&amp;fileType=view" width="2000px" height="2669px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-041.tif" width="2000px" height="2669px"/>
          <zone points="158,2408 158,2562 350,2562 350,2408" rendition="TextRegion" xml:id="facs_41_tr_1">
             <zone points="158,2558 185,2560 212,2562 240,2561 267,2560 295,2560 322,2560 350,2558 350,2408 322,2410 295,2410 267,2410 240,2411 212,2412 185,2410 158,2408" rendition="Line" xml:id="facs_41_tr_1_tl_1"/>
          </zone>
@@ -1919,8 +2063,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2662" xml:id="facs_42">
-         <graphic url="58435127.jpg" width="2000px" height="2662px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=FIUHCVJFNWLJCEIVPJADOBAR&amp;fileType=view" width="2000px" height="2662px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-042.tif" width="2000px" height="2662px"/>
          <zone points="486,2419 486,2572 824,2572 824,2419" rendition="TextRegion" xml:id="facs_42_tr_1">
             <zone points="486,2570 512,2570 538,2570 564,2570 590,2570 616,2570 642,2570 668,2570 694,2570 720,2570 746,2570 772,2569 798,2569 824,2572 824,2422 798,2419 772,2419 746,2420 720,2420 694,2420 668,2420 642,2420 616,2420 590,2420 564,2420 538,2420 512,2420 486,2420" rendition="Line" xml:id="facs_42_tr_1_tl_1"/>
          </zone>
@@ -1935,29 +2078,25 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2669" xml:id="facs_43">
-         <graphic url="58435129.jpg" width="2000px" height="2669px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=FFHFYINWRAXLQDXZCMHUQVWO&amp;fileType=view" width="2000px" height="2669px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-043.tif" width="2000px" height="2669px"/>
          <zone points="1680,2466 1788,2466 1788,2528 1680,2528" rendition="TextRegion" xml:id="facs_43_tr_1">
             <zone points="1680,2471 1710,2473 1740,2473 1770,2471 1788,2473 1788,2523 1770,2521 1740,2523 1710,2523 1680,2521" rendition="Line" xml:id="facs_43_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2665" xml:id="facs_44">
-         <graphic url="58435130.jpg" width="2000px" height="2665px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=POZXVBBSOVSSCNYPJWPNACOC&amp;fileType=view" width="2000px" height="2665px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-044.tif" width="2000px" height="2665px"/>
          <zone points="1440,2480 1676,2480 1676,2544 1440,2544" rendition="TextRegion" xml:id="facs_44_tr_1">
             <zone points="1440,2487 1466,2487 1496,2489 1526,2487 1556,2487 1586,2487 1616,2487 1646,2485 1676,2485 1676,2535 1646,2535 1616,2537 1586,2537 1556,2537 1526,2537 1496,2539 1466,2537 1440,2537" rendition="Line" xml:id="facs_44_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2670" xml:id="facs_45">
-         <graphic url="58435132.jpg" width="2000px" height="2670px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=ATXUSZPQYOCWCGQNHOCBPWZT&amp;fileType=view" width="2000px" height="2670px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-045.tif" width="2000px" height="2670px"/>
          <zone points="476,2492 608,2492 608,2556 476,2556" rendition="TextRegion" xml:id="facs_45_tr_1">
             <zone points="476,2501 488,2499 518,2499 548,2499 578,2497 608,2497 608,2547 578,2547 548,2549 518,2549 488,2549 476,2551" rendition="Line" xml:id="facs_45_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2670" xml:id="facs_46">
-         <graphic url="58435133.jpg" width="2000px" height="2670px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=GHSNWDAZRQUOCEGZJETGSXSL&amp;fileType=view" width="2000px" height="2670px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-046.tif" width="2000px" height="2670px"/>
          <zone points="88,20 88,170 136,170 136,20" rendition="TextRegion" xml:id="facs_46_tr_1">
             <zone points="88,170 136,170 136,20 88,20" rendition="Line" xml:id="facs_46_tr_1_tl_1"/>
          </zone>
@@ -1969,8 +2108,7 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2645" xml:id="facs_47">
-         <graphic url="58435134.jpg" width="2000px" height="2645px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=RCOUNKYWPEKGHXWTUWLWESCK&amp;fileType=view" width="2000px" height="2645px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-047.tif" width="2000px" height="2645px"/>
          <zone points="156,2464 156,2526 666,2526 666,2464" rendition="TextRegion" xml:id="facs_47_tr_1">
             <zone points="156,2494 181,2494 207,2495 232,2497 258,2498 283,2498 309,2498 334,2500 360,2502 385,2502 411,2502 436,2503 462,2506 487,2506 513,2506 538,2507 564,2508 589,2509 615,2510 640,2510 666,2511 666,2481 640,2480 615,2480 589,2479 564,2478 538,2477 513,2476 487,2476 462,2476 436,2473 411,2472 385,2472 360,2472 334,2470 309,2468 283,2468 258,2468 232,2467 207,2465 181,2464 156,2464" rendition="Line" xml:id="facs_47_tr_1_tl_1"/>
             <zone points="180,2514 205,2516 230,2516 255,2517 280,2518 305,2518 330,2520 356,2520 381,2520 406,2520 431,2521 456,2522 481,2522 506,2524 532,2526 532,2496 506,2494 481,2492 456,2492 431,2491 406,2490 381,2490 356,2490 330,2490 305,2488 280,2488 255,2487 230,2486 205,2486 180,2484" rendition="Line" xml:id="facs_47_tr_1_tl_2"/>
@@ -1980,22 +2118,19 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2667" xml:id="facs_48">
-         <graphic url="58435135.jpg" width="2000px" height="2667px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=MLWQOHKGHRLWKIBRVHVGFYYE&amp;fileType=view" width="2000px" height="2667px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-048.tif" width="2000px" height="2667px"/>
          <zone points="173,69 331,69 331,129 173,129" rendition="TextRegion" xml:id="facs_48_tr_1">
             <zone points="173,74 203,74 233,74 263,74 293,74 323,74 331,74 331,124 323,124 293,124 263,124 233,124 203,124 173,124" rendition="Line" xml:id="facs_48_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2680" xml:id="facs_49">
-         <graphic url="58435136.jpg" width="2000px" height="2680px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=HIESIXNRWOKJLWWBZZDSOSTE&amp;fileType=view" width="2000px" height="2680px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-049.tif" width="2000px" height="2680px"/>
          <zone points="1208,2474 1608,2474 1608,2536 1208,2536" rendition="TextRegion" xml:id="facs_49_tr_1">
             <zone points="1208,2481 1238,2479 1260,2481 1270,2481 1300,2481 1330,2481 1360,2481 1390,2481 1420,2481 1450,2479 1480,2481 1510,2479 1540,2481 1570,2481 1600,2481 1608,2481 1608,2531 1600,2531 1570,2531 1540,2531 1510,2529 1480,2531 1450,2529 1420,2531 1390,2531 1360,2531 1330,2531 1300,2531 1270,2531 1260,2531 1238,2529 1208,2531" rendition="Line" xml:id="facs_49_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2664" xml:id="facs_50">
-         <graphic url="58435138.jpg" width="2000px" height="2664px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=SZPTXKQYEUEHSKEVFZJNSDTX&amp;fileType=view" width="2000px" height="2664px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-050.tif" width="2000px" height="2664px"/>
          <zone points="88,12 88,164 148,164 148,12" rendition="TextRegion" xml:id="facs_50_tr_1">
             <zone points="88,162 118,164 148,164 148,14 118,14 88,12" rendition="Line" xml:id="facs_50_tr_1_tl_1"/>
          </zone>
@@ -2016,55 +2151,46 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2681" xml:id="facs_51">
-         <graphic url="58435140.jpg" width="2000px" height="2681px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=NIFXJYUTERMASNEIHINGCCJT&amp;fileType=view" width="2000px" height="2681px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-051.tif" width="2000px" height="2681px"/>
          <zone points="270,2454 470,2454 470,2528 270,2528" rendition="TextRegion" xml:id="facs_51_tr_1">
             <zone points="270,2459 300,2461 330,2463 360,2465 390,2467 420,2469 450,2469 470,2473 470,2523 450,2519 420,2519 390,2517 360,2515 330,2513 300,2511 270,2509" rendition="Line" xml:id="facs_51_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2737" xml:id="facs_52">
-         <graphic url="58435142.jpg" width="2000px" height="2737px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=AGMUNBQMFOVKHPRSUQLRTKCY&amp;fileType=view" width="2000px" height="2737px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-052.tif" width="2000px" height="2737px"/>
          <zone points="80,62 134,62 134,126 80,126" rendition="TextRegion" xml:id="facs_52_tr_1">
             <zone points="80,71 104,67 134,69 134,119 104,117 80,121" rendition="Line" xml:id="facs_52_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2720" xml:id="facs_53">
-         <graphic url="58435143.jpg" width="2000px" height="2720px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=GUQFVAPBKYXHCRNZJCMUKSBI&amp;fileType=view" width="2000px" height="2720px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-053.tif" width="2000px" height="2720px"/>
          <zone points="1818,110 1872,110 1872,176 1818,176" rendition="TextRegion" xml:id="facs_53_tr_1">
             <zone points="1818,115 1848,121 1872,121 1872,171 1848,171 1818,165" rendition="Line" xml:id="facs_53_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2739" xml:id="facs_54">
-         <graphic url="58435144.jpg" width="2000px" height="2739px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=NDLWKLHKLZIHNHZIAILDMZCM&amp;fileType=view" width="2000px" height="2739px"/>
+         <graphic url="https://id.acdh.oeaw.ac.at/ofmgraz/derivatives/S1_26/A-Gf_S1_26-054.tif" width="2000px" height="2739px"/>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2698" xml:id="facs_55">
-         <graphic url="58435145.jpg" width="2000px" height="2698px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=ITSICSCRUOQOBLRAVNEEHPSH&amp;fileType=view" width="2000px" height="2698px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91E2-8" width="2000px" height="2698px"/>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2728" xml:id="facs_56">
-         <graphic url="58435146.jpg" width="2000px" height="2728px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=TSSIUVFTTNLTVGXJBYXGVWLN&amp;fileType=view" width="2000px" height="2728px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91E3-7" width="2000px" height="2728px"/>
          <zone points="116,72 198,72 198,134 116,134" rendition="TextRegion" xml:id="facs_56_tr_1">
             <zone points="116,79 146,77 176,77 198,79 198,129 176,127 146,127 116,129" rendition="Line" xml:id="facs_56_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2724" xml:id="facs_57">
-         <graphic url="58435148.jpg" width="2000px" height="2724px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=KIJUOLWHXVYKIGCYFGVPQYQB&amp;fileType=view" width="2000px" height="2724px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91E4-6" width="2000px" height="2724px"/>
          <zone points="1724,90 1800,90 1800,156 1724,156" rendition="TextRegion" xml:id="facs_57_tr_1">
             <zone points="1724,95 1754,99 1784,101 1800,101 1800,151 1784,151 1754,149 1724,145" rendition="Line" xml:id="facs_57_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2645" xml:id="facs_58">
-         <graphic url="58435149.jpg" width="2000px" height="2645px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=BYJSQSURAZVALPSBCAGVBTOY&amp;fileType=view" width="2000px" height="2645px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91E5-5" width="2000px" height="2645px"/>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2659" xml:id="facs_59">
-         <graphic url="58435150.jpg" width="2000px" height="2659px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=ALDLGPZPHLBTOKCJJUROSVRR&amp;fileType=view" width="2000px" height="2659px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91E6-4" width="2000px" height="2659px"/>
          <zone points="274,243 1685,243 1685,1730 274,1730" rendition="TextRegion" xml:id="facs_59_region_1737550708356_1884" subtype="rubrik2">
             <zone points="465,287 1395,287 1395,479 465,479" rendition="Line" xml:id="facs_59_line_1737550716612_1888"/>
             <zone points="382,476 1492,476 1492,670 382,670" rendition="Line" xml:id="facs_59_line_1737550718496_1891"/>
@@ -2077,19 +2203,16 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2646" xml:id="facs_60">
-         <graphic url="58435151.jpg" width="2000px" height="2646px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=RQILWSHMEKWEHYWYKPTHZPLM&amp;fileType=view" width="2000px" height="2646px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91E7-3" width="2000px" height="2646px"/>
          <zone points="128,72 196,72 196,136 128,136" rendition="TextRegion" xml:id="facs_60_tr_1">
             <zone points="128,77 158,79 188,81 196,77 196,127 188,131 158,129 128,127" rendition="Line" xml:id="facs_60_tr_1_tl_1"/>
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="23753" xml:id="facs_61">
-         <graphic url="58435152.jpg" width="2000px" height="23753px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=CAKBIBYAMHVVUUTZMDUXFATF&amp;fileType=view" width="2000px" height="23753px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91E8-2" width="2000px" height="23753px"/>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2648" xml:id="facs_62">
-         <graphic url="58435153.jpg" width="2000px" height="2648px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=MQZZZOAGZYUGDKZIFVHECGOC&amp;fileType=view" width="2000px" height="2648px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91EA-0" width="2000px" height="2648px"/>
          <zone points="1440,194 1440,351 1685,351 1685,194" rendition="TextRegion" xml:id="facs_62_tr_1">
             <zone points="1440,344 1467,346 1494,349 1521,350 1548,351 1576,351 1603,349 1630,349 1657,350 1685,349 1685,199 1657,200 1630,199 1603,199 1576,201 1548,201 1521,200 1494,199 1467,196 1440,194" rendition="Line" xml:id="facs_62_tr_1_tl_1"/>
          </zone>
@@ -2099,16 +2222,13 @@
          </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2684" xml:id="facs_63">
-         <graphic url="58435154.jpg" width="2000px" height="2684px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=MBJAOIJOJHBCOZUSVNPPBEDT&amp;fileType=view" width="2000px" height="2684px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91E9-1" width="2000px" height="2684px"/>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2640" xml:id="facs_64">
-         <graphic url="58435155.jpg" width="2000px" height="2640px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=GEQGLQASHMLXHQDMJBPNJBZV&amp;fileType=view" width="2000px" height="2640px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91EC-E" width="2000px" height="2640px"/>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2643" xml:id="facs_65">
-         <graphic url="58435156.jpg" width="2000px" height="2643px"/>
-         <graphic url="https://files.transkribus.eu/Get?id=KVNERSNAMOICAJMDRTWNYVVI&amp;fileType=view" width="2000px" height="2643px"/>
+         <graphic url="https://hdl.handle.net/21.11115/0000-0012-91EB-F" width="2000px" height="2643px"/>
          <zone points="611,1557 815,1557 815,1639 611,1639" rendition="TextRegion" xml:id="facs_65_tr_1">
             <zone points="611,1562 641,1568 671,1568 701,1568 731,1576 745,1582 753,1576 783,1580 813,1584 815,1584 815,1634 813,1634 783,1630 753,1626 745,1632 731,1626 701,1618 671,1618 641,1618 611,1612" rendition="Line" xml:id="facs_65_tr_1_tl_1"/>
          </zone>

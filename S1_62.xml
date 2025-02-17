@@ -1,4 +1,4 @@
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_62.xml" xml:base="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs" prev="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/A67_27.xml" next="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/S1_39.xml">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="S1_62.xml" xml:base="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs" prev="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/A70_45.xml" next="https://id.acdh.oeaw.ac.at/ofmgraz/teidocs/S1_40a.xml">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -7099,12 +7099,6 @@
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2826" xml:id="facs_156">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9DBC-8" width="2000px" height="2826px"/>
-         <zone points="1608,87 1608,238 1762,238 1762,87" rendition="TextRegion" xml:id="facs_156_tr_1">
-            <zone points="1608,238 1633,238 1659,238 1685,238 1710,238 1736,237 1762,238 1762,88 1736,87 1710,88 1685,88 1659,88 1633,88 1608,88" rendition="Line" xml:id="facs_156_tr_1_tl_1"/>
-         </zone>
-         <zone points="1834,2426 1834,2582 1942,2582 1942,2426" rendition="TextRegion" xml:id="facs_156_tr_2">
-            <zone points="1834,2576 1861,2580 1888,2582 1915,2581 1942,2582 1942,2432 1915,2431 1888,2432 1861,2430 1834,2426" rendition="Line" xml:id="facs_156_tr_2_tl_1"/>
-         </zone>
       </surface>
       <surface ulx="0" uly="0" lrx="2000" lry="2863" xml:id="facs_157">
          <graphic url="https://hdl.handle.net/21.11115/0000-0012-9DBB-9" width="2000px" height="2863px"/>
@@ -13349,12 +13343,6 @@
             <pb facs="#facs_154" n="154" xml:id="img_0154"/>
             <pb facs="#facs_155" n="155" xml:id="img_0155"/>
             <pb facs="#facs_156" n="156" xml:id="img_0156"/>
-            <ab facs="#facs_156_tr_1">
-               <lb facs="#facs_156_tr_1_tl_1" n="N001"/>
-            </ab>
-            <ab facs="#facs_156_tr_2">
-               <lb facs="#facs_156_tr_2_tl_1" n="N001"/>
-            </ab>
             <pb facs="#facs_157" n="157" xml:id="img_0157"/>
             <pb facs="#facs_158" n="158" xml:id="img_0158"/>
             <ab facs="#facs_158_tr_1722075623">

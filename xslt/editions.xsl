@@ -95,19 +95,20 @@
                                     </xsl:if>
                                 </div>
                             </div> 
-                        </div>                        
+                        </div>
+                        <!--    THIS IS THE MAIN DIV -->                     
                         <div class="wp-transcript">
                             <div id="container-resize" class="row transcript active">
                                 <div id="text-resize" class="col-md-4 col-lg-4 col-sm-1 text" >
                                 </div>
-                                <div id="img-resize" class="col-md-4 col-lg-4 col-sm-12 facsimiles" >
+                                <div id="img-resize" class="col-md-4 col-lg-4 col-sm-12 facsimiles" >   <!-- OSD container (facsimiles -->
                                     <div id="viewer">
                                         <div id="container_facs_1" class="osd-container"/>
                                     </div>
                                 </div>
                                 <div id="text-resize" lang="de" class="col-md-4 col-lg-4 col-sm-11 text yes-index">
                                     <div id="transcript">
-                                        <xsl:apply-templates/>
+                                        <xsl:apply-templates/> <!-- Text transcription -->
                                     </div>
                                 </div>
                             </div>

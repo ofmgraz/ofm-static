@@ -20,9 +20,9 @@
                             </a>
                         </div>
                         <div class="footer-widget col-1 col-md-7 align-left">
-                            <b class="hide-mobile">ACDH-CH</b>&#160;&#160;&#160;
+                            <b class="hide-mobile">ACDH</b>&#160;&#160;&#160;
                             <p class="hide-mobile">
-                                <b>Austrian Centre for Digital Humanities and Cultural Heritage</b>
+                                <b>Austrian Centre for Digital Humanities</b>
                                 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
                                 Österreichische Akademie der Wissenschaften
                                 <xsl:value-of select="$mybreak" disable-output-escaping="yes"/>
@@ -65,7 +65,7 @@
                     <h5 class="font-weight-bold hide-mobile align-left">&#8203;</h5>
                     <div class="footer-widget">
                         <!-- .footer-widget -->
-                        <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie sich bitte an den <a href="mailto:acdh-ch-helpdesk@oeaw.ac.at">ACDH-CH Helpdesk</a>.</p>
+                        <p>Bei Fragen, Anmerkungen, Kritik, aber gerne auch Lob, wenden Sie sich bitte an den <a href="mailto:acdh-ch-helpdesk@oeaw.ac.at">ACDH Helpdesk</a>.</p>
                     </div>
                     <!-- .footer-widget -->
                 </div>

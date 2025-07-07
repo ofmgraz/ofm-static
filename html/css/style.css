@@ -21,6 +21,11 @@
 
 }
 
+@font-face {
+  font-family: "Volpiano";
+  src:
+    url("/fonts/volpiano2.woff") format("woff");
+}
 
 h1 {
     padding-top:4em !important; 
@@ -113,6 +118,12 @@ h1 {
 
 .notation-zeichen {
     color: black;
+}
+
+.notation {
+    display:block;
+    font-family: Volpiano;                                                                                                    
+    font-size: 3rem;
 }
 
 .initiale-zeichen {

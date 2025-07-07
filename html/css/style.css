@@ -119,6 +119,25 @@ h1 {
     color: black;
 }
 
+/* ─── Layout helpers ──────────────────────────────── */
+.container      { display:flex; gap:2rem; font-family:serif; }
+.text-block     { flex:1; }
+.image-wrapper  { position:relative; }
+.image-wrapper img { display:block; }
+
+/* ─── Invisible regions over the image ───────────── */
+.image-region {
+  position:absolute;
+  pointer-events:auto;   /* allow mouseenter/mouseleave */
+  border:2px solid transparent;
+}
+
+/* ─── Hover / focus effect ───────────────────────── */
+.highlight {
+  background:rgba(255,255,0,0.35);   /* yellowish */
+  border-color:#e6b800;
+  transition:background .15s, border-color .15s;
+}
 
 body {
     background-color: var(--ofm-bg);
@@ -748,11 +767,12 @@ h2 {
 
 
 #transcript{
-    width: 200px ;
     max-height: 100% ;
-    overflow-y: auto ; 
-    color: #000 ;
-    display: none ;   /*  Hides transcription */
+    overflow-y: auto ;
+    max-width: 100%;
+    padding-right: 4rem!important;
+    /* color: #000 ;
+    display: none ; */  /*  Hides transcription */
     
 }
 
@@ -892,6 +912,7 @@ h2 {
 
     #viewer{
         max-height: 100% ;
+	padding-left: 4rem!important;
     }
 
     .row.banner {

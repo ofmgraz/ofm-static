@@ -24,7 +24,7 @@
 @font-face {
   font-family: "Volpiano";
   src:
-    url("/fonts/volpiano2.woff") format("woff");
+    url("/fonts/volpiano.otf") format("opentype");
 }
 
 h1 {

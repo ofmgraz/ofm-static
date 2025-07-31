@@ -21,12 +21,26 @@
 
 }
 
+@font-face {
+  font-family: "Volpiano";
+  src:
+    url("/fonts/volpiano.otf") format("opentype");
+}
 
 h1 {
     padding-top:4em !important; 
     padding-bottom: 2em !important;
     font-weight: bold ;
 
+}
+
+
+.initiale_fleuro_lombarde, .initiale_lombarde, .initiale_cadelle  {
+    font-size: 3rem; 
+}
+
+.rubrik2, .rubrik {
+    color: red!important;
 }
 
 #myTable {
@@ -115,10 +129,38 @@ h1 {
     color: black;
 }
 
+.notation {
+    display:block;
+    font-family: Volpiano;                                                                                                    
+    font-size: 3rem;
+}
+
 .initiale-zeichen {
     color: black;
 }
 
+/* ─── Layout helpers ──────────────────────────────── */
+.container      { display:flex; gap:2rem; font-family:serif; }
+.text-block     { flex:1; }
+.image-wrapper  { position:relative; }
+.image-wrapper img { display:block; }
+
+/* ─── Invisible regions over the image ───────────── */
+.image-region {
+  position:absolute;
+  pointer-events:auto;   /* allow mouseenter/mouseleave */
+  border:2px solid transparent;
+}
+.image-region.highlight {                                                                                                   
+  border: 3px solid black;                                                                                                  
+}      
+
+/* ─── Hover / focus effect ───────────────────────── */
+.highlight {
+  background:rgba(255,255,0,0.35);   /* yellowish */
+  border-color:#e6b800;
+  transition:background .15s, border-color .15s;
+}
 
 body {
     background-color: var(--ofm-bg);
@@ -748,16 +790,17 @@ h2 {
 
 
 #transcript{
-    width: 200px ;
     max-height: 100% ;
-    overflow-y: auto ; 
-    color: #000 ;
-    display: none ;   /*  Hides transcription */
+    overflow-y: auto ;
+    max-width: 100%;
+    padding-right: 4rem!important;
+    /* color: #000 ;
+    display: none ; */  /*  Hides transcription */
     
 }
 
 #transcript * {
-    color: #000!important ;
+    color: #000;
 }
 
 #img-resize{
@@ -779,7 +822,6 @@ h2 {
     padding-right: 0 ;
 	padding-bottom: 0 ;
     overflow-x: hidden ;
-    color: #fff;
 }
 
 
@@ -892,6 +934,7 @@ h2 {
 
     #viewer{
         max-height: 100% ;
+	padding-left: 4rem!important;
     }
 
     .row.banner {

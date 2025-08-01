@@ -24,7 +24,8 @@
 @font-face {
   font-family: "Volpiano";
   src:
-    url("/fonts/volpiano.otf") format("opentype");
+    url("../fonts/volpiano.otf") format("opentype");
+  font-display: swap;
 }
 
 h1 {
@@ -129,11 +130,14 @@ h1 {
     color: black;
 }
 
-.notation {
-    display:block;
-    font-family: Volpiano;                                                                                                    
-    font-size: 3rem;
+.notation, .notation * {
+    display: block !important;
+    font-family: "Volpiano" !important;                                                                                                    
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
 }
+
+
 
 .initiale-zeichen {
     color: black;

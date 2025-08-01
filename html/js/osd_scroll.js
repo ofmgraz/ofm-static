@@ -12,7 +12,16 @@ document.addEventListener("DOMContentLoaded", function () {
       this.currentImageBounds = null;
       this.currentImageDimensions = null;
       this.iiifManifests = [];
+      this.validImageTileSources = []; // Store valid images for navigation
       this.singleImageMode = false; // Flag to track if we're in single image mode (due to CORS)
+      
+      // Lazy loading properties
+      this.allImages = [];
+      this.loadedManifestCount = 0;
+      this.initialBatchSize = 5;  // Initial batch size
+      this.additionalBatchSize = 10; // Number of additional manifests to load each time
+      this.successCount = 0;
+      this.errorCount = 0;
 
       this.paragraphs = document.querySelectorAll("ab[data-target]");
       this.imageRegions = document.querySelectorAll(".image-region");
@@ -26,7 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (this.iiifManifests.length > 0) {
         this.initializeFromHash();
-        this.loadAllManifests(); // Load all manifests as a sequence
+        // Load the first manifest directly instead of batch loading
+        this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
         this.setupNavigationButtons();
         this.setupPageNavigation();
         this.setupParagraphHighlighting();
@@ -35,6 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // Trigger initial page display after a brief delay to ensure everything is loaded
         setTimeout(() => {
           this.showOnlyCurrentPage(this.currentIndex);
+          // Reset view and refresh overlays
+          setTimeout(() => {
+            this.viewer.viewport.goHome();
+            this.refreshOverlays();
+          }, 100);
         }, 500);
       }
     }
@@ -45,9 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
         prefixUrl:
           "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
         visibilityRatio: 1,
-        sequenceMode: true, // Enable sequence mode for proper navigation
+        sequenceMode: true,
         showNavigator: false,
-        showSequenceControl: true, // Show sequence controls for navigation
+        showSequenceControl: true,
         showNavigationControl: true,
         constrainDuringPan: true,
         tileSources: [],
@@ -55,28 +70,77 @@ document.addEventListener("DOMContentLoaded", function () {
 
       this.viewer.addHandler("open", () => this.onImageOpen());
       
+      // Add handler specifically for tile sources loading
+      this.viewer.addHandler("tile-loaded", (event) => {
+        // This confirms tiles are actually loading correctly
+        console.log(`🧩 Tile loaded for page ${this.currentIndex}, level: ${event.tiledImage.source.tileSize}`);
+      });
+      
+      // Add handler for when item visibility changes
+      this.viewer.world.addHandler("item-index-change", (event) => {
+        console.log("🔄 Item index change:", event);
+        // Refresh the overlays when image changes
+        setTimeout(() => {
+          if (this.viewer.world.getItemCount() > 0) {
+            const imageSize = this.viewer.world.getItemAt(0).getContentSize();
+            console.log(`📏 New image dimensions: ${imageSize.x} × ${imageSize.y}`);
+            this.onImageOpen();
+          }
+        }, 100);
+      });
+      
       // Add handler for page changes (when user clicks navigation buttons)
       this.viewer.addHandler("page", (event) => {
         console.log("📄 OpenSeadragon page event:", event.page);
         this.currentIndex = event.page;
+        
+        // Update text content
         this.showOnlyCurrentPage(this.currentIndex);
+        
+        // Reset the viewport
+        this.viewer.viewport.goHome();
+        this.refreshOverlays();
+        this.refreshNavigationControls();
       });
     }
 
     onImageOpen() {
-      const imageSize = this.viewer.world.getItemAt(0).getContentSize();
-      const imageWidth = imageSize.x;
-      const imageHeight = imageSize.y;
-
-      this.addSurfaceOverlay();
-      this.addImageRegionOverlays(imageWidth, imageHeight);
-      this.setupHoverOverlays(imageWidth, imageHeight);
-
-      // Handle hash-based zone highlighting
-      const hash = window.location.hash.substring(1);
-      if (hash) {
-        const xmlPath = window.location.pathname.replace(".html", ".xml");
-        this.loadAndParseXML(xmlPath);
+      console.log("🔍 onImageOpen called");
+      
+      if (this.viewer.world.getItemCount() === 0) {
+        console.warn("⚠️ No items in the viewer world on open");
+        return; // Don't proceed if there are no items
+      }
+      
+      const currentItem = this.viewer.world.getItemAt(0);
+      if (!currentItem) {
+        console.warn("⚠️ No current item available");
+        return;
+      }
+      
+      try {
+        const imageSize = currentItem.getContentSize();
+        const imageWidth = imageSize.x;
+        const imageHeight = imageSize.y;
+        
+        console.log(`📏 Image dimensions: ${imageWidth} × ${imageHeight}`);
+        
+        // Log current state for debugging
+        console.log(`Current page: ${this.viewer.currentPage()}`);
+        console.log(`Current index in our tracking: ${this.currentIndex}`);
+        
+        this.addSurfaceOverlay();
+        this.addImageRegionOverlays(imageWidth, imageHeight);
+        this.setupHoverOverlays(imageWidth, imageHeight);
+        
+        // Handle hash-based zone highlighting
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+          const xmlPath = window.location.pathname.replace(".html", ".xml");
+          this.loadAndParseXML(xmlPath);
+        }
+      } catch (err) {
+        console.error("Error in onImageOpen:", err);
       }
     }
 
@@ -234,40 +298,49 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async loadAllManifests() {
-      console.log("🔄 Loading all manifests as sequence...");
+      console.log("🔄 Loading manifests in batches for better performance...");
       
-      // Check if we're running locally and might have CORS issues
+      // Check if we're running locally 
       const isLocalDev = window.location.hostname === 'localhost' || 
                         window.location.hostname === '127.0.0.1' || 
                         window.location.hostname === '0.0.0.0';
       
-      if (isLocalDev) {
-        console.log("🏠 Local development environment detected - using single image mode to avoid CORS issues");
-        this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
-        return;
-      }
+      // In local development, we'll still try to load images normally
+      // rather than immediately switching to single image mode
       
-      // First, test connectivity to the IIIF service
-      try {
-        console.log("🔍 Testing connectivity to IIIF service...");
-        const testResponse = await fetch('https://arche-iiifmanifest.acdh.oeaw.ac.at/', { 
-          method: 'HEAD',
-          mode: 'no-cors' 
-        });
-        console.log("✅ IIIF service is reachable");
-      } catch (connectErr) {
-        console.warn("⚠️ IIIF service connectivity test failed:", connectErr.message);
-        console.log("This might be due to CORS restrictions, falling back to single image mode...");
-        this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
-        return;
-      }
+      // Skip the connectivity test as it's causing CORS issues
+      // We'll directly attempt to load the manifests and handle errors as they occur
+      console.log("🔍 Local development detected - skipping connectivity test and proceeding to load manifests directly");
       
-      const allImages = [];
-      let successCount = 0;
-      let errorCount = 0;
+      // Set a flag to track if we need to fall back to placeholders for local development
+      let useLocalPlaceholders = false;
       
-      // Load all manifests and collect their images with smaller image sizes for faster loading
-      for (let i = 0; i < this.iiifManifests.length; i++) {
+      // Initialize image storage
+      this.allImages = [];
+      this.loadedManifestCount = 0;
+      this.initialBatchSize = 5;  // Initial batch size
+      this.additionalBatchSize = 10; // Number of additional manifests to load each time
+      this.successCount = 0;
+      this.errorCount = 0;
+      
+      // Load the initial batch of manifests
+      await this.loadManifestBatch(0, this.initialBatchSize);
+    }
+    
+    // Load a batch of manifests starting from startIndex up to startIndex + batchSize
+    async loadManifestBatch(startIndex, batchSize) {
+      console.log(`🔄 Loading manifest batch from ${startIndex} to ${Math.min(startIndex + batchSize, this.iiifManifests.length) - 1}`);
+      
+      const isLocalDev = window.location.hostname === 'localhost' || 
+                         window.location.hostname === '127.0.0.1' || 
+                         window.location.hostname === '0.0.0.0';
+      
+      const endIndex = Math.min(startIndex + batchSize, this.iiifManifests.length);
+      let batchSuccessCount = 0;
+      let batchErrorCount = 0;
+      
+      // Load the specified batch of manifests
+      for (let i = startIndex; i < endIndex; i++) {
         const manifestUrl = this.iiifManifests[i];
         console.log(`Loading manifest ${i + 1}/${this.iiifManifests.length}`);
         console.log(`URL: ${manifestUrl}`);
@@ -280,94 +353,222 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           
           const data = await response.json();
+          
+          // Log the first part of the manifest structure to understand what we're getting
+          console.log(`Manifest data for index ${i}:`, JSON.stringify(data).substring(0, 200) + "...");
+          
+          // Check if we have a proper IIIF manifest with sequence/canvases structure
+          if (data.sequences && data.sequences[0] && data.sequences[0].canvases) {
+            console.log(`✅ Found standard IIIF manifest structure with ${data.sequences[0].canvases.length} canvases`);
+            
+            // Get the first canvas
+            const canvas = data.sequences[0].canvases[0];
+            
+            // Extract the image from the canvas
+            if (canvas.images && canvas.images[0] && canvas.images[0].resource) {
+              const resource = canvas.images[0].resource;
+              
+              // Get the service URL which provides the IIIF image API
+              if (resource.service && resource.service['@id']) {
+                // This is the base IIIF image URL we need
+                const iiifBaseUrl = resource.service['@id'];
+                console.log(`Found IIIF image service URL: ${iiifBaseUrl}`);
+                
+                // Create a fully qualified IIIF URL with size parameters
+                const fullImageUrl = `${iiifBaseUrl}/full/600,/0/default.jpg?uniqueId=${i}-${Date.now()}`;
+                this.allImages[i] = fullImageUrl;
+                batchSuccessCount++;
+                this.successCount++;
+                console.log(`✅ Created optimized IIIF URL: ${fullImageUrl}`);
+                continue; // Skip to next iteration
+              }
+            }
+          }
+          
+          // Fall back to the older/simpler format if we didn't find the standard structure
           const images = data.images || [];
           
           if (images.length > 0) {
             // Use smaller image size for faster loading
-            const optimizedImage = typeof images[0] === "string" 
-              ? images[0].replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!400,400/0/default.$1")
-              : images[0];
-            allImages.push(optimizedImage);
-            successCount++;
+            // Make sure we're using the proper info URL if it's available
+            let optimizedImage;
+            
+            if (typeof images[0] === "string") {
+              // If it's a direct URL string, use it with size optimization
+              optimizedImage = images[0].replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!400,400/0/default.$1");
+              console.log(`Direct URL for manifest ${i + 1}: ${optimizedImage.substring(0, 100)}...`);
+            } else if (images[0].url) {
+              // If it has a URL property, use that with size optimization
+              optimizedImage = images[0].url.replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!400,400/0/default.$1");
+              console.log(`URL property for manifest ${i + 1}: ${optimizedImage.substring(0, 100)}...`);
+            } else if (images[0]["@id"]) {
+              // Some IIIF manifests use @id for the image URL
+              optimizedImage = images[0]["@id"].replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!400,400/0/default.$1");
+              console.log(`@id property for manifest ${i + 1}: ${optimizedImage.substring(0, 100)}...`);
+            } else {
+              // Use the image info.json URL directly - this is the most reliable way to load IIIF images
+              optimizedImage = {
+                tileSource: images[0],
+                // Add a page indicator to make each source unique
+                id: `page-${i}`
+              };
+              console.log(`Using tileSource for manifest ${i + 1}`);
+            }
+            
+            // CRITICAL: Make sure each URL is completely unique with timestamp
+            if (typeof optimizedImage === "string") {
+              // Strip any existing query parameters and add our own with timestamp
+              const baseUrl = optimizedImage.split('?')[0];
+              optimizedImage = `${baseUrl}?page=${i}&t=${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
+              console.log(`Final unique URL: ${optimizedImage.substring(0, 100)}...`);
+            } else if (optimizedImage && optimizedImage.id) {
+              // Ensure object IDs are also unique
+              optimizedImage.id = `page-${i}-${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
+            }
+            
+            this.allImages[i] = optimizedImage;
+            batchSuccessCount++;
+            this.successCount++;
             console.log(`✅ Manifest ${i + 1} loaded successfully`);
           } else {
             console.warn(`⚠️ No images found in manifest ${i + 1}: ${manifestUrl}`);
             // Add a placeholder to maintain index alignment
-            allImages.push(null);
+            this.allImages[i] = null;
           }
         } catch (err) {
           console.error(`❌ Error loading manifest ${i + 1}:`, err.message);
           console.error(`❌ Full error:`, err);
-          errorCount++;
+          batchErrorCount++;
+          this.errorCount++;
           
-          // If this is a NetworkError (CORS issue), switch to single image mode
-          if (err.name === 'NetworkError' || err.message.includes('CORS') || err.message.includes('fetch')) {
+          // Check if we're in local development
+          if (isLocalDev) {
+            console.log(`🏠 Local development - creating placeholder for manifest ${i + 1}`);
+            // Add a placeholder to maintain index alignment
+            this.allImages[i] = `placeholder:${i}`;
+          } else if (err.name === 'NetworkError' || err.message.includes('CORS') || err.message.includes('fetch')) {
             console.log("🔄 NetworkError detected - this is likely a CORS issue");
             console.log("🔄 Switching to single image mode for better compatibility...");
             this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
-            return;
+            return false;
+          } else {
+            // Add a placeholder to maintain index alignment
+            this.allImages[i] = null;
           }
-          
-          // Add a placeholder to maintain index alignment
-          allImages.push(null);
         }
         
         // If we have too many consecutive failures at the start, break and use fallback
-        if (i < 5 && errorCount > 3) {
+        if (i < 5 && batchErrorCount > 3) {
           console.log("🔄 Too many early failures, switching to fallback mode...");
           this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
-          return;
+          return false;
         }
       }
       
-      // Filter out null placeholders for the final image array
-      const validImages = allImages.filter(img => img !== null);
+      this.loadedManifestCount = endIndex;
+      console.log(`✅ Batch loaded: ${batchSuccessCount} successful, ${batchErrorCount} errors`);
       
-      console.log(`✅ Loaded ${successCount} valid images, ${errorCount} errors, ${validImages.length} total for sequence`);
+      // Filter out null placeholders for the valid image array
+      const validImages = this.allImages.filter(img => img !== null);
       
-      if (validImages.length > 0) {
-        try {
-          // Set up the viewer with valid images
-          this.viewer.open(validImages);
-          
-          // Navigate to the correct page (adjusted for removed null entries)
-          if (this.currentIndex > 0) {
-            // Find the adjusted index by counting valid images up to currentIndex
-            let adjustedIndex = 0;
-            for (let i = 0; i < Math.min(this.currentIndex, allImages.length); i++) {
-              if (allImages[i] !== null) {
-                adjustedIndex++;
-              }
-            }
-            if (adjustedIndex > 0) {
-              this.viewer.goToPage(adjustedIndex - 1);
-            }
-          }
-        } catch (viewerErr) {
-          console.error("Error setting up viewer with images:", viewerErr);
-          // Fallback to single manifest loading
-          this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
-        }
-      } else {
+      // Update the viewer with the newly loaded images
+      this.updateViewerWithImages(validImages, isLocalDev);
+      
+      return true;
+    }
+
+    // Check if we need to load more manifests based on current index
+    checkAndLoadMoreManifests() {
+      // If we're at the 4th to last loaded manifest, load more
+      if (this.currentIndex >= this.loadedManifestCount - 4 && 
+          this.loadedManifestCount < this.iiifManifests.length) {
+        console.log(`🔄 Near the end of loaded manifests (${this.currentIndex}/${this.loadedManifestCount}), loading more...`);
+        this.loadManifestBatch(this.loadedManifestCount, this.additionalBatchSize);
+      }
+    }
+
+    updateViewerWithImages(validImages, isLocalDev) {
+      if (validImages.length === 0) {
         console.error("No valid images loaded, falling back to single image mode");
         // Fallback to single manifest loading
         this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+        return;
+      }
+      
+      // Process the images for viewer
+      const processedImages = validImages.map((img, idx) => {
+        if (img === undefined || img === null) {
+          return this.createPlaceholderTileSource(idx);
+        }
+        
+        // Direct image URL handling
+        if (typeof img === 'string') {
+          if (img.startsWith('placeholder:')) {
+            return this.createPlaceholderTileSource(parseInt(img.split(':')[1]));
+          }
+          // Ensure the URL is completely unique by adding a timestamp and random ID
+          const baseUrl = img.split('?')[0];
+          return `${baseUrl}?idx=${idx}&t=${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
+        } 
+        // Object with URL property
+        else if (img.url) {
+          const baseUrl = img.url.split('?')[0];
+          return `${baseUrl}?idx=${idx}&t=${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
+        } 
+        // IIIF objects with @id
+        else if (img['@id']) {
+          const baseUrl = img['@id'].split('?')[0];
+          return `${baseUrl}?idx=${idx}&t=${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
+        } 
+        // Use existing tile source objects, but ensure they have unique IDs
+        else if (img.tileSource) {
+          return {
+            tileSource: img.tileSource,
+            id: `unique-${idx}-${Date.now()}-${Math.random().toString(36).substring(2, 10)}`
+          };
+        }
+        // Fallback to placeholder
+        else {
+          console.warn(`Warning: Unsupported image format at index ${idx}, creating placeholder`);
+          return this.createPlaceholderTileSource(idx);
+        }
+      });
+      
+      // Configure OpenSeadragon with sequence mode
+      this.viewer.sequenceMode = true;
+      
+      // Set reference strip configuration
+      this.viewer.referenceStripScroll = 'horizontal';
+      this.viewer.showReferenceStrip = true;
+      
+      // Store the processed images for reference
+      this.validImageTileSources = processedImages;
+      
+      // Close the viewer first if it's already open
+      if (this.viewer.isOpen()) {
+        this.viewer.close();
+      }
+      
+      // Open with the array of processed image URLs
+      this.viewer.open(processedImages);
+      
+      console.log(`✅ Opened viewer with ${processedImages.length} images, current page: ${this.currentIndex}`);
+      
+      // Call diagnostic function to verify image sequence
+      setTimeout(() => this.checkCurrentImage(), 500);
+      
+      // Navigate to the correct page after a brief delay
+      if (this.currentIndex > 0) {
+        setTimeout(() => {
+          console.log(`Navigating to page ${this.currentIndex} of ${validImages.length}`);
+          this.viewer.goToPage(this.currentIndex);
+          console.log(`✅ Navigated to page ${this.currentIndex}`);
+        }, 200);
       }
     }
 
     async loadImageFromManifest(manifestUrl) {
       console.log(`🔍 Loading image for index ${this.currentIndex}, URL: ${manifestUrl}`);
-      
-      // Check if we're in local development and create a fallback
-      const isLocalDev = window.location.hostname === 'localhost' || 
-                        window.location.hostname === '127.0.0.1' || 
-                        window.location.hostname === '0.0.0.0';
-      
-      if (isLocalDev) {
-        console.log("🏠 Local development detected - creating placeholder image for navigation testing");
-        this.createPlaceholderImage();
-        return;
-      }
       
       try {
         const response = await fetch(manifestUrl);
@@ -380,47 +581,39 @@ document.addEventListener("DOMContentLoaded", function () {
         const images = data.images || [];
         
         if (images.length === 0) {
-          console.warn("No images found in manifest:", manifestUrl);
+          console.warn("No valid images found in manifest:", manifestUrl);
           this.createPlaceholderImage();
           return;
         }
 
-        // Store image dimensions
-        const image = images[0];
-        if (typeof image === "object" && image.height && image.width) {
-          this.currentImageDimensions = {
-            width: image.width,
-            height: image.height,
-          };
-        }
+        // Process all images - similar to what iiif.js does
+        const optimizedImages = images.map(image => {
+          if (typeof image === 'string') {
+            return image.replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, '/full/!600,600/0/default.$1');
+          }
+          return image;
+        });
 
-        // Optimize image URL
-        const optimizedImage = typeof image === "string" 
-          ? image.replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!600,600/0/default.$1")
-          : image;
+        console.log(`Found ${optimizedImages.length} images in manifest`);
 
-        console.log(`🎯 Final image URL to load:`, optimizedImage);
-
-        // Load the single image (disable sequence mode for single image loading)
-        this.viewer.sequenceMode = false;
-        this.viewer.open(optimizedImage);
-        this.singleImageMode = true; // Flag to indicate we're in single image mode
+        // Set the tile sources in the viewer
+        this.viewer.tileSources = optimizedImages;
+        
+        // Open the current image
+        this.viewer.open(optimizedImages);
+        
+        // Refresh navigation controls
         this.refreshNavigationControls();
         
-        console.log(`✅ Image loaded for page ${this.currentIndex + 1}`);
+        console.log(`✅ Images loaded successfully`);
       } catch (err) {
         console.error("Error loading IIIF manifest:", err);
-        // If even single image loading fails due to CORS, use placeholder
-        if (err.name === 'NetworkError') {
-          console.error("❌ CORS issue prevents loading any images");
-          console.log("💡 Creating placeholder image for local development");
-          this.createPlaceholderImage();
-        }
+        this.createPlaceholderImage();
       }
     }
 
-    createPlaceholderImage() {
-      console.log(`🎨 Creating placeholder image for page ${this.currentIndex + 1}`);
+    createPlaceholderTileSource(index) {
+      console.log(`🎨 Creating placeholder tile source for page ${index + 1}`);
       
       // Create a simple colored square as a lightweight placeholder
       const size = 400;
@@ -431,7 +624,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
       // Use different colors for different pages to make navigation more obvious
       const colors = ['#e8f4f8', '#f8e8e8', '#e8f8e8', '#f8f4e8', '#f4e8f8'];
-      const bgColor = colors[this.currentIndex % colors.length];
+      const bgColor = colors[index % colors.length];
       
       // Draw background
       ctx.fillStyle = bgColor;
@@ -446,18 +639,25 @@ document.addEventListener("DOMContentLoaded", function () {
       ctx.fillStyle = '#333';
       ctx.font = 'bold 60px Arial';
       ctx.textAlign = 'center';
-      ctx.fillText(`${this.currentIndex + 1}`, size / 2, size / 2 - 20);
+      ctx.fillText(`${index + 1}`, size / 2, size / 2 - 20);
       
       // Draw label (smaller)
       ctx.font = '20px Arial';
       ctx.fillText('Facsimile Page', size / 2, size / 2 + 40);
       
       // Create a simple tile source object that OpenSeadragon can handle
-      const tileSource = {
+      return {
         type: 'image',
         url: canvas.toDataURL('image/png'),
         buildPyramid: false
       };
+    }
+
+    createPlaceholderImage() {
+      console.log(`🎨 Creating placeholder image for page ${this.currentIndex + 1}`);
+      
+      // Create tile source
+      const tileSource = this.createPlaceholderTileSource(this.currentIndex);
       
       // Clear the viewer first to ensure clean transition
       if (this.viewer.isOpen()) {
@@ -476,27 +676,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     refreshNavigationControls() {
-      // Try to find OpenSeadragon navigation buttons first
-      let prev = document.querySelector("div[title='Previous page']");
-      let next = document.querySelector("div[title='Next page']");
+      const prev = document.querySelector("div[title='Previous page']");
+      const next = document.querySelector("div[title='Next page']");
       
-      // If not found, try custom buttons
-      if (!prev || !next) {
-        prev = this.customPrevBtn;
-        next = this.customNextBtn;
-      }
-
       if (prev && next) {
-        const isFirstPage = this.currentIndex === 0;
-        const isLastPage = this.currentIndex === this.iiifManifests.length - 1;
-
-        prev.style.pointerEvents = isFirstPage ? "none" : "auto";
-        prev.style.opacity = isFirstPage ? "0.5" : "1";
-
-        next.style.pointerEvents = isLastPage ? "none" : "auto";
-        next.style.opacity = isLastPage ? "0.5" : "1";
+        prev.style.pointerEvents = this.currentIndex === 0 ? 'none' : 'auto';
+        prev.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
         
-        console.log(`Navigation refreshed: currentIndex=${this.currentIndex}, total=${this.iiifManifests.length}, isFirst=${isFirstPage}, isLast=${isLastPage}`);
+        next.style.pointerEvents = this.currentIndex === this.viewer.tileSources.length - 1 ? 'none' : 'auto';
+        next.style.opacity = this.currentIndex === this.viewer.tileSources.length - 1 ? '0.5' : '1';
       }
     }
 
@@ -585,8 +773,20 @@ document.addEventListener("DOMContentLoaded", function () {
           this.currentIndex--;
           console.log("🔙 Moving to index:", this.currentIndex);
           
-          // Always create placeholder image and update text for local development
-          this.createPlaceholderImage();
+          if (this.singleImageMode) {
+            // In single image mode, load the manifest directly
+            this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+          } else {
+            // In sequence mode, let OpenSeadragon handle it
+            console.log(`🔙 Custom PREV navigation to page ${this.currentIndex}`);
+            this.viewer.goToPage(this.currentIndex);
+            
+            // Reset view and refresh overlays
+            setTimeout(() => {
+              this.viewer.viewport.goHome();
+              this.refreshOverlays();
+            }, 100);
+          }
           this.showOnlyCurrentPage(this.currentIndex);
           this.updateCustomButtonStates(prevBtn, nextBtn);
         }
@@ -598,8 +798,23 @@ document.addEventListener("DOMContentLoaded", function () {
           this.currentIndex++;
           console.log("▶️ Moving to index:", this.currentIndex);
           
-          // Always create placeholder image and update text for local development
-          this.createPlaceholderImage();
+          // Check if we need to load more manifests
+          this.checkAndLoadMoreManifests();
+          
+          if (this.singleImageMode) {
+            // In single image mode, load the manifest directly
+            this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+          } else {
+            // In sequence mode, let OpenSeadragon handle it
+            console.log(`▶️ Custom NEXT navigation to page ${this.currentIndex}`);
+            this.viewer.goToPage(this.currentIndex);
+            
+            // Reset view and refresh overlays
+            setTimeout(() => {
+              this.viewer.viewport.goHome();
+              this.refreshOverlays();
+            }, 100);
+          }
           this.showOnlyCurrentPage(this.currentIndex);
           this.updateCustomButtonStates(prevBtn, nextBtn);
         }
@@ -647,8 +862,19 @@ document.addEventListener("DOMContentLoaded", function () {
               this.currentIndex--;
               console.log("🔙 Keyboard navigation to index:", this.currentIndex);
               
-              // Always create placeholder image and update text for local development
-              this.createPlaceholderImage();
+              if (this.singleImageMode) {
+                // In single image mode, load the manifest directly
+                this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+              } else {
+                // In sequence mode, let OpenSeadragon handle it
+                this.viewer.goToPage(this.currentIndex);
+                
+                // Reset view and refresh overlays
+                setTimeout(() => {
+                  this.viewer.viewport.goHome();
+                  this.refreshOverlays();
+                }, 100);
+              }
               this.showOnlyCurrentPage(this.currentIndex);
             }
             break;
@@ -661,8 +887,23 @@ document.addEventListener("DOMContentLoaded", function () {
               this.currentIndex++;
               console.log("▶️ Keyboard navigation to index:", this.currentIndex);
               
-              // Always create placeholder image and update text for local development
-              this.createPlaceholderImage();
+              // Check if we need to load more manifests
+              this.checkAndLoadMoreManifests();
+              
+              if (this.singleImageMode) {
+                // In single image mode, load the manifest directly
+                this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+              } else {
+                // In sequence mode, let OpenSeadragon handle it
+                console.log(`⌨️ Keyboard navigation (next) to page ${this.currentIndex}`);
+                this.viewer.goToPage(this.currentIndex);
+                
+                // Reset view and refresh overlays
+                setTimeout(() => {
+                  this.viewer.viewport.goHome();
+                  this.refreshOverlays();
+                }, 100);
+              }
               this.showOnlyCurrentPage(this.currentIndex);
             }
             break;
@@ -672,8 +913,19 @@ document.addEventListener("DOMContentLoaded", function () {
             this.currentIndex = 0;
             console.log("🏠 Keyboard navigation to HOME (index 0)");
             
-            // Always create placeholder image and update text for local development
-            this.createPlaceholderImage();
+            if (this.singleImageMode) {
+              // In single image mode, load the manifest directly
+              this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+            } else {
+              // In sequence mode, let OpenSeadragon handle it
+              this.viewer.goToPage(this.currentIndex);
+              
+              // Reset view and refresh overlays
+              setTimeout(() => {
+                this.viewer.viewport.goHome();
+                this.refreshOverlays();
+              }, 100);
+            }
             this.showOnlyCurrentPage(this.currentIndex);
             break;
             
@@ -682,8 +934,25 @@ document.addEventListener("DOMContentLoaded", function () {
             this.currentIndex = this.iiifManifests.length - 1;
             console.log("🔚 Keyboard navigation to END (index", this.currentIndex, ")");
             
-            // Always create placeholder image and update text for local development
-            this.createPlaceholderImage();
+            // When jumping to the end, make sure all manifests are loaded
+            if (this.loadedManifestCount < this.iiifManifests.length) {
+              console.log("Loading all remaining manifests for END navigation");
+              this.loadManifestBatch(this.loadedManifestCount, this.iiifManifests.length - this.loadedManifestCount);
+            }
+            
+            if (this.singleImageMode) {
+              // In single image mode, load the manifest directly
+              this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+            } else {
+              // In sequence mode, let OpenSeadragon handle it
+              this.viewer.goToPage(this.currentIndex);
+              
+              // Reset view and refresh overlays
+              setTimeout(() => {
+                this.viewer.viewport.goHome();
+                this.refreshOverlays();
+              }, 100);
+            }
             this.showOnlyCurrentPage(this.currentIndex);
             break;
         }
@@ -917,9 +1186,121 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
+    // Add a diagnostic method to check the current state of image loading
+    checkCurrentImage() {
+      console.log("🔍 Checking current image state:");
+      console.log(`Current index: ${this.currentIndex}`);
+      console.log(`Number of valid image tile sources: ${this.validImageTileSources?.length || 0}`);
+      
+      if (this.viewer.world.getItemCount() > 0) {
+        const currentItem = this.viewer.world.getItemAt(0);
+        console.log("Current OSD item:", currentItem);
+        
+        // Print more detailed source information
+        if (currentItem.source) {
+          if (typeof currentItem.source === 'string') {
+            console.log("Current source (string):", currentItem.source);
+          } else if (currentItem.source.url) {
+            console.log("Current source URL:", currentItem.source.url);
+          } else {
+            console.log("Current source (object):", JSON.stringify(currentItem.source).substring(0, 200));
+          }
+        }
+        
+        // Check if we have the expected source for this index
+        if (this.validImageTileSources && this.validImageTileSources.length > this.currentIndex) {
+          const expectedSource = this.validImageTileSources[this.currentIndex];
+          
+          if (typeof expectedSource === 'string') {
+            console.log("Expected source (string):", expectedSource);
+          } else if (expectedSource.url) {
+            console.log("Expected source URL:", expectedSource.url);
+          } else {
+            console.log("Expected source (object):", JSON.stringify(expectedSource).substring(0, 200));
+          }
+          
+          // Compare sources in detail
+          let sourcesMatch = false;
+          
+          if (typeof currentItem.source === 'string' && typeof expectedSource === 'string') {
+            sourcesMatch = currentItem.source === expectedSource;
+          } else if (currentItem.source.url && expectedSource.url) {
+            sourcesMatch = currentItem.source.url === expectedSource.url;
+          } else {
+            // Compare JSON representations as fallback
+            sourcesMatch = JSON.stringify(currentItem.source) === JSON.stringify(expectedSource);
+          }
+          
+          if (!sourcesMatch) {
+            console.warn("⚠️ Current image doesn't match expected image for this index!");
+            
+            // Print the unique reference ID of the sequence
+            if (this.viewer.sequence) {
+              console.log("Current sequence info:", {
+                currentPage: this.viewer.currentPage(),
+                sequenceLength: this.viewer.tileSources?.length || 0,
+                sequenceMode: this.viewer.sequenceMode
+              });
+            }
+          } else {
+            console.log("✅ Current image matches expected image");
+          }
+        }
+      } else {
+        console.warn("No items in OSD world");
+      }
+      
+      // Print the reference strip state - this is critical for debugging the thumbnails
+      console.log("Reference strip state:");
+      
+      const referenceStrip = document.querySelector('.openseadragon-referencestrip');
+      if (referenceStrip) {
+        const thumbnails = referenceStrip.querySelectorAll('.referencestrip-scroll-bar > .referencestrip-preview');
+        console.log(`Reference strip found with ${thumbnails.length} thumbnails`);
+        
+        // Check first 3 thumbnails
+        for (let i = 0; i < Math.min(3, thumbnails.length); i++) {
+          const thumbImg = thumbnails[i].querySelector('img');
+          if (thumbImg) {
+            console.log(`Thumbnail ${i} source: ${thumbImg.src.substring(0, 100)}...`);
+          }
+        }
+      } else {
+        console.log("No reference strip found");
+      }
+    }
+    
     removeHoverOverlay() {
       const prev = document.getElementById("osd-hover-overlay");
       if (prev) this.viewer.removeOverlay(prev);
+    }
+    
+    refreshOverlays() {
+      console.log("🔄 Refreshing overlays for page:", this.currentIndex);
+      
+      // Get the current image dimensions
+      if (this.viewer.world.getItemCount() > 0) {
+        const currentImage = this.viewer.world.getItemAt(0);
+        if (currentImage) {
+          const imageSize = currentImage.getContentSize();
+          const imageWidth = imageSize.x;
+          const imageHeight = imageSize.y;
+          
+          // Clear existing overlays
+          this.viewer.clearOverlays();
+          
+          // Re-add the surface overlay
+          this.addSurfaceOverlay();
+          
+          // Re-add region overlays
+          this.addImageRegionOverlays(imageWidth, imageHeight);
+          
+          // Re-setup hover overlays
+          this.setupHoverOverlays(imageWidth, imageHeight);
+          
+          console.log("✅ Overlays refreshed with image dimensions:", imageWidth, "×", imageHeight);
+        }
+      }
     }
 
     // Page-based navigation methods

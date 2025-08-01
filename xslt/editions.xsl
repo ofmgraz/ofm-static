@@ -99,14 +99,13 @@
                         <!--    THIS IS THE MAIN DIV -->                     
                         <div class="wp-transcript">
                             <div id="container-resize" class="row transcript active">
-                                <div id="text-resize" class="col-md-4 col-lg-4 col-sm-1 text" >
-                                </div>
-                                <div id="img-resize" class="col-md-4 col-lg-4 col-sm-12 facsimiles" >   <!-- OSD container (facsimiles).  Maybe 6 (1/2 of the total)-->
+                                <!--  <div id="text-resize" class="col-md-4 col-lg-4 col-sm-1 text" /> -->
+                                <div id="img-resize" class="col-md-6 col-lg-6 col-sm-12 facsimiles" >   <!-- OSD container (facsimiles).  Maybe 6 (1/2 of the total)-->
                                     <div id="viewer">
                                         <div id="container_facs_1" class="osd-container"/>
                                     </div>
                                 </div>
-                                <div id="text-resize" lang="de" class="col-md-4 col-lg-4 col-sm-11 text yes-index"> <!--- Maybe 6 (1/2 of the total) -->
+                                <div id="text-resize" lang="de" class="col-md-6 col-lg-6 col-sm-12 text yes-index"> <!--- Maybe 6 (1/2 of the total) -->
                                     <div id="transcript">
                                         <xsl:apply-templates/> <!-- Text transcription -->
                                     </div>
@@ -126,13 +125,17 @@
         </html>
     </xsl:template>
     <xsl:template match="tei:teiHeader" />
-    <xsl:template match="tei:facsimile" />
 <xsl:template match="tei:pb">
     <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
     <xsl:variable name="facsUrl"><xsl:value-of select="data(//tei:surface[@xml:id = $pbId]/tei:graphic/@url)"/></xsl:variable>
     <xsl:variable name="page_number"><xsl:number level="any"/></xsl:variable>
-    <p class="pb" source="{$facsUrl}" n="{$page_number}" id="{$pbId}" />
+    <ab class="pb" source="{$facsUrl}" n="{$page_number}" id="{$pbId}" />
 </xsl:template>
+
+
+<!-- REPLACED BELOW
+
+<xsl:template match="tei:facsimile" />
 <xsl:template match="tei:ab">
         <xsl:variable select="./@class" name="currentclass" />
         <xsl:variable name="pbId"><xsl:value-of select="replace(data(@facs), '#', '')"/></xsl:variable>
@@ -159,7 +162,9 @@
             </xsl:attribute>
              <xsl:apply-templates/>
         </br>
-</xsl:template>
+</xsl:template> -->
+
+
    <!-- <xsl:template match="tei:rs">
         <xsl:variable name="ppid">
             <xsl:value-of select="./@ref"/>
@@ -167,4 +172,131 @@
         <span id="{$ppid}" class="person">
 		<xsl:apply-templates/></span>
     </xsl:template>  -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     FACSIMILE  &  TRANSCRIPT  CROSS‑LINKING
+     Adds ▸ paragraph <p … data‑target="regionId"> …            ▸
+          ▸ overlay   <div class="image-region" … data-target="paragraphId" …>
+     The JS (highlight.js) takes care of the geometry & hover effect
+══════════════════════════════════════════════════════════════ -->
+
+<!-- 1 ▸ Paragraphs (tei:ab, tei:lb, etc.)  ────────────────────── -->
+<!--    Each textual node that can be highlighted must:           -->
+<!--      • have a stable @facs that points (#zone1) to a zone    -->
+<!--      • expose its own @xml:id (or we mint one) so the zone   -->
+<!--        can point back with data‑target   
+
+                    -->
+
+<xsl:key name="zoneById" match="tei:zone" use="@xml:id"/>                    
+<xsl:template match="tei:ab">
+    <!-- ID of the zone this text corresponds to -->
+    <xsl:variable name="zoneId" select="replace(@facs, '#', '')"/>
+    <xsl:variable name="zone"  select="key('zoneById', $zoneId)"/>
+
+    <!-- Mint a textual ID (prefix t_) so text & zone IDs differ -->
+    <xsl:variable name="textId">
+        <xsl:choose>
+            <xsl:when test="@xml:id"><xsl:value-of select="concat('t_', @xml:id)"/></xsl:when>
+            <xsl:otherwise><xsl:value-of select="concat('t_', $zoneId)"/></xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="classes">
+        <xsl:value-of select="string-join((@type, 'yes-index'), ' ')"/>
+    </xsl:variable>
+    <!-- Render block or line -->
+    <xsl:copy>
+        <xsl:attribute name="id"><xsl:value-of select="$textId"/></xsl:attribute>
+        <xsl:attribute name="class"><xsl:value-of select="$classes"/></xsl:attribute>
+        <xsl:attribute name="data-target"><xsl:value-of select="$zoneId"/></xsl:attribute>
+          <xsl:attribute name="data-region"><xsl:value-of select="$zoneId"/></xsl:attribute>
+   <!-- NEW:  positional info copied from the zone -->
+      <xsl:if test="$zone">
+        <!-- @points is what IIIF‑compliant viewers usually need -->
+        <xsl:attribute name="data-points"     select="$zone/@points"/>
+        <!-- copy any other geometry attributes that happen to be present -->
+        <xsl:for-each select="$zone/@*[name()=('rendition','ulx','uly','lrx','lry','width','height')]">
+          <xsl:attribute name="{concat('data-',name())}" select="."/>
+        </xsl:for-each>
+      </xsl:if>
+        <xsl:choose>
+            <xsl:when test="self::tei:ab[@type='notation']">
+                <xsl:attribute name="class" select="concat($classes, ' notation')"/>
+                <xsl:value-of select="@rend"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:copy>
+</xsl:template>
+
+<xsl:template match="tei:lb">
+    <!-- ID of the zone this text corresponds to -->
+    <xsl:variable name="zoneId" select="replace(@facs, '#', '')"/>
+    <xsl:variable name="zone"  select="key('zoneById', $zoneId)"/>
+    <!-- Mint a textual ID (prefix t_) so text & zone IDs differ -->
+    <xsl:variable name="textId">
+        <xsl:choose>
+            <xsl:when test="@xml:id"><xsl:value-of select="concat('t_', @xml:id)"/></xsl:when>
+            <xsl:otherwise><xsl:value-of select="concat('t_', $zoneId)"/></xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+   
+    <xsl:variable name="classes">
+        <xsl:value-of select="string-join((@class, 'yes-index'), ' ')"/>
+    </xsl:variable>
+    <!-- Render block or line -->
+    <br>
+        <xsl:attribute name="id"><xsl:value-of select="$textId"/></xsl:attribute>
+        <xsl:attribute name="class"><xsl:value-of select="$classes"/></xsl:attribute>
+        <xsl:attribute name="data-target"><xsl:value-of select="$zoneId"/></xsl:attribute>
+        <xsl:attribute name="data-region"><xsl:value-of select="$zoneId"/></xsl:attribute>
+        <xsl:apply-templates/>
+        <xsl:if test="$zone">
+        <!-- @points is what IIIF‑compliant viewers usually need -->
+        <xsl:attribute name="data-points"     select="$zone/@points"/>
+        <!-- copy any other geometry attributes that happen to be present -->
+        <xsl:for-each select="$zone/@*[name()=('rendition','ulx','uly','lrx','lry','width','height')]">
+          <xsl:attribute name="{concat('data-',name())}" select="."/>
+        </xsl:for-each>
+      </xsl:if>
+    </br>
+</xsl:template>
+
+<!-- 2 ▸ Surfaces and zones  ──────────────────────────────────── -->
+<!--    Each <surface> becomes an image + overlay DIVs.           -->
+<!--    Each <zone> is the hoverable rectangle.                   -->
+<xsl:template match="tei:surface">
+    <xsl:variable name="surfaceId" select="@xml:id"/>
+    <xsl:variable name="graphicUrl" select="tei:graphic[1]/@url"/>
+
+    <div class="image-wrapper" id="{$surfaceId}">
+        <img src="{$graphicUrl}" alt="{$surfaceId}"/>
+        <!-- overlay rectangles -->
+        <xsl:apply-templates select="tei:zone"/>
+    </div>
+</xsl:template>
+
+<xsl:template match="tei:zone">
+    <!-- raw points string, e.g. "10,20 30,40 30,20" -->
+    <xsl:variable name="points" select="normalize-space(@points)"/>
+
+    <!-- Paragraph ID this zone should highlight (prefix t_) -->
+    <xsl:variable name="textId">
+        <xsl:choose>
+            <xsl:when test="@corresp"><xsl:value-of select="replace(@corresp, '#', 't_')"/></xsl:when>
+            <xsl:otherwise><xsl:value-of select="concat('t_', @xml:id)"/></xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+
+    <div id="{@xml:id}"
+         class="image-region"
+         data-target="{$textId}"
+         data-points="{$points}"/>
+</xsl:template>
+
+<!-- 3 ▸ Prevent default output of facsimile bits you don't need -->
+<xsl:template match="tei:facsimile|tei:graphic"/>
 </xsl:stylesheet>

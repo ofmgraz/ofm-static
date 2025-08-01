@@ -233,8 +233,42 @@ document.addEventListener("DOMContentLoaded", function () {
       return manifests;
     }
 
+    getImageIdsFromManifests() {
+      // Extract just the image IDs from the manifest URLs
+      const imageIds = [];
+      
+      this.iiifManifests.forEach((manifestUrl, index) => {
+        // Extract the ID parameter from the manifest URL
+        const urlParams = new URL(manifestUrl).searchParams;
+        const imageId = urlParams.get('id');
+        
+        if (imageId) {
+          imageIds.push(imageId);
+          console.log(`Page ${index + 1}: extracted ID = ${imageId}`);
+        } else {
+          console.warn(`Could not extract image ID from manifest URL: ${manifestUrl}`);
+        }
+      });
+      
+      return imageIds;
+    }
+
+    createBatchManifestUrl(imageIds) {
+      // Create a single manifest URL that includes all image IDs
+      // We'll use the first image ID as the base and add others as a batch parameter
+      const baseUrl = 'https://arche-iiifmanifest.acdh.oeaw.ac.at/';
+      
+      // Option 1: Try to create a batch request with multiple IDs
+      // Some IIIF services support this, but if not, we'll fall back to sequential loading
+      const batchIds = imageIds.join(',');
+      const batchUrl = `${baseUrl}?ids=${encodeURIComponent(batchIds)}&mode=images`;
+      
+      console.log(`🎯 Created batch manifest URL with ${imageIds.length} image IDs`);
+      return batchUrl;
+    }
+
     async loadAllManifests() {
-      console.log("🔄 Loading all manifests as sequence...");
+      console.log("🔄 Loading optimized single manifest with all images...");
       
       // Check if we're running locally and might have CORS issues
       const isLocalDev = window.location.hostname === 'localhost' || 
@@ -242,116 +276,147 @@ document.addEventListener("DOMContentLoaded", function () {
                         window.location.hostname === '0.0.0.0';
       
       if (isLocalDev) {
-        console.log("🏠 Local development environment detected - using single image mode to avoid CORS issues");
-        this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+        console.log("🏠 Local development environment detected - using placeholder mode");
+        this.createPlaceholderImage();
         return;
       }
       
-      // First, test connectivity to the IIIF service
       try {
-        console.log("🔍 Testing connectivity to IIIF service...");
-        const testResponse = await fetch('https://arche-iiifmanifest.acdh.oeaw.ac.at/', { 
-          method: 'HEAD',
-          mode: 'no-cors' 
-        });
-        console.log("✅ IIIF service is reachable");
-      } catch (connectErr) {
-        console.warn("⚠️ IIIF service connectivity test failed:", connectErr.message);
-        console.log("This might be due to CORS restrictions, falling back to single image mode...");
-        this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
-        return;
-      }
-      
-      const allImages = [];
-      let successCount = 0;
-      let errorCount = 0;
-      
-      // Load all manifests and collect their images with smaller image sizes for faster loading
-      for (let i = 0; i < this.iiifManifests.length; i++) {
-        const manifestUrl = this.iiifManifests[i];
-        console.log(`Loading manifest ${i + 1}/${this.iiifManifests.length}`);
-        console.log(`URL: ${manifestUrl}`);
+        // Create a single optimized manifest request with all image IDs
+        const imageIds = this.getImageIdsFromManifests();
+        console.log(`🎯 Extracted ${imageIds.length} image IDs for batch loading`);
         
-        try {
-          const response = await fetch(manifestUrl);
-          
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-          }
-          
-          const data = await response.json();
-          const images = data.images || [];
-          
-          if (images.length > 0) {
-            // Use smaller image size for faster loading
-            const optimizedImage = typeof images[0] === "string" 
-              ? images[0].replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!400,400/0/default.$1")
-              : images[0];
-            allImages.push(optimizedImage);
-            successCount++;
-            console.log(`✅ Manifest ${i + 1} loaded successfully`);
-          } else {
-            console.warn(`⚠️ No images found in manifest ${i + 1}: ${manifestUrl}`);
-            // Add a placeholder to maintain index alignment
-            allImages.push(null);
-          }
-        } catch (err) {
-          console.error(`❌ Error loading manifest ${i + 1}:`, err.message);
-          console.error(`❌ Full error:`, err);
-          errorCount++;
-          
-          // If this is a NetworkError (CORS issue), switch to single image mode
-          if (err.name === 'NetworkError' || err.message.includes('CORS') || err.message.includes('fetch')) {
-            console.log("🔄 NetworkError detected - this is likely a CORS issue");
-            console.log("🔄 Switching to single image mode for better compatibility...");
-            this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
-            return;
-          }
-          
-          // Add a placeholder to maintain index alignment
-          allImages.push(null);
-        }
-        
-        // If we have too many consecutive failures at the start, break and use fallback
-        if (i < 5 && errorCount > 3) {
-          console.log("🔄 Too many early failures, switching to fallback mode...");
-          this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+        if (imageIds.length === 0) {
+          console.warn("No valid image IDs found, falling back to placeholder mode");
+          this.createPlaceholderImage();
           return;
         }
+        
+        // Create a batch manifest URL with all image IDs
+        const batchManifestUrl = this.createBatchManifestUrl(imageIds);
+        console.log("🚀 Loading batch manifest:", batchManifestUrl);
+        
+        const response = await fetch(batchManifestUrl);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        const images = data.images || [];
+        
+        if (images.length === 0) {
+          console.warn("No images found in batch manifest, falling back to placeholder mode");
+          this.createPlaceholderImage();
+          return;
+        }
+        
+        // Optimize image URLs for faster loading
+        const optimizedImages = images.map(image => {
+          if (typeof image === "string") {
+            return image.replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!600,600/0/default.$1");
+          }
+          return image;
+        });
+        
+        console.log(`✅ Loaded ${optimizedImages.length} images in batch manifest`);
+        
+        // Set up the viewer with all images in sequence mode
+        this.viewer.sequenceMode = true;
+        this.viewer.open(optimizedImages);
+        
+        // Navigate to the correct page if not starting from 0
+        if (this.currentIndex > 0 && this.currentIndex < optimizedImages.length) {
+          this.viewer.goToPage(this.currentIndex);
+        }
+        
+        console.log(`🎉 Batch manifest loaded successfully with ${optimizedImages.length} images`);
+        
+      } catch (err) {
+        console.error("❌ Error loading batch manifest:", err.message);
+        
+        // If batch loading fails, try sequential lightweight loading
+        if (err.message.includes('400') || err.message.includes('404')) {
+          console.log("🔄 Batch manifest not supported, trying lightweight sequential loading...");
+          await this.loadManifestsSequentiallyLightweight();
+        } else if (err.name === 'NetworkError' || err.message.includes('CORS') || err.message.includes('fetch')) {
+          console.log("🔄 Network error detected, using placeholder mode for local development");
+          this.createPlaceholderImage();
+        } else {
+          console.log("🔄 Batch manifest failed, using placeholder mode as fallback");
+          this.createPlaceholderImage();
+        }
+      }
+    }
+
+    async loadManifestsSequentiallyLightweight() {
+      console.log("🔄 Loading manifests sequentially with lightweight approach...");
+      
+      const images = [];
+      const maxConcurrent = 3; // Limit concurrent requests
+      
+      // Load manifests in smaller batches to avoid overwhelming the server
+      for (let i = 0; i < this.iiifManifests.length; i += maxConcurrent) {
+        const batch = this.iiifManifests.slice(i, i + maxConcurrent);
+        console.log(`Loading batch ${Math.floor(i/maxConcurrent) + 1}/${Math.ceil(this.iiifManifests.length/maxConcurrent)}`);
+        
+        const batchPromises = batch.map(async (manifestUrl, batchIndex) => {
+          const globalIndex = i + batchIndex;
+          try {
+            const response = await fetch(manifestUrl);
+            if (!response.ok) {
+              throw new Error(`HTTP ${response.status}`);
+            }
+            
+            const data = await response.json();
+            const imageUrls = data.images || [];
+            
+            if (imageUrls.length > 0) {
+              // Use smaller image size for faster loading
+              const optimizedImage = typeof imageUrls[0] === "string" 
+                ? imageUrls[0].replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!400,400/0/default.$1")
+                : imageUrls[0];
+              
+              console.log(`✅ Page ${globalIndex + 1} loaded`);
+              return { index: globalIndex, image: optimizedImage };
+            }
+            return { index: globalIndex, image: null };
+          } catch (err) {
+            console.warn(`⚠️ Failed to load page ${globalIndex + 1}:`, err.message);
+            return { index: globalIndex, image: null };
+          }
+        });
+        
+        const batchResults = await Promise.all(batchPromises);
+        
+        // Add results to images array in correct order
+        batchResults.forEach(result => {
+          images[result.index] = result.image;
+        });
+        
+        // Small delay between batches to be nice to the server
+        if (i + maxConcurrent < this.iiifManifests.length) {
+          await new Promise(resolve => setTimeout(resolve, 200));
+        }
       }
       
-      // Filter out null placeholders for the final image array
-      const validImages = allImages.filter(img => img !== null);
+      // Filter out failed images and create final sequence
+      const validImages = images.filter(img => img !== null);
       
-      console.log(`✅ Loaded ${successCount} valid images, ${errorCount} errors, ${validImages.length} total for sequence`);
+      console.log(`✅ Sequential loading complete: ${validImages.length}/${this.iiifManifests.length} images loaded`);
       
       if (validImages.length > 0) {
-        try {
-          // Set up the viewer with valid images
-          this.viewer.open(validImages);
-          
-          // Navigate to the correct page (adjusted for removed null entries)
-          if (this.currentIndex > 0) {
-            // Find the adjusted index by counting valid images up to currentIndex
-            let adjustedIndex = 0;
-            for (let i = 0; i < Math.min(this.currentIndex, allImages.length); i++) {
-              if (allImages[i] !== null) {
-                adjustedIndex++;
-              }
-            }
-            if (adjustedIndex > 0) {
-              this.viewer.goToPage(adjustedIndex - 1);
-            }
-          }
-        } catch (viewerErr) {
-          console.error("Error setting up viewer with images:", viewerErr);
-          // Fallback to single manifest loading
-          this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+        this.viewer.sequenceMode = true;
+        this.viewer.open(validImages);
+        
+        // Navigate to the correct page (accounting for missing images)
+        if (this.currentIndex > 0) {
+          const adjustedIndex = Math.min(this.currentIndex, validImages.length - 1);
+          this.viewer.goToPage(adjustedIndex);
         }
       } else {
-        console.error("No valid images loaded, falling back to single image mode");
-        // Fallback to single manifest loading
-        this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+        console.log("🔄 No images loaded, falling back to placeholder mode");
+        this.createPlaceholderImage();
       }
     }
 

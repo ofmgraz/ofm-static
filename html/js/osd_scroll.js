@@ -273,7 +273,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Check if we're running locally and might have CORS issues
       const isLocalDev = window.location.hostname === 'localhost' || 
                         window.location.hostname === '127.0.0.1' || 
-                        window.location.hostname === '0.0.0.0';
+                        window.location.hostname === '0.0.0.0' ||
+                        window.location.protocol === 'file:';
       
       if (isLocalDev) {
         console.log("🏠 Local development environment detected - using placeholder mode");
@@ -296,7 +297,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const batchManifestUrl = this.createBatchManifestUrl(imageIds);
         console.log("🚀 Loading batch manifest:", batchManifestUrl);
         
-        const response = await fetch(batchManifestUrl);
+        const response = await fetch(batchManifestUrl, {
+          mode: 'cors',
+          headers: {
+            'Accept': 'application/json',
+          }
+        });
         
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -335,13 +341,20 @@ document.addEventListener("DOMContentLoaded", function () {
       } catch (err) {
         console.error("❌ Error loading batch manifest:", err.message);
         
-        // If batch loading fails, try sequential lightweight loading
-        if (err.message.includes('400') || err.message.includes('404')) {
+        // Enhanced CORS detection
+        const isCorsError = err.name === 'TypeError' || 
+                           err.message.includes('NetworkError') || 
+                           err.message.includes('CORS') || 
+                           err.message.includes('fetch') ||
+                           err.message.includes('Cross-Origin') ||
+                           err.message.includes('blocked');
+        
+        if (isCorsError) {
+          console.log("🔄 CORS issue detected, using placeholder mode for local development");
+          this.createPlaceholderImage();
+        } else if (err.message.includes('400') || err.message.includes('404')) {
           console.log("🔄 Batch manifest not supported, trying lightweight sequential loading...");
           await this.loadManifestsSequentiallyLightweight();
-        } else if (err.name === 'NetworkError' || err.message.includes('CORS') || err.message.includes('fetch')) {
-          console.log("🔄 Network error detected, using placeholder mode for local development");
-          this.createPlaceholderImage();
         } else {
           console.log("🔄 Batch manifest failed, using placeholder mode as fallback");
           this.createPlaceholderImage();
@@ -363,7 +376,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const batchPromises = batch.map(async (manifestUrl, batchIndex) => {
           const globalIndex = i + batchIndex;
           try {
-            const response = await fetch(manifestUrl);
+            const response = await fetch(manifestUrl, {
+              mode: 'cors',
+              headers: {
+                'Accept': 'application/json',
+              }
+            });
             if (!response.ok) {
               throw new Error(`HTTP ${response.status}`);
             }
@@ -382,21 +400,44 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             return { index: globalIndex, image: null };
           } catch (err) {
-            console.warn(`⚠️ Failed to load page ${globalIndex + 1}:`, err.message);
+            // Enhanced CORS detection for sequential loading too
+            const isCorsError = err.name === 'TypeError' || 
+                               err.message.includes('NetworkError') || 
+                               err.message.includes('CORS') || 
+                               err.message.includes('fetch') ||
+                               err.message.includes('Cross-Origin') ||
+                               err.message.includes('blocked');
+            
+            if (isCorsError) {
+              console.warn(`⚠️ CORS issue on page ${globalIndex + 1}, switching to placeholder mode`);
+              // Return early and use placeholder mode for all
+              throw new Error('CORS_DETECTED');
+            } else {
+              console.warn(`⚠️ Failed to load page ${globalIndex + 1}:`, err.message);
+            }
             return { index: globalIndex, image: null };
           }
         });
         
-        const batchResults = await Promise.all(batchPromises);
-        
-        // Add results to images array in correct order
-        batchResults.forEach(result => {
-          images[result.index] = result.image;
-        });
-        
-        // Small delay between batches to be nice to the server
-        if (i + maxConcurrent < this.iiifManifests.length) {
-          await new Promise(resolve => setTimeout(resolve, 200));
+        try {
+          const batchResults = await Promise.all(batchPromises);
+          
+          // Add results to images array in correct order
+          batchResults.forEach(result => {
+            images[result.index] = result.image;
+          });
+          
+          // Small delay between batches to be nice to the server
+          if (i + maxConcurrent < this.iiifManifests.length) {
+            await new Promise(resolve => setTimeout(resolve, 200));
+          }
+        } catch (err) {
+          if (err.message === 'CORS_DETECTED') {
+            console.log("🔄 CORS detected during sequential loading, falling back to placeholder mode");
+            this.createPlaceholderImage();
+            return;
+          }
+          throw err;
         }
       }
       

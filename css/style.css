@@ -130,11 +130,16 @@ h1 {
     color: black;
 }
 
-.notation, .notation * {
-    display: block !important;
-    font-family: "Volpiano" !important;                                                                                                    
+/* Hide text content in transcript but show notation */
+#transcript * {
+    color: transparent;
+}
+
+#transcript .notation, #transcript .notation * {
     font-size: 3rem !important;
-    line-height: 1.2 !important;
+    color: black !important;
+    display: block !important;
+    font-family: "Volpiano" !important;
 }
 
 
@@ -803,9 +808,6 @@ h2 {
     
 }
 
-#transcript * {
-    color: #000;
-}
 
 #img-resize{
     max-height: 80vw; 

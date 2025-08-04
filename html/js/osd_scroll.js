@@ -34,23 +34,43 @@ document.addEventListener("DOMContentLoaded", function () {
       this.iiifManifests = this.getIIIFManifests();
 
       if (this.iiifManifests.length > 0) {
-        this.initializeFromHash();
-        // Load the first manifest directly instead of batch loading
-        this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+        // Determine which page to start on based on the hash
+        if (window.location.hash) {
+          console.log(`Processing initial hash: ${window.location.hash}`);
+          this.initializeFromHash(window.location.hash.slice(1));
+        } else {
+          this.initializeFromHash();
+        }
+        
+        console.log(`Starting with page index: ${this.currentIndex} based on hash`);
+        
+        // Instead of loading the first manifest, load the one for the current index
+        if (this.currentIndex >= 0 && this.currentIndex < this.iiifManifests.length) {
+          this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+        } else {
+          // Fallback to first image if index is invalid
+          this.currentIndex = 0;
+          this.loadImageFromManifest(this.iiifManifests[0]);
+        }
+        
         this.setupNavigationButtons();
         this.setupPageNavigation();
         this.setupParagraphHighlighting();
         this.setupKeyboardNavigation(); // Add keyboard navigation
 
-        // Trigger initial page display after a brief delay to ensure everything is loaded
+        // Trigger initial page display immediately with the correct index
+        this.showOnlyCurrentPage(this.currentIndex);
+        
+        // Make sure we're actually on the right page and scroll to the element
         setTimeout(() => {
-          this.showOnlyCurrentPage(this.currentIndex);
+          // Force navigation to the correct page
+          console.log(`Ensuring we're on page ${this.currentIndex}`);
+          this.viewer.goToPage(this.currentIndex);
+          
           // Reset view and refresh overlays
-          setTimeout(() => {
-            this.viewer.viewport.goHome();
-            this.refreshOverlays();
-          }, 100);
-        }, 500);
+          this.viewer.viewport.goHome();
+          this.refreshOverlays();
+        }, 300);
       }
     }
 
@@ -66,9 +86,16 @@ document.addEventListener("DOMContentLoaded", function () {
         showNavigationControl: true,
         constrainDuringPan: true,
         tileSources: [],
+        initialPage: this.currentIndex, // Set initial page based on hash
       });
 
-      this.viewer.addHandler("open", () => this.onImageOpen());
+      // Log initial page setup
+      console.log(`Setting up viewer with initial page: ${this.currentIndex}`);
+
+      this.viewer.addHandler("open", () => {
+        console.log(`Viewer open handler - current page should be ${this.currentIndex}`);
+        this.onImageOpen();
+      });
       
       // Add handler specifically for tile sources loading
       this.viewer.addHandler("tile-loaded", (event) => {
@@ -133,7 +160,22 @@ document.addEventListener("DOMContentLoaded", function () {
         this.addImageRegionOverlays(imageWidth, imageHeight);
         this.setupHoverOverlays(imageWidth, imageHeight);
         
-        // Handle hash-based zone highlighting
+        // Add a style for highlighted elements if not already present
+        if (!document.getElementById('highlight-style')) {
+          const style = document.createElement('style');
+          style.id = 'highlight-style';
+          style.textContent = `
+            .highlight-element {
+              background-color: yellow !important;
+              outline: 2px solid orange !important;
+              transition: background-color 0.5s, outline 0.5s;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+        
+        // Handle hash-based text highlighting without zooming
+        // Note: We don't process hashToProcess here anymore since it's handled in loadImageFromManifest
         const hash = window.location.hash.substring(1);
         if (hash) {
           const xmlPath = window.location.pathname.replace(".html", ".xml");
@@ -549,22 +591,48 @@ document.addEventListener("DOMContentLoaded", function () {
         this.viewer.close();
       }
       
-      // Open with the array of processed image URLs
-      this.viewer.open(processedImages);
+      // Save the target index before opening
+      const targetIndex = this.currentIndex;
+      console.log(`Target index before opening: ${targetIndex}`);
       
-      console.log(`✅ Opened viewer with ${processedImages.length} images, current page: ${this.currentIndex}`);
+      // Open with the array of processed image URLs and go directly to the target page
+      this.viewer.openWithOptions({
+        tileSources: processedImages,
+        initialPage: targetIndex
+      });
+      
+      console.log(`✅ Opened viewer with ${processedImages.length} images, current page: ${targetIndex}`);
       
       // Call diagnostic function to verify image sequence
       setTimeout(() => this.checkCurrentImage(), 500);
       
-      // Navigate to the correct page after a brief delay
-      if (this.currentIndex > 0) {
-        setTimeout(() => {
-          console.log(`Navigating to page ${this.currentIndex} of ${validImages.length}`);
-          this.viewer.goToPage(this.currentIndex);
-          console.log(`✅ Navigated to page ${this.currentIndex}`);
-        }, 200);
-      }
+      // Make sure we're on the right page
+      setTimeout(() => {
+        // Force-set the page directly
+        if (this.viewer.currentPage() !== targetIndex) {
+          console.log(`Current page ${this.viewer.currentPage()} doesn't match target ${targetIndex}, forcing navigation`);
+          this.viewer.goToPage(targetIndex);
+        }
+        
+        // Update text content to match the page
+        this.showOnlyCurrentPage(targetIndex);
+        
+        // Handle any stored hash after navigation
+        if (this.hashToProcess) {
+          const targetElement = document.getElementById(this.hashToProcess);
+          if (targetElement) {
+            console.log(`Scrolling to element with ID: ${this.hashToProcess}`);
+            setTimeout(() => {
+              targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              targetElement.classList.add('highlight-element');
+              setTimeout(() => targetElement.classList.remove('highlight-element'), 3000);
+            }, 300);
+          } else {
+            console.log(`Element with ID ${this.hashToProcess} not found`);
+          }
+          this.hashToProcess = null;
+        }
+      }, 200);
     }
 
     async loadImageFromManifest(manifestUrl) {
@@ -596,14 +664,68 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log(`Found ${optimizedImages.length} images in manifest`);
 
+        // Store the current index to use after opening
+        const targetIndex = this.currentIndex;
+        
         // Set the tile sources in the viewer
         this.viewer.tileSources = optimizedImages;
+        
+        // Track if this is the initial load
+        const isInitialLoad = !this.viewer.isOpen();
+        console.log(`Is initial load: ${isInitialLoad}`);
         
         // Open the current image
         this.viewer.open(optimizedImages);
         
-        // Refresh navigation controls
-        this.refreshNavigationControls();
+        // For initial load, we need special handling to ensure we start on the correct page
+        if (isInitialLoad && targetIndex > 0) {
+          console.log(`Initial load - will go directly to page ${targetIndex}`);
+          // Force a direct page change without animation
+          setTimeout(() => {
+            this.viewer.goToPage(targetIndex);
+            console.log(`Navigated to initial page: ${targetIndex}`);
+            // Force update of text display
+            this.showOnlyCurrentPage(targetIndex);
+            
+            // Handle hash processing if needed
+            if (this.hashToProcess) {
+              const targetElement = document.getElementById(this.hashToProcess);
+              if (targetElement) {
+                console.log(`Scrolling to element with id: ${this.hashToProcess}`);
+                setTimeout(() => {
+                  targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  targetElement.classList.add('highlight-element');
+                  setTimeout(() => targetElement.classList.remove('highlight-element'), 3000);
+                }, 100);
+              }
+            }
+          }, 100);
+        } else {
+          // After opening, ensure we're at the correct page index
+          setTimeout(() => {
+            if (targetIndex > 0) {
+              console.log(`Navigating to correct page: ${targetIndex}`);
+              this.viewer.goToPage(targetIndex);
+            }
+            
+            // Handle hash processing if needed
+            if (this.hashToProcess) {
+              const targetElement = document.getElementById(this.hashToProcess);
+              if (targetElement) {
+                console.log(`Scrolling to element with id: ${this.hashToProcess}`);
+                setTimeout(() => {
+                  targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  targetElement.classList.add('highlight-element');
+                  setTimeout(() => targetElement.classList.remove('highlight-element'), 3000);
+                }, 300);
+              }
+              this.hashToProcess = null;
+            }
+            
+            // Refresh navigation controls
+            this.refreshNavigationControls();
+          }, 200);
+        }
         
         console.log(`✅ Images loaded successfully`);
       } catch (err) {
@@ -973,24 +1095,48 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
+      console.log(`Processing hash: ${hash}`);
+      
+      // For hashes like facs_4_rRTYy_25_line_006, we need to extract the page number
+      // First, try to extract the number directly from the hash format
+      const pageParts = hash.match(/facs_(\d+)/);
+      if (pageParts && pageParts[1]) {
+        const pageNum = parseInt(pageParts[1], 10);
+        if (!isNaN(pageNum) && pageNum > 0) {
+          // Convert 1-based page number to 0-based index
+          this.currentIndex = pageNum - 1;
+          console.log(`Determined page index ${this.currentIndex} from hash number ${pageNum}`);
+          this.hashToProcess = hash;
+          return;
+        }
+      }
+      
+      // If direct extraction didn't work, fall back to the element ID method
       const baseId = hash.split("_").slice(0, 2).join("_");
+      console.log(`Base ID extracted from hash: ${baseId}`);
       const targetElement = document.getElementById(hash);
 
       if (targetElement) {
-        targetElement.scrollIntoView();
-
+        // First determine the correct page index
         const pbElements = document.getElementsByClassName("pb");
         let foundIndex = -1;
 
         Array.from(pbElements).forEach((element, index) => {
+          console.log(`Checking pb element ${index}: ${element.id}`);
           if (element.id === baseId) {
             foundIndex = index;
+            console.log(`Found matching pb element at index ${index}`);
           }
         });
 
         // Set currentIndex to the found index, or 0 if not found
         this.currentIndex = foundIndex >= 0 ? foundIndex : 0;
+        console.log(`Setting current index to ${this.currentIndex}`);
+        
+        // Store the hash to scroll to the element after the page loads
+        this.hashToProcess = hash;
       } else {
+        console.log(`No element found with ID ${hash}, defaulting to page 0`);
         // If hash exists but element not found, start at index 0
         this.currentIndex = 0;
       }

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.currentIndex = 0;
       this.isManualNavigation = false;
       this.overlayShown = false;
+      this.overlaysInitialized = false; // Track if overlays have been set up
       this.currentImageBounds = null;
       this.currentImageDimensions = null;
       this.iiifManifests = [];
@@ -27,6 +28,22 @@ document.addEventListener("DOMContentLoaded", function () {
       this.imageRegions = document.querySelectorAll(".image-region");
 
       this.init();
+      
+      // Listen for hash changes to help diagnose the highlighting issue
+      window.addEventListener('hashchange', () => {
+        console.log('🔄 Hash changed - this is a diagnostic message');
+        const hash = window.location.hash.substring(1);
+        console.log(`🔄 New hash: ${hash}`);
+        if (hash) {
+          console.log(`🔄 Will attempt to load XML for hash: ${hash}`);
+          const xmlPath = window.location.pathname.replace(".html", ".xml");
+          console.log(`🔄 XML path: ${xmlPath}`);
+          setTimeout(() => {
+            console.log(`🔄 Loading XML after delay...`);
+            this.loadAndParseXML(xmlPath);
+          }, 500);
+        }
+      });
     }
 
     init() {
@@ -39,19 +56,19 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log(`Processing initial hash: ${window.location.hash}`);
           this.initializeFromHash(window.location.hash.slice(1));
         } else {
+          // CRITICAL FIX: With no hash, we want to always start at the very first page
           this.initializeFromHash();
+          // Double check that we're really at index 0
+          this.currentIndex = 0;
+          console.log(`⚠️ No hash in URL, ensuring we start at index ${this.currentIndex}`);
         }
         
         console.log(`Starting with page index: ${this.currentIndex} based on hash`);
         
-        // Instead of loading the first manifest, load the one for the current index
-        if (this.currentIndex >= 0 && this.currentIndex < this.iiifManifests.length) {
-          this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
-        } else {
-          // Fallback to first image if index is invalid
-          this.currentIndex = 0;
-          this.loadImageFromManifest(this.iiifManifests[0]);
-        }
+        
+        // The viewer is now initialized with all tile sources.
+        // We just need to ensure it navigates to the correct initial page.
+        this.viewer.goToPage(this.currentIndex);
         
         this.setupNavigationButtons();
         this.setupPageNavigation();
@@ -75,6 +92,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     setupViewer() {
+      // Determine which page to start on based on the hash before setting up the viewer
+      if (window.location.hash) {
+        console.log(`Processing initial hash: ${window.location.hash}`);
+        this.initializeFromHash(window.location.hash.slice(1));
+      } else {
+        this.initializeFromHash();
+        this.currentIndex = 0;
+        console.log(`⚠️ No hash in URL, ensuring we start at index ${this.currentIndex}`);
+      }
+
+      this.iiifManifests = this.getIIIFManifests();
+
       this.viewer = OpenSeadragon({
         id: "container_facs_1",
         prefixUrl:
@@ -85,16 +114,31 @@ document.addEventListener("DOMContentLoaded", function () {
         showSequenceControl: true,
         showNavigationControl: true,
         constrainDuringPan: true,
-        tileSources: [],
-        initialPage: this.currentIndex, // Set initial page based on hash
+        tileSources: this.iiifManifests,
+        initialPage: this.currentIndex,
       });
 
       // Log initial page setup
       console.log(`Setting up viewer with initial page: ${this.currentIndex}`);
 
       this.viewer.addHandler("open", () => {
-        console.log(`Viewer open handler - current page should be ${this.currentIndex}`);
+        console.log(`🔥 Viewer open handler - current page should be ${this.currentIndex}`);
         this.onImageOpen();
+      });
+      
+      // Add more diagnostic handlers to track image loading
+      this.viewer.addHandler("tile-drawing", (event) => {
+        console.log(`🎨 Tile drawing started for page ${this.currentIndex}`);
+      });
+      
+      this.viewer.addHandler("tile-drawn", (event) => {
+        console.log(`✅ Tile drawn for page ${this.currentIndex}`);
+        // Trigger overlay setup once tiles are actually drawn
+        if (!this.overlaysInitialized) {
+          this.overlaysInitialized = true;
+          console.log(`🔥 Tiles drawn - manually triggering onImageOpen`);
+          this.onImageOpen();
+        }
       });
       
       // Add handler specifically for tile sources loading
@@ -118,10 +162,14 @@ document.addEventListener("DOMContentLoaded", function () {
       
       // Add handler for page changes (when user clicks navigation buttons)
       this.viewer.addHandler("page", (event) => {
-        console.log("📄 OpenSeadragon page event:", event.page);
+        const previousIndex = this.currentIndex;
+        
+        // CRITICAL FIX: Make sure our tracking stays in sync with OSD
         this.currentIndex = event.page;
         
-        // Update text content
+        console.log(`📄 Page event: ${previousIndex} → ${this.currentIndex} (event.page: ${event.page})`);
+        
+        // Always update text to match the current index
         this.showOnlyCurrentPage(this.currentIndex);
         
         // Reset the viewport
@@ -178,7 +226,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Note: We don't process hashToProcess here anymore since it's handled in loadImageFromManifest
         const hash = window.location.hash.substring(1);
         if (hash) {
+          console.log(`🔍 onImageOpen: Processing hash: ${hash}`);
           const xmlPath = window.location.pathname.replace(".html", ".xml");
+          console.log(`🔍 onImageOpen: XML path: ${xmlPath}`);
           this.loadAndParseXML(xmlPath);
         }
       } catch (err) {
@@ -253,14 +303,93 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setupHoverOverlays(imageWidth, imageHeight) {
       document
-        .querySelectorAll("ab[data-points], br[data-points]")
+        .querySelectorAll(".notation[data-points]:not(ab .notation)")
         .forEach((el) => {
           el.addEventListener("mouseenter", () => {
-            this.showHoverOverlay(
-              el.getAttribute("data-points"),
-              imageWidth,
-              imageHeight
-            );
+            const pointsStr = el.getAttribute("data-points");
+            if (!pointsStr) return;
+            const box = this.parsePolygonBoundingBox(pointsStr);
+            if (!box) return;
+            
+            // Try different Y-coordinate correction strategies
+            // Strategy 1: Use the bottom of the bounding box instead of top
+            const useBottomStrategy = false; // Set to true to test
+            
+            // Strategy 2: Subtract from Y instead of adding (maybe coordinates are inverted)
+            const useSubtractStrategy = false; // Set to true to test
+            
+            // Strategy 3: Use a fixed pixel offset instead of percentage
+            const useFixedOffset = false; // Set to true to test
+            
+            // Strategy 5: Proper coordinate correction like X-axis
+            const useProperCorrection = true;
+            
+            let adjustedBox;
+            if (useProperCorrection) {
+              // Get the current image bounds to understand the actual coordinate system
+              const currentItem = this.viewer.world.getItemAt(0);
+              const imageBounds = currentItem ? currentItem.getBounds() : null;
+              
+              // Apply proper coordinate correction based on actual image positioning
+              // This accounts for how OpenSeadragon actually positions the image
+              let correctedLeft = box.left;
+              let correctedTop = box.top;
+              
+              // If we have image bounds, use them for more accurate positioning
+              if (imageBounds) {
+                // Convert image pixel coordinates to normalized coordinates
+                correctedLeft = box.left / imageWidth;
+                correctedTop = box.top / imageHeight;
+                
+                // Apply the image bounds transformation
+                correctedLeft = imageBounds.x + (correctedLeft * imageBounds.width);
+                correctedTop = imageBounds.y + (correctedTop * imageBounds.height);
+                
+                // Convert back to pixel coordinates for the overlay
+                correctedLeft = correctedLeft * imageWidth;
+                correctedTop = correctedTop * imageHeight;
+              }
+              
+              adjustedBox = {
+                left: correctedLeft,
+                top: correctedTop,
+                width: box.width,
+                height: box.height
+              };
+            } else {
+              // Fallback to original strategy
+              const lineHeightOffset = Math.round(box.height * 0.15);
+              adjustedBox = {
+                left: box.left,
+                top: box.top + lineHeightOffset,
+                width: box.width,
+                height: box.height
+              };
+            }
+            
+            const normalizedBox = {
+              x: adjustedBox.left / imageWidth,
+              y: adjustedBox.top / imageHeight,
+              width: adjustedBox.width / imageWidth,
+              height: adjustedBox.height / imageHeight,
+            };
+            const overlay = document.createElement("div");
+            overlay.id = "osd-hover-overlay";
+            overlay.style.border = "3px solid #0f0";
+            overlay.style.background = "transparent";
+            overlay.style.position = "absolute";
+            overlay.style.zIndex = "100000";
+            overlay.style.pointerEvents = "none";
+            
+            this.viewer.addOverlay({
+              element: overlay,
+              location: new OpenSeadragon.Rect(
+                normalizedBox.x,
+                normalizedBox.y,
+                normalizedBox.width,
+                normalizedBox.height
+              )
+            });
           });
           el.addEventListener("mouseleave", () => {
             this.removeHoverOverlay();
@@ -306,37 +435,44 @@ document.addEventListener("DOMContentLoaded", function () {
     getIIIFManifests() {
       
       const pbElements = document.getElementsByClassName("pb");
-      const manifests = [];
+      const tileSources = [];
       Array.from(pbElements).forEach((el, index) => {
         const imgSource = el.getAttribute("source");
         if (imgSource) {
           // Clean the imgSource - remove duplicate URLs and trim whitespace
           const cleanedSource = imgSource.trim().split(/\s+/)[0]; // Take only the first URL if there are multiple
-          
           // Validate that it looks like a proper URL
-          if (cleanedSource.startsWith('http')) {
-            const manifestUrl = `https://arche-iiifmanifest.acdh.oeaw.ac.at/?id=${encodeURIComponent(
-              cleanedSource
-            )}&mode=images`;
-            manifests.push(manifestUrl);
-            console.log(`Page ${index}: pb.id=${el.id}, source=${cleanedSource}`);
-            console.log(`Generated manifest URL: ${manifestUrl}`);
+          let infoJsonUrl = '';
+          if (cleanedSource.startsWith('https://hdl.handle.net/')) {
+            // For handle.net PIDs, use @format=image%2Fjson
+            infoJsonUrl = `${cleanedSource}@format=image%2Fjson`;
+          } else if (cleanedSource.startsWith('https://id.acdh.oeaw.ac.at/')) {
+            // For id.acdh.oeaw.ac.at, use ?format=image%2Fjson
+            infoJsonUrl = `${cleanedSource}?format=image%2Fjson`;
           } else {
-            console.warn(`Invalid source URL format for element ${el.id}:`, imgSource);
+            // Fallback: try ?format=image%2Fjson
+            infoJsonUrl = `${cleanedSource}?format=image%2Fjson`;
+          }
+          tileSources.push(infoJsonUrl);
+          if (index === 0) {
+            console.log(`FIRST pb element: pb.id=${el.id}, source=${cleanedSource}`);
+            console.log(`FIRST info.json URL: ${infoJsonUrl}`);
           }
         } else {
           console.warn("No 'source' attribute found for element:", el);
         }
       });
-      console.log(`Total manifests: ${manifests.length}, Total pb elements: ${pbElements.length}`);
-      
+      console.log(`Total tile sources: ${tileSources.length}, Total pb elements: ${pbElements.length}`);
       // Log first few manifest URLs for debugging
-      console.log("First 3 manifest URLs:");
-      manifests.slice(0, 3).forEach((url, index) => {
+      console.log("First 3 tile sources:");
+      tileSources.slice(0, 3).forEach((url, index) => {
         console.log(`  ${index + 1}: ${url}`);
       });
-      
-      return manifests;
+      // Diagnostic: log all pb ids and manifest URLs for first 5 pages
+      for (let i = 0; i < Math.min(5, pbElements.length); i++) {
+        console.log(`pb[${i}] id: ${pbElements[i].id}, tileSource: ${tileSources[i]}`);
+      }
+      return tileSources;
     }
 
     async loadAllManifests() {
@@ -542,7 +678,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (img === undefined || img === null) {
           return this.createPlaceholderTileSource(idx);
         }
-        
         // Direct image URL handling
         if (typeof img === 'string') {
           if (img.startsWith('placeholder:')) {
@@ -551,17 +686,17 @@ document.addEventListener("DOMContentLoaded", function () {
           // Ensure the URL is completely unique by adding a timestamp and random ID
           const baseUrl = img.split('?')[0];
           return `${baseUrl}?idx=${idx}&t=${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
-        } 
+        }
         // Object with URL property
         else if (img.url) {
           const baseUrl = img.url.split('?')[0];
           return `${baseUrl}?idx=${idx}&t=${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
-        } 
+        }
         // IIIF objects with @id
         else if (img['@id']) {
           const baseUrl = img['@id'].split('?')[0];
           return `${baseUrl}?idx=${idx}&t=${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
-        } 
+        }
         // Use existing tile source objects, but ensure they have unique IDs
         else if (img.tileSource) {
           return {
@@ -575,60 +710,74 @@ document.addEventListener("DOMContentLoaded", function () {
           return this.createPlaceholderTileSource(idx);
         }
       });
-      
+
       // Configure OpenSeadragon with sequence mode
       this.viewer.sequenceMode = true;
-      
+
       // Set reference strip configuration
       this.viewer.referenceStripScroll = 'horizontal';
       this.viewer.showReferenceStrip = true;
-      
+
       // Store the processed images for reference
       this.validImageTileSources = processedImages;
-      
+
       // Close the viewer first if it's already open
       if (this.viewer.isOpen()) {
         this.viewer.close();
       }
-      
+
       // Save the target index before opening
       const targetIndex = this.currentIndex;
-      console.log(`Target index before opening: ${targetIndex}`);
-      
+
       // Open with the array of processed image URLs and go directly to the target page
       this.viewer.openWithOptions({
         tileSources: processedImages,
-        initialPage: targetIndex
+        initialPage: Math.max(0, targetIndex)
       });
-      
-      console.log(`✅ Opened viewer with ${processedImages.length} images, current page: ${targetIndex}`);
-      
+
       // Call diagnostic function to verify image sequence
-      setTimeout(() => this.checkCurrentImage(), 500);
-      
-      // Make sure we're on the right page
+      setTimeout(() => this.checkCurrentImage(), 100);
+
+      // Always force navigation to the correct page, even for page 0
       setTimeout(() => {
-        // Force-set the page directly
-        if (this.viewer.currentPage() !== targetIndex) {
-          console.log(`Current page ${this.viewer.currentPage()} doesn't match target ${targetIndex}, forcing navigation`);
-          this.viewer.goToPage(targetIndex);
-        }
-        
-        // Update text content to match the page
-        this.showOnlyCurrentPage(targetIndex);
-        
+        const tryForcePage = (attempt = 0) => {
+          const currentOsdPage = this.viewer.currentPage();
+          if (currentOsdPage !== targetIndex) {
+            this.viewer.goToPage(targetIndex);
+            // Double-check after a short delay, up to 3 attempts
+            if (attempt < 2) {
+              setTimeout(() => tryForcePage(attempt + 1), 60);
+            } else {
+              // As a last resort, use currentPage setter if available
+              if (this.viewer.currentPage && typeof this.viewer.currentPage === 'function') {
+                try {
+                  this.viewer.currentPage(targetIndex);
+                } catch (e) {
+                  // ...existing code...
+                }
+              }
+              // Always sync transcript to actual OSD page
+              const finalPage = this.viewer.currentPage();
+              console.log(`[SYNC] Final OSD page: ${finalPage}, targetIndex: ${targetIndex}`);
+              this.showOnlyCurrentPage(finalPage);
+            }
+          } else {
+            // Always sync transcript to actual OSD page
+            console.log(`[SYNC] OSD page already correct: ${currentOsdPage}, targetIndex: ${targetIndex}`);
+            this.showOnlyCurrentPage(currentOsdPage);
+          }
+        };
+        tryForcePage(0);
+
         // Handle any stored hash after navigation
         if (this.hashToProcess) {
           const targetElement = document.getElementById(this.hashToProcess);
           if (targetElement) {
-            console.log(`Scrolling to element with ID: ${this.hashToProcess}`);
             setTimeout(() => {
               targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
               targetElement.classList.add('highlight-element');
               setTimeout(() => targetElement.classList.remove('highlight-element'), 3000);
             }, 300);
-          } else {
-            console.log(`Element with ID ${this.hashToProcess} not found`);
           }
           this.hashToProcess = null;
         }
@@ -646,90 +795,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         
         const data = await response.json();
-        const images = data.images || [];
         
-        if (images.length === 0) {
-          console.warn("No valid images found in manifest:", manifestUrl);
-          this.createPlaceholderImage();
-          return;
-        }
-
-        // Process all images - similar to what iiif.js does
-        const optimizedImages = images.map(image => {
-          if (typeof image === 'string') {
-            return image.replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, '/full/!600,600/0/default.$1');
-          }
-          return image;
-        });
-
-        console.log(`Found ${optimizedImages.length} images in manifest`);
-
-        // Store the current index to use after opening
-        const targetIndex = this.currentIndex;
+        // The response should be the info.json content directly
+        this.viewer.open(data);
         
-        // Set the tile sources in the viewer
-        this.viewer.tileSources = optimizedImages;
-        
-        // Track if this is the initial load
-        const isInitialLoad = !this.viewer.isOpen();
-        console.log(`Is initial load: ${isInitialLoad}`);
-        
-        // Open the current image
-        this.viewer.open(optimizedImages);
-        
-        // For initial load, we need special handling to ensure we start on the correct page
-        if (isInitialLoad && targetIndex > 0) {
-          console.log(`Initial load - will go directly to page ${targetIndex}`);
-          // Force a direct page change without animation
-          setTimeout(() => {
-            this.viewer.goToPage(targetIndex);
-            console.log(`Navigated to initial page: ${targetIndex}`);
-            // Force update of text display
-            this.showOnlyCurrentPage(targetIndex);
-            
-            // Handle hash processing if needed
-            if (this.hashToProcess) {
-              const targetElement = document.getElementById(this.hashToProcess);
-              if (targetElement) {
-                console.log(`Scrolling to element with id: ${this.hashToProcess}`);
-                setTimeout(() => {
-                  targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  targetElement.classList.add('highlight-element');
-                  setTimeout(() => targetElement.classList.remove('highlight-element'), 3000);
-                }, 100);
-              }
-            }
-          }, 100);
-        } else {
-          // After opening, ensure we're at the correct page index
-          setTimeout(() => {
-            if (targetIndex > 0) {
-              console.log(`Navigating to correct page: ${targetIndex}`);
-              this.viewer.goToPage(targetIndex);
-            }
-            
-            // Handle hash processing if needed
-            if (this.hashToProcess) {
-              const targetElement = document.getElementById(this.hashToProcess);
-              if (targetElement) {
-                console.log(`Scrolling to element with id: ${this.hashToProcess}`);
-                setTimeout(() => {
-                  targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  targetElement.classList.add('highlight-element');
-                  setTimeout(() => targetElement.classList.remove('highlight-element'), 3000);
-                }, 300);
-              }
-              this.hashToProcess = null;
-            }
-            
-            // Refresh navigation controls
-            this.refreshNavigationControls();
-          }, 200);
-        }
-        
-        console.log(`✅ Images loaded successfully`);
+        console.log(`✅ Image loaded successfully for index ${this.currentIndex}`);
       } catch (err) {
-        console.error("Error loading IIIF manifest:", err);
+        console.error("Error loading IIIF info.json:", err);
         this.createPlaceholderImage();
       }
     }
@@ -1087,58 +1159,54 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     initializeFromHash() {
-      
       const hash = window.location.hash.substring(1);
       if (!hash) {
-        // If no hash, ensure we start at index 0
+        // Always start at index 0 (first page) if no hash
         this.currentIndex = 0;
+        this.hashToProcess = null;
         return;
       }
 
       console.log(`Processing hash: ${hash}`);
-      
-      // For hashes like facs_4_rRTYy_25_line_006, we need to extract the page number
-      // First, try to extract the number directly from the hash format
+      // For hashes like facs_4_rRTYy_25_line_006, extract the page number
       const pageParts = hash.match(/facs_(\d+)/);
       if (pageParts && pageParts[1]) {
         const pageNum = parseInt(pageParts[1], 10);
         if (!isNaN(pageNum) && pageNum > 0) {
-          // Convert 1-based page number to 0-based index
+          // Always use pageNum - 1 for zero-based index
           this.currentIndex = pageNum - 1;
-          console.log(`Determined page index ${this.currentIndex} from hash number ${pageNum}`);
+          // Clamp to valid range
+          if (this.currentIndex < 0) this.currentIndex = 0;
+          if (this.currentIndex >= this.iiifManifests.length) this.currentIndex = this.iiifManifests.length - 1;
+          console.log(`⚠️ FIXED INDEXING: Determined page index ${this.currentIndex} from hash number ${pageNum}`);
           this.hashToProcess = hash;
           return;
         }
       }
-      
+
       // If direct extraction didn't work, fall back to the element ID method
       const baseId = hash.split("_").slice(0, 2).join("_");
       console.log(`Base ID extracted from hash: ${baseId}`);
       const targetElement = document.getElementById(hash);
 
       if (targetElement) {
-        // First determine the correct page index
+        // Find correct page index by matching pb element id
         const pbElements = document.getElementsByClassName("pb");
         let foundIndex = -1;
-
         Array.from(pbElements).forEach((element, index) => {
-          console.log(`Checking pb element ${index}: ${element.id}`);
           if (element.id === baseId) {
             foundIndex = index;
-            console.log(`Found matching pb element at index ${index}`);
           }
         });
-
-        // Set currentIndex to the found index, or 0 if not found
         this.currentIndex = foundIndex >= 0 ? foundIndex : 0;
-        console.log(`Setting current index to ${this.currentIndex}`);
-        
-        // Store the hash to scroll to the element after the page loads
+        // Clamp to valid range
+        if (this.currentIndex < 0) this.currentIndex = 0;
+        if (this.currentIndex >= this.iiifManifests.length) this.currentIndex = this.iiifManifests.length - 1;
         this.hashToProcess = hash;
       } else {
-        console.log(`No element found with ID ${hash}, defaulting to page 0`);
         // If hash exists but element not found, start at index 0
         this.currentIndex = 0;
+        this.hashToProcess = null;
       }
     }
 
@@ -1146,89 +1214,116 @@ document.addEventListener("DOMContentLoaded", function () {
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlString, "text/xml");
       const hash = window.location.hash.substring(1);
-
       if (!hash) return [];
-
+      console.log(`📌 Parsing XML for hash: ${hash}`);
       const baseId = hash.split("_").slice(0, 2).join("_");
+      console.log(`📌 Base ID: ${baseId}`);
       const surfaces = xmlDoc.getElementsByTagNameNS("*", "surface");
-
+      console.log(`📌 Found ${surfaces.length} surfaces in XML`);
       let targetSurface = null;
       for (let surface of surfaces) {
-        if (
-          surface.getAttributeNS(
-            "http://www.w3.org/XML/1998/namespace",
-            "id"
-          ) === baseId
-        ) {
+        const surfaceId = surface.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id");
+        console.log(`📌 Checking surface: ${surfaceId} vs ${baseId}`);
+        if (surfaceId === baseId) {
           targetSurface = surface;
+          console.log(`📌 Found matching surface: ${surfaceId}`);
           break;
         }
       }
-
-      if (!targetSurface) return [];
-
+      if (!targetSurface) {
+        console.log(`❌ No matching surface found for baseId: ${baseId}`);
+        return [];
+      }
+      // Try to get region bounding box from surface attributes (ulx, uly, lrx, lry, or similar)
+      let regionBox = null;
+      const ulx = parseInt(targetSurface.getAttribute("ulx"), 10);
+      const uly = parseInt(targetSurface.getAttribute("uly"), 10);
+      const lrx = parseInt(targetSurface.getAttribute("lrx"), 10);
+      const lry = parseInt(targetSurface.getAttribute("lry"), 10);
+      if (!isNaN(ulx) && !isNaN(uly) && !isNaN(lrx) && !isNaN(lry)) {
+        regionBox = {
+          left: ulx,
+          top: uly,
+          width: lrx - ulx,
+          height: lry - uly
+        };
+        console.log(`📌 Found regionBox from surface:`, regionBox);
+      }
+      console.log(`📌 Looking for zones in surface: ${baseId}`);
       const zones = targetSurface.getElementsByTagNameNS("*", "zone");
+      console.log(`📌 Found ${zones.length} zones in surface`);
       let targetZone = null;
-
       // Find zone by hash ID
       for (let zone of zones) {
-        if (
-          zone.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id") ===
-          hash
-        ) {
+        const zoneId = zone.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id");
+        console.log(`📌 Checking zone: ${zoneId} vs ${hash}`);
+        if (zoneId === hash) {
           targetZone = zone;
+          console.log(`📌 Found matching zone by direct ID: ${zoneId}`);
           break;
         }
       }
-
       // Fallback: find zone referenced by lb element
       if (!targetZone) {
+        console.log(`📌 Trying fallback: looking for lb element with facs='#${hash}'`);
         const lbElement = xmlDoc.querySelector(`lb[facs='#${hash}']`);
         if (lbElement) {
+          console.log(`📌 Found lb element with facs='#${hash}'`);
           const referencedZoneId = lbElement.getAttribute("facs").substring(1);
+          console.log(`📌 Referenced zone ID: ${referencedZoneId}`);
           for (let zone of zones) {
-            if (
-              zone.getAttributeNS(
-                "http://www.w3.org/XML/1998/namespace",
-                "id"
-              ) === referencedZoneId
-            ) {
+            const zoneId = zone.getAttributeNS("http://www.w3.org/XML/1998/namespace", "id");
+            console.log(`📌 Checking zone: ${zoneId} vs ${referencedZoneId}`);
+            if (zoneId === referencedZoneId) {
               targetZone = zone;
+              console.log(`📌 Found matching zone by reference: ${zoneId}`);
               break;
             }
           }
+        } else {
+          console.log(`❌ No lb element found with facs='#${hash}'`);
         }
       }
-
-      if (!targetZone) return [];
-
-      const points = targetZone
-        .getAttribute("points")
+      if (!targetZone) {
+        console.log(`❌ No matching zone found for ID: ${hash}`);
+        return [];
+      }
+      console.log(`📌 Getting points from zone`);
+      const pointsStr = targetZone.getAttribute("points");
+      console.log(`📌 Raw points string: ${pointsStr}`);
+      if (!pointsStr) {
+        console.log(`❌ No points attribute found in zone`);
+        return [];
+      }
+      const points = pointsStr
         .split(" ")
         .map((point) => {
           const [x, y] = point.split(",");
           return { x: parseInt(x, 10), y: parseInt(y, 10) };
         });
-
-      return [{ id: hash, points }];
+      console.log(`📌 Parsed ${points.length} points:`, points);
+      // Pass regionBox along with points for normalization
+      return [{ id: hash, points, regionBox }];
     }
 
     addZoneOverlays(zoneData) {
+      console.log(`🔍 Adding zone overlays for ${zoneData.length} zones`);
       if (!zoneData.length) return;
-
       this.viewer.clearOverlays();
       this.addSurfaceOverlay();
-
       zoneData.forEach((zone) => {
+        console.log(`🔍 Processing zone: ${zone.id}`);
         const points = zone.points;
-        const scaledCoords = this.calculateScaledCoordinates(points);
-
+        const regionBox = zone.regionBox || null;
+        console.log(`🔍 Zone points:`, points);
+        const scaledCoords = this.calculateScaledCoordinates(points, regionBox);
+        console.log(`🔍 Scaled coordinates:`, scaledCoords);
         const overlay = document.createElement("div");
         overlay.style.border = "2px solid rgba(0,255,0,0.5)";
         overlay.style.background = "rgba(0,255,0,0.2)";
         overlay.style.pointerEvents = "none";
         overlay.style.position = "absolute";
-
+        console.log(`🔍 Adding overlay at:`, scaledCoords);
         this.viewer.addOverlay({
           element: overlay,
           location: new OpenSeadragon.Rect(
@@ -1238,34 +1333,47 @@ document.addEventListener("DOMContentLoaded", function () {
             scaledCoords.height
           ),
         });
+        console.log(`✅ Overlay added for zone: ${zone.id}`);
       });
     }
 
-    calculateScaledCoordinates(points) {
-      const scaleFactor = 2000; // Base scale factor
-
-      let scaledCoords = {
-        x: Math.min(...points.map((p) => p.x)) / scaleFactor,
-        y: Math.min(...points.map((p) => p.y)) / scaleFactor,
-        maxX: Math.max(...points.map((p) => p.x)) / scaleFactor,
-        maxY: Math.max(...points.map((p) => p.y)) / scaleFactor,
-      };
-
-      // Apply special scaling for large coordinates
-      const maxX = Math.max(...points.map((p) => p.x));
-      if (maxX > 2500) {
-        scaledCoords.x *= 0.6;
-        scaledCoords.maxX *= 0.6;
-        scaledCoords.y *= 0.59;
-        scaledCoords.maxY *= 0.59;
+    calculateScaledCoordinates(points, regionBox = null) {
+      // Use regionBox for normalization if provided, otherwise use full image dimensions
+      let imageWidth = 2000;
+      let imageHeight = 2000;
+      let offsetX = 0;
+      let offsetY = 0;
+      if (regionBox && regionBox.width && regionBox.height) {
+        imageWidth = regionBox.width;
+        imageHeight = regionBox.height;
+        offsetX = regionBox.left || 0;
+        offsetY = regionBox.top || 0;
+      } else if (this.currentImageDimensions && this.currentImageDimensions.x && this.currentImageDimensions.y) {
+        imageWidth = this.currentImageDimensions.x;
+        imageHeight = this.currentImageDimensions.y;
+      } else if (this.viewer && this.viewer.world && this.viewer.world.getItemCount() > 0) {
+        const currentItem = this.viewer.world.getItemAt(0);
+        if (currentItem && typeof currentItem.getContentSize === 'function') {
+          const size = currentItem.getContentSize();
+          imageWidth = size.x;
+          imageHeight = size.y;
+        }
       }
-
-      return {
-        x: scaledCoords.x,
-        y: scaledCoords.y,
-        width: scaledCoords.maxX - scaledCoords.x,
-        height: scaledCoords.maxY - scaledCoords.y,
+      // Calculate bounding box from points
+      const xs = points.map((p) => p.x);
+      const ys = points.map((p) => p.y);
+      const left = Math.min(...xs) - offsetX;
+      const top = Math.min(...ys) - offsetY;
+      const width = Math.max(...xs) - Math.min(...xs);
+      const height = Math.max(...ys) - Math.min(...ys);
+      const result = {
+        x: left / imageWidth,
+        y: top / imageHeight,
+        width: width / imageWidth,
+        height: height / imageHeight,
       };
+      console.log(`📊 Final result:`, result);
+      return result;
     }
 
     async loadAndParseXML(xmlFilePath) {
@@ -1292,8 +1400,16 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
         
+        console.log(`📄 XML file loaded, length: ${xmlString.length} chars`);
         const zoneData = this.parseZonesFromXML(xmlString);
-        this.addZoneOverlays(zoneData);
+        console.log(`📄 Zone data parsed:`, zoneData);
+        
+        if (zoneData.length > 0) {
+          console.log(`📄 Adding overlays for ${zoneData.length} zones`);
+          this.addZoneOverlays(zoneData);
+        } else {
+          console.log(`📄 No zones found in XML for current hash`);
+        }
       } catch (err) {
         console.error("Error loading XML file:", err);
         // Don't let XML loading errors break the main functionality
@@ -1335,90 +1451,97 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add a diagnostic method to check the current state of image loading
     checkCurrentImage() {
       console.log("🔍 Checking current image state:");
-      console.log(`Current index: ${this.currentIndex}`);
+      console.log(`Current index tracking: ${this.currentIndex}`);
+      console.log(`Current OSD page(): ${this.viewer.currentPage()}`);
       console.log(`Number of valid image tile sources: ${this.validImageTileSources?.length || 0}`);
       
-      if (this.viewer.world.getItemCount() > 0) {
-        const currentItem = this.viewer.world.getItemAt(0);
-        console.log("Current OSD item:", currentItem);
+      // CRITICAL FIX: There's a mismatch between OSD's page numbering and our index tracking
+      // Always force page synchronization to match our expected index
+      if (this.viewer.currentPage() !== this.currentIndex) {
+        console.warn(`⚠️ Index mismatch detected! Our index: ${this.currentIndex}, OSD page: ${this.viewer.currentPage()}`);
         
-        // Print more detailed source information
-        if (currentItem.source) {
-          if (typeof currentItem.source === 'string') {
-            console.log("Current source (string):", currentItem.source);
-          } else if (currentItem.source.url) {
-            console.log("Current source URL:", currentItem.source.url);
-          } else {
-            console.log("Current source (object):", JSON.stringify(currentItem.source).substring(0, 200));
-          }
-        }
+        // Force navigation to our expected page
+        console.log(`🔄 Forcing OSD page to match our index (${this.currentIndex})`);
+        this.viewer.goToPage(this.currentIndex);
         
-        // Check if we have the expected source for this index
-        if (this.validImageTileSources && this.validImageTileSources.length > this.currentIndex) {
-          const expectedSource = this.validImageTileSources[this.currentIndex];
-          
-          if (typeof expectedSource === 'string') {
-            console.log("Expected source (string):", expectedSource);
-          } else if (expectedSource.url) {
-            console.log("Expected source URL:", expectedSource.url);
-          } else {
-            console.log("Expected source (object):", JSON.stringify(expectedSource).substring(0, 200));
+        // Double-check after a short delay to ensure page change took effect
+        setTimeout(() => {
+          if (this.viewer.currentPage() !== this.currentIndex) {
+            console.warn(`⚠️ Page alignment failed! Using direct method`);
+            // You may want to add code here to force page alignment if needed
           }
-          
-          // Compare sources in detail
-          let sourcesMatch = false;
-          
-          if (typeof currentItem.source === 'string' && typeof expectedSource === 'string') {
-            sourcesMatch = currentItem.source === expectedSource;
-          } else if (currentItem.source.url && expectedSource.url) {
-            sourcesMatch = currentItem.source.url === expectedSource.url;
-          } else {
-            // Compare JSON representations as fallback
-            sourcesMatch = JSON.stringify(currentItem.source) === JSON.stringify(expectedSource);
-          }
-          
-          if (!sourcesMatch) {
-            console.warn("⚠️ Current image doesn't match expected image for this index!");
-            
-            // Print the unique reference ID of the sequence
-            if (this.viewer.sequence) {
-              console.log("Current sequence info:", {
-                currentPage: this.viewer.currentPage(),
-                sequenceLength: this.viewer.tileSources?.length || 0,
-                sequenceMode: this.viewer.sequenceMode
-              });
-            }
-          } else {
-            console.log("✅ Current image matches expected image");
-          }
-        }
+        }, 50);
       } else {
-        console.warn("No items in OSD world");
-      }
-      
-      // Print the reference strip state - this is critical for debugging the thumbnails
-      console.log("Reference strip state:");
-      
-      const referenceStrip = document.querySelector('.openseadragon-referencestrip');
-      if (referenceStrip) {
-        const thumbnails = referenceStrip.querySelectorAll('.referencestrip-scroll-bar > .referencestrip-preview');
-        console.log(`Reference strip found with ${thumbnails.length} thumbnails`);
-        
-        // Check first 3 thumbnails
-        for (let i = 0; i < Math.min(3, thumbnails.length); i++) {
-          const thumbImg = thumbnails[i].querySelector('img');
-          if (thumbImg) {
-            console.log(`Thumbnail ${i} source: ${thumbImg.src.substring(0, 100)}...`);
-          }
-        }
-      } else {
-        console.log("No reference strip found");
+        console.log("✅ Current image matches expected image");
       }
     }
+    // ...existing code...
     
     removeHoverOverlay() {
       const prev = document.getElementById("osd-hover-overlay");
       if (prev) this.viewer.removeOverlay(prev);
+    }
+    
+    showCoordinateOverlay(x, y) {
+      // Remove any existing coordinate overlay
+      const existing = document.getElementById("coordinate-click-overlay");
+      if (existing) this.viewer.removeOverlay(existing);
+      
+      // Create new coordinate overlay
+      const overlay = document.createElement("div");
+      overlay.id = "coordinate-click-overlay";
+      overlay.style.position = "absolute";
+      overlay.style.pointerEvents = "none";
+      overlay.style.zIndex = "100000";
+      overlay.style.background = "rgba(255, 0, 0, 0.8)";
+      overlay.style.color = "white";
+      overlay.style.padding = "4px 8px";
+      overlay.style.borderRadius = "4px";
+      overlay.style.fontSize = "12px";
+      overlay.style.fontWeight = "bold";
+      overlay.innerHTML = `(${Math.round(x)}, ${Math.round(y)})`;
+      
+      // Convert image coordinates to normalized coordinates for overlay
+      if (this.viewer.world.getItemCount() > 0) {
+        const currentImage = this.viewer.world.getItemAt(0);
+        const imageSize = currentImage.getContentSize();
+        const normalizedX = x / imageSize.x;
+        const normalizedY = y / imageSize.y;
+        
+        // Place overlay at clicked position (as a point)
+        this.viewer.addOverlay({
+          element: overlay,
+          location: new OpenSeadragon.Point(normalizedX, normalizedY)
+        });
+        
+        // Auto-remove after 3 seconds
+        setTimeout(() => {
+          const overlayToRemove = document.getElementById("coordinate-click-overlay");
+          if (overlayToRemove) this.viewer.removeOverlay(overlayToRemove);
+        }, 3000);
+      }
+    }
+    
+    updateMouseCoordinateDisplay(x, y) {
+      // Create or update a persistent coordinate display
+      let display = document.getElementById("mouse-coordinate-display");
+      if (!display) {
+        display = document.createElement("div");
+        display.id = "mouse-coordinate-display";
+        display.style.position = "fixed";
+        display.style.top = "10px";
+        display.style.right = "10px";
+        display.style.background = "rgba(0, 0, 0, 0.8)";
+        display.style.color = "white";
+        display.style.padding = "4px 8px";
+        display.style.borderRadius = "4px";
+        display.style.fontSize = "12px";
+        display.style.fontWeight = "bold";
+        display.style.zIndex = "100001";
+        display.style.pointerEvents = "none";
+        document.body.appendChild(display);
+      }
+      display.innerHTML = `Mouse: (${Math.round(x)}, ${Math.round(y)})`;
     }
     
     refreshOverlays() {
@@ -1443,6 +1566,15 @@ document.addEventListener("DOMContentLoaded", function () {
           
           // Re-setup hover overlays
           this.setupHoverOverlays(imageWidth, imageHeight);
+          
+          // Check if we need to process a hash for highlighting
+          const hash = window.location.hash.substring(1);
+          if (hash) {
+            console.log(`🔄 refreshOverlays: Processing hash: ${hash}`);
+            const xmlPath = window.location.pathname.replace(".html", ".xml");
+            console.log(`🔄 refreshOverlays: XML path: ${xmlPath}`);
+            this.loadAndParseXML(xmlPath);
+          }
           
           console.log("✅ Overlays refreshed with image dimensions:", imageWidth, "×", imageHeight);
         }
@@ -1477,42 +1609,50 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     showOnlyCurrentPage(currentPageIndex) {
-      console.log(`📄 showOnlyCurrentPage called with index: ${currentPageIndex}`);
+      // Clamp index to valid range
+      const pbElements = document.getElementsByClassName("pb");
+      const pbElementsArray = Array.from(pbElements);
+      const maxIndex = pbElementsArray.length - 1;
+      let idx = currentPageIndex;
+      if (idx < 0) idx = 0;
+      if (idx > maxIndex) idx = maxIndex;
+      console.log(`📄 showOnlyCurrentPage called with index: ${idx}`);
+      // After showing transcript, force OSD viewer to correct page
+      if (this.viewer && typeof this.viewer.goToPage === 'function') {
+        if (this.viewer.currentPage() !== idx) {
+          console.warn(`Forcing OSD viewer to page ${idx} (was ${this.viewer.currentPage()})`);
+          this.viewer.goToPage(idx);
+        } else {
+          console.log(`OSD viewer already at correct page ${idx}`);
+        }
+        // Diagnostic: log pb id and manifest URL for this page
+        const manifestUrl = this.iiifManifests && this.iiifManifests[idx] ? this.iiifManifests[idx] : '(none)';
+        console.log(`Transcript pb id for page ${idx}:`, pbElementsArray[idx]?.id || '(none)');
+        console.log(`Manifest URL for page ${idx}:`, manifestUrl);
+      }
       const transcriptContainer = document.querySelector("#transcript");
       if (!transcriptContainer) {
         console.log('❌ No transcript container found');
         return;
       }
-
-      const pbElements = document.getElementsByClassName("pb");
-      const pbElementsArray = Array.from(pbElements);
-      
       if (pbElementsArray.length === 0) {
         console.log('❌ No page break elements found');
         return;
       }
-
       console.log(`📄 Total pb elements: ${pbElementsArray.length}`);
-
       // Hide all horizontal rules to prevent visual artifacts
       transcriptContainer.querySelectorAll('hr').forEach(hr => hr.style.display = 'none');
-
       // Remove 'current' from all line break elements to reset the state
       transcriptContainer.querySelectorAll('br.lb').forEach(br => br.classList.remove('current'));
-
-      const currentPbElement = pbElementsArray[currentPageIndex];
-      const nextPbElement = pbElementsArray[currentPageIndex + 1];
-
+      const currentPbElement = pbElementsArray[idx];
+      const nextPbElement = pbElementsArray[idx + 1];
       if (!currentPbElement) {
-        console.log('❌ Current page element not found for index:', currentPageIndex);
+        console.log('❌ Current page element not found for index:', idx);
         return;
       }
-
-      console.log(`✅ Showing page ${currentPageIndex + 1}/${pbElementsArray.length}, current pb.id=${currentPbElement.id}, next pb:`, nextPbElement?.id || 'none');
-
+      console.log(`✅ Showing page ${idx + 1}/${pbElementsArray.length}, current pb.id=${currentPbElement.id}, next pb:`, nextPbElement?.id || 'none');
       // 1. Get all elements within transcript container in document order
       const allElements = Array.from(transcriptContainer.querySelectorAll('*'));
-      
       // 2. Find the start and end markers in the flat list
       const startIndex = allElements.indexOf(currentPbElement);
       

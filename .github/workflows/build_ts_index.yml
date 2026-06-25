@@ -16,6 +16,10 @@ jobs:
     steps:
     - name: Perform Checkout
       uses: actions/checkout@v7
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcairo2-dev pkg-config
     - name: set up uv (Python)
       uses: astral-sh/setup-uv@v8.1.0
     - name: Install Python dependencies

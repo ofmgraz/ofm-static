@@ -10,5 +10,5 @@ dependencies = [
     "rlPyCairo",
     "acdh-cfts-pyutils",
     "meson",
-    "cairo-lang"                                                                                                                                                                                                                                                               
+    "cairo-lang"
 ]

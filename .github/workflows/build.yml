@@ -36,7 +36,6 @@ jobs:
         run: pyscripts/get_initials.py
       - name: Generate Imprint
         run: ./shellscripts/dl_imprint.sh
-      - name: add attributes and denormalize indices
       - name: Build
         run: ant
       - name: Update Favicons

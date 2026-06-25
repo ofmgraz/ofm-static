@@ -1,0 +1,14 @@
+[project]
+name = "hsl-app"
+version = "0.1.0"
+description = "Hanslick Online: hsl-app"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [ 
+    "acdh-tei-pyutils>=2.3.0",
+    "favicons",
+    "rlPyCairo",
+    "acdh-cfts-pyutils",
+    "meson",
+    "cairo-lang"                                                                                                                                                                                                                                                               
+]

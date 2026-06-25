@@ -1,6 +1,0 @@
-acdh-tei-pyutils
-favicons
-rlPyCairo
-acdh-cfts-pyutils
-meson
-cairo-lang

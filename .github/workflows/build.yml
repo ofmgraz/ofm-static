@@ -3,41 +3,60 @@ name: Build and publish
 on: 
   [push, workflow_dispatch]
 
+
+
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build_pages:
-    name: Publish Edition as GitHub Pages Website
+    name:  Build HTML pages
     runs-on: ubuntu-latest
     env:
       ANT_OPTS: -Xmx5g
+      TYPESENSE_HOST: typesense.acdh-dev.oeaw.ac.at
+      TYPESENSE_PORT: 443 
+      TYPESENSE_PROTOCOL: https
       TYPESENSE_API_KEY: ${{secrets.TYPESENSE_API_KEY}}
+
     steps:
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.10' 
-    - name: Perform Checkout
-      uses: actions/checkout@v4
-    - name: Install Java and Ant
-      run: |
-        sudo apt-get update && sudo apt-get install openjdk-11-jre-headless ant libcairo2-dev -y
-    - name: Install Saxon
-      run: shellscripts/script.sh
-    - name: Install Python dependencies
-      run: pip install -r requirements.txt
-    - name: Fetch data
-      run: shellscripts/fetch_data.sh
-    - name: Repair broken xml:ids
-      run: shellscripts/mendxml.sh
-    - name: Generate initals indices
-      run: pyscripts/get_initials.py
-    - name: Build
-      run: |
-        ant
-    - name: Update Favicons
-      run: pyscripts/update_favicons.py
-    - name: Update Translations
-      run: pyscripts/make_translations.py
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{secrets.GITHUB_TOKEN}}
-        publish_dir: ./html
+      - name: Perform Checkout
+        uses: actions/checkout@v7
+      - name: set up uv (Python)
+        uses: astral-sh/setup-uv@v8.1.0
+      - name: Install Python dependencies
+        run: |
+          uv sync
+          echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
+      - name: Fetch data
+        run: ./shellscripts/fetch_data.sh
+      - name: Fix broken XML
+        run: ./shellscripts/mendxml.sh
+      - name: Generate initals indices
+        run: pyscripts/get_initials.py
+      - name: Generate Imprint
+        run: ./shellscripts/dl_imprint.sh
+      - name: add attributes and denormalize indices
+      - name: Build
+        run: ant
+      - name: Update Favicons
+        run: pyscripts/update_favicons.py
+      - name: Update Translations
+        run: pyscripts/make_translations.py
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          path: './html'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

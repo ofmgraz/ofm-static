@@ -18,10 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ANT_OPTS: -Xmx5g
-      TYPESENSE_HOST: typesense.acdh-dev.oeaw.ac.at
-      TYPESENSE_PORT: 443 
-      TYPESENSE_PROTOCOL: https
-      TYPESENSE_API_KEY: ${{secrets.TYPESENSE_API_KEY}}
 
     steps:
       - name: Perform Checkout

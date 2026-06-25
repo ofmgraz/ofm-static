@@ -12,7 +12,7 @@ jobs:
       TYPESENSE_API_KEY: ${{secrets.TYPESENSE_API_KEY}}
       TYPESENSE_HOST: typesense.acdh-dev.oeaw.ac.at
       TYPESENSE_PORT: 443
-       TYPESENSE_PROTOCOL: https
+      TYPESENSE_PROTOCOL: https
     steps:
     - name: Perform Checkout
       uses: actions/checkout@v7

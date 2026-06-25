@@ -36,9 +36,15 @@ current_schema = {
         {"name": "liturgy", "type": "string", "facet": True, "optional": True},
         {"name": "provenance", "type": "string[]", "facet": True, "optional": True},
         {"name": "printer", "type": "string", "facet": True, "optional": True},
-        {"name": "bildid", "type": "string", "facet": False, "optiona": False },
+        {"name": "bildid", "type": "string", "facet": False, "optiona": False},
     ],
+    "metadata": {
+        "owners": ["Fernando Sanz-Lázaro"],
+        "description": "Used for Register of https://ofm-graz.acdh.oeaw.ac.at",
+        "service_ids": [22275]
+    }
 }
+
 
 try:
     client.collections["ofm_graz"].delete()
@@ -92,6 +98,7 @@ def prepare_text(text):
     text = re.sub('\-\s*\n\s*', '', extract_fulltext(text))
     return ' '.join(text.split())
 
+
 duplicates = {}
 contents = nocontents = []
 records = []
@@ -123,7 +130,7 @@ for xml_filepath in tqdm(files, total=len(files)):
             for child in context_elem:
                 if child.tail:
                     context += ' ' + ' '.join(child.tail.split())
-            
+
             for p_aragraph in body:
                 #ft = prepare_text(p_aragraph)
                 ft = p_aragraph.tail.strip()
@@ -145,7 +152,7 @@ for xml_filepath in tqdm(files, total=len(files)):
                          "liturgy": liturgy,
                          "printer": printer,
                          "form": form,
-                         "bildid": v ,
+                         "bildid": v,
                          "context": context,
                          }
                     try:

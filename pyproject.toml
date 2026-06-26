@@ -1,7 +1,7 @@
 [project]
-name = "hsl-app"
+name = "ofm-static"
 version = "0.1.0"
-description = "Hanslick Online: hsl-app"
+description = "OFM Graz Chantbooks: ofm-static"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [ 

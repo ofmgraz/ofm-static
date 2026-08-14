@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         prefixUrl:
           "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
         visibilityRatio: 1,
-        sequenceMode: true,
+        sequenceMode: false,
         showNavigator: false,
         showSequenceControl: true,
         showNavigationControl: true,
@@ -310,17 +310,11 @@ document.addEventListener("DOMContentLoaded", function () {
       Array.from(pbElements).forEach((el, index) => {
         const imgSource = el.getAttribute("source");
         if (imgSource) {
-          // Clean the imgSource - remove duplicate URLs and trim whitespace
-          const cleanedSource = imgSource.trim().split(/\s+/)[0]; // Take only the first URL if there are multiple
-          
-          // Validate that it looks like a proper URL
+          const cleanedSource = imgSource.trim().split(/\s+/)[0];
+
           if (cleanedSource.startsWith('http')) {
-            const manifestUrl = `https://arche-iiifmanifest.acdh.oeaw.ac.at/?id=${encodeURIComponent(
-              cleanedSource
-            )}&mode=images`;
-            manifests.push(manifestUrl);
+            manifests.push(cleanedSource);
             console.log(`Page ${index}: pb.id=${el.id}, source=${cleanedSource}`);
-            console.log(`Generated manifest URL: ${manifestUrl}`);
           } else {
             console.warn(`Invalid source URL format for element ${el.id}:`, imgSource);
           }
@@ -328,10 +322,8 @@ document.addEventListener("DOMContentLoaded", function () {
           console.warn("No 'source' attribute found for element:", el);
         }
       });
-      console.log(`Total manifests: ${manifests.length}, Total pb elements: ${pbElements.length}`);
-      
-      // Log first few manifest URLs for debugging
-      console.log("First 3 manifest URLs:");
+      console.log(`Total page sources: ${manifests.length}, Total pb elements: ${pbElements.length}`);
+      console.log("First 3 direct image sources:");
       manifests.slice(0, 3).forEach((url, index) => {
         console.log(`  ${index + 1}: ${url}`);
       });
@@ -636,8 +628,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async loadImageFromManifest(manifestUrl) {
-      console.log(`🔍 Loading image for index ${this.currentIndex}, URL: ${manifestUrl}`);
-      
+      console.log(`🔍 Loading page image for index ${this.currentIndex}, URL: ${manifestUrl}`);
+
+      const directImageSources = this.iiifManifests.length > 0
+        ? this.iiifManifests
+        : [manifestUrl];
+
+      if (manifestUrl && !manifestUrl.includes('arche-iiifmanifest.acdh.oeaw.ac.at')) {
+        const targetIndex = this.currentIndex;
+        const pageSource = {
+          type: 'image',
+          url: directImageSources[targetIndex].trim()
+        };
+
+        this.viewer.open(pageSource);
+
+        setTimeout(() => {
+          this.showOnlyCurrentPage(targetIndex);
+          this.refreshNavigationControls();
+        }, 150);
+
+        return;
+      }
+
       try {
         const response = await fetch(manifestUrl);
         

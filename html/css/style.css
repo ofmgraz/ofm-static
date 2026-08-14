@@ -131,9 +131,9 @@ h1 {
 }
 
 /* Hide text content in transcript but show notation */
-#transcript * {
+/*#transcript * {
     color: transparent;
-}
+} */
 
 #transcript .notation, #transcript .notation * {
     font-size: 3rem !important;

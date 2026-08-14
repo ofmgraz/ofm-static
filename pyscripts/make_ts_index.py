@@ -6,7 +6,7 @@ from datetime import datetime
 from acdh_tei_pyutils.tei import TeiReader
 from acdh_tei_pyutils.utils import extract_fulltext
 from tqdm import tqdm
-from typesense.api_call import ObjectNotFound
+from typesense.exceptions import ObjectNotFound
 import re
 # It needs the OS variable TYPESENSE_API_KEY to be set
 # Additional vars: TYPESENSE_HOST, TYPESENSE_PORT, TYPESENSE_PROTOCOL.

@@ -95,7 +95,7 @@ def make_type(doc):
 
 
 def prepare_text(text):
-    text = re.sub('\-\s*\n\s*', '', extract_fulltext(text))
+    text = re.sub(r'-\s*\n\s*', '', extract_fulltext(text))
     return ' '.join(text.split())
 
 
@@ -133,7 +133,7 @@ for xml_filepath in tqdm(files, total=len(files)):
 
             for p_aragraph in body:
                 #ft = prepare_text(p_aragraph)
-                ft = p_aragraph.tail.strip()
+                ft = (p_aragraph.tail or '').strip()
                 if len(ft) > 0:
                     #print(ft, v)
                     pid = p_aragraph.xpath("./@facs")[0]

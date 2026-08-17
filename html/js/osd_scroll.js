@@ -209,11 +209,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const box = this.parsePolygonBoundingBox(pointsStr);
         if (!box) return;
 
+        // OSD viewport coords normalize both x and y by image width to keep aspect ratio
         const normalizedBox = {
           x: box.left / imageWidth,
-          y: box.top / imageHeight,
+          y: box.top / imageWidth,
           width: box.width / imageWidth,
-          height: box.height / imageHeight,
+          height: box.height / imageWidth,
         };
 
         const overlay = this.createRegionOverlay(region);
@@ -1355,11 +1356,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const box = this.parsePolygonBoundingBox(pointsStr);
       if (!box) return;
 
+      // OSD viewport coords normalize both x and y by image width to keep aspect ratio
       const normalizedBox = {
         x: box.left / imageWidth,
-        y: box.top / imageHeight,
+        y: box.top / imageWidth,
         width: box.width / imageWidth,
-        height: box.height / imageHeight,
+        height: box.height / imageWidth,
       };
 
       const overlay = document.createElement("div");

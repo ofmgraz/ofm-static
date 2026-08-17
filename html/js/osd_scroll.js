@@ -430,15 +430,15 @@ document.addEventListener("DOMContentLoaded", function () {
             
             if (typeof images[0] === "string") {
               // If it's a direct URL string, use it with size optimization
-              optimizedImage = images[0].replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!400,400/0/default.$1");
+              optimizedImage = images[0].replace(/\/full\/[^\/]+\/default\.(jpg)$/, "/full/!400,400/0/default.$1");
               console.log(`Direct URL for manifest ${i + 1}: ${optimizedImage.substring(0, 100)}...`);
             } else if (images[0].url) {
               // If it has a URL property, use that with size optimization
-              optimizedImage = images[0].url.replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!400,400/0/default.$1");
+              optimizedImage = images[0].url.replace(/\/full\/[^\/]+\/default\.(jpg)$/, "/full/!400,400/0/default.$1");
               console.log(`URL property for manifest ${i + 1}: ${optimizedImage.substring(0, 100)}...`);
             } else if (images[0]["@id"]) {
               // Some IIIF manifests use @id for the image URL
-              optimizedImage = images[0]["@id"].replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, "/full/!400,400/0/default.$1");
+              optimizedImage = images[0]["@id"].replace(/\/full\/[^\/]+\/default\.(jpg)$/, "/full/!400,400/0/default.$1");
               console.log(`@id property for manifest ${i + 1}: ${optimizedImage.substring(0, 100)}...`);
             } else {
               // Use the image info.json URL directly - this is the most reliable way to load IIIF images
@@ -639,9 +639,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const targetIndex = this.currentIndex;
         const pageSources = directImageSources.map((url) => ({
           type: 'image',
-          url: url.trim()
+          url: `${url.trim()}@format=image/jpeg&param=/full/,800/0/default.jpg`
         }));
-
         this.viewer.open(pageSources, targetIndex);
 
         setTimeout(() => {
@@ -674,7 +673,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Process all images - similar to what iiif.js does
         const optimizedImages = images.map(image => {
           if (typeof image === 'string') {
-            return image.replace(/\/full\/[^\/]+\/default\.(jpg|png)$/, '/full/!600,600/0/default.$1');
+            return image.replace(/\/full\/[^\/]+\/default\.(jpg)$/, '/full/!600,600/0/default.$1');
           }
           return image;
         });
@@ -787,7 +786,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Create a simple tile source object that OpenSeadragon can handle
       return {
         type: 'image',
-        url: canvas.toDataURL('image/png'),
+        url: canvas.toDataURL('image/jpg'),
         buildPyramid: false
       };
     }

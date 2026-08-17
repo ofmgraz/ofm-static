@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.viewer.addHandler("open", () => {
         console.log(`Viewer open handler - current page should be ${this.currentIndex}`);
         this.onImageOpen();
-        this.preloadAdjacentImages(this.currentIndex);
+        
       });
       
       // Add handler specifically for tile sources loading
@@ -755,20 +755,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-   getImageUrl(rawUrl) {
-  const url = rawUrl.trim();
-  const params = 'format=image%2Fjpeg&param=full/800,/0/default.jpg';
-
-  if (url.startsWith('https://hdl.handle.net/') ||
-      url.startsWith('http://hdl.handle.net/')) {
-    return `${url}@${params}`;
-  }
-
-  return `${url}?${params}`;
-}
+    getImageUrl(rawUrl) {
+      return `${rawUrl.trim()}?format=image/jpeg&param=full/800,/0/default.jpg`;
+    }
 
     preloadAdjacentImages(index) {
-      [index - 1, index + 1].forEach(i => {
+  [index - 1, index + 1].forEach(i => {
     if (i < 0 || i >= this.iiifManifests.length) {
       return;
     }
@@ -901,6 +893,7 @@ document.addEventListener("DOMContentLoaded", function () {
           prev.style.opacity = "1";
           next.style.opacity = "1";
           
+        
           
           return true;
         } else {

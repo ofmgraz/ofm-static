@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
       this.init();
     }
 
+    
+
     init() {
       this.setupViewer();
       this.iiifManifests = this.getIIIFManifests();
@@ -755,8 +757,28 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
+    
+    //getImageUrl(rawUrl) {
+    //  return `${rawUrl.trim()}?format=image/jpeg&param=full/800,/0/default.jpg`;
+    //}
     getImageUrl(rawUrl) {
-      return `${rawUrl.trim()}?format=image/jpeg&param=full/800,/0/default.jpg`;
+      const url = rawUrl.trim();
+      //const cached = this.imageUrlCache.get(url);
+      //if (cached) {
+      //  return cached;
+      //}
+
+      // hdl.handle.net expects '@' parameter syntax to forward image params on redirect.
+      // Other URLs use regular query parameters.
+      const isHandle =
+        url.startsWith("https://hdl.handle.net/") ||
+        url.startsWith("http://hdl.handle.net/");
+      const separator = isHandle ? "@" : (url.includes("?") ? "&" : "?");
+
+      // 600px is significantly faster than 800px while remaining readable in initial view.
+      const built = `${url}${separator}format=image/jpeg&param=full/full/0/default.jpg`;
+      //this.imageUrlCache.set(url, built);
+      return built;
     }
 
     preloadAdjacentImages(index) {

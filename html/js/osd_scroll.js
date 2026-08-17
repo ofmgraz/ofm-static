@@ -757,7 +757,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
    getImageUrl(rawUrl) {
   const url = rawUrl.trim();
-  const params = 'format=image%2Fjpeg&param=full/400,/0/default.jpg';
+  const params = 'format=image%2Fjpeg&param=full/800,/0/default.jpg';
 
   if (url.startsWith('https://hdl.handle.net/') ||
       url.startsWith('http://hdl.handle.net/')) {
@@ -901,27 +901,6 @@ document.addEventListener("DOMContentLoaded", function () {
           prev.style.opacity = "1";
           next.style.opacity = "1";
           
-          prev.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log("🔙 PREV button clicked - current index:", this.currentIndex);
-            if (this.currentIndex > 0) {
-              this.currentIndex--;
-              this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
-              this.showOnlyCurrentPage(this.currentIndex);
-            }
-          });
-
-          next.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log("▶️ NEXT button clicked - current index:", this.currentIndex);
-            if (this.currentIndex < this.iiifManifests.length - 1) {
-              this.currentIndex++;
-              this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
-              this.showOnlyCurrentPage(this.currentIndex);
-            }
-          });
           
           return true;
         } else {

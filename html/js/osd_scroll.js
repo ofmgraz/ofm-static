@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.validImageTileSources = []; // Store valid images for navigation
       this.singleImageMode = false; // Flag to track if we're in single image mode (due to CORS)
       this.preloadedImages = new Map();
+      this.originalImageDimensions = [];
       
       // Lazy loading properties
       this.allImages = [];
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.additionalBatchSize = 10; // Number of additional manifests to load each time
       this.successCount = 0;
       this.errorCount = 0;
+      this.originalImageDimensions = [];
 
       this.paragraphs = document.querySelectorAll("ab[data-target]");
       this.imageRegions = document.querySelectorAll(".image-region");
@@ -138,8 +140,65 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    onImageOpen() {
+    getImageInfoUrl(rawUrl) {
+  const url = rawUrl.trim();
+
+  if (
+    url.startsWith("https://hdl.handle.net/") ||
+    url.startsWith("http://hdl.handle.net/")
+  ) {
+    return `${url}@format=image/json`;
+  }
+
+  const separator = url.includes("?") ? "&" : "?";
+  return `${url}${separator}format=image/json`;
+}
+
+
+async getOriginalImageDimensions(index) {
+  if (this.originalImageDimensions[index]) {
+    return this.originalImageDimensions[index];
+  }
+
+  const rawUrl = this.iiifManifests[index];
+
+  try {
+    const response = await fetch(this.getImageInfoUrl(rawUrl));
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const info = await response.json();
+
+    if (!info.width || !info.height) {
+      throw new Error("IIIF info.json contains no width/height");
+    }
+
+    const dimensions = {
+      width: info.width,
+      height: info.height
+    };
+
+    this.originalImageDimensions[index] = dimensions;
+
+    console.log(
+      `Original image dimensions for page ${index}:`,
+      dimensions.width,
+      "×",
+      dimensions.height
+    );
+
+    return dimensions;
+  } catch (err) {
+    console.error("Could not get original image dimensions:", err);
+    return null;
+  }
+}
+
+  async   onImageOpen() {
       console.log("🔍 onImageOpen called");
+      
       
       if (this.viewer.world.getItemCount() === 0) {
         console.warn("⚠️ No items in the viewer world on open");
@@ -153,9 +212,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       
       try {
-        const imageSize = currentItem.getContentSize();
-        const imageWidth = imageSize.x;
-        const imageHeight = imageSize.y;
+  const displayedSize = currentItem.getContentSize();
+const originalSize = await this.getOriginalImageDimensions(this.currentIndex);
+
+const imageWidth = originalSize?.width ?? displayedSize.x;
+const imageHeight = originalSize?.height ?? displayedSize.y;
+
+console.log(
+  `Overlay coordinate dimensions: ${imageWidth} × ${imageHeight}`
+);
         
         console.log(`📏 Image dimensions: ${imageWidth} × ${imageHeight}`);
         
@@ -404,7 +469,12 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(`✅ Found standard IIIF manifest structure with ${data.sequences[0].canvases.length} canvases`);
             
             // Get the first canvas
+           
             const canvas = data.sequences[0].canvases[0];
+            this.originalImageDimensions[i] = {
+              width: canvas.width,
+              height: canvas.height
+            };
             
             // Extract the image from the canvas
             if (canvas.images && canvas.images[0] && canvas.images[0].resource) {
@@ -776,7 +846,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const separator = isHandle ? "@" : (url.includes("?") ? "&" : "?");
 
       // 600px is significantly faster than 800px while remaining readable in initial view.
-      const built = `${url}${separator}format=image/jpeg&param=full/full/0/default.jpg`;
+      const built = `${url}${separator}format=image/jpeg&param=full/800,/0/default.jpg`;
       //this.imageUrlCache.set(url, built);
       return built;
     }
@@ -1500,34 +1570,35 @@ document.addEventListener("DOMContentLoaded", function () {
       if (prev) this.viewer.removeOverlay(prev);
     }
     
-    refreshOverlays() {
-      console.log("🔄 Refreshing overlays for page:", this.currentIndex);
-      
-      // Get the current image dimensions
-      if (this.viewer.world.getItemCount() > 0) {
-        const currentImage = this.viewer.world.getItemAt(0);
-        if (currentImage) {
-          const imageSize = currentImage.getContentSize();
-          const imageWidth = imageSize.x;
-          const imageHeight = imageSize.y;
-          
-          // Clear existing overlays
-          this.viewer.clearOverlays();
-          
-          // Re-add the surface overlay
-          this.addSurfaceOverlay();
-          
-          // Re-add region overlays
-          this.addImageRegionOverlays(imageWidth, imageHeight);
-          
-          // Re-setup hover overlays
-          this.setupHoverOverlays(imageWidth, imageHeight);
-          
-          console.log("✅ Overlays refreshed with image dimensions:", imageWidth, "×", imageHeight);
-        }
-      }
-    }
+   async refreshOverlays() {
+  console.log("🔄 Refreshing overlays for page:", this.currentIndex);
 
+  if (this.viewer.world.getItemCount() > 0) {
+    const currentImage = this.viewer.world.getItemAt(0);
+
+    if (currentImage) {
+      const displayedSize = currentImage.getContentSize();
+      const originalSize =
+        await this.getOriginalImageDimensions(this.currentIndex);
+
+      const imageWidth = originalSize?.width ?? displayedSize.x;
+      const imageHeight = originalSize?.height ?? displayedSize.y;
+
+      this.viewer.clearOverlays();
+
+      this.addSurfaceOverlay();
+      this.addImageRegionOverlays(imageWidth, imageHeight);
+      this.setupHoverOverlays(imageWidth, imageHeight);
+
+      console.log(
+        "✅ Overlays using original dimensions:",
+        imageWidth,
+        "×",
+        imageHeight
+      );
+    }
+  }
+}
     // Page-based navigation methods
     initializePageView() {
       // Wrap all loose text nodes in spans to make them targetable

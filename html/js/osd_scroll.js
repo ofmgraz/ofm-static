@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.iiifManifests = [];
       this.validImageTileSources = []; // Store valid images for navigation
       this.singleImageMode = false; // Flag to track if we're in single image mode (due to CORS)
+      this.preloadedImages = new Map();
       
       // Lazy loading properties
       this.allImages = [];
@@ -74,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
+
     setupViewer() {
       this.viewer = OpenSeadragon({
         id: "container_facs_1",
@@ -95,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.viewer.addHandler("open", () => {
         console.log(`Viewer open handler - current page should be ${this.currentIndex}`);
         this.onImageOpen();
+        this.preloadAdjacentImages(this.currentIndex);
       });
       
       // Add handler specifically for tile sources loading
@@ -128,6 +131,8 @@ document.addEventListener("DOMContentLoaded", function () {
         this.viewer.viewport.goHome();
         this.refreshOverlays();
         this.refreshNavigationControls();
+
+        this.preloadAdjacentImages(this.currentIndex);
       });
     }
 
@@ -639,7 +644,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const targetIndex = this.currentIndex;
         const pageSources = directImageSources.map((url) => ({
           type: 'image',
-          url: `${url.trim()}@format=image/jpeg&param=/full/,800/0/default.jpg`
+          url: this.getImageUrl(url)
         }));
         this.viewer.open(pageSources, targetIndex);
 
@@ -750,6 +755,35 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
+   getImageUrl(rawUrl) {
+  const url = rawUrl.trim();
+  const params = 'format=image%2Fjpeg&param=full/400,/0/default.jpg';
+
+  if (url.startsWith('https://hdl.handle.net/') ||
+      url.startsWith('http://hdl.handle.net/')) {
+    return `${url}@${params}`;
+  }
+
+  return `${url}?${params}`;
+}
+
+    preloadAdjacentImages(index) {
+      [index - 1, index + 1].forEach(i => {
+    if (i < 0 || i >= this.iiifManifests.length) {
+      return;
+    }
+
+    if (this.preloadedImages.has(i)) {
+      return;
+    }
+
+    const img = new Image();
+    img.src = this.getImageUrl(this.iiifManifests[i]);
+
+    this.preloadedImages.set(i, img);
+  });
+}
+
     createPlaceholderTileSource(index) {
       console.log(`🎨 Creating placeholder tile source for page ${index + 1}`);
       
@@ -842,8 +876,11 @@ document.addEventListener("DOMContentLoaded", function () {
           if (targetIndex < 0 || targetIndex >= this.iiifManifests.length) return;
 
           this.currentIndex = targetIndex;
-          this.loadImageFromManifest(this.iiifManifests[targetIndex]);
+          // 
+          this.viewer.goToPage(targetIndex);
           this.showOnlyCurrentPage(targetIndex);
+          // this.loadImageFromManifest(this.iiifManifests[targetIndex]);
+          // this.showOnlyCurrentPage(targetIndex);
         }, true);
       }
 

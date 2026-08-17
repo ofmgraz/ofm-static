@@ -43,6 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         
         console.log(`Starting with page index: ${this.currentIndex} based on hash`);
+
+        this.setupNavigationButtons();
+        this.setupPageNavigation();
+        this.setupParagraphHighlighting();
+        this.setupKeyboardNavigation();
         
         // Instead of loading the first manifest, load the one for the current index
         if (this.currentIndex >= 0 && this.currentIndex < this.iiifManifests.length) {
@@ -53,11 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
           this.loadImageFromManifest(this.iiifManifests[0]);
         }
         
-        this.setupNavigationButtons();
-        this.setupPageNavigation();
-        this.setupParagraphHighlighting();
-        this.setupKeyboardNavigation(); // Add keyboard navigation
-
         // Trigger initial page display immediately with the correct index
         this.showOnlyCurrentPage(this.currentIndex);
         
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         prefixUrl:
           "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
         visibilityRatio: 1,
-        sequenceMode: false,
+        sequenceMode: true,
         showNavigator: false,
         showSequenceControl: true,
         showNavigationControl: true,
@@ -636,14 +636,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (manifestUrl && !manifestUrl.includes('arche-iiifmanifest.acdh.oeaw.ac.at')) {
         const targetIndex = this.currentIndex;
-        const pageSource = {
+        const pageSources = directImageSources.map((url) => ({
           type: 'image',
-          url: directImageSources[targetIndex].trim()
-        };
+          url: url.trim()
+        }));
 
-        this.viewer.open(pageSource);
+        this.viewer.open(pageSources, targetIndex);
 
         setTimeout(() => {
+          if (this.viewer.currentPage() !== targetIndex) {
+            this.viewer.goToPage(targetIndex);
+          }
           this.showOnlyCurrentPage(targetIndex);
           this.refreshNavigationControls();
         }, 150);
@@ -818,12 +821,32 @@ document.addEventListener("DOMContentLoaded", function () {
         prev.style.pointerEvents = this.currentIndex === 0 ? 'none' : 'auto';
         prev.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
         
-        next.style.pointerEvents = this.currentIndex === this.viewer.tileSources.length - 1 ? 'none' : 'auto';
-        next.style.opacity = this.currentIndex === this.viewer.tileSources.length - 1 ? '0.5' : '1';
+        const lastPageIndex = this.iiifManifests.length - 1;
+        next.style.pointerEvents = this.currentIndex === lastPageIndex ? 'none' : 'auto';
+        next.style.opacity = this.currentIndex === lastPageIndex ? '0.5' : '1';
       }
     }
 
     setupNavigationButtons() {
+      if (!this.navigationDelegated) {
+        this.navigationDelegated = true;
+        document.addEventListener("click", (event) => {
+          const button = event.target.closest("div[title='Previous page'], div[title='Next page']");
+          if (!button) return;
+
+          event.preventDefault();
+          event.stopImmediatePropagation();
+
+          const direction = button.getAttribute('title') === 'Previous page' ? -1 : 1;
+          const targetIndex = this.currentIndex + direction;
+          if (targetIndex < 0 || targetIndex >= this.iiifManifests.length) return;
+
+          this.currentIndex = targetIndex;
+          this.loadImageFromManifest(this.iiifManifests[targetIndex]);
+          this.showOnlyCurrentPage(targetIndex);
+        }, true);
+      }
+
       // Try to find OpenSeadragon navigation buttons with retry logic
       let attemptCount = 0;
       const maxAttempts = 20; // 2 seconds max wait
@@ -841,15 +864,26 @@ document.addEventListener("DOMContentLoaded", function () {
           prev.style.opacity = "1";
           next.style.opacity = "1";
           
-          // The sequence mode navigation buttons already work, we just need to add our page text sync
           prev.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             console.log("🔙 PREV button clicked - current index:", this.currentIndex);
-            // Let OpenSeadragon handle the navigation, we'll catch it in the page event
+            if (this.currentIndex > 0) {
+              this.currentIndex--;
+              this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+              this.showOnlyCurrentPage(this.currentIndex);
+            }
           });
 
           next.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             console.log("▶️ NEXT button clicked - current index:", this.currentIndex);
-            // Let OpenSeadragon handle the navigation, we'll catch it in the page event
+            if (this.currentIndex < this.iiifManifests.length - 1) {
+              this.currentIndex++;
+              this.loadImageFromManifest(this.iiifManifests[this.currentIndex]);
+              this.showOnlyCurrentPage(this.currentIndex);
+            }
           });
           
           return true;

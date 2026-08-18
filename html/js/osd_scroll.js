@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
       this.singleImageMode = false; // Flag to track if we're in single image mode (due to CORS)
       this.preloadedImages = new Map();
       this.originalImageDimensions = [];
+
+      // Debug toggle: when true draws CSS debug overlays (magenta boxes)
+      this.debugOverlays = false;
       
       // Lazy loading properties
       this.allImages = [];
@@ -229,8 +232,22 @@ console.log(
         console.log(`Current index in our tracking: ${this.currentIndex}`);
         
         this.addSurfaceOverlay();
-        this.addImageRegionOverlays(imageWidth, imageHeight);
-        this.setupHoverOverlays(imageWidth, imageHeight);
+
+        // Load the page's TEI XML (if present) so we can use the TEI surface
+        // coordinate system for overlays even when there's no hash param.
+        try {
+          const xmlPath = window.location.pathname.replace(".html", ".xml");
+          await this.loadAndParseXML(xmlPath);
+        } catch (e) {
+          // ignore XML load errors — fall back to image dimensions
+        }
+
+        // Prefer TEI surface dims when available (many TEI files use a 2000-wide surface)
+        const coordWidth = this.currentSurfaceDims?.width ?? imageWidth;
+        const coordHeight = this.currentSurfaceDims?.height ?? imageHeight;
+
+        this.addImageRegionOverlays(coordWidth, coordHeight);
+        this.setupHoverOverlays(coordWidth, coordHeight);
         
         // Add a style for highlighted elements if not already present
         if (!document.getElementById('highlight-style')) {
@@ -246,13 +263,7 @@ console.log(
           document.head.appendChild(style);
         }
         
-        // Handle hash-based text highlighting without zooming
-        // Note: We don't process hashToProcess here anymore since it's handled in loadImageFromManifest
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-          const xmlPath = window.location.pathname.replace(".html", ".xml");
-          this.loadAndParseXML(xmlPath);
-        }
+        // Hash processing is handled earlier (we already loaded XML when needed)
       } catch (err) {
         console.error("Error in onImageOpen:", err);
       }
@@ -273,6 +284,74 @@ console.log(
       }
     }
 
+    // Helper: convert original-image pixel rect -> displayed-image pixels -> viewport Rect
+    convertOriginalRectToViewport(box, imageWidth, imageHeight) {
+      const currentItem = this.viewer.world.getItemAt(0);
+      if (!currentItem) return null;
+
+      // displayed content size used by the viewer (tiles/pyramid size)
+      const displayed = currentItem.getContentSize();
+
+      // Debugging: print mapping inputs
+      const containerSize = this.viewer.viewport.getContainerSize();
+      const viewerElement = this.viewer.element;
+      const containerClient = { width: viewerElement.clientWidth, height: viewerElement.clientHeight };
+      
+
+      // compute scale from original full-res to displayed image pixels
+      const scaleX = displayed.x / imageWidth;
+      const scaleY = displayed.y / imageHeight;
+
+      const osdBox = {
+        x: box.left * scaleX,
+        y: box.top * scaleY,
+        width: box.width * scaleX,
+        height: box.height * scaleY,
+      };
+
+      
+
+      // Prefer bounds mapping: normalize original pixels and map into the current item's viewport bounds.
+      try {
+        const bounds = currentItem.getBounds();
+        // Normalize using the displayed content size (osd pixels) instead of original image pixels
+        const normalized = {
+          x: osdBox.x / displayed.x,
+          y: osdBox.y / displayed.y,
+          width: osdBox.width / displayed.x,
+          height: osdBox.height / displayed.y,
+        };
+        const mapped = new OpenSeadragon.Rect(
+          bounds.x + normalized.x * bounds.width,
+          bounds.y + normalized.y * bounds.height,
+          normalized.width * bounds.width,
+          normalized.height * bounds.height
+        );
+        
+        return mapped;
+      } catch (e) {
+        console.warn('bounds mapping failed, falling back to other methods:', e);
+      }
+
+      // Use tiledImage helper when available to map image pixels -> viewport
+      if (typeof currentItem.imageToViewportRectangle === 'function') {
+        try {
+          const rect = currentItem.imageToViewportRectangle(new OpenSeadragon.Rect(osdBox.x, osdBox.y, osdBox.width, osdBox.height));
+          
+          return rect;
+        } catch (e) {
+          console.warn('imageToViewportRectangle failed, falling back:', e);
+        }
+      }
+
+      // Fallback: convert corners via viewport
+      const topLeft = this.viewer.viewport.imageToViewportCoordinates(new OpenSeadragon.Point(osdBox.x, osdBox.y));
+      const bottomRight = this.viewer.viewport.imageToViewportCoordinates(new OpenSeadragon.Point(osdBox.x + osdBox.width, osdBox.y + osdBox.height));
+      const rect = new OpenSeadragon.Rect(topLeft.x, topLeft.y, bottomRight.x - topLeft.x, bottomRight.y - topLeft.y);
+      
+      return rect;
+    }
+
     addImageRegionOverlays(imageWidth, imageHeight) {
       this.imageRegions.forEach((region) => {
         const pointsStr = region.getAttribute("data-points");
@@ -280,26 +359,21 @@ console.log(
 
         const box = this.parsePolygonBoundingBox(pointsStr);
         if (!box) return;
-
-        // OSD viewport coords normalize both x and y by image width to keep aspect ratio
-        const normalizedBox = {
-          x: box.left / imageWidth,
-          y: box.top / imageWidth,
-          width: box.width / imageWidth,
-          height: box.height / imageWidth,
-        };
-
+        // Convert original-image pixel rect to viewport rect using helper
+        const viewportRect = this.convertOriginalRectToViewport(box, imageWidth, imageHeight);
         const overlay = this.createRegionOverlay(region);
-
-        this.viewer.addOverlay({
-          element: overlay,
-          location: new OpenSeadragon.Rect(
-            normalizedBox.x,
-            normalizedBox.y,
-            normalizedBox.width,
-            normalizedBox.height
-          ),
-        });
+        if (viewportRect) {
+          this.viewer.addOverlay({ element: overlay, location: viewportRect });
+        } else {
+          // Fallback to normalized coords
+          const normalizedBox = {
+            x: box.left / imageWidth,
+            y: box.top / imageHeight,
+            width: box.width / imageWidth,
+            height: box.height / imageHeight,
+          };
+          this.viewer.addOverlay({ element: overlay, location: new OpenSeadragon.Rect(normalizedBox.x, normalizedBox.y, normalizedBox.width, normalizedBox.height) });
+        }
       });
     }
 
@@ -1295,25 +1369,51 @@ console.log(
       const xmlDoc = parser.parseFromString(xmlString, "text/xml");
       const hash = window.location.hash.substring(1);
 
-      if (!hash) return [];
-
-      const baseId = hash.split("_").slice(0, 2).join("_");
+      // Determine a base surface id: prefer explicit hash, else derive from
+      // the current page's pb element id, otherwise fall back to first surface.
       const surfaces = xmlDoc.getElementsByTagNameNS("*", "surface");
-
-      let targetSurface = null;
-      for (let surface of surfaces) {
-        if (
-          surface.getAttributeNS(
-            "http://www.w3.org/XML/1998/namespace",
-            "id"
-          ) === baseId
-        ) {
-          targetSurface = surface;
-          break;
+      let baseId = null;
+      if (hash) {
+        baseId = hash.split("_").slice(0, 2).join("_");
+      } else {
+        const pbElements = Array.from(document.getElementsByClassName('pb') || []);
+        const pb = pbElements[this.currentIndex];
+        if (pb && pb.id) {
+          baseId = pb.id;
         }
       }
 
+      let targetSurface = null;
+      if (baseId) {
+        for (let surface of surfaces) {
+          if (
+            surface.getAttributeNS(
+              "http://www.w3.org/XML/1998/namespace",
+              "id"
+            ) === baseId
+          ) {
+            targetSurface = surface;
+            break;
+          }
+        }
+      }
+
+      // Fallback to the first surface element if none matched
+      if (!targetSurface && surfaces.length > 0) {
+        targetSurface = surfaces[0];
+      }
+
       if (!targetSurface) return [];
+
+      // Extract surface coordinate system dimensions (ulx/uly/lrx/lry)
+      const ulx = parseFloat(targetSurface.getAttribute('ulx') || 0);
+      const uly = parseFloat(targetSurface.getAttribute('uly') || 0);
+      const lrx = parseFloat(targetSurface.getAttribute('lrx') || 0);
+      const lry = parseFloat(targetSurface.getAttribute('lry') || 0);
+      const surfaceWidth = lrx - ulx || lrx || 0;
+      const surfaceHeight = lry - uly || lry || 0;
+      // store for other code paths (hover overlays)
+      this.currentSurfaceDims = { width: surfaceWidth, height: surfaceHeight };
 
       const zones = targetSurface.getElementsByTagNameNS("*", "zone");
       let targetZone = null;
@@ -1358,18 +1458,47 @@ console.log(
           return { x: parseInt(x, 10), y: parseInt(y, 10) };
         });
 
-      return [{ id: hash, points }];
+      return [{ id: hash, points, surfaceWidth, surfaceHeight }];
     }
 
-    addZoneOverlays(zoneData) {
+    async addZoneOverlays(zoneData) {
       if (!zoneData.length) return;
 
       this.viewer.clearOverlays();
       this.addSurfaceOverlay();
 
+      const originalSize = await this.getOriginalImageDimensions(this.currentIndex);
+      const imageWidth = originalSize?.width ?? 1;
+      const imageHeight = originalSize?.height ?? 1;
+
       zoneData.forEach((zone) => {
         const points = zone.points;
-        const scaledCoords = this.calculateScaledCoordinates(points);
+        const xs = points.map((p) => p.x);
+        const ys = points.map((p) => p.y);
+        const box = {
+          left: Math.min(...xs),
+          top: Math.min(...ys),
+          width: Math.max(...xs) - Math.min(...xs),
+          height: Math.max(...ys) - Math.min(...ys),
+        };
+
+        // If the zone came from a TEI surface with its own coordinate system
+        // (e.g. width ~= 2000), convert those surface coords into the original
+        // image pixel space before mapping into the viewport.
+        let boxInImagePixels = box;
+        if (zone.surfaceWidth && zone.surfaceHeight && zone.surfaceWidth > 0 && zone.surfaceHeight > 0) {
+          const sx = imageWidth / zone.surfaceWidth;
+          const sy = imageHeight / zone.surfaceHeight;
+          boxInImagePixels = {
+            left: box.left * sx,
+            top: box.top * sy,
+            width: box.width * sx,
+            height: box.height * sy,
+          };
+          
+        }
+
+        const viewportRect = this.convertOriginalRectToViewport(boxInImagePixels, imageWidth, imageHeight);
 
         const overlay = document.createElement("div");
         overlay.style.border = "2px solid rgba(0,255,0,0.5)";
@@ -1377,15 +1506,19 @@ console.log(
         overlay.style.pointerEvents = "none";
         overlay.style.position = "absolute";
 
-        this.viewer.addOverlay({
-          element: overlay,
-          location: new OpenSeadragon.Rect(
-            scaledCoords.x,
-            scaledCoords.y,
-            scaledCoords.width,
-            scaledCoords.height
-          ),
-        });
+        if (viewportRect) {
+          this.viewer.addOverlay({ element: overlay, location: viewportRect });
+        } else {
+          // Fallback to normalized coords (use converted image-pixel box if available)
+          const nb = boxInImagePixels;
+          const normalized = {
+            x: nb.left / imageWidth,
+            y: nb.top / imageHeight,
+            width: nb.width / imageWidth,
+            height: nb.height / imageHeight,
+          };
+          this.viewer.addOverlay({ element: overlay, location: new OpenSeadragon.Rect(normalized.x, normalized.y, normalized.width, normalized.height) });
+        }
       });
     }
 
@@ -1456,13 +1589,8 @@ console.log(
       const box = this.parsePolygonBoundingBox(pointsStr);
       if (!box) return;
 
-      // OSD viewport coords normalize both x and y by image width to keep aspect ratio
-      const normalizedBox = {
-        x: box.left / imageWidth,
-        y: box.top / imageWidth,
-        width: box.width / imageWidth,
-        height: box.height / imageWidth,
-      };
+      // Convert original-image pixel rect to viewport rect using helper
+      const viewportRect = this.convertOriginalRectToViewport(box, imageWidth, imageHeight);
 
       const overlay = document.createElement("div");
       overlay.id = "osd-hover-overlay";
@@ -1470,15 +1598,97 @@ console.log(
       overlay.style.background = "rgba(255,165,0,0.15)";
       overlay.style.position = "absolute";
 
-      this.viewer.addOverlay({
-        element: overlay,
-        location: new OpenSeadragon.Rect(
-          normalizedBox.x,
-          normalizedBox.y,
-          normalizedBox.width,
-          normalizedBox.height
-        ),
-      });
+      if (viewportRect) {
+        this.viewer.addOverlay({ element: overlay, location: viewportRect });
+        // Draw a CSS pixel debug overlay to compare using viewport->window mapping
+        if (this.debugOverlays) {
+          try {
+            this.drawCssDebugOverlayFromViewport(viewportRect, 'osd-hover-debug-px');
+          } catch (e) {
+            // ignore debug failures
+          }
+        }
+      } else {
+        const normalizedBox = {
+          x: box.left / imageWidth,
+          y: box.top / imageHeight,
+          width: box.width / imageWidth,
+          height: box.height / imageHeight,
+        };
+        this.viewer.addOverlay({ element: overlay, location: new OpenSeadragon.Rect(normalizedBox.x, normalizedBox.y, normalizedBox.width, normalizedBox.height) });
+      }
+    }
+
+    // Temporary debug helper: draw a CSS-positioned overlay mapped from viewport coords to window/container pixels
+    drawCssDebugOverlayFromViewport(viewportRect, id) {
+      // Ensure a debug layer container
+      let layer = document.getElementById('osd-debug-layer');
+      if (!layer) {
+        layer = document.createElement('div');
+        layer.id = 'osd-debug-layer';
+        layer.style.position = 'absolute';
+        layer.style.left = '0';
+        layer.style.top = '0';
+        layer.style.pointerEvents = 'none';
+        layer.style.width = '100%';
+        layer.style.height = '100%';
+        layer.style.zIndex = 9999;
+        this.viewer.element.appendChild(layer);
+      }
+
+      let el = document.getElementById(id);
+      if (!el) {
+        el = document.createElement('div');
+        el.id = id;
+        el.style.border = '2px dashed magenta';
+        el.style.background = 'rgba(255,0,255,0.08)';
+        el.style.position = 'absolute';
+        layer.appendChild(el);
+      }
+
+      // Convert viewport coordinates to window coordinates
+      // Map viewportRect into viewer-element pixel coordinates anchored to the current image bounds
+      const currentItem = this.viewer.world.getItemAt(0);
+      const bounds = currentItem.getBounds();
+      let boundsTL, boundsBR;
+      if (typeof this.viewer.viewport.viewportToViewerElementCoordinates === 'function') {
+        // Returns coordinates relative to the viewer element already
+        boundsTL = this.viewer.viewport.viewportToViewerElementCoordinates(new OpenSeadragon.Point(bounds.x, bounds.y));
+        boundsBR = this.viewer.viewport.viewportToViewerElementCoordinates(new OpenSeadragon.Point(bounds.x + bounds.width, bounds.y + bounds.height));
+      } else if (typeof this.viewer.viewport.viewportToWindowCoordinates === 'function') {
+        // Convert window coords to viewer-element relative coords
+        const containerRect = this.viewer.element.getBoundingClientRect();
+        const tlw = this.viewer.viewport.viewportToWindowCoordinates(new OpenSeadragon.Point(bounds.x, bounds.y));
+        const brw = this.viewer.viewport.viewportToWindowCoordinates(new OpenSeadragon.Point(bounds.x + bounds.width, bounds.y + bounds.height));
+        boundsTL = { x: tlw.x - containerRect.left, y: tlw.y - containerRect.top };
+        boundsBR = { x: brw.x - containerRect.left, y: brw.y - containerRect.top };
+      } else {
+        // Fallback: assume the viewer element covers displayed content area
+        const displayed = currentItem.getContentSize();
+        const container = this.viewer.element.getBoundingClientRect();
+        // Use viewer-element-relative coordinates (0..width/height)
+        boundsTL = { x: 0, y: 0 };
+        boundsBR = { x: container.width, y: container.height };
+      }
+
+      const normX = (viewportRect.x - bounds.x) / bounds.width;
+      const normY = (viewportRect.y - bounds.y) / bounds.height;
+      const normW = viewportRect.width / bounds.width;
+      const normH = viewportRect.height / bounds.height;
+
+      const leftPx = boundsTL.x + normX * (boundsBR.x - boundsTL.x);
+      const topPx = boundsTL.y + normY * (boundsBR.y - boundsTL.y);
+      const rightPx = boundsTL.x + (normX + normW) * (boundsBR.x - boundsTL.x);
+      const bottomPx = boundsTL.y + (normY + normH) * (boundsBR.y - boundsTL.y);
+
+      const topLeftViewer = { x: leftPx, y: topPx };
+      const bottomRightViewer = { x: rightPx, y: bottomPx };
+      
+      // boundsTL/BR and computed pixels are viewer-element relative, set directly
+      el.style.left = topLeftViewer.x + 'px';
+      el.style.top = topLeftViewer.y + 'px';
+      el.style.width = (bottomRightViewer.x - topLeftViewer.x) + 'px';
+      el.style.height = (bottomRightViewer.y - topLeftViewer.y) + 'px';
     }
 
     // Add a diagnostic method to check the current state of image loading

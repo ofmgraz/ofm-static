@@ -221,7 +221,10 @@
         </xsl:for-each>
       </xsl:if>
         <xsl:choose>
-            <xsl:when test="self::tei:ab[@type='notation']">
+		<xsl:when test="
+    		self::tei:ab[@type='notation']
+    		and not(@rend = ('5', '3', '1', '-5', '-3', '-1', '5-', '3-', '1-', '-5-', '-3-', '-1-'))
+		">
                 <xsl:attribute name="class" select="concat($classes, ' notation')"/>
                 <xsl:value-of select="@rend"/>
             </xsl:when>
